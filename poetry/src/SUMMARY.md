@@ -32,9 +32,30 @@
 - [网络](learning/network/network.md)
 - [算法](learning/algorithm/algorithm.md)
 - [操作系统](learning/os/os.md)
+- [编译原理](learning/compile/compile.md)
 - [Python](learning/python/python.md)
 - [Golang](learning/golang/golang.md)
 
+
+# 读书笔记
+
+- [技术类](reading/technology/technology.md)
+  - [elasticsearch7.13官方文档](reading/technology/elasticsearch.md)
+  - [计算之魂](reading/technology/the_essence_of_computing.md)
+  - [crafting interpreters](reading/technology/crafting_interpreters.md)
+- [人物传记](reading/biography/biography.md)
+  - [毛泽东选集](reading/biography/mao.md)
+  - [我心归处是敦煌——樊锦诗自述](reading/biography/fanjinshi.md)
+- [小说](reading/novel/novel.md)
+  - [精灵宝钻](reading/novel/the_silmarillion.md)
+  - [金庸武侠](reading/novel/jinyong.md)
+  
+
 -----------
 
-[总结与规划](life/past_future.md)
+# 总结规划
+
+- [总结](life/past/past.md)
+- [规划](life/future/future.md)
+  - [技术类](life/future/technology.md)
+  - [生活类](life/future/life.md)
