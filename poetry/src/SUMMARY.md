@@ -1,43 +1,40 @@
 # Summary
 
-[简介](README.md)
-
-# User Guide
-
-- [Installation](guide/installation.md)
-- [Reading Books](guide/reading.md)
-- [Creating a Book](guide/creating.md)
-
-# Reference Guide
-
-- [Command Line Tool](cli/README.md)
-    - [init](cli/init.md)
-    - [build](cli/build.md)
-    - [watch](cli/watch.md)
-    - [serve](cli/serve.md)
-    - [test](cli/test.md)
-    - [clean](cli/clean.md)
-    - [completions](cli/completions.md)
-- [Format](format/README.md)
-    - [SUMMARY.md](format/summary.md)
-        - [Draft chapter]()
-    - [Configuration](format/configuration/README.md)
-        - [General](format/configuration/general.md)
-        - [Preprocessors](format/configuration/preprocessors.md)
-        - [Renderers](format/configuration/renderers.md)
-        - [Environment Variables](format/configuration/environment-variables.md)
-    - [Theme](format/theme/README.md)
-        - [index.hbs](format/theme/index-hbs.md)
-        - [Syntax highlighting](format/theme/syntax-highlighting.md)
-        - [Editor](format/theme/editor.md)
-    - [MathJax Support](format/mathjax.md)
-    - [mdBook-specific features](format/mdbook.md)
-    - [Markdown](format/markdown.md)
-- [Continuous Integration](continuous-integration.md)
-- [For Developers](for_developers/README.md)
-    - [Preprocessors](for_developers/preprocessors.md)
-    - [Alternative Backends](for_developers/backends.md)
+[关于我](README.md)
 
 -----------
 
-[Contributors](misc/contributors.md)
+# 工作阅读
+
+- [2022年阅读](work_reading/2022.md)
+  - [1~3月阅读文章](work_reading/2022/1_3.md)
+- [2021年阅读](workReading/2021.md)
+  - [1月阅读文章](work_reading/2021/1.md)
+  - [2月阅读文章](work_reading/2021/2.md)
+  - [3~4月阅读文章](work_reading/2021/3_4.md)
+  - [5月阅读文章](work_reading/2021/5.md)
+  - [6~7月阅读文章](work_reading/2021/6_7.md)
+  - [8~11月阅读文章](work_reading/2021/8_11.md)
+- [2020年阅读](workReading/2020.md)
+  - [5~6月阅读文章](work_reading/2020/5_6.md)
+  - [7~8月阅读文章](work_reading/2020/7_8.md)
+  - [9~10月阅读文章](work_reading/2020/9_10.md)
+  - [11月阅读文章](work_reading/2020/11.md)
+  - [12月阅读文章](work_reading/2020/12.md)
+  
+
+# 技术学习
+
+- [基础](learning/basic.md)
+    - [Vim学习](learning/basic/vim.md)
+    - [Emacs学习](learning/basic/emacs.md)
+    - [Git学习](learning/basic/git.md)
+- [网络](learning/network.md)
+- [算法](learning/algorithm.md)
+- [操作系统](learning/os.md)
+- [Python](learning/python.md)
+- [Golang](learning/golang.md)
+
+-----------
+
+[总结与规划](life/past_future.md)

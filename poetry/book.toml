@@ -6,3 +6,9 @@ multilingual = false
 src = "src"
 title = "诗意人生"
 
+[output.html]
+git-repository-url = "https://github.com/Kua-Fu/blog-book"
+
+[output.html.fold]
+enable = true
+
