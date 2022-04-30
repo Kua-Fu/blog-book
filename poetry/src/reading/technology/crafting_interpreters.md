@@ -1,3 +1,3 @@
 # crafting interpreters
 
-![crafting interpreters](../../images/reading/technology/crafting_interpreters/crafting_interpreters.png)
+![crafting interpreters](https://github.com/Kua-Fu/blog-book-images/blob/main/reading/technology/crafting_interpreters/crafting_interpreters.png?raw=true)

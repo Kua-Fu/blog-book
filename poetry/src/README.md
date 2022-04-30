@@ -2,7 +2,7 @@
 
  **微信** *Kua_fu* | **Email** *yz15951606335@gmail.com* | [Github](https://github.com/Kua-Fu/) |  [segmentfault](https://segmentfault.com/u/yiquguanglingsan) 
 
-![龙猫](./images/readme/readme.jpeg)
+![龙猫](https://github.com/Kua-Fu/blog-book-images/blob/main/readme/readme.jpeg?raw=true)
 
 
 主要技术栈:

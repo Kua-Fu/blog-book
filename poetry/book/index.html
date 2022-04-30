@@ -143,7 +143,7 @@
                     <main>
                         <h1 id="关于我"><a class="header" href="#关于我">关于我</a></h1>
 <p><strong>微信</strong> <em>Kua_fu</em> | <strong>Email</strong> <em>yz15951606335@gmail.com</em> | <a href="https://github.com/Kua-Fu/">Github</a> |  <a href="https://segmentfault.com/u/yiquguanglingsan">segmentfault</a> </p>
-<p><img src="./images/readme/readme.jpeg" alt="龙猫" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/readme/readme.jpeg?raw=true" alt="龙猫" /></p>
 <p>主要技术栈:</p>
 <table><thead><tr><th>分类</th><th>名称</th><th>说明</th></tr></thead><tbody>
 <tr><td>开发语言</td><td></td><td></td></tr>
@@ -307,6 +307,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

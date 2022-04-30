@@ -142,7 +142,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="crafting-interpreters"><a class="header" href="#crafting-interpreters">crafting interpreters</a></h1>
-<p><img src="../../images/reading/technology/crafting_interpreters/crafting_interpreters.png" alt="crafting interpreters" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/reading/technology/crafting_interpreters/crafting_interpreters.png?raw=true" alt="crafting interpreters" /></p>
 
                     </main>
 
@@ -173,6 +173,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
