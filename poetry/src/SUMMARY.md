@@ -50,6 +50,17 @@
 - [小说](reading/novel/novel.md)
   - [精灵宝钻](reading/novel/the_silmarillion.md)
   - [金庸武侠](reading/novel/jinyong.md)
+- [线上图书馆](reading/library/online.md)
+
+# 奇奇怪怪
+
+- [养生](curiosity/health/health.md)
+  - [程序员延寿指南](curiosity/health/live_longer.md)
+
+- [动画](curiosity/animation/animation.md)
+  - [吉普力](curiosity/animation/ghibli.md)
+
+  
   
 
 -----------
