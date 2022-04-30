@@ -12,3 +12,6 @@ git-repository-url = "https://github.com/Kua-Fu/blog-book"
 [output.html.fold]
 enable = true
 
+[output.html.print]
+enable = false
+
