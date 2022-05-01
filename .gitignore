@@ -12,3 +12,4 @@ Cargo.lock
 # emacs
 *.md~
 .*~
+*.toml~

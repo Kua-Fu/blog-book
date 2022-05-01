@@ -50,6 +50,9 @@
 - [小说](reading/novel/novel.md)
   - [精灵宝钻](reading/novel/the_silmarillion.md)
   - [金庸武侠](reading/novel/jinyong.md)
+- [文史哲](reading/liberal_art/liberal_art.md)
+  - [文学](reading/liberal_art/literature/literature.md)
+	- [诗经](reading/liberal_art/literature/the_book_of_songs.md)
 - [线上图书馆](reading/library/online.md)
 
 # 奇奇怪怪
