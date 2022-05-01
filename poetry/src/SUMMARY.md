@@ -27,9 +27,10 @@
 # 技术学习
 
 - [基础](learning/basic/basic.md)
-    - [Vim学习](learning/basic/vim.md)
-    - [Emacs学习](learning/basic/emacs.md)
-    - [Git学习](learning/basic/git.md)
+    - [Vim](learning/basic/vim/vim.md)
+    - [Emacs](learning/basic/emacs/emacs.md)
+    - [Git](learning/basic/git/git.md)
+	- [RegularExpression](learning/basic/regular_expression/regular_expression.md)
 - [网络](learning/network/network.md)
 - [算法](learning/algorithm/algorithm.md)
 - [操作系统](learning/os/os.md)
@@ -69,6 +70,12 @@
 		- [曹风](reading/liberal_art/literature/the_book_of_songs/caofeng.md)
 		- [豳风](reading/liberal_art/literature/the_book_of_songs/binfeng.md)
 	- [出师表](reading/liberal_art/literature/chu_shi_biao/chu_shi_biao.md)
+	- [诗意人生五典型](reading/liberal_art/literature/five_poet/five_poet.md)
+		- [陶渊明](reading/liberal_art/literature/five_poet/tao/tao.md)
+		- [李白](reading/liberal_art/literature/five_poet/li/li.md)
+		- [杜甫](reading/liberal_art/literature/five_poet/du/du.md)
+		- [白居易](reading/liberal_art/literature/five_poet/bai/bai.md)
+		- [苏轼](reading/liberal_art/literature/five_poet/su/su.md)
 		
 - [线上图书馆](reading/library/online.md)
 
