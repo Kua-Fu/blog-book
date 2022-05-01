@@ -68,6 +68,7 @@
 		- [桧风](reading/liberal_art/literature/the_book_of_songs/kuaifeng.md)
 		- [曹风](reading/liberal_art/literature/the_book_of_songs/caofeng.md)
 		- [豳风](reading/liberal_art/literature/the_book_of_songs/binfeng.md)
+	- [出师表](reading/liberal_art/literature/chu_shi_biao/chu_shi_biao.md)
 		
 - [线上图书馆](reading/library/online.md)
 
