@@ -1,7 +1,7 @@
 [book]
 authors = ["thewind"]
 description= "柴米油盐酱醋茶，琴棋书画诗酒花"
-language = "en"
+language = "zh-cn" # 中文
 multilingual = false
 src = "src"
 title = "诗意人生"
