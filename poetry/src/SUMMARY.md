@@ -76,6 +76,16 @@
 		- [杜甫](reading/liberal_art/literature/five_poet/du/du.md)
 		- [白居易](reading/liberal_art/literature/five_poet/bai/bai.md)
 		- [苏轼](reading/liberal_art/literature/five_poet/su/su.md)
+  - [史学](reading/history/history.md)
+	
+  - [哲学](reading/philosophy/philosophy.md)
+    - [道](reading/philosophy/dao/dao.md)
+	  - [道德经](reading/philosophy/dao/dao_de_jing.md)
+	  - [太上清静经](reading/philosophy/dao/tai_shang_qing_jing_jing.md)
+	  - [坐忘歌](reading/philosophy/dao/zuo_wang_ge.md)
+	- [儒](reading/philosophy/ru/ru.md)
+	- [释](reading/philosophy/shi/shi.md)
+  
 		
 - [线上图书馆](reading/library/online.md)
 
