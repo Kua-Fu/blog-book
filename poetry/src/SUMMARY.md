@@ -76,6 +76,8 @@
 		- [杜甫](reading/liberal_art/literature/five_poet/du/du.md)
 		- [白居易](reading/liberal_art/literature/five_poet/bai/bai.md)
 		- [苏轼](reading/liberal_art/literature/five_poet/su/su.md)
+	- [明清散文](reading/liberal_art/literature/ming_qing_prose/ming_qing_prose.md)
+		- [项脊轩志](reading/liberal_art/literature/ming_qing_prose/xiang_ji_xuan_zhi/xiang_ji_xuan_zhi.md)
   - [史学](reading/history/history.md)
 	
   - [哲学](reading/philosophy/philosophy.md)
