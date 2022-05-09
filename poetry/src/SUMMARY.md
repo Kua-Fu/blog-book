@@ -39,6 +39,14 @@
 - [Golang](learning/golang/golang.md)
 
 
+# 文章阅读
+
+- [技术类](article/technology/technology.md)
+
+- [生活](article/life/life.md)
+  - [Kevin Kelly的103条建议](article/life/103_advice.md)
+
+
 # 读书笔记
 
 - [技术类](reading/technology/technology.md)
