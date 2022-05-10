@@ -42,6 +42,7 @@
 # 文章阅读
 
 - [技术类](article/technology/technology.md)
+  - [DataDog实践—大数据百分位实时计算实践](article/technology/datadog_percentile.md)
 
 - [生活](article/life/life.md)
   - [Kevin Kelly的103条建议](article/life/103_advice.md)
