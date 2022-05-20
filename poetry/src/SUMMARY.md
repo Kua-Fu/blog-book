@@ -111,7 +111,10 @@
 
 - [动画](curiosity/animation/animation.md)
   - [吉普力](curiosity/animation/ghibli.md)
+  
 
+- [歌曲](curiosity/music/music.md)
+  - [笑看风云](curiosity/music/xiao_kan_feng_yun.md)
   
   
 
