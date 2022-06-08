@@ -27,10 +27,12 @@
 # 技术学习
 
 - [基础](learning/basic/basic.md)
-    - [Vim](learning/basic/vim/vim.md)
-    - [Emacs](learning/basic/emacs/emacs.md)
-    - [Git](learning/basic/git/git.md)
-	- [RegularExpression](learning/basic/regular_expression/regular_expression.md)
+  - [Vim](learning/basic/vim/vim.md)
+  - [Emacs](learning/basic/emacs/emacs.md)
+  - [Git](learning/basic/git/git.md)
+  - [RegularExpression](learning/basic/regular_expression/regular_expression.md)
+  - [tmux](learing/basic/tmux.md)
+	  		
 - [网络](learning/network/network.md)
 - [算法](learning/algorithm/algorithm.md)
 - [操作系统](learning/os/os.md)
@@ -54,6 +56,7 @@
   - [elasticsearch7.13官方文档](reading/technology/elasticsearch.md)
   - [计算之魂](reading/technology/the_essence_of_computing.md)
   - [crafting interpreters](reading/technology/crafting_interpreters.md)
+	
 - [人物传记](reading/biography/biography.md)
   - [毛泽东选集](reading/biography/mao.md)
   - [我心归处是敦煌——樊锦诗自述](reading/biography/fanjinshi.md)
