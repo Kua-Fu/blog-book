@@ -62,6 +62,8 @@
   - [毛泽东选集](reading/biography/mao.md)
   - [我心归处是敦煌——樊锦诗自述](reading/biography/fanjinshi.md)
 - [小说](reading/novel/novel.md)
+  - [山海经](reading/novel/shan-hai-jing.md)
+	- [南山经](reading/novel/nan-shan-jing.md)
   - [精灵宝钻](reading/novel/the_silmarillion.md)
   - [金庸武侠](reading/novel/jinyong.md)
 - [文史哲](reading/liberal_art/liberal_art.md)
