@@ -55,6 +55,7 @@
 
 - [技术类](reading/technology/technology.md)
   - [elasticsearch7.13官方文档](reading/technology/elasticsearch.md)
+  - [elasticsearch权威指南](reading/technology/elasticsearch-start.md)
   - [计算之魂](reading/technology/the_essence_of_computing.md)
   - [crafting interpreters](reading/technology/crafting_interpreters.md)
 	
