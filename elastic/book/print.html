@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> 序言</a></li><li class="chapter-item expanded "><a href="perface.html"><strong aria-hidden="true">2.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="perface/who-should-read.html"><strong aria-hidden="true">2.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="perface/why-we-write-this-book.html"><strong aria-hidden="true">2.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="perface/how-to-read-this-book.html"><strong aria-hidden="true">2.3.</strong> 如何读这本书</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础入门</li><li class="chapter-item expanded affix "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,7 +143,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="序言"><a class="header" href="#序言">序言</a></h1>
+                        <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
+<p>elasticsearch 作为全文搜索领域的 top1，有很多的优点，值得学习。</p>
+<p>本书是最早版本的权威指南，所谓权威，即本书是 elastic公司官方梳理成稿，所谓指南，本文不只是一些使用语法，还包含大量的原理分析，最佳实践和更多深入底层的探讨，同时辅加一些不为人知的但很有意思的小故事。</p>
+<p>本人接触 elasticsearch多年，而且目前工作也和 elasticsearch 相关，所以想在中文译本的基础上，使用最新的ES版本，重新学习一次！</p>
+<p align="right">—— thewind 2022.07.05</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="前言"><a class="header" href="#前言">前言</a></h1>
 <p>这个世界已然被数据淹没。多年来，我们系统间流转和产生的大量数据已让我们不知所措。 现有的技术都集中在如何解决数据仓库存储以及如何结构化这些数据。 这些看上去都挺美好，直到你实际需要基于这些数据实时做决策分析的时候才发现根本不是那么一回事。</p>
 <p><code>Elasticsearch</code> 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。</p>
@@ -160,6 +164,457 @@
 <p>我们采取一种基于问题求解的方式：这是一个问题，我该怎么解决？ 如何对候选方案进行权衡取舍？我们从基础知识开始，循序渐进，每一章都建立在前一章之上，同时提供必要的实用案例和理论解释。</p>
 <p>现有的参考文档解决了 如何 使用这些功能，我们希望这本书解决的是 为什么 和 什么时候 使用这些功能。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="如何读这本书"><a class="header" href="#如何读这本书">如何读这本书</a></h1>
+<p><code>Elasticsearch</code> 做了很多努力和尝试来让复杂的事情变得简单，很大程度上来说 <code>Elasticsearch</code> 的成功来源于此。 换句话说，搜索以及分布式系统是非常复杂的，不过为了充分利用 <code>Elasticsearch</code>，迟早你也需要掌握它们。</p>
+<p>恩，是有点复杂，但不是魔法。我们倾向于认为复杂系统如同神奇的黑盒子，能响应外部的咒语，但是通常里面的工作逻辑很简单。 理解了这些逻辑过程你就能驱散魔法，理解内在能够让你更加明确和清晰，而不是寄托于黑盒子做你想要做的。</p>
+<p>这本权威指南不仅会帮助你学习 <code>Elasticsearch</code>，而且希望能够带你接触一些更深入、更有趣的话题，如 集群内的原理 、 分布式文档存储 、 执行分布式检索 和 分片内部原理 ，这些虽然不是必要的阅读却能让你深入理解其内在机制。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="鸣谢"><a class="header" href="#鸣谢">鸣谢</a></h1>
+<p>为什么配偶总是被放到最后一个？但并非是说最不重要！ 在我们心中毫无疑问，有两个最值得我们感谢的人，他们是 <code>Clinton</code> 长期受苦的老婆和 <code>Zach</code> 的未婚妻。 他们照顾着我们和爱着我们，毫不懈怠，忍受我们的缺席和我们没完没了的抱怨这本书还要多久完成，最重要的是，她们依然还在我们身边。</p>
+<p>感谢 <code>Shay Banon</code> 在最开始创建了 <code>Elasticsearch</code>，感谢 <code>Elastic</code> 公司支持本书的工作。 也非常感谢 <code>Elastic</code> 所有的同事，他们帮助我们透彻的了解 <code>Elasticsearch</code> 内部如何工作并且一直负责添加完善和修复与他们相关的部分。</p>
+<p>其中两位同事特别值得一提：</p>
+<ul>
+<li>
+<p><code>Robert Muir</code> 耐心地分享了他的真知灼见，特别是 <code>Lucene</code> 搜索方面。有几章段落就是直接出自其智慧珠玑。</p>
+</li>
+<li>
+<p><code>Adrien Grand</code> 深入到代码中回答问题，并检查我们的解释，以确保他们合理。</p>
+</li>
+</ul>
+<p>感谢 <code>O’Reilly</code> 承担这个项目和我们一起工作使这本书免费在线阅读，还有一直温柔哄骗我们的编辑 <code>Brian Anderson</code> 和善良而温柔的评论者 <code>Benjamin Devèze、Ivan Brusic</code> 和 <code>Leo Lapworth</code>。你们的鼓励，让我们充满希望。</p>
+<p>感谢我们的读者，其中一些我们只有通过各自的 <code>GitHub</code> 才知道他们的身份，他们花时间报告问题、提供修正或提出改进建议：</p>
+<pre><code>
+Adam Canady, Adam Gray, Alexander Kahn, Alexander Reelsen, Alaattin Kahramanlar, Ambrose Ludd, Anna Beyer, Andrew Bramble, Baptiste Cabarrou, Bart Vandewoestyne, Bertrand Dechoux, Brian Wong, Brooke Babcock, Charles Mims, Chris Earle, Chris Gilmore, Christian Burgas, Colin Goodheart-Smithe, Corey Wright, Daniel Wiesmann, David Pilato, Duncan Angus Wilkie, Florian Hopf, Gavin Foo, Gilbert Chang, Grégoire Seux, Gustavo Alberola, Igal Sapir, Iskren Ivov Chernev, Itamar Syn-Hershko, Jan Forrest, Jānis Peisenieks, Japheth Thomson, Jeff Myers, Jeff Patti, Jeremy Falling, Jeremy Nguyen, J.R. Heard, Joe Fleming, Jonathan Page, Joshua Gourneau, Josh Schneier, Jun Ohtani, Keiji Yoshida, Kieren Johnstone, Kim Laplume, Kurt Hurtado, Laszlo Balogh, londocr, losar, Lucian Precup, Lukáš Vlček, Malibu Carl, Margirier Laurent, Martijn Dwars, Matt Ruzicka, Mattias Pfeiffer, Mehdy Amazigh, mhemani, Michael Bonfils, Michael Bruns, Michael Salmon, Michael Scharf , Mitar Milutinović, Mustafa K. Isik, Nathan Peck, Patrick Peschlow, Paul Schwarz, Pieter Coucke, Raphaël Flores, Robert Muir, Ruslan Zavacky, Sanglarsh Boudhh, Santiago Gaviria, Scott Wilkerson, Sebastian Kurfürst, Sergii Golubev, Serkan Kucukbay, Thierry Jossermoz, Thomas Cucchietti, Tom Christie, Ulf Reimers, Venkat Somula, Wei Zhu, Will Kahn-Greene 和 Yuri Bakumenko。
+
+</code></pre>
+<p>感谢所有参与本书的中文译者与审校人员，他们牺牲了大量宝贵的休息时间，他们对翻译内容仔细斟酌，一丝不苟， 对修改意见认真对待，各抒己见，不厌其烦的进行修改与再次审校，这些默默奉献的可爱的人分别是：</p>
+<pre><code>
+薛杰​，​骆朗​，​彭秋源​，​魏喆​，​饶琛琳​，​风虎​，​路小磊​，​michealzh​，​nodexy​，​sdlyjzh​，​落英流离​，​sunyonggang​，​Singham​，​烧碱​，​龙翔​，​陈思​，​陈华​，​追风侃侃​，​Geolem​，​卷发​，​kfypmqqw​，​袁伟强​，​yichao，​​小彬​，​leo​，​tangmisi​，​Alex​，​baifan​，​Evan​，​fanyer，​​wwb​，​瑞星​，​刘碧琴​，​walker​，​songgl​，​吕兵​，​东​，​杜宁​，​秦东亮​，​biyuhao​，​刘刚​，​yumo​，​王秀文​，​zcola​，​gitqh​，​blackoon​，​David​，​韩炳辰​，​韩陆​，​echolihao​，​Xargin​，​abel-sun​，​卞顺强​，​bsll​，​冬狼​，​王琦​，​Medcl​
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="基础入门"><a class="header" href="#基础入门">基础入门</a></h1>
+<p><code>Elasticsearch</code> 是一个实时的分布式搜索分析引擎，它能让你以前所未有的速度和规模，去探索你的数据。 它被用作全文检索、结构化搜索、分析以及这三个功能的组合：</p>
+<ul>
+<li>
+<p><code>Wikipedia</code> 使用 <code>Elasticsearch</code> 提供带有高亮片段的全文搜索，还有 <code>search-as-you-type</code> 和 <code>did-you-mean</code> 的建议。</p>
+</li>
+<li>
+<p>卫报 使用 <code>Elasticsearch</code> 将网络社交数据结合到访客日志中，为它的编辑们提供公众对于新文章的实时反馈。</p>
+</li>
+<li>
+<p><code>Stack Overflow</code> 将地理位置查询融入全文检索中去，并且使用 <code>more-like-this</code> 接口去查找相关的问题和回答。</p>
+</li>
+<li>
+<p><code>GitHub</code> 使用 <code>Elasticsearch</code> 对<code>1300</code>亿行代码进行查询。</p>
+</li>
+</ul>
+<p><code>Elasticsearch</code> 不仅仅为巨头公司服务。它也帮助了很多初创公司，比如 <code>Datadog</code> 和 <code>Klout</code>， <code>Elasticsearch</code> 帮助他们将想法用原型实现，并转化为可扩展的解决方案。<code>Elasticsearch</code> 能运行在你的笔记本电脑上，或者扩展到数百台服务器上来处理<code>PB</code>级数据。</p>
+<p><code>Elasticsearch</code> 中没有一个单独的组件是全新的或者是革命性的。全文搜索很久之前就已经可以做到了， 就像很早之前出现的分析系统和分布式数据库。 革命性的成果在于将这些单独的，有用的组件融合到一个单一的、一致的、实时的应用中。对于初学者而言它的门槛相对较低， 而当你的技能提升或需求增加时，它也始终能满足你的需求。</p>
+<p>如果你现在打开这本书，是因为你拥有数据。除非你准备使用它 做些什么 ，否则拥有这些数据将没有意义。</p>
+<p>不幸的是，大部分数据库在从你的数据中提取可用知识时出乎意料的低效。 当然，你可以通过时间戳或精确值进行过滤，但是它们能够全文检索、处理同义词、通过相关性给文档评分么？ 它们能从同样的数据中生成分析与聚合数据吗？最重要的是，它们能实时地做到上述操作，而不经过大型批处理的任务么？</p>
+<p>这就是 <code>Elasticsearch</code> 脱颖而出的地方：<code>Elasticsearch</code> 鼓励你去探索与利用数据，而不是因为查询数据太困难，就让它们烂在数据仓库里面。</p>
+<p><code>Elasticsearch</code> 将成为你最好的朋友。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="你知道的-为了搜索"><a class="header" href="#你知道的-为了搜索">你知道的, 为了搜索…​</a></h1>
+<p><code>Elasticsearch</code> 是一个开源的搜索引擎，建立在一个全文搜索引擎库 <code>Apache Lucene™</code> 基础之上。 <code>Lucene</code> 可以说是当下最先进、高性能、全功能的搜索引擎库—​无论是开源还是私有。</p>
+<p>但是 <code>Lucene</code> 仅仅只是一个库。为了充分发挥其功能，你需要使用 <code>Java</code> 并将 <code>Lucene</code> 直接集成到应用程序中。 更糟糕的是，您可能需要获得信息检索学位才能了解其工作原理。<code>Lucene</code> 非常 复杂。</p>
+<p><code>Elasticsearch</code> 也是使用 <code>Java</code> 编写的，它的内部使用 <code>Lucene</code> 做索引与搜索，但是它的目的是使全文检索变得简单， 通过隐藏 <code>Lucene</code> 的复杂性，取而代之的提供一套简单一致的 <code>RESTful API</code>。</p>
+<p>然而，<code>Elasticsearch</code> 不仅仅是 <code>Lucene</code>，并且也不仅仅只是一个全文搜索引擎。 它可以被下面这样准确的形容：</p>
+<ul>
+<li>
+<p>一个分布式的实时文档存储，每个字段 可以被索引与搜索</p>
+</li>
+<li>
+<p>一个分布式实时分析搜索引擎</p>
+</li>
+<li>
+<p>能胜任上百个服务节点的扩展，并支持 <code>PB</code> 级别的结构化或者非结构化数据</p>
+</li>
+</ul>
+<p><code>Elasticsearch</code> 将所有的功能打包成一个单独的服务，这样你可以通过程序与它提供的简单的 <code>RESTful API</code> 进行通信， 可以使用自己喜欢的编程语言充当 <code>web</code> 客户端，甚至可以使用命令行（去充当这个客户端）。</p>
+<p>就 <code>Elasticsearch</code> 而言，起步很简单。对于初学者来说，它预设了一些适当的默认值，并隐藏了复杂的搜索理论知识。 它 开箱即用 。只需最少的理解，你很快就能具有生产力。</p>
+<p>随着你知识的积累，你可以利用 <code>Elasticsearch</code> 更多的高级特性，它的整个引擎是可配置并且灵活的。 从众多高级特性中，挑选恰当去修饰的 <code>Elasticsearch</code>，使它能解决你本地遇到的问题。</p>
+<h2 id="回忆时光"><a class="header" href="#回忆时光">回忆时光</a></h2>
+<p>许多年前，一个刚结婚的名叫 <code>Shay Banon</code> 的失业开发者，跟着他的妻子去了伦敦，他的妻子在那里学习厨师。 在寻找一个赚钱的工作的时候，为了给他的妻子做一个食谱搜索引擎，他开始使用 <code>Lucene</code> 的一个早期版本。</p>
+<p>直接使用 <code>Lucene</code> 是很难的，因此 <code>Shay</code> 开始做一个抽象层，<code>Java</code> 开发者使用它可以很简单的给他们的程序添加搜索功能。 他发布了他的第一个开源项目 <code>Compass</code>。</p>
+<p>后来 <code>Shay</code> 获得了一份工作，主要是高性能，分布式环境下的内存数据网格。这个对于高性能，实时，分布式搜索引擎的需求尤为突出， 他决定重写 <code>Compass</code>，把它变为一个独立的服务并取名 <code>Elasticsearch</code>。</p>
+<p>第一个公开版本在2010年2月发布，从此以后，<code>Elasticsearch</code> 已经成为了 <code>Github</code> 上最活跃的项目之一，他拥有超过<code>300</code>名 <code>contributors</code>(目前<code>736</code>名 <code>contributors</code> )。 一家公司已经开始围绕 <code>Elasticsearch</code> 提供商业服务，并开发新的特性，但是，<code>Elasticsearch</code> 将永远开源并对所有人可用。</p>
+<p>据说，<code>Shay</code> 的妻子还在等着她的食谱搜索引擎…​</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="安装使用"><a class="header" href="#安装使用">安装使用</a></h1>
+<p>此处推荐使用 <a href="https://www.elastic.co/cn/cloud/">elastic cloud</a> 官方提供的云服务</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-1.jpg?raw=true" alt="创建集群" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-2.jpg?raw=true" alt="记录用户" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-3.jpg?raw=true" alt="创建成功" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-4.jpg?raw=true" alt="配置monitor" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-5.jpg?raw=true" alt="开始探索" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="面向文档"><a class="header" href="#面向文档">面向文档</a></h1>
+<p>在应用程序中对象很少只是一个简单的键和值的列表。通常，它们拥有更复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。</p>
+<p>也许有一天你想把这些对象存储在数据库中。使用关系型数据库的行和列存储，这相当于是把一个表现力丰富的对象塞到一个非常大的电子表格中：为了适应表结构，你必须设法将这个对象扁平化—​通常一个字段对应一列—​而且每次查询时又需要将其重新构造为对象。</p>
+<p>Elasticsearch 是 面向文档 的，意味着它存储整个对象或 文档。Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档进行索引、检索、排序和过滤—​而不是对行列数据。这是一种完全不同的思考数据的方式，也是 Elasticsearch 能支持复杂全文检索的原因。</p>
+<h2 id="json"><a class="header" href="#json">json</a></h2>
+<p>Elasticsearch 使用 JavaScript Object Notation（或者 <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>）作为文档的序列化格式。JSON 序列化为大多数编程语言所支持，并且已经成为 NoSQL 领域的标准格式。 它简单、简洁、易于阅读。</p>
+<p>下面这个 JSON 文档代表了一个 user 对象：</p>
+<pre><code class="language-json">
+{ 
+    &quot;email&quot;:      &quot;john@smith.com&quot;,
+    &quot;first_name&quot;: &quot;John&quot;,
+    &quot;last_name&quot;:  &quot;Smith&quot;,
+    &quot;info&quot;: {
+        &quot;bio&quot;:         &quot;Eco-warrior and defender of the weak&quot;,
+        &quot;age&quot;:         25,
+        &quot;interests&quot;: [ &quot;dolphins&quot;, &quot;whales&quot; ]
+    },
+    &quot;join_date&quot;: &quot;2014/05/01&quot;
+}
+
+</code></pre>
+<p>虽然原始的 user 对象很复杂，但这个对象的结构和含义在 JSON 版本中都得到了体现和保留。在 Elasticsearch 中将对象转化为 JSON 后构建索引要比在一个扁平的表结构中要简单的多。</p>
+<blockquote>
+<p>🐳 <strong>Note:</strong> 几乎所有的语言都有可以将任意的数据结构或对象转化成 JSON 格式的模块，只是细节各不相同。具体请查看 serialization 或者 marshalling 这两个处理 JSON 的模块。官方 <a href="https://www.elastic.co/guide/en/elasticsearch/client/index.html">Elasticsearch 客户端</a> 自动为您提供 JSON 转化。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="适应新环境"><a class="header" href="#适应新环境">适应新环境</a></h1>
+<p>为了让大家对 Elasticsearch 能实现什么及其上手难易程度有一个基本印象，让我们从一个简单的教程开始并介绍索引、搜索及聚合等基础概念。</p>
+<p>我们将一并介绍一些新的技术术语，即使无法立即全部理解它们也无妨，因为在本书后续内容中，我们将继续深入介绍这里提到的所有概念。</p>
+<p>接下来尽情享受 Elasticsearch 探索之旅。</p>
+<h2 id="创建一个雇员目录"><a class="header" href="#创建一个雇员目录">创建一个雇员目录</a></h2>
+<p>我们受雇于 Megacorp 公司，作为 HR 部门新的 “热爱无人机” （&quot;We love our drones!&quot;）激励项目的一部分，我们的任务是为此创建一个员工目录。该目录应当能培养员工认同感及支持实时、高效、动态协作，因此有一些业务需求：</p>
+<ul>
+<li>
+<p>支持包含多值标签、数值、以及全文本的数据</p>
+</li>
+<li>
+<p>检索任一员工的完整信息</p>
+</li>
+<li>
+<p>允许结构化搜索，比如查询 30 岁以上的员工</p>
+</li>
+<li>
+<p>允许简单的全文搜索以及较复杂的短语搜索</p>
+</li>
+<li>
+<p>支持在匹配文档内容中高亮显示搜索片段</p>
+</li>
+<li>
+<p>支持基于数据创建和管理分析仪表盘</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="索引员工文档"><a class="header" href="#索引员工文档">索引员工文档</a></h1>
+<p>第一个业务需求是存储员工数据。 这将会以 员工文档 的形式存储：一个文档代表一个员工。存储数据到 Elasticsearch 的行为叫做 索引 ，但在索引一个文档之前，需要确定将文档存储在哪里。</p>
+<p>一个 Elasticsearch 集群可以 包含多个 索引 ，相应的每个索引可以包含多个 类型 。 这些不同的类型存储着多个 文档 ，每个文档又有 多个 属性 。</p>
+<p>⚠️ 高版本(<code>v8.0</code>) 已经没有 type 概念</p>
+<blockquote>
+<p><strong>Index Versus Index Versus Index</strong> </p>
+<p>你也许已经注意到 索引 这个词在 Elasticsearch 语境中有多种含义， 这里有必要做一些说明：</p>
+<p>(1) 索引（名词）</p>
+<p>如前所述，一个 索引 类似于传统关系数据库中的一个 数据库 ，是一个存储关系型文档的地方。 索引 (index) 的复数词为 indices 或 indexes 。</p>
+<p>(2) 索引（动词）</p>
+<p>索引一个文档 就是存储一个文档到一个 索引 （名词）中以便被检索和查询。这非常类似于 SQL 语句中的 INSERT 关键词，除了文档已存在时，新文档会替换旧文档情况之外。</p>
+<p>(3) 倒排索引</p>
+<p>关系型数据库通过增加一个 索引 比如一个 B树（B-tree）索引 到指定的列上，以便提升数据检索速度。Elasticsearch 和 Lucene 使用了一个叫做 倒排索引 的结构来达到相同的目的。</p>
+<p>默认的，一个文档中的每一个属性都是 被索引 的（有一个倒排索引）和可搜索的。一个没有倒排索引的属性是不能被搜索到的。我们将在 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/inverted-index.html">倒排索引</a> 讨论倒排索引的更多细节。</p>
+</blockquote>
+<p>对于员工目录，我们将做如下操作：</p>
+<ul>
+<li>
+<p>每个员工索引一个文档，文档包含该员工的所有信息。</p>
+</li>
+<li>
+<p>每个文档都将是 employee 类型 。</p>
+</li>
+<li>
+<p>该类型位于 索引 megacorp 内。</p>
+</li>
+<li>
+<p>该索引保存在我们的 Elasticsearch 集群中。</p>
+</li>
+</ul>
+<p>实践中这非常简单（尽管看起来有很多步骤），我们可以通过一条命令完成所有这些动作：</p>
+<pre><code class="language-json">
+POST /megacorp/_doc/1?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;John&quot;,
+  &quot;last_name&quot;: &quot;Smith&quot;,
+  &quot;age&quot;: 25,
+  &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+  &quot;interests&quot;: [
+    &quot;sports&quot;,
+    &quot;music&quot;
+  ]
+}
+
+</code></pre>
+<p>注意，路径 /megacorp/_doc/1 包含了三部分的信息：</p>
+<ul>
+<li>
+<p>megacorp 索引名称</p>
+</li>
+<li>
+<p>_doc 类型名称</p>
+</li>
+<li>
+<p>1 特定雇员的ID</p>
+</li>
+</ul>
+<p>请求体 —— JSON 文档 —— 包含了这位员工的所有详细信息，他的名字叫 John Smith ，今年 25 岁，喜欢攀岩。</p>
+<p>很简单！无需进行执行管理任务，如创建一个索引或指定每个属性的数据类型之类的，可以直接只索引一个文档。Elasticsearch 默认地完成其他一切，因此所有必需的管理任务都在后台使用默认设置完成。</p>
+<p>进行下一步前，让我们增加更多的员工信息到目录中：</p>
+<pre><code class="language-json">
+POST /megacorp/_doc/2?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;Jane&quot;,
+  &quot;last_name&quot;: &quot;Smith&quot;,
+  &quot;age&quot;: 32,
+  &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+  &quot;interests&quot;: [
+    &quot;music&quot;
+  ]
+}
+
+
+POST /megacorp/_doc/3?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;Douglas&quot;,
+  &quot;last_name&quot;: &quot;Fir&quot;,
+  &quot;age&quot;: 35,
+  &quot;about&quot;: &quot;I like to build cabinets&quot;,
+  &quot;interests&quot;: [
+    &quot;forestry&quot;
+  ]
+}
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="检索文档"><a class="header" href="#检索文档">检索文档</a></h1>
+<p>目前我们已经在 Elasticsearch 中存储了一些数据， 接下来就能专注于实现应用的业务需求了。第一个需求是可以检索到单个雇员的数据。</p>
+<p>这在 Elasticsearch 中很简单。简单地执行 一个 HTTP GET 请求并指定文档的地址——索引库、类型和ID。 使用这三个信息可以返回原始的 JSON 文档：</p>
+<pre><code class="language-json">
+GET /megacorp/_doc/1?pretty
+
+// 返回结果
+{
+  &quot;_index&quot;: &quot;megacorp&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1,
+  &quot;_seq_no&quot;: 0,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;employee&quot;,
+    &quot;first_name&quot;: &quot;John&quot;,
+    &quot;last_name&quot;: &quot;Smith&quot;,
+    &quot;age&quot;: 25,
+    &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+    &quot;interests&quot;: [
+      &quot;sports&quot;,
+      &quot;music&quot;
+    ]
+  }
+}
+
+</code></pre>
+<p>返回结果包含了文档的一些元数据，以及 _source 属性，内容是 John Smith 雇员的原始 JSON 文档：</p>
+<blockquote>
+<p>🐌  <strong>Tip</strong> 
+将 HTTP 命令由 POST 改为 GET 可以用来检索文档，同样的，可以使用 DELETE 命令来删除文档，以及使用 HEAD 指令来检查文档是否存在。如果想更新已存在的文档，只需再次 POST 。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="轻量搜索"><a class="header" href="#轻量搜索">轻量搜索</a></h1>
+<p>一个 GET 是相当简单的，可以直接得到指定的文档。 现在尝试点儿稍微高级的功能，比如一个简单的搜索！</p>
+<p>第一个尝试的几乎是最简单的搜索了。我们使用下列请求来搜索所有雇员：</p>
+<pre><code class="language-json">
+GET /megacorp/_search
+
+// 返回列表
+{
+  &quot;took&quot;: 0,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 3,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 1,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 1,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 1,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;3&quot;,
+        &quot;_score&quot;: 1,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Douglas&quot;,
+          &quot;last_name&quot;: &quot;Fir&quot;,
+          &quot;age&quot;: 35,
+          &quot;about&quot;: &quot;I like to build cabinets&quot;,
+          &quot;interests&quot;: [
+            &quot;forestry&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<p>可以看到，我们仍然使用索引库 megacorp ，但与指定一个文档 ID 不同，这次使用 _search 。返回结果包括了所有三个文档，放在数组 hits 中。一个搜索默认返回十条结果。</p>
+<p>⚠️ 返回结果不仅告知匹配了哪些文档，还包含了整个文档本身：显示搜索结果给最终用户所需的全部信息。</p>
+<p>接下来，尝试下搜索姓氏为 <code>Smith</code> 的雇员。为此，我们将使用一个 高亮 搜索，很容易通过命令行完成。这个方法一般涉及到一个 查询字符串 （query-string） 搜索，因为我们通过一个URL参数来传递查询信息给搜索接口：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?q=last_name:Smith&amp;pretty
+
+// 返回结果
+{
+  &quot;took&quot;: 14,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 2,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.4700036,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使用查询表达式搜索"><a class="header" href="#使用查询表达式搜索">使用查询表达式搜索</a></h1>
+<p>Query-string 搜索通过命令非常方便地进行临时性的即席搜索 ，但它有自身的局限性（参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/search-lite.html">轻量 搜索</a> ）。Elasticsearch 提供一个丰富灵活的查询语言叫做 查询表达式 ， 它支持构建更加复杂和健壮的查询。</p>
+<p>领域特定语言 （DSL）， 使用 JSON 构造了一个请求。我们可以像这样重写之前的查询所有名为 Smith 的搜索 ：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;last_name&quot;: &quot;Smith&quot;
+    }
+  }
+}
+
+// 返回结果与之前的查询一样
+{
+  &quot;took&quot;: 1,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 2,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.4700036,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<p>返回结果与之前的查询一样，但还是可以看到有一些变化。其中之一是，不再使用 query-string 参数，而是一个请求体替代。这个请求使用 JSON 构造，并使用了一个 match 查询（属于查询类型之一，后面将继续介绍）。</p>
 
                     </main>
 
