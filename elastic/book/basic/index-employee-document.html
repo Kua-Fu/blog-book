@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>索引员工文档 - elastic</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="../perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="../basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../basic/index-employee-document.html" class="active"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="索引员工文档"><a class="header" href="#索引员工文档">索引员工文档</a></h1>
+<p>第一个业务需求是存储员工数据。 这将会以 员工文档 的形式存储：一个文档代表一个员工。存储数据到 Elasticsearch 的行为叫做 索引 ，但在索引一个文档之前，需要确定将文档存储在哪里。</p>
+<p>一个 Elasticsearch 集群可以 包含多个 索引 ，相应的每个索引可以包含多个 类型 。 这些不同的类型存储着多个 文档 ，每个文档又有 多个 属性 。</p>
+<p>⚠️ 高版本(<code>v8.0</code>) 已经没有 type 概念</p>
+<blockquote>
+<p><strong>Index Versus Index Versus Index</strong> </p>
+<p>你也许已经注意到 索引 这个词在 Elasticsearch 语境中有多种含义， 这里有必要做一些说明：</p>
+<p>(1) 索引（名词）</p>
+<p>如前所述，一个 索引 类似于传统关系数据库中的一个 数据库 ，是一个存储关系型文档的地方。 索引 (index) 的复数词为 indices 或 indexes 。</p>
+<p>(2) 索引（动词）</p>
+<p>索引一个文档 就是存储一个文档到一个 索引 （名词）中以便被检索和查询。这非常类似于 SQL 语句中的 INSERT 关键词，除了文档已存在时，新文档会替换旧文档情况之外。</p>
+<p>(3) 倒排索引</p>
+<p>关系型数据库通过增加一个 索引 比如一个 B树（B-tree）索引 到指定的列上，以便提升数据检索速度。Elasticsearch 和 Lucene 使用了一个叫做 倒排索引 的结构来达到相同的目的。</p>
+<p>默认的，一个文档中的每一个属性都是 被索引 的（有一个倒排索引）和可搜索的。一个没有倒排索引的属性是不能被搜索到的。我们将在 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/inverted-index.html">倒排索引</a> 讨论倒排索引的更多细节。</p>
+</blockquote>
+<p>对于员工目录，我们将做如下操作：</p>
+<ul>
+<li>
+<p>每个员工索引一个文档，文档包含该员工的所有信息。</p>
+</li>
+<li>
+<p>每个文档都将是 employee 类型 。</p>
+</li>
+<li>
+<p>该类型位于 索引 megacorp 内。</p>
+</li>
+<li>
+<p>该索引保存在我们的 Elasticsearch 集群中。</p>
+</li>
+</ul>
+<p>实践中这非常简单（尽管看起来有很多步骤），我们可以通过一条命令完成所有这些动作：</p>
+<pre><code class="language-json">
+POST /megacorp/_doc/1?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;John&quot;,
+  &quot;last_name&quot;: &quot;Smith&quot;,
+  &quot;age&quot;: 25,
+  &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+  &quot;interests&quot;: [
+    &quot;sports&quot;,
+    &quot;music&quot;
+  ]
+}
+
+</code></pre>
+<p>注意，路径 /megacorp/_doc/1 包含了三部分的信息：</p>
+<ul>
+<li>
+<p>megacorp 索引名称</p>
+</li>
+<li>
+<p>_doc 类型名称</p>
+</li>
+<li>
+<p>1 特定雇员的ID</p>
+</li>
+</ul>
+<p>请求体 —— JSON 文档 —— 包含了这位员工的所有详细信息，他的名字叫 John Smith ，今年 25 岁，喜欢攀岩。</p>
+<p>很简单！无需进行执行管理任务，如创建一个索引或指定每个属性的数据类型之类的，可以直接只索引一个文档。Elasticsearch 默认地完成其他一切，因此所有必需的管理任务都在后台使用默认设置完成。</p>
+<p>进行下一步前，让我们增加更多的员工信息到目录中：</p>
+<pre><code class="language-json">
+POST /megacorp/_doc/2?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;Jane&quot;,
+  &quot;last_name&quot;: &quot;Smith&quot;,
+  &quot;age&quot;: 32,
+  &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+  &quot;interests&quot;: [
+    &quot;music&quot;
+  ]
+}
+
+
+POST /megacorp/_doc/3?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;Douglas&quot;,
+  &quot;last_name&quot;: &quot;Fir&quot;,
+  &quot;age&quot;: 35,
+  &quot;about&quot;: &quot;I like to build cabinets&quot;,
+  &quot;interests&quot;: [
+    &quot;forestry&quot;
+  ]
+}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../basic/find-your-feet.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../basic/retrieving-a-document.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../basic/find-your-feet.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../basic/retrieving-a-document.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

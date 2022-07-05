@@ -32,6 +32,7 @@
   - [Git](learning/basic/git/git.md)
   - [RegularExpression](learning/basic/regular_expression/regular_expression.md)
   - [tmux](learing/basic/tmux.md)
+  - [markdown](learning/basic/markdown/markdown.md)
   - [mdbook](learning/basic/mdbook/mdbook.md)
 	  		
 - [网络](learning/network/network.md)
