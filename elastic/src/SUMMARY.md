@@ -21,6 +21,11 @@
 	  - [检索文档](./basic/retrieving-a-document.md)
 	  - [轻量搜索](./basic/search-lite.md)
 	  - [使用查询表达式搜索](./basic/search-with-query-dsl.md)
+	  - [更复杂的搜索](./basic/more-complicated-search.md)
+	  - [全文搜索](./basic/full-text-search.md)
+	  - [短语搜索](./basic/phrase-search.md)
+	  - [高亮搜索](./basic/highlighting-intro.md)
+	  - [分析](./basic/analytics.md)
 
 # 深入搜索
 
@@ -33,3 +38,6 @@
 # 数据建模
 
 # 管理、监控和部署
+
+
+

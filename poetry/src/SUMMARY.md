@@ -47,6 +47,7 @@
 
 - [技术类](article/technology/technology.md)
   - [DataDog实践—大数据百分位实时计算实践](article/technology/datadog_percentile.md)
+  - [elasticsearch相关技术文档](article/technology/elastic.md)
 
 - [生活](article/life/life.md)
   - [Kevin Kelly的103条建议](article/life/103_advice.md)
@@ -131,6 +132,7 @@
 # 总结规划
 
 - [总结](life/past/past.md)
+  - [工作总结2022-2季度](life/future/work/2022-02.md)
 - [规划](life/future/future.md)
   - [技术类](life/future/technology.md)
   - [生活类](life/future/life.md)
