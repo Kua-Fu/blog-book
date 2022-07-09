@@ -190,725 +190,726 @@
 </code></pre>
 <p>下面我们设计了一个简单的测试，测试bulk性能，测试工具是 <a href="https://github.com/elastic/rally">rally</a>，测试多个具有不同节点的集群。</p>
 <p>在三个不同配置的ES实例，我们会执行相同的bulk请求测试。三个ES实例，分别是1个节点、2个节点、3个节点，其中每个节点配置都是相同的（ 8GB 内存，4G设置为ES 堆内存，4G设置为节点内存）。可以通过接口<code>GET /_nodes/thread_pool</code> 接口查看</p>
-<pre><code class="language-json">
-GET _nodes/thread_pool
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>
+<span class="boring">fn main() {
+</span>GET _nodes/thread_pool
 
-{
-  &quot;_nodes&quot;: {
-    &quot;total&quot;: 3,
-    &quot;successful&quot;: 3,
-    &quot;failed&quot;: 0
-  },
-  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
-  &quot;nodes&quot;: {
-    &quot;juVnJa6TQ7a2c3v065Gz3w&quot;: {
-      &quot;name&quot;: &quot;instance-0000000000&quot;,
-      &quot;transport_address&quot;: &quot;10.42.10.154:19303&quot;,
-      &quot;host&quot;: &quot;10.42.10.154&quot;,
-      &quot;ip&quot;: &quot;10.42.10.154&quot;,
-      &quot;version&quot;: &quot;8.3.1&quot;,
-      &quot;build_flavor&quot;: &quot;default&quot;,
-      &quot;build_type&quot;: &quot;docker&quot;,
-      &quot;build_hash&quot;: &quot;b9a6b2867996ba92ceac66cb5bafc6db25e7910e&quot;,
-      &quot;roles&quot;: [
-        &quot;data_content&quot;,
-        &quot;data_hot&quot;,
-        &quot;ingest&quot;,
-        &quot;master&quot;,
-        &quot;remote_cluster_client&quot;,
-        &quot;transform&quot;
-      ],
-      &quot;attributes&quot;: {
-        &quot;logical_availability_zone&quot;: &quot;zone-0&quot;,
-        &quot;server_name&quot;: &quot;instance-0000000000.a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
-        &quot;availability_zone&quot;: &quot;us-central1-a&quot;,
-        &quot;xpack.installed&quot;: &quot;true&quot;,
-        &quot;data&quot;: &quot;hot&quot;,
-        &quot;instance_configuration&quot;: &quot;gcp.es.datahot.n2.68x10x45&quot;,
-        &quot;region&quot;: &quot;unknown-region&quot;
-      },
-      &quot;thread_pool&quot;: {
-        &quot;force_merge&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search_coordination&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;searchable_snapshots_cache_fetch_async&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 6,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_datafeed&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 512,
-          &quot;keep_alive&quot;: &quot;1m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;snapshot_meta&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 6,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;fetch_shard_started&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 4,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;rollup_indexing&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 4,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;cluster_coordination&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;security-crypto&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;ccr&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 32,
-          &quot;queue_size&quot;: 100
-        },
-        &quot;flush&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;fetch_shard_store&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 4,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_utility&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 2048,
-          &quot;keep_alive&quot;: &quot;10m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;get&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 2,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;system_read&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 2000
-        },
-        &quot;system_critical_read&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 2000
-        },
-        &quot;write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 2,
-          &quot;queue_size&quot;: 10000
-        },
-        &quot;watcher&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 10,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;security-token-key&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;system_critical_write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1500
-        },
-        &quot;refresh&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;repository_azure&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 5,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;vector_tile_generation&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;system_write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;generic&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 4,
-          &quot;max&quot;: 128,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;warmer&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;auto_complete&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 100
-        },
-        &quot;azure_event_loop&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;management&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 2,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;analyze&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 16
-        },
-        &quot;searchable_snapshots_cache_prewarming&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 16,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_job_comms&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 4,
-          &quot;max&quot;: 2048,
-          &quot;keep_alive&quot;: &quot;1m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;snapshot&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search_throttled&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 100
-        }
-      }
-    },
-    &quot;snEBN-aVTcKiJfoT87LgKA&quot;: {
-      &quot;name&quot;: &quot;instance-0000000001&quot;,
-      &quot;transport_address&quot;: &quot;10.42.0.133:19375&quot;,
-      &quot;host&quot;: &quot;10.42.0.133&quot;,
-      &quot;ip&quot;: &quot;10.42.0.133&quot;,
-      &quot;version&quot;: &quot;8.3.1&quot;,
-      &quot;build_flavor&quot;: &quot;default&quot;,
-      &quot;build_type&quot;: &quot;docker&quot;,
-      &quot;build_hash&quot;: &quot;b9a6b2867996ba92ceac66cb5bafc6db25e7910e&quot;,
-      &quot;roles&quot;: [
-        &quot;data_content&quot;,
-        &quot;data_hot&quot;,
-        &quot;ingest&quot;,
-        &quot;master&quot;,
-        &quot;remote_cluster_client&quot;,
-        &quot;transform&quot;
-      ],
-      &quot;attributes&quot;: {
-        &quot;data&quot;: &quot;hot&quot;,
-        &quot;server_name&quot;: &quot;instance-0000000001.a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
-        &quot;instance_configuration&quot;: &quot;gcp.es.datahot.n2.68x10x45&quot;,
-        &quot;region&quot;: &quot;unknown-region&quot;,
-        &quot;availability_zone&quot;: &quot;us-central1-b&quot;,
-        &quot;logical_availability_zone&quot;: &quot;zone-1&quot;,
-        &quot;xpack.installed&quot;: &quot;true&quot;
-      },
-      &quot;thread_pool&quot;: {
-        &quot;force_merge&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search_coordination&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;searchable_snapshots_cache_fetch_async&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 6,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_datafeed&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 512,
-          &quot;keep_alive&quot;: &quot;1m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;snapshot_meta&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 6,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;fetch_shard_started&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 4,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;rollup_indexing&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 4,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;cluster_coordination&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;security-crypto&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;ccr&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 32,
-          &quot;queue_size&quot;: 100
-        },
-        &quot;flush&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;fetch_shard_store&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 4,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_utility&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 2048,
-          &quot;keep_alive&quot;: &quot;10m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;get&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 2,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;system_read&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 2000
-        },
-        &quot;system_critical_read&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 2000
-        },
-        &quot;write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 2,
-          &quot;queue_size&quot;: 10000
-        },
-        &quot;watcher&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 10,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;security-token-key&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;system_critical_write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1500
-        },
-        &quot;refresh&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;repository_azure&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 5,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;vector_tile_generation&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;system_write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;generic&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 4,
-          &quot;max&quot;: 128,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;warmer&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;auto_complete&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 100
-        },
-        &quot;azure_event_loop&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;management&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 2,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;analyze&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 16
-        },
-        &quot;searchable_snapshots_cache_prewarming&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 16,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_job_comms&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 4,
-          &quot;max&quot;: 2048,
-          &quot;keep_alive&quot;: &quot;1m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;snapshot&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search_throttled&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 100
-        }
-      }
-    },
-    &quot;4MZABTmcQSG3PvMWtK_Sjg&quot;: {
-      &quot;name&quot;: &quot;tiebreaker-0000000002&quot;,
-      &quot;transport_address&quot;: &quot;10.42.5.215:19463&quot;,
-      &quot;host&quot;: &quot;10.42.5.215&quot;,
-      &quot;ip&quot;: &quot;10.42.5.215&quot;,
-      &quot;version&quot;: &quot;8.3.1&quot;,
-      &quot;build_flavor&quot;: &quot;default&quot;,
-      &quot;build_type&quot;: &quot;docker&quot;,
-      &quot;build_hash&quot;: &quot;b9a6b2867996ba92ceac66cb5bafc6db25e7910e&quot;,
-      &quot;roles&quot;: [
-        &quot;master&quot;,
-        &quot;voting_only&quot;
-      ],
-      &quot;attributes&quot;: {
-        &quot;logical_availability_zone&quot;: &quot;tiebreaker&quot;,
-        &quot;availability_zone&quot;: &quot;us-central1-c&quot;,
-        &quot;server_name&quot;: &quot;tiebreaker-0000000002.a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
-        &quot;xpack.installed&quot;: &quot;true&quot;,
-        &quot;data&quot;: &quot;hot&quot;,
-        &quot;instance_configuration&quot;: &quot;gcp.es.master.n2.68x32x45&quot;,
-        &quot;region&quot;: &quot;unknown-region&quot;
-      },
-      &quot;thread_pool&quot;: {
-        &quot;force_merge&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search_coordination&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;searchable_snapshots_cache_fetch_async&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 6,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_datafeed&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 512,
-          &quot;keep_alive&quot;: &quot;1m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;snapshot_meta&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 6,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;fetch_shard_started&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 4,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;rollup_indexing&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 4,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;cluster_coordination&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;security-crypto&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;ccr&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 32,
-          &quot;queue_size&quot;: 100
-        },
-        &quot;flush&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;fetch_shard_store&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 4,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_utility&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 2048,
-          &quot;keep_alive&quot;: &quot;10m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;get&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 2,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;system_read&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 2000
-        },
-        &quot;system_critical_read&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 2000
-        },
-        &quot;write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 2,
-          &quot;queue_size&quot;: 10000
-        },
-        &quot;watcher&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;security-token-key&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;system_critical_write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1500
-        },
-        &quot;refresh&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;repository_azure&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 5,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;vector_tile_generation&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;system_write&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 1000
-        },
-        &quot;generic&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 4,
-          &quot;max&quot;: 128,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;warmer&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;auto_complete&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 100
-        },
-        &quot;azure_event_loop&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;management&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 2,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;analyze&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 16
-        },
-        &quot;searchable_snapshots_cache_prewarming&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 0,
-          &quot;max&quot;: 16,
-          &quot;keep_alive&quot;: &quot;30s&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;ml_job_comms&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 4,
-          &quot;max&quot;: 2048,
-          &quot;keep_alive&quot;: &quot;1m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;snapshot&quot;: {
-          &quot;type&quot;: &quot;scaling&quot;,
-          &quot;core&quot;: 1,
-          &quot;max&quot;: 1,
-          &quot;keep_alive&quot;: &quot;5m&quot;,
-          &quot;queue_size&quot;: -1
-        },
-        &quot;search_throttled&quot;: {
-          &quot;type&quot;: &quot;fixed&quot;,
-          &quot;size&quot;: 1,
-          &quot;queue_size&quot;: 100
-        }
-      }
-    }
-  }
-}
-
-</code></pre>
+<span class="boring">
+</span><span class="boring">&quot;_nodes&quot;: {
+</span><span class="boring">  &quot;total&quot;: 3,
+</span><span class="boring">  &quot;successful&quot;: 3,
+</span><span class="boring">  &quot;failed&quot;: 0
+</span><span class="boring">},
+</span><span class="boring">&quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+</span><span class="boring">&quot;nodes&quot;: {
+</span><span class="boring">  &quot;juVnJa6TQ7a2c3v065Gz3w&quot;: {
+</span><span class="boring">    &quot;name&quot;: &quot;instance-0000000000&quot;,
+</span><span class="boring">    &quot;transport_address&quot;: &quot;10.42.10.154:19303&quot;,
+</span><span class="boring">    &quot;host&quot;: &quot;10.42.10.154&quot;,
+</span><span class="boring">    &quot;ip&quot;: &quot;10.42.10.154&quot;,
+</span><span class="boring">    &quot;version&quot;: &quot;8.3.1&quot;,
+</span><span class="boring">    &quot;build_flavor&quot;: &quot;default&quot;,
+</span><span class="boring">    &quot;build_type&quot;: &quot;docker&quot;,
+</span><span class="boring">    &quot;build_hash&quot;: &quot;b9a6b2867996ba92ceac66cb5bafc6db25e7910e&quot;,
+</span><span class="boring">    &quot;roles&quot;: [
+</span><span class="boring">      &quot;data_content&quot;,
+</span><span class="boring">      &quot;data_hot&quot;,
+</span><span class="boring">      &quot;ingest&quot;,
+</span><span class="boring">      &quot;master&quot;,
+</span><span class="boring">      &quot;remote_cluster_client&quot;,
+</span><span class="boring">      &quot;transform&quot;
+</span><span class="boring">    ],
+</span><span class="boring">    &quot;attributes&quot;: {
+</span><span class="boring">      &quot;logical_availability_zone&quot;: &quot;zone-0&quot;,
+</span><span class="boring">      &quot;server_name&quot;: &quot;instance-0000000000.a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+</span><span class="boring">      &quot;availability_zone&quot;: &quot;us-central1-a&quot;,
+</span><span class="boring">      &quot;xpack.installed&quot;: &quot;true&quot;,
+</span><span class="boring">      &quot;data&quot;: &quot;hot&quot;,
+</span><span class="boring">      &quot;instance_configuration&quot;: &quot;gcp.es.datahot.n2.68x10x45&quot;,
+</span><span class="boring">      &quot;region&quot;: &quot;unknown-region&quot;
+</span><span class="boring">    },
+</span><span class="boring">    &quot;thread_pool&quot;: {
+</span><span class="boring">      &quot;force_merge&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;search_coordination&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: 1000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;searchable_snapshots_cache_fetch_async&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 0,
+</span><span class="boring">        &quot;max&quot;: 6,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;ml_datafeed&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 1,
+</span><span class="boring">        &quot;max&quot;: 512,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;1m&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;snapshot_meta&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 1,
+</span><span class="boring">        &quot;max&quot;: 6,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;fetch_shard_started&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 1,
+</span><span class="boring">        &quot;max&quot;: 4,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;rollup_indexing&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;search&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 4,
+</span><span class="boring">        &quot;queue_size&quot;: 1000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;cluster_coordination&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;security-crypto&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: 1000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;ccr&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 32,
+</span><span class="boring">        &quot;queue_size&quot;: 100
+</span><span class="boring">      },
+</span><span class="boring">      &quot;flush&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 1,
+</span><span class="boring">        &quot;max&quot;: 1,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;fetch_shard_store&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 1,
+</span><span class="boring">        &quot;max&quot;: 4,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;ml_utility&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">        &quot;core&quot;: 1,
+</span><span class="boring">        &quot;max&quot;: 2048,
+</span><span class="boring">        &quot;keep_alive&quot;: &quot;10m&quot;,
+</span><span class="boring">        &quot;queue_size&quot;: -1
+</span><span class="boring">      },
+</span><span class="boring">      &quot;get&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 2,
+</span><span class="boring">        &quot;queue_size&quot;: 1000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;system_read&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: 2000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;system_critical_read&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: 2000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;write&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 2,
+</span><span class="boring">        &quot;queue_size&quot;: 10000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;watcher&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 10,
+</span><span class="boring">        &quot;queue_size&quot;: 1000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;security-token-key&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: 1000
+</span><span class="boring">      },
+</span><span class="boring">      &quot;system_critical_write&quot;: {
+</span><span class="boring">        &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">        &quot;size&quot;: 1,
+</span><span class="boring">        &quot;queue_size&quot;: 1500
+</span><span class="boring">      },
+</span><span class="boring">      &quot;refresh&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;repository_azure&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 5,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;vector_tile_generation&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;generic&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 4,
+</span><span class="boring">   &quot;max&quot;: 128,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;warmer&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;auto_complete&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> },
+</span><span class="boring"> &quot;azure_event_loop&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;management&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 2,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;analyze&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 16
+</span><span class="boring"> },
+</span><span class="boring"> &quot;searchable_snapshots_cache_prewarming&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 16,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_job_comms&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 4,
+</span><span class="boring">   &quot;max&quot;: 2048,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;1m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;snapshot&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search_throttled&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">nEBN-aVTcKiJfoT87LgKA&quot;: {
+</span><span class="boring">&quot;name&quot;: &quot;instance-0000000001&quot;,
+</span><span class="boring">&quot;transport_address&quot;: &quot;10.42.0.133:19375&quot;,
+</span><span class="boring">&quot;host&quot;: &quot;10.42.0.133&quot;,
+</span><span class="boring">&quot;ip&quot;: &quot;10.42.0.133&quot;,
+</span><span class="boring">&quot;version&quot;: &quot;8.3.1&quot;,
+</span><span class="boring">&quot;build_flavor&quot;: &quot;default&quot;,
+</span><span class="boring">&quot;build_type&quot;: &quot;docker&quot;,
+</span><span class="boring">&quot;build_hash&quot;: &quot;b9a6b2867996ba92ceac66cb5bafc6db25e7910e&quot;,
+</span><span class="boring">&quot;roles&quot;: [
+</span><span class="boring"> &quot;data_content&quot;,
+</span><span class="boring"> &quot;data_hot&quot;,
+</span><span class="boring"> &quot;ingest&quot;,
+</span><span class="boring"> &quot;master&quot;,
+</span><span class="boring"> &quot;remote_cluster_client&quot;,
+</span><span class="boring"> &quot;transform&quot;
+</span><span class="boring">],
+</span><span class="boring">&quot;attributes&quot;: {
+</span><span class="boring"> &quot;data&quot;: &quot;hot&quot;,
+</span><span class="boring"> &quot;server_name&quot;: &quot;instance-0000000001.a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+</span><span class="boring"> &quot;instance_configuration&quot;: &quot;gcp.es.datahot.n2.68x10x45&quot;,
+</span><span class="boring"> &quot;region&quot;: &quot;unknown-region&quot;,
+</span><span class="boring"> &quot;availability_zone&quot;: &quot;us-central1-b&quot;,
+</span><span class="boring"> &quot;logical_availability_zone&quot;: &quot;zone-1&quot;,
+</span><span class="boring"> &quot;xpack.installed&quot;: &quot;true&quot;
+</span><span class="boring">},
+</span><span class="boring">&quot;thread_pool&quot;: {
+</span><span class="boring"> &quot;force_merge&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search_coordination&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;searchable_snapshots_cache_fetch_async&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 6,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_datafeed&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 512,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;1m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;snapshot_meta&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 6,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;fetch_shard_started&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 4,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;rollup_indexing&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 4,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;cluster_coordination&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;security-crypto&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ccr&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 32,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> },
+</span><span class="boring"> &quot;flush&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;fetch_shard_store&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 4,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_utility&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 2048,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;10m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;get&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 2,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_read&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 2000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_critical_read&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 2000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 2,
+</span><span class="boring">   &quot;queue_size&quot;: 10000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;watcher&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 10,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;security-token-key&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_critical_write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1500
+</span><span class="boring"> },
+</span><span class="boring"> &quot;refresh&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;repository_azure&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 5,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;vector_tile_generation&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;generic&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 4,
+</span><span class="boring">   &quot;max&quot;: 128,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;warmer&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;auto_complete&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> },
+</span><span class="boring"> &quot;azure_event_loop&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;management&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 2,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;analyze&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 16
+</span><span class="boring"> },
+</span><span class="boring"> &quot;searchable_snapshots_cache_prewarming&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 16,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_job_comms&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 4,
+</span><span class="boring">   &quot;max&quot;: 2048,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;1m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;snapshot&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search_throttled&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">MZABTmcQSG3PvMWtK_Sjg&quot;: {
+</span><span class="boring">&quot;name&quot;: &quot;tiebreaker-0000000002&quot;,
+</span><span class="boring">&quot;transport_address&quot;: &quot;10.42.5.215:19463&quot;,
+</span><span class="boring">&quot;host&quot;: &quot;10.42.5.215&quot;,
+</span><span class="boring">&quot;ip&quot;: &quot;10.42.5.215&quot;,
+</span><span class="boring">&quot;version&quot;: &quot;8.3.1&quot;,
+</span><span class="boring">&quot;build_flavor&quot;: &quot;default&quot;,
+</span><span class="boring">&quot;build_type&quot;: &quot;docker&quot;,
+</span><span class="boring">&quot;build_hash&quot;: &quot;b9a6b2867996ba92ceac66cb5bafc6db25e7910e&quot;,
+</span><span class="boring">&quot;roles&quot;: [
+</span><span class="boring"> &quot;master&quot;,
+</span><span class="boring"> &quot;voting_only&quot;
+</span><span class="boring">],
+</span><span class="boring">&quot;attributes&quot;: {
+</span><span class="boring"> &quot;logical_availability_zone&quot;: &quot;tiebreaker&quot;,
+</span><span class="boring"> &quot;availability_zone&quot;: &quot;us-central1-c&quot;,
+</span><span class="boring"> &quot;server_name&quot;: &quot;tiebreaker-0000000002.a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+</span><span class="boring"> &quot;xpack.installed&quot;: &quot;true&quot;,
+</span><span class="boring"> &quot;data&quot;: &quot;hot&quot;,
+</span><span class="boring"> &quot;instance_configuration&quot;: &quot;gcp.es.master.n2.68x32x45&quot;,
+</span><span class="boring"> &quot;region&quot;: &quot;unknown-region&quot;
+</span><span class="boring">},
+</span><span class="boring">&quot;thread_pool&quot;: {
+</span><span class="boring"> &quot;force_merge&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search_coordination&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;searchable_snapshots_cache_fetch_async&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 6,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_datafeed&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 512,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;1m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;snapshot_meta&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 6,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;fetch_shard_started&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 4,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;rollup_indexing&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 4,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;cluster_coordination&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;security-crypto&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ccr&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 32,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> },
+</span><span class="boring"> &quot;flush&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;fetch_shard_store&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 4,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_utility&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 2048,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;10m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;get&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 2,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_read&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 2000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_critical_read&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 2000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 2,
+</span><span class="boring">   &quot;queue_size&quot;: 10000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;watcher&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;security-token-key&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_critical_write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1500
+</span><span class="boring"> },
+</span><span class="boring"> &quot;refresh&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;repository_azure&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 5,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;vector_tile_generation&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;system_write&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 1000
+</span><span class="boring"> },
+</span><span class="boring"> &quot;generic&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 4,
+</span><span class="boring">   &quot;max&quot;: 128,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;warmer&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;auto_complete&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> },
+</span><span class="boring"> &quot;azure_event_loop&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;management&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 2,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;analyze&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 16
+</span><span class="boring"> },
+</span><span class="boring"> &quot;searchable_snapshots_cache_prewarming&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 0,
+</span><span class="boring">   &quot;max&quot;: 16,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;30s&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;ml_job_comms&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 4,
+</span><span class="boring">   &quot;max&quot;: 2048,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;1m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;snapshot&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;scaling&quot;,
+</span><span class="boring">   &quot;core&quot;: 1,
+</span><span class="boring">   &quot;max&quot;: 1,
+</span><span class="boring">   &quot;keep_alive&quot;: &quot;5m&quot;,
+</span><span class="boring">   &quot;queue_size&quot;: -1
+</span><span class="boring"> },
+</span><span class="boring"> &quot;search_throttled&quot;: {
+</span><span class="boring">   &quot;type&quot;: &quot;fixed&quot;,
+</span><span class="boring">   &quot;size&quot;: 1,
+</span><span class="boring">   &quot;queue_size&quot;: 100
+</span><span class="boring"> }
+</span><span class="boring">}
+</span>
+<span class="boring">}
+</span></code></pre></pre>
 <p>During the test we indexed into a varying number of shards (2, 4, 8, 16, and 32) using a varying number of concurrent clients (8, 16, 24, 32, 48, and 64) for each cluster. For every combination of shard and client count we indexed 6.4 million documents with a batch size of 100 documents and another 6.4 million documents with a batch size of 200 documents. This means that in total we attempted to index 384 million documents per cluster.</p>
 <p>For this test we treat the clusters as a black box, and perform the analysis from the client’s perspective. To limit the scope we will also not look at the impact of various configurations on performance as that is a quite large topic on its own.</p>
 <p>在测试中，</p>

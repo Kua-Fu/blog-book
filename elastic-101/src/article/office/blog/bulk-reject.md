@@ -73,724 +73,721 @@ The same indexing workload was run against three different Elastic Cloud cluster
 
 在三个不同配置的ES实例，我们会执行相同的bulk请求测试。三个ES实例，分别是1个节点、2个节点、3个节点，其中每个节点配置都是相同的（ 8GB 内存，4G设置为ES 堆内存，4G设置为节点内存）。可以通过接口`GET /_nodes/thread_pool` 接口查看
 
-```json
+```rust
 
 GET _nodes/thread_pool
 
-{
-  "_nodes": {
-    "total": 3,
-    "successful": 3,
-    "failed": 0
-  },
-  "cluster_name": "a2ff16d9aa2645dc87ab1714e6e16a84",
-  "nodes": {
-    "juVnJa6TQ7a2c3v065Gz3w": {
-      "name": "instance-0000000000",
-      "transport_address": "10.42.10.154:19303",
-      "host": "10.42.10.154",
-      "ip": "10.42.10.154",
-      "version": "8.3.1",
-      "build_flavor": "default",
-      "build_type": "docker",
-      "build_hash": "b9a6b2867996ba92ceac66cb5bafc6db25e7910e",
-      "roles": [
-        "data_content",
-        "data_hot",
-        "ingest",
-        "master",
-        "remote_cluster_client",
-        "transform"
-      ],
-      "attributes": {
-        "logical_availability_zone": "zone-0",
-        "server_name": "instance-0000000000.a2ff16d9aa2645dc87ab1714e6e16a84",
-        "availability_zone": "us-central1-a",
-        "xpack.installed": "true",
-        "data": "hot",
-        "instance_configuration": "gcp.es.datahot.n2.68x10x45",
-        "region": "unknown-region"
-      },
-      "thread_pool": {
-        "force_merge": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "search_coordination": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "searchable_snapshots_cache_fetch_async": {
-          "type": "scaling",
-          "core": 0,
-          "max": 6,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "ml_datafeed": {
-          "type": "scaling",
-          "core": 1,
-          "max": 512,
-          "keep_alive": "1m",
-          "queue_size": -1
-        },
-        "snapshot_meta": {
-          "type": "scaling",
-          "core": 1,
-          "max": 6,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "fetch_shard_started": {
-          "type": "scaling",
-          "core": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "rollup_indexing": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "search": {
-          "type": "fixed",
-          "size": 4,
-          "queue_size": 1000
-        },
-        "cluster_coordination": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "security-crypto": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "ccr": {
-          "type": "fixed",
-          "size": 32,
-          "queue_size": 100
-        },
-        "flush": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "fetch_shard_store": {
-          "type": "scaling",
-          "core": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "ml_utility": {
-          "type": "scaling",
-          "core": 1,
-          "max": 2048,
-          "keep_alive": "10m",
-          "queue_size": -1
-        },
-        "get": {
-          "type": "fixed",
-          "size": 2,
-          "queue_size": 1000
-        },
-        "system_read": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 2000
-        },
-        "system_critical_read": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 2000
-        },
-        "write": {
-          "type": "fixed",
-          "size": 2,
-          "queue_size": 10000
-        },
-        "watcher": {
-          "type": "fixed",
-          "size": 10,
-          "queue_size": 1000
-        },
-        "security-token-key": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "system_critical_write": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1500
-        },
-        "refresh": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "repository_azure": {
-          "type": "scaling",
-          "core": 0,
-          "max": 5,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "vector_tile_generation": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "system_write": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "generic": {
-          "type": "scaling",
-          "core": 4,
-          "max": 128,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "warmer": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "auto_complete": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 100
-        },
-        "azure_event_loop": {
-          "type": "scaling",
-          "core": 0,
-          "max": 1,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "management": {
-          "type": "scaling",
-          "core": 1,
-          "max": 2,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "analyze": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 16
-        },
-        "searchable_snapshots_cache_prewarming": {
-          "type": "scaling",
-          "core": 0,
-          "max": 16,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "ml_job_comms": {
-          "type": "scaling",
-          "core": 4,
-          "max": 2048,
-          "keep_alive": "1m",
-          "queue_size": -1
-        },
-        "snapshot": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "search_throttled": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 100
-        }
-      }
-    },
-    "snEBN-aVTcKiJfoT87LgKA": {
-      "name": "instance-0000000001",
-      "transport_address": "10.42.0.133:19375",
-      "host": "10.42.0.133",
-      "ip": "10.42.0.133",
-      "version": "8.3.1",
-      "build_flavor": "default",
-      "build_type": "docker",
-      "build_hash": "b9a6b2867996ba92ceac66cb5bafc6db25e7910e",
-      "roles": [
-        "data_content",
-        "data_hot",
-        "ingest",
-        "master",
-        "remote_cluster_client",
-        "transform"
-      ],
-      "attributes": {
-        "data": "hot",
-        "server_name": "instance-0000000001.a2ff16d9aa2645dc87ab1714e6e16a84",
-        "instance_configuration": "gcp.es.datahot.n2.68x10x45",
-        "region": "unknown-region",
-        "availability_zone": "us-central1-b",
-        "logical_availability_zone": "zone-1",
-        "xpack.installed": "true"
-      },
-      "thread_pool": {
-        "force_merge": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "search_coordination": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "searchable_snapshots_cache_fetch_async": {
-          "type": "scaling",
-          "core": 0,
-          "max": 6,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "ml_datafeed": {
-          "type": "scaling",
-          "core": 1,
-          "max": 512,
-          "keep_alive": "1m",
-          "queue_size": -1
-        },
-        "snapshot_meta": {
-          "type": "scaling",
-          "core": 1,
-          "max": 6,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "fetch_shard_started": {
-          "type": "scaling",
-          "core": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "rollup_indexing": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "search": {
-          "type": "fixed",
-          "size": 4,
-          "queue_size": 1000
-        },
-        "cluster_coordination": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "security-crypto": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "ccr": {
-          "type": "fixed",
-          "size": 32,
-          "queue_size": 100
-        },
-        "flush": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "fetch_shard_store": {
-          "type": "scaling",
-          "core": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "ml_utility": {
-          "type": "scaling",
-          "core": 1,
-          "max": 2048,
-          "keep_alive": "10m",
-          "queue_size": -1
-        },
-        "get": {
-          "type": "fixed",
-          "size": 2,
-          "queue_size": 1000
-        },
-        "system_read": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 2000
-        },
-        "system_critical_read": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 2000
-        },
-        "write": {
-          "type": "fixed",
-          "size": 2,
-          "queue_size": 10000
-        },
-        "watcher": {
-          "type": "fixed",
-          "size": 10,
-          "queue_size": 1000
-        },
-        "security-token-key": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "system_critical_write": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1500
-        },
-        "refresh": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "repository_azure": {
-          "type": "scaling",
-          "core": 0,
-          "max": 5,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "vector_tile_generation": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "system_write": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "generic": {
-          "type": "scaling",
-          "core": 4,
-          "max": 128,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "warmer": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "auto_complete": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 100
-        },
-        "azure_event_loop": {
-          "type": "scaling",
-          "core": 0,
-          "max": 1,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "management": {
-          "type": "scaling",
-          "core": 1,
-          "max": 2,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "analyze": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 16
-        },
-        "searchable_snapshots_cache_prewarming": {
-          "type": "scaling",
-          "core": 0,
-          "max": 16,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "ml_job_comms": {
-          "type": "scaling",
-          "core": 4,
-          "max": 2048,
-          "keep_alive": "1m",
-          "queue_size": -1
-        },
-        "snapshot": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "search_throttled": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 100
-        }
-      }
-    },
-    "4MZABTmcQSG3PvMWtK_Sjg": {
-      "name": "tiebreaker-0000000002",
-      "transport_address": "10.42.5.215:19463",
-      "host": "10.42.5.215",
-      "ip": "10.42.5.215",
-      "version": "8.3.1",
-      "build_flavor": "default",
-      "build_type": "docker",
-      "build_hash": "b9a6b2867996ba92ceac66cb5bafc6db25e7910e",
-      "roles": [
-        "master",
-        "voting_only"
-      ],
-      "attributes": {
-        "logical_availability_zone": "tiebreaker",
-        "availability_zone": "us-central1-c",
-        "server_name": "tiebreaker-0000000002.a2ff16d9aa2645dc87ab1714e6e16a84",
-        "xpack.installed": "true",
-        "data": "hot",
-        "instance_configuration": "gcp.es.master.n2.68x32x45",
-        "region": "unknown-region"
-      },
-      "thread_pool": {
-        "force_merge": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "search_coordination": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "searchable_snapshots_cache_fetch_async": {
-          "type": "scaling",
-          "core": 0,
-          "max": 6,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "ml_datafeed": {
-          "type": "scaling",
-          "core": 1,
-          "max": 512,
-          "keep_alive": "1m",
-          "queue_size": -1
-        },
-        "snapshot_meta": {
-          "type": "scaling",
-          "core": 1,
-          "max": 6,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "fetch_shard_started": {
-          "type": "scaling",
-          "core": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "rollup_indexing": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "search": {
-          "type": "fixed",
-          "size": 4,
-          "queue_size": 1000
-        },
-        "cluster_coordination": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "security-crypto": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "ccr": {
-          "type": "fixed",
-          "size": 32,
-          "queue_size": 100
-        },
-        "flush": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "fetch_shard_store": {
-          "type": "scaling",
-          "core": 1,
-          "max": 4,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "ml_utility": {
-          "type": "scaling",
-          "core": 1,
-          "max": 2048,
-          "keep_alive": "10m",
-          "queue_size": -1
-        },
-        "get": {
-          "type": "fixed",
-          "size": 2,
-          "queue_size": 1000
-        },
-        "system_read": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 2000
-        },
-        "system_critical_read": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 2000
-        },
-        "write": {
-          "type": "fixed",
-          "size": 2,
-          "queue_size": 10000
-        },
-        "watcher": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "security-token-key": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "system_critical_write": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1500
-        },
-        "refresh": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "repository_azure": {
-          "type": "scaling",
-          "core": 0,
-          "max": 5,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "vector_tile_generation": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": -1
-        },
-        "system_write": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 1000
-        },
-        "generic": {
-          "type": "scaling",
-          "core": 4,
-          "max": 128,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "warmer": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "auto_complete": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 100
-        },
-        "azure_event_loop": {
-          "type": "scaling",
-          "core": 0,
-          "max": 1,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "management": {
-          "type": "scaling",
-          "core": 1,
-          "max": 2,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "analyze": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 16
-        },
-        "searchable_snapshots_cache_prewarming": {
-          "type": "scaling",
-          "core": 0,
-          "max": 16,
-          "keep_alive": "30s",
-          "queue_size": -1
-        },
-        "ml_job_comms": {
-          "type": "scaling",
-          "core": 4,
-          "max": 2048,
-          "keep_alive": "1m",
-          "queue_size": -1
-        },
-        "snapshot": {
-          "type": "scaling",
-          "core": 1,
-          "max": 1,
-          "keep_alive": "5m",
-          "queue_size": -1
-        },
-        "search_throttled": {
-          "type": "fixed",
-          "size": 1,
-          "queue_size": 100
-        }
-      }
-    }
-  }
-}
+#
+# "_nodes": {
+#   "total": 3,
+#   "successful": 3,
+#   "failed": 0
+# },
+# "cluster_name": "a2ff16d9aa2645dc87ab1714e6e16a84",
+# "nodes": {
+#   "juVnJa6TQ7a2c3v065Gz3w": {
+#     "name": "instance-0000000000",
+#     "transport_address": "10.42.10.154:19303",
+#     "host": "10.42.10.154",
+#     "ip": "10.42.10.154",
+#     "version": "8.3.1",
+#     "build_flavor": "default",
+#     "build_type": "docker",
+#     "build_hash": "b9a6b2867996ba92ceac66cb5bafc6db25e7910e",
+#     "roles": [
+#       "data_content",
+#       "data_hot",
+#       "ingest",
+#       "master",
+#       "remote_cluster_client",
+#       "transform"
+#     ],
+#     "attributes": {
+#       "logical_availability_zone": "zone-0",
+#       "server_name": "instance-0000000000.a2ff16d9aa2645dc87ab1714e6e16a84",
+#       "availability_zone": "us-central1-a",
+#       "xpack.installed": "true",
+#       "data": "hot",
+#       "instance_configuration": "gcp.es.datahot.n2.68x10x45",
+#       "region": "unknown-region"
+#     },
+#     "thread_pool": {
+#       "force_merge": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": -1
+#       },
+#       "search_coordination": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": 1000
+#       },
+#       "searchable_snapshots_cache_fetch_async": {
+#         "type": "scaling",
+#         "core": 0,
+#         "max": 6,
+#         "keep_alive": "30s",
+#         "queue_size": -1
+#       },
+#       "ml_datafeed": {
+#         "type": "scaling",
+#         "core": 1,
+#         "max": 512,
+#         "keep_alive": "1m",
+#         "queue_size": -1
+#       },
+#       "snapshot_meta": {
+#         "type": "scaling",
+#         "core": 1,
+#         "max": 6,
+#         "keep_alive": "30s",
+#         "queue_size": -1
+#       },
+#       "fetch_shard_started": {
+#         "type": "scaling",
+#         "core": 1,
+#         "max": 4,
+#         "keep_alive": "5m",
+#         "queue_size": -1
+#       },
+#       "rollup_indexing": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": -1
+#       },
+#       "search": {
+#         "type": "fixed",
+#         "size": 4,
+#         "queue_size": 1000
+#       },
+#       "cluster_coordination": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": -1
+#       },
+#       "security-crypto": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": 1000
+#       },
+#       "ccr": {
+#         "type": "fixed",
+#         "size": 32,
+#         "queue_size": 100
+#       },
+#       "flush": {
+#         "type": "scaling",
+#         "core": 1,
+#         "max": 1,
+#         "keep_alive": "5m",
+#         "queue_size": -1
+#       },
+#       "fetch_shard_store": {
+#         "type": "scaling",
+#         "core": 1,
+#         "max": 4,
+#         "keep_alive": "5m",
+#         "queue_size": -1
+#       },
+#       "ml_utility": {
+#         "type": "scaling",
+#         "core": 1,
+#         "max": 2048,
+#         "keep_alive": "10m",
+#         "queue_size": -1
+#       },
+#       "get": {
+#         "type": "fixed",
+#         "size": 2,
+#         "queue_size": 1000
+#       },
+#       "system_read": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": 2000
+#       },
+#       "system_critical_read": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": 2000
+#       },
+#       "write": {
+#         "type": "fixed",
+#         "size": 2,
+#         "queue_size": 10000
+#       },
+#       "watcher": {
+#         "type": "fixed",
+#         "size": 10,
+#         "queue_size": 1000
+#       },
+#       "security-token-key": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": 1000
+#       },
+#       "system_critical_write": {
+#         "type": "fixed",
+#         "size": 1,
+#         "queue_size": 1500
+#       },
+#       "refresh": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "repository_azure": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 5,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "vector_tile_generation": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "system_write": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "generic": {
+#    "type": "scaling",
+#    "core": 4,
+#    "max": 128,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "warmer": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "auto_complete": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 100
+#  },
+#  "azure_event_loop": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 1,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "management": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 2,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "analyze": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 16
+#  },
+#  "searchable_snapshots_cache_prewarming": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 16,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "ml_job_comms": {
+#    "type": "scaling",
+#    "core": 4,
+#    "max": 2048,
+#    "keep_alive": "1m",
+#    "queue_size": -1
+#  },
+#  "snapshot": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "search_throttled": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 100
+#  }
+#}
+#
+#nEBN-aVTcKiJfoT87LgKA": {
+#"name": "instance-0000000001",
+#"transport_address": "10.42.0.133:19375",
+#"host": "10.42.0.133",
+#"ip": "10.42.0.133",
+#"version": "8.3.1",
+#"build_flavor": "default",
+#"build_type": "docker",
+#"build_hash": "b9a6b2867996ba92ceac66cb5bafc6db25e7910e",
+#"roles": [
+#  "data_content",
+#  "data_hot",
+#  "ingest",
+#  "master",
+#  "remote_cluster_client",
+#  "transform"
+#],
+#"attributes": {
+#  "data": "hot",
+#  "server_name": "instance-0000000001.a2ff16d9aa2645dc87ab1714e6e16a84",
+#  "instance_configuration": "gcp.es.datahot.n2.68x10x45",
+#  "region": "unknown-region",
+#  "availability_zone": "us-central1-b",
+#  "logical_availability_zone": "zone-1",
+#  "xpack.installed": "true"
+#},
+#"thread_pool": {
+#  "force_merge": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "search_coordination": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "searchable_snapshots_cache_fetch_async": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 6,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "ml_datafeed": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 512,
+#    "keep_alive": "1m",
+#    "queue_size": -1
+#  },
+#  "snapshot_meta": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 6,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "fetch_shard_started": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 4,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "rollup_indexing": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "search": {
+#    "type": "fixed",
+#    "size": 4,
+#    "queue_size": 1000
+#  },
+#  "cluster_coordination": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "security-crypto": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "ccr": {
+#    "type": "fixed",
+#    "size": 32,
+#    "queue_size": 100
+#  },
+#  "flush": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "fetch_shard_store": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 4,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "ml_utility": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 2048,
+#    "keep_alive": "10m",
+#    "queue_size": -1
+#  },
+#  "get": {
+#    "type": "fixed",
+#    "size": 2,
+#    "queue_size": 1000
+#  },
+#  "system_read": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 2000
+#  },
+#  "system_critical_read": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 2000
+#  },
+#  "write": {
+#    "type": "fixed",
+#    "size": 2,
+#    "queue_size": 10000
+#  },
+#  "watcher": {
+#    "type": "fixed",
+#    "size": 10,
+#    "queue_size": 1000
+#  },
+#  "security-token-key": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "system_critical_write": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1500
+#  },
+#  "refresh": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "repository_azure": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 5,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "vector_tile_generation": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "system_write": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "generic": {
+#    "type": "scaling",
+#    "core": 4,
+#    "max": 128,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "warmer": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "auto_complete": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 100
+#  },
+#  "azure_event_loop": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 1,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "management": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 2,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "analyze": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 16
+#  },
+#  "searchable_snapshots_cache_prewarming": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 16,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "ml_job_comms": {
+#    "type": "scaling",
+#    "core": 4,
+#    "max": 2048,
+#    "keep_alive": "1m",
+#    "queue_size": -1
+#  },
+#  "snapshot": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "search_throttled": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 100
+#  }
+#}
+#
+#MZABTmcQSG3PvMWtK_Sjg": {
+#"name": "tiebreaker-0000000002",
+#"transport_address": "10.42.5.215:19463",
+#"host": "10.42.5.215",
+#"ip": "10.42.5.215",
+#"version": "8.3.1",
+#"build_flavor": "default",
+#"build_type": "docker",
+#"build_hash": "b9a6b2867996ba92ceac66cb5bafc6db25e7910e",
+#"roles": [
+#  "master",
+#  "voting_only"
+#],
+#"attributes": {
+#  "logical_availability_zone": "tiebreaker",
+#  "availability_zone": "us-central1-c",
+#  "server_name": "tiebreaker-0000000002.a2ff16d9aa2645dc87ab1714e6e16a84",
+#  "xpack.installed": "true",
+#  "data": "hot",
+#  "instance_configuration": "gcp.es.master.n2.68x32x45",
+#  "region": "unknown-region"
+#},
+#"thread_pool": {
+#  "force_merge": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "search_coordination": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "searchable_snapshots_cache_fetch_async": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 6,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "ml_datafeed": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 512,
+#    "keep_alive": "1m",
+#    "queue_size": -1
+#  },
+#  "snapshot_meta": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 6,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "fetch_shard_started": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 4,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "rollup_indexing": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "search": {
+#    "type": "fixed",
+#    "size": 4,
+#    "queue_size": 1000
+#  },
+#  "cluster_coordination": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "security-crypto": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "ccr": {
+#    "type": "fixed",
+#    "size": 32,
+#    "queue_size": 100
+#  },
+#  "flush": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "fetch_shard_store": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 4,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "ml_utility": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 2048,
+#    "keep_alive": "10m",
+#    "queue_size": -1
+#  },
+#  "get": {
+#    "type": "fixed",
+#    "size": 2,
+#    "queue_size": 1000
+#  },
+#  "system_read": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 2000
+#  },
+#  "system_critical_read": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 2000
+#  },
+#  "write": {
+#    "type": "fixed",
+#    "size": 2,
+#    "queue_size": 10000
+#  },
+#  "watcher": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "security-token-key": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "system_critical_write": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1500
+#  },
+#  "refresh": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "repository_azure": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 5,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "vector_tile_generation": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": -1
+#  },
+#  "system_write": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 1000
+#  },
+#  "generic": {
+#    "type": "scaling",
+#    "core": 4,
+#    "max": 128,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "warmer": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "auto_complete": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 100
+#  },
+#  "azure_event_loop": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 1,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "management": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 2,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "analyze": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 16
+#  },
+#  "searchable_snapshots_cache_prewarming": {
+#    "type": "scaling",
+#    "core": 0,
+#    "max": 16,
+#    "keep_alive": "30s",
+#    "queue_size": -1
+#  },
+#  "ml_job_comms": {
+#    "type": "scaling",
+#    "core": 4,
+#    "max": 2048,
+#    "keep_alive": "1m",
+#    "queue_size": -1
+#  },
+#  "snapshot": {
+#    "type": "scaling",
+#    "core": 1,
+#    "max": 1,
+#    "keep_alive": "5m",
+#    "queue_size": -1
+#  },
+#  "search_throttled": {
+#    "type": "fixed",
+#    "size": 1,
+#    "queue_size": 100
+#  }
+#}
 
 ```
 
