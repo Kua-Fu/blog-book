@@ -60,11 +60,76 @@ They are executed in the order in which they are defined.
 
 This table lists the parameters that you can define for an action.
 
-操作是
+|Parameter|	Description|	Type	|Required|	Default|
+| ---| ---| ---| ---| ---|
+|timeout|	The timeout period for the action. Accepts time units for minutes, hours, and days.|	time unit|	No|	-|
+|retry|	The retry configuration for the action.|	object|	No|	Specific to action|
+
+The retry operation has the following parameters:
+
+|Parameter	|Description|	Type|	Required|	Default|
+|---|---|---|---|---|
+|count|	The number of retry counts.|	number|	Yes|	-|
+|backoff|	The backoff policy type to use when retrying.|	string|	No|	Exponential|
+|delay|	The time to wait between retries. Accepts time units for minutes, hours, and days.|	time unit|	No|	1 minute|
+
+操作是索引进入某个状态后，需要运行的一系列操作。
+
+操作需要按照顺序依次执行。下面的表格，包含了一个操作的定义：
 
 
+The following example action has a timeout period of one hour. The policy retries this action three times with an exponential backoff policy, with a delay of 10 minutes between each retry:
 
-### 3.3 策略 policies
+下面示例操作的超时时间为1个小时，该操作如果失败，会使用指数策略重试机制，每次重试的延迟为10分钟
+
+```json
+
+"actions": {
+  "timeout": "1h",
+  "retry": {
+    "count": 3,
+    "backoff": "exponential",
+    "delay": "10m"
+  }
+}
+
+```
+
+### 3.3 转换 transitions
+
+Transitions define the conditions that need to be met for a state to change. After all actions in the current state are completed, the policy starts checking the conditions for transitions.
+
+Transitions are evaluated in the order in which they are defined. For example, if the conditions for the first transition are met, then this transition takes place and the rest of the transitions are dismissed.
+
+转换定义了状态修改所需要满足的条件，当前状态下所有的 `actions`都执行完成后，进入到转换条件的检查。
+
+转换按照定义的顺序进行检查，例如：满足了定义中的第一个条件，则转换会进行；会忽略其他的条件。
+
+If you don’t specify any conditions in a transition and leave it empty, then it’s assumed to be the equivalent of always true. This means that the policy transitions the index to this state the moment it checks.
+
+This table lists the parameters you can define for transitions.
+
+如果定义中没有指定任何条件，则等同于`always true`，在索引检查时候，会进行状态转换。
+
+下面的表格，定义了转换:
+
+|Parameter|	Description|	Type|	Required|
+|---|---|---|---|
+|state_name	|The name of the state to transition to if the conditions are met.	|string	|Yes|
+|conditions|	List the conditions for the transition.	|list	|Yes|
+
+The conditions object has the following parameters:
+
+|Parameter	Description	Type	Required
+min_index_age	The minimum age of the index required to transition.	string	No
+min_doc_count	The minimum document count of the index required to transition.	number	No
+min_size	The minimum size of the total primary shard storage (not counting replicas). For example, if you set min_size to 100 GiB and your index has 5 primary shards and 5 replica shards of 20 GiB each, the total size of all primary shards is 100 GiB, so your index is transitioned to the next state.	string	No
+cron	The cron job that triggers the transition if no other transition happens first.	object	No
+cron.cron.expression	The cron expression that triggers the transition.	string	Yes
+cron.cron.timezone	The timezone that triggers the transition.	string	Yes
+
+
+### 3.4 策略 policies
 
 Policies are JSON documents that define the following:
 
@@ -81,3 +146,7 @@ In other words, a policy defines the states that an index can be in, the actions
 * 状态，策略中需要指定状态，例如：索引创建后的默认状态，状态的可选值有 `hot/warm/cold`等
 
 * 操作，当索引进入到新状态后，执行的一系列操作，例如：滚动索引等
+
+* 转换，索引进入新状态需要满足的条件。例如：一个索引，超过8周，可能需要变更为 delete 状态。
+
+

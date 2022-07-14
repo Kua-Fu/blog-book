@@ -179,8 +179,53 @@
 <p>Actions are the steps that the policy sequentially executes on entering a specific state.</p>
 <p>They are executed in the order in which they are defined.</p>
 <p>This table lists the parameters that you can define for an action.</p>
-<p>操作是</p>
-<h3 id="33-策略-policies"><a class="header" href="#33-策略-policies">3.3 策略 policies</a></h3>
+<table><thead><tr><th>Parameter</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody>
+<tr><td>timeout</td><td>The timeout period for the action. Accepts time units for minutes, hours, and days.</td><td>time unit</td><td>No</td><td>-</td></tr>
+<tr><td>retry</td><td>The retry configuration for the action.</td><td>object</td><td>No</td><td>Specific to action</td></tr>
+</tbody></table>
+<p>The retry operation has the following parameters:</p>
+<table><thead><tr><th>Parameter</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody>
+<tr><td>count</td><td>The number of retry counts.</td><td>number</td><td>Yes</td><td>-</td></tr>
+<tr><td>backoff</td><td>The backoff policy type to use when retrying.</td><td>string</td><td>No</td><td>Exponential</td></tr>
+<tr><td>delay</td><td>The time to wait between retries. Accepts time units for minutes, hours, and days.</td><td>time unit</td><td>No</td><td>1 minute</td></tr>
+</tbody></table>
+<p>操作是索引进入某个状态后，需要运行的一系列操作。</p>
+<p>操作需要按照顺序依次执行。下面的表格，包含了一个操作的定义：</p>
+<p>The following example action has a timeout period of one hour. The policy retries this action three times with an exponential backoff policy, with a delay of 10 minutes between each retry:</p>
+<p>下面示例操作的超时时间为1个小时，该操作如果失败，会使用指数策略重试机制，每次重试的延迟为10分钟</p>
+<pre><code class="language-json">
+&quot;actions&quot;: {
+  &quot;timeout&quot;: &quot;1h&quot;,
+  &quot;retry&quot;: {
+    &quot;count&quot;: 3,
+    &quot;backoff&quot;: &quot;exponential&quot;,
+    &quot;delay&quot;: &quot;10m&quot;
+  }
+}
+
+</code></pre>
+<h3 id="33-转换-transitions"><a class="header" href="#33-转换-transitions">3.3 转换 transitions</a></h3>
+<p>Transitions define the conditions that need to be met for a state to change. After all actions in the current state are completed, the policy starts checking the conditions for transitions.</p>
+<p>Transitions are evaluated in the order in which they are defined. For example, if the conditions for the first transition are met, then this transition takes place and the rest of the transitions are dismissed.</p>
+<p>转换定义了状态修改所需要满足的条件，当前状态下所有的 <code>actions</code>都执行完成后，进入到转换条件的检查。</p>
+<p>转换按照定义的顺序进行检查，例如：满足了定义中的第一个条件，则转换会进行；会忽略其他的条件。</p>
+<p>If you don’t specify any conditions in a transition and leave it empty, then it’s assumed to be the equivalent of always true. This means that the policy transitions the index to this state the moment it checks.</p>
+<p>This table lists the parameters you can define for transitions.</p>
+<p>如果定义中没有指定任何条件，则等同于<code>always true</code>，在索引检查时候，会进行状态转换。</p>
+<p>下面的表格，定义了转换:</p>
+<table><thead><tr><th>Parameter</th><th>Description</th><th>Type</th><th>Required</th></tr></thead><tbody>
+<tr><td>state_name</td><td>The name of the state to transition to if the conditions are met.</td><td>string</td><td>Yes</td></tr>
+<tr><td>conditions</td><td>List the conditions for the transition.</td><td>list</td><td>Yes</td></tr>
+</tbody></table>
+<p>The conditions object has the following parameters:</p>
+<p>|Parameter	Description	Type	Required
+min_index_age	The minimum age of the index required to transition.	string	No
+min_doc_count	The minimum document count of the index required to transition.	number	No
+min_size	The minimum size of the total primary shard storage (not counting replicas). For example, if you set min_size to 100 GiB and your index has 5 primary shards and 5 replica shards of 20 GiB each, the total size of all primary shards is 100 GiB, so your index is transitioned to the next state.	string	No
+cron	The cron job that triggers the transition if no other transition happens first.	object	No
+cron.cron.expression	The cron expression that triggers the transition.	string	Yes
+cron.cron.timezone	The timezone that triggers the transition.	string	Yes</p>
+<h3 id="34-策略-policies"><a class="header" href="#34-策略-policies">3.4 策略 policies</a></h3>
 <p>Policies are JSON documents that define the following:</p>
 <ul>
 <li>
@@ -201,6 +246,9 @@
 </li>
 <li>
 <p>操作，当索引进入到新状态后，执行的一系列操作，例如：滚动索引等</p>
+</li>
+<li>
+<p>转换，索引进入新状态需要满足的条件。例如：一个索引，超过8周，可能需要变更为 delete 状态。</p>
 </li>
 </ul>
 

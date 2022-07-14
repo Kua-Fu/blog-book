@@ -52,6 +52,33 @@
 	  - [文档的部分更新](./basic/partial-update.md)
 	  - [取回多个文档](./basic/retrieving-multiple-docs.md)
 	  - [代价较小的批量操作](./basic/bulk.md)
+	  
+  - [分布式文档存储](./basic/distributed-docs.md)
+	  - [路由一个文档到一个分片中](./basic/routing-value.md)
+	  - [主分片和副本分片如何交互](./basic/how-primary-and-replica-shard-interact.md)
+	  - [新建、索引和删除文档](./basic/distrib-write.md)
+	  - [取回一个文档](./basic/distrib-read.md)
+	  - [局部更新文档](./basic/partial-update-to-a-doc.md)
+	  - [多文档模式](./basic/distrib-multi-doc.md)
+	  
+  - [搜索-最基本的工具](./basic/search.md)
+  
+  - [映射和分析](./basic/mapping-analysis.md)
+  
+  - [请求体查询](./basic/full-search-body.md)
+  
+  - [排序与相关性](./basic/sorting.md)
+  
+  - [执行分布式检索](./basic/distributed-search.md)
+  
+  - [索引管理](./basic/index-management.md)
+  
+  - [分片内部原理](./basic/inside-a-shard.md)
+	  - [使文本可被搜索](./basic/making-text-searchable.md)
+	  - [动态更新索引](./basic/dynamic-indices.md)
+	  - [近实时搜索](./basic/near-real-time.md)
+	  - [持久化变更](./basic/translog.md)
+	  - [段合并](./basic/merge-process.md)
 
 # 深入搜索
 
