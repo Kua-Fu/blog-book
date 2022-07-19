@@ -70,6 +70,10 @@
   - [排序与相关性](./basic/sorting.md)
   
   - [执行分布式检索](./basic/distributed-search.md)
+	  - [查询阶段](./basic/query-phase.md)
+	  - [取回阶段](./basic/fetch-phase.md)
+	  - [搜索选项](./basic/search-options.md)
+	  - [查询游标](./basic/scroll.md)
   
   - [索引管理](./basic/index-management.md)
   
@@ -91,6 +95,22 @@
 # 数据建模
 
 # 管理、监控和部署
+
+- [管理、监控入门](./manage/administration.md)
+  - [监控](./manage/cluster-admin.md)
+	- [Marval监控](./manage/marval.md)
+	- [集群健康](./manage/cluster-health.md)
+	- [监控单个节点](./manage/monitor-individual-nodes.md)
+		- [索引部分](./manage/monitor-individual-nodes-index.md)
+		- [操作系统和进程](./manage/monitor-individual-nodes-os.md)
+		- [jvm部分](./manage/monitor-individual-nodes-jvm.md)
+		- [线程池部分](./manage/monitor-individual-nodes-thread-pool.md)
+		- [文件系统和网络部分](./manage/monitor-individual-nodes-fs.md)
+		- [断路器部分](./manage/monitor-individual-nodes-breaker.md)
+	- [集群统计](./manage/cluster-stats.md)
+	- [索引统计](./manage/index-stats.md)
+	- [等待中的任务](./manage/pending-task.md)
+
 
 
 

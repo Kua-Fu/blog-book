@@ -1,0 +1,426 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>索引部分 - elastic</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="../perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="../basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="../basic/more-complicated-search.html"><strong aria-hidden="true">2.1.8.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="../basic/full-text-search.html"><strong aria-hidden="true">2.1.9.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="../basic/phrase-search.html"><strong aria-hidden="true">2.1.10.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="../basic/highlighting-intro.html"><strong aria-hidden="true">2.1.11.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="../basic/analytics.html"><strong aria-hidden="true">2.1.12.</strong> 分析</a></li><li class="chapter-item expanded "><a href="../basic/conclusion.html"><strong aria-hidden="true">2.1.13.</strong> 小结</a></li><li class="chapter-item expanded "><a href="../basic/distributed_nature.html"><strong aria-hidden="true">2.1.14.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="../basic/next-step.html"><strong aria-hidden="true">2.1.15.</strong> 后续步骤</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-cluster.html"><strong aria-hidden="true">2.2.</strong> 集群内的原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/empty-cluster.html"><strong aria-hidden="true">2.2.1.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="../basic/cluster-health.html"><strong aria-hidden="true">2.2.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../basic/add-an-index.html"><strong aria-hidden="true">2.2.3.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="../basic/add-failover.html"><strong aria-hidden="true">2.2.4.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="../basic/scale-horizontally.html"><strong aria-hidden="true">2.2.5.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="../basic/coping-with-failure.html"><strong aria-hidden="true">2.2.6.</strong> 应对故障</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/data-in-data-out.html"><strong aria-hidden="true">2.3.</strong> 数据输入和输出</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/document.html"><strong aria-hidden="true">2.3.1.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="../basic/document-metadata.html"><strong aria-hidden="true">2.3.2.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="../basic/index-doc.html"><strong aria-hidden="true">2.3.3.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="../basic/get-doc.html"><strong aria-hidden="true">2.3.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/doc-exists.html"><strong aria-hidden="true">2.3.5.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="../basic/update-doc.html"><strong aria-hidden="true">2.3.6.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="../basic/create-doc.html"><strong aria-hidden="true">2.3.7.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="../basic/delete-doc.html"><strong aria-hidden="true">2.3.8.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="../basic/version-control.html"><strong aria-hidden="true">2.3.9.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="../basic/optimistic-concurrency-control.html"><strong aria-hidden="true">2.3.10.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="../basic/partial-update.html"><strong aria-hidden="true">2.3.11.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-multiple-docs.html"><strong aria-hidden="true">2.3.12.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="../basic/bulk.html"><strong aria-hidden="true">2.3.13.</strong> 代价较小的批量操作</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-docs.html"><strong aria-hidden="true">2.4.</strong> 分布式文档存储</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/routing-value.html"><strong aria-hidden="true">2.4.1.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="../basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">2.4.2.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="../basic/distrib-write.html"><strong aria-hidden="true">2.4.3.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-read.html"><strong aria-hidden="true">2.4.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/partial-update-to-a-doc.html"><strong aria-hidden="true">2.4.5.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-multi-doc.html"><strong aria-hidden="true">2.4.6.</strong> 多文档模式</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/search.html"><strong aria-hidden="true">2.5.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="../basic/mapping-analysis.html"><strong aria-hidden="true">2.6.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="../basic/full-search-body.html"><strong aria-hidden="true">2.7.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="../basic/sorting.html"><strong aria-hidden="true">2.8.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="../basic/distributed-search.html"><strong aria-hidden="true">2.9.</strong> 执行分布式检索</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/query-phase.html"><strong aria-hidden="true">2.9.1.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="../basic/fetch-phase.html"><strong aria-hidden="true">2.9.2.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="../basic/search-options.html"><strong aria-hidden="true">2.9.3.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="../basic/scroll.html"><strong aria-hidden="true">2.9.4.</strong> 查询游标</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/index-management.html"><strong aria-hidden="true">2.10.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../basic/inside-a-shard.html"><strong aria-hidden="true">2.11.</strong> 分片内部原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/making-text-searchable.html"><strong aria-hidden="true">2.11.1.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="../basic/dynamic-indices.html"><strong aria-hidden="true">2.11.2.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="../basic/near-real-time.html"><strong aria-hidden="true">2.11.3.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="../basic/translog.html"><strong aria-hidden="true">2.11.4.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="../basic/merge-process.html"><strong aria-hidden="true">2.11.5.</strong> 段合并</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li><li class="chapter-item expanded "><a href="../manage/administration.html"><strong aria-hidden="true">3.</strong> 管理、监控入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/cluster-admin.html"><strong aria-hidden="true">3.1.</strong> 监控</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/marval.html"><strong aria-hidden="true">3.1.1.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="../manage/cluster-health.html"><strong aria-hidden="true">3.1.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes.html"><strong aria-hidden="true">3.1.3.</strong> 监控单个节点</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-index.html" class="active"><strong aria-hidden="true">3.1.3.1.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">3.1.3.2.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">3.1.3.3.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">3.1.3.4.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">3.1.3.5.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">3.1.3.6.</strong> 断路器部分</a></li></ol></li><li class="chapter-item expanded "><a href="../manage/cluster-stats.html"><strong aria-hidden="true">3.1.4.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="../manage/index-stats.html"><strong aria-hidden="true">3.1.5.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="../manage/pending-task.html"><strong aria-hidden="true">3.1.6.</strong> 等待中的任务</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="索引部分"><a class="header" href="#索引部分">索引部分</a></h1>
+<p>索引(indices) 部分列出了这个节点上所有索引的聚合过的统计值：</p>
+<pre><code class="language-json">
+   &quot;indices&quot;: {
+        &quot;docs&quot;: { 0️⃣
+          &quot;count&quot;: 6539564,
+          &quot;deleted&quot;: 2082
+        },
+        &quot;shard_stats&quot;: {
+          &quot;total_count&quot;: 97
+        },
+        &quot;store&quot;: {
+          &quot;size_in_bytes&quot;: 2646907845,
+          &quot;total_data_set_size_in_bytes&quot;: 2646907845,
+          &quot;reserved_in_bytes&quot;: 0
+        },
+        &quot;indexing&quot;: {
+          &quot;index_total&quot;: 15286202,
+          &quot;index_time_in_millis&quot;: 2403080,
+          &quot;index_current&quot;: 0,
+          &quot;index_failed&quot;: 14118852,
+          &quot;delete_total&quot;: 20512,
+          &quot;delete_time_in_millis&quot;: 3402,
+          &quot;delete_current&quot;: 0,
+          &quot;noop_update_total&quot;: 1,
+          &quot;is_throttled&quot;: false,
+          &quot;throttle_time_in_millis&quot;: 0 1️⃣
+        },
+		...
+</code></pre>
+<p>返回的统计值被归入以下部分：</p>
+<ul>
+<li>
+<p>0️⃣ docs 展示节点内存有多少文档，包括还没有从段里清除的已删除文档数量。</p>
+</li>
+<li>
+<p>1️⃣ store 部分显示节点耗用了多少物理存储。这个指标包括主分片和副本分片在内。如果限流时间很大，那可能表明你的磁盘限流设置得过低（在段和合并里讨论过）。</p>
+</li>
+</ul>
+<pre><code class="language-json">
+ &quot;indexing&quot;: {
+   &quot;index_total&quot;: 15286202,
+   &quot;index_time_in_millis&quot;: 2403080,
+   &quot;index_current&quot;: 0,
+   &quot;index_failed&quot;: 14118852,
+   &quot;delete_total&quot;: 20512,
+   &quot;delete_time_in_millis&quot;: 3402,
+   &quot;delete_current&quot;: 0,
+   &quot;noop_update_total&quot;: 1,
+   &quot;is_throttled&quot;: false,
+   &quot;throttle_time_in_millis&quot;: 0
+ },
+ &quot;get&quot;: {
+   &quot;total&quot;: 1980564,
+   &quot;time_in_millis&quot;: 202478,
+   &quot;exists_total&quot;: 1973030,
+   &quot;exists_time_in_millis&quot;: 201941,
+   &quot;missing_total&quot;: 7534,
+   &quot;missing_time_in_millis&quot;: 537,
+   &quot;current&quot;: 0
+ },
+ &quot;search&quot;: {
+   &quot;open_contexts&quot;: 0,
+   &quot;query_total&quot;: 3272088,
+   &quot;query_time_in_millis&quot;: 1806935,
+   &quot;query_current&quot;: 0,
+   &quot;fetch_total&quot;: 3129569,
+   &quot;fetch_time_in_millis&quot;: 97430,
+   &quot;fetch_current&quot;: 0,
+   &quot;scroll_total&quot;: 866806,
+   &quot;scroll_time_in_millis&quot;: 7417778,
+   &quot;scroll_current&quot;: 0,
+   &quot;suggest_total&quot;: 0,
+   &quot;suggest_time_in_millis&quot;: 0,
+   &quot;suggest_current&quot;: 0
+ },
+ &quot;merges&quot;: {
+   &quot;current&quot;: 0,
+   &quot;current_docs&quot;: 0,
+   &quot;current_size_in_bytes&quot;: 0,
+   &quot;total&quot;: 97527,
+   &quot;total_time_in_millis&quot;: 5367815,
+   &quot;total_docs&quot;: 364477569,
+   &quot;total_size_in_bytes&quot;: 136348510561,
+   &quot;total_stopped_time_in_millis&quot;: 0,
+   &quot;total_throttled_time_in_millis&quot;: 762543,
+   &quot;total_auto_throttle_in_bytes&quot;: 2482171511
+ }
+		
+</code></pre>
+<ol>
+<li>
+<p>indexing 显示已经索引了多少文档。</p>
+<ul>
+<li>
+<p>这个值是一个累加计数器。在文档被删除的时候，数值不会下降。</p>
+</li>
+<li>
+<p>还要注意的是，在发生内部 索引 操作的时候，这个值也会增加，比如说文档更新。</p>
+</li>
+<li>
+<p>还列出了索引操作耗费的时间，正在索引的文档数量，以及删除操作的类似统计值。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>get 显示通过 ID 获取文档的接口相关的统计值。</p>
+<ul>
+<li>包括对单个文档的 GET 和 HEAD 请求。</li>
+</ul>
+</li>
+<li>
+<p>search 描述在活跃中的搜索（ open_contexts ）数量、查询的总数量、以及自节点启动以来在查询上消耗的总时间。</p>
+<ul>
+<li>
+<p>用 query_time_in_millis / query_total 计算的比值，可以用来粗略的评价你的查询有多高效。比值越大，每个查询花费的时间越多，你应该要考虑调优了。</p>
+</li>
+<li>
+<p>fetch 统计值展示了查询处理的后一半流程（query-then-fetch 里的 fetch ）。如果 fetch 耗时比 query 还多，说明磁盘较慢，或者获取了太多文档，或者可能搜索请求设置了太大的分页（比如， size: 10000 ）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>merges 包括了 Lucene 段合并相关的信息。</p>
+<ul>
+<li>
+<p>它会告诉你目前在运行几个合并，合并涉及的文档数量，正在合并的段的总大小，以及在合并操作上消耗的总时间。</p>
+</li>
+<li>
+<p>在你的集群写入压力很大时，合并统计值非常重要。合并要消耗大量的磁盘 I/O 和 CPU 资源。如果你的索引有大量的写入，同时又发现大量的合并数，一定要去阅读索引性能技巧。</p>
+</li>
+<li>
+<p>注意：文档更新和删除也会导致大量的合并数，因为它们会产生最终需要被合并的段 碎片 。</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-json">
+&quot;query_cache&quot;: {
+  &quot;memory_size_in_bytes&quot;: 997384,
+  &quot;total_count&quot;: 1037643,
+  &quot;hit_count&quot;: 19450,
+  &quot;miss_count&quot;: 1018193,
+  &quot;cache_size&quot;: 188,
+  &quot;cache_count&quot;: 670,
+  &quot;evictions&quot;: 482
+},
+&quot;fielddata&quot;: {
+  &quot;memory_size_in_bytes&quot;: 736,
+  &quot;evictions&quot;: 0
+},
+&quot;completion&quot;: {
+  &quot;size_in_bytes&quot;: 0
+},
+&quot;segments&quot;: {
+  &quot;count&quot;: 192,
+  &quot;memory_in_bytes&quot;: 0,
+  &quot;terms_memory_in_bytes&quot;: 0,
+  &quot;stored_fields_memory_in_bytes&quot;: 0,
+  &quot;term_vectors_memory_in_bytes&quot;: 0,
+  &quot;norms_memory_in_bytes&quot;: 0,
+  &quot;points_memory_in_bytes&quot;: 0,
+  &quot;doc_values_memory_in_bytes&quot;: 0,
+  &quot;index_writer_memory_in_bytes&quot;: 4173916,
+  &quot;version_map_memory_in_bytes&quot;: 51318,
+  &quot;fixed_bit_set_memory_in_bytes&quot;: 593296,
+  &quot;max_unsafe_auto_id_timestamp&quot;: 1656995860384,
+  &quot;file_sizes&quot;: {}
+},
+
+</code></pre>
+<ol>
+<li>
+<p>filter_cache 展示了已缓存的过滤器位集合所用的内存数量，以及过滤器被驱逐出内存的次数。</p>
+<ul>
+<li>
+<p>过多的驱逐数 可能 说明你需要加大过滤器缓存的大小，或者你的过滤器不太适合缓存（比如它们因为高基数而在大量产生，就像是缓存一个 now 时间表达式）</p>
+</li>
+<li>
+<p>不过，驱逐数是一个很难评定的指标。过滤器是在每个段的基础上缓存的，而从一个小的段里驱逐过滤器，代价比从一个大的段里要廉价的多。有可能你有很大的驱逐数，但是它们都发生在小段上，也就意味着这些对查询性能只有很小的影响。</p>
+</li>
+<li>
+<p>把驱逐数指标作为一个粗略的参考。如果你看到数字很大，检查一下你的过滤器，确保他们都是正常缓存的。不断驱逐着的过滤器，哪怕都发生在很小的段上，效果也比正确缓存住了的过滤器差很多。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>field_data 显示 fielddata 使用的内存，用以聚合、排序等等。</p>
+<ul>
+<li>
+<p>这里也有一个驱逐计数。和 filter_cache 不同的是，这里的驱逐计数是很有用的：这个数应该或者至少是接近于 0。因为 fielddata 不是缓存，任何驱逐都消耗巨大，应该避免掉。</p>
+</li>
+<li>
+<p>如果你在这里看到驱逐数，你需要重新评估你的内存情况，fielddata 限制，请求语句，或者这三者。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>segments 会展示这个节点目前正在服务中的 Lucene 段的数量。</p>
+<ul>
+<li>
+<p>这是一个重要的数字。大多数索引会有大概 50–150 个段，哪怕它们存有 TB 级别的数十亿条文档。</p>
+</li>
+<li>
+<p>段数量过大表明合并出现了问题（比如，合并速度跟不上段的创建）。</p>
+</li>
+<li>
+<p>注意这个统计值是节点上所有索引的汇聚总数。记住这点。</p>
+</li>
+<li>
+<p>memory 统计值展示了 Lucene 段自己用掉的内存大小。这里包括底层数据结构，比如倒排表，字典，和布隆过滤器等。太大的段数量会增加这些数据结构带来的开销，这个内存使用量就是一个方便用来衡量开销的度量值。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../manage/monitor-individual-nodes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../manage/monitor-individual-nodes-os.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../manage/monitor-individual-nodes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../manage/monitor-individual-nodes-os.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>集群统计 - elastic</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="../perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="../basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="../basic/more-complicated-search.html"><strong aria-hidden="true">2.1.8.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="../basic/full-text-search.html"><strong aria-hidden="true">2.1.9.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="../basic/phrase-search.html"><strong aria-hidden="true">2.1.10.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="../basic/highlighting-intro.html"><strong aria-hidden="true">2.1.11.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="../basic/analytics.html"><strong aria-hidden="true">2.1.12.</strong> 分析</a></li><li class="chapter-item expanded "><a href="../basic/conclusion.html"><strong aria-hidden="true">2.1.13.</strong> 小结</a></li><li class="chapter-item expanded "><a href="../basic/distributed_nature.html"><strong aria-hidden="true">2.1.14.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="../basic/next-step.html"><strong aria-hidden="true">2.1.15.</strong> 后续步骤</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-cluster.html"><strong aria-hidden="true">2.2.</strong> 集群内的原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/empty-cluster.html"><strong aria-hidden="true">2.2.1.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="../basic/cluster-health.html"><strong aria-hidden="true">2.2.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../basic/add-an-index.html"><strong aria-hidden="true">2.2.3.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="../basic/add-failover.html"><strong aria-hidden="true">2.2.4.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="../basic/scale-horizontally.html"><strong aria-hidden="true">2.2.5.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="../basic/coping-with-failure.html"><strong aria-hidden="true">2.2.6.</strong> 应对故障</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/data-in-data-out.html"><strong aria-hidden="true">2.3.</strong> 数据输入和输出</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/document.html"><strong aria-hidden="true">2.3.1.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="../basic/document-metadata.html"><strong aria-hidden="true">2.3.2.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="../basic/index-doc.html"><strong aria-hidden="true">2.3.3.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="../basic/get-doc.html"><strong aria-hidden="true">2.3.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/doc-exists.html"><strong aria-hidden="true">2.3.5.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="../basic/update-doc.html"><strong aria-hidden="true">2.3.6.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="../basic/create-doc.html"><strong aria-hidden="true">2.3.7.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="../basic/delete-doc.html"><strong aria-hidden="true">2.3.8.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="../basic/version-control.html"><strong aria-hidden="true">2.3.9.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="../basic/optimistic-concurrency-control.html"><strong aria-hidden="true">2.3.10.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="../basic/partial-update.html"><strong aria-hidden="true">2.3.11.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-multiple-docs.html"><strong aria-hidden="true">2.3.12.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="../basic/bulk.html"><strong aria-hidden="true">2.3.13.</strong> 代价较小的批量操作</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-docs.html"><strong aria-hidden="true">2.4.</strong> 分布式文档存储</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/routing-value.html"><strong aria-hidden="true">2.4.1.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="../basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">2.4.2.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="../basic/distrib-write.html"><strong aria-hidden="true">2.4.3.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-read.html"><strong aria-hidden="true">2.4.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/partial-update-to-a-doc.html"><strong aria-hidden="true">2.4.5.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-multi-doc.html"><strong aria-hidden="true">2.4.6.</strong> 多文档模式</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/search.html"><strong aria-hidden="true">2.5.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="../basic/mapping-analysis.html"><strong aria-hidden="true">2.6.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="../basic/full-search-body.html"><strong aria-hidden="true">2.7.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="../basic/sorting.html"><strong aria-hidden="true">2.8.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="../basic/distributed-search.html"><strong aria-hidden="true">2.9.</strong> 执行分布式检索</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/query-phase.html"><strong aria-hidden="true">2.9.1.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="../basic/fetch-phase.html"><strong aria-hidden="true">2.9.2.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="../basic/search-options.html"><strong aria-hidden="true">2.9.3.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="../basic/scroll.html"><strong aria-hidden="true">2.9.4.</strong> 查询游标</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/index-management.html"><strong aria-hidden="true">2.10.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../basic/inside-a-shard.html"><strong aria-hidden="true">2.11.</strong> 分片内部原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/making-text-searchable.html"><strong aria-hidden="true">2.11.1.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="../basic/dynamic-indices.html"><strong aria-hidden="true">2.11.2.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="../basic/near-real-time.html"><strong aria-hidden="true">2.11.3.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="../basic/translog.html"><strong aria-hidden="true">2.11.4.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="../basic/merge-process.html"><strong aria-hidden="true">2.11.5.</strong> 段合并</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li><li class="chapter-item expanded "><a href="../manage/administration.html"><strong aria-hidden="true">3.</strong> 管理、监控入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/cluster-admin.html"><strong aria-hidden="true">3.1.</strong> 监控</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/marval.html"><strong aria-hidden="true">3.1.1.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="../manage/cluster-health.html"><strong aria-hidden="true">3.1.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes.html"><strong aria-hidden="true">3.1.3.</strong> 监控单个节点</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">3.1.3.1.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">3.1.3.2.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">3.1.3.3.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">3.1.3.4.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">3.1.3.5.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">3.1.3.6.</strong> 断路器部分</a></li></ol></li><li class="chapter-item expanded "><a href="../manage/cluster-stats.html" class="active"><strong aria-hidden="true">3.1.4.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="../manage/index-stats.html"><strong aria-hidden="true">3.1.5.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="../manage/pending-task.html"><strong aria-hidden="true">3.1.6.</strong> 等待中的任务</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="集群统计"><a class="header" href="#集群统计">集群统计</a></h1>
+<p>集群统计 API 提供了和 节点统计 相似的输出。 但有一个重要的区别：节点统计显示的是每个节点上的统计值，而 集群统计 展示的是对于单个指标，所有节点的总和值。</p>
+<p>这里面提供一些很值得一看的统计值。比如说你可以看到，整个集群用了 50% 的堆内存，或者说过滤器缓存的驱逐情况不严重。这个接口主要用途是提供一个比 集群健康 更详细、但又没有 节点统计 那么详细的快速概览。对于非常大的集群来说也很有用，因为那时候 节点统计 的输出已经非常难于阅读了。</p>
+<p>这个 API 可以像下面这样调用：</p>
+<pre><code class="language-json">GET _cluster/stats
+
+{
+  &quot;_nodes&quot;: {
+    &quot;total&quot;: 3,
+    &quot;successful&quot;: 3,
+    &quot;failed&quot;: 0
+  },
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;cluster_uuid&quot;: &quot;ZjfLI0y8QkyT28Q0cVcI2w&quot;,
+  &quot;timestamp&quot;: 1657862967234,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;indices&quot;: {
+    &quot;count&quot;: 95,
+    &quot;shards&quot;: {
+      &quot;total&quot;: 194,
+      &quot;primaries&quot;: 97,
+      &quot;replication&quot;: 1,
+      &quot;index&quot;: {
+        &quot;shards&quot;: {
+          &quot;min&quot;: 2,
+          &quot;max&quot;: 6,
+          &quot;avg&quot;: 2.042105263157895
+        },
+        &quot;primaries&quot;: {
+          &quot;min&quot;: 1,
+          &quot;max&quot;: 3,
+          &quot;avg&quot;: 1.0210526315789474
+        },
+        &quot;replication&quot;: {
+          &quot;min&quot;: 1,
+          &quot;max&quot;: 1,
+          &quot;avg&quot;: 1
+        }
+      }
+    },
+    &quot;docs&quot;: {
+      &quot;count&quot;: 8179616,
+      &quot;deleted&quot;: 3604
+    },
+    &quot;store&quot;: {
+      &quot;size_in_bytes&quot;: 7312447557,
+      &quot;total_data_set_size_in_bytes&quot;: 7312447557,
+      &quot;reserved_in_bytes&quot;: 0
+    },
+    &quot;fielddata&quot;: {
+      &quot;memory_size_in_bytes&quot;: 928,
+      &quot;evictions&quot;: 0
+    },
+    &quot;query_cache&quot;: {
+      &quot;memory_size_in_bytes&quot;: 3102124,
+      &quot;total_count&quot;: 26571348,
+      &quot;hit_count&quot;: 2356601,
+      &quot;miss_count&quot;: 24214747,
+      &quot;cache_size&quot;: 418,
+      &quot;cache_count&quot;: 27062,
+      &quot;evictions&quot;: 26644
+    },
+    &quot;completion&quot;: {
+      &quot;size_in_bytes&quot;: 0
+    },
+    &quot;segments&quot;: {
+      &quot;count&quot;: 434,
+      &quot;memory_in_bytes&quot;: 0,
+      &quot;terms_memory_in_bytes&quot;: 0,
+      &quot;stored_fields_memory_in_bytes&quot;: 0,
+      &quot;term_vectors_memory_in_bytes&quot;: 0,
+      &quot;norms_memory_in_bytes&quot;: 0,
+      &quot;points_memory_in_bytes&quot;: 0,
+      &quot;doc_values_memory_in_bytes&quot;: 0,
+      &quot;index_writer_memory_in_bytes&quot;: 10516644,
+      &quot;version_map_memory_in_bytes&quot;: 1212,
+      &quot;fixed_bit_set_memory_in_bytes&quot;: 1592256,
+      &quot;max_unsafe_auto_id_timestamp&quot;: 1657774689022,
+      &quot;file_sizes&quot;: {}
+    },
+    &quot;mappings&quot;: {
+      &quot;field_types&quot;: [
+        {
+          &quot;name&quot;: &quot;alias&quot;,
+          &quot;count&quot;: 1027,
+          &quot;index_count&quot;: 8,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;boolean&quot;,
+          &quot;count&quot;: 207,
+          &quot;index_count&quot;: 28,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;byte&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;constant_keyword&quot;,
+          &quot;count&quot;: 15,
+          &quot;index_count&quot;: 5,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;date&quot;,
+          &quot;count&quot;: 373,
+          &quot;index_count&quot;: 64,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;date_range&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;double&quot;,
+          &quot;count&quot;: 343,
+          &quot;index_count&quot;: 6,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;flattened&quot;,
+          &quot;count&quot;: 12,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;float&quot;,
+          &quot;count&quot;: 314,
+          &quot;index_count&quot;: 15,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;geo_point&quot;,
+          &quot;count&quot;: 38,
+          &quot;index_count&quot;: 8,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;half_float&quot;,
+          &quot;count&quot;: 24,
+          &quot;index_count&quot;: 6,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;integer&quot;,
+          &quot;count&quot;: 13,
+          &quot;index_count&quot;: 9,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;ip&quot;,
+          &quot;count&quot;: 78,
+          &quot;index_count&quot;: 7,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;ip_range&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;keyword&quot;,
+          &quot;count&quot;: 4783,
+          &quot;index_count&quot;: 77,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;long&quot;,
+          &quot;count&quot;: 4229,
+          &quot;index_count&quot;: 34,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;match_only_text&quot;,
+          &quot;count&quot;: 63,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;nested&quot;,
+          &quot;count&quot;: 20,
+          &quot;index_count&quot;: 4,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;object&quot;,
+          &quot;count&quot;: 5448,
+          &quot;index_count&quot;: 43,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;scaled_float&quot;,
+          &quot;count&quot;: 154,
+          &quot;index_count&quot;: 3,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;short&quot;,
+          &quot;count&quot;: 14,
+          &quot;index_count&quot;: 7,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;text&quot;,
+          &quot;count&quot;: 239,
+          &quot;index_count&quot;: 19,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;version&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;wildcard&quot;,
+          &quot;count&quot;: 17,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        }
+      ],
+      &quot;runtime_field_types&quot;: []
+    },
+    &quot;analysis&quot;: {
+      &quot;char_filter_types&quot;: [],
+      &quot;tokenizer_types&quot;: [],
+      &quot;filter_types&quot;: [],
+      &quot;analyzer_types&quot;: [],
+      &quot;built_in_char_filters&quot;: [],
+      &quot;built_in_tokenizers&quot;: [],
+      &quot;built_in_filters&quot;: [],
+      &quot;built_in_analyzers&quot;: [
+        {
+          &quot;name&quot;: &quot;english&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1
+        }
+      ]
+    },
+    &quot;versions&quot;: [
+      {
+        &quot;version&quot;: &quot;8.3.1&quot;,
+        &quot;index_count&quot;: 95,
+        &quot;primary_shard_count&quot;: 97,
+        &quot;total_primary_bytes&quot;: 3385710034
+      }
+    ]
+  },
+  &quot;nodes&quot;: {
+    &quot;count&quot;: {
+      &quot;total&quot;: 3,
+      &quot;coordinating_only&quot;: 0,
+      &quot;data&quot;: 0,
+      &quot;data_cold&quot;: 0,
+      &quot;data_content&quot;: 2,
+      &quot;data_frozen&quot;: 0,
+      &quot;data_hot&quot;: 2,
+      &quot;data_warm&quot;: 0,
+      &quot;ingest&quot;: 2,
+      &quot;master&quot;: 3,
+      &quot;ml&quot;: 0,
+      &quot;remote_cluster_client&quot;: 2,
+      &quot;transform&quot;: 2,
+      &quot;voting_only&quot;: 1
+    },
+    &quot;versions&quot;: [
+      &quot;8.3.1&quot;
+    ],
+    &quot;os&quot;: {
+      &quot;available_processors&quot;: 6,
+      &quot;allocated_processors&quot;: 6,
+      &quot;names&quot;: [
+        {
+          &quot;name&quot;: &quot;Linux&quot;,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;pretty_names&quot;: [
+        {
+          &quot;pretty_name&quot;: &quot;Ubuntu 20.04.4 LTS&quot;,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;architectures&quot;: [
+        {
+          &quot;arch&quot;: &quot;amd64&quot;,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;mem&quot;: {
+        &quot;total_in_bytes&quot;: 9663676416,
+        &quot;adjusted_total_in_bytes&quot;: 8531214336,
+        &quot;free_in_bytes&quot;: 924491776,
+        &quot;used_in_bytes&quot;: 8739184640,
+        &quot;free_percent&quot;: 10,
+        &quot;used_percent&quot;: 90
+      }
+    },
+    &quot;process&quot;: {
+      &quot;cpu&quot;: {
+        &quot;percent&quot;: 6
+      },
+      &quot;open_file_descriptors&quot;: {
+        &quot;min&quot;: 852,
+        &quot;max&quot;: 1372,
+        &quot;avg&quot;: 1154
+      }
+    },
+    &quot;jvm&quot;: {
+      &quot;max_uptime_in_millis&quot;: 867151943,
+      &quot;versions&quot;: [
+        {
+          &quot;version&quot;: &quot;18.0.1.1&quot;,
+          &quot;vm_name&quot;: &quot;OpenJDK 64-Bit Server VM&quot;,
+          &quot;vm_version&quot;: &quot;18.0.1.1+2-6&quot;,
+          &quot;vm_vendor&quot;: &quot;Oracle Corporation&quot;,
+          &quot;bundled_jdk&quot;: true,
+          &quot;using_bundled_jdk&quot;: true,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;mem&quot;: {
+        &quot;heap_used_in_bytes&quot;: 2435488768,
+        &quot;heap_max_in_bytes&quot;: 4198498304
+      },
+      &quot;threads&quot;: 176
+    },
+    &quot;fs&quot;: {
+      &quot;total_in_bytes&quot;: 434865438720,
+      &quot;free_in_bytes&quot;: 425859817472,
+      &quot;available_in_bytes&quot;: 425859817472
+    },
+    &quot;plugins&quot;: [],
+    &quot;network_types&quot;: {
+      &quot;transport_types&quot;: {
+        &quot;security4&quot;: 3
+      },
+      &quot;http_types&quot;: {
+        &quot;security4&quot;: 3
+      }
+    },
+    &quot;discovery_types&quot;: {
+      &quot;multi-node&quot;: 3
+    },
+    &quot;packaging_types&quot;: [
+      {
+        &quot;flavor&quot;: &quot;default&quot;,
+        &quot;type&quot;: &quot;docker&quot;,
+        &quot;count&quot;: 3
+      }
+    ],
+    &quot;ingest&quot;: {
+      &quot;number_of_pipelines&quot;: 35,
+      &quot;processor_stats&quot;: {
+        &quot;append&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;conditional&quot;: {
+          &quot;count&quot;: 13757,
+          &quot;failed&quot;: 2,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 2039
+        },
+        &quot;convert&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;date&quot;: {
+          &quot;count&quot;: 1361166,
+          &quot;failed&quot;: 2,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 13095
+        },
+        &quot;dot_expander&quot;: {
+          &quot;count&quot;: 44712,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 94
+        },
+        &quot;geoip&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;grok&quot;: {
+          &quot;count&quot;: 1366785,
+          &quot;failed&quot;: 11,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 45211
+        },
+        &quot;gsub&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;json&quot;: {
+          &quot;count&quot;: 5600,
+          &quot;failed&quot;: 11,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 134
+        },
+        &quot;pipeline&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;remove&quot;: {
+          &quot;count&quot;: 1391685,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 522
+        },
+        &quot;rename&quot;: {
+          &quot;count&quot;: 61004,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 101
+        },
+        &quot;script&quot;: {
+          &quot;count&quot;: 13745,
+          &quot;failed&quot;: 11,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 136
+        },
+        &quot;set&quot;: {
+          &quot;count&quot;: 6822207,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 21445
+        },
+        &quot;set_security_user&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;split&quot;: {
+          &quot;count&quot;: 1355575,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 1466
+        },
+        &quot;trim&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;user_agent&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        }
+      }
+    },
+    &quot;indexing_pressure&quot;: {
+      &quot;memory&quot;: {
+        &quot;current&quot;: {
+          &quot;combined_coordinating_and_primary_in_bytes&quot;: 0,
+          &quot;coordinating_in_bytes&quot;: 0,
+          &quot;primary_in_bytes&quot;: 0,
+          &quot;replica_in_bytes&quot;: 0,
+          &quot;all_in_bytes&quot;: 0
+        },
+        &quot;total&quot;: {
+          &quot;combined_coordinating_and_primary_in_bytes&quot;: 0,
+          &quot;coordinating_in_bytes&quot;: 0,
+          &quot;primary_in_bytes&quot;: 0,
+          &quot;replica_in_bytes&quot;: 0,
+          &quot;all_in_bytes&quot;: 0,
+          &quot;coordinating_rejections&quot;: 0,
+          &quot;primary_rejections&quot;: 0,
+          &quot;replica_rejections&quot;: 0
+        },
+        &quot;limit_in_bytes&quot;: 0
+      }
+    }
+  }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../manage/monitor-individual-nodes-breaker.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../manage/index-stats.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../manage/monitor-individual-nodes-breaker.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../manage/index-stats.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
