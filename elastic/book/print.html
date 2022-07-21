@@ -2691,6 +2691,10 @@ int( (primary + 3 replicas) / 2 ) + 1 = 3
 <p>相反，Elasticsearch可以直接读取被网络缓冲区接收的原始数据。 它使用换行符字符来识别和解析小的 action/metadata 行来决定哪个分片应该处理每个请求。</p>
 <p>这些原始请求会被直接转发到正确的分片。没有冗余的数据复制，没有浪费的数据结构。整个请求尽可能在最小的内存中处理。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="搜索-最基本的工具"><a class="header" href="#搜索-最基本的工具">搜索-最基本的工具</a></h1>
+<p>现在，我们已经学会了如何使用 Elasticsearch 作为一个简单的 NoSQL 风格的分布式文档存储系统。我们可以将一个 JSON 文档扔到 Elasticsearch 里，然后根据 ID 检索。但 Elasticsearch 真正强大之处在于可以从无规律的数据中找出有意义的信息——从“大数据”到“大信息”。</p>
+<p>Elasticsearch 不只会_存储（stores）_ 文档，为了能被搜索到也会为文档添加_索引（indexes）_ ，这也是为什么我们使用结构化的 JSON 文档，而不是无结构的二进制数据。</p>
+<p>文档中的每个字段都将被索引并且可以被查询 。不仅如此，在简单查询时，Elasticsearch 可以使用 所有（all） 这些索引字段，以惊人的速度返回结果。这是你永远不会考虑用传统数据库去做的一些事情。</p>
+<p>搜索（search） 可以做到：</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="映射和分析"><a class="header" href="#映射和分析">映射和分析</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="请求体查询"><a class="header" href="#请求体查询">请求体查询</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="排序与相关性"><a class="header" href="#排序与相关性">排序与相关性</a></h1>
