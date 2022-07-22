@@ -215,9 +215,23 @@ In the center, you have the new code to add. It may have a few faded out lines a
 
 中间代码是实际要添加的代码，上面和下面的代码表示要添加代码的位置。还有一个小提示，告诉你这段代码添加到哪个文件的哪个函数中。如何小提示上面写了 "替换该行", 表示新增的代码需要替换之前的代码。
 
+## 2.3 Asides
 
+Asides contain biographical sketches, historical background, references to related topics, and suggestions of other areas to explore. There’s nothing that you need to know in them to understand later parts of the book, so you can skip them if you want. I won’t judge you, but I might be a little sad.
+
+旁白包含了传记历史、历史背景、相关主题的参考文献以及推荐的延伸阅读。如果是为了阅读后面章节的内容，你不需要阅读旁白，也就是说你可以直接跳过旁白。我不会批评你，但是我会感到难过 😫。
+
+## 2.4 Challenges
+
+Each chapter ends with a few exercises. Unlike textbook problem sets, which tend to review material you already covered, these are to help you learn more than what’s in the chapter. They force you to step off the guided path and explore on your own. They will make you research other languages, figure out how to implement features, or otherwise get you out of your comfort zone.
+
+Vanquish the challenges and you’ll come away with a broader understanding and possibly a few bumps and scrapes. Or skip them if you want to stay inside the comfy confines of the tour bus. It’s your book.
+
+每个章节都以一些练习题结束。但是不同于教科书的习题集，它们通常让你复习已经学过的知识，本书的习题更加倾向于让你学到更多的东西。这些习题会让你离开章节的已有路径，独自探索更多的未知领域。它们会让你去研究其他语言，去寻找如何实现功能，或者让你走出舒适区。
+
+接受习题集的挑战，并且战胜它们，你将会有更加广阔的视野，虽然你可能会遇到一些坎坷和挫折。如果你想要呆在舒服的游览车内，你也可以跳过这些挑战习题，毕竟这是你的书。
   
-  ## 五、Challenges
+  ## 2.4 Challenges
   
   1. There are at least siz domain-specific languages used in the [little system I cobbled together](https://github.com/munificent/craftinginterpreters) to write and publish this book. What are they?
   

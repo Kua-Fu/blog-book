@@ -40,7 +40,8 @@
 - [操作系统](learning/os/os.md)
 - [编译原理](learning/compile/compile.md)
 - [Python](learning/python/python.md)
-- [Golang](learning/golang/golang.md)
+- [Go](learning/golang/golang.md)
+  - [go 101](learning/golang/101.md)
 
 
 # 文章阅读
