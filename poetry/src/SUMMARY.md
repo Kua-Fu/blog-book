@@ -49,6 +49,7 @@
 - [技术类](article/technology/technology.md)
   - [DataDog实践—大数据百分位实时计算实践](article/technology/datadog_percentile.md)
   - [elasticsearch相关技术文档](article/technology/elastic.md)
+  - [LogMine: Fast Pattern Recognition for Log Analytics](article/technology/logmine.md)
 
 - [生活](article/life/life.md)
   - [Kevin Kelly的103条建议](article/life/103_advice.md)

@@ -4,4 +4,6 @@
 
 [Online Reading](https://craftinginterpreters.com/contents.html)
 
+[个人翻译版本](https://www.poetries.cn/crafting/)
+
 

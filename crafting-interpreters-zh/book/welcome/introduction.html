@@ -246,7 +246,7 @@
 <p>Yacc并不是第一个&quot;编译器编译程序&quot;, 这就是这个程序缩写的来源：另一个编译器编译程序。还有一个相似的工具，称为 Bison（野牛), 命名来源于 Yacc的双关语 yak （牦牛)。</p>
 <p>如果你发现，这些小小的自我暗示和双关语，很有魅力和乐趣，你将很快适应这里。如果你对此并不感冒，可能书呆子的幽默感是后天养成的。</p>
 </blockquote>
-<h2 id="22-snippets"><a class="header" href="#22-snippets">2.2 Snippets</a></h2>
+<h3 id="22-snippets"><a class="header" href="#22-snippets">2.2 Snippets</a></h3>
 <p>代码段</p>
 <p>Since the book contains literally every line of code needed for the implementations, the snippets are quite precise. Also, because I try to keep the program in a runnable state even when major features are missing, sometimes we add temporary code that gets replaced in later snippets.</p>
 <p>A snippet with all the bells and whistles looks like this:</p>
@@ -266,19 +266,19 @@
 <p>因为本书中包含有所有编译器的实现代码，所以书中涉及的代码段非常准确。此外，因为我试图让程序即使在缺少主要功能的情况下，也可以保持可运行状态。所以，有时候我会添加临时代码，在之后章节会替换这些临时代码。</p>
 <p>代码段示例如下:</p>
 <p>中间代码是实际要添加的代码，上面和下面的代码表示要添加代码的位置。还有一个小提示，告诉你这段代码添加到哪个文件的哪个函数中。如何小提示上面写了 &quot;替换该行&quot;, 表示新增的代码需要替换之前的代码。</p>
-<h2 id="23-asides"><a class="header" href="#23-asides">2.3 Asides</a></h2>
+<h3 id="23-asides"><a class="header" href="#23-asides">2.3 Asides</a></h3>
 <p>Asides contain biographical sketches, historical background, references to related topics, and suggestions of other areas to explore. There’s nothing that you need to know in them to understand later parts of the book, so you can skip them if you want. I won’t judge you, but I might be a little sad.</p>
 <p>Well, some asides do, at least. Most of them are just dumb jokes and amateurish drawings.</p>
 <p>旁白包含了传记历史、历史背景、相关主题的参考文献以及推荐的延伸阅读。如果是为了阅读后面章节的内容，你不需要阅读旁白，也就是说你可以直接跳过旁白。我不会批评你，但是我会感到难过 😫。</p>
 <p>嗯，还有些旁白不尽如人意，这些旁白大部分都是愚蠢的笑话和业余水平的绘画。</p>
-<h2 id="24-challenges"><a class="header" href="#24-challenges">2.4 Challenges</a></h2>
+<h3 id="24-challenges"><a class="header" href="#24-challenges">2.4 Challenges</a></h3>
 <p>Each chapter ends with a few exercises. Unlike textbook problem sets, which tend to review material you already covered, these are to help you learn more than what’s in the chapter. They force you to step off the guided path and explore on your own. They will make you research other languages, figure out how to implement features, or otherwise get you out of your comfort zone.</p>
 <p>Vanquish the challenges and you’ll come away with a broader understanding and possibly a few bumps and scrapes. Or skip them if you want to stay inside the comfy confines of the tour bus. It’s your book.</p>
 <p>A word of warning: the challenges often ask you to make changes to the interpreter you’re building. You’ll want to implement those in a copy of your code. The later chapters assume your interpreter is in a pristine (“unchallenged”?) state.</p>
 <p>每个章节都以一些练习题结束。但是不同于教科书的习题集，它们通常让你复习已经学过的知识，本书的习题更加倾向于让你学到更多的东西。这些习题会让你离开章节的已有路径，独自探索更多的未知领域。它们会让你去研究其他语言，去寻找如何实现功能，或者让你走出舒适区。</p>
 <p>接受习题集的挑战，并且战胜它们，你将会有更加广阔的视野，虽然你可能会遇到一些坎坷和挫折。如果你想要呆在舒服的游览车内，你也可以跳过这些挑战习题，毕竟这是你的书。</p>
 <p>一句警告⚠️，这些挑战通常会要求你修改已构建的编译器，建议你在副本项目中实现这些挑战，我们后面的章节基于没有修改的编译器。</p>
-<h2 id="25-design-notes"><a class="header" href="#25-design-notes">2.5 Design notes</a></h2>
+<h3 id="25-design-notes"><a class="header" href="#25-design-notes">2.5 Design notes</a></h3>
 <p>设计思路</p>
 <p>Most “programming language” books are strictly programming language implementation books. They rarely discuss how one might happen to design the language being implemented. Implementation is fun because it is so precisely defined. We programmers seem to have an affinity for things that are black and white, ones and zeroes.</p>
 <p>Personally, I think the world needs only so many implementations of FORTRAN 77. At some point, you find yourself designing a new language. Once you start playing that game, then the softer, human side of the equation becomes paramount.  Things like which features are easy to learn, how to balance innovation and familiarity, what syntax is more readable and to whom.</p>
@@ -288,7 +288,7 @@
 <p>就我个人而言，我认为世界上只需要 Fortran77 （1976年，美国标准化协会重新对Fortran（x3.9-1966）进行了评估，公布了新的Fortran标准，也就是Fortran 77。Fortran 77是具有结构化特性的编程语言。Fortran77在短时间内获取了巨大的成功，广泛地应用于科学和工程计算，几乎统治了数值计算领域。）中实现的功能。但是在某些时候，你发现自己在设计一门新语言。一旦你开始设计语言这个游戏，那么人性化的一面变得非常重要。需要考虑更加具体的内容，例如：哪些功能更易于学习，如何平衡创新和保留，哪些语法更易于阅读，学习语言的人群是谁？</p>
 <p>所有这些都深刻的影响着一门新语言的成功与否。我希望你的新语言可以成功，所以我会在某些章节的结尾，发表一些设计方面的思考，这是一些编程语言中人们设计的最佳实践。我不是设计方面的专家，不知道是否有人真的这么想—在一些编程语言的正文中，添加一些设计方面的内容。这应该会让设计内容称为更加美味的思想食粮，这也是我的主要目标。</p>
 <p>我认识很多编程老手，他们的职业就在于此——你将一门语言的规范告知他们，等待几个月，你将会得到这门新语言的代码和基准测试结果。希望你的新语言，不会将穿孔纸的宽度信息，硬编码到语言语法中。</p>
-<h1 id="三the-first-interpreter"><a class="header" href="#三the-first-interpreter">三、The First Interpreter</a></h1>
+<h2 id="三the-first-interpreter"><a class="header" href="#三the-first-interpreter">三、The First Interpreter</a></h2>
 <p>第一个编译器</p>
 <p>We’ll write our first interpreter, jlox, in Java. The focus is on concepts. We’ll write the simplest, cleanest code we can to correctly implement the semantics of the language. This will get us comfortable with the basic techniques and also hone our understanding of exactly how the language is supposed to behave.</p>
 <p>The book uses Java and C, but readers have ported the code to many other languages. If the languages I picked aren’t your bag, take a look at those.</p>
@@ -310,13 +310,21 @@ You can implement a compiler in any language, including the same language it com
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/bootstrap.png?raw=true" alt="bootstraps" /></p>
 <p>编译器读取一种语言的原始文件，翻译它们，然后输出另外一门语言的文件。你可以用任何语言实现编译器，甚至你可以使用相同的语言去实现该语言的编译器，这通常被称为自编译。</p>
 <p>一开始，你无法使用相同的语言写成一个编译器，但是如果你已经使用过其他语言实现了新语言的编译器，那么你就可以使用已经实现的编译器，去编译一次，然后你可以获取到使用新语言实现的编译器。接下来，你可以愉快的使用新的编译器，去升级新的编译器版本，也可以扔掉之前的其他语言写成的编译器了。专业术语一般称为自举，图中形象的描述了一个人的自举。</p>
-<h1 id="四the-second-interpreter"><a class="header" href="#四the-second-interpreter">四、The Second Interpreter</a></h1>
+<h2 id="四the-second-interpreter"><a class="header" href="#四the-second-interpreter">四、The Second Interpreter</a></h2>
 <p>第二个编译器</p>
 <p>So in the next part, we start all over again, but this time in C. C is the perfect language for understanding how an implementation really works, all the way down to the bytes in memory and the code flowing through the CPU.</p>
 <p>A big reason that we’re using C is so I can show you things C is particularly good at, but that does mean you’ll need to be pretty comfortable with it. You don’t have to be the reincarnation of Dennis Ritchie, but you shouldn’t be spooked by pointers either.</p>
 <p>If you aren’t there yet, pick up an introductory book on C and chew through it, then come back here when you’re done. In return, you’ll come away from this book an even stronger C programmer. That’s useful given how many language implementations are written in C: Lua, CPython, and Ruby’s MRI, to name a few.</p>
 <p>In our C interpreter, clox, we are forced to implement for ourselves all the things Java gave us for free. We’ll write our own dynamic array and hash table. We’ll decide how objects are represented in memory, and build a garbage collector to reclaim them.</p>
+<blockquote>
+<p>I pronounce the name like “sea-locks”, but you can say it “clocks” or even “cloch”, where you pronounce the “x” like the Greeks do if it makes you happy.</p>
+<p>我把这个名字读成&quot;sea-locks&quot;, 但是你也可以读成，&quot;clocks&quot; 或者 &quot;cloch&quot;, 如果你开心的话，还可以像希腊人一样读 &quot;x&quot;</p>
+</blockquote>
 <p>Our Java implementation was focused on being correct. Now that we have that down, we’ll turn to also being fast. Our C interpreter will contain a compiler that translates Lox to an efficient bytecode representation (don’t worry, I’ll get into what that means soon), which it then executes. This is the same technique used by implementations of Lua, Python, Ruby, PHP, and many other successful languages.</p>
+<blockquote>
+<p>Did you think this was just an interpreter book? It’s a compiler book as well. Two for the price of one!</p>
+<p>你认为这只是一本解释器介绍书籍吗，其实它还是一个编译器介绍书籍。这两者没有本质区别。</p>
+</blockquote>
 <p>We’ll even try our hand at benchmarking and optimization. By the end, we’ll have a robust, accurate, fast interpreter for our language, able to keep up with other professional caliber implementations out there. Not bad for one book and a few thousand lines of code.</p>
 <p>在下个部分中，我们将从头开始，但是这一次将使用C语言。C语言可以让我们更好的理解计算机是如何工作的，深入到底层，例如：内存中的字节和 cpu 执行的代码。</p>
 <p>我们使用C语言实现编译器，的一个重要原因是，我可以使用C语言一些特别擅长的功能，但是这也意味着你必须非常熟悉C语言。你不需要像创始人 Dennis Ritchie 一样熟悉 C语言，但是你至少不能被指针吓倒。</p>
@@ -324,7 +332,7 @@ You can implement a compiler in any language, including the same language it com
 <p>在C语言实现的解释器 clox 中，我们将要实现一些 Java中原生存在的结构，例如：我们将实现动态数组和哈希表，我们将设计决定如何在内存中表示对象，并且构建垃圾采集器回收它们。</p>
 <p>第一部分，我们用Java语言实现的编译器 jlox主要专注于准确性，现在我们已经实现了准确性，接下来将专注于性能。我们的clox解释器，将实现一个编译器，将lox 编译为有效的字节码（别担心，很快我将解释它是什么），然后执行字节码。这与其他语言的实现使用相同技术，例如：Lua，Python，Ruby，PHP等等。</p>
 <p>我们甚至会尝试基准测试和优化。到最后，我们将实现一个强大、准确、快速的语言解释器，能够和其他专业级别的语言媲美，而这对于一本书和几千行代码而言，并不简单。</p>
-<h1 id="五-challenges"><a class="header" href="#五-challenges">五、 Challenges</a></h1>
+<h2 id="五-challenges"><a class="header" href="#五-challenges">五、 Challenges</a></h2>
 <p>习题</p>
 <ol>
 <li>
@@ -340,7 +348,7 @@ You can implement a compiler in any language, including the same language it com
 <p>使用C语言实现一个 &quot;hello, world&quot; 程序，为了练习指针，定义一个堆分配字符串的双链表，编写函数插入、查找、删除链表元素。</p>
 </li>
 </ol>
-<h1 id="六design-note-whats-in-a-name"><a class="header" href="#六design-note-whats-in-a-name">六、Design Note: What's in a name?</a></h1>
+<h2 id="六design-note-whats-in-a-name"><a class="header" href="#六design-note-whats-in-a-name">六、Design Note: What's in a name?</a></h2>
 <p>设计说明：如何命名？</p>
 <p>One of the hardest challenges in writing book was coming up with a name for the language it implements. I went through pages of candidates before I found one that worked. As you'll discover on the first day you start building your own language, naming is deviously hard. A good name satisfies a few criteria:</p>
 <ol>

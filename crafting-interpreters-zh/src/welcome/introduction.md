@@ -49,7 +49,7 @@
   
  这个本书的一个目标，可以让你更加真切的认识一门语言，可以凭直觉感知一门语言如何编写运行。希望当以后学习更多的编译原理时候，通过现在培养的直觉，可以牢牢记住书中的概念。
   
-  ## 一、Why learn this stuff?
+## 一、Why learn this stuff?
   
 为什么要学习这些东西？
   
@@ -125,7 +125,7 @@ And, who knows, maybe you will make the next great language. Someone has to.
 最后，你还可能成为下一个伟大语言的创始人，必须有人去做。谁知道呢？
 
   
-  ## 二、How the book is organized
+## 二、How the book is organized
   
   本书的组织方式
   
@@ -185,7 +185,7 @@ While the book contains every line of code and teaches what each means, it does 
 >
 > 如果你发现，这些小小的自我暗示和双关语，很有魅力和乐趣，你将很快适应这里。如果你对此并不感冒，可能书呆子的幽默感是后天养成的。
 
-## 2.2 Snippets
+### 2.2 Snippets
 
 代码段
 
@@ -215,7 +215,7 @@ In the center, you have the new code to add. It may have a few faded out lines a
 
 中间代码是实际要添加的代码，上面和下面的代码表示要添加代码的位置。还有一个小提示，告诉你这段代码添加到哪个文件的哪个函数中。如何小提示上面写了 "替换该行", 表示新增的代码需要替换之前的代码。
 
-## 2.3 Asides
+### 2.3 Asides
 
 Asides contain biographical sketches, historical background, references to related topics, and suggestions of other areas to explore. There’s nothing that you need to know in them to understand later parts of the book, so you can skip them if you want. I won’t judge you, but I might be a little sad.
 
@@ -225,7 +225,7 @@ Well, some asides do, at least. Most of them are just dumb jokes and amateurish 
 
 嗯，还有些旁白不尽如人意，这些旁白大部分都是愚蠢的笑话和业余水平的绘画。
 
-## 2.4 Challenges
+### 2.4 Challenges
 
 Each chapter ends with a few exercises. Unlike textbook problem sets, which tend to review material you already covered, these are to help you learn more than what’s in the chapter. They force you to step off the guided path and explore on your own. They will make you research other languages, figure out how to implement features, or otherwise get you out of your comfort zone.
 
@@ -239,7 +239,7 @@ A word of warning: the challenges often ask you to make changes to the interpret
 
 一句警告⚠️，这些挑战通常会要求你修改已构建的编译器，建议你在副本项目中实现这些挑战，我们后面的章节基于没有修改的编译器。
 
-## 2.5 Design notes
+### 2.5 Design notes
 
 设计思路
 
@@ -259,7 +259,7 @@ I know a lot of language hackers whose careers are based on this. You slide a la
 
 我认识很多编程老手，他们的职业就在于此——你将一门语言的规范告知他们，等待几个月，你将会得到这门新语言的代码和基准测试结果。希望你的新语言，不会将穿孔纸的宽度信息，硬编码到语言语法中。
 
-# 三、The First Interpreter
+## 三、The First Interpreter
 
 第一个编译器
 
@@ -303,7 +303,7 @@ You can’t compile your compiler using itself yet, but if you have another comp
 
 一开始，你无法使用相同的语言写成一个编译器，但是如果你已经使用过其他语言实现了新语言的编译器，那么你就可以使用已经实现的编译器，去编译一次，然后你可以获取到使用新语言实现的编译器。接下来，你可以愉快的使用新的编译器，去升级新的编译器版本，也可以扔掉之前的其他语言写成的编译器了。专业术语一般称为自举，图中形象的描述了一个人的自举。
 
-# 四、The Second Interpreter
+## 四、The Second Interpreter
 
 第二个编译器
 
@@ -315,7 +315,16 @@ If you aren’t there yet, pick up an introductory book on C and chew through it
 
 In our C interpreter, clox, we are forced to implement for ourselves all the things Java gave us for free. We’ll write our own dynamic array and hash table. We’ll decide how objects are represented in memory, and build a garbage collector to reclaim them.
 
+> I pronounce the name like “sea-locks”, but you can say it “clocks” or even “cloch”, where you pronounce the “x” like the Greeks do if it makes you happy.
+>
+> 我把这个名字读成"sea-locks", 但是你也可以读成，"clocks" 或者 "cloch", 如果你开心的话，还可以像希腊人一样读 "x"
+
+
 Our Java implementation was focused on being correct. Now that we have that down, we’ll turn to also being fast. Our C interpreter will contain a compiler that translates Lox to an efficient bytecode representation (don’t worry, I’ll get into what that means soon), which it then executes. This is the same technique used by implementations of Lua, Python, Ruby, PHP, and many other successful languages.
+
+>Did you think this was just an interpreter book? It’s a compiler book as well. Two for the price of one!
+>
+>你认为这只是一本解释器介绍书籍吗，其实它还是一个编译器介绍书籍。这两者没有本质区别。
 
 We’ll even try our hand at benchmarking and optimization. By the end, we’ll have a robust, accurate, fast interpreter for our language, able to keep up with other professional caliber implementations out there. Not bad for one book and a few thousand lines of code.
 
@@ -333,7 +342,7 @@ We’ll even try our hand at benchmarking and optimization. By the end, we’ll 
 
 
 
-# 五、 Challenges
+## 五、 Challenges
 	
 习题
   
@@ -351,7 +360,7 @@ We’ll even try our hand at benchmarking and optimization. By the end, we’ll 
   
   
   
-#  六、Design Note: What's in a name?
+##  六、Design Note: What's in a name?
 
 设计说明：如何命名？
   
