@@ -79,4 +79,11 @@ Some characters in a source file don’t actually mean anything. Whitespace is o
 
 解析
 
+The next step is parsing. This is where our syntax gets a grammar—the ability to compose larger expressions and statements out of smaller parts. Did you ever diagram sentences in English class? If so, you’ve done what a parser does, except that English has thousands and thousands of “keywords” and an overflowing cornucopia of ambiguity. Programming languages are much simpler.
+
+A parser takes the flat sequence of tokens and builds a tree structure that mirrors the nested nature of the grammar. These trees have a couple of different names—parse tree or abstract syntax tree—depending on how close to the bare syntactic structure of the source language they are.  In practice, language hackers usually call them syntax trees, ASTs, or often just trees.
+
+下一步是解析，这就是我们获得语法的地方，语法可以将较小的部分组合成较大的表达式和语句。你在英语课堂上画过句子图吗？如果是这样的话，你已经完成了解析器的工作。除了英语有成千上万个关键词和更多的歧义。相较而言，编程语言就简单太多了。
+
+解析器接收token 序列，然后构建出反应语法嵌套性质的树结构。这些树有一些不同的名称，例如：名称解析树，抽象语法树，命名取决于这些树和源语言的简单语法结构的接近程度。在实践中，语言高手经常称它们为语法树，AST或者通常就称为树。
 

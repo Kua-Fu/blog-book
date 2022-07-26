@@ -90,7 +90,6 @@
 		- [桧风](reading/liberal_art/literature/the_book_of_songs/kuaifeng.md)
 		- [曹风](reading/liberal_art/literature/the_book_of_songs/caofeng.md)
 		- [豳风](reading/liberal_art/literature/the_book_of_songs/binfeng.md)
-	- [出师表](reading/liberal_art/literature/chu_shi_biao/chu_shi_biao.md)
 	- [诗意人生五典型](reading/liberal_art/literature/five_poet/five_poet.md)
 		- [陶渊明](reading/liberal_art/literature/five_poet/tao/tao.md)
 		- [李白](reading/liberal_art/literature/five_poet/li/li.md)
@@ -103,6 +102,7 @@
 		- [送东阳马生序](reading/liberal_art/literature/ming_qing_prose/song_dong_yang_ma_sheng_xv.md)
 		- [项脊轩志](reading/liberal_art/literature/ming_qing_prose/xiang_ji_xuan_zhi.md)
   - [史学](reading/history/history.md)
+	- [三国志](reading/history/san-guo-zhi.md)
 	
   - [哲学](reading/philosophy/philosophy.md)
     - [道](reading/philosophy/dao/dao.md)
