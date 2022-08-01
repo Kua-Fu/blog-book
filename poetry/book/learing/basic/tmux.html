@@ -151,6 +151,15 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="tmux"><a class="header" href="#tmux">tmux</a></h1>
+<h2 id="1-tmux-进入没有名称的session"><a class="header" href="#1-tmux-进入没有名称的session">1. tmux 进入没有名称的session</a></h2>
+<pre><code>
+tmux list-sessions
+
+# 4: 1 windows (created Sun Jul 31 12:46:12 2022) [107x24]
+
+tmux attach-session -t 4
+
+</code></pre>
 
                     </main>
 
