@@ -75,6 +75,15 @@ An automated log analyzer must have one component to recognize patterns from log
 	可扩展性，模式识别器必须能够处理大量的日志，维护当前的模式集，不会产生CPU和内存瓶颈。
 	
 Many companies such as Splunk, Sumo Logic, Loggly, LogEntries, etc. offer log analysis tools. Open source packages such as ElasticSearch, Graylog and OSSIM have also been developed to analyze logs. Most of these tools and packages use regular expressions (regex) to match with log messages. These tools assume that the ad- ministrators know how to work with regex, and there are plenty of tools and libraries that support regex. However, these tools do not have the desirable properties mentioned earlier. 
+
+By definition, these tools support only supervised matching. Human involvement is clearly non-scalable for heterogeneous and continuously evolving log message formats in systems such as IoT, and it is humanly impossible to parse the sheer number of log entries generated in an hour, let alone days and weeks. 
+
+On top of that, writing regex rules is long, frustrating, error-prone, and regex rules may conflict with each other especially for IoT-like systems. Even if a set of regex rules is written, the rate of processing log messages can be slow due to overgeneralized regexes.
+
    
 许多公司都提供日志分析工具，例如：Splunk, sumo logic, loggly, logEntries 等等。还有很多开源软件，也可以分析日志，例如：ElasticSearch、Graylog 和 OSIM 等。大多数工具和包使用正则表达式 与日志消息匹配。这些工具假设管理员知道如何写正则表达式，并且有很多工具和库支持正则表达式。然而，这些工具都不具备前文的特性。
+
+根据定义，这些工具是监督匹配。对于物联网系统中各种不同格式、不断更新的日志，人类参与分类显然是不可行的，从人类角度，不可能把一个小时的日志分类，更不用说一天，几天，几周。
+
+除此之外，编写正则规则，容易导致规则非常长，让人困惑，编写出错等问题。
 

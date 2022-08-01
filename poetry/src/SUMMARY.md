@@ -9,6 +9,7 @@
 - [经常使用](work_reading/often/often.md)
 - [2022年阅读](work_reading/2022/2022.md)
   - [1~3月阅读文章](work_reading/2022/1_3.md)
+  - [4~7月阅读文章](work_reading/2022/4_7.md)
 - [2021年阅读](work_reading/2021/2021.md)
   - [1月阅读文章](work_reading/2021/1.md)
   - [2月阅读文章](work_reading/2021/2.md)
@@ -50,10 +51,12 @@
   - [DataDog实践—大数据百分位实时计算实践](article/technology/datadog_percentile.md)
   - [elasticsearch相关技术文档](article/technology/elastic.md)
   - [LogMine: Fast Pattern Recognition for Log Analytics](article/technology/logmine.md)
-
+  
 - [生活](article/life/life.md)
   - [Kevin Kelly的103条建议](article/life/103_advice.md)
 
+- [官方文档和基本使用](article/introduce/introduce.md)
+  - [datadog基本使用](article/introduce/datadog.md)
 
 # 读书笔记
 
@@ -62,6 +65,7 @@
   - [elasticsearch权威指南](reading/technology/elasticsearch-start.md)
   - [计算之魂](reading/technology/the_essence_of_computing.md)
   - [crafting interpreters](reading/technology/crafting_interpreters.md)
+  - [nsq](reading/technology/nsq.md)
 	
 - [人物传记](reading/biography/biography.md)
   - [毛泽东选集](reading/biography/mao.md)
