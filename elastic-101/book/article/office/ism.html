@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>华为云CSS生命周期管理 - elastic-101</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="../../article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="../../article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../article/office/ism.html" class="active"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic-101</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="华为云css生命周期管理"><a class="header" href="#华为云css生命周期管理">华为云CSS生命周期管理</a></h1>
+<h2 id="参考"><a class="header" href="#参考">参考</a></h2>
+<blockquote>
+<p><a href="https://support.huaweicloud.com/css_faq/css_02_0119.html">如何更新CSS生命周期策略？</a></p>
+<p><a href="https://opendistro.github.io/for-elasticsearch-docs/docs/im/ism/">opendistro Index State Management</a></p>
+</blockquote>
+<h2 id="一简介"><a class="header" href="#一简介">一、简介</a></h2>
+<p>华为云CSS服务，对应的生命周期管理，使用<code>aws opendistro</code>对应的生命周期管理。</p>
+<h2 id="二索引状态管理"><a class="header" href="#二索引状态管理">二、索引状态管理</a></h2>
+<p>If you analyze time-series data, you likely prioritize new data over old data. You might periodically perform certain operations on older indices, such as reducing replica count or deleting them.</p>
+<p>Index State Management (ISM) is a plugin that lets you automate these periodic, administrative operations by triggering them based on changes in the index age, index size, or number of documents. Using the ISM plugin, you can define policies that automatically handle index rollovers or deletions to fit your use case.</p>
+<p>如果分析时间序列数据，我们往往更乐于分析最新的数据，相比较于之前的老数据。你可能会对旧数据进行某些操作，例如: 缩少副本、删除过期数据。</p>
+<p>ISM是一个插件，它允许你根据索引时间、索引大小、索引文档数量，去触发一些预先定义的管理操作，从而实现这些操作的自动化。通过ISM, 可以根据自己实际使用场景，定义索引滚动、删除策略。</p>
+<p>For example, you can define a policy that moves your index into a read_only state after 30 days and then deletes it after a set period of 90 days. You can also set up the policy to send you a notification message when the index is deleted.</p>
+<p>You might want to perform an index rollover after a certain amount of time or run a force_merge operation on an index during off-peak hours to improve search performance during peak hours.</p>
+<p>例如：你可以定义一个策略，在写入数据30天后，将索引设置为只读状态，然后，在经过90天后，删除该索引。你还可以设置策略，在删除索引的时候，发送一个通知信息。</p>
+<p>你可能希望在一定的时间后，滚动索引，或者在非写入高峰期，对索引执行<code>force_merge</code>操作，从而提高索引搜索性能。</p>
+<h2 id="三基本概念"><a class="header" href="#三基本概念">三、基本概念</a></h2>
+<h3 id="31-状态-states"><a class="header" href="#31-状态-states">3.1 状态 states</a></h3>
+<p>A state is the description of the status that the managed index is currently in. A managed index can be in only one state at a time. Each state has associated actions that are executed sequentially on entering a state and transitions that are checked after all the actions have been completed.</p>
+<p>This table lists the parameters that you can define for a state.</p>
+<table><thead><tr><th>Field</th><th>Description</th><th>Type</th><th>Required</th></tr></thead><tbody>
+<tr><td>name</td><td>the name of state</td><td>string</td><td>yes</td></tr>
+<tr><td>actions</td><td>The actions to execute after entering a state. For more information, see Actions.</td><td>nested list of objects</td><td>yes</td></tr>
+<tr><td>transitions</td><td>The next states and the conditions required to transition to those states. If no transitions exist, the policy assumes that it’s complete and can now stop managing the index. For more information, see Transitions.</td><td>nested list of objects</td><td>yes</td></tr>
+</tbody></table>
+<p>状态是当前被托管索引所处状态的描述。托管的索引在某个时刻只能有一种状态，每个状态，都会在进入该状态时候，执行一系列关联操作，在执行关联操作后，还会有一系列的检查操作, 检查是否进入下一个状态。</p>
+<p>下面的表格，包含了一个状态的定义:</p>
+<table><thead><tr><th>字段名称</th><th>描述</th><th>字段类型</th><th>是否必须</th></tr></thead><tbody>
+<tr><td>name</td><td>状态名称</td><td>string</td><td>是</td></tr>
+<tr><td>actions</td><td>进入状态后，需要执行的操作</td><td>nested list of objects</td><td>是</td></tr>
+<tr><td>transitions</td><td>接下来的状态，已经到达下一个状态的条件，如果该字段为空值，则表示该状态是索引最终状态，索引到达该状态不会进行索引管理</td><td>nested list of objects</td><td>是</td></tr>
+</tbody></table>
+<h3 id="32-操作-actions"><a class="header" href="#32-操作-actions">3.2 操作 actions</a></h3>
+<p>Actions are the steps that the policy sequentially executes on entering a specific state.</p>
+<p>They are executed in the order in which they are defined.</p>
+<p>This table lists the parameters that you can define for an action.</p>
+<table><thead><tr><th>Parameter</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody>
+<tr><td>timeout</td><td>The timeout period for the action. Accepts time units for minutes, hours, and days.</td><td>time unit</td><td>No</td><td>-</td></tr>
+<tr><td>retry</td><td>The retry configuration for the action.</td><td>object</td><td>No</td><td>Specific to action</td></tr>
+</tbody></table>
+<p>The retry operation has the following parameters:</p>
+<table><thead><tr><th>Parameter</th><th>Description</th><th>Type</th><th>Required</th><th>Default</th></tr></thead><tbody>
+<tr><td>count</td><td>The number of retry counts.</td><td>number</td><td>Yes</td><td>-</td></tr>
+<tr><td>backoff</td><td>The backoff policy type to use when retrying.</td><td>string</td><td>No</td><td>Exponential</td></tr>
+<tr><td>delay</td><td>The time to wait between retries. Accepts time units for minutes, hours, and days.</td><td>time unit</td><td>No</td><td>1 minute</td></tr>
+</tbody></table>
+<p>操作是索引进入某个状态后，需要运行的一系列操作。</p>
+<p>操作需要按照顺序依次执行。下面的表格，包含了一个操作的定义：</p>
+<p>The following example action has a timeout period of one hour. The policy retries this action three times with an exponential backoff policy, with a delay of 10 minutes between each retry:</p>
+<p>下面示例操作的超时时间为1个小时，该操作如果失败，会使用指数策略重试机制，每次重试的延迟为10分钟</p>
+<pre><code class="language-json">
+&quot;actions&quot;: {
+  &quot;timeout&quot;: &quot;1h&quot;,
+  &quot;retry&quot;: {
+    &quot;count&quot;: 3,
+    &quot;backoff&quot;: &quot;exponential&quot;,
+    &quot;delay&quot;: &quot;10m&quot;
+  }
+}
+
+</code></pre>
+<h3 id="33-转换-transitions"><a class="header" href="#33-转换-transitions">3.3 转换 transitions</a></h3>
+<p>Transitions define the conditions that need to be met for a state to change. After all actions in the current state are completed, the policy starts checking the conditions for transitions.</p>
+<p>Transitions are evaluated in the order in which they are defined. For example, if the conditions for the first transition are met, then this transition takes place and the rest of the transitions are dismissed.</p>
+<p>转换定义了状态修改所需要满足的条件，当前状态下所有的 <code>actions</code>都执行完成后，进入到转换条件的检查。</p>
+<p>转换按照定义的顺序进行检查，例如：满足了定义中的第一个条件，则转换会进行；会忽略其他的条件。</p>
+<p>If you don’t specify any conditions in a transition and leave it empty, then it’s assumed to be the equivalent of always true. This means that the policy transitions the index to this state the moment it checks.</p>
+<p>This table lists the parameters you can define for transitions.</p>
+<p>如果定义中没有指定任何条件，则等同于<code>always true</code>，在索引检查时候，会进行状态转换。</p>
+<p>下面的表格，定义了转换:</p>
+<table><thead><tr><th>Parameter</th><th>Description</th><th>Type</th><th>Required</th></tr></thead><tbody>
+<tr><td>state_name</td><td>The name of the state to transition to if the conditions are met.</td><td>string</td><td>Yes</td></tr>
+<tr><td>conditions</td><td>List the conditions for the transition.</td><td>list</td><td>Yes</td></tr>
+</tbody></table>
+<p>The conditions object has the following parameters:</p>
+<p>|Parameter	Description	Type	Required
+min_index_age	The minimum age of the index required to transition.	string	No
+min_doc_count	The minimum document count of the index required to transition.	number	No
+min_size	The minimum size of the total primary shard storage (not counting replicas). For example, if you set min_size to 100 GiB and your index has 5 primary shards and 5 replica shards of 20 GiB each, the total size of all primary shards is 100 GiB, so your index is transitioned to the next state.	string	No
+cron	The cron job that triggers the transition if no other transition happens first.	object	No
+cron.cron.expression	The cron expression that triggers the transition.	string	Yes
+cron.cron.timezone	The timezone that triggers the transition.	string	Yes</p>
+<h3 id="34-策略-policies"><a class="header" href="#34-策略-policies">3.4 策略 policies</a></h3>
+<p>Policies are JSON documents that define the following:</p>
+<ul>
+<li>
+<p>The states that an index can be in, including the default state for new indices. For example, you might name your states “hot,” “warm,” “delete,” and so on. For more information, see States.</p>
+</li>
+<li>
+<p>Any actions that you want the plugin to take when an index enters a state, such as performing a rollover. For more information, see Actions.</p>
+</li>
+<li>
+<p>The conditions that must be met for an index to move into a new state, known as transitions. For example, if an index is more than eight weeks old, you might want to move it to the “delete” state. For more information, see Transitions.</p>
+</li>
+</ul>
+<p>In other words, a policy defines the states that an index can be in, the actions to perform when in a state, and the conditions that must be met to transition between states.</p>
+<p>策略是一个JSON文档，里面定义了:</p>
+<ul>
+<li>
+<p>状态，策略中需要指定状态，例如：索引创建后的默认状态，状态的可选值有 <code>hot/warm/cold</code>等</p>
+</li>
+<li>
+<p>操作，当索引进入到新状态后，执行的一系列操作，例如：滚动索引等</p>
+</li>
+<li>
+<p>转换，索引进入新状态需要满足的条件。例如：一个索引，超过8周，可能需要变更为 delete 状态。</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../article/office/api.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../article/office/api.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>乐观并发控制 - elastic</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="../perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="../basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="../basic/more-complicated-search.html"><strong aria-hidden="true">2.1.8.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="../basic/full-text-search.html"><strong aria-hidden="true">2.1.9.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="../basic/phrase-search.html"><strong aria-hidden="true">2.1.10.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="../basic/highlighting-intro.html"><strong aria-hidden="true">2.1.11.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="../basic/analytics.html"><strong aria-hidden="true">2.1.12.</strong> 分析</a></li><li class="chapter-item expanded "><a href="../basic/conclusion.html"><strong aria-hidden="true">2.1.13.</strong> 小结</a></li><li class="chapter-item expanded "><a href="../basic/distributed_nature.html"><strong aria-hidden="true">2.1.14.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="../basic/next-step.html"><strong aria-hidden="true">2.1.15.</strong> 后续步骤</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-cluster.html"><strong aria-hidden="true">2.2.</strong> 集群内的原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/empty-cluster.html"><strong aria-hidden="true">2.2.1.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="../basic/cluster-health.html"><strong aria-hidden="true">2.2.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../basic/add-an-index.html"><strong aria-hidden="true">2.2.3.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="../basic/add-failover.html"><strong aria-hidden="true">2.2.4.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="../basic/scale-horizontally.html"><strong aria-hidden="true">2.2.5.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="../basic/coping-with-failure.html"><strong aria-hidden="true">2.2.6.</strong> 应对故障</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/data-in-data-out.html"><strong aria-hidden="true">2.3.</strong> 数据输入和输出</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/document.html"><strong aria-hidden="true">2.3.1.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="../basic/document-metadata.html"><strong aria-hidden="true">2.3.2.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="../basic/index-doc.html"><strong aria-hidden="true">2.3.3.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="../basic/get-doc.html"><strong aria-hidden="true">2.3.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/doc-exists.html"><strong aria-hidden="true">2.3.5.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="../basic/update-doc.html"><strong aria-hidden="true">2.3.6.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="../basic/create-doc.html"><strong aria-hidden="true">2.3.7.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="../basic/delete-doc.html"><strong aria-hidden="true">2.3.8.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="../basic/version-control.html"><strong aria-hidden="true">2.3.9.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="../basic/optimistic-concurrency-control.html" class="active"><strong aria-hidden="true">2.3.10.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="../basic/partial-update.html"><strong aria-hidden="true">2.3.11.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-multiple-docs.html"><strong aria-hidden="true">2.3.12.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="../basic/bulk.html"><strong aria-hidden="true">2.3.13.</strong> 代价较小的批量操作</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-docs.html"><strong aria-hidden="true">2.4.</strong> 分布式文档存储</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/routing-value.html"><strong aria-hidden="true">2.4.1.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="../basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">2.4.2.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="../basic/distrib-write.html"><strong aria-hidden="true">2.4.3.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-read.html"><strong aria-hidden="true">2.4.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/partial-update-to-a-doc.html"><strong aria-hidden="true">2.4.5.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-multi-doc.html"><strong aria-hidden="true">2.4.6.</strong> 多文档模式</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/search.html"><strong aria-hidden="true">2.5.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="../basic/mapping-analysis.html"><strong aria-hidden="true">2.6.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="../basic/full-search-body.html"><strong aria-hidden="true">2.7.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="../basic/sorting.html"><strong aria-hidden="true">2.8.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="../basic/distributed-search.html"><strong aria-hidden="true">2.9.</strong> 执行分布式检索</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/query-phase.html"><strong aria-hidden="true">2.9.1.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="../basic/fetch-phase.html"><strong aria-hidden="true">2.9.2.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="../basic/search-options.html"><strong aria-hidden="true">2.9.3.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="../basic/scroll.html"><strong aria-hidden="true">2.9.4.</strong> 查询游标</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/index-management.html"><strong aria-hidden="true">2.10.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../basic/inside-a-shard.html"><strong aria-hidden="true">2.11.</strong> 分片内部原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/making-text-searchable.html"><strong aria-hidden="true">2.11.1.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="../basic/dynamic-indices.html"><strong aria-hidden="true">2.11.2.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="../basic/near-real-time.html"><strong aria-hidden="true">2.11.3.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="../basic/translog.html"><strong aria-hidden="true">2.11.4.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="../basic/merge-process.html"><strong aria-hidden="true">2.11.5.</strong> 段合并</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li><li class="chapter-item expanded "><a href="../manage/administration.html"><strong aria-hidden="true">3.</strong> 管理、监控入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/cluster-admin.html"><strong aria-hidden="true">3.1.</strong> 监控</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/marval.html"><strong aria-hidden="true">3.1.1.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="../manage/cluster-health.html"><strong aria-hidden="true">3.1.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes.html"><strong aria-hidden="true">3.1.3.</strong> 监控单个节点</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">3.1.3.1.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">3.1.3.2.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">3.1.3.3.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">3.1.3.4.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">3.1.3.5.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">3.1.3.6.</strong> 断路器部分</a></li></ol></li><li class="chapter-item expanded "><a href="../manage/cluster-stats.html"><strong aria-hidden="true">3.1.4.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="../manage/index-stats.html"><strong aria-hidden="true">3.1.5.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="../manage/pending-task.html"><strong aria-hidden="true">3.1.6.</strong> 等待中的任务</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="乐观并发控制"><a class="header" href="#乐观并发控制">乐观并发控制</a></h1>
+<p>Elasticsearch 是分布式的。当文档创建、更新或删除时， 新版本的文档必须复制到集群中的其他节点。Elasticsearch 也是异步和并发的，这意味着这些复制请求被并行发送，并且到达目的地时也许 顺序是乱的 。 Elasticsearch 需要一种方法确保文档的旧版本不会覆盖新的版本。</p>
+<p>当我们之前讨论 index ， GET 和 delete 请求时，我们指出每个文档都有一个 _version （版本）号，当文档被修改时版本号递增。 Elasticsearch 使用这个 _version 号来确保变更以正确顺序得到执行。如果旧版本的文档在新版本之后到达，它可以被简单的忽略。</p>
+<p>我们可以利用 _version 号来确保 应用中相互冲突的变更不会导致数据丢失。我们通过指定想要修改文档的 version 号来达到这个目的。 如果该版本不是当前版本号，我们的请求将会失败。</p>
+<p>让我们创建一个新的博客文章：</p>
+<pre><code class="language-json">
+POST /website/_doc/1?op_type=create
+{
+  &quot;type&quot;: &quot;blog&quot;,
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;Just trying this out...&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 4,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>响应体告诉我们，这个新创建的文档 _version 版本号是 1 。现在假设我们想编辑这个文档：我们加载其数据到 web 表单中， 做一些修改，然后保存新的版本。</p>
+<p>首先我们检索文档:</p>
+<pre><code class="language-json">
+GET /website/_doc/1
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1, 0️⃣
+  &quot;_seq_no&quot;: 4, 
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;blog&quot;,
+    &quot;title&quot;: &quot;My first blog entry&quot;,
+    &quot;text&quot;: &quot;Just trying this out...&quot;
+  }
+}
+
+</code></pre>
+<p>响应体包含相同的 _version 版本号 1 </p>
+<p>现在，当我们尝试通过重建文档的索引来保存修改，我们指定 version 为我们的修改会被应用的版本：</p>
+<pre><code class="language-json">
+PUT /website/_doc/1?version=1 0️⃣
+{
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;Starting to get the hang of this...&quot;
+}
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;action_request_validation_exception&quot;,
+        &quot;reason&quot;: &quot;Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;action_request_validation_exception&quot;,
+    &quot;reason&quot;: &quot;Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;&quot;
+  },
+  &quot;status&quot;: 400
+}
+</code></pre>
+<p>0️⃣ 我们想这个在我们索引中的文档只有现在的 _version 为 1 时，本次更新才能成功</p>
+<p>此请求成功，并且响应体告诉我们 _version 已经递增到 2 ：</p>
+<pre><code class="language-json">
+{
+  &quot;_index&quot;:   &quot;website&quot;,
+  &quot;_type&quot;:    &quot;blog&quot;,
+  &quot;_id&quot;:      &quot;1&quot;,
+  &quot;_version&quot;: 2
+  &quot;created&quot;:  false
+}
+
+</code></pre>
+<p>然而，如果我们重新运行相同的索引请求，仍然指定 version=1 ， Elasticsearch 返回 409 Conflict HTTP 响应码，和一个如下所示的响应体：</p>
+<pre><code class="language-json">
+{
+   &quot;error&quot;: {
+      &quot;root_cause&quot;: [
+         {
+            &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+            &quot;reason&quot;: &quot;[blog][1]: version conflict, current [2], provided [1]&quot;,
+            &quot;index&quot;: &quot;website&quot;,
+            &quot;shard&quot;: &quot;3&quot;
+         }
+      ],
+      &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+      &quot;reason&quot;: &quot;[blog][1]: version conflict, current [2], provided [1]&quot;,
+      &quot;index&quot;: &quot;website&quot;,
+      &quot;shard&quot;: &quot;3&quot;
+   },
+   &quot;status&quot;: 409
+}
+
+</code></pre>
+<p>这告诉我们在 Elasticsearch 中这个文档的当前 _version 号是 2 ，但我们指定的更新版本号为 1 。</p>
+<p>我们现在怎么做取决于我们的应用需求。我们可以告诉用户说其他人已经修改了文档，并且在再次保存之前检查这些修改内容。 或者，在之前的商品 stock_count 场景，我们可以获取到最新的文档并尝试重新应用这些修改。</p>
+<p>所有文档的更新或删除 API，都可以接受 version 参数，这允许你在代码中使用乐观的并发控制，这是一种明智的做法。</p>
+<h2 id="通过外部系统使用版本控制"><a class="header" href="#通过外部系统使用版本控制">通过外部系统使用版本控制</a></h2>
+<p>一个常见的设置是使用其它数据库作为主要的数据存储，使用 Elasticsearch 做数据检索， 这意味着主数据库的所有更改发生时都需要被复制到 Elasticsearch ，如果多个进程负责这一数据同步，你可能遇到类似于之前描述的并发问题。</p>
+<p>如果你的主数据库已经有了版本号 — 或一个能作为版本号的字段值比如 timestamp — 那么你就可以在 Elasticsearch 中通过增加 version_type=external 到查询字符串的方式重用这些相同的版本号， 版本号必须是大于零的整数， 且小于 9.2E+18 — 一个 Java 中 long 类型的正值。</p>
+<p>外部版本号的处理方式和我们之前讨论的内部版本号的处理方式有些不同， Elasticsearch 不是检查当前 _version 和请求中指定的版本号是否相同， 而是检查当前 _version 是否 小于 指定的版本号。 如果请求成功，外部的版本号作为文档的新 _version 进行存储。</p>
+<p>外部版本号不仅在索引和删除请求是可以指定，而且在 创建 新文档时也可以指定。</p>
+<p>例如，要创建一个新的具有外部版本号 5 的博客文章，我们可以按以下方法进行：</p>
+<pre><code class="language-json">
+POST /website/_doc/2?version=5&amp;version_type=external
+{
+  &quot;type&quot;: &quot;blog&quot;,
+  &quot;title&quot;: &quot;My first external blog entry&quot;,
+  &quot;text&quot;: &quot;Starting to get the hang of this...&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 5,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 5,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>现在我们更新这个文档，指定一个新的 version 号是 10 ：</p>
+<pre><code class="language-json">
+POST /website/_doc/2?version=10&amp;version_type=external
+{
+  &quot;title&quot;: &quot;My first external blog entry&quot;,
+  &quot;text&quot;:  &quot;This is a piece of cake...&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 10,
+  &quot;result&quot;: &quot;updated&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 6,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>如果你要重新运行此请求时，它将会失败，并返回像我们之前看到的同样的冲突错误， 因为指定的外部版本号不大于 Elasticsearch 的当前版本号。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../basic/version-control.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../basic/partial-update.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../basic/version-control.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../basic/partial-update.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

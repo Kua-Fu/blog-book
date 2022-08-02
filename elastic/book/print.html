@@ -1,0 +1,4782 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>elastic</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="basic/more-complicated-search.html"><strong aria-hidden="true">2.1.8.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="basic/full-text-search.html"><strong aria-hidden="true">2.1.9.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="basic/phrase-search.html"><strong aria-hidden="true">2.1.10.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="basic/highlighting-intro.html"><strong aria-hidden="true">2.1.11.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="basic/analytics.html"><strong aria-hidden="true">2.1.12.</strong> 分析</a></li><li class="chapter-item expanded "><a href="basic/conclusion.html"><strong aria-hidden="true">2.1.13.</strong> 小结</a></li><li class="chapter-item expanded "><a href="basic/distributed_nature.html"><strong aria-hidden="true">2.1.14.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="basic/next-step.html"><strong aria-hidden="true">2.1.15.</strong> 后续步骤</a></li></ol></li><li class="chapter-item expanded "><a href="basic/distributed-cluster.html"><strong aria-hidden="true">2.2.</strong> 集群内的原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/empty-cluster.html"><strong aria-hidden="true">2.2.1.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="basic/cluster-health.html"><strong aria-hidden="true">2.2.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="basic/add-an-index.html"><strong aria-hidden="true">2.2.3.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="basic/add-failover.html"><strong aria-hidden="true">2.2.4.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="basic/scale-horizontally.html"><strong aria-hidden="true">2.2.5.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="basic/coping-with-failure.html"><strong aria-hidden="true">2.2.6.</strong> 应对故障</a></li></ol></li><li class="chapter-item expanded "><a href="basic/data-in-data-out.html"><strong aria-hidden="true">2.3.</strong> 数据输入和输出</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/document.html"><strong aria-hidden="true">2.3.1.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="basic/document-metadata.html"><strong aria-hidden="true">2.3.2.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="basic/index-doc.html"><strong aria-hidden="true">2.3.3.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="basic/get-doc.html"><strong aria-hidden="true">2.3.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="basic/doc-exists.html"><strong aria-hidden="true">2.3.5.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="basic/update-doc.html"><strong aria-hidden="true">2.3.6.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="basic/create-doc.html"><strong aria-hidden="true">2.3.7.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="basic/delete-doc.html"><strong aria-hidden="true">2.3.8.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="basic/version-control.html"><strong aria-hidden="true">2.3.9.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="basic/optimistic-concurrency-control.html"><strong aria-hidden="true">2.3.10.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="basic/partial-update.html"><strong aria-hidden="true">2.3.11.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="basic/retrieving-multiple-docs.html"><strong aria-hidden="true">2.3.12.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="basic/bulk.html"><strong aria-hidden="true">2.3.13.</strong> 代价较小的批量操作</a></li></ol></li><li class="chapter-item expanded "><a href="basic/distributed-docs.html"><strong aria-hidden="true">2.4.</strong> 分布式文档存储</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/routing-value.html"><strong aria-hidden="true">2.4.1.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">2.4.2.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="basic/distrib-write.html"><strong aria-hidden="true">2.4.3.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="basic/distrib-read.html"><strong aria-hidden="true">2.4.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="basic/partial-update-to-a-doc.html"><strong aria-hidden="true">2.4.5.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="basic/distrib-multi-doc.html"><strong aria-hidden="true">2.4.6.</strong> 多文档模式</a></li></ol></li><li class="chapter-item expanded "><a href="basic/search.html"><strong aria-hidden="true">2.5.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="basic/mapping-analysis.html"><strong aria-hidden="true">2.6.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="basic/full-search-body.html"><strong aria-hidden="true">2.7.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="basic/sorting.html"><strong aria-hidden="true">2.8.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="basic/distributed-search.html"><strong aria-hidden="true">2.9.</strong> 执行分布式检索</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/query-phase.html"><strong aria-hidden="true">2.9.1.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="basic/fetch-phase.html"><strong aria-hidden="true">2.9.2.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="basic/search-options.html"><strong aria-hidden="true">2.9.3.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="basic/scroll.html"><strong aria-hidden="true">2.9.4.</strong> 查询游标</a></li></ol></li><li class="chapter-item expanded "><a href="basic/index-management.html"><strong aria-hidden="true">2.10.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="basic/inside-a-shard.html"><strong aria-hidden="true">2.11.</strong> 分片内部原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="basic/making-text-searchable.html"><strong aria-hidden="true">2.11.1.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="basic/dynamic-indices.html"><strong aria-hidden="true">2.11.2.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="basic/near-real-time.html"><strong aria-hidden="true">2.11.3.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="basic/translog.html"><strong aria-hidden="true">2.11.4.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="basic/merge-process.html"><strong aria-hidden="true">2.11.5.</strong> 段合并</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li><li class="chapter-item expanded "><a href="manage/administration.html"><strong aria-hidden="true">3.</strong> 管理、监控入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="manage/cluster-admin.html"><strong aria-hidden="true">3.1.</strong> 监控</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="manage/marval.html"><strong aria-hidden="true">3.1.1.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="manage/cluster-health.html"><strong aria-hidden="true">3.1.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes.html"><strong aria-hidden="true">3.1.3.</strong> 监控单个节点</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">3.1.3.1.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">3.1.3.2.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">3.1.3.3.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">3.1.3.4.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">3.1.3.5.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">3.1.3.6.</strong> 断路器部分</a></li></ol></li><li class="chapter-item expanded "><a href="manage/cluster-stats.html"><strong aria-hidden="true">3.1.4.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="manage/index-stats.html"><strong aria-hidden="true">3.1.5.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="manage/pending-task.html"><strong aria-hidden="true">3.1.6.</strong> 等待中的任务</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="简介"><a class="header" href="#简介">简介</a></h1>
+<p>elasticsearch 作为全文搜索领域的 top1，有很多的优点，值得学习。</p>
+<p>本书是最早版本的权威指南，所谓权威，即本书是 elastic公司官方梳理成稿，所谓指南，本文不只是一些使用语法，还包含大量的原理分析，最佳实践和更多深入底层的探讨，同时辅加一些不为人知的但很有意思的小故事。</p>
+<p>本人接触 elasticsearch多年，而且目前工作也和 elasticsearch 相关，所以想在中文译本的基础上，使用最新的ES版本(8.3.1)，重新学习一次！</p>
+<p align="right">—— thewind 2022.07.05</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="前言"><a class="header" href="#前言">前言</a></h1>
+<p>这个世界已然被数据淹没。多年来，我们系统间流转和产生的大量数据已让我们不知所措。 现有的技术都集中在如何解决数据仓库存储以及如何结构化这些数据。 这些看上去都挺美好，直到你实际需要基于这些数据实时做决策分析的时候才发现根本不是那么一回事。</p>
+<p><code>Elasticsearch</code> 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。</p>
+<p>无论你是需要全文搜索，还是结构化数据的实时统计，或者两者结合，这本指南都能帮助你了解其中最基本的概念， 从最基本的操作开始学习 <code>Elasticsearch</code>。之后，我们还会逐渐开始探索更加高级的搜索技术，不断提升搜索体验来满足你的需求。</p>
+<p><code>Elasticsearch</code> 不仅仅只是全文搜索，我们还将介绍结构化搜索、数据分析、复杂的人类语言处理、地理位置和对象间关联关系等。 我们还将探讨为了充分利用 <code>Elasticsearch</code> 的水平伸缩性，应当如何建立数据模型，以及在生产环境中如何配置和监控你的集群。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="谁应该读这本书"><a class="header" href="#谁应该读这本书">谁应该读这本书</a></h1>
+<p>这本书是写给任何想要把他们的数据拿来干活做点事情的人。不管你是从头构建一个新项目，还是为了给已有的系统改造换血， <code>Elasticsearch</code> 都能够帮助你解决现有问题和开发新的功能，有些可能是你之前没有想到的功能。</p>
+<p>这本书既适合初学者也适合有经验的用户。我们希望你有一定的编程基础，虽然不是必须的，但有用过 <code>SQL</code> 和关系数据库会更佳。 我们会从原理解释和基本概念出发，帮助新手在复杂的搜索世界里打下稳固的知识基础。</p>
+<p>具有搜索背景的读者也会受益于这本书。有经验的用户将懂得其所熟悉搜索的概念在 <code>Elasticsearch</code> 是如何对应和具体实现的。 即使是高级用户，前面几个章节所包含的信息也是非常有用的。</p>
+<p>最后，也许你是一名 <code>DevOps</code>，其他部门一直尽可能快的往 <code>Elasticsearch</code> 里面灌数据，而你是那个负责防止 <code>Elasticsearch</code> 服务器起火的消防员。 只要用户在规则内行事，<code>Elasticsearch</code> 集群扩容相当轻松。不过你需要知道如何在进入生产环境前搭建一个稳定的集群，还能要在凌晨三点钟能识别出警告信号，以防止灾难发生。 前面几章你可能不太感兴趣，但这本书的最后一部分是非常重要的，包含所有你需要知道的用以避免系统崩溃的知识。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="为什么我们要写这本书"><a class="header" href="#为什么我们要写这本书">为什么我们要写这本书</a></h1>
+<p>我们写这本书，因为 <code>Elasticsearch</code> 需要更好的阐述。 现有的参考文档是优秀的 — 前提是你知道你在寻找什么。它假定你已经熟悉信息检索、分布式系统原理、<code>Query DSL</code> 和许多其他相关的概念。</p>
+<p>这本书没有这样的假设。它的目的是写一本即便是什么都不懂的初学者（不管是对于搜索还是对于分布式系统）也能拿起它简单看完几章，就能开始搭建一个原型。</p>
+<p>我们采取一种基于问题求解的方式：这是一个问题，我该怎么解决？ 如何对候选方案进行权衡取舍？我们从基础知识开始，循序渐进，每一章都建立在前一章之上，同时提供必要的实用案例和理论解释。</p>
+<p>现有的参考文档解决了 如何 使用这些功能，我们希望这本书解决的是 为什么 和 什么时候 使用这些功能。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="如何读这本书"><a class="header" href="#如何读这本书">如何读这本书</a></h1>
+<p><code>Elasticsearch</code> 做了很多努力和尝试来让复杂的事情变得简单，很大程度上来说 <code>Elasticsearch</code> 的成功来源于此。 换句话说，搜索以及分布式系统是非常复杂的，不过为了充分利用 <code>Elasticsearch</code>，迟早你也需要掌握它们。</p>
+<p>恩，是有点复杂，但不是魔法。我们倾向于认为复杂系统如同神奇的黑盒子，能响应外部的咒语，但是通常里面的工作逻辑很简单。 理解了这些逻辑过程你就能驱散魔法，理解内在能够让你更加明确和清晰，而不是寄托于黑盒子做你想要做的。</p>
+<p>这本权威指南不仅会帮助你学习 <code>Elasticsearch</code>，而且希望能够带你接触一些更深入、更有趣的话题，如 集群内的原理 、 分布式文档存储 、 执行分布式检索 和 分片内部原理 ，这些虽然不是必要的阅读却能让你深入理解其内在机制。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="鸣谢"><a class="header" href="#鸣谢">鸣谢</a></h1>
+<p>为什么配偶总是被放到最后一个？但并非是说最不重要！ 在我们心中毫无疑问，有两个最值得我们感谢的人，他们是 <code>Clinton</code> 长期受苦的老婆和 <code>Zach</code> 的未婚妻。 他们照顾着我们和爱着我们，毫不懈怠，忍受我们的缺席和我们没完没了的抱怨这本书还要多久完成，最重要的是，她们依然还在我们身边。</p>
+<p>感谢 <code>Shay Banon</code> 在最开始创建了 <code>Elasticsearch</code>，感谢 <code>Elastic</code> 公司支持本书的工作。 也非常感谢 <code>Elastic</code> 所有的同事，他们帮助我们透彻的了解 <code>Elasticsearch</code> 内部如何工作并且一直负责添加完善和修复与他们相关的部分。</p>
+<p>其中两位同事特别值得一提：</p>
+<ul>
+<li>
+<p><code>Robert Muir</code> 耐心地分享了他的真知灼见，特别是 <code>Lucene</code> 搜索方面。有几章段落就是直接出自其智慧珠玑。</p>
+</li>
+<li>
+<p><code>Adrien Grand</code> 深入到代码中回答问题，并检查我们的解释，以确保他们合理。</p>
+</li>
+</ul>
+<p>感谢 <code>O’Reilly</code> 承担这个项目和我们一起工作使这本书免费在线阅读，还有一直温柔哄骗我们的编辑 <code>Brian Anderson</code> 和善良而温柔的评论者 <code>Benjamin Devèze、Ivan Brusic</code> 和 <code>Leo Lapworth</code>。你们的鼓励，让我们充满希望。</p>
+<p>感谢我们的读者，其中一些我们只有通过各自的 <code>GitHub</code> 才知道他们的身份，他们花时间报告问题、提供修正或提出改进建议：</p>
+<pre><code>
+Adam Canady, Adam Gray, Alexander Kahn, Alexander Reelsen, Alaattin Kahramanlar, Ambrose Ludd, Anna Beyer, Andrew Bramble, Baptiste Cabarrou, Bart Vandewoestyne, Bertrand Dechoux, Brian Wong, Brooke Babcock, Charles Mims, Chris Earle, Chris Gilmore, Christian Burgas, Colin Goodheart-Smithe, Corey Wright, Daniel Wiesmann, David Pilato, Duncan Angus Wilkie, Florian Hopf, Gavin Foo, Gilbert Chang, Grégoire Seux, Gustavo Alberola, Igal Sapir, Iskren Ivov Chernev, Itamar Syn-Hershko, Jan Forrest, Jānis Peisenieks, Japheth Thomson, Jeff Myers, Jeff Patti, Jeremy Falling, Jeremy Nguyen, J.R. Heard, Joe Fleming, Jonathan Page, Joshua Gourneau, Josh Schneier, Jun Ohtani, Keiji Yoshida, Kieren Johnstone, Kim Laplume, Kurt Hurtado, Laszlo Balogh, londocr, losar, Lucian Precup, Lukáš Vlček, Malibu Carl, Margirier Laurent, Martijn Dwars, Matt Ruzicka, Mattias Pfeiffer, Mehdy Amazigh, mhemani, Michael Bonfils, Michael Bruns, Michael Salmon, Michael Scharf , Mitar Milutinović, Mustafa K. Isik, Nathan Peck, Patrick Peschlow, Paul Schwarz, Pieter Coucke, Raphaël Flores, Robert Muir, Ruslan Zavacky, Sanglarsh Boudhh, Santiago Gaviria, Scott Wilkerson, Sebastian Kurfürst, Sergii Golubev, Serkan Kucukbay, Thierry Jossermoz, Thomas Cucchietti, Tom Christie, Ulf Reimers, Venkat Somula, Wei Zhu, Will Kahn-Greene 和 Yuri Bakumenko。
+
+</code></pre>
+<p>感谢所有参与本书的中文译者与审校人员，他们牺牲了大量宝贵的休息时间，他们对翻译内容仔细斟酌，一丝不苟， 对修改意见认真对待，各抒己见，不厌其烦的进行修改与再次审校，这些默默奉献的可爱的人分别是：</p>
+<pre><code>
+薛杰​，​骆朗​，​彭秋源​，​魏喆​，​饶琛琳​，​风虎​，​路小磊​，​michealzh​，​nodexy​，​sdlyjzh​，​落英流离​，​sunyonggang​，​Singham​，​烧碱​，​龙翔​，​陈思​，​陈华​，​追风侃侃​，​Geolem​，​卷发​，​kfypmqqw​，​袁伟强​，​yichao，​​小彬​，​leo​，​tangmisi​，​Alex​，​baifan​，​Evan​，​fanyer，​​wwb​，​瑞星​，​刘碧琴​，​walker​，​songgl​，​吕兵​，​东​，​杜宁​，​秦东亮​，​biyuhao​，​刘刚​，​yumo​，​王秀文​，​zcola​，​gitqh​，​blackoon​，​David​，​韩炳辰​，​韩陆​，​echolihao​，​Xargin​，​abel-sun​，​卞顺强​，​bsll​，​冬狼​，​王琦​，​Medcl​
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="基础入门"><a class="header" href="#基础入门">基础入门</a></h1>
+<p><code>Elasticsearch</code> 是一个实时的分布式搜索分析引擎，它能让你以前所未有的速度和规模，去探索你的数据。 它被用作全文检索、结构化搜索、分析以及这三个功能的组合：</p>
+<ul>
+<li>
+<p><code>Wikipedia</code> 使用 <code>Elasticsearch</code> 提供带有高亮片段的全文搜索，还有 <code>search-as-you-type</code> 和 <code>did-you-mean</code> 的建议。</p>
+</li>
+<li>
+<p>卫报 使用 <code>Elasticsearch</code> 将网络社交数据结合到访客日志中，为它的编辑们提供公众对于新文章的实时反馈。</p>
+</li>
+<li>
+<p><code>Stack Overflow</code> 将地理位置查询融入全文检索中去，并且使用 <code>more-like-this</code> 接口去查找相关的问题和回答。</p>
+</li>
+<li>
+<p><code>GitHub</code> 使用 <code>Elasticsearch</code> 对<code>1300</code>亿行代码进行查询。</p>
+</li>
+</ul>
+<p><code>Elasticsearch</code> 不仅仅为巨头公司服务。它也帮助了很多初创公司，比如 <code>Datadog</code> 和 <code>Klout</code>， <code>Elasticsearch</code> 帮助他们将想法用原型实现，并转化为可扩展的解决方案。<code>Elasticsearch</code> 能运行在你的笔记本电脑上，或者扩展到数百台服务器上来处理<code>PB</code>级数据。</p>
+<p><code>Elasticsearch</code> 中没有一个单独的组件是全新的或者是革命性的。全文搜索很久之前就已经可以做到了， 就像很早之前出现的分析系统和分布式数据库。 革命性的成果在于将这些单独的，有用的组件融合到一个单一的、一致的、实时的应用中。对于初学者而言它的门槛相对较低， 而当你的技能提升或需求增加时，它也始终能满足你的需求。</p>
+<p>如果你现在打开这本书，是因为你拥有数据。除非你准备使用它 做些什么 ，否则拥有这些数据将没有意义。</p>
+<p>不幸的是，大部分数据库在从你的数据中提取可用知识时出乎意料的低效。 当然，你可以通过时间戳或精确值进行过滤，但是它们能够全文检索、处理同义词、通过相关性给文档评分么？ 它们能从同样的数据中生成分析与聚合数据吗？最重要的是，它们能实时地做到上述操作，而不经过大型批处理的任务么？</p>
+<p>这就是 <code>Elasticsearch</code> 脱颖而出的地方：<code>Elasticsearch</code> 鼓励你去探索与利用数据，而不是因为查询数据太困难，就让它们烂在数据仓库里面。</p>
+<p><code>Elasticsearch</code> 将成为你最好的朋友。</p>
+<h2 id="kibana-快捷键-mac"><a class="header" href="#kibana-快捷键-mac">kibana 快捷键 (Mac)</a></h2>
+<ol>
+<li>
+<p>⌘ + I 指定请求body自动缩进</p>
+</li>
+<li>
+<p>⌘ + / 打开当前请求的文档</p>
+</li>
+<li>
+<p>⌘ + Enter 提交当前请求</p>
+</li>
+<li>
+<p>⌘ + Up/Down 跳转到上/下一个请求，⚠️光标需要在请求开始处</p>
+</li>
+<li>
+<p>⌘ + option + L 折叠/展开当前请求</p>
+</li>
+<li>
+<p>⌘ + option + 0 折叠所有请求</p>
+</li>
+<li>
+<p>⌘ + L 跳转到具体行</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="你知道的-为了搜索"><a class="header" href="#你知道的-为了搜索">你知道的, 为了搜索…​</a></h1>
+<p><code>Elasticsearch</code> 是一个开源的搜索引擎，建立在一个全文搜索引擎库 <code>Apache Lucene™</code> 基础之上。 <code>Lucene</code> 可以说是当下最先进、高性能、全功能的搜索引擎库—​无论是开源还是私有。</p>
+<p>但是 <code>Lucene</code> 仅仅只是一个库。为了充分发挥其功能，你需要使用 <code>Java</code> 并将 <code>Lucene</code> 直接集成到应用程序中。 更糟糕的是，您可能需要获得信息检索学位才能了解其工作原理。<code>Lucene</code> 非常 复杂。</p>
+<p><code>Elasticsearch</code> 也是使用 <code>Java</code> 编写的，它的内部使用 <code>Lucene</code> 做索引与搜索，但是它的目的是使全文检索变得简单， 通过隐藏 <code>Lucene</code> 的复杂性，取而代之的提供一套简单一致的 <code>RESTful API</code>。</p>
+<p>然而，<code>Elasticsearch</code> 不仅仅是 <code>Lucene</code>，并且也不仅仅只是一个全文搜索引擎。 它可以被下面这样准确的形容：</p>
+<ul>
+<li>
+<p>一个分布式的实时文档存储，每个字段 可以被索引与搜索</p>
+</li>
+<li>
+<p>一个分布式实时分析搜索引擎</p>
+</li>
+<li>
+<p>能胜任上百个服务节点的扩展，并支持 <code>PB</code> 级别的结构化或者非结构化数据</p>
+</li>
+</ul>
+<p><code>Elasticsearch</code> 将所有的功能打包成一个单独的服务，这样你可以通过程序与它提供的简单的 <code>RESTful API</code> 进行通信， 可以使用自己喜欢的编程语言充当 <code>web</code> 客户端，甚至可以使用命令行（去充当这个客户端）。</p>
+<p>就 <code>Elasticsearch</code> 而言，起步很简单。对于初学者来说，它预设了一些适当的默认值，并隐藏了复杂的搜索理论知识。 它 开箱即用 。只需最少的理解，你很快就能具有生产力。</p>
+<p>随着你知识的积累，你可以利用 <code>Elasticsearch</code> 更多的高级特性，它的整个引擎是可配置并且灵活的。 从众多高级特性中，挑选恰当去修饰的 <code>Elasticsearch</code>，使它能解决你本地遇到的问题。</p>
+<h2 id="回忆时光"><a class="header" href="#回忆时光">回忆时光</a></h2>
+<p>许多年前，一个刚结婚的名叫 <code>Shay Banon</code> 的失业开发者，跟着他的妻子去了伦敦，他的妻子在那里学习厨师。 在寻找一个赚钱的工作的时候，为了给他的妻子做一个食谱搜索引擎，他开始使用 <code>Lucene</code> 的一个早期版本。</p>
+<p>直接使用 <code>Lucene</code> 是很难的，因此 <code>Shay</code> 开始做一个抽象层，<code>Java</code> 开发者使用它可以很简单的给他们的程序添加搜索功能。 他发布了他的第一个开源项目 <code>Compass</code>。</p>
+<p>后来 <code>Shay</code> 获得了一份工作，主要是高性能，分布式环境下的内存数据网格。这个对于高性能，实时，分布式搜索引擎的需求尤为突出， 他决定重写 <code>Compass</code>，把它变为一个独立的服务并取名 <code>Elasticsearch</code>。</p>
+<p>第一个公开版本在2010年2月发布，从此以后，<code>Elasticsearch</code> 已经成为了 <code>Github</code> 上最活跃的项目之一，他拥有超过<code>300</code>名 <code>contributors</code>(目前<code>736</code>名 <code>contributors</code> )。 一家公司已经开始围绕 <code>Elasticsearch</code> 提供商业服务，并开发新的特性，但是，<code>Elasticsearch</code> 将永远开源并对所有人可用。</p>
+<p>据说，<code>Shay</code> 的妻子还在等着她的食谱搜索引擎…​</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="安装使用"><a class="header" href="#安装使用">安装使用</a></h1>
+<p>此处推荐使用 <a href="https://www.elastic.co/cn/cloud/">elastic cloud</a> 官方提供的云服务</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-1.jpg?raw=true" alt="创建集群" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-2.jpg?raw=true" alt="记录用户" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-3.jpg?raw=true" alt="创建成功" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-4.jpg?raw=true" alt="配置monitor" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/install/install-5.jpg?raw=true" alt="开始探索" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="面向文档"><a class="header" href="#面向文档">面向文档</a></h1>
+<p>在应用程序中对象很少只是一个简单的键和值的列表。通常，它们拥有更复杂的数据结构，可能包括日期、地理信息、其他对象或者数组等。</p>
+<p>也许有一天你想把这些对象存储在数据库中。使用关系型数据库的行和列存储，这相当于是把一个表现力丰富的对象塞到一个非常大的电子表格中：为了适应表结构，你必须设法将这个对象扁平化—​通常一个字段对应一列—​而且每次查询时又需要将其重新构造为对象。</p>
+<p>Elasticsearch 是 面向文档 的，意味着它存储整个对象或 文档。Elasticsearch 不仅存储文档，而且 索引 每个文档的内容，使之可以被检索。在 Elasticsearch 中，我们对文档进行索引、检索、排序和过滤—​而不是对行列数据。这是一种完全不同的思考数据的方式，也是 Elasticsearch 能支持复杂全文检索的原因。</p>
+<h2 id="json"><a class="header" href="#json">json</a></h2>
+<p>Elasticsearch 使用 JavaScript Object Notation（或者 <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>）作为文档的序列化格式。JSON 序列化为大多数编程语言所支持，并且已经成为 NoSQL 领域的标准格式。 它简单、简洁、易于阅读。</p>
+<p>下面这个 JSON 文档代表了一个 user 对象：</p>
+<pre><code class="language-json">
+{ 
+    &quot;email&quot;:      &quot;john@smith.com&quot;,
+    &quot;first_name&quot;: &quot;John&quot;,
+    &quot;last_name&quot;:  &quot;Smith&quot;,
+    &quot;info&quot;: {
+        &quot;bio&quot;:         &quot;Eco-warrior and defender of the weak&quot;,
+        &quot;age&quot;:         25,
+        &quot;interests&quot;: [ &quot;dolphins&quot;, &quot;whales&quot; ]
+    },
+    &quot;join_date&quot;: &quot;2014/05/01&quot;
+}
+
+</code></pre>
+<p>虽然原始的 user 对象很复杂，但这个对象的结构和含义在 JSON 版本中都得到了体现和保留。在 Elasticsearch 中将对象转化为 JSON 后构建索引要比在一个扁平的表结构中要简单的多。</p>
+<blockquote>
+<p>🐳 <strong>Note:</strong> 几乎所有的语言都有可以将任意的数据结构或对象转化成 JSON 格式的模块，只是细节各不相同。具体请查看 serialization 或者 marshalling 这两个处理 JSON 的模块。官方 <a href="https://www.elastic.co/guide/en/elasticsearch/client/index.html">Elasticsearch 客户端</a> 自动为您提供 JSON 转化。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="适应新环境"><a class="header" href="#适应新环境">适应新环境</a></h1>
+<p>为了让大家对 Elasticsearch 能实现什么及其上手难易程度有一个基本印象，让我们从一个简单的教程开始并介绍索引、搜索及聚合等基础概念。</p>
+<p>我们将一并介绍一些新的技术术语，即使无法立即全部理解它们也无妨，因为在本书后续内容中，我们将继续深入介绍这里提到的所有概念。</p>
+<p>接下来尽情享受 Elasticsearch 探索之旅。</p>
+<h2 id="创建一个雇员目录"><a class="header" href="#创建一个雇员目录">创建一个雇员目录</a></h2>
+<p>我们受雇于 Megacorp 公司，作为 HR 部门新的 “热爱无人机” （&quot;We love our drones!&quot;）激励项目的一部分，我们的任务是为此创建一个员工目录。该目录应当能培养员工认同感及支持实时、高效、动态协作，因此有一些业务需求：</p>
+<ul>
+<li>
+<p>支持包含多值标签、数值、以及全文本的数据</p>
+</li>
+<li>
+<p>检索任一员工的完整信息</p>
+</li>
+<li>
+<p>允许结构化搜索，比如查询 30 岁以上的员工</p>
+</li>
+<li>
+<p>允许简单的全文搜索以及较复杂的短语搜索</p>
+</li>
+<li>
+<p>支持在匹配文档内容中高亮显示搜索片段</p>
+</li>
+<li>
+<p>支持基于数据创建和管理分析仪表盘</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="索引员工文档"><a class="header" href="#索引员工文档">索引员工文档</a></h1>
+<p>第一个业务需求是存储员工数据。 这将会以 员工文档 的形式存储：一个文档代表一个员工。存储数据到 Elasticsearch 的行为叫做 索引 ，但在索引一个文档之前，需要确定将文档存储在哪里。</p>
+<p>一个 Elasticsearch 集群可以 包含多个 索引 ，相应的每个索引可以包含多个 类型 。 这些不同的类型存储着多个 文档 ，每个文档又有 多个 属性 。</p>
+<p>⚠️ 高版本(<code>v8.0</code>) 已经没有 type 概念</p>
+<blockquote>
+<p><strong>Index Versus Index Versus Index</strong> </p>
+<p>你也许已经注意到 索引 这个词在 Elasticsearch 语境中有多种含义， 这里有必要做一些说明：</p>
+<p>(1) 索引（名词）</p>
+<p>如前所述，一个 索引 类似于传统关系数据库中的一个 数据库 ，是一个存储关系型文档的地方。 索引 (index) 的复数词为 indices 或 indexes 。</p>
+<p>(2) 索引（动词）</p>
+<p>索引一个文档 就是存储一个文档到一个 索引 （名词）中以便被检索和查询。这非常类似于 SQL 语句中的 INSERT 关键词，除了文档已存在时，新文档会替换旧文档情况之外。</p>
+<p>(3) 倒排索引</p>
+<p>关系型数据库通过增加一个 索引 比如一个 B树（B-tree）索引 到指定的列上，以便提升数据检索速度。Elasticsearch 和 Lucene 使用了一个叫做 倒排索引 的结构来达到相同的目的。</p>
+<p>默认的，一个文档中的每一个属性都是 被索引 的（有一个倒排索引）和可搜索的。一个没有倒排索引的属性是不能被搜索到的。我们将在 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/inverted-index.html">倒排索引</a> 讨论倒排索引的更多细节。</p>
+</blockquote>
+<p>对于员工目录，我们将做如下操作：</p>
+<ul>
+<li>
+<p>每个员工索引一个文档，文档包含该员工的所有信息。</p>
+</li>
+<li>
+<p>每个文档都将是 employee 类型 。</p>
+</li>
+<li>
+<p>该类型位于 索引 megacorp 内。</p>
+</li>
+<li>
+<p>该索引保存在我们的 Elasticsearch 集群中。</p>
+</li>
+</ul>
+<p>实践中这非常简单（尽管看起来有很多步骤），我们可以通过一条命令完成所有这些动作：</p>
+<pre><code class="language-json">
+POST /megacorp/_doc/1?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;John&quot;,
+  &quot;last_name&quot;: &quot;Smith&quot;,
+  &quot;age&quot;: 25,
+  &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+  &quot;interests&quot;: [
+    &quot;sports&quot;,
+    &quot;music&quot;
+  ]
+}
+
+</code></pre>
+<p>注意，路径 /megacorp/_doc/1 包含了三部分的信息：</p>
+<ul>
+<li>
+<p>megacorp 索引名称</p>
+</li>
+<li>
+<p>_doc 类型名称</p>
+</li>
+<li>
+<p>1 特定雇员的ID</p>
+</li>
+</ul>
+<p>请求体 —— JSON 文档 —— 包含了这位员工的所有详细信息，他的名字叫 John Smith ，今年 25 岁，喜欢攀岩。</p>
+<p>很简单！无需进行执行管理任务，如创建一个索引或指定每个属性的数据类型之类的，可以直接只索引一个文档。Elasticsearch 默认地完成其他一切，因此所有必需的管理任务都在后台使用默认设置完成。</p>
+<p>进行下一步前，让我们增加更多的员工信息到目录中：</p>
+<pre><code class="language-json">
+POST /megacorp/_doc/2?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;Jane&quot;,
+  &quot;last_name&quot;: &quot;Smith&quot;,
+  &quot;age&quot;: 32,
+  &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+  &quot;interests&quot;: [
+    &quot;music&quot;
+  ]
+}
+
+
+POST /megacorp/_doc/3?pretty
+{
+  &quot;type&quot;: &quot;employee&quot;,
+  &quot;first_name&quot;: &quot;Douglas&quot;,
+  &quot;last_name&quot;: &quot;Fir&quot;,
+  &quot;age&quot;: 35,
+  &quot;about&quot;: &quot;I like to build cabinets&quot;,
+  &quot;interests&quot;: [
+    &quot;forestry&quot;
+  ]
+}
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="检索文档"><a class="header" href="#检索文档">检索文档</a></h1>
+<p>目前我们已经在 Elasticsearch 中存储了一些数据， 接下来就能专注于实现应用的业务需求了。第一个需求是可以检索到单个雇员的数据。</p>
+<p>这在 Elasticsearch 中很简单。简单地执行 一个 HTTP GET 请求并指定文档的地址——索引库、类型和ID。 使用这三个信息可以返回原始的 JSON 文档：</p>
+<pre><code class="language-json">
+GET /megacorp/_doc/1?pretty
+
+// 返回结果
+{
+  &quot;_index&quot;: &quot;megacorp&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1,
+  &quot;_seq_no&quot;: 0,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;employee&quot;,
+    &quot;first_name&quot;: &quot;John&quot;,
+    &quot;last_name&quot;: &quot;Smith&quot;,
+    &quot;age&quot;: 25,
+    &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+    &quot;interests&quot;: [
+      &quot;sports&quot;,
+      &quot;music&quot;
+    ]
+  }
+}
+
+</code></pre>
+<p>返回结果包含了文档的一些元数据，以及 _source 属性，内容是 John Smith 雇员的原始 JSON 文档：</p>
+<blockquote>
+<p>🐌  <strong>Tip</strong> 
+将 HTTP 命令由 POST 改为 GET 可以用来检索文档，同样的，可以使用 DELETE 命令来删除文档，以及使用 HEAD 指令来检查文档是否存在。如果想更新已存在的文档，只需再次 POST 。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="轻量搜索"><a class="header" href="#轻量搜索">轻量搜索</a></h1>
+<p>一个 GET 是相当简单的，可以直接得到指定的文档。 现在尝试点儿稍微高级的功能，比如一个简单的搜索！</p>
+<p>第一个尝试的几乎是最简单的搜索了。我们使用下列请求来搜索所有雇员：</p>
+<pre><code class="language-json">
+GET /megacorp/_search
+
+// 返回列表
+{
+  &quot;took&quot;: 0,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 3,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 1,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 1,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 1,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;3&quot;,
+        &quot;_score&quot;: 1,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Douglas&quot;,
+          &quot;last_name&quot;: &quot;Fir&quot;,
+          &quot;age&quot;: 35,
+          &quot;about&quot;: &quot;I like to build cabinets&quot;,
+          &quot;interests&quot;: [
+            &quot;forestry&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<p>可以看到，我们仍然使用索引库 megacorp ，但与指定一个文档 ID 不同，这次使用 _search 。返回结果包括了所有三个文档，放在数组 hits 中。一个搜索默认返回十条结果。</p>
+<p>⚠️ 返回结果不仅告知匹配了哪些文档，还包含了整个文档本身：显示搜索结果给最终用户所需的全部信息。</p>
+<p>接下来，尝试下搜索姓氏为 <code>Smith</code> 的雇员。为此，我们将使用一个 高亮 搜索，很容易通过命令行完成。这个方法一般涉及到一个 查询字符串 （query-string） 搜索，因为我们通过一个URL参数来传递查询信息给搜索接口：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?q=last_name:Smith&amp;pretty
+
+// 返回结果
+{
+  &quot;took&quot;: 14,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 2,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.4700036,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使用查询表达式搜索"><a class="header" href="#使用查询表达式搜索">使用查询表达式搜索</a></h1>
+<p>Query-string 搜索通过命令非常方便地进行临时性的即席搜索 ，但它有自身的局限性（参见 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/search-lite.html">轻量 搜索</a> ）。Elasticsearch 提供一个丰富灵活的查询语言叫做 查询表达式 ， 它支持构建更加复杂和健壮的查询。</p>
+<p>领域特定语言 （DSL）， 使用 JSON 构造了一个请求。我们可以像这样重写之前的查询所有名为 Smith 的搜索 ：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;last_name&quot;: &quot;Smith&quot;
+    }
+  }
+}
+
+// 返回结果与之前的查询一样
+{
+  &quot;took&quot;: 1,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 2,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.4700036,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<p>返回结果与之前的查询一样，但还是可以看到有一些变化。其中之一是，不再使用 query-string 参数，而是一个请求体替代。这个请求使用 JSON 构造，并使用了一个 match 查询（属于查询类型之一，后面将继续介绍）。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="更复杂的搜索"><a class="header" href="#更复杂的搜索">更复杂的搜索</a></h1>
+<p>现在尝试下更复杂的搜索。 同样搜索姓氏为 Smith 的员工，但这次我们只需要年龄大于 30 的。查询需要稍作调整，使用过滤器 filter ，它支持高效地执行一个结构化查询。</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;query&quot;: {
+    &quot;bool&quot;: {
+      &quot;must&quot;: {
+        &quot;match&quot;: {
+          &quot;last_name&quot;: &quot;smith&quot; 0️⃣
+        } 
+      },
+      &quot;filter&quot;: {
+        &quot;range&quot;: {
+          &quot;age&quot;: {
+            &quot;gt&quot;: 30 1️⃣
+          }
+        }
+      }
+    }
+  }
+}
+
+// 返回结果
+{
+  &quot;took&quot;: 2,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 1,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 0.4700036,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 0.4700036,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<ul>
+<li>
+<p>0️⃣ 这部分与我们之前使用的 match 查询 一样</p>
+</li>
+<li>
+<p>1️⃣ 这部分是一个 range 过滤器 ， 它能找到年龄大于 30 的文档，其中 gt 表示_大于_(great than)。</p>
+</li>
+</ul>
+<p>目前无需太多担心语法问题，后续会更详细地介绍。只需明确我们添加了一个 过滤器 用于执行一个范围查询，并复用之前的 match 查询。现在结果只返回了一名员工，叫 Jane Smith，32 岁。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="全文搜索"><a class="header" href="#全文搜索">全文搜索</a></h1>
+<p>截止目前的搜索相对都很简单：单个姓名，通过年龄过滤。现在尝试下稍微高级点儿的全文搜索——一项 传统数据库确实很难搞定的任务。</p>
+<p>搜索下所有喜欢攀岩（rock climbing）的员工：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;about&quot;: &quot;rock climbing&quot;
+    }
+  }
+}
+
+// 返回结果
+{
+  &quot;took&quot;: 3,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 2,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 1.4167401,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 1.4167401, 0️⃣
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      },
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;2&quot;,
+        &quot;_score&quot;: 0.4589591, 1️⃣
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;Jane&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 32,
+          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
+          &quot;interests&quot;: [
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<ul>
+<li>0️⃣ 1️⃣ 表示相关性得分</li>
+</ul>
+<p>Elasticsearch 默认按照相关性得分排序，即每个文档跟查询的匹配程度。第一个最高得分的结果很明显：John Smith 的 about 属性清楚地写着 “rock climbing” 。</p>
+<p>但为什么 Jane Smith 也作为结果返回了呢？原因是她的 about 属性里提到了 “rock” 。因为只有 “rock” 而没有 “climbing” ，所以她的相关性得分低于 John 的。</p>
+<p>这是一个很好的案例，阐明了 Elasticsearch 如何 在 全文属性上搜索并返回相关性最强的结果。Elasticsearch中的 相关性 概念非常重要，也是完全区别于传统关系型数据库的一个概念，数据库中的一条记录要么匹配要么不匹配。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="短语搜索"><a class="header" href="#短语搜索">短语搜索</a></h1>
+<p>找出一个属性中的独立单词是没有问题的，但有时候想要精确匹配一系列单词或者_短语_ 。 比如， 我们想执行这样一个查询，仅匹配同时包含 “rock” 和 “climbing” ，并且 二者以短语 “rock climbing” 的形式紧挨着的雇员记录。</p>
+<p>为此对 match 查询稍作调整，使用一个叫做 match_phrase 的查询：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;query&quot;: {
+    &quot;match_phrase&quot;: {
+      &quot;about&quot;: &quot;rock climbing&quot;
+    }
+  }
+}
+
+// 返回结果
+{
+  &quot;took&quot;: 14,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 1,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 1.4167401,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 1.4167401,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+<p>毫无悬念，返回结果仅有 John Smith 的文档。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="高亮搜索"><a class="header" href="#高亮搜索">高亮搜索</a></h1>
+<p>许多应用都倾向于在每个搜索结果中 高亮 部分文本片段，以便让用户知道为何该文档符合查询条件。在 Elasticsearch 中检索出高亮片段也很容易。</p>
+<p>再次执行前面的查询，并增加一个新的 highlight 参数：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;query&quot;: {
+    &quot;match_phrase&quot;: {
+      &quot;about&quot;: &quot;rock climbing&quot;
+    }
+  },
+  &quot;highlight&quot;: {
+    &quot;fields&quot;: {
+      &quot;about&quot;: {}
+    }
+  }
+}
+
+# 返回结果
+{
+  &quot;took&quot;: 65,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 1,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: 1.4167401,
+    &quot;hits&quot;: [
+      {
+        &quot;_index&quot;: &quot;megacorp&quot;,
+        &quot;_id&quot;: &quot;1&quot;,
+        &quot;_score&quot;: 1.4167401,
+        &quot;_source&quot;: {
+          &quot;type&quot;: &quot;employee&quot;,
+          &quot;first_name&quot;: &quot;John&quot;,
+          &quot;last_name&quot;: &quot;Smith&quot;,
+          &quot;age&quot;: 25,
+          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
+          &quot;interests&quot;: [
+            &quot;sports&quot;,
+            &quot;music&quot;
+          ]
+        },
+        &quot;highlight&quot;: {
+          &quot;about&quot;: [
+            &quot;I love to go &lt;em&gt;rock&lt;/em&gt; &lt;em&gt;climbing&lt;/em&gt;&quot; 0️⃣
+          ]
+        }
+      }
+    ]
+  }
+}
+
+</code></pre>
+<ul>
+<li>0️⃣ 原始文本中的高亮片段</li>
+</ul>
+<p>当执行该查询时，返回结果与之前一样，与此同时结果中还多了一个叫做 highlight 的部分。这个部分包含了 about 属性匹配的文本片段，并以 HTML 标签 <code>&lt;em&gt;&lt;/em&gt;</code> 封装</p>
+<p>关于高亮搜索片段，可以在 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/highlighting.html">highlighting reference documentation</a> 了解更多信息。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="分析"><a class="header" href="#分析">分析</a></h1>
+<p>终于到了最后一个业务需求：支持管理者对员工目录做分析。 Elasticsearch 有一个功能叫聚合（aggregations），允许我们基于数据生成一些精细的分析结果。聚合与 SQL 中的 GROUP BY 类似但更强大。</p>
+<p>举个例子，挖掘出员工中最受欢迎的兴趣爱好：</p>
+<pre><code class="language-json">
+GET /megacorp/_search?pretty
+{
+  &quot;size&quot;: 0,
+  &quot;aggs&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;terms&quot;: {
+        &quot;field&quot;: &quot;interests.keyword&quot;
+      }
+    }
+  }
+}
+
+</code></pre>
+<p>暂时忽略掉语法，直接看看结果：</p>
+<pre><code class="language-json">
+{
+  &quot;took&quot;: 1,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 3,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: null,
+    &quot;hits&quot;: []
+  },
+  &quot;aggregations&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;doc_count_error_upper_bound&quot;: 0,
+      &quot;sum_other_doc_count&quot;: 0,
+      &quot;buckets&quot;: [
+        {
+          &quot;key&quot;: &quot;music&quot;,
+          &quot;doc_count&quot;: 2
+        },
+        {
+          &quot;key&quot;: &quot;forestry&quot;,
+          &quot;doc_count&quot;: 1
+        },
+        {
+          &quot;key&quot;: &quot;sports&quot;,
+          &quot;doc_count&quot;: 1
+        }
+      ]
+    }
+  }
+}
+
+</code></pre>
+<p>可以看到，两位员工对音乐感兴趣，一位对林业感兴趣，一位对运动感兴趣。这些聚合的结果数据并非预先统计，而是根据匹配当前查询的文档即时生成的。如果想知道叫 Smith 的员工中最受欢迎的兴趣爱好，可以直接构造一个组合查询：</p>
+<pre><code class="language-json">
+GET /megacorp/_search
+{
+  &quot;size&quot;: 0,
+  &quot;query&quot;: {
+    &quot;match&quot;: {
+      &quot;last_name&quot;: &quot;smith&quot;
+    }
+  },
+  &quot;aggs&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;terms&quot;: {
+        &quot;field&quot;: &quot;interests.keyword&quot;
+      }
+    }
+  }
+}
+
+
+</code></pre>
+<p>all_interests 聚合已经变为只包含匹配查询的文档：</p>
+<pre><code class="language-json">
+{
+  &quot;took&quot;: 1,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 2,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: null,
+    &quot;hits&quot;: []
+  },
+  &quot;aggregations&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;doc_count_error_upper_bound&quot;: 0,
+      &quot;sum_other_doc_count&quot;: 0,
+      &quot;buckets&quot;: [
+        {
+          &quot;key&quot;: &quot;music&quot;,
+          &quot;doc_count&quot;: 2
+        },
+        {
+          &quot;key&quot;: &quot;sports&quot;,
+          &quot;doc_count&quot;: 1
+        }
+      ]
+    }
+  }
+}
+
+
+</code></pre>
+<p>聚合还支持分级汇总 。比如，查询特定兴趣爱好员工的平均年龄：</p>
+<pre><code class="language-json">
+GET /megacorp/_search
+{
+  &quot;size&quot;: 0, 
+  &quot;aggs&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;terms&quot;: {
+        &quot;field&quot;: &quot;interests.keyword&quot;
+      },
+      &quot;aggs&quot;: {
+        &quot;avg_age&quot;: {
+          &quot;avg&quot;: {
+            &quot;field&quot;: &quot;age&quot;
+          }
+        }
+      }
+    }
+  }
+}
+
+</code></pre>
+<p>得到的聚合结果有点儿复杂，但理解起来还是很简单的：</p>
+<pre><code class="language-json">
+{
+  &quot;took&quot;: 0,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 3,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: null,
+    &quot;hits&quot;: []
+  },
+  &quot;aggregations&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;doc_count_error_upper_bound&quot;: 0,
+      &quot;sum_other_doc_count&quot;: 0,
+      &quot;buckets&quot;: [
+        {
+          &quot;key&quot;: &quot;music&quot;,
+          &quot;doc_count&quot;: 2,
+          &quot;avg_age&quot;: {
+            &quot;value&quot;: 28.5
+          }
+        },
+        {
+          &quot;key&quot;: &quot;forestry&quot;,
+          &quot;doc_count&quot;: 1,
+          &quot;avg_age&quot;: {
+            &quot;value&quot;: 35
+          }
+        },
+        {
+          &quot;key&quot;: &quot;sports&quot;,
+          &quot;doc_count&quot;: 1,
+          &quot;avg_age&quot;: {
+            &quot;value&quot;: 25
+          }
+        }
+      ]
+    }
+  }
+}
+
+</code></pre>
+<p>输出基本是第一次聚合的加强版。依然有一个兴趣及数量的列表，只不过每个兴趣都有了一个附加的 <code>avg_age</code> 属性，代表有这个兴趣爱好的所有员工的平均年龄。</p>
+<p>即使现在不太理解这些语法也没有关系，依然很容易了解到复杂聚合及分组通过 <code>Elasticsearch</code> 特性实现得很完美，能够提取的数据类型也没有任何限制。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="小结"><a class="header" href="#小结">小结</a></h1>
+<p>欣喜的是，这是一个关于 Elasticsearch 基础描述的教程，且仅仅是浅尝辄止，更多诸如 suggestions、geolocation、percolation、fuzzy 与 partial matching 等特性均被省略，以便保持教程的简洁。但它确实突显了开始构建高级搜索功能多么容易。不需要配置——只需要添加数据并开始搜索！</p>
+<p>很可能语法会让你在某些地方有所困惑，并且对各个方面如何微调也有一些问题。没关系！本书后续内容将针对每个问题详细解释，让你全方位地理解 Elasticsearch 的工作原理。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="分布式特性"><a class="header" href="#分布式特性">分布式特性</a></h1>
+<p>在本章开头，我们提到过 Elasticsearch 可以横向扩展至数百（甚至数千）的服务器节点，同时可以处理PB级数据。我们的教程给出了一些使用 Elasticsearch 的示例，但并不涉及任何内部机制。Elasticsearch 天生就是分布式的，并且在设计时屏蔽了分布式的复杂性。</p>
+<p>Elasticsearch 在分布式方面几乎是透明的。教程中并不要求了解分布式系统、分片、集群发现或其他的各种分布式概念。可以使用笔记本上的单节点轻松地运行教程里的程序，但如果你想要在 100 个节点的集群上运行程序，一切依然顺畅。</p>
+<p>Elasticsearch 尽可能地屏蔽了分布式系统的复杂性。这里列举了一些在后台自动执行的操作：</p>
+<ul>
+<li>
+<p>分配文档到不同的容器 或 分片 中，文档可以储存在一个或多个节点中</p>
+</li>
+<li>
+<p>按集群节点来均衡分配这些分片，从而对索引和搜索过程进行负载均衡</p>
+</li>
+<li>
+<p>复制每个分片以支持数据冗余，从而防止硬件故障导致的数据丢失</p>
+</li>
+<li>
+<p>将集群中任一节点的请求路由到存有相关数据的节点</p>
+</li>
+<li>
+<p>集群扩容时无缝整合新节点，重新分配分片以便从离群节点恢复</p>
+</li>
+</ul>
+<p>当阅读本书时，将会遇到有关 Elasticsearch 分布式特性的补充章节。这些章节将介绍有关集群扩容、故障转移(集群内的原理) 、应对文档存储(分布式文档存储) 、执行分布式搜索(执行分布式检索) ，以及分区（shard）及其工作原理(分片内部原理) 。</p>
+<p>这些章节并非必读，完全可以无需了解内部机制就使用 Elasticsearch，但是它们将从另一个角度帮助你了解更完整的 Elasticsearch 知识。可以根据需要跳过它们，或者想更完整地理解时再回头阅读也无妨。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="后续步骤"><a class="header" href="#后续步骤">后续步骤</a></h1>
+<p>现在大家对于通过 Elasticsearch 能够实现什么样的功能、以及上手的难易程度应该已经有了初步概念。Elasticsearch 力图通过最少的知识和配置做到开箱即用。学习 Elasticsearch 的最好方式是投入实践：尽情开始索引和搜索吧！</p>
+<p>然而，对于 Elasticsearch 知道得越多，就越有生产效率。告诉 Elasticsearch 越多的领域知识，就越容易进行结果调优。</p>
+<p>本书的后续内容将帮助你从新手成长为专家，每个章节不仅阐述必要的基础知识，而且包含专家建议。如果刚刚上手，这些建议可能无法立竿见影；但 Elasticsearch 有着合理的默认设置，在无需干预的情况下通常都能工作得很好。当你开始追求毫秒级的性能提升时，随时可以重温这些章节。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="集群内的原理"><a class="header" href="#集群内的原理">集群内的原理</a></h1>
+<blockquote>
+<p><strong>补充章节</strong></p>
+<p>如前文所述，这是补充章节中第一篇介绍 Elasticsearch 在分布式环境中的运行原理。 在这个章节中，我们将会介绍 cluster 、 node 、 shard 等常用术语，Elastisearch 的扩容机制， 以及如何处理硬件故障的内容。</p>
+<p>虽然这个章节不是必读的—​您完全可以在不关注分片、副本和失效切换等内容的情况下长期使用Elasticsearch-- 但是这将帮助你了解 Elasticsearch 的内部工作过程。您可以先快速阅览该章节，将来有需要时再次查看。</p>
+</blockquote>
+<p>ElasticSearch 的主旨是随时可用和按需扩容。 而扩容可以通过购买性能更强大（ 垂直扩容 ，或 纵向扩容 ） 或者数量更多的服务器（ 水平扩容 ，或 横向扩容 ）来实现。</p>
+<p>虽然 Elasticsearch 可以获益于更强大的硬件设备，但是垂直扩容是有极限的。 真正的扩容能力是来自于水平扩容—​为集群添加更多的节点，并且将负载压力和稳定性分散到这些节点中。</p>
+<p>对于大多数的数据库而言，通常需要对应用程序进行非常大的改动，才能利用上横向扩容的新增资源。 与之相反的是，ElastiSearch天生就是 分布式的 ，它知道如何通过管理多节点来提高扩容性和可用性。 这也意味着你的应用无需关注这个问题。</p>
+<p>本章将讲述如何按需配置集群、节点和分片，并在硬件故障时确保数据安全。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="空集群"><a class="header" href="#空集群">空集群</a></h1>
+<p>如果我们启动了一个单独的节点，里面不包含任何的数据和索引，那我们的集群看起来就是一个空集群。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0201.png?raw=true" alt="空集群" /></p>
+<p>一个运行中的 Elasticsearch 实例称为一个节点，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。当有节点加入集群中或者从集群中移除节点时，集群将会重新平均分布所有的数据。</p>
+<p>当一个节点被选举成为 主 节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点。</p>
+<p>作为用户，我们可以将请求发送到 集群中的任何节点 ，包括主节点。 每个节点都知道任意文档所处的位置，并且能够将我们的请求直接转发到存储我们所需文档的节点。 无论我们将请求发送到哪个节点，它都能负责从各个包含我们所需文档的节点收集回数据，并将最终结果返回給客户端。 Elasticsearch 对这一切的管理都是透明的。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="集群健康"><a class="header" href="#集群健康">集群健康</a></h1>
+<p>Elasticsearch 的集群监控信息中包含了许多的统计数据，其中最为重要的一项就是 集群健康 ， 它在 status 字段中展示为 green 、 yellow 或者 red 。</p>
+<pre><code class="language-json">
+GET /_cluster/health
+
+{
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;status&quot;: &quot;green&quot;,  0️⃣
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 3,
+  &quot;number_of_data_nodes&quot;: 2,
+  &quot;active_primary_shards&quot;: 91,
+  &quot;active_shards&quot;: 182,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 0,
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 100
+}
+
+</code></pre>
+<p>0️⃣ status 字段是我们最关心的</p>
+<p>status 字段指示着当前集群在总体上是否工作正常。它的三种颜色含义如下：</p>
+<ul>
+<li>
+<p>green 所有的主分片和副本分片都正常运行</p>
+</li>
+<li>
+<p>yellow 所有的主分片都正常运行，但不是所有的副本分片都正常运行</p>
+</li>
+<li>
+<p>red 有主分片没能正常运行</p>
+</li>
+</ul>
+<p>在本章节剩余的部分，我们将解释什么是 主 分片和 副本 分片，以及上面提到的这些颜色的实际意义。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="添加索引"><a class="header" href="#添加索引">添加索引</a></h1>
+<p>我们往 Elasticsearch 添加数据时需要用到 索引 —— 保存相关数据的地方。 索引实际上是指向一个或者多个物理 分片 的 逻辑命名空间 。</p>
+<p>一个 分片 是一个底层的 工作单元 ，它仅保存了全部数据中的一部分。 在分片内部机制中，我们将详细介绍分片是如何工作的，而现在我们只需知道一个分片是一个 Lucene 的实例，以及它本身就是一个完整的搜索引擎。 我们的文档被存储和索引到分片内，但是应用程序是直接与索引而不是与分片进行交互。</p>
+<p>Elasticsearch 是利用分片将数据分发到集群内各处的。分片是数据的容器，文档保存在分片内，分片又被分配到集群内的各个节点里。 当你的集群规模扩大或者缩小时， Elasticsearch 会自动的在各节点中迁移分片，使得数据仍然均匀分布在集群里。</p>
+<p>一个分片可以是 主 分片或者 副本 分片。 索引内任意一个文档都归属于一个主分片，所以主分片的数目决定着索引能够保存的最大数据量。</p>
+<blockquote>
+<p><strong>🦉 Note</strong></p>
+<p>技术上来说，一个主分片最大能够存储 Integer.MAX_VALUE - 128 个文档，但是实际最大值还需要参考你的使用场景：包括你使用的硬件， 文档的大小和复杂程度，索引和查询文档的方式以及你期望的响应时长。</p>
+</blockquote>
+<p>一个副本分片只是一个主分片的拷贝。副本分片作为硬件故障时保护数据不丢失的冗余备份，并为搜索和返回文档等读操作提供服务。</p>
+<p>在索引建立的时候就已经确定了主分片数，但是副本分片数可以随时修改。</p>
+<p>让我们在包含一个空节点的集群内创建名为 blogs 的索引。 索引在默认情况下会被分配5个主分片， 但是为了演示目的，我们将分配3个主分片和一份副本（每个主分片拥有一个副本分片）：</p>
+<pre><code class="language-json">
+PUT /blogs
+{
+   &quot;settings&quot; : {
+      &quot;number_of_shards&quot; : 3,
+      &quot;number_of_replicas&quot; : 1
+   }
+}
+
+{
+  &quot;acknowledged&quot;: true,
+  &quot;shards_acknowledged&quot;: true,
+  &quot;index&quot;: &quot;blogs&quot;
+}
+
+</code></pre>
+<p>我们的集群现在, 所有3个主分片都被分配在 Node 1 。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0202.png?raw=true" alt="3个分片在一个节点" /></p>
+<p>⚠️ 最新版本中，创建索引默认主分片为1，副本也是1，下面是elastic cloud示例</p>
+<pre><code class="language-json">
+PUT /blogs
+{
+   &quot;settings&quot; : {
+      &quot;number_of_shards&quot; : 3,
+      &quot;number_of_replicas&quot; : 2
+   }
+}
+
+{
+  &quot;acknowledged&quot;: true,
+  &quot;shards_acknowledged&quot;: true,
+  &quot;index&quot;: &quot;blogs&quot;
+}
+
+</code></pre>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/es-basic-create-an-index.jpg?raw=true" alt="3个分片在2个节点" /></p>
+<p>如果我们现在查看集群健康，我们将看到如下内容：</p>
+<pre><code class="language-json">
+GET _cluster/health
+
+{
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;status&quot;: &quot;yellow&quot;, 0️⃣
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 3,
+  &quot;number_of_data_nodes&quot;: 2,
+  &quot;active_primary_shards&quot;: 95,
+  &quot;active_shards&quot;: 190,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 3, 1️⃣
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 98.44559585492227
+}
+
+</code></pre>
+<ul>
+<li>
+<p>0️⃣ 集群 status 值为 yellow</p>
+</li>
+<li>
+<p>1️⃣ 没有被分配到任何节点的副本数</p>
+</li>
+</ul>
+<p>集群的健康状况为 yellow 则表示全部 主 分片都正常运行（集群可以正常服务所有请求），但是 副本 分片没有全部处在正常状态。 实际上，所有3个副本分片都是 unassigned —— 它们都没有被分配到任何节点。 在同一个节点上既保存原始数据又保存副本是没有意义的，因为一旦失去了那个节点，我们也将丢失该节点上的所有副本数据。</p>
+<p>当前我们的集群是正常运行的，但是在硬件故障时有丢失数据的风险。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="添加故障转移"><a class="header" href="#添加故障转移">添加故障转移</a></h1>
+<p>当集群中只有一个节点在运行时，意味着会有一个单点故障问题——没有冗余。 幸运的是，我们只需再启动一个节点即可防止数据丢失。</p>
+<p>启动第二个节点</p>
+<p>为了测试第二个节点启动后的情况，你可以在同一个目录内，完全依照启动第一个节点的方式来启动一个新节点（参考安装并运行 Elasticsearch）。多个节点可以共享同一个目录。</p>
+<p>当你在同一台机器上启动了第二个节点时，只要它和第一个节点有同样的 cluster.name 配置，它就会自动发现集群并加入到其中。 但是在不同机器上启动节点的时候，为了加入到同一集群，你需要配置一个可连接到的单播主机列表。 详细信息请查看最好使用单播代替组播</p>
+<p>如果启动了第二个节点，我们的集群将会如下所示</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0203.png?raw=true" alt="双节点集群" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/basic-add-failover.jpg?raw=true" alt="双节点集群" /></p>
+<p>当第二个节点加入到集群后，3个 副本分片 将会分配到这个节点上——每个主分片对应一个副本分片。 这意味着当集群内任何一个节点出现问题时，我们的数据都完好无损。</p>
+<p>所有新近被索引的文档都将会保存在主分片上，然后被并行的复制到对应的副本分片上。这就保证了我们既可以从主分片又可以从副本分片上获得文档。</p>
+<p>cluster-health 现在展示的状态为 green ，这表示所有6个分片（包括3个主分片和3个副本分片）都在正常运行。</p>
+<p>我们的集群现在不仅仅是正常运行的，并且还处于 始终可用 的状态。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="水平扩容"><a class="header" href="#水平扩容">水平扩容</a></h1>
+<p>怎样为我们的正在增长中的应用程序按需扩容呢？ 当启动了第三个节点，我们的集群将会看起来如下</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0204.png?raw=true" alt="3节点" /></p>
+<p>Node 1 和 Node 2 上各有一个分片被迁移到了新的 Node 3 节点，现在每个节点上都拥有2个分片，而不是之前的3个。 这表示每个节点的硬件资源（CPU, RAM, I/O）将被更少的分片所共享，每个分片的性能将会得到提升。</p>
+<p>分片是一个功能完整的搜索引擎，它拥有使用一个节点上的所有资源的能力。 我们这个拥有6个分片（3个主分片和3个副本分片）的索引可以最大扩容到6个节点，每个节点上存在一个分片，并且每个分片拥有所在节点的全部资源。</p>
+<h2 id="更多的扩容"><a class="header" href="#更多的扩容">更多的扩容</a></h2>
+<p>但是如果我们想要扩容超过6个节点怎么办呢？</p>
+<p>主分片的数目在索引创建时就已经确定了下来。实际上，这个数目定义了这个索引能够 存储 的最大数据量。（实际大小取决于你的数据、硬件和使用场景。） 但是，读操作——搜索和返回数据——可以同时被主分片 或 副本分片所处理，所以当你拥有越多的副本分片时，也将拥有越高的吞吐量。</p>
+<p>在运行中的集群上是可以动态调整副本分片数目的，我们可以按需伸缩集群。让我们把副本数从默认的 1 增加到 2 ：</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0205.png?raw=true" alt="2副本" /></p>
+<pre><code class="language-json">
+PUT /blogs/_settings
+{
+  &quot;number_of_replicas&quot;: 2
+}
+
+{
+  &quot;acknowledged&quot;: true
+}
+
+</code></pre>
+<p>blogs 索引现在拥有9个分片：3个主分片和6个副本分片。 这意味着我们可以将集群扩容到9个节点，每个节点上一个分片。相比原来3个节点时，集群搜索性能可以提升 3 倍。</p>
+<blockquote>
+<p>🦉 <strong>Note</strong></p>
+<p>当然，如果只是在相同节点数目的集群上增加更多的副本分片并不能提高性能，因为每个分片从节点上获得的资源会变少。 你需要增加更多的硬件资源来提升吞吐量。</p>
+<p>但是更多的副本分片数提高了数据冗余量：按照上面的节点配置，我们可以在失去2个节点的情况下不丢失任何数据。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="应对故障"><a class="header" href="#应对故障">应对故障</a></h1>
+<p>我们之前说过 Elasticsearch 可以应对节点故障，接下来让我们尝试下这个功能。 如果我们关闭第一个节点，这时集群的状态如下: </p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0206.png?raw=true" alt="关闭1节点" /></p>
+<p>我们关闭的节点是一个主节点。而集群必须拥有一个主节点来保证正常工作，所以发生的第一件事情就是选举一个新的主节点： Node 2 。</p>
+<p>在我们关闭 Node 1 的同时也失去了主分片 1 和 2 ，并且在缺失主分片的时候索引也不能正常工作。 如果此时来检查集群的状况，我们看到的状态将会为 red ：不是所有主分片都在正常工作。</p>
+<p>幸运的是，在其它节点上存在着这两个主分片的完整副本， 所以新的主节点立即将这些分片在 Node 2 和 Node 3 上对应的副本分片提升为主分片， 此时集群的状态将会为 yellow 。 这个提升主分片的过程是瞬间发生的，如同按下一个开关一般。</p>
+<p>为什么我们集群状态是 yellow 而不是 green 呢？ 虽然我们拥有所有的三个主分片，但是同时设置了每个主分片需要对应2份副本分片，而此时只存在一份副本分片。 所以集群不能为 green 的状态，不过我们不必过于担心：如果我们同样关闭了 Node 2 ，我们的程序 依然 可以保持在不丢任何数据的情况下运行，因为 Node 3 为每一个分片都保留着一份副本。</p>
+<p>如果我们重新启动 Node 1 ，集群可以将缺失的副本分片再次进行分配，那么集群的状态也将下所示</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0205.png?raw=true" alt="2副本" /></p>
+<p>如果 Node 1 依然拥有着之前的分片，它将尝试去重用它们，同时仅从主分片复制发生了修改的数据文件。</p>
+<p>到目前为止，你应该对分片如何使得 Elasticsearch 进行水平扩容以及数据保障等知识有了一定了解。 接下来我们将讲述关于分片生命周期的更多细节。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="数据输入和输出"><a class="header" href="#数据输入和输出">数据输入和输出</a></h1>
+<p>无论我们写什么样的程序，目的都是一样的：以某种方式组织数据服务我们的目的。 但是数据不仅仅由随机位和字节组成。我们建立数据元素之间的关系以便于表示实体，或者现实世界中存在的 事物 。 如果我们知道一个名字和电子邮件地址属于同一个人，那么它们将会更有意义。</p>
+<p>尽管在现实世界中，不是所有的类型相同的实体看起来都是一样的。 一个人可能有一个家庭电话号码，而另一个人只有一个手机号码，再一个人可能两者兼有。 一个人可能有三个电子邮件地址，而另一个人却一个都没有。一位西班牙人可能有两个姓，而讲英语的人可能只有一个姓。</p>
+<p>面向对象编程语言如此流行的原因之一是对象帮我们表示和处理现实世界具有潜在的复杂的数据结构的实体，到目前为止，一切都很完美！</p>
+<p>但是当我们需要存储这些实体时问题来了，传统上，我们以行和列的形式存储数据到关系型数据库中，相当于使用电子表格。 正因为我们使用了这种不灵活的存储媒介导致所有我们使用对象的灵活性都丢失了。</p>
+<p>但是否我们可以将我们的对象按对象的方式来存储？这样我们就能更加专注于 使用 数据，而不是在电子表格的局限性下对我们的应用建模。 我们可以重新利用对象的灵活性。</p>
+<p>一个 对象 是基于特定语言的内存的数据结构。为了通过网络发送或者存储它，我们需要将它表示成某种标准的格式。 JSON 是一种以人可读的文本表示对象的方法。 它已经变成 NoSQL 世界交换数据的事实标准。当一个对象被序列化成为 JSON，它被称为一个 JSON 文档 。</p>
+<p>Elastcisearch 是分布式的 文档 存储。它能存储和检索复杂的数据结构—​序列化成为JSON文档—​以 实时 的方式。 换句话说，一旦一个文档被存储在 Elasticsearch 中，它就是可以被集群中的任意节点检索到。</p>
+<p>当然，我们不仅要存储数据，我们一定还需要查询它，成批且快速的查询它们。 尽管现存的 NoSQL 解决方案允许我们以文档的形式存储对象，但是他们仍旧需要我们思考如何查询我们的数据，以及确定哪些字段需要被索引以加快数据检索。</p>
+<p>在 Elasticsearch 中， 每个字段的所有数据 都是 默认被索引的 。 即每个字段都有为了快速检索设置的专用倒排索引。而且，不像其他多数的数据库，它能在 同一个查询中 使用所有这些倒排索引，并以惊人的速度返回结果。</p>
+<p>在本章中，我们展示了用来创建，检索，更新和删除文档的 API。就目前而言，我们不关心文档中的数据或者怎样查询它们。 所有我们关心的就是在 Elasticsearch 中怎样安全的存储文档，以及如何将文档再次返回。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="什么是文档"><a class="header" href="#什么是文档">什么是文档</a></h1>
+<p>在大多数应用中，多数实体或对象可以被序列化为包含键值对的 JSON 对象。 一个 键 可以是一个字段或字段的名称，一个 值 可以是一个字符串，一个数字，一个布尔值， 另一个对象，一些数组值，或一些其它特殊类型诸如表示日期的字符串，或代表一个地理位置的对象：</p>
+<pre><code class="language-json">
+{
+  &quot;name&quot;: &quot;John Smith&quot;,
+  &quot;age&quot;: 42,
+  &quot;confirmed&quot;: true,
+  &quot;join_date&quot;: &quot;2014-06-01&quot;,
+  &quot;home&quot;: {
+    &quot;lat&quot;: 51.5,
+    &quot;lon&quot;: 0.1
+  },
+  &quot;accounts&quot;: [
+    {
+      &quot;type&quot;: &quot;facebook&quot;,
+      &quot;id&quot;: &quot;johnsmith&quot;
+    },
+    {
+      &quot;type&quot;: &quot;twitter&quot;,
+      &quot;id&quot;: &quot;johnsmith&quot;
+    }
+  ]
+}
+
+</code></pre>
+<p>通常情况下，我们使用的术语 对象 和 文档 是可以互相替换的。不过，有一个区别： 一个对象仅仅是类似于 hash 、 hashmap 、字典或者关联数组的 JSON 对象，对象中也可以嵌套其他的对象。 对象可能包含了另外一些对象。在 Elasticsearch 中，术语 文档 有着特定的含义。它是指最顶层或者根对象, 这个根对象被序列化成 JSON 并存储到 Elasticsearch 中，指定了唯一 ID。</p>
+<blockquote>
+<p>🐛 <strong>Warning</strong></p>
+<p>字段的名字可以是任何合法的字符串，但 不可以 包含英文句号(.)</p>
+</blockquote>
+<pre><code class="language-json">
+POST blogs/_doc
+{
+  &quot;.1&quot;: &quot;11&quot;
+}
+
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;mapper_parsing_exception&quot;,
+        &quot;reason&quot;: &quot;failed to parse&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;mapper_parsing_exception&quot;,
+    &quot;reason&quot;: &quot;failed to parse&quot;,
+    &quot;caused_by&quot;: {
+      &quot;type&quot;: &quot;illegal_argument_exception&quot;,
+      &quot;reason&quot;: &quot;field name cannot contain only whitespace: ['.1']&quot;
+    }
+  },
+  &quot;status&quot;: 400
+}
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="文档元数据"><a class="header" href="#文档元数据">文档元数据</a></h1>
+<p>一个文档不仅仅包含它的数据 ，也包含 元数据 —— 有关 文档的信息。 三个必须的元数据元素如下：</p>
+<ul>
+<li>
+<p>_index 文档在哪存放</p>
+</li>
+<li>
+<p>_type 文档表示的对象类别, ⚠️ 高版本，没有_type</p>
+</li>
+<li>
+<p>_id 文档唯一标识</p>
+</li>
+</ul>
+<h2 id="一_index"><a class="header" href="#一_index">一、_index</a></h2>
+<p>一个 索引 应该是因共同的特性被分组到一起的文档集合。 例如，你可能存储所有的产品在索引 products 中，而存储所有销售的交易到索引 sales 中。 虽然也允许存储不相关的数据到一个索引中，但这通常看作是一个反模式的做法。</p>
+<blockquote>
+<p>🐙 <strong>Tip</strong></p>
+<p>实际上，在 Elasticsearch 中，我们的数据是被存储和索引在 分片 中，而一个索引仅仅是逻辑上的命名空间， 这个命名空间由一个或者多个分片组合在一起。 然而，这是一个内部细节，我们的应用程序根本不应该关心分片，对于应用程序而言，只需知道文档位于一个 索引 内。 Elasticsearch 会处理所有的细节。</p>
+</blockquote>
+<p>我们将在 索引管理 介绍如何自行创建和管理索引，但现在我们将让 Elasticsearch 帮我们创建索引。 所有需要我们做的就是选择一个索引名，</p>
+<p>这个名字必须</p>
+<ul>
+<li>
+<p>小写，</p>
+</li>
+<li>
+<p>不能以下划线开头，</p>
+</li>
+<li>
+<p>不能包含逗号。</p>
+</li>
+</ul>
+<p>我们用 website 作为索引名举例。</p>
+<pre><code class="language-json">PUT YZtest
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
+        &quot;reason&quot;: &quot;Invalid index name [YZtest], must be lowercase&quot;,
+        &quot;index_uuid&quot;: &quot;_na_&quot;,
+        &quot;index&quot;: &quot;YZtest&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
+    &quot;reason&quot;: &quot;Invalid index name [YZtest], must be lowercase&quot;,
+    &quot;index_uuid&quot;: &quot;_na_&quot;,
+    &quot;index&quot;: &quot;YZtest&quot;
+  },
+  &quot;status&quot;: 400
+}
+
+</code></pre>
+<pre><code class="language-json">
+PUT _yztest
+
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
+        &quot;reason&quot;: &quot;Invalid index name [_yztest], must not start with '_', '-', or '+'&quot;,
+        &quot;index_uuid&quot;: &quot;_na_&quot;,
+        &quot;index&quot;: &quot;_yztest&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
+    &quot;reason&quot;: &quot;Invalid index name [_yztest], must not start with '_', '-', or '+'&quot;,
+    &quot;index_uuid&quot;: &quot;_na_&quot;,
+    &quot;index&quot;: &quot;_yztest&quot;
+  },
+  &quot;status&quot;: 400
+}
+
+</code></pre>
+<pre><code class="language-json">
+PUT yz,test
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
+        &quot;reason&quot;: &quot;&quot;&quot;Invalid index name [yz,test], must not contain the following characters ['\','/','*','?','&quot;','&lt;','&gt;','|',' ',',']&quot;&quot;&quot;,
+        &quot;index_uuid&quot;: &quot;_na_&quot;,
+        &quot;index&quot;: &quot;yz,test&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
+    &quot;reason&quot;: &quot;&quot;&quot;Invalid index name [yz,test], must not contain the following characters ['\','/','*','?','&quot;','&lt;','&gt;','|',' ',',']&quot;&quot;&quot;,
+    &quot;index_uuid&quot;: &quot;_na_&quot;,
+    &quot;index&quot;: &quot;yz,test&quot;
+  },
+  &quot;status&quot;: 400
+}
+
+</code></pre>
+<h2 id="二_type"><a class="header" href="#二_type">二、_type</a></h2>
+<p>⚠️ 高版本，没有_type概念</p>
+<p>数据可能在索引中只是松散的组合在一起，但是通常明确定义一些数据中的子分区是很有用的。 例如，所有的产品都放在一个索引中，但是你有许多不同的产品类别，比如 &quot;electronics&quot; 、 &quot;kitchen&quot; 和 &quot;lawn-care&quot;。</p>
+<p>这些文档共享一种相同的（或非常相似）的模式：他们有一个标题、描述、产品代码和价格。他们只是正好属于“产品”下的一些子类。</p>
+<p>Elasticsearch 公开了一个称为 types （类型）的特性，它允许您在索引中对数据进行逻辑分区。不同 types 的文档可能有不同的字段，但最好能够非常相似。 我们将在 类型和映射 中更多的讨论关于 types 的一些应用和限制。</p>
+<p>一个 _type 命名可以是大写或者小写，但是不能以下划线或者句号开头，不应该包含逗号， 并且长度限制为256个字符. 我们使用 blog 作为类型名举例。</p>
+<h2 id="三_id"><a class="header" href="#三_id">三、_id</a></h2>
+<p>ID 是一个字符串，当它和 _index 以及 _type 组合就可以唯一确定 Elasticsearch 中的一个文档。 当你创建一个新的文档，要么提供自己的 _id ，要么让 Elasticsearch 帮你生成。</p>
+<h2 id="四其他元数据"><a class="header" href="#四其他元数据">四、其他元数据</a></h2>
+<p>还有一些其他的元数据元素，他们在 类型和映射 进行了介绍。通过前面已经列出的元数据元素， 我们已经能存储文档到 Elasticsearch 中并通过 ID 检索它—​换句话说，使用 Elasticsearch 作为文档的存储介质。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="索引文档"><a class="header" href="#索引文档">索引文档</a></h1>
+<p>通过使用 index API ，文档可以被 索引 —— 存储和使文档可被搜索。 但是首先，我们要确定文档的位置。正如我们刚刚讨论的，一个文档的 _index 、 _type 和 _id 唯一标识一个文档。 我们可以提供自定义的 _id 值，或者让 index API 自动生成。</p>
+<h2 id="一使用自定义的id"><a class="header" href="#一使用自定义的id">一、使用自定义的ID</a></h2>
+<p>如果你的文档有一个自然的标识符 （例如，一个 user_account 字段或其他标识文档的值），你应该使用如下方式的 index API 并提供你自己 _id ：</p>
+<pre><code class="language-json">
+PUT /{index}/{type}/{id}
+{
+  &quot;field&quot;: &quot;value&quot;,
+  ...
+}
+
+</code></pre>
+<p>举个例子，如果我们的索引称为 website ，类型称为 blog ，并且选择 123 作为 ID ，那么索引请求应该是下面这样：</p>
+<pre><code class="language-json">
+PUT /website/blog/123
+{
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;:  &quot;Just trying this out...&quot;,
+  &quot;date&quot;:  &quot;2014/01/01&quot;
+}
+
+</code></pre>
+<pre><code class="language-json">
+POST /website/_doc/123
+{
+  &quot;type&quot;: &quot;blog&quot;,
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;Just trying this out...&quot;,
+  &quot;date&quot;: &quot;2014/01/01&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;123&quot;,
+  &quot;_version&quot;: 1,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 0,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>该响应表明文档已经成功创建，该索引包括 _index 、 _type 和 _id 元数据， 以及一个新元素： _version 。</p>
+<p>在 Elasticsearch 中每个文档都有一个版本号。当每次对文档进行修改时（包括删除）， _version 的值会递增。 在 处理冲突 中，我们讨论了怎样使用 _version 号码确保你的应用程序中的一部分修改不会覆盖另一部分所做的修改。</p>
+<h2 id="二自生成id"><a class="header" href="#二自生成id">二、自生成ID</a></h2>
+<p>如果你的数据没有自然的 ID， Elasticsearch 可以帮我们自动生成 ID 。 请求的结构调整为： 不再使用 PUT 谓词(“使用这个 URL 存储这个文档”)， 而是使用 POST 谓词(“存储文档在这个 URL 命名空间下”)。</p>
+<p>现在该 URL 只需包含 _index 和 _type :</p>
+<pre><code class="language-json">
+POST /website/blog/
+{
+  &quot;title&quot;: &quot;My second blog entry&quot;,
+  &quot;text&quot;:  &quot;Still trying this out...&quot;,
+  &quot;date&quot;:  &quot;2014/01/01&quot;
+}
+
+</code></pre>
+<p>除了 _id 是 Elasticsearch 自动生成的，响应的其他部分和前面的类似：</p>
+<pre><code class="language-json">
+POST /website/_doc
+{
+  &quot;type&quot;: &quot;blog&quot;,
+  &quot;title&quot;: &quot;My second blog entry&quot;,
+  &quot;text&quot;: &quot;Still trying this out...&quot;,
+  &quot;date&quot;: &quot;2014/01/01&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;jrkq4oEBZEeCE-yEdE3s&quot;,
+  &quot;_version&quot;: 1,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 1,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>自动生成的 ID 是 URL-safe、 基于 Base64 编码且长度为20个字符的 GUID 字符串。 这些 GUID 字符串由可修改的 FlakeID 模式生成，这种模式允许多个节点并行生成唯一 ID ，且互相之间的冲突概率几乎为零。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="取回一个文档"><a class="header" href="#取回一个文档">取回一个文档</a></h1>
+<p>为了从 Elasticsearch 中检索出文档，我们仍然使用相同的 _index , _type , 和 _id ，但是 HTTP 谓词更改为 GET :</p>
+<pre><code class="language-json">
+GET /website/_doc/123?pretty
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;123&quot;,
+  &quot;_version&quot;: 1,
+  &quot;_seq_no&quot;: 0,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;blog&quot;,
+    &quot;title&quot;: &quot;My first blog entry&quot;,
+    &quot;text&quot;: &quot;Just trying this out...&quot;,
+    &quot;date&quot;: &quot;2014/01/01&quot;
+  }
+}
+
+</code></pre>
+<p>响应体包括目前已经熟悉了的元数据元素，再加上 _source 字段，这个字段包含我们索引数据时发送给 Elasticsearch 的原始 JSON 文档。</p>
+<blockquote>
+<p>🦉<strong>Note</strong></p>
+<p>在请求的查询串参数中加上 pretty 参数，正如前面的例子中看到的，这将会调用 Elasticsearch 的 pretty-print 功能，该功能 使得 JSON 响应体更加可读。但是， _source 字段不能被格式化打印出来。相反，我们得到的 _source 字段中的 JSON 串，刚好是和我们传给它的一样。</p>
+</blockquote>
+<p>GET 请求的响应体包括 {&quot;found&quot;: true} ，这证实了文档已经被找到。 如果我们请求一个不存在的文档，我们仍旧会得到一个 JSON 响应体，但是 found 将会是 false 。 此外， HTTP 响应码将会是 404 Not Found ，而不是 200 OK 。</p>
+<p>我们可以通过传递 -i 参数给 curl 命令，该参数能够显示响应的头部：</p>
+<pre><code>curl -i -XGET http://localhost:9200/website/blog/124?pretty
+
+HTTP/1.1 404 Not Found
+Content-Type: application/json; charset=UTF-8
+Content-Length: 83
+
+{
+  &quot;_index&quot; : &quot;website&quot;,
+  &quot;_type&quot; :  &quot;blog&quot;,
+  &quot;_id&quot; :    &quot;124&quot;,
+  &quot;found&quot; :  false
+}
+
+</code></pre>
+<h2 id="返回文档的一部分"><a class="header" href="#返回文档的一部分">返回文档的一部分</a></h2>
+<p>默认情况下， GET 请求会返回整个文档，这个文档正如存储在 _source 字段中的一样。但是也许你只对其中的 title 字段感兴趣。单个字段能用 _source 参数请求得到，多个字段也能使用逗号分隔的列表来指定。</p>
+<pre><code class="language-json">
+GET /website/_doc/123?_source=title,text
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;123&quot;,
+  &quot;_version&quot;: 1,
+  &quot;_seq_no&quot;: 0,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;title&quot;: &quot;My first blog entry&quot;,
+    &quot;text&quot;: &quot;Just trying this out...&quot;
+  }
+}
+
+</code></pre>
+<p>该 _source 字段现在包含的只是我们请求的那些字段，并且已经将 date 字段过滤掉了。</p>
+<p>或者，如果你只想得到 _source 字段，不需要任何元数据，你能使用 _source 端点：</p>
+<pre><code class="language-json">
+GET /website/blog/123/_source
+
+{
+   &quot;title&quot;: &quot;My first blog entry&quot;,
+   &quot;text&quot;:  &quot;Just trying this out...&quot;,
+   &quot;date&quot;:  &quot;2014/01/01&quot;
+}
+
+
+</code></pre>
+<p>⚠️ 高版本已经无法使用 _source，只返回_source</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="检查文档是否存在"><a class="header" href="#检查文档是否存在">检查文档是否存在</a></h1>
+<p>如果只想检查一个文档是否存在--根本不想关心内容—​那么用 HEAD 方法来代替 GET 方法。 HEAD 请求没有返回体，只返回一个 HTTP 请求报头：</p>
+<pre><code>
+curl -i -XHEAD http://localhost:9200/website/blog/123
+
+</code></pre>
+<p>如果文档存在， Elasticsearch 将返回一个 200 ok 的状态码：</p>
+<pre><code>
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=UTF-8
+Content-Length: 0
+
+</code></pre>
+<p>若文档不存在， Elasticsearch 将返回一个 404 Not Found 的状态码：</p>
+<pre><code>
+curl -i -XHEAD http://localhost:9200/website/blog/124
+
+HTTP/1.1 404 Not Found
+Content-Type: text/plain; charset=UTF-8
+Content-Length: 0
+
+</code></pre>
+<p>当然，一个文档仅仅是在检查的时候不存在，并不意味着一毫秒之后它也不存在：也许同时正好另一个进程就创建了该文档。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="更新整个文档"><a class="header" href="#更新整个文档">更新整个文档</a></h1>
+<p>在 Elasticsearch 中文档是 不可改变 的，不能修改它们。相反，如果想要更新现有的文档，需要 重建索引 或者进行替换， 我们可以使用相同的 index API 进行实现，在 索引文档 中已经进行了讨论。</p>
+<pre><code class="language-json">
+POST /website/_doc/123
+{
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;I am starting to get the hang of this...&quot;,
+  &quot;date&quot;: &quot;2014/01/02&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;123&quot;,
+  &quot;_version&quot;: 2, 0️⃣
+  &quot;result&quot;: &quot;updated&quot;, 1️⃣
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 2,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>在响应体中，我们能看到 Elasticsearch 已经增加了 _version 字段值：</p>
+<p>在内部，Elasticsearch 已将旧文档标记为已删除，并增加一个全新的文档。 尽管你不能再对旧版本的文档进行访问，但它并不会立即消失。当继续索引更多的数据，Elasticsearch 会在后台清理这些已删除文档。</p>
+<p>在本章的后面部分，我们会介绍 update API, 这个 API 可以用于 partial updates to a document 。 虽然它似乎对文档直接进行了修改，但实际上 Elasticsearch 按前述完全相同方式执行以下过程：</p>
+<ol>
+<li>
+<p>从旧文档构建 JSON</p>
+</li>
+<li>
+<p>更改该 JSON</p>
+</li>
+<li>
+<p>删除旧文档</p>
+</li>
+<li>
+<p>索引一个新文档</p>
+</li>
+</ol>
+<p>唯一的区别在于, update API 仅仅通过一个客户端请求来实现这些步骤，而不需要单独的 get 和 index 请求。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="创建新文档"><a class="header" href="#创建新文档">创建新文档</a></h1>
+<p>当我们索引一个文档，怎么确认我们正在创建一个完全新的文档，而不是覆盖现有的呢？</p>
+<p>请记住， _index 、 _type 和 _id 的组合可以唯一标识一个文档。所以，确保创建一个新文档的最简单办法是，使用索引请求的 POST 形式让 Elasticsearch 自动生成唯一 _id :</p>
+<pre><code class="language-json">
+POST /website/blog/
+{ ... }
+
+</code></pre>
+<p>然而，如果已经有自己的 _id ，那么我们必须告诉 Elasticsearch ，只有在相同的 _index 、 _type 和 _id 不存在时才接受我们的索引请求。这里有两种方式，他们做的实际是相同的事情。使用哪种，取决于哪种使用起来更方便。</p>
+<p>第一种方法使用 op_type 查询-字符串参数：</p>
+<pre><code class="language-json">
+PUT /website/blog/123?op_type=create
+{ ... }
+
+</code></pre>
+<p>第二种方法是在 URL 末端使用 /_create :</p>
+<pre><code class="language-json">
+PUT /website/blog/123/_create
+{ ... }
+
+</code></pre>
+<p>如果创建新文档的请求成功执行，Elasticsearch 会返回元数据和一个 201 Created 的 HTTP 响应码。</p>
+<p>另一方面，如果具有相同的 _index 、 _type 和 _id 的文档已经存在，Elasticsearch 将会返回 409 Conflict 响应码，以及如下的错误信息：</p>
+<pre><code class="language-json">
+POST /website/_doc/123?op_type=create
+{
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;I am starting to get the hang of this...&quot;,
+  &quot;date&quot;: &quot;2014/01/02&quot;
+}
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+        &quot;reason&quot;: &quot;[123]: version conflict, document already exists (current version [2])&quot;,
+        &quot;index_uuid&quot;: &quot;SjLz7UQ6Q0WbQWLXRl-KeQ&quot;,
+        &quot;shard&quot;: &quot;0&quot;,
+        &quot;index&quot;: &quot;website&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+    &quot;reason&quot;: &quot;[123]: version conflict, document already exists (current version [2])&quot;,
+    &quot;index_uuid&quot;: &quot;SjLz7UQ6Q0WbQWLXRl-KeQ&quot;,
+    &quot;shard&quot;: &quot;0&quot;,
+    &quot;index&quot;: &quot;website&quot;
+  },
+  &quot;status&quot;: 409
+}
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="删除文档"><a class="header" href="#删除文档">删除文档</a></h1>
+<p>删除文档的语法和我们所知道的规则相同，只是使用 DELETE 方法：</p>
+<pre><code class="language-json">
+DELETE /website/_doc/123
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;123&quot;,
+  &quot;_version&quot;: 3, 0️⃣
+  &quot;result&quot;: &quot;deleted&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 3,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>如果找到该文档，Elasticsearch 将要返回一个 200 ok 的 HTTP 响应码，和一个类似以下结构的响应体。注意，字段 _version 值已经增加:</p>
+<p>如果文档没有找到，我们将得到 404 Not Found 的响应码和类似这样的响应体：</p>
+<pre><code class="language-json">
+{
+  &quot;found&quot; :    false,
+  &quot;_index&quot; :   &quot;website&quot;,
+  &quot;_type&quot; :    &quot;blog&quot;,
+  &quot;_id&quot; :      &quot;123&quot;,
+  &quot;_version&quot; : 4
+}
+
+</code></pre>
+<p>即使文档不存在（ Found 是 false ）， _version 值仍然会增加。这是 Elasticsearch 内部记录本的一部分，用来确保这些改变在跨多节点时以正确的顺序执行。</p>
+<blockquote>
+<p>🦉<strong>Note</strong></p>
+<p>正如已经在更新整个文档中提到的，删除文档不会立即将文档从磁盘中删除，只是将文档标记为已删除状态。随着你不断的索引更多的数据，Elasticsearch 将会在后台清理标记为已删除的文档。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="处理冲突"><a class="header" href="#处理冲突">处理冲突</a></h1>
+<p>当我们使用 index API 更新文档 ，可以一次性读取原始文档，做我们的修改，然后重新索引 整个文档 。 最近的索引请求将获胜：无论最后哪一个文档被索引，都将被唯一存储在 Elasticsearch 中。如果其他人同时更改这个文档，他们的更改将丢失</p>
+<p>很多时候这是没有问题的。也许我们的主数据存储是一个关系型数据库，我们只是将数据复制到 Elasticsearch 中并使其可被搜索。 也许两个人同时更改相同的文档的几率很小。或者对于我们的业务来说偶尔丢失更改并不是很严重的问题。</p>
+<p>但有时丢失了一个变更就是 非常严重的 。试想我们使用 Elasticsearch 存储我们网上商城商品库存的数量， 每次我们卖一个商品的时候，我们在 Elasticsearch 中将库存数量减少。</p>
+<p>有一天，管理层决定做一次促销。突然地，我们一秒要卖好几个商品。 假设有两个 web 程序并行运行，每一个都同时处理所有商品的销售，如下图所示:</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0301.png?raw=true" alt="乐观控制" /></p>
+<p>web_1 对 stock_count 所做的更改已经丢失，因为 web_2 不知道它的 stock_count 的拷贝已经过期。 结果我们会认为有超过商品的实际数量的库存，因为卖给顾客的库存商品并不存在，我们将让他们非常失望。</p>
+<p>变更越频繁，读数据和更新数据的间隙越长，也就越可能丢失变更。</p>
+<p>在数据库领域中，有两种方法通常被用来确保并发更新时变更不会丢失：</p>
+<h3 id="悲观并发控制"><a class="header" href="#悲观并发控制">悲观并发控制</a></h3>
+<p>这种方法被关系型数据库广泛使用，它假定有变更冲突可能发生，因此阻塞访问资源以防止冲突。 一个典型的例子是读取一行数据之前先将其锁住，确保只有放置锁的线程能够对这行数据进行修改。</p>
+<h3 id="乐观并发控制"><a class="header" href="#乐观并发控制">乐观并发控制</a></h3>
+<p>Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且不会阻塞正在尝试的操作。 然而，如果源数据在读写当中被修改，更新将会失败。应用程序接下来将决定该如何解决冲突。 例如，可以重试更新、使用新的数据、或者将相关情况报告给用户。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="乐观并发控制-1"><a class="header" href="#乐观并发控制-1">乐观并发控制</a></h1>
+<p>Elasticsearch 是分布式的。当文档创建、更新或删除时， 新版本的文档必须复制到集群中的其他节点。Elasticsearch 也是异步和并发的，这意味着这些复制请求被并行发送，并且到达目的地时也许 顺序是乱的 。 Elasticsearch 需要一种方法确保文档的旧版本不会覆盖新的版本。</p>
+<p>当我们之前讨论 index ， GET 和 delete 请求时，我们指出每个文档都有一个 _version （版本）号，当文档被修改时版本号递增。 Elasticsearch 使用这个 _version 号来确保变更以正确顺序得到执行。如果旧版本的文档在新版本之后到达，它可以被简单的忽略。</p>
+<p>我们可以利用 _version 号来确保 应用中相互冲突的变更不会导致数据丢失。我们通过指定想要修改文档的 version 号来达到这个目的。 如果该版本不是当前版本号，我们的请求将会失败。</p>
+<p>让我们创建一个新的博客文章：</p>
+<pre><code class="language-json">
+POST /website/_doc/1?op_type=create
+{
+  &quot;type&quot;: &quot;blog&quot;,
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;Just trying this out...&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 4,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>响应体告诉我们，这个新创建的文档 _version 版本号是 1 。现在假设我们想编辑这个文档：我们加载其数据到 web 表单中， 做一些修改，然后保存新的版本。</p>
+<p>首先我们检索文档:</p>
+<pre><code class="language-json">
+GET /website/_doc/1
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 1, 0️⃣
+  &quot;_seq_no&quot;: 4, 
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;blog&quot;,
+    &quot;title&quot;: &quot;My first blog entry&quot;,
+    &quot;text&quot;: &quot;Just trying this out...&quot;
+  }
+}
+
+</code></pre>
+<p>响应体包含相同的 _version 版本号 1 </p>
+<p>现在，当我们尝试通过重建文档的索引来保存修改，我们指定 version 为我们的修改会被应用的版本：</p>
+<pre><code class="language-json">
+PUT /website/_doc/1?version=1 0️⃣
+{
+  &quot;title&quot;: &quot;My first blog entry&quot;,
+  &quot;text&quot;: &quot;Starting to get the hang of this...&quot;
+}
+
+{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;action_request_validation_exception&quot;,
+        &quot;reason&quot;: &quot;Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;action_request_validation_exception&quot;,
+    &quot;reason&quot;: &quot;Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;&quot;
+  },
+  &quot;status&quot;: 400
+}
+</code></pre>
+<p>0️⃣ 我们想这个在我们索引中的文档只有现在的 _version 为 1 时，本次更新才能成功</p>
+<p>此请求成功，并且响应体告诉我们 _version 已经递增到 2 ：</p>
+<pre><code class="language-json">
+{
+  &quot;_index&quot;:   &quot;website&quot;,
+  &quot;_type&quot;:    &quot;blog&quot;,
+  &quot;_id&quot;:      &quot;1&quot;,
+  &quot;_version&quot;: 2
+  &quot;created&quot;:  false
+}
+
+</code></pre>
+<p>然而，如果我们重新运行相同的索引请求，仍然指定 version=1 ， Elasticsearch 返回 409 Conflict HTTP 响应码，和一个如下所示的响应体：</p>
+<pre><code class="language-json">
+{
+   &quot;error&quot;: {
+      &quot;root_cause&quot;: [
+         {
+            &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+            &quot;reason&quot;: &quot;[blog][1]: version conflict, current [2], provided [1]&quot;,
+            &quot;index&quot;: &quot;website&quot;,
+            &quot;shard&quot;: &quot;3&quot;
+         }
+      ],
+      &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+      &quot;reason&quot;: &quot;[blog][1]: version conflict, current [2], provided [1]&quot;,
+      &quot;index&quot;: &quot;website&quot;,
+      &quot;shard&quot;: &quot;3&quot;
+   },
+   &quot;status&quot;: 409
+}
+
+</code></pre>
+<p>这告诉我们在 Elasticsearch 中这个文档的当前 _version 号是 2 ，但我们指定的更新版本号为 1 。</p>
+<p>我们现在怎么做取决于我们的应用需求。我们可以告诉用户说其他人已经修改了文档，并且在再次保存之前检查这些修改内容。 或者，在之前的商品 stock_count 场景，我们可以获取到最新的文档并尝试重新应用这些修改。</p>
+<p>所有文档的更新或删除 API，都可以接受 version 参数，这允许你在代码中使用乐观的并发控制，这是一种明智的做法。</p>
+<h2 id="通过外部系统使用版本控制"><a class="header" href="#通过外部系统使用版本控制">通过外部系统使用版本控制</a></h2>
+<p>一个常见的设置是使用其它数据库作为主要的数据存储，使用 Elasticsearch 做数据检索， 这意味着主数据库的所有更改发生时都需要被复制到 Elasticsearch ，如果多个进程负责这一数据同步，你可能遇到类似于之前描述的并发问题。</p>
+<p>如果你的主数据库已经有了版本号 — 或一个能作为版本号的字段值比如 timestamp — 那么你就可以在 Elasticsearch 中通过增加 version_type=external 到查询字符串的方式重用这些相同的版本号， 版本号必须是大于零的整数， 且小于 9.2E+18 — 一个 Java 中 long 类型的正值。</p>
+<p>外部版本号的处理方式和我们之前讨论的内部版本号的处理方式有些不同， Elasticsearch 不是检查当前 _version 和请求中指定的版本号是否相同， 而是检查当前 _version 是否 小于 指定的版本号。 如果请求成功，外部的版本号作为文档的新 _version 进行存储。</p>
+<p>外部版本号不仅在索引和删除请求是可以指定，而且在 创建 新文档时也可以指定。</p>
+<p>例如，要创建一个新的具有外部版本号 5 的博客文章，我们可以按以下方法进行：</p>
+<pre><code class="language-json">
+POST /website/_doc/2?version=5&amp;version_type=external
+{
+  &quot;type&quot;: &quot;blog&quot;,
+  &quot;title&quot;: &quot;My first external blog entry&quot;,
+  &quot;text&quot;: &quot;Starting to get the hang of this...&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 5,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 5,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>现在我们更新这个文档，指定一个新的 version 号是 10 ：</p>
+<pre><code class="language-json">
+POST /website/_doc/2?version=10&amp;version_type=external
+{
+  &quot;title&quot;: &quot;My first external blog entry&quot;,
+  &quot;text&quot;:  &quot;This is a piece of cake...&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;2&quot;,
+  &quot;_version&quot;: 10,
+  &quot;result&quot;: &quot;updated&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 6,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>如果你要重新运行此请求时，它将会失败，并返回像我们之前看到的同样的冲突错误， 因为指定的外部版本号不大于 Elasticsearch 的当前版本号。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="文档的部分更新"><a class="header" href="#文档的部分更新">文档的部分更新</a></h1>
+<p>在 更新整个文档 , 我们已经介绍过 更新一个文档的方法是检索并修改它，然后重新索引整个文档，这的确如此。然而，使用 update API 我们还可以部分更新文档，例如在某个请求时对计数器进行累加。</p>
+<p>我们也介绍过文档是不可变的：他们不能被修改，只能被替换。 update API 必须遵循同样的规则。 从外部来看，我们在一个文档的某个位置进行部分更新。然而在内部， update API 简单使用与之前描述相同的 检索-修改-重建索引 的处理过程。 区别在于这个过程发生在分片内部，这样就避免了多次请求的网络开销。通过减少检索和重建索引步骤之间的时间，我们也减少了其他进程的变更带来冲突的可能性。</p>
+<p>update 请求最简单的一种形式是接收文档的一部分作为 doc 的参数， 它只是与现有的文档进行合并。对象被合并到一起，覆盖现有的字段，增加新的字段。 例如，我们增加字段 tags 和 views 到我们的博客文章，如下所示：</p>
+<pre><code class="language-json">
+POST /website/_update/1
+{
+  &quot;doc&quot;: {
+    &quot;tags&quot;: [
+      &quot;testing&quot;
+    ],
+    &quot;views&quot;: 0
+  }
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 2,
+  &quot;result&quot;: &quot;noop&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 0,
+    &quot;successful&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 7,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>如果请求成功，我们看到类似于 index 请求的响应。</p>
+<p>检索文档显示了更新后的 _source 字段：</p>
+<pre><code class="language-json">
+GET website/_doc/1
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 2,
+  &quot;_seq_no&quot;: 7,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;blog&quot;,
+    &quot;title&quot;: &quot;My first blog entry&quot;,
+    &quot;text&quot;: &quot;Just trying this out...&quot;,
+    &quot;views&quot;: 0, 0️⃣
+    &quot;tags&quot;: [ 1️⃣
+      &quot;testing&quot;
+    ]
+  }
+}
+
+</code></pre>
+<p>0️⃣ 1️⃣ 新的字段已被添加到 _source 中。</p>
+<h2 id="使用脚本部分更新文档"><a class="header" href="#使用脚本部分更新文档">使用脚本部分更新文档</a></h2>
+<p>脚本可以在 update API中用来改变 _source 的字段内容， 它在更新脚本中称为 ctx._source 。 例如，我们可以使用脚本来增加博客文章中 views 的数量：</p>
+<pre><code class="language-json">
+POST /website/_update/1
+{
+  &quot;script&quot;: &quot;ctx._source.views+=1&quot;
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 3,
+  &quot;result&quot;: &quot;updated&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 8,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<blockquote>
+<p><strong>用 Groovy 脚本编程</strong></p>
+<p>对于那些 API 不能满足需求的情况，Elasticsearch 允许你使用脚本编写自定义的逻辑。 许多API都支持脚本的使用，包括搜索、排序、聚合和文档更新。 脚本可以作为请求的一部分被传递，从特殊的 .scripts 索引中检索，或者从磁盘加载脚本。</p>
+<p>默认的脚本语言 是 Groovy，一种快速表达的脚本语言，在语法上与 JavaScript 类似。 它在 Elasticsearch V1.3.0 版本首次引入并运行在 沙盒 中，然而 Groovy 脚本引擎存在漏洞， 允许攻击者通过构建 Groovy 脚本，在 Elasticsearch Java VM 运行时脱离沙盒并执行 shell 命令。</p>
+<p>因此，在版本 v1.3.8 、 1.4.3 和 V1.5.0 及更高的版本中，它已经被默认禁用。 此外，您可以通过设置集群中的所有节点的 config/elasticsearch.yml 文件来禁用动态 Groovy 脚本：
+<code>script.groovy.sandbox.enabled: false</code></p>
+<p>这将关闭 Groovy 沙盒，从而防止动态 Groovy 脚本作为请求的一部分被接受， 或者从特殊的 .scripts 索引中被检索。当然，你仍然可以使用存储在每个节点的 config/scripts/ 目录下的 Groovy 脚本。</p>
+<p>如果你的架构和安全性不需要担心漏洞攻击，例如你的 Elasticsearch 终端仅暴露和提供给可信赖的应用， 当它是你的应用需要的特性时，你可以选择重新启用动态脚本。</p>
+<p>你可以在 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html">scripting reference documentation</a> 获取更多关于脚本的资料。</p>
+</blockquote>
+<p>我们也可以通过使用脚本给 tags 数组添加一个新的标签。在这个例子中，我们指定新的标签作为参数，而不是硬编码到脚本内部。 这使得 Elasticsearch 可以重用这个脚本，而不是每次我们想添加标签时都要对新脚本重新编译：</p>
+<pre><code class="language-json">
+POST /website/_update/1
+{
+  &quot;script&quot;: {
+    &quot;source&quot;: &quot;ctx._source.tags.add(params.new_tag)&quot;,
+    &quot;lang&quot;: &quot;painless&quot;,
+    &quot;params&quot;: {
+      &quot;new_tag&quot;: &quot;search&quot;
+    }
+  }
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 5,
+  &quot;result&quot;: &quot;updated&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 10,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<p>获取文档并显示最后两次请求的效果：</p>
+<pre><code class="language-json">
+GET website/_doc/1
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 5,
+  &quot;_seq_no&quot;: 10,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;type&quot;: &quot;blog&quot;,
+    &quot;title&quot;: &quot;My first blog entry&quot;,
+    &quot;text&quot;: &quot;Just trying this out...&quot;,
+    &quot;views&quot;: 1, 0️⃣
+    &quot;tags&quot;: [
+      &quot;testing&quot;,
+      null,
+      &quot;search&quot; 1️⃣
+    ]
+  }
+}
+
+</code></pre>
+<p>0️⃣ views 字段已递增</p>
+<p>1️⃣ search 标签已追加到 tags 数组中</p>
+<p>我们甚至可以选择通过设置 ctx.op 为 delete 来删除基于其内容的文档：</p>
+<pre><code class="language-json">
+POST /website/_update/1/
+{
+  &quot;script&quot;: {
+    &quot;source&quot;: &quot;ctx.op = ctx._source.views == params.count ? 'delete' : 'none'&quot;,
+    &quot;params&quot;: {
+      &quot;count&quot;: 1
+    }
+  }
+}
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;1&quot;,
+  &quot;_version&quot;: 6,
+  &quot;result&quot;: &quot;deleted&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 11,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<h2 id="更新的文档可能尚不存在"><a class="header" href="#更新的文档可能尚不存在">更新的文档可能尚不存在</a></h2>
+<p>假设我们需要在 Elasticsearch 中存储一个页面访问量计数器。 每当有用户浏览网页，我们对该页面的计数器进行累加。但是，如果它是一个新网页，我们不能确定计数器已经存在。 如果我们尝试更新一个不存在的文档，那么更新操作将会失败。</p>
+<p>在这样的情况下，我们可以使用 upsert 参数，指定如果文档不存在就应该先创建它：</p>
+<p>我们第一次运行这个请求时， upsert 值作为新文档被索引，初始化 views 字段为 1 。 在后续的运行中，由于文档已经存在， script 更新操作将替代 upsert 进行应用，对 views 计数器进行累加。</p>
+<pre><code class="language-json">
+POST /website/_update/11/
+{
+  &quot;script&quot;: {
+    &quot;source&quot;: &quot;ctx._source.views+=1&quot;
+  },
+  &quot;upsert&quot;: {
+    &quot;views&quot;: 1
+  }
+}
+
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;11&quot;,
+  &quot;_version&quot;: 1,
+  &quot;result&quot;: &quot;created&quot;,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 2,
+    &quot;successful&quot;: 2,
+    &quot;failed&quot;: 0
+  },
+  &quot;_seq_no&quot;: 12,
+  &quot;_primary_term&quot;: 1
+}
+
+</code></pre>
+<pre><code class="language-json">
+GET website/_doc/11
+
+{
+  &quot;_index&quot;: &quot;website&quot;,
+  &quot;_id&quot;: &quot;11&quot;,
+  &quot;_version&quot;: 1,
+  &quot;_seq_no&quot;: 12,
+  &quot;_primary_term&quot;: 1,
+  &quot;found&quot;: true,
+  &quot;_source&quot;: {
+    &quot;views&quot;: 1
+  }
+}
+
+</code></pre>
+<h2 id="更新和冲突"><a class="header" href="#更新和冲突">更新和冲突</a></h2>
+<p>在本节的介绍中，我们说明 检索 和 重建索引 步骤的间隔越小，变更冲突的机会越小。 但是它并不能完全消除冲突的可能性。 还是有可能在 update 设法重新索引之前，来自另一进程的请求修改了文档。</p>
+<p>为了避免数据丢失， update API 在 检索 步骤时检索得到文档当前的 _version 号，并传递版本号到 重建索引 步骤的 index 请求。 如果另一个进程修改了处于检索和重新索引步骤之间的文档，那么 _version 号将不匹配，更新请求将会失败。</p>
+<p>对于部分更新的很多使用场景，文档已经被改变也没有关系。 例如，如果两个进程都对页面访问量计数器进行递增操作，它们发生的先后顺序其实不太重要； 如果冲突发生了，我们唯一需要做的就是尝试再次更新。</p>
+<p>这可以通过设置参数 retry_on_conflict 来自动完成， 这个参数规定了失败之前 update 应该重试的次数，它的默认值为 0 。</p>
+<pre><code class="language-json">
+POST /website/_update/1/?retry_on_conflict=5  0️⃣
+{
+  &quot;script&quot;: &quot;ctx._source.views+=1&quot;,
+  &quot;upsert&quot;: {
+    &quot;views&quot;: 0
+  }
+}
+
+</code></pre>
+<p>0️⃣ 失败之前重试该更新5次</p>
+<p>在增量操作无关顺序的场景，例如递增计数器等这个方法十分有效，但是在其他情况下变更的顺序 是 非常重要的。 类似 index API ， update API 默认采用 最终写入生效 的方案，但它也接受一个 version 参数来允许你使用 optimistic concurrency control 指定想要更新文档的版本。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="取回多个文档"><a class="header" href="#取回多个文档">取回多个文档</a></h1>
+<p>Elasticsearch 的速度已经很快了，但甚至能更快。 将多个请求合并成一个，避免单独处理每个请求花费的网络延时和开销。 如果你需要从 Elasticsearch 检索很多文档，那么使用 multi-get 或者 mget API 来将这些检索请求放在一个请求中，将比逐个文档请求更快地检索到全部文档。</p>
+<p>mget API 要求有一个 docs 数组作为参数，每个元素包含需要检索文档的元数据， 包括 _index 、 _type 和 _id 。如果你想检索一个或者多个特定的字段，那么你可以通过 _source 参数来指定这些字段的名字：</p>
+<pre><code class="language-json">
+GET /_mget
+{
+  &quot;docs&quot;: [
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: 2
+    },
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: 1,
+      &quot;_source&quot;: &quot;views&quot;
+    }
+  ]
+}
+
+{
+  &quot;docs&quot;: [
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: &quot;2&quot;,
+      &quot;_version&quot;: 10,
+      &quot;_seq_no&quot;: 6,
+      &quot;_primary_term&quot;: 1,
+      &quot;found&quot;: true,
+      &quot;_source&quot;: {
+        &quot;title&quot;: &quot;My first external blog entry&quot;,
+        &quot;text&quot;: &quot;This is a piece of cake...&quot;
+      }
+    },
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: &quot;1&quot;,
+      &quot;_version&quot;: 1,
+      &quot;_seq_no&quot;: 13,
+      &quot;_primary_term&quot;: 1,
+      &quot;found&quot;: true,
+      &quot;_source&quot;: {
+        &quot;views&quot;: 0
+      }
+    }
+  ]
+}
+
+
+</code></pre>
+<p>该响应体也包含一个 docs 数组， 对于每一个在请求中指定的文档，这个数组中都包含有一个对应的响应，且顺序与请求中的顺序相同。 其中的每一个响应都和使用单个 get request 请求所得到的响应体相同：</p>
+<p>如果想检索的数据都在相同的 _index 中（甚至相同的 _type 中），则可以在 URL 中指定默认的 /_index 或者默认的 /_index/_type 。</p>
+<p>你仍然可以通过单独请求覆盖这些值</p>
+<p>注意，我们请求的第二个文档是不存在的。我们指定类型为 blog ，但是文档 ID 1 的类型是 pageviews ，这个不存在的情况将在响应体中被报告：</p>
+<pre><code class="language-json">
+GET /_mget
+{
+  &quot;docs&quot;: [
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: 2
+    },
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: 12,
+      &quot;_source&quot;: &quot;views&quot;
+    }
+  ]
+}
+
+
+{
+  &quot;docs&quot;: [
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: &quot;2&quot;,
+      &quot;_version&quot;: 10,
+      &quot;_seq_no&quot;: 6,
+      &quot;_primary_term&quot;: 1,
+      &quot;found&quot;: true,
+      &quot;_source&quot;: {
+        &quot;title&quot;: &quot;My first external blog entry&quot;,
+        &quot;text&quot;: &quot;This is a piece of cake...&quot;
+      }
+    },
+    {
+      &quot;_index&quot;: &quot;website&quot;,
+      &quot;_id&quot;: &quot;12&quot;,
+      &quot;found&quot;: false 0️⃣
+    }
+  ]
+}
+
+</code></pre>
+<p>0️⃣ 未找到该文档。</p>
+<p>事实上第二个文档未能找到并不妨碍第一个文档被检索到。每个文档都是单独检索和报告的。</p>
+<blockquote>
+<p>🦉 <strong>Note</strong></p>
+<p>即使有某个文档没有找到，上述请求的 HTTP 状态码仍然是 200 。事实上，即使请求 没有 找到任何文档，它的状态码依然是 200 --因为 mget 请求本身已经成功执行。 为了确定某个文档查找是成功或者失败，你需要检查 found 标记。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="代价较小的批量操作"><a class="header" href="#代价较小的批量操作">代价较小的批量操作</a></h1>
+<p>与 mget 可以使我们一次取回多个文档同样的方式， bulk API 允许在单个步骤中进行多次 create 、 index 、 update 或 delete 请求。 如果你需要索引一个数据流比如日志事件，它可以排队和索引数百或数千批次。</p>
+<p>bulk 与其他的请求体格式稍有不同，如下所示：</p>
+<pre><code class="language-json">
+{ action: { metadata }}\n
+{ request body        }\n
+{ action: { metadata }}\n
+{ request body        }\n
+...
+
+</code></pre>
+<p>这种格式类似一个有效的单行 JSON 文档 流 ，它通过换行符(\n)连接到一起。注意两个要点：</p>
+<ul>
+<li>
+<p>每行一定要以换行符(\n)结尾， 包括最后一行 。这些换行符被用作一个标记，可以有效分隔行。</p>
+</li>
+<li>
+<p>这些行不能包含未转义的换行符，因为他们将会对解析造成干扰。这意味着这个 JSON 不 能使用 pretty 参数打印。</p>
+</li>
+</ul>
+<p>action/metadata 行指定 哪一个文档 做 什么操作</p>
+<p>action 必须是以下选项之一:</p>
+<ol>
+<li>
+<p>create 如果文档不存在，那么就创建它</p>
+</li>
+<li>
+<p>index 创建一个新文档或者替换一个现有的文档</p>
+</li>
+<li>
+<p>update 部分更新一个文档</p>
+</li>
+<li>
+<p>delete 删除一个文档</p>
+</li>
+</ol>
+<p>metadata 应该指定被索引、创建、更新或者删除的文档的 _index 、 _type 和 _id 。</p>
+<p>例如，一个 delete 请求看起来是这样的：</p>
+<pre><code class="language-json">
+{ &quot;delete&quot;: { &quot;_index&quot;: &quot;website&quot;, &quot;_type&quot;: &quot;blog&quot;, &quot;_id&quot;: &quot;123&quot; }}
+
+</code></pre>
+<p>request body 行由文档的 _source 本身组成—​文档包含的字段和值。它是 index 和 create 操作所必需的，这是有道理的：你必须提供文档以索引。</p>
+<p>它也是 update 操作所必需的，并且应该包含你传递给 update API 的相同请求体： doc 、 upsert 、 script 等等。 删除操作不需要 request body 行。</p>
+<pre><code class="language-json">
+{ &quot;create&quot;:  { &quot;_index&quot;: &quot;website&quot;, &quot;_type&quot;: &quot;blog&quot;, &quot;_id&quot;: &quot;123&quot; }}
+{ &quot;title&quot;:    &quot;My first blog post&quot; }
+
+</code></pre>
+<p>如果不指定 _id ，将会自动生成一个 ID ：</p>
+<pre><code class="language-json">
+{ &quot;index&quot;: { &quot;_index&quot;: &quot;website&quot;, &quot;_type&quot;: &quot;blog&quot; }}
+{ &quot;title&quot;:    &quot;My second blog post&quot; }
+
+</code></pre>
+<p>为了把所有的操作组合在一起，一个完整的 bulk 请求 有以下形式:</p>
+<pre><code class="language-json">
+POST /_bulk
+{&quot;delete&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}} 0️⃣
+{&quot;create&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
+{&quot;title&quot;:&quot;My first blog post&quot;}
+{&quot;index&quot;:{&quot;_index&quot;:&quot;website&quot;}}
+{&quot;title&quot;:&quot;My second blog post&quot;}
+{&quot;update&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
+{&quot;doc&quot;:{&quot;title&quot;:&quot;My updated blog post&quot;}} 1️⃣
+
+{
+  &quot;took&quot;: 4,
+  &quot;errors&quot;: false, 2️⃣
+  &quot;items&quot;: [
+    {
+      &quot;delete&quot;: {
+        &quot;_index&quot;: &quot;website&quot;,
+        &quot;_id&quot;: &quot;123&quot;,
+        &quot;_version&quot;: 1,
+        &quot;result&quot;: &quot;not_found&quot;,
+        &quot;_shards&quot;: {
+          &quot;total&quot;: 2,
+          &quot;successful&quot;: 2,
+          &quot;failed&quot;: 0
+        },
+        &quot;_seq_no&quot;: 14,
+        &quot;_primary_term&quot;: 1,
+        &quot;status&quot;: 404
+      }
+    },
+    {
+      &quot;create&quot;: {
+        &quot;_index&quot;: &quot;website&quot;,
+        &quot;_id&quot;: &quot;123&quot;,
+        &quot;_version&quot;: 2,
+        &quot;result&quot;: &quot;created&quot;,
+        &quot;_shards&quot;: {
+          &quot;total&quot;: 2,
+          &quot;successful&quot;: 2,
+          &quot;failed&quot;: 0
+        },
+        &quot;_seq_no&quot;: 15,
+        &quot;_primary_term&quot;: 1,
+        &quot;status&quot;: 201
+      }
+    },
+    {
+      &quot;index&quot;: {
+        &quot;_index&quot;: &quot;website&quot;,
+        &quot;_id&quot;: &quot;SNmg8IEBZEeCE-yERbMi&quot;,
+        &quot;_version&quot;: 1,
+        &quot;result&quot;: &quot;created&quot;,
+        &quot;_shards&quot;: {
+          &quot;total&quot;: 2,
+          &quot;successful&quot;: 2,
+          &quot;failed&quot;: 0
+        },
+        &quot;_seq_no&quot;: 16,
+        &quot;_primary_term&quot;: 1,
+        &quot;status&quot;: 201
+      }
+    },
+    {
+      &quot;update&quot;: {
+        &quot;_index&quot;: &quot;website&quot;,
+        &quot;_id&quot;: &quot;123&quot;,
+        &quot;_version&quot;: 3,
+        &quot;result&quot;: &quot;updated&quot;,
+        &quot;_shards&quot;: {
+          &quot;total&quot;: 2,
+          &quot;successful&quot;: 2,
+          &quot;failed&quot;: 0
+        },
+        &quot;_seq_no&quot;: 17,
+        &quot;_primary_term&quot;: 1,
+        &quot;status&quot;: 200
+      }
+    }
+  ]
+}
+
+</code></pre>
+<p>0️⃣ 请注意 delete 动作不能有请求体,它后面跟着的是另外一个操作。</p>
+<p>1️⃣ 谨记最后一个换行符不要落下。</p>
+<p>2️⃣ 所有的子请求都成功完成。</p>
+<p>这个 Elasticsearch 响应包含 items 数组，这个数组的内容是以请求的顺序列出来的每个请求的结果。</p>
+<p>每个子请求都是独立执行，因此某个子请求的失败不会对其他子请求的成功与否造成影响。 如果其中任何子请求失败，最顶层的 error 标志被设置为 true ，并且在相应的请求报告出错误明细：</p>
+<pre><code class="language-json">
+POST /_bulk
+{&quot;create&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
+{&quot;title&quot;:&quot;Cannot create - it already exists&quot;}
+{&quot;index&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
+{&quot;title&quot;:&quot;But we can update it&quot;}
+
+{
+  &quot;took&quot;: 2,
+  &quot;errors&quot;: true, 0️⃣ 
+  &quot;items&quot;: [
+    {
+      &quot;create&quot;: {
+        &quot;_index&quot;: &quot;website&quot;,
+        &quot;_id&quot;: &quot;123&quot;,
+        &quot;status&quot;: 409, 1️⃣
+        &quot;error&quot;: { 2️⃣
+          &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
+          &quot;reason&quot;: &quot;[123]: version conflict, document already exists (current version [3])&quot;,
+          &quot;index_uuid&quot;: &quot;SjLz7UQ6Q0WbQWLXRl-KeQ&quot;,
+          &quot;shard&quot;: &quot;0&quot;,
+          &quot;index&quot;: &quot;website&quot;
+        }
+      }
+    },
+    {
+      &quot;index&quot;: {
+        &quot;_index&quot;: &quot;website&quot;,
+        &quot;_id&quot;: &quot;123&quot;,
+        &quot;_version&quot;: 4,
+        &quot;result&quot;: &quot;updated&quot;,
+        &quot;_shards&quot;: {
+          &quot;total&quot;: 2,
+          &quot;successful&quot;: 2,
+          &quot;failed&quot;: 0
+        },
+        &quot;_seq_no&quot;: 18,
+        &quot;_primary_term&quot;: 1,
+        &quot;status&quot;: 200 3️⃣
+      }
+    }
+  ]
+}
+
+</code></pre>
+<p>0️⃣ 一个或者多个请求失败。</p>
+<p>1️⃣ 这个请求的HTTP状态码报告为 409 CONFLICT 。</p>
+<p>2️⃣ 解释为什么请求失败的错误信息。</p>
+<p>3️⃣ 第二个请求成功，返回 HTTP 状态码 200 OK 。</p>
+<p>在响应中，我们看到 create 文档 123 失败，因为它已经存在。但是随后的 index 请求，也是对文档 123 操作，就成功了：</p>
+<p>这也意味着 bulk 请求不是原子的： 不能用它来实现事务控制。每个请求是单独处理的，因此一个请求的成功或失败不会影响其他的请求。</p>
+<h2 id="不要重复指定index和type"><a class="header" href="#不要重复指定index和type">不要重复指定Index和Type</a></h2>
+<p>也许你正在批量索引日志数据到相同的 index 和 type 中。 但为每一个文档指定相同的元数据是一种浪费。相反，可以像 mget API 一样，在 bulk 请求的 URL 中接收默认的 /_index 或者 /_index/_type ：</p>
+<pre><code class="language-json">
+POST /website/_bulk
+{ &quot;index&quot;: { &quot;_type&quot;: &quot;log&quot; }}
+{ &quot;event&quot;: &quot;User logged in&quot; }
+
+</code></pre>
+<p>你仍然可以覆盖元数据行中的 _index 和 _type , 但是它将使用 URL 中的这些元数据值作为默认值：</p>
+<pre><code class="language-json">
+POST /website/log/_bulk
+{ &quot;index&quot;: {}}
+{ &quot;event&quot;: &quot;User logged in&quot; }
+{ &quot;index&quot;: { &quot;_type&quot;: &quot;blog&quot; }}
+{ &quot;title&quot;: &quot;Overriding the default type&quot; }
+
+</code></pre>
+<h2 id="多大是太大了"><a class="header" href="#多大是太大了">多大是太大了？</a></h2>
+<p>整个批量请求都需要由接收到请求的节点加载到内存中，因此该请求越大，其他请求所能获得的内存就越少。 批量请求的大小有一个最佳值，大于这个值，性能将不再提升，甚至会下降。 但是最佳值不是一个固定的值。它完全取决于硬件、文档的大小和复杂度、索引和搜索的负载的整体情况。</p>
+<p>幸运的是，很容易找到这个 最佳点 ：通过批量索引典型文档，并不断增加批量大小进行尝试。 当性能开始下降，那么你的批量大小就太大了。一个好的办法是开始时将 1,000 到 5,000 个文档作为一个批次, 如果你的文档非常大，那么就减少批量的文档个数。</p>
+<p>密切关注你的批量请求的物理大小往往非常有用，一千个 1KB 的文档是完全不同于一千个 1MB 文档所占的物理大小。 一个好的批量大小在开始处理后所占用的物理大小约为 5-15 MB。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="分布式文档存储"><a class="header" href="#分布式文档存储">分布式文档存储</a></h1>
+<p>在前面的章节，我们介绍了如何索引和查询数据，不过我们忽略了很多底层的技术细节， 例如文件是如何分布到集群的，又是如何从集群中获取的。 Elasticsearch 本意就是隐藏这些底层细节，让我们好专注在业务开发中，所以其实你不必了解这么深入也无妨。</p>
+<p>在这个章节中，我们将深入探索这些核心的技术细节，这能帮助你更好地理解数据如何被存储到这个分布式系统中。</p>
+<blockquote>
+<p>🦉<strong>Note</strong></p>
+<p>这个章节包含了一些高级话题，上面也提到过，就算你不记住和理解所有的细节仍然能正常使用 Elasticsearch。 如果你有兴趣的话，这个章节可以作为你的课外兴趣读物，扩展你的知识面。</p>
+<p>如果你在阅读这个章节的时候感到很吃力，也不用担心。 这个章节仅仅只是用来告诉你 Elasticsearch 是如何工作的， 将来在工作中如果你需要用到这个章节提供的知识，可以再回过头来翻阅。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="路由一个文档到一个分片中"><a class="header" href="#路由一个文档到一个分片中">路由一个文档到一个分片中</a></h1>
+<p>当索引一个文档的时候，文档会被存储到一个主分片中。 Elasticsearch 如何知道一个文档应该存放到哪个分片中呢？当我们创建文档时，它如何决定这个文档应当被存储在分片 1 还是分片 2 中呢？</p>
+<p>首先这肯定不会是随机的，否则将来要获取文档的时候我们就不知道从何处寻找了。实际上，这个过程是根据下面这个公式决定的：</p>
+<pre><code>
+shard = hash(routing) % number_of_primary_shards
+
+</code></pre>
+<p>routing 是一个可变值，默认是文档的 _id ，也可以设置成一个自定义的值。 routing 通过 hash 函数生成一个数字，然后这个数字再除以 number_of_primary_shards （主分片的数量）后得到 余数 。这个分布在 0 到 number_of_primary_shards-1 之间的余数，就是我们所寻求的文档所在分片的位置。</p>
+<p>这就解释了为什么我们要在创建索引的时候就确定好主分片的数量 并且永远不会改变这个数量：因为如果数量变化了，那么所有之前路由的值都会无效，文档也再也找不到了</p>
+<blockquote>
+<p>🦉<strong>Note</strong></p>
+<p>你可能觉得由于 Elasticsearch 主分片数量是固定的会使索引难以进行扩容。实际上当你需要时有很多技巧可以轻松实现扩容。我们将会在扩容设计一章中提到更多有关水平扩展的内容。</p>
+</blockquote>
+<p>所有的文档 API（ get 、 index 、 delete 、 bulk 、 update 以及 mget ）都接受一个叫做 routing 的路由参数 ，通过这个参数我们可以自定义文档到分片的映射。一个自定义的路由参数可以用来确保所有相关的文档——例如所有属于同一个用户的文档——都被存储到同一个分片中。我们也会在扩容设计这一章中详细讨论为什么会有这样一种需求。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="主分片和副本分片如何交互"><a class="header" href="#主分片和副本分片如何交互">主分片和副本分片如何交互</a></h1>
+<p>为了说明目的, 我们 假设有一个集群由三个节点组成。 它包含一个叫 blogs 的索引，有两个主分片，每个主分片有两个副本分片。相同分片的副本不会放在同一节点，所以我们的集群看起来像</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0401.png?raw=true" alt="三个节点和一个索引的集群" /></p>
+<p>我们可以发送请求到集群中的任一节点。 每个节点都有能力处理任意请求。 每个节点都知道集群中任一文档位置，所以可以直接将请求转发到需要的节点上。 在下面的例子中，将所有的请求发送到 Node 1 ，我们将其称为 协调节点(coordinating node) 。</p>
+<blockquote>
+<p>🦞<strong>Tip</strong></p>
+<p>当发送请求的时候， 为了扩展负载，更好的做法是轮询集群中所有的节点。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="新建索引和删除文档"><a class="header" href="#新建索引和删除文档">新建、索引和删除文档</a></h1>
+<p>新建、索引和删除 请求都是 写 操作， 必须在主分片上面完成之后才能被复制到相关的副本分片，如下图所示</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0402.png?raw=true" alt="创建文档" /></p>
+<p>以下是在主副分片和任何副本分片上面 成功新建，索引和删除文档所需要的步骤顺序：</p>
+<ol>
+<li>
+<p>客户端向 Node 1 发送新建、索引或者删除请求。</p>
+</li>
+<li>
+<p>节点使用文档的 _id 确定文档属于分片 0 。请求会被转发到 Node 3，因为分片 0 的主分片目前被分配在 Node 3 上。</p>
+</li>
+<li>
+<p>Node 3 在主分片上面执行请求。如果成功了，它将请求并行转发到 Node 1 和 Node 2 的副本分片上。一旦所有的副本分片都报告成功, Node 3 将向协调节点报告成功，协调节点向客户端报告成功。</p>
+</li>
+</ol>
+<p>在客户端收到成功响应时，文档变更已经在主分片和所有副本分片执行完成，变更是安全的。</p>
+<p>有一些可选的请求参数允许您影响这个过程，可能以数据安全为代价提升性能。这些选项很少使用，因为Elasticsearch已经很快，但是为了完整起见，在这里阐述如下：</p>
+<h3 id="consistency"><a class="header" href="#consistency">consistency</a></h3>
+<p>consistency，即一致性。在默认设置下，即使仅仅是在试图执行一个_写_操作之前，主分片都会要求 必须要有 规定数量(quorum)（或者换种说法，也即必须要有大多数）的分片副本处于活跃可用状态，才会去执行_写_操作(其中分片副本可以是主分片或者副本分片)。这是为了避免在发生网络分区故障（network partition）的时候进行_写_操作，进而导致数据不一致。_规定数量_即：</p>
+<pre><code>
+int( (primary + number_of_replicas) / 2 ) + 1
+
+</code></pre>
+<p>consistency 参数的值可以设为</p>
+<ul>
+<li>
+<p>one （只要主分片状态 ok 就允许执行_写_操作）,</p>
+</li>
+<li>
+<p>all（必须要主分片和所有副本分片的状态没问题才允许执行_写_操作）, </p>
+</li>
+<li>
+<p>或 quorum 。</p>
+</li>
+</ul>
+<p>默认值为 quorum , 即大多数的分片副本状态没问题就允许执行_写_操作。</p>
+<p>注意，规定数量 的计算公式中 number_of_replicas 指的是在索引设置中的设定副本分片数，而不是指当前处理活动状态的副本分片数。如果你的索引设置中指定了当前索引拥有三个副本分片，那规定数量的计算结果即：</p>
+<pre><code>
+int( (primary + 3 replicas) / 2 ) + 1 = 3
+
+</code></pre>
+<p>如果此时你只启动两个节点，那么处于活跃状态的分片副本数量就达不到规定数量，也因此您将无法索引和删除任何文档。</p>
+<h3 id="timeout"><a class="header" href="#timeout">timeout</a></h3>
+<p>如果没有足够的副本分片会发生什么？ Elasticsearch会等待，希望更多的分片出现。默认情况下，它最多等待1分钟。 如果你需要，你可以使用 timeout 参数 使它更早终止： 100 100毫秒，30s 是30秒。</p>
+<blockquote>
+<p>🦉 <strong>Note</strong></p>
+<p>新索引默认有 1 个副本分片，这意味着为满足 规定数量 应该 需要两个活动的分片副本。 但是，这些默认的设置会阻止我们在单一节点上做任何事情。为了避免这个问题，要求只有当 number_of_replicas 大于1的时候，规定数量才会执行。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="取回一个文档-1"><a class="header" href="#取回一个文档-1">取回一个文档</a></h1>
+<p>可以从主分片或者从其它任意副本分片检索文档 ，如下图所示</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0403.png?raw=true" alt="取回一个文档" /></p>
+<p>以下是从主分片或者副本分片检索文档的步骤顺序：</p>
+<ol>
+<li>
+<p>客户端向 Node 1 发送获取请求。</p>
+</li>
+<li>
+<p>节点使用文档的 _id 来确定文档属于分片 0 。分片 0 的副本分片存在于所有的三个节点上。 在这种情况下，它将请求转发到 Node 2 。</p>
+</li>
+<li>
+<p>Node 2 将文档返回给 Node 1 ，然后将文档返回给客户端。</p>
+</li>
+</ol>
+<p>在处理读取请求时，协调结点在每次请求的时候都会通过轮询所有的副本分片来达到负载均衡。</p>
+<p>在文档被检索时，已经被索引的文档可能已经存在于主分片上但是还没有复制到副本分片。 在这种情况下，副本分片可能会报告文档不存在，但是主分片可能成功返回文档。 一旦索引请求成功返回给用户，文档在主分片和副本分片都是可用的。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="局部更新文档"><a class="header" href="#局部更新文档">局部更新文档</a></h1>
+<p>如图所示，update API 结合了先前说明的读取和写入模式。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0404.png?raw=true" alt="局部更新文档" /></p>
+<p>以下是部分更新一个文档的步骤：</p>
+<ol>
+<li>
+<p>客户端向 Node 1 发送更新请求。</p>
+</li>
+<li>
+<p>它将请求转发到主分片所在的 Node 3 。</p>
+</li>
+<li>
+<p>Node 3 从主分片检索文档，修改 _source 字段中的 JSON ，并且尝试重新索引主分片的文档。 如果文档已经被另一个进程修改，它会重试步骤 3 ，超过 retry_on_conflict 次后放弃。</p>
+</li>
+<li>
+<p>如果 Node 3 成功地更新文档，它将新版本的文档并行转发到 Node 1 和 Node 2 上的副本分片，重新建立索引。 一旦所有副本分片都返回成功， Node 3 向协调节点也返回成功，协调节点向客户端返回成功。</p>
+</li>
+</ol>
+<p>update API 还接受在 新建、索引和删除文档 章节中介绍的 routing 、 replication 、 consistency 和 timeout 参数。</p>
+<blockquote>
+<p><strong>基于文档的复制</strong></p>
+<p>当主分片把更改转发到副本分片时， 它不会转发更新请求。 相反，它转发完整文档的新版本。请记住，这些更改将会异步转发到副本分片，并且不能保证它们以发送它们相同的顺序到达。 如果Elasticsearch仅转发更改请求，则可能以错误的顺序应用更改，导致得到损坏的文档。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="多文档模式"><a class="header" href="#多文档模式">多文档模式</a></h1>
+<p>mget 和 bulk API 的模式类似于单文档模式。区别在于协调节点知道每个文档存在于哪个分片中。 它将整个多文档请求分解成 每个分片 的多文档请求，并且将这些请求并行转发到每个参与节点。</p>
+<p>协调节点一旦收到来自每个节点的应答，就将每个节点的响应收集整理成单个响应，返回给客户端，如下所示:</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0405.png?raw=true" alt="mget" /></p>
+<p>以下是使用单个 mget 请求取回多个文档所需的步骤顺序：</p>
+<ol>
+<li>
+<p>客户端向 Node 1 发送 mget 请求。</p>
+</li>
+<li>
+<p>Node 1 为每个分片构建多文档获取请求，然后并行转发这些请求到托管在每个所需的主分片或者副本分片的节点上。一旦收到所有答复， Node 1 构建响应并将其返回给客户端。</p>
+</li>
+</ol>
+<p>可以对 docs 数组中每个文档设置 routing 参数。</p>
+<p>bulk API， 如下 “使用 bulk 修改多个文档” 所示， 允许在单个批量请求中执行多个创建、索引、删除和更新请求。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0406.png?raw=true" alt="bulk" /></p>
+<p>bulk API 按如下步骤顺序执行：</p>
+<ol>
+<li>
+<p>客户端向 Node 1 发送 bulk 请求。</p>
+</li>
+<li>
+<p>Node 1 为每个节点创建一个批量请求，并将这些请求并行转发到每个包含主分片的节点主机。</p>
+</li>
+<li>
+<p>主分片一个接一个按顺序执行每个操作。当每个操作成功时，主分片并行转发新文档（或删除）到副本分片，然后执行下一个操作。 一旦所有的副本分片报告所有操作成功，该节点将向协调节点报告成功，协调节点将这些响应收集整理并返回给客户端。</p>
+</li>
+</ol>
+<p>bulk API 还可以在整个批量请求的最顶层使用 consistency 参数，以及在每个请求中的元数据中使用 routing 参数。</p>
+<h2 id="为什么是有趣的格式"><a class="header" href="#为什么是有趣的格式">为什么是有趣的格式？</a></h2>
+<p>当我们早些时候在代价较小的批量操作章节了解批量请求时，您可能会问自己， &quot;为什么 bulk API 需要有换行符的有趣格式，而不是发送包装在 JSON 数组中的请求，例如 mget API？&quot; </p>
+<p>为了回答这一点，我们需要解释一点背景：在批量请求中引用的每个文档可能属于不同的主分片， 每个文档可能被分配给集群中的任何节点。这意味着批量请求 bulk 中的每个 操作 都需要被转发到正确节点上的正确分片。</p>
+<p>如果单个请求被包装在 JSON 数组中，那就意味着我们需要执行以下操作：</p>
+<ol>
+<li>
+<p>将 JSON 解析为数组（包括文档数据，可以非常大）</p>
+</li>
+<li>
+<p>查看每个请求以确定应该去哪个分片</p>
+</li>
+<li>
+<p>为每个分片创建一个请求数组</p>
+</li>
+<li>
+<p>将这些数组序列化为内部传输格式</p>
+</li>
+<li>
+<p>将请求发送到每个分片</p>
+</li>
+</ol>
+<p>这是可行的，但需要大量的 RAM 来存储原本相同的数据的副本，并将创建更多的数据结构，Java虚拟机（JVM）将不得不花费时间进行垃圾回收。</p>
+<p>相反，Elasticsearch可以直接读取被网络缓冲区接收的原始数据。 它使用换行符字符来识别和解析小的 action/metadata 行来决定哪个分片应该处理每个请求。</p>
+<p>这些原始请求会被直接转发到正确的分片。没有冗余的数据复制，没有浪费的数据结构。整个请求尽可能在最小的内存中处理。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="搜索-最基本的工具"><a class="header" href="#搜索-最基本的工具">搜索-最基本的工具</a></h1>
+<p>现在，我们已经学会了如何使用 Elasticsearch 作为一个简单的 NoSQL 风格的分布式文档存储系统。我们可以将一个 JSON 文档扔到 Elasticsearch 里，然后根据 ID 检索。但 Elasticsearch 真正强大之处在于可以从无规律的数据中找出有意义的信息——从“大数据”到“大信息”。</p>
+<p>Elasticsearch 不只会_存储（stores）_ 文档，为了能被搜索到也会为文档添加_索引（indexes）_ ，这也是为什么我们使用结构化的 JSON 文档，而不是无结构的二进制数据。</p>
+<p>文档中的每个字段都将被索引并且可以被查询 。不仅如此，在简单查询时，Elasticsearch 可以使用 所有（all） 这些索引字段，以惊人的速度返回结果。这是你永远不会考虑用传统数据库去做的一些事情。</p>
+<p>搜索（search） 可以做到：</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="映射和分析"><a class="header" href="#映射和分析">映射和分析</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="请求体查询"><a class="header" href="#请求体查询">请求体查询</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="排序与相关性"><a class="header" href="#排序与相关性">排序与相关性</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="执行分布式检索"><a class="header" href="#执行分布式检索">执行分布式检索</a></h1>
+<p>在继续之前，我们将绕道讨论一下在分布式环境中搜索是怎么执行的。 这比我们在 分布式文档存储 章节讨论的基本的 增-删-改-查 (CRUD)请求要复杂一些。</p>
+<blockquote>
+<p><strong>内容提示</strong></p>
+<p>你可以根据兴趣阅读本章内容。你并不需要为了使用 Elasticsearch 而理解和记住所有的细节。</p>
+<p>这章的阅读目的只为初步了解下工作原理，以便将来需要时可以及时找到这些知识， 但是不要被细节所困扰。</p>
+</blockquote>
+<p>一个 CRUD 操作只对单个文档进行处理，文档的唯一性由 _index, _type, 和 routing values （通常默认是该文档的 _id ）的组合来确定。 这表示我们确切的知道集群中哪个分片含有此文档。</p>
+<p>搜索需要一种更加复杂的执行模型因为我们不知道查询会命中哪些文档: 这些文档有可能在集群的任何分片上。 一个搜索请求必须询问我们关注的索引（index or indices）的所有分片的某个副本来确定它们是否含有任何匹配的文档。</p>
+<p>但是找到所有的匹配文档仅仅完成事情的一半。 在 search 接口返回一个 page 结果之前，多分片中的结果必须组合成单个排序列表。 为此，搜索被执行成一个两阶段过程，我们称之为 query then fetch 。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="查询阶段"><a class="header" href="#查询阶段">查询阶段</a></h1>
+<p>在初始 查询阶段 时， 查询会广播到索引中每一个分片拷贝（主分片或者副本分片）。 每个分片在本地执行搜索并构建一个匹配文档的 优先队列。</p>
+<blockquote>
+<p><strong>优先队列</strong></p>
+<p>一个 优先队列 仅仅是一个存有 top-n 匹配文档的有序列表。</p>
+<p>优先队列的大小取决于分页参数 from 和 size 。</p>
+<p>例如，如下搜索请求将需要足够大的优先队列来放入100条文档。</p>
+<pre><code>GET /_search
+{
+  &quot;from&quot;: 90,
+  &quot;size&quot;: 10
+}
+</code></pre>
+</blockquote>
+<p>这个查询阶段的过程如图 “查询过程分布式搜索” 所示。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0901.png?raw=true" alt="查询过程分布式搜索" /></p>
+<p>查询阶段包含以下三个步骤:</p>
+<ol>
+<li>
+<p>客户端发送一个 search 请求到 Node 3 ， Node 3 会创建一个大小为 from + size 的空优先队列。</p>
+</li>
+<li>
+<p>Node 3 将查询请求转发到索引的每个主分片或副本分片中。每个分片在本地执行查询并添加结果到大小为 from + size 的本地有序优先队列中。</p>
+</li>
+<li>
+<p>每个分片返回各自优先队列中所有文档的 ID 和排序值给协调节点，也就是 Node 3 ，它合并这些值到自己的优先队列中来产生一个全局排序后的结果列表。</p>
+</li>
+</ol>
+<p>当一个搜索请求被发送到某个节点时，这个节点就变成了协调节点。 这个节点的任务是广播查询请求到所有相关分片并将它们的响应整合成全局排序后的结果集合，这个结果集合会返回给客户端。</p>
+<p>第一步是广播请求到索引中每一个节点的分片拷贝。就像 document GET requests 所描述的， 查询请求可以被某个主分片或某个副本分片处理， 这就是为什么更多的副本（当结合更多的硬件）能够增加搜索吞吐率。 协调节点将在之后的请求中轮询所有的分片拷贝来分摊负载。</p>
+<p>每个分片在本地执行查询请求并且创建一个长度为 from + size 的优先队列—也就是说，每个分片创建的结果集足够大，均可以满足全局的搜索请求。 分片返回一个轻量级的结果列表到协调节点，它仅包含文档 ID 集合以及任何排序需要用到的值，例如 _score 。</p>
+<p>协调节点将这些分片级的结果合并到自己的有序优先队列里，它代表了全局排序结果集合。至此查询过程结束。</p>
+<blockquote>
+<p>🦉<strong>Note</strong></p>
+<p>一个索引可以由一个或几个主分片组成， 所以一个针对单个索引的搜索请求需要能够把来自多个分片的结果组合起来。</p>
+<p>针对 multiple 或者 all 索引的搜索工作方式也是完全一致的—​仅仅是包含了更多的分片而已。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="取回阶段"><a class="header" href="#取回阶段">取回阶段</a></h1>
+<p>查询阶段标识哪些文档满足搜索请求，但是我们仍然需要取回这些文档。这是取回阶段的任务, 正如“分布式搜索的取回阶段” 所展示的</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0902.png?raw=true" alt="分布式搜索的取回阶段" /></p>
+<p>分布式阶段由以下步骤构成：</p>
+<ol>
+<li>
+<p>协调节点辨别出哪些文档需要被取回并向相关的分片提交多个 GET 请求。</p>
+</li>
+<li>
+<p>每个分片加载并 丰富 文档，如果有需要的话，接着返回文档给协调节点。</p>
+</li>
+<li>
+<p>一旦所有的文档都被取回了，协调节点返回结果给客户端。</p>
+</li>
+</ol>
+<p>协调节点首先决定哪些文档 确实 需要被取回。例如，如果我们的查询指定了 { &quot;from&quot;: 90, &quot;size&quot;: 10 } ，最初的90个结果会被丢弃，只有从第91个开始的10个结果需要被取回。这些文档可能来自和最初搜索请求有关的一个、多个甚至全部分片。</p>
+<p>协调节点给持有相关文档的每个分片创建一个 multi-get request ，并发送请求给同样处理查询阶段的分片副本。</p>
+<p>分片加载文档体-- _source 字段—​如果有需要，用元数据和 search snippet highlighting 丰富结果文档。 一旦协调节点接收到所有的结果文档，它就组装这些结果为单个响应返回给客户端。</p>
+<blockquote>
+<p><strong>深分页（Deep Pagination）</strong></p>
+<p>先查后取的过程支持用 from 和 size 参数分页，但是这是 有限制的 。 要记住需要传递信息给协调节点的每个分片必须先创建一个 from + size 长度的队列，协调节点需要根据 number_of_shards * (from + size) 排序文档，来找到被包含在 size 里的文档。</p>
+<p>取决于你的文档的大小，分片的数量和你使用的硬件，给 10,000 到 50,000 的结果文档深分页（ 1,000 到 5,000 页）是完全可行的。但是使用足够大的 from 值，排序过程可能会变得非常沉重，使用大量的CPU、内存和带宽。因为这个原因，我们强烈建议你不要使用深分页</p>
+<p>实际上， “深分页” 很少符合人的行为。当2到3页过去以后，人会停止翻页，并且改变搜索标准。会不知疲倦地一页一页的获取网页直到你的服务崩溃的罪魁祸首一般是机器人或者web spider。</p>
+<p>如果你 确实 需要从你的集群取回大量的文档，你可以通过用 scroll 查询禁用排序使这个取回行为更有效率，我们会在 later in this chapter 进行讨论。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="搜索选项"><a class="header" href="#搜索选项">搜索选项</a></h1>
+<p>有几个 查询参数可以影响搜索过程。</p>
+<h2 id="偏好"><a class="header" href="#偏好">偏好</a></h2>
+<p>偏好这个参数 preference 允许 用来控制由哪些分片或节点来处理搜索请求。 它接受像 _primary, _primary_first, _local, _only_node:xyz, _prefer_node:xyz, 和 _shards:2,3 这样的值, 这些值在 search preference 文档页面被详细解释。</p>
+<p>但是最有用的值是某些随机字符串，它可以避免 bouncing results 问题。</p>
+<blockquote>
+<p><strong>Bouncing Results</strong></p>
+<p>想象一下有两个文档有同样值的时间戳字段，搜索结果用 timestamp 字段来排序。 由于搜索请求是在所有有效的分片副本间轮询的，那就有可能发生主分片处理请求时，这两个文档是一种顺序， 而副本分片处理请求时又是另一种顺序。</p>
+<p>这就是所谓的 bouncing results 问题: 每次用户刷新页面，搜索结果表现是不同的顺序。 让同一个用户始终使用同一个分片，这样可以避免这种问题， 可以设置 preference 参数为一个特定的任意值比如用户会话ID来解决。</p>
+</blockquote>
+<h2 id="超时问题"><a class="header" href="#超时问题">超时问题</a></h2>
+<p>通常分片处理完它所有的数据后再把结果返回给协同节点，协同节点把收到的所有结果合并为最终结果。</p>
+<p>这意味着花费的时间是最慢分片的处理时间加结果合并的时间。如果有一个节点有问题，就会导致所有的响应缓慢。</p>
+<p>参数 timeout 告诉 分片允许处理数据的最大时间。如果没有足够的时间处理所有数据，这个分片的结果可以是部分的，甚至是空数据。</p>
+<p>搜索的返回结果会用属性 timed_out 标明分片是否返回的是部分结果：</p>
+<pre><code class="language-json">
+GET kibana_sample_data_logs/_search
+
+{
+  &quot;took&quot;: 2,
+  &quot;timed_out&quot;: false, 0️⃣
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 10000,
+      &quot;relation&quot;: &quot;gte&quot;
+    },
+    &quot;max_score&quot;: 1,
+    &quot;hits&quot;: []
+  }
+}
+
+</code></pre>
+<p>0️⃣ 这个搜索请求超时了</p>
+<blockquote>
+<p>🦐<strong>Warning</strong> </p>
+<p>超时仍然是一个最有效的操作，知道这一点很重要； 很可能查询会超过设定的超时时间。这种行为有两个原因：</p>
+<p>1.超时检查是基于每文档做的。 但是某些查询类型有大量的工作在文档评估之前需要完成。 这种 &quot;setup&quot; 阶段并不考虑超时设置，所以太长的建立时间会导致超过超时时间的整体延迟。</p>
+<p>2.因为时间检查是基于每个文档的，一次长时间查询在单个文档上执行并且在下个文档被评估之前不会超时。 这也意味着差的脚本（比如带无限循环的脚本）将会永远执行下去。</p>
+</blockquote>
+<h2 id="路由"><a class="header" href="#路由">路由</a></h2>
+<p>在 路由一个文档到一个分片中 中, 我们解释过如何定制参数 routing ，它能够在索引时提供来确保相关的文档，比如属于某个用户的文档被存储在某个分片上。 在搜索的时候，不用搜索索引的所有分片，而是通过指定几个 routing 值来限定只搜索几个相关的分片：</p>
+<pre><code class="language-json">
+GET /_search?routing=user_1,user2
+
+</code></pre>
+<p>这个技术在设计大规模搜索系统时就会派上用场，我们在 扩容设计 中详细讨论它。</p>
+<h2 id="搜索类型"><a class="header" href="#搜索类型">搜索类型</a></h2>
+<p>缺省的搜索类型是 query_then_fetch 。 在某些情况下，你可能想明确设置 search_type 为 dfs_query_then_fetch 来改善相关性精确度：</p>
+<pre><code class="language-json">
+GET /_search?search_type=dfs_query_then_fetch
+
+</code></pre>
+<p>搜索类型 dfs_query_then_fetch 有预查询阶段，这个阶段可以从所有相关分片获取词频来计算全局词频。 我们在 被破坏的相关度！ 会再讨论它。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="查询游标"><a class="header" href="#查询游标">查询游标</a></h1>
+<p>scroll 查询 可以用来对 Elasticsearch 有效地执行大批量的文档查询，而又不用付出深度分页那种代价</p>
+<p>游标查询允许我们 先做查询初始化，然后再批量地拉取结果。 这有点儿像传统数据库中的 cursor 。</p>
+<p>游标查询会取某个时间点的快照数据。 查询初始化之后索引上的任何变化会被它忽略。 它通过保存旧的数据文件来实现这个特性，结果就像保留初始化时的索引 视图 一样。</p>
+<p>深度分页的代价根源是结果集全局排序，如果去掉全局排序的特性的话查询结果的成本就会很低。 游标查询用字段 _doc 来排序。 这个指令让 Elasticsearch 仅仅从还有结果的分片返回下一批结果。</p>
+<p>启用游标查询可以通过在查询的时候设置参数 scroll 的值为我们期望的游标查询的过期时间。 游标查询的过期时间会在每次做查询的时候刷新，所以这个时间只需要足够处理当前批的结果就可以了，而不是处理查询结果的所有文档的所需时间。 </p>
+<p>这个过期时间的参数很重要，因为保持这个游标查询窗口需要消耗资源，所以我们期望如果不再需要维护这种资源就该早点儿释放掉。 设置这个超时能够让 Elasticsearch 在稍后空闲的时候自动释放这部分资源。</p>
+<pre><code class="language-json">
+GET /kibana_sample_data_logs/_search?scroll=1m 0️⃣
+{
+  &quot;query&quot;: {
+    &quot;match_all&quot;: {}
+  },
+  &quot;sort&quot;: [ 1️⃣
+    &quot;_doc&quot;
+  ],
+  &quot;size&quot;: 1000
+}
+
+{
+  &quot;_scroll_id&quot;: &quot;FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB&quot;,
+  &quot;took&quot;: 4,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 14074,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: null,
+    &quot;hits&quot;: []
+  }
+}
+
+</code></pre>
+<p>0️⃣ 保持游标查询窗口一分钟。</p>
+<p>1️⃣ 关键字 _doc 是最有效的排序顺序。</p>
+<p>这个查询的返回结果包括一个字段 _scroll_id， 它是一个base64编码的长字符串 。 现在我们能传递字段 _scroll_id 到 _search/scroll 查询接口获取下一批结果：</p>
+<pre><code class="language-json">
+GET /_search/scroll
+{
+    &quot;scroll&quot;: &quot;1m&quot;, 0️⃣
+    &quot;scroll_id&quot; : &quot;FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB&quot;
+}
+
+{
+  &quot;_scroll_id&quot;: &quot;FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB&quot;,
+  &quot;took&quot;: 8,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 1,
+    &quot;successful&quot;: 1,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: {
+      &quot;value&quot;: 14074,
+      &quot;relation&quot;: &quot;eq&quot;
+    },
+    &quot;max_score&quot;: null,
+    &quot;hits&quot;: []
+  }
+}
+
+</code></pre>
+<p>0️⃣ 注意再次设置游标查询过期时间为一分钟</p>
+<p>这个游标查询返回的下一批结果。 尽管我们指定字段 size 的值为1000，我们有可能取到超过这个值数量的文档。 当查询的时候， 字段 size 作用于单个分片，所以每个批次实际返回的文档数量最大为 size * number_of_primary_shards 。</p>
+<blockquote>
+<p>🦉<strong>Note</strong></p>
+<p>注意游标查询每次返回一个新字段 _scroll_id。</p>
+<p>每次我们做下一次游标查询， 我们必须把前一次查询返回的字段 _scroll_id 传递进去。 当没有更多的结果返回的时候，我们就处理完所有匹配的文档了。</p>
+<p>提示：某些官方的 Elasticsearch 客户端比如 Python 客户端 和 Perl 客户端 提供了这个功能易用的封装。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="索引管理"><a class="header" href="#索引管理">索引管理</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="分片内部原理"><a class="header" href="#分片内部原理">分片内部原理</a></h1>
+<p>在 集群内的原理, 我们介绍了 分片, 并将它 描述成最小的 工作单元 。但是究竟什么 是 一个分片，它是如何工作的？ 在这个章节，我们回答以下问题:</p>
+<ol>
+<li>
+<p>为什么搜索是 近 实时的？</p>
+</li>
+<li>
+<p>为什么文档的 CRUD (创建-读取-更新-删除) 操作是 实时 的?</p>
+</li>
+<li>
+<p>Elasticsearch 是怎样保证更新被持久化在断电时也不丢失数据?</p>
+</li>
+<li>
+<p>为什么删除文档不会立刻释放空间？</p>
+</li>
+<li>
+<p>refresh, flush, 和 optimize API 都做了什么, 你什么情况下应该使用他们？</p>
+</li>
+</ol>
+<p>最简单的理解一个分片如何工作的方式是上一堂历史课。 我们将要审视提供一个带近实时搜索和分析的 分布式持久化数据存储需要解决的问题。</p>
+<blockquote>
+<p>🦉 <strong>Note</strong></p>
+<p>本章展示的这些信息仅供您兴趣阅读。为了使用 Elasticsearch 您并不需要理解和记忆所有的细节。 读这个章节是为了了解工作机制，并且为了将来您需要这些信息时，知道这些信息在哪里。但是不要被这些细节所累。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使文本可被搜索"><a class="header" href="#使文本可被搜索">使文本可被搜索</a></h1>
+<p>必须解决的第一个挑战是如何使文本可被搜索。 传统的数据库每个字段存储单个值，但这对全文检索并不够。文本字段中的每个单词需要被搜索，对数据库意味着需要单个字段有索引多值(这里指单词)的能力。</p>
+<p>最好的支持 一个字段多个值 需求的数据结构是我们在 倒排索引 章节中介绍过的 倒排索引 。 倒排索引包含一个有序列表，列表包含所有文档出现过的不重复个体，或称为 词项 ，对于每一个词项，包含了它所有曾出现过文档的列表。</p>
+<table><thead><tr><th>Term</th><th>Doc 1</th><th>Doc 2</th><th>Doc 3</th><th>...</th></tr></thead><tbody>
+<tr><td>brown</td><td>X</td><td></td><td>X</td><td>...</td></tr>
+<tr><td>fox</td><td>X</td><td>X</td><td>X</td><td>...</td></tr>
+<tr><td>quick</td><td>X</td><td>X</td><td></td><td>...</td></tr>
+<tr><td>the</td><td>X</td><td></td><td>X</td><td>...</td></tr>
+</tbody></table>
+<blockquote>
+<p>🦉 <strong>Note</strong></p>
+<p>当讨论倒排索引时，我们会谈到 文档 标引，因为历史原因，倒排索引被用来对整个非结构化文本文档进行标引。 Elasticsearch 中的 文档 是有字段和值的结构化 JSON 文档。事实上，在 JSON 文档中， 每个被索引的字段都有自己的倒排索引。</p>
+</blockquote>
+<p>这个倒排索引相比特定词项出现过的文档列表，会包含更多其它信息。它会保存每一个词项出现过的文档总数， 在对应的文档中一个具体词项出现的总次数，词项在文档中的顺序，每个文档的长度，所有文档的平均长度，等等。这些统计信息允许 Elasticsearch 决定哪些词比其它词更重要，哪些文档比其它文档更重要，这些内容在 什么是相关性? 中有描述。</p>
+<p>为了能够实现预期功能，倒排索引需要知道集合中的 所有 文档，这是需要认识到的关键问题。</p>
+<p>早期的全文检索会为整个文档集合建立一个很大的倒排索引并将其写入到磁盘。 一旦新的索引就绪，旧的就会被其替换，这样最近的变化便可以被检索到。</p>
+<h2 id="不变性"><a class="header" href="#不变性">不变性</a></h2>
+<p>倒排索引被写入磁盘后是 不可改变 的:它永远不会修改。 不变性有重要的价值：</p>
+<ul>
+<li>
+<p>不需要锁。如果你从来不更新索引，你就不需要担心多进程同时修改数据的问题。</p>
+</li>
+<li>
+<p>一旦索引被读入内核的文件系统缓存，便会留在哪里，由于其不变性。只要文件系统缓存中还有足够的空间，那么大部分读请求会直接请求内存，而不会命中磁盘。这提供了很大的性能提升。</p>
+</li>
+<li>
+<p>其它缓存(像filter缓存)，在索引的生命周期内始终有效。它们不需要在每次数据改变时被重建，因为数据不会变化。</p>
+</li>
+<li>
+<p>写入单个大的倒排索引允许数据被压缩，减少磁盘 I/O 和 需要被缓存到内存的索引的使用量</p>
+</li>
+</ul>
+<p>当然，一个不变的索引也有不好的地方。主要事实是它是不可变的! 你不能修改它。如果你需要让一个新的文档 可被搜索，你需要重建整个索引。这要么对一个索引所能包含的数据量造成了很大的限制，要么对索引可被更新的频率造成了很大的限制。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="动态更新索引"><a class="header" href="#动态更新索引">动态更新索引</a></h1>
+<p>下一个需要被解决的问题是怎样在保留不变性的前提下实现倒排索引的更新？</p>
+<p>答案是: 用更多的索引。</p>
+<p>通过增加新的补充索引来反映新近的修改，而不是直接重写整个倒排索引。每一个倒排索引都会被轮流查询到—​从最早的开始—​查询完后再对结果进行合并。</p>
+<p>Elasticsearch 基于 Lucene, 这个 java 库引入了 按段搜索 的概念。 每一 段 本身都是一个倒排索引， 但 索引 在 Lucene 中除表示所有 段 的集合外， 还增加了 提交点 的概念 — 一个列出了所有已知段的文件，就像在 “一个 Lucene 索引包含一个提交点和三个段” 中描绘的那样。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1101.png?raw=true" alt="一个 Lucene 索引包含一个提交点和三个段" /></p>
+<blockquote>
+<p><strong>索引与分片的比较</strong></p>
+<p>被混淆的概念是，一个 Lucene 索引 我们在 Elasticsearch 称作 分片 。 一个 Elasticsearch 索引 是分片的集合。 当 Elasticsearch 在索引中搜索的时候， 他发送查询到每一个属于索引的分片(Lucene 索引)，然后像 执行分布式检索 提到的那样，合并每个分片的结果到一个全局的结果集。</p>
+</blockquote>
+<p>“一个在内存缓存中包含新文档的 Lucene 索引” 所示，新的文档首先被添加到内存索引缓存中，然后写入到一个基于磁盘的段，</p>
+<p>逐段搜索会以如下流程进行工作：</p>
+<ol>
+<li>
+<p>新文档被收集到内存索引缓存</p>
+</li>
+<li>
+<p>不时地, 缓存被 提交 ：</p>
+<ul>
+<li>
+<p>一个新的段—​一个追加的倒排索引—​被写入磁盘。</p>
+</li>
+<li>
+<p>一个新的包含新段名字的 提交点 被写入磁盘。</p>
+</li>
+<li>
+<p>磁盘进行 同步 — 所有在文件系统缓存中等待的写入都刷新到磁盘，以确保它们被写入物理文件。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>新的段被开启，让它包含的文档可见以被搜索。</p>
+</li>
+<li>
+<p>内存缓存被清空，等待接收新的文档。</p>
+</li>
+</ol>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1102.png?raw=true" alt="一个在内存缓存中包含新文档的 Lucene 索引" /></p>
+<p>如“在一次提交后，一个新的段被添加到提交点而且缓存被清空。” 所示。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1103.png?raw=true" alt="在一次提交后，一个新的段被添加到提交点而且缓存被清空" /></p>
+<p>当一个查询被触发，所有已知的段按顺序被查询。词项统计会对所有段的结果进行聚合，以保证每个词和每个文档的关联都被准确计算。 这种方式可以用相对较低的成本将新文档添加到索引。</p>
+<h2 id="删除和更新"><a class="header" href="#删除和更新">删除和更新</a></h2>
+<p>段是不可改变的，所以既不能从把文档从旧的段中移除，也不能修改旧的段来进行反映文档的更新。 取而代之的是，每个提交点会包含一个 .del 文件，文件中会列出这些被删除文档的段信息。</p>
+<p>当一个文档被 “删除” 时，它实际上只是在 .del 文件中被 标记 删除。一个被标记删除的文档仍然可以被查询匹配到， 但它会在最终结果被返回前从结果集中移除。</p>
+<p>文档更新也是类似的操作方式：当一个文档被更新时，旧版本文档被标记删除，文档的新版本被索引到一个新的段中。 可能两个版本的文档都会被一个查询匹配到，但被删除的那个旧版本文档在结果集返回前就已经被移除。</p>
+<p>在 段合并 , 我们展示了一个被删除的文档是怎样被文件系统移除的。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="近实时搜索"><a class="header" href="#近实时搜索">近实时搜索</a></h1>
+<p>随着按段（per-segment）搜索的发展，一个新的文档从索引到可被搜索的延迟显著降低了。新文档在几分钟之内即可被检索，但这样还是不够快。</p>
+<p>磁盘在这里成为了瓶颈。提交（Commiting）一个新的段到磁盘需要一个 fsync 来确保段被物理性地写入磁盘，这样在断电的时候就不会丢失数据。 但是 fsync 操作代价很大; 如果每次索引一个文档都去执行一次的话会造成很大的性能问题。</p>
+<p>我们需要的是一个更轻量的方式来使一个文档可被搜索，这意味着 fsync 要从整个过程中被移除。</p>
+<p>在Elasticsearch和磁盘之间是文件系统缓存。 像之前描述的一样， 在内存索引缓冲区（ “在内存缓冲区中包含了新文档的 Lucene 索引” ）中的文档会被写入到一个新的段中（ “缓冲区的内容已经被写入一个可被搜索的段中，但还没有进行提交” ）。</p>
+<p>但是这里新段会被先写入到文件系统缓存—​这一步代价会比较低，稍后再被刷新到磁盘—​这一步代价比较高。不过只要文件已经在缓存中， 就可以像其它文件一样被打开和读取了。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1104.png?raw=true" alt="在内存缓冲区中包含了新文档的 Lucene 索引" /></p>
+<p>Lucene 允许新段被写入和打开—​使其包含的文档在未进行一次完整提交时便对搜索可见。 这种方式比进行一次提交代价要小得多，并且在不影响性能的前提下可以被频繁地执行。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1105.png?raw=true" alt="缓冲区的内容已经被写入一个可被搜索的段中，但还没有进行提交" /></p>
+<h2 id="refresh-api"><a class="header" href="#refresh-api">refresh API</a></h2>
+<p>在 Elasticsearch 中，写入和打开一个新段的轻量的过程叫做 refresh 。 默认情况下每个分片会每秒自动刷新一次。这就是为什么我们说 Elasticsearch 是 近 实时搜索: 文档的变化并不是立即对搜索可见，但会在一秒之内变为可见。</p>
+<p>这些行为可能会对新用户造成困惑: 他们索引了一个文档然后尝试搜索它，但却没有搜到。这个问题的解决办法是用 refresh API 执行一次手动刷新:</p>
+<pre><code class="language-json">
+POST /_refresh 0️⃣
+
+POST /blogs/_refresh 1️⃣
+
+</code></pre>
+<p>0️⃣ 刷新（Refresh）所有的索引。</p>
+<p>1️⃣ 只刷新（Refresh） blogs 索引</p>
+<blockquote>
+<p>🦐 <strong>Tip</strong></p>
+<p>尽管刷新是比提交轻量很多的操作，它还是会有性能开销。当写测试的时候， 手动刷新很有用，但是不要在生产环境下每次索引一个文档都去手动刷新。 相反，你的应用需要意识到 Elasticsearch 的近实时的性质，并接受它的不足。</p>
+</blockquote>
+<p>并不是所有的情况都需要每秒刷新。可能你正在使用 Elasticsearch 索引大量的日志文件， 你可能想优化索引速度而不是近实时搜索， 可以通过设置 refresh_interval ， 降低每个索引的刷新频率：</p>
+<pre><code class="language-json">
+PUT /my_logs
+{
+  &quot;settings&quot;: {
+    &quot;refresh_interval&quot;: &quot;30s&quot; 0️⃣
+  }
+}
+
+</code></pre>
+<p>0️⃣ 每30秒刷新 my_logs 索引。</p>
+<p>refresh_interval 可以在既存索引上进行动态更新。 在生产环境中，当你正在建立一个大的新索引时，可以先关闭自动刷新，待开始使用该索引时，再把它们调回来：</p>
+<pre><code class="language-json">
+PUT /my_logs/_settings
+{ &quot;refresh_interval&quot;: -1 } 0️⃣
+
+PUT /my_logs/_settings
+{ &quot;refresh_interval&quot;: &quot;1s&quot; } 1️⃣
+
+</code></pre>
+<p>0️⃣ 关闭自动刷新</p>
+<p>1️⃣ 每秒自动刷新</p>
+<blockquote>
+<p>🦉 <strong>Note</strong></p>
+<p>refresh_interval 需要一个 持续时间 值， 例如 1s （1 秒） 或 2m （2 分钟）。 一个绝对值 1 表示的是 1毫秒 --无疑会使你的集群陷入瘫痪。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="持久化变更"><a class="header" href="#持久化变更">持久化变更</a></h1>
+<p>如果没有用 fsync 把数据从文件系统缓存刷（flush）到硬盘，我们不能保证数据在断电甚至是程序正常退出之后依然存在。为了保证 Elasticsearch 的可靠性，需要确保数据变化被持久化到磁盘。</p>
+<p>在 动态更新索引，我们说一次完整的提交会将段刷到磁盘，并写入一个包含所有段列表的提交点。Elasticsearch 在启动或重新打开一个索引的过程中使用这个提交点来判断哪些段隶属于当前分片。</p>
+<p>即使通过每秒刷新（refresh）实现了近实时搜索，我们仍然需要经常进行完整提交来确保能从失败中恢复。但在两次提交之间发生变化的文档怎么办？我们也不希望丢失掉这些数据。</p>
+<p>Elasticsearch 增加了一个 translog ，或者叫事务日志，在每一次对 Elasticsearch 进行操作时均进行了日志记录。通过 translog ，整个流程看起来是下面这样：</p>
+<ol>
+<li>
+<p>一个文档被索引之后，就会被添加到内存缓冲区，并且 追加到了 translog ，正如下图, “新的文档被添加到内存缓冲区并且被追加到了事务日志” 描述的一样。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1106.png?raw=true" alt="新的文档被添加到内存缓冲区并且被追加到了事务日志" /></p>
+</li>
+<li>
+<p>刷新（refresh）使分片处于 “刷新（refresh）完成后, 缓存被清空但是事务日志不会” 描述的状态，分片每秒被刷新（refresh）一次：</p>
+<ul>
+<li>
+<p>这些在内存缓冲区的文档被写入到一个新的段中，且没有进行 fsync 操作。</p>
+</li>
+<li>
+<p>这个段被打开，使其可被搜索。</p>
+</li>
+<li>
+<p>内存缓冲区被清空。</p>
+</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1107.png?raw=true" alt="刷新（refresh）完成后, 缓存被清空但是事务日志不会" /></p>
+</li>
+<li>
+<p>这个进程继续工作，更多的文档被添加到内存缓冲区和追加到事务日志（“事务日志不断积累文档” ）</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1108.png?raw=true" alt="事务日志不断积累文档" /></p>
+</li>
+<li>
+<p>每隔一段时间—​例如 translog 变得越来越大—​索引被刷新（flush）；一个新的 translog 被创建，并且一个全量提交被执行（“在刷新（flush）之后，段被全量提交，并且事务日志被清空” ）：</p>
+<ul>
+<li>
+<p>所有在内存缓冲区的文档都被写入一个新的段。</p>
+</li>
+<li>
+<p>缓冲区被清空。</p>
+</li>
+<li>
+<p>一个提交点被写入硬盘。</p>
+</li>
+<li>
+<p>文件系统缓存通过 fsync 被刷新（flush）。</p>
+</li>
+<li>
+<p>老的 translog 被删除。</p>
+</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1109.png?raw=true" alt="在刷新（flush）之后，段被全量提交，并且事务日志被清空" /></p>
+</li>
+</ol>
+<p>translog 提供所有还没有被刷到磁盘的操作的一个持久化纪录。当 Elasticsearch 启动的时候， 它会从磁盘中使用最后一个提交点去恢复已知的段，并且会重放 translog 中所有在最后一次提交后发生的变更操作。</p>
+<p>translog 也被用来提供实时 CRUD 。当你试着通过ID查询、更新、删除一个文档，它会在尝试从相应的段中检索之前， 首先检查 translog 任何最近的变更。这意味着它总是能够实时地获取到文档的最新版本。</p>
+<h2 id="flush-api"><a class="header" href="#flush-api">flush API</a></h2>
+<p>这个执行一个提交并且截断 translog 的行为在 Elasticsearch 被称作一次 flush 。 分片每30分钟被自动刷新（flush），或者在 translog 太大的时候也会刷新。请查看 translog 文档 来设置，它可以用来 控制这些阈值：</p>
+<p>flush API 可以被用来执行一个手工的刷新（flush）:</p>
+<pre><code class="language-json">
+POST /blogs/_flush 0️⃣
+
+POST /_flush?wait_if_ongoing 1️⃣
+
+</code></pre>
+<p>0️⃣ 刷新（flush） blogs 索引</p>
+<p>1️⃣ 刷新（flush）所有的索引并且并且等待所有刷新在返回前完成。</p>
+<p>你很少需要自己手动执行 flush 操作；通常情况下，自动刷新就足够了。</p>
+<p>这就是说，在重启节点或关闭索引之前执行 flush 有益于你的索引。当 Elasticsearch 尝试恢复或重新打开一个索引， 它需要重放 translog 中所有的操作，所以如果日志越短，恢复越快。</p>
+<blockquote>
+<p>Translog 有多安全?</p>
+<p>translog 的目的是保证操作不会丢失。这引出了这个问题： Translog 有多安全？</p>
+<p>在文件被 fsync 到磁盘前，被写入的文件在重启之后就会丢失。默认 translog 是每 5 秒被 fsync 刷新到硬盘， 或者在每次写请求完成之后执行(e.g. index, delete, update, bulk)。这个过程在主分片和复制分片都会发生。最终， 基本上，这意味着在整个请求被 fsync 到主分片和复制分片的translog之前，你的客户端不会得到一个 200 OK 响应。</p>
+<p>在每次请求后都执行一个 fsync 会带来一些性能损失，尽管实践表明这种损失相对较小（特别是bulk导入，它在一次请求中平摊了大量文档的开销）。</p>
+<p>但是对于一些大容量的偶尔丢失几秒数据问题也并不严重的集群，使用异步的 fsync 还是比较有益的。比如，写入的数据被缓存到内存中，再每5秒执行一次 fsync 。</p>
+<p>这个行为可以通过设置 durability 参数为 async 来启用：</p>
+<pre><code>PUT /my_index/_settings
+{
+   &quot;index.translog.durability&quot;: &quot;async&quot;,
+   &quot;index.translog.sync_interval&quot;: &quot;5s&quot;
+}
+</code></pre>
+<p>这个选项可以针对索引单独设置，并且可以动态进行修改。如果你决定使用异步 translog 的话，你需要 保证 在发生crash时，丢失掉 sync_interval 时间段的数据也无所谓。请在决定前知晓这个特性。</p>
+<p>如果你不确定这个行为的后果，最好是使用默认的参数（ &quot;index.translog.durability&quot;: &quot;request&quot; ）来避免数据丢失。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="段合并"><a class="header" href="#段合并">段合并</a></h1>
+<p>由于自动刷新流程每秒会创建一个新的段 ，这样会导致短时间内的段数量暴增。而段数目太多会带来较大的麻烦。 每一个段都会消耗文件句柄、内存和cpu运行周期。更重要的是，每个搜索请求都必须轮流检查每个段；所以段越多，搜索也就越慢。</p>
+<p>Elasticsearch通过在后台进行段合并来解决这个问题。小的段被合并到大的段，然后这些大的段再被合并到更大的段。</p>
+<p>段合并的时候会将那些旧的已删除文档从文件系统中清除。被删除的文档（或被更新文档的旧版本）不会被拷贝到新的大段中。</p>
+<p>启动段合并不需要你做任何事。进行索引和搜索时会自动进行。这个流程像在, “两个提交了的段和一个未提交的段正在被合并到一个更大的段” 中提到的一样工作：</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1110.png?raw=true" alt="两个提交了的段和一个未提交的段正在被合并到一个更大的段" /></p>
+<ol>
+<li>
+<p>当索引的时候，刷新（refresh）操作会创建新的段并将段打开以供搜索使用。</p>
+</li>
+<li>
+<p>合并进程选择一小部分大小相似的段，并且在后台将它们合并到更大的段中。这并不会中断索引和搜索。</p>
+</li>
+<li>
+<p>“一旦合并结束，老的段被删除” 说明合并完成时的活动：</p>
+<ul>
+<li>
+<p>新的段被刷新（flush）到了磁盘。   ** 写入一个包含新段且排除旧的和较小的段的新提交点。</p>
+</li>
+<li>
+<p>新的段被打开用来搜索。</p>
+</li>
+<li>
+<p>老的段被删除。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_1111.png?raw=true" alt="一旦合并结束，老的段被删除" /></p>
+<p>合并大的段需要消耗大量的I/O和CPU资源，如果任其发展会影响搜索性能。Elasticsearch在默认情况下会对合并流程进行资源限制，所以搜索仍然 有足够的资源很好地执行。</p>
+<p>查看 段和合并 来为你的实例获取关于合并调整的建议。</p>
+<h2 id="optimize-api"><a class="header" href="#optimize-api">optimize API</a></h2>
+<p>optimize API大可看做是 强制合并 API。它会将一个分片强制合并到 max_num_segments 参数指定大小的段数目。 这样做的意图是减少段的数量（通常减少到一个），来提升搜索性能。</p>
+<blockquote>
+<p>⚠️ Warning</p>
+<p>optimize API 不应该 被用在一个活跃的索引————一个正积极更新的索引。后台合并流程已经可以很好地完成工作。 optimizing 会阻碍这个进程。不要干扰它！</p>
+</blockquote>
+<p>在特定情况下，使用 optimize API 颇有益处。例如在日志这种用例下，每天、每周、每月的日志被存储在一个索引中。 老的索引实质上是只读的；它们也并不太可能会发生变化。</p>
+<p>在这种情况下，使用optimize优化老的索引，将每一个分片合并为一个单独的段就很有用了；这样既可以节省资源，也可以使搜索更加快速：</p>
+<pre><code class="language-json">
+POST /logstash-2014-10/_optimize?max_num_segments=1 0️⃣
+
+</code></pre>
+<p>0️⃣ 合并索引中的每个分片为一个单独的段</p>
+<blockquote>
+<p>⚠️ Warning</p>
+<p>请注意，使用 optimize API 触发段合并的操作不会受到任何资源上的限制。这可能会消耗掉你节点上全部的I/O资源, 使其没有余裕来处理搜索请求，从而有可能使集群失去响应。 如果你想要对索引执行 optimize，你需要先使用分片分配（查看 迁移旧索引）把索引移到一个安全的节点，再执行。</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="管理监控入门"><a class="header" href="#管理监控入门">管理、监控入门</a></h1>
+<p>本书大部分介绍了使用 Elasticsearch 作为后端创建应用程序。本章节稍微不同。在这里，你将学习到如何管理 Elasticsearch 自身。Elasticsearch 是一个复杂的软件，有许多可移动组件，大量的 API 设计用来帮助管理你的 Elasticsearch 部署。</p>
+<p>在这个章节，我们涵盖三个主题：</p>
+<ol>
+<li>
+<p>根据监控你的集群重要数据的统计，去了解哪些行为是正常的，哪些应该引起警告，并解释 Elasticsearch 提供的各种统计信息。</p>
+</li>
+<li>
+<p>部署你的集群到生产环境，包括最佳实践和应该（或不应该！）修改的重要配置。</p>
+</li>
+<li>
+<p>部署后的维护，如 Rolling Restart 或备份你的集群</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="监控"><a class="header" href="#监控">监控</a></h1>
+<p>Elasticsearch 经常以多节点集群的方式部署。有多种 API 让你可以管理和监控集群本身，而不用和集群里存储的数据打交道。</p>
+<p>和 Elasticsearch 里绝大多数功能一样，我们有一个总体的设计目标，即任务应该通过 API 执行，而不是通过修改静态的配置文件。这一点在你的集群扩容时尤为重要。即便通过配置管理系统（比如 Puppet，Chef 或者 Ansible），一个简单的 HTTP API 调用，也比往上百台物理设备上推送新配置文件简单多了。</p>
+<p>因此，本章将介绍各种可以让你动态调整、调优和调配集群的 API。同时，还会介绍一系列提供集群自身统计数据的 API，你可以用这些接口来监控集群健康状态和性能。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="marval监控"><a class="header" href="#marval监控">Marval监控</a></h1>
+<p>⚠️ 该组建已经废弃，现在可以通过kibana monitor查看集群状态</p>
+<p>Marvel 让你可以很简单的通过 Kibana 监控 Elasticsearch。你可以实时查看你的集群健康状态和性能，也可以分析过去的集群、索引和节点指标。</p>
+<p>虽然你可以通过本章介绍的 API 查看大量的指标数据，但是它们展示的都是当前时间点的即时情况。了解这个瞬间的内存占用比当然很有用，但是了解内存占用比 随时间轴的趋势 更加有用。Marvel 会查询并聚合这些数据，你可以通过可视化效果看到自己集群随时间的变化，这样可以很容易的发现发展的趋势。</p>
+<p>随着你集群规模的发展，统计 API 的输出内容会复杂得让人完全没法看。当你有一大把节点，比如说一百个，再阅读这个输出的 JSON 就非常乏味了。而 Marvel 可以让你交互式的探索这些数据，更容易于集中关注特定节点或者索引上发生了什么。</p>
+<p>Marvel 使用公开的 API，和你自己能找到的一样 — 它没有暴露任何你通过 API 访问不到的统计信息。但是，Marvel 极大的简化了这些统计信息的采集和可视化工作。</p>
+<p>Marvel 可以免费使用（包括生产环境上！），所以你现在就开始用起来吧！安装介绍，参阅 Marvel 入门。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="集群健康-1"><a class="header" href="#集群健康-1">集群健康</a></h1>
+<p>一个 Elasticsearch 集群至少包括一个节点和一个索引。或者它可能有一百个数据节点、三个单独的主节点，以及一小打客户端节点——这些共同操作一千个索引（以及上万个分片）。</p>
+<p>不管集群扩展到多大规模，你都会想要一个快速获取集群状态的途径。Cluster Health API 充当的就是这个角色。你可以把它想象成是在一万英尺的高度鸟瞰集群。它可以告诉你安心吧一切都好，或者警告你集群某个地方有问题。</p>
+<p>让我们执行一下 cluster-health API 然后看看响应体是什么样子的：</p>
+<pre><code class="language-json">
+GET _cluster/health
+
+{
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 3,
+  &quot;number_of_data_nodes&quot;: 2,
+  &quot;active_primary_shards&quot;: 97,
+  &quot;active_shards&quot;: 194,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 3,
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 98.47715736040608
+}
+
+</code></pre>
+<p>和 Elasticsearch 里其他 API 一样，cluster-health 会返回一个 JSON 响应。这对自动化和告警系统来说，非常便于解析。响应中包含了和你集群有关的一些关键信息：</p>
+<ol>
+<li>
+<p>green 所有的主分片和副本分片都已分配。你的集群是 100% 可用的。</p>
+</li>
+<li>
+<p>yellow 所有的主分片已经分片了，但至少还有一个副本是缺失的。不会有数据丢失，所以搜索结果依然是完整的。不过，你的高可用性在某种程度上被弱化。如果 更多的 分片消失，你就会丢数据了。把 yellow 想象成一个需要及时调查的警告。</p>
+</li>
+<li>
+<p>red 至少一个主分片（以及它的全部副本）都在缺失中。这意味着你在缺少数据：搜索只能返回部分数据，而分配到这个分片上的写入请求会返回一个异常。</p>
+</li>
+</ol>
+<p>green/yellow/red 状态是一个概览你的集群并了解眼下正在发生什么的好办法。剩下来的指标给你列出来集群的状态概要：</p>
+<ul>
+<li>
+<p>number_of_nodes 和 number_of_data_nodes 这个命名完全是自描述的。</p>
+</li>
+<li>
+<p>active_primary_shards 指出你集群中的主分片数量。这是涵盖了所有索引的汇总值。</p>
+</li>
+<li>
+<p>active_shards 是涵盖了所有索引的_所有_分片的汇总值，即包括副本分片。</p>
+</li>
+<li>
+<p>relocating_shards 显示当前正在从一个节点迁往其他节点的分片的数量。通常来说应该是 0，不过在 Elasticsearch 发现集群不太均衡时，该值会上涨。比如说：添加了一个新节点，或者下线了一个节点。</p>
+</li>
+<li>
+<p>initializing_shards 是刚刚创建的分片的个数。比如，当你刚创建第一个索引，分片都会短暂的处于 initializing 状态。这通常会是一个临时事件，分片不应该长期停留在 initializing 状态。你还可能在节点刚重启的时候看到 initializing 分片：当分片从磁盘上加载后，它们会从 initializing 状态开始。</p>
+</li>
+<li>
+<p>unassigned_shards 是已经在集群状态中存在的分片，但是实际在集群里又找不着。通常未分配分片的来源是未分配的副本。比如，一个有 5 分片和 1 副本的索引，在单节点集群上，就会有 5 个未分配副本分片。如果你的集群是 red 状态，也会长期保有未分配分片（因为缺少主分片）。</p>
+</li>
+</ul>
+<h2 id="钻更深点找到问题索引"><a class="header" href="#钻更深点找到问题索引">钻更深点：找到问题索引</a></h2>
+<p>想象一下某天碰到问题了， 而你发现你的集群健康状态看起来像是这样：</p>
+<pre><code class="language-json">
+{
+   &quot;cluster_name&quot;: &quot;elasticsearch_zach&quot;,
+   &quot;status&quot;: &quot;red&quot;,
+   &quot;timed_out&quot;: false,
+   &quot;number_of_nodes&quot;: 8,
+   &quot;number_of_data_nodes&quot;: 8,
+   &quot;active_primary_shards&quot;: 90,
+   &quot;active_shards&quot;: 180,
+   &quot;relocating_shards&quot;: 0,
+   &quot;initializing_shards&quot;: 0,
+   &quot;unassigned_shards&quot;: 20
+}
+
+</code></pre>
+<p>好了，从这个健康状态里我们能推断出什么来？嗯，我们集群是 red ，意味着我们缺数据（主分片 + 副本分片）了。我们知道我们集群原先有 10 个节点，但是在这个健康状态里列出来的只有 8 个数据节点。有两个数据节点不见了。我们看到有 20 个未分配分片。</p>
+<p>这就是我们能收集到的全部信息。那些缺失分片的情况依然是个谜。我们是缺了 20 个索引，每个索引里少 1 个主分片？还是缺 1 个索引里的 20 个主分片？还是 10 个索引里的各 1 主 1 副本分片？具体是哪个索引？</p>
+<p>要回答这个问题，我们需要使用 level 参数让 cluster-health 答出更多一点的信息：</p>
+<pre><code class="language-json">
+GET _cluster/health?level=indices
+
+{
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 3,
+  &quot;number_of_data_nodes&quot;: 2,
+  &quot;active_primary_shards&quot;: 97,
+  &quot;active_shards&quot;: 194,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 3,
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 98.47715736040608,
+  &quot;indices&quot;: {
+    &quot;.ent-search-actastic-app_search_document_positions_v3&quot;: {
+      &quot;status&quot;: &quot;green&quot;,
+      &quot;number_of_shards&quot;: 1,
+      &quot;number_of_replicas&quot;: 1,
+      &quot;active_primary_shards&quot;: 1,
+      &quot;active_shards&quot;: 2,
+      &quot;relocating_shards&quot;: 0,
+      &quot;initializing_shards&quot;: 0,
+      &quot;unassigned_shards&quot;: 0
+    }
+  }
+}
+
+</code></pre>
+<p>这个参数会让 cluster-health API 在我们的集群信息里添加一个索引清单，以及有关每个索引的细节（状态、分片数、未分配分片数等等）</p>
+<p>一旦我们询问要索引的输出，哪个索引有问题立马就很清楚了：v2 索引。我们还可以看到这个索引曾经有 10 个主分片和一个副本，而现在这 20 个分片全不见了。可以推测，这 20 个索引就是位于从我们集群里不见了的那两个节点上。</p>
+<p>level 参数还可以接受其他更多选项：</p>
+<pre><code class="language-json">
+GET _cluster/health?level=shards
+
+</code></pre>
+<p>shards 选项会提供一个详细得多的输出，列出每个索引里每个分片的状态和位置。这个输出有时候很有用，但是由于太过详细会比较难用。如果你知道哪个索引有问题了，本章讨论的其他 API 显得更加有用一点。</p>
+<h2 id="阻塞等待状态变化"><a class="header" href="#阻塞等待状态变化">阻塞等待状态变化</a></h2>
+<p>当构建单元和集成测试时，或者实现和 Elasticsearch 相关的自动化脚本时，cluster-health API 还有另一个小技巧非常有用。你可以指定一个 wait_for_status 参数，它只有在状态达标之后才会返回。比如：</p>
+<pre><code class="language-json">
+GET _cluster/health?wait_for_status=green
+
+</code></pre>
+<p>这个调用会 阻塞 （不给你的程序返回控制权）住直到 cluster-health 变成 green ，也就是说所有主分片和副本分片都分配下去了。这对自动化脚本和测试非常重要。</p>
+<p>如果你创建一个索引，Elasticsearch 必须在集群状态中向所有节点广播这个变更。那些节点必须初始化这些新分片，然后响应给主节点说这些分片已经 Started 。这个过程很快，但是因为网络延迟，可能要花 10–20ms。</p>
+<p>如果你有个自动化脚本是 (a) 创建一个索引然后 (b) 立刻写入一个文档，这个操作会失败。因为索引还没完全初始化完成。在 (a) 和 (b) 两步之间的时间可能不到 1ms —— 对网络延迟来说这可不够。</p>
+<p>比起使用 sleep 命令，直接让你的脚本或者测试使用 wait_for_status 参数调用 cluster-health 更好。当索引完全创建好，cluster-health 就会变成 green ，然后这个调用就会把控制权交还给你的脚本，然后你就可以开始写入了。</p>
+<p>有效的选项是： green 、 yellow 和 red 。这个调回会在达到你要求（或者『更高』）的状态时返回。比如，如果你要求的是 yellow ，状态变成 yellow 或者 green 都会打开调用。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="监控单个节点"><a class="header" href="#监控单个节点">监控单个节点</a></h1>
+<p>集群健康 就像是光谱的一端——对集群的所有信息进行高度概述。而 节点统计值 API 则是在另一端。它提供一个让人眼花缭乱的统计数据的数组，包含集群的每一个节点统计值。</p>
+<p>节点统计值 提供的统计值如此之多，在完全熟悉它之前，你可能都搞不清楚哪些指标是最值得关注的。我们将会高亮那些最重要的监控指标（但是我们鼓励你记录接口提供的所有指标——或者用 Marvel ——因为你永远不知道何时需要某个或者另一个值）。</p>
+<p>节点统计值 API 可以通过如下命令执行：</p>
+<pre><code class="language-json">
+GET _nodes/stats
+
+{
+  &quot;_nodes&quot;: {
+    &quot;total&quot;: 3,
+    &quot;successful&quot;: 3,
+    &quot;failed&quot;: 0
+  },
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;nodes&quot;: {
+    &quot;snEBN-aVTcKiJfoT87LgKA&quot;: {
+      &quot;timestamp&quot;: 1657777592809,
+      &quot;name&quot;: &quot;instance-0000000001&quot;,
+      &quot;transport_address&quot;: &quot;10.42.0.133:19375&quot;,
+      &quot;host&quot;: &quot;10.42.0.133&quot;,
+      &quot;ip&quot;: &quot;10.42.0.133:19375&quot;,
+      &quot;roles&quot;: [
+        &quot;data_content&quot;,
+        &quot;data_hot&quot;,
+        &quot;ingest&quot;,
+        &quot;master&quot;,
+        &quot;remote_cluster_client&quot;,
+        &quot;transform&quot;
+      ],
+	  ...
+
+</code></pre>
+<p>在输出内容的开头，我们可以看到集群名称和我们的第一个节点。</p>
+<p>节点是排列在一个哈希里，以节点的 UUID 作为键名。还显示了节点网络属性的一些信息（比如传输层地址和主机名）。这些值对调试诸如节点未加入集群这类自动发现问题很有用。通常你会发现是端口用错了，或者节点绑定在错误的 IP 地址/网络接口上了。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="索引部分"><a class="header" href="#索引部分">索引部分</a></h1>
+<p>索引(indices) 部分列出了这个节点上所有索引的聚合过的统计值：</p>
+<pre><code class="language-json">
+   &quot;indices&quot;: {
+        &quot;docs&quot;: { 0️⃣
+          &quot;count&quot;: 6539564,
+          &quot;deleted&quot;: 2082
+        },
+        &quot;shard_stats&quot;: {
+          &quot;total_count&quot;: 97
+        },
+        &quot;store&quot;: {
+          &quot;size_in_bytes&quot;: 2646907845,
+          &quot;total_data_set_size_in_bytes&quot;: 2646907845,
+          &quot;reserved_in_bytes&quot;: 0
+        },
+        &quot;indexing&quot;: {
+          &quot;index_total&quot;: 15286202,
+          &quot;index_time_in_millis&quot;: 2403080,
+          &quot;index_current&quot;: 0,
+          &quot;index_failed&quot;: 14118852,
+          &quot;delete_total&quot;: 20512,
+          &quot;delete_time_in_millis&quot;: 3402,
+          &quot;delete_current&quot;: 0,
+          &quot;noop_update_total&quot;: 1,
+          &quot;is_throttled&quot;: false,
+          &quot;throttle_time_in_millis&quot;: 0 1️⃣
+        },
+		...
+</code></pre>
+<p>返回的统计值被归入以下部分：</p>
+<ul>
+<li>
+<p>0️⃣ docs 展示节点内存有多少文档，包括还没有从段里清除的已删除文档数量。</p>
+</li>
+<li>
+<p>1️⃣ store 部分显示节点耗用了多少物理存储。这个指标包括主分片和副本分片在内。如果限流时间很大，那可能表明你的磁盘限流设置得过低（在段和合并里讨论过）。</p>
+</li>
+</ul>
+<pre><code class="language-json">
+ &quot;indexing&quot;: {
+   &quot;index_total&quot;: 15286202,
+   &quot;index_time_in_millis&quot;: 2403080,
+   &quot;index_current&quot;: 0,
+   &quot;index_failed&quot;: 14118852,
+   &quot;delete_total&quot;: 20512,
+   &quot;delete_time_in_millis&quot;: 3402,
+   &quot;delete_current&quot;: 0,
+   &quot;noop_update_total&quot;: 1,
+   &quot;is_throttled&quot;: false,
+   &quot;throttle_time_in_millis&quot;: 0
+ },
+ &quot;get&quot;: {
+   &quot;total&quot;: 1980564,
+   &quot;time_in_millis&quot;: 202478,
+   &quot;exists_total&quot;: 1973030,
+   &quot;exists_time_in_millis&quot;: 201941,
+   &quot;missing_total&quot;: 7534,
+   &quot;missing_time_in_millis&quot;: 537,
+   &quot;current&quot;: 0
+ },
+ &quot;search&quot;: {
+   &quot;open_contexts&quot;: 0,
+   &quot;query_total&quot;: 3272088,
+   &quot;query_time_in_millis&quot;: 1806935,
+   &quot;query_current&quot;: 0,
+   &quot;fetch_total&quot;: 3129569,
+   &quot;fetch_time_in_millis&quot;: 97430,
+   &quot;fetch_current&quot;: 0,
+   &quot;scroll_total&quot;: 866806,
+   &quot;scroll_time_in_millis&quot;: 7417778,
+   &quot;scroll_current&quot;: 0,
+   &quot;suggest_total&quot;: 0,
+   &quot;suggest_time_in_millis&quot;: 0,
+   &quot;suggest_current&quot;: 0
+ },
+ &quot;merges&quot;: {
+   &quot;current&quot;: 0,
+   &quot;current_docs&quot;: 0,
+   &quot;current_size_in_bytes&quot;: 0,
+   &quot;total&quot;: 97527,
+   &quot;total_time_in_millis&quot;: 5367815,
+   &quot;total_docs&quot;: 364477569,
+   &quot;total_size_in_bytes&quot;: 136348510561,
+   &quot;total_stopped_time_in_millis&quot;: 0,
+   &quot;total_throttled_time_in_millis&quot;: 762543,
+   &quot;total_auto_throttle_in_bytes&quot;: 2482171511
+ }
+		
+</code></pre>
+<ol>
+<li>
+<p>indexing 显示已经索引了多少文档。</p>
+<ul>
+<li>
+<p>这个值是一个累加计数器。在文档被删除的时候，数值不会下降。</p>
+</li>
+<li>
+<p>还要注意的是，在发生内部 索引 操作的时候，这个值也会增加，比如说文档更新。</p>
+</li>
+<li>
+<p>还列出了索引操作耗费的时间，正在索引的文档数量，以及删除操作的类似统计值。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>get 显示通过 ID 获取文档的接口相关的统计值。</p>
+<ul>
+<li>包括对单个文档的 GET 和 HEAD 请求。</li>
+</ul>
+</li>
+<li>
+<p>search 描述在活跃中的搜索（ open_contexts ）数量、查询的总数量、以及自节点启动以来在查询上消耗的总时间。</p>
+<ul>
+<li>
+<p>用 query_time_in_millis / query_total 计算的比值，可以用来粗略的评价你的查询有多高效。比值越大，每个查询花费的时间越多，你应该要考虑调优了。</p>
+</li>
+<li>
+<p>fetch 统计值展示了查询处理的后一半流程（query-then-fetch 里的 fetch ）。如果 fetch 耗时比 query 还多，说明磁盘较慢，或者获取了太多文档，或者可能搜索请求设置了太大的分页（比如， size: 10000 ）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>merges 包括了 Lucene 段合并相关的信息。</p>
+<ul>
+<li>
+<p>它会告诉你目前在运行几个合并，合并涉及的文档数量，正在合并的段的总大小，以及在合并操作上消耗的总时间。</p>
+</li>
+<li>
+<p>在你的集群写入压力很大时，合并统计值非常重要。合并要消耗大量的磁盘 I/O 和 CPU 资源。如果你的索引有大量的写入，同时又发现大量的合并数，一定要去阅读索引性能技巧。</p>
+</li>
+<li>
+<p>注意：文档更新和删除也会导致大量的合并数，因为它们会产生最终需要被合并的段 碎片 。</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-json">
+&quot;query_cache&quot;: {
+  &quot;memory_size_in_bytes&quot;: 997384,
+  &quot;total_count&quot;: 1037643,
+  &quot;hit_count&quot;: 19450,
+  &quot;miss_count&quot;: 1018193,
+  &quot;cache_size&quot;: 188,
+  &quot;cache_count&quot;: 670,
+  &quot;evictions&quot;: 482
+},
+&quot;fielddata&quot;: {
+  &quot;memory_size_in_bytes&quot;: 736,
+  &quot;evictions&quot;: 0
+},
+&quot;completion&quot;: {
+  &quot;size_in_bytes&quot;: 0
+},
+&quot;segments&quot;: {
+  &quot;count&quot;: 192,
+  &quot;memory_in_bytes&quot;: 0,
+  &quot;terms_memory_in_bytes&quot;: 0,
+  &quot;stored_fields_memory_in_bytes&quot;: 0,
+  &quot;term_vectors_memory_in_bytes&quot;: 0,
+  &quot;norms_memory_in_bytes&quot;: 0,
+  &quot;points_memory_in_bytes&quot;: 0,
+  &quot;doc_values_memory_in_bytes&quot;: 0,
+  &quot;index_writer_memory_in_bytes&quot;: 4173916,
+  &quot;version_map_memory_in_bytes&quot;: 51318,
+  &quot;fixed_bit_set_memory_in_bytes&quot;: 593296,
+  &quot;max_unsafe_auto_id_timestamp&quot;: 1656995860384,
+  &quot;file_sizes&quot;: {}
+},
+
+</code></pre>
+<ol>
+<li>
+<p>filter_cache 展示了已缓存的过滤器位集合所用的内存数量，以及过滤器被驱逐出内存的次数。</p>
+<ul>
+<li>
+<p>过多的驱逐数 可能 说明你需要加大过滤器缓存的大小，或者你的过滤器不太适合缓存（比如它们因为高基数而在大量产生，就像是缓存一个 now 时间表达式）</p>
+</li>
+<li>
+<p>不过，驱逐数是一个很难评定的指标。过滤器是在每个段的基础上缓存的，而从一个小的段里驱逐过滤器，代价比从一个大的段里要廉价的多。有可能你有很大的驱逐数，但是它们都发生在小段上，也就意味着这些对查询性能只有很小的影响。</p>
+</li>
+<li>
+<p>把驱逐数指标作为一个粗略的参考。如果你看到数字很大，检查一下你的过滤器，确保他们都是正常缓存的。不断驱逐着的过滤器，哪怕都发生在很小的段上，效果也比正确缓存住了的过滤器差很多。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>field_data 显示 fielddata 使用的内存，用以聚合、排序等等。</p>
+<ul>
+<li>
+<p>这里也有一个驱逐计数。和 filter_cache 不同的是，这里的驱逐计数是很有用的：这个数应该或者至少是接近于 0。因为 fielddata 不是缓存，任何驱逐都消耗巨大，应该避免掉。</p>
+</li>
+<li>
+<p>如果你在这里看到驱逐数，你需要重新评估你的内存情况，fielddata 限制，请求语句，或者这三者。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>segments 会展示这个节点目前正在服务中的 Lucene 段的数量。</p>
+<ul>
+<li>
+<p>这是一个重要的数字。大多数索引会有大概 50–150 个段，哪怕它们存有 TB 级别的数十亿条文档。</p>
+</li>
+<li>
+<p>段数量过大表明合并出现了问题（比如，合并速度跟不上段的创建）。</p>
+</li>
+<li>
+<p>注意这个统计值是节点上所有索引的汇聚总数。记住这点。</p>
+</li>
+<li>
+<p>memory 统计值展示了 Lucene 段自己用掉的内存大小。这里包括底层数据结构，比如倒排表，字典，和布隆过滤器等。太大的段数量会增加这些数据结构带来的开销，这个内存使用量就是一个方便用来衡量开销的度量值。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="操作系统和进程"><a class="header" href="#操作系统和进程">操作系统和进程</a></h1>
+<p>OS 和 Process 部分基本是自描述的，不会在细节中展开讲解。它们列出来基础的资源统计值，比如 CPU 和负载。OS 部分描述了整个操作系统，而 Process 部分只显示 Elasticsearch 的 JVM 进程使用的资源情况。</p>
+<p>这些都是非常有用的指标，不过通常在你的监控技术栈里已经都测量好了。统计值包括下面这些：</p>
+<ul>
+<li>
+<p>CPU</p>
+</li>
+<li>
+<p>负载</p>
+</li>
+<li>
+<p>内存使用率</p>
+</li>
+<li>
+<p>Swap 使用率</p>
+</li>
+<li>
+<p>打开的文件描述符</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="jvm部分"><a class="header" href="#jvm部分">jvm部分</a></h1>
+<p>jvm 部分包括了运行 Elasticsearch 的 JVM 进程一些很关键的信息。最重要的，它包括了垃圾回收的细节，这对你的 Elasticsearch 集群的稳定性有着重大影响。</p>
+<blockquote>
+<p><strong>垃圾回收入门</strong></p>
+<p>在我们描述统计值之前，先上一门速成课程讲解垃圾回收以及它对 Elasticsearch 的影响是非常有用的。如果你对 JVM 的垃圾回收很熟悉，请跳过这段。</p>
+<p>Java 是一门 垃圾回收 语言，也就是说程序员不用手动管理内存分配和回收。程序员只管写代码，然后 Java 虚拟机（JVM）按需分配内存，然后在稍后不再需要的时候清理这部分内存。</p>
+<p>当内存分配给一个 JVM 进程，它是分配到一个大块里，这个块叫做 堆 。JVM 把堆分成两组，用 代 来表示</p>
+<p><strong>新生代（或者伊甸园）</strong></p>
+<p>新实例化的对象分配的空间。新生代空间通常都非常小，一般在 100 MB–500 MB。新生代也包含两个 幸存 空间。</p>
+<p><strong>老生代</strong></p>
+<p>较老的对象存储的空间。这些对象预计将长期留存并持续上很长一段时间。老生代通常比新生代大很多。Elasticsearch 节点可以给老生代用到 30 GB。</p>
+<p>当一个对象实例化的时候，它被放在新生代里。当新生代空间满了，就会发生一次新生代垃圾回收（GC）。依然是&quot;存活&quot;状态的对象就被转移到一个幸存区内，而&quot;死掉&quot;的对象被移除。如果一个对象在多次新生代 GC 中都幸存了，它就会被&quot;终身&quot;置于老生代了。</p>
+<p>类似的过程在老生代里同样发生：空间满的时候，发生一次垃圾回收，死掉的对象被移除。</p>
+<p>不过，天下没有免费的午餐。新生代、老生代的垃圾回收都有一个阶段会“停止时间”。在这段时间里，JVM 字面意义上的停止了程序运行，以便跟踪对象图，收集死亡对象。在这个时间停止阶段，一切都不会发生。请求不被服务，ping 不被回应，分片不被分配。整个世界都真的停止了。</p>
+<p>对于新生代，这不是什么大问题；那么小的空间意味着 GC 会很快执行完。但是老生代大很多，而这里面一个慢 GC 可能就意味着 1 秒乃至 15 秒的暂停——对于服务器软件来说这是不可接受的。</p>
+<p>JVM 的垃圾回收采用了 非常 精密的算法，在减少暂停方面做得很棒。而且 Elasticsearch 非常努力的变成对 垃圾回收友好 的程序，比如内部智能的重用对象，重用网络缓冲，以及默认启用 Doc Values 功能。但最终，GC 的频率和时长依然是你需要去观察的指标。因为它是集群不稳定的头号嫌疑人。</p>
+<p>一个经常发生长 GC 的集群就会因为内存不足而处于高负载压力下。这些长 GC 会导致节点短时间内从集群里掉线。这种不稳定会导致分片频繁重定位，因为 Elasticsearch 会尝试保持集群均衡，保证有足够的副本在线。这接着就导致网络流量和磁盘 I/O 的增加。而所有这些都是在你的集群努力服务于正常的索引和查询的同时发生的。</p>
+<p>总而言之，长时间 GC 总是不好的，需要尽可能的减少。</p>
+</blockquote>
+<p>因为垃圾回收对 Elasticsearch 是如此重要，你应该非常熟悉 node-stats API 里的这部分内容：</p>
+<pre><code class="language-json">
+      &quot;jvm&quot;: {
+        &quot;timestamp&quot;: 1657854496146,
+        &quot;uptime_in_millis&quot;: 858680867,
+        &quot;mem&quot;: {
+          &quot;heap_used_in_bytes&quot;: 1025882384,
+          &quot;heap_used_percent&quot;: 52,
+          &quot;heap_committed_in_bytes&quot;: 1958739968,
+          &quot;heap_max_in_bytes&quot;: 1958739968,
+          &quot;non_heap_used_in_bytes&quot;: 346164192,
+          &quot;non_heap_committed_in_bytes&quot;: 356843520,
+					...
+</code></pre>
+<pre><code class="language-json">
+ &quot;pools&quot;: {
+            &quot;young&quot;: {
+              &quot;used_in_bytes&quot;: 721420288,
+              &quot;max_in_bytes&quot;: 0,
+              &quot;peak_used_in_bytes&quot;: 1166016512,
+              &quot;peak_max_in_bytes&quot;: 0
+            },
+            &quot;old&quot;: {
+              &quot;used_in_bytes&quot;: 286038520,
+              &quot;max_in_bytes&quot;: 1958739968,
+              &quot;peak_used_in_bytes&quot;: 1245947392,
+              &quot;peak_max_in_bytes&quot;: 1958739968
+            },
+            &quot;survivor&quot;: {
+              &quot;used_in_bytes&quot;: 18423576,
+              &quot;max_in_bytes&quot;: 0,
+              &quot;peak_used_in_bytes&quot;: 71303168,
+              &quot;peak_max_in_bytes&quot;: 0
+            }
+          }
+        },
+				
+</code></pre>
+<pre><code class="language-json">
+        &quot;gc&quot;: {
+          &quot;collectors&quot;: {
+            &quot;young&quot;: {
+              &quot;collection_count&quot;: 12523,
+              &quot;collection_time_in_millis&quot;: 202427
+            },
+            &quot;old&quot;: {
+              &quot;collection_count&quot;: 0,
+              &quot;collection_time_in_millis&quot;: 0
+            }
+          }
+        },
+
+</code></pre>
+<ol>
+<li>
+<p>jvm 部分首先列出一些和 heap 内存使用有关的常见统计值。</p>
+<ul>
+<li>
+<p>你可以看到有多少 heap 被使用了，多少被指派了（当前被分配给进程的），以及 heap 被允许分配的最大值。理想情况下，heap_committed_in_bytes 应该等于 heap_max_in_bytes 。如果指派的大小更小，JVM 最终会被迫调整 heap 大小——这是一个非常昂贵的操作。如果你的数字不相等，阅读 堆内存:大小和交换 学习如何正确的配置它。</p>
+</li>
+<li>
+<p>heap_used_percent 指标是值得关注的一个数字。Elasticsearch 被配置为当 heap 达到 75% 的时候开始 GC。如果你的节点一直 &gt;= 75%，你的节点正处于 内存压力 状态。这是个危险信号，不远的未来可能就有慢 GC 要出现了。</p>
+</li>
+<li>
+<p>如果 heap 使用率一直 &gt;=85%，你就麻烦了。Heap 在 90–95% 之间，则面临可怕的性能风险，此时最好的情况是长达 10–30s 的 GC，最差的情况就是内存溢出（OOM）异常。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>新生代(young) 、 幸存区(survivor) 和 老生代(old) 部分分别展示 GC 中每一个代的内存使用情况。这些统计值很方便观察其相对大小，但是在调试问题的时候，通常并不怎么重要。</p>
+</li>
+<li>
+<p>gc 部分显示新生代和老生代的垃圾回收次数和累积时间。</p>
+<ul>
+<li>
+<p>大多数时候你可以忽略掉新生代的次数：这个数字通常都很大。这是正常的。</p>
+</li>
+<li>
+<p>与之相反，老生代的次数应该很小，而且 collection_time_in_millis 也应该很小。这些是累积值，所以很难给出一个阈值表示你要开始操心了（比如，一个跑了一整年的节点，即使很健康，也会有一个比较大的计数）。这就是像 Marvel 这类工具很有用的一个原因。GC 计数的 时间趋势 是个重要的考虑因素。</p>
+</li>
+<li>
+<p>GC 花费的时间也很重要。比如，在索引文档时，一系列垃圾生成了。这是很常见的情况，每时每刻都会导致 GC。这些 GC 绝大多数时候都很快，对节点影响很小：新生代一般就花一两毫秒，老生代花一百多毫秒。这些跟 10 秒级别的 GC 是很不一样的。</p>
+</li>
+<li>
+<p>我们的最佳建议是定期收集 GC 计数和时长（或者使用 Marvel）然后观察 GC 频率。你也可以开启慢 GC 日志记录，在 日志记录 小节已经讨论过。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="线程池部分"><a class="header" href="#线程池部分">线程池部分</a></h1>
+<p>Elasticsearch 在内部维护了线程池。这些线程池相互协作完成任务，有必要的话相互间还会传递任务。通常来说，你不需要配置或者调优线程池，不过查看它们的统计值有时候还是有用的，可以洞察你的集群表现如何。</p>
+<p>这有一系列的线程池，但以相同的格式输出：</p>
+<pre><code class="language-json">
+&quot;thread_pool&quot;: {
+        &quot;analyze&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;auto_complete&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;azure_event_loop&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;ccr&quot;: {
+          &quot;threads&quot;: 5,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 5,
+          &quot;completed&quot;: 5
+        },
+        &quot;cluster_coordination&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 345064
+        },
+        &quot;fetch_shard_started&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;fetch_shard_store&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 4,
+          &quot;completed&quot;: 166
+        },
+        &quot;flush&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 1576
+        },
+        &quot;force_merge&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 13
+        },
+        &quot;generic&quot;: {
+          &quot;threads&quot;: 17,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 17,
+          &quot;completed&quot;: 6725195
+        },
+        &quot;get&quot;: {
+          &quot;threads&quot;: 2,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 2,
+          &quot;completed&quot;: 11157
+        },
+        &quot;management&quot;: {
+          &quot;threads&quot;: 2,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 1,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 2,
+          &quot;completed&quot;: 13397354
+        },
+        &quot;ml_datafeed&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;ml_job_comms&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;ml_utility&quot;: {
+          &quot;threads&quot;: 3,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 3,
+          &quot;completed&quot;: 1765085
+        },
+        &quot;refresh&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 35331528
+        },
+        &quot;repository_azure&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;rollup_indexing&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;search&quot;: {
+          &quot;threads&quot;: 4,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 4,
+          &quot;completed&quot;: 2424657
+        },
+        &quot;search_coordination&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 394423
+        },
+        &quot;search_throttled&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;searchable_snapshots_cache_fetch_async&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;searchable_snapshots_cache_prewarming&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;security-crypto&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 48
+        },
+        &quot;security-token-key&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;snapshot&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 259458
+        },
+        &quot;snapshot_meta&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 6,
+          &quot;completed&quot;: 44161
+        },
+        &quot;system_critical_read&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 1110706
+        },
+        &quot;system_critical_write&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 431
+        },
+        &quot;system_read&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 3467466
+        },
+        &quot;system_write&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 1064432
+        },
+        &quot;vector_tile_generation&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;warmer&quot;: {
+          &quot;threads&quot;: 1,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 1,
+          &quot;completed&quot;: 7231797
+        },
+        &quot;watcher&quot;: {
+          &quot;threads&quot;: 0,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 0,
+          &quot;completed&quot;: 0
+        },
+        &quot;write&quot;: {
+          &quot;threads&quot;: 2,
+          &quot;queue&quot;: 0,
+          &quot;active&quot;: 0,
+          &quot;rejected&quot;: 0,
+          &quot;largest&quot;: 2,
+          &quot;completed&quot;: 2219375
+        }
+      },
+
+</code></pre>
+<p>每个线程池会列出已配置的线程数量（ threads ），当前在处理任务的线程数量（ active ），以及在队列中等待处理的任务单元数量（ queue ）。</p>
+<p>如果队列中任务单元数达到了极限，新的任务单元会开始被拒绝，你会在 rejected 统计值上看到它反映出来。这通常是你的集群在某些资源上碰到瓶颈的信号。因为队列满意味着你的节点或集群在用最高速度运行，但依然跟不上工作的蜂拥而入。</p>
+<blockquote>
+<p><strong>批量操作的被拒绝数</strong></p>
+<p>如果你碰到了队列被拒，一般来说都是批量索引请求导致的。通过并发导入程序发送大量批量请求非常简单。越多越好嘛，对不？</p>
+<p>事实上，每个集群都有它能处理的请求上限。一旦这个阈值被超过，队列会很快塞满，然后新的批量请求就被拒绝了。</p>
+<p>这是一件 好事情 。队列的拒绝在回压方面是有用的。它们让你知道你的集群已经在最大容量了。这比把数据塞进内存队列要来得好。增加队列大小并不能增加性能，它只是隐藏了问题。当你的集群只能每秒钟处理 10000 个文档的时候，无论队列是 100 还是 10000000 都没关系——你的集群还是只能每秒处理 10000 个文档。</p>
+<p>队列只是隐藏了性能问题，而且带来的是真实的数据丢失的风险。在队列里的数据都是还没处理的，如果节点挂掉，这些请求都会永久的丢失。此外，队列还要消耗大量内存，这也是不理想的。</p>
+<p>在你的应用中，优雅的处理来自满载队列的回压，才是更好的选择。当你收到拒绝响应的时候，你应该采取如下几步：</p>
+<ol>
+<li>暂停导入线程 3–5 秒。</li>
+<li>从批量操作的响应里提取出来被拒绝的操作。因为可能很多操作还是成功的。响应会告诉你哪些成功，哪些被拒绝了。</li>
+<li>发送一个新的批量请求，只包含这些被拒绝过的操作。</li>
+<li>如果依然碰到拒绝，再次从步骤 1 开始。</li>
+</ol>
+<p>通过这个流程，你的代码可以很自然的适应你集群的负载，做到自动回压。</p>
+<p>拒绝不是错误：它们只是意味着你要稍后重试。</p>
+</blockquote>
+<p>这里的一系列的线程池，大多数你可以忽略，但是有一小部分还是值得关注的：</p>
+<ol>
+<li>
+<p>indexing 普通的索引请求的线程池</p>
+</li>
+<li>
+<p>bulk 批量请求，和单条的索引请求不同的线程池</p>
+</li>
+<li>
+<p>get Get-by-ID 操作</p>
+</li>
+<li>
+<p>search 所有的搜索和查询请求</p>
+</li>
+<li>
+<p>merging 专用于管理 Lucene 合并的线程池</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="文件系统和网络部分"><a class="header" href="#文件系统和网络部分">文件系统和网络部分</a></h1>
+<p>继续向下阅读 node-stats API，你会看到一串和你的文件系统相关的统计值：</p>
+<pre><code class="language-json">
+&quot;fs&quot;: {
+        &quot;timestamp&quot;: 1657854496146,
+        &quot;total&quot;: {
+          &quot;total_in_bytes&quot;: 193273528320,
+          &quot;free_in_bytes&quot;: 189751767040,
+          &quot;available_in_bytes&quot;: 189751767040
+        },
+        &quot;data&quot;: [
+          {
+            &quot;path&quot;: &quot;/app/data&quot;,
+            &quot;mount&quot;: &quot;/app (/dev/mapper/lxc-data)&quot;,
+            &quot;type&quot;: &quot;xfs&quot;,
+            &quot;total_in_bytes&quot;: 193273528320,
+            &quot;free_in_bytes&quot;: 189751767040,
+            &quot;available_in_bytes&quot;: 189751767040
+          }
+        ],
+        &quot;io_stats&quot;: {
+          &quot;devices&quot;: [
+            {
+              &quot;device_name&quot;: &quot;dm-1&quot;,
+              &quot;operations&quot;: 637486387,
+              &quot;read_operations&quot;: 139559703,
+              &quot;write_operations&quot;: 497926684,
+              &quot;read_kilobytes&quot;: 4781145648,
+              &quot;write_kilobytes&quot;: 4130851568,
+              &quot;io_time_in_millis&quot;: 184204436
+            }
+          ],
+          &quot;total&quot;: {
+            &quot;operations&quot;: 637486387,
+            &quot;read_operations&quot;: 139559703,
+            &quot;write_operations&quot;: 497926684,
+            &quot;read_kilobytes&quot;: 4781145648,
+            &quot;write_kilobytes&quot;: 4130851568,
+            &quot;io_time_in_millis&quot;: 184204436
+          }
+        }
+      }
+
+</code></pre>
+<ul>
+<li>
+<p>可用空间，</p>
+</li>
+<li>
+<p>数据目录路径，</p>
+</li>
+<li>
+<p>磁盘 I/O 统计值，等等。</p>
+</li>
+</ul>
+<p>如果你没有监控磁盘可用空间的话，可以从这里获取这些统计值。磁盘 I/O 统计值也很方便，不过通常那些更专门的命令行工具（比如 iostat ）会更有用些。</p>
+<p>显然，Elasticsearch 在磁盘空间满的时候很难运行——所以请确保不会这样。</p>
+<p>还有两个跟网络统计值相关的部分：</p>
+<pre><code class="language-json">
+      &quot;transport&quot;: {
+        &quot;server_open&quot;: 24,
+        &quot;total_outbound_connections&quot;: 8,
+        &quot;rx_count&quot;: 20373580,
+        &quot;rx_size_in_bytes&quot;: 67490236995,
+        &quot;tx_count&quot;: 20373578,
+        &quot;tx_size_in_bytes&quot;: 42900769252,
+		
+	  &quot;http&quot;: {
+        &quot;current_open&quot;: 377,
+        &quot;total_opened&quot;: 13176,
+</code></pre>
+<ol>
+<li>
+<p>transport 显示和 传输地址 相关的一些基础统计值。包括节点间的通信（通常是 9300 端口）以及任意传输客户端或者节点客户端的连接。如果看到这里有很多连接数不要担心；Elasticsearch 在节点之间维护了大量的连接。</p>
+</li>
+<li>
+<p>http 显示 HTTP 端口（通常是 9200）的统计值。如果你看到 total_opened 数很大而且还在一直上涨，这是一个明确信号，说明你的 HTTP 客户端里有没启用 keep-alive 长连接的。持续的 keep-alive 长连接对性能很重要，因为连接、断开套接字是很昂贵的（而且浪费文件描述符）。请确认你的客户端都配置正确。</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="断路器部分"><a class="header" href="#断路器部分">断路器部分</a></h1>
+<pre><code class="language-json">
+      &quot;breakers&quot;: {
+        &quot;fielddata&quot;: {
+          &quot;limit_size_in_bytes&quot;: 112407347,
+          &quot;limit_size&quot;: &quot;107.1mb&quot;,
+          &quot;estimated_size_in_bytes&quot;: 0,
+          &quot;estimated_size&quot;: &quot;0b&quot;,
+          &quot;overhead&quot;: 1.03,
+          &quot;tripped&quot;: 0
+        },
+</code></pre>
+<p>终于，我们到了最后一段：跟 fielddata 断路器（在 断路器 介绍过）相关的统计值：</p>
+<p>这里你可以看到断路器的最大值（比如，一个请求申请更多的内存时会触发断路器）。这个部分还会让你知道断路器被触发了多少次，以及当前配置的间接开销。间接开销用来铺垫评估，因为有些请求比其他请求更难评估。</p>
+<p>主要需要关注的是 tripped 指标。如果这个数字很大或者持续上涨，这是一个信号，说明你的请求需要优化，或者你需要添加更多内存（单机上添加，或者通过添加新节点的方式）。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="集群统计"><a class="header" href="#集群统计">集群统计</a></h1>
+<p>集群统计 API 提供了和 节点统计 相似的输出。 但有一个重要的区别：节点统计显示的是每个节点上的统计值，而 集群统计 展示的是对于单个指标，所有节点的总和值。</p>
+<p>这里面提供一些很值得一看的统计值。比如说你可以看到，整个集群用了 50% 的堆内存，或者说过滤器缓存的驱逐情况不严重。这个接口主要用途是提供一个比 集群健康 更详细、但又没有 节点统计 那么详细的快速概览。对于非常大的集群来说也很有用，因为那时候 节点统计 的输出已经非常难于阅读了。</p>
+<p>这个 API 可以像下面这样调用：</p>
+<pre><code class="language-json">GET _cluster/stats
+
+{
+  &quot;_nodes&quot;: {
+    &quot;total&quot;: 3,
+    &quot;successful&quot;: 3,
+    &quot;failed&quot;: 0
+  },
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;cluster_uuid&quot;: &quot;ZjfLI0y8QkyT28Q0cVcI2w&quot;,
+  &quot;timestamp&quot;: 1657862967234,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;indices&quot;: {
+    &quot;count&quot;: 95,
+    &quot;shards&quot;: {
+      &quot;total&quot;: 194,
+      &quot;primaries&quot;: 97,
+      &quot;replication&quot;: 1,
+      &quot;index&quot;: {
+        &quot;shards&quot;: {
+          &quot;min&quot;: 2,
+          &quot;max&quot;: 6,
+          &quot;avg&quot;: 2.042105263157895
+        },
+        &quot;primaries&quot;: {
+          &quot;min&quot;: 1,
+          &quot;max&quot;: 3,
+          &quot;avg&quot;: 1.0210526315789474
+        },
+        &quot;replication&quot;: {
+          &quot;min&quot;: 1,
+          &quot;max&quot;: 1,
+          &quot;avg&quot;: 1
+        }
+      }
+    },
+    &quot;docs&quot;: {
+      &quot;count&quot;: 8179616,
+      &quot;deleted&quot;: 3604
+    },
+    &quot;store&quot;: {
+      &quot;size_in_bytes&quot;: 7312447557,
+      &quot;total_data_set_size_in_bytes&quot;: 7312447557,
+      &quot;reserved_in_bytes&quot;: 0
+    },
+    &quot;fielddata&quot;: {
+      &quot;memory_size_in_bytes&quot;: 928,
+      &quot;evictions&quot;: 0
+    },
+    &quot;query_cache&quot;: {
+      &quot;memory_size_in_bytes&quot;: 3102124,
+      &quot;total_count&quot;: 26571348,
+      &quot;hit_count&quot;: 2356601,
+      &quot;miss_count&quot;: 24214747,
+      &quot;cache_size&quot;: 418,
+      &quot;cache_count&quot;: 27062,
+      &quot;evictions&quot;: 26644
+    },
+    &quot;completion&quot;: {
+      &quot;size_in_bytes&quot;: 0
+    },
+    &quot;segments&quot;: {
+      &quot;count&quot;: 434,
+      &quot;memory_in_bytes&quot;: 0,
+      &quot;terms_memory_in_bytes&quot;: 0,
+      &quot;stored_fields_memory_in_bytes&quot;: 0,
+      &quot;term_vectors_memory_in_bytes&quot;: 0,
+      &quot;norms_memory_in_bytes&quot;: 0,
+      &quot;points_memory_in_bytes&quot;: 0,
+      &quot;doc_values_memory_in_bytes&quot;: 0,
+      &quot;index_writer_memory_in_bytes&quot;: 10516644,
+      &quot;version_map_memory_in_bytes&quot;: 1212,
+      &quot;fixed_bit_set_memory_in_bytes&quot;: 1592256,
+      &quot;max_unsafe_auto_id_timestamp&quot;: 1657774689022,
+      &quot;file_sizes&quot;: {}
+    },
+    &quot;mappings&quot;: {
+      &quot;field_types&quot;: [
+        {
+          &quot;name&quot;: &quot;alias&quot;,
+          &quot;count&quot;: 1027,
+          &quot;index_count&quot;: 8,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;boolean&quot;,
+          &quot;count&quot;: 207,
+          &quot;index_count&quot;: 28,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;byte&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;constant_keyword&quot;,
+          &quot;count&quot;: 15,
+          &quot;index_count&quot;: 5,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;date&quot;,
+          &quot;count&quot;: 373,
+          &quot;index_count&quot;: 64,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;date_range&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;double&quot;,
+          &quot;count&quot;: 343,
+          &quot;index_count&quot;: 6,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;flattened&quot;,
+          &quot;count&quot;: 12,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;float&quot;,
+          &quot;count&quot;: 314,
+          &quot;index_count&quot;: 15,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;geo_point&quot;,
+          &quot;count&quot;: 38,
+          &quot;index_count&quot;: 8,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;half_float&quot;,
+          &quot;count&quot;: 24,
+          &quot;index_count&quot;: 6,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;integer&quot;,
+          &quot;count&quot;: 13,
+          &quot;index_count&quot;: 9,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;ip&quot;,
+          &quot;count&quot;: 78,
+          &quot;index_count&quot;: 7,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;ip_range&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;keyword&quot;,
+          &quot;count&quot;: 4783,
+          &quot;index_count&quot;: 77,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;long&quot;,
+          &quot;count&quot;: 4229,
+          &quot;index_count&quot;: 34,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;match_only_text&quot;,
+          &quot;count&quot;: 63,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;nested&quot;,
+          &quot;count&quot;: 20,
+          &quot;index_count&quot;: 4,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;object&quot;,
+          &quot;count&quot;: 5448,
+          &quot;index_count&quot;: 43,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;scaled_float&quot;,
+          &quot;count&quot;: 154,
+          &quot;index_count&quot;: 3,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;short&quot;,
+          &quot;count&quot;: 14,
+          &quot;index_count&quot;: 7,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;text&quot;,
+          &quot;count&quot;: 239,
+          &quot;index_count&quot;: 19,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;version&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        },
+        {
+          &quot;name&quot;: &quot;wildcard&quot;,
+          &quot;count&quot;: 17,
+          &quot;index_count&quot;: 1,
+          &quot;script_count&quot;: 0
+        }
+      ],
+      &quot;runtime_field_types&quot;: []
+    },
+    &quot;analysis&quot;: {
+      &quot;char_filter_types&quot;: [],
+      &quot;tokenizer_types&quot;: [],
+      &quot;filter_types&quot;: [],
+      &quot;analyzer_types&quot;: [],
+      &quot;built_in_char_filters&quot;: [],
+      &quot;built_in_tokenizers&quot;: [],
+      &quot;built_in_filters&quot;: [],
+      &quot;built_in_analyzers&quot;: [
+        {
+          &quot;name&quot;: &quot;english&quot;,
+          &quot;count&quot;: 1,
+          &quot;index_count&quot;: 1
+        }
+      ]
+    },
+    &quot;versions&quot;: [
+      {
+        &quot;version&quot;: &quot;8.3.1&quot;,
+        &quot;index_count&quot;: 95,
+        &quot;primary_shard_count&quot;: 97,
+        &quot;total_primary_bytes&quot;: 3385710034
+      }
+    ]
+  },
+  &quot;nodes&quot;: {
+    &quot;count&quot;: {
+      &quot;total&quot;: 3,
+      &quot;coordinating_only&quot;: 0,
+      &quot;data&quot;: 0,
+      &quot;data_cold&quot;: 0,
+      &quot;data_content&quot;: 2,
+      &quot;data_frozen&quot;: 0,
+      &quot;data_hot&quot;: 2,
+      &quot;data_warm&quot;: 0,
+      &quot;ingest&quot;: 2,
+      &quot;master&quot;: 3,
+      &quot;ml&quot;: 0,
+      &quot;remote_cluster_client&quot;: 2,
+      &quot;transform&quot;: 2,
+      &quot;voting_only&quot;: 1
+    },
+    &quot;versions&quot;: [
+      &quot;8.3.1&quot;
+    ],
+    &quot;os&quot;: {
+      &quot;available_processors&quot;: 6,
+      &quot;allocated_processors&quot;: 6,
+      &quot;names&quot;: [
+        {
+          &quot;name&quot;: &quot;Linux&quot;,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;pretty_names&quot;: [
+        {
+          &quot;pretty_name&quot;: &quot;Ubuntu 20.04.4 LTS&quot;,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;architectures&quot;: [
+        {
+          &quot;arch&quot;: &quot;amd64&quot;,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;mem&quot;: {
+        &quot;total_in_bytes&quot;: 9663676416,
+        &quot;adjusted_total_in_bytes&quot;: 8531214336,
+        &quot;free_in_bytes&quot;: 924491776,
+        &quot;used_in_bytes&quot;: 8739184640,
+        &quot;free_percent&quot;: 10,
+        &quot;used_percent&quot;: 90
+      }
+    },
+    &quot;process&quot;: {
+      &quot;cpu&quot;: {
+        &quot;percent&quot;: 6
+      },
+      &quot;open_file_descriptors&quot;: {
+        &quot;min&quot;: 852,
+        &quot;max&quot;: 1372,
+        &quot;avg&quot;: 1154
+      }
+    },
+    &quot;jvm&quot;: {
+      &quot;max_uptime_in_millis&quot;: 867151943,
+      &quot;versions&quot;: [
+        {
+          &quot;version&quot;: &quot;18.0.1.1&quot;,
+          &quot;vm_name&quot;: &quot;OpenJDK 64-Bit Server VM&quot;,
+          &quot;vm_version&quot;: &quot;18.0.1.1+2-6&quot;,
+          &quot;vm_vendor&quot;: &quot;Oracle Corporation&quot;,
+          &quot;bundled_jdk&quot;: true,
+          &quot;using_bundled_jdk&quot;: true,
+          &quot;count&quot;: 3
+        }
+      ],
+      &quot;mem&quot;: {
+        &quot;heap_used_in_bytes&quot;: 2435488768,
+        &quot;heap_max_in_bytes&quot;: 4198498304
+      },
+      &quot;threads&quot;: 176
+    },
+    &quot;fs&quot;: {
+      &quot;total_in_bytes&quot;: 434865438720,
+      &quot;free_in_bytes&quot;: 425859817472,
+      &quot;available_in_bytes&quot;: 425859817472
+    },
+    &quot;plugins&quot;: [],
+    &quot;network_types&quot;: {
+      &quot;transport_types&quot;: {
+        &quot;security4&quot;: 3
+      },
+      &quot;http_types&quot;: {
+        &quot;security4&quot;: 3
+      }
+    },
+    &quot;discovery_types&quot;: {
+      &quot;multi-node&quot;: 3
+    },
+    &quot;packaging_types&quot;: [
+      {
+        &quot;flavor&quot;: &quot;default&quot;,
+        &quot;type&quot;: &quot;docker&quot;,
+        &quot;count&quot;: 3
+      }
+    ],
+    &quot;ingest&quot;: {
+      &quot;number_of_pipelines&quot;: 35,
+      &quot;processor_stats&quot;: {
+        &quot;append&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;conditional&quot;: {
+          &quot;count&quot;: 13757,
+          &quot;failed&quot;: 2,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 2039
+        },
+        &quot;convert&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;date&quot;: {
+          &quot;count&quot;: 1361166,
+          &quot;failed&quot;: 2,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 13095
+        },
+        &quot;dot_expander&quot;: {
+          &quot;count&quot;: 44712,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 94
+        },
+        &quot;geoip&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;grok&quot;: {
+          &quot;count&quot;: 1366785,
+          &quot;failed&quot;: 11,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 45211
+        },
+        &quot;gsub&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;json&quot;: {
+          &quot;count&quot;: 5600,
+          &quot;failed&quot;: 11,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 134
+        },
+        &quot;pipeline&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;remove&quot;: {
+          &quot;count&quot;: 1391685,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 522
+        },
+        &quot;rename&quot;: {
+          &quot;count&quot;: 61004,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 101
+        },
+        &quot;script&quot;: {
+          &quot;count&quot;: 13745,
+          &quot;failed&quot;: 11,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 136
+        },
+        &quot;set&quot;: {
+          &quot;count&quot;: 6822207,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 21445
+        },
+        &quot;set_security_user&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;split&quot;: {
+          &quot;count&quot;: 1355575,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 1466
+        },
+        &quot;trim&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        },
+        &quot;user_agent&quot;: {
+          &quot;count&quot;: 0,
+          &quot;failed&quot;: 0,
+          &quot;current&quot;: 0,
+          &quot;time_in_millis&quot;: 0
+        }
+      }
+    },
+    &quot;indexing_pressure&quot;: {
+      &quot;memory&quot;: {
+        &quot;current&quot;: {
+          &quot;combined_coordinating_and_primary_in_bytes&quot;: 0,
+          &quot;coordinating_in_bytes&quot;: 0,
+          &quot;primary_in_bytes&quot;: 0,
+          &quot;replica_in_bytes&quot;: 0,
+          &quot;all_in_bytes&quot;: 0
+        },
+        &quot;total&quot;: {
+          &quot;combined_coordinating_and_primary_in_bytes&quot;: 0,
+          &quot;coordinating_in_bytes&quot;: 0,
+          &quot;primary_in_bytes&quot;: 0,
+          &quot;replica_in_bytes&quot;: 0,
+          &quot;all_in_bytes&quot;: 0,
+          &quot;coordinating_rejections&quot;: 0,
+          &quot;primary_rejections&quot;: 0,
+          &quot;replica_rejections&quot;: 0
+        },
+        &quot;limit_in_bytes&quot;: 0
+      }
+    }
+  }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="索引统计"><a class="header" href="#索引统计">索引统计</a></h1>
+<p>到目前为止，我们看到的都是以 节点为中心 的统计值： 节点有多少内存？用了多少 CPU ？正在服务多少个搜索？</p>
+<p>有时候从 索引为中心 的角度看统计值也很有用：这个索引 收到了多少个搜索请求？那个索引 获取文档耗费了多少时间</p>
+<p>要做到这点，选择你感兴趣的索引 （ 或者多个索引 ）然后执行一个索引级别的 统计 API：</p>
+<pre><code class="language-json">
+GET my_index/_stats 0️⃣
+
+GET my_index,another_index/_stats 1️⃣
+
+GET _all/_stats 2️⃣
+
+</code></pre>
+<p>0️⃣  统计 my_index 索引。</p>
+<p>1️⃣  使用逗号分隔索引名可以请求多个索引统计值。</p>
+<p>2️⃣  使用特定的 _all 可以请求全部索引的统计值</p>
+<p>返回的统计信息和 节点统计 的输出很相似：search 、 fetch 、 get 、 index 、 bulk 、 segment counts 等等。</p>
+<p>索引为中心的统计在有些时候很有用，比如辨别或验证集群中的 热门 索引，或者试图找出某些索引比其他索引更快或者更慢的原因。</p>
+<p>实践中，节点为中心的统计还是显得更有用些。瓶颈往往是针对整个节点而言，而不是对于单个索引。因为索引一般是分布在多个节点上的，这导致以索引为中心的统计值通常不是很有用，因为它们是从不同环境的物理机器上汇聚的数据。</p>
+<p>索引为中心的统计作为一个有用的工具可以保留在你的技能表里，但是通常它不会是第一个用的上的工具。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="等待中的任务"><a class="header" href="#等待中的任务">等待中的任务</a></h1>
+<p>有一些任务只能由主节点去处理，比如创建一个新的索引或者在集群中移动分片。由于一个集群中只能有一个主节点，所以只有这一节点可以处理集群级别的元数据变动。在 99.9999% 的时间里，这不会有什么问题。元数据变动的队列基本上保持为零。</p>
+<p>在一些 罕见 的集群里，元数据变动的次数比主节点能处理的还快。这会导致等待中的操作会累积成队列。</p>
+<p>等待中的任务 API 会给你展示队列中（如果有的话）等待的集群级别的元数据变更操作：</p>
+<pre><code class="language-json">GET _cluster/pending_tasks
+
+{
+   &quot;tasks&quot;: []
+}
+
+</code></pre>
+<p>通常，响应都是像这样的, 这意味着没有等待中的任务。如果你有一个罕见的集群在主节点出现瓶颈了，等待中的任务列表可能会像这样：</p>
+<pre><code class="language-json">
+{
+   &quot;tasks&quot;: [
+      {
+         &quot;insert_order&quot;: 101,
+         &quot;priority&quot;: &quot;URGENT&quot;,
+         &quot;source&quot;: &quot;create-index [foo_9], cause [api]&quot;,
+         &quot;time_in_queue_millis&quot;: 86,
+         &quot;time_in_queue&quot;: &quot;86ms&quot;
+      },
+      {
+         &quot;insert_order&quot;: 46,
+         &quot;priority&quot;: &quot;HIGH&quot;,
+         &quot;source&quot;: &quot;shard-started ([foo_2][1], node[tMTocMvQQgGCkj7QDHl3OA], [P],
+         s[INITIALIZING]), reason [after recovery from gateway]&quot;,
+         &quot;time_in_queue_millis&quot;: 842,
+         &quot;time_in_queue&quot;: &quot;842ms&quot;
+      },
+      {
+         &quot;insert_order&quot;: 45,
+         &quot;priority&quot;: &quot;HIGH&quot;,
+         &quot;source&quot;: &quot;shard-started ([foo_2][0], node[tMTocMvQQgGCkj7QDHl3OA], [P],
+         s[INITIALIZING]), reason [after recovery from gateway]&quot;,
+         &quot;time_in_queue_millis&quot;: 858,
+         &quot;time_in_queue&quot;: &quot;858ms&quot;
+      }
+  ]
+}
+
+</code></pre>
+<p>可以看到任务都被指派了优先级（ 比如说 URGENT 要比 HIGH 更早的处理 ），任务插入的次序、操作进入队列多久，以及打算处理什么。在上面的列表中，有一个 创建索引(create-index) 和两个 启动分片(shard-started) 的操作在等待。</p>
+<blockquote>
+<p><strong>什么时候应该担心等待中的任务?</strong></p>
+<p>就像曾经提到过的，主节点很少会成为集群的瓶颈。唯一可能成为瓶颈的是集群状态非常大 而且 更新频繁。</p>
+<p>例如，如果你允许客户按照他们的意愿创建任意的动态字段，而且每个客户每天都有一个独立索引，那么你的集群状态会变得非常大。集群状态包括 ( 但不限于 ) 所有索引及其类型，以及每个索引的全部字段。</p>
+<p>所以如果你有 100000 客户，然后每个客户平均有 1000 个字段，而且数据有 90 天的保留期—这就有九十亿个字段需要保存在集群状态中。不管它何时发生变更，所有的节点都需要被通知。</p>
+<p>主节点必须处理这些变动，这需要不小的 CPU 开销，加上推送更新的集群状态到所有节点的网络开销。</p>
+<p>这就是那些可以看到集群状态操作队列上涨的集群。没有简单的办法可以解决这个问题，不过你有三个选择：</p>
+<ol>
+<li>
+<p>使用一个更强大的主节点。不幸的是，这种垂直扩展只是延迟这种必然结果出现而已。</p>
+</li>
+<li>
+<p>通过某些方式限定文档的动态性质来限制集群状态的大小。</p>
+</li>
+<li>
+<p>到达某个阈值后组建另外一个集群。</p>
+</li>
+</ol>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>

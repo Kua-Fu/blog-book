@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>集群健康 - elastic</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">概览</li><li class="chapter-item expanded "><a href="../perface.html"><strong aria-hidden="true">1.</strong> 前言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">基础</li><li class="chapter-item expanded "><a href="../basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="../basic/more-complicated-search.html"><strong aria-hidden="true">2.1.8.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="../basic/full-text-search.html"><strong aria-hidden="true">2.1.9.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="../basic/phrase-search.html"><strong aria-hidden="true">2.1.10.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="../basic/highlighting-intro.html"><strong aria-hidden="true">2.1.11.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="../basic/analytics.html"><strong aria-hidden="true">2.1.12.</strong> 分析</a></li><li class="chapter-item expanded "><a href="../basic/conclusion.html"><strong aria-hidden="true">2.1.13.</strong> 小结</a></li><li class="chapter-item expanded "><a href="../basic/distributed_nature.html"><strong aria-hidden="true">2.1.14.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="../basic/next-step.html"><strong aria-hidden="true">2.1.15.</strong> 后续步骤</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-cluster.html"><strong aria-hidden="true">2.2.</strong> 集群内的原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/empty-cluster.html"><strong aria-hidden="true">2.2.1.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="../basic/cluster-health.html"><strong aria-hidden="true">2.2.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../basic/add-an-index.html"><strong aria-hidden="true">2.2.3.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="../basic/add-failover.html"><strong aria-hidden="true">2.2.4.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="../basic/scale-horizontally.html"><strong aria-hidden="true">2.2.5.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="../basic/coping-with-failure.html"><strong aria-hidden="true">2.2.6.</strong> 应对故障</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/data-in-data-out.html"><strong aria-hidden="true">2.3.</strong> 数据输入和输出</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/document.html"><strong aria-hidden="true">2.3.1.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="../basic/document-metadata.html"><strong aria-hidden="true">2.3.2.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="../basic/index-doc.html"><strong aria-hidden="true">2.3.3.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="../basic/get-doc.html"><strong aria-hidden="true">2.3.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/doc-exists.html"><strong aria-hidden="true">2.3.5.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="../basic/update-doc.html"><strong aria-hidden="true">2.3.6.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="../basic/create-doc.html"><strong aria-hidden="true">2.3.7.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="../basic/delete-doc.html"><strong aria-hidden="true">2.3.8.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="../basic/version-control.html"><strong aria-hidden="true">2.3.9.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="../basic/optimistic-concurrency-control.html"><strong aria-hidden="true">2.3.10.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="../basic/partial-update.html"><strong aria-hidden="true">2.3.11.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="../basic/retrieving-multiple-docs.html"><strong aria-hidden="true">2.3.12.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="../basic/bulk.html"><strong aria-hidden="true">2.3.13.</strong> 代价较小的批量操作</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/distributed-docs.html"><strong aria-hidden="true">2.4.</strong> 分布式文档存储</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/routing-value.html"><strong aria-hidden="true">2.4.1.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="../basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">2.4.2.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="../basic/distrib-write.html"><strong aria-hidden="true">2.4.3.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-read.html"><strong aria-hidden="true">2.4.4.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../basic/partial-update-to-a-doc.html"><strong aria-hidden="true">2.4.5.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="../basic/distrib-multi-doc.html"><strong aria-hidden="true">2.4.6.</strong> 多文档模式</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/search.html"><strong aria-hidden="true">2.5.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="../basic/mapping-analysis.html"><strong aria-hidden="true">2.6.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="../basic/full-search-body.html"><strong aria-hidden="true">2.7.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="../basic/sorting.html"><strong aria-hidden="true">2.8.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="../basic/distributed-search.html"><strong aria-hidden="true">2.9.</strong> 执行分布式检索</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/query-phase.html"><strong aria-hidden="true">2.9.1.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="../basic/fetch-phase.html"><strong aria-hidden="true">2.9.2.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="../basic/search-options.html"><strong aria-hidden="true">2.9.3.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="../basic/scroll.html"><strong aria-hidden="true">2.9.4.</strong> 查询游标</a></li></ol></li><li class="chapter-item expanded "><a href="../basic/index-management.html"><strong aria-hidden="true">2.10.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../basic/inside-a-shard.html"><strong aria-hidden="true">2.11.</strong> 分片内部原理</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../basic/making-text-searchable.html"><strong aria-hidden="true">2.11.1.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="../basic/dynamic-indices.html"><strong aria-hidden="true">2.11.2.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="../basic/near-real-time.html"><strong aria-hidden="true">2.11.3.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="../basic/translog.html"><strong aria-hidden="true">2.11.4.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="../basic/merge-process.html"><strong aria-hidden="true">2.11.5.</strong> 段合并</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">深入搜索</li><li class="chapter-item expanded affix "><li class="part-title">处理人类语言</li><li class="chapter-item expanded affix "><li class="part-title">聚合</li><li class="chapter-item expanded affix "><li class="part-title">地理位置</li><li class="chapter-item expanded affix "><li class="part-title">数据建模</li><li class="chapter-item expanded affix "><li class="part-title">管理、监控和部署</li><li class="chapter-item expanded "><a href="../manage/administration.html"><strong aria-hidden="true">3.</strong> 管理、监控入门</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/cluster-admin.html"><strong aria-hidden="true">3.1.</strong> 监控</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/marval.html"><strong aria-hidden="true">3.1.1.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="../manage/cluster-health.html" class="active"><strong aria-hidden="true">3.1.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes.html"><strong aria-hidden="true">3.1.3.</strong> 监控单个节点</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">3.1.3.1.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">3.1.3.2.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">3.1.3.3.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">3.1.3.4.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">3.1.3.5.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">3.1.3.6.</strong> 断路器部分</a></li></ol></li><li class="chapter-item expanded "><a href="../manage/cluster-stats.html"><strong aria-hidden="true">3.1.4.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="../manage/index-stats.html"><strong aria-hidden="true">3.1.5.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="../manage/pending-task.html"><strong aria-hidden="true">3.1.6.</strong> 等待中的任务</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="集群健康"><a class="header" href="#集群健康">集群健康</a></h1>
+<p>一个 Elasticsearch 集群至少包括一个节点和一个索引。或者它可能有一百个数据节点、三个单独的主节点，以及一小打客户端节点——这些共同操作一千个索引（以及上万个分片）。</p>
+<p>不管集群扩展到多大规模，你都会想要一个快速获取集群状态的途径。Cluster Health API 充当的就是这个角色。你可以把它想象成是在一万英尺的高度鸟瞰集群。它可以告诉你安心吧一切都好，或者警告你集群某个地方有问题。</p>
+<p>让我们执行一下 cluster-health API 然后看看响应体是什么样子的：</p>
+<pre><code class="language-json">
+GET _cluster/health
+
+{
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 3,
+  &quot;number_of_data_nodes&quot;: 2,
+  &quot;active_primary_shards&quot;: 97,
+  &quot;active_shards&quot;: 194,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 3,
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 98.47715736040608
+}
+
+</code></pre>
+<p>和 Elasticsearch 里其他 API 一样，cluster-health 会返回一个 JSON 响应。这对自动化和告警系统来说，非常便于解析。响应中包含了和你集群有关的一些关键信息：</p>
+<ol>
+<li>
+<p>green 所有的主分片和副本分片都已分配。你的集群是 100% 可用的。</p>
+</li>
+<li>
+<p>yellow 所有的主分片已经分片了，但至少还有一个副本是缺失的。不会有数据丢失，所以搜索结果依然是完整的。不过，你的高可用性在某种程度上被弱化。如果 更多的 分片消失，你就会丢数据了。把 yellow 想象成一个需要及时调查的警告。</p>
+</li>
+<li>
+<p>red 至少一个主分片（以及它的全部副本）都在缺失中。这意味着你在缺少数据：搜索只能返回部分数据，而分配到这个分片上的写入请求会返回一个异常。</p>
+</li>
+</ol>
+<p>green/yellow/red 状态是一个概览你的集群并了解眼下正在发生什么的好办法。剩下来的指标给你列出来集群的状态概要：</p>
+<ul>
+<li>
+<p>number_of_nodes 和 number_of_data_nodes 这个命名完全是自描述的。</p>
+</li>
+<li>
+<p>active_primary_shards 指出你集群中的主分片数量。这是涵盖了所有索引的汇总值。</p>
+</li>
+<li>
+<p>active_shards 是涵盖了所有索引的_所有_分片的汇总值，即包括副本分片。</p>
+</li>
+<li>
+<p>relocating_shards 显示当前正在从一个节点迁往其他节点的分片的数量。通常来说应该是 0，不过在 Elasticsearch 发现集群不太均衡时，该值会上涨。比如说：添加了一个新节点，或者下线了一个节点。</p>
+</li>
+<li>
+<p>initializing_shards 是刚刚创建的分片的个数。比如，当你刚创建第一个索引，分片都会短暂的处于 initializing 状态。这通常会是一个临时事件，分片不应该长期停留在 initializing 状态。你还可能在节点刚重启的时候看到 initializing 分片：当分片从磁盘上加载后，它们会从 initializing 状态开始。</p>
+</li>
+<li>
+<p>unassigned_shards 是已经在集群状态中存在的分片，但是实际在集群里又找不着。通常未分配分片的来源是未分配的副本。比如，一个有 5 分片和 1 副本的索引，在单节点集群上，就会有 5 个未分配副本分片。如果你的集群是 red 状态，也会长期保有未分配分片（因为缺少主分片）。</p>
+</li>
+</ul>
+<h2 id="钻更深点找到问题索引"><a class="header" href="#钻更深点找到问题索引">钻更深点：找到问题索引</a></h2>
+<p>想象一下某天碰到问题了， 而你发现你的集群健康状态看起来像是这样：</p>
+<pre><code class="language-json">
+{
+   &quot;cluster_name&quot;: &quot;elasticsearch_zach&quot;,
+   &quot;status&quot;: &quot;red&quot;,
+   &quot;timed_out&quot;: false,
+   &quot;number_of_nodes&quot;: 8,
+   &quot;number_of_data_nodes&quot;: 8,
+   &quot;active_primary_shards&quot;: 90,
+   &quot;active_shards&quot;: 180,
+   &quot;relocating_shards&quot;: 0,
+   &quot;initializing_shards&quot;: 0,
+   &quot;unassigned_shards&quot;: 20
+}
+
+</code></pre>
+<p>好了，从这个健康状态里我们能推断出什么来？嗯，我们集群是 red ，意味着我们缺数据（主分片 + 副本分片）了。我们知道我们集群原先有 10 个节点，但是在这个健康状态里列出来的只有 8 个数据节点。有两个数据节点不见了。我们看到有 20 个未分配分片。</p>
+<p>这就是我们能收集到的全部信息。那些缺失分片的情况依然是个谜。我们是缺了 20 个索引，每个索引里少 1 个主分片？还是缺 1 个索引里的 20 个主分片？还是 10 个索引里的各 1 主 1 副本分片？具体是哪个索引？</p>
+<p>要回答这个问题，我们需要使用 level 参数让 cluster-health 答出更多一点的信息：</p>
+<pre><code class="language-json">
+GET _cluster/health?level=indices
+
+{
+  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
+  &quot;status&quot;: &quot;yellow&quot;,
+  &quot;timed_out&quot;: false,
+  &quot;number_of_nodes&quot;: 3,
+  &quot;number_of_data_nodes&quot;: 2,
+  &quot;active_primary_shards&quot;: 97,
+  &quot;active_shards&quot;: 194,
+  &quot;relocating_shards&quot;: 0,
+  &quot;initializing_shards&quot;: 0,
+  &quot;unassigned_shards&quot;: 3,
+  &quot;delayed_unassigned_shards&quot;: 0,
+  &quot;number_of_pending_tasks&quot;: 0,
+  &quot;number_of_in_flight_fetch&quot;: 0,
+  &quot;task_max_waiting_in_queue_millis&quot;: 0,
+  &quot;active_shards_percent_as_number&quot;: 98.47715736040608,
+  &quot;indices&quot;: {
+    &quot;.ent-search-actastic-app_search_document_positions_v3&quot;: {
+      &quot;status&quot;: &quot;green&quot;,
+      &quot;number_of_shards&quot;: 1,
+      &quot;number_of_replicas&quot;: 1,
+      &quot;active_primary_shards&quot;: 1,
+      &quot;active_shards&quot;: 2,
+      &quot;relocating_shards&quot;: 0,
+      &quot;initializing_shards&quot;: 0,
+      &quot;unassigned_shards&quot;: 0
+    }
+  }
+}
+
+</code></pre>
+<p>这个参数会让 cluster-health API 在我们的集群信息里添加一个索引清单，以及有关每个索引的细节（状态、分片数、未分配分片数等等）</p>
+<p>一旦我们询问要索引的输出，哪个索引有问题立马就很清楚了：v2 索引。我们还可以看到这个索引曾经有 10 个主分片和一个副本，而现在这 20 个分片全不见了。可以推测，这 20 个索引就是位于从我们集群里不见了的那两个节点上。</p>
+<p>level 参数还可以接受其他更多选项：</p>
+<pre><code class="language-json">
+GET _cluster/health?level=shards
+
+</code></pre>
+<p>shards 选项会提供一个详细得多的输出，列出每个索引里每个分片的状态和位置。这个输出有时候很有用，但是由于太过详细会比较难用。如果你知道哪个索引有问题了，本章讨论的其他 API 显得更加有用一点。</p>
+<h2 id="阻塞等待状态变化"><a class="header" href="#阻塞等待状态变化">阻塞等待状态变化</a></h2>
+<p>当构建单元和集成测试时，或者实现和 Elasticsearch 相关的自动化脚本时，cluster-health API 还有另一个小技巧非常有用。你可以指定一个 wait_for_status 参数，它只有在状态达标之后才会返回。比如：</p>
+<pre><code class="language-json">
+GET _cluster/health?wait_for_status=green
+
+</code></pre>
+<p>这个调用会 阻塞 （不给你的程序返回控制权）住直到 cluster-health 变成 green ，也就是说所有主分片和副本分片都分配下去了。这对自动化脚本和测试非常重要。</p>
+<p>如果你创建一个索引，Elasticsearch 必须在集群状态中向所有节点广播这个变更。那些节点必须初始化这些新分片，然后响应给主节点说这些分片已经 Started 。这个过程很快，但是因为网络延迟，可能要花 10–20ms。</p>
+<p>如果你有个自动化脚本是 (a) 创建一个索引然后 (b) 立刻写入一个文档，这个操作会失败。因为索引还没完全初始化完成。在 (a) 和 (b) 两步之间的时间可能不到 1ms —— 对网络延迟来说这可不够。</p>
+<p>比起使用 sleep 命令，直接让你的脚本或者测试使用 wait_for_status 参数调用 cluster-health 更好。当索引完全创建好，cluster-health 就会变成 green ，然后这个调用就会把控制权交还给你的脚本，然后你就可以开始写入了。</p>
+<p>有效的选项是： green 、 yellow 和 red 。这个调回会在达到你要求（或者『更高』）的状态时返回。比如，如果你要求的是 yellow ，状态变成 yellow 或者 green 都会打开调用。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../manage/marval.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../manage/monitor-individual-nodes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../manage/marval.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../manage/monitor-individual-nodes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
