@@ -289,6 +289,16 @@ All of these operators work on numbers, and it’s an error to pass any other ty
 
 上面的算术运算符的操作数，只能是数值类型，如果操作数是其他数据类型，表达式计算会报错。但是，有个例外，+运算符可以作用于字符串数据类型，两个字符串的 + 运算，表示连接这两个字符串。
 
+> There are some operators that have more than two operands and the operators are interleaved between them. The only one in wide usage is the “conditional” or “ternary” operator of C and friends:
+>
+> condition ? thenArm : elseArm;
+>
+> Some call these mixfix operators. A few languages let you define your own operators and control how they are positioned—their “fixity”.
+>
+> 有些运算符，可以具有两个以上的操作数，运算符在这些操作数之间。唯一广泛使用的多元运算符是 C语言中的条件（三元）运算符。
+>
+> condition ? thenArm : elseArm;
+
 ### 4.2 Comparison and equality
 
 比较运算符，相等
@@ -383,6 +393,253 @@ The reason and and or are like control flow structures is that they short-circui
 	```
 
 and 和 or 逻辑运算符，本质上是控制流结构的原因是，它们是短路。当逻辑运算符是 and，左操作数值为 false，我们甚至不会去计算右操作数，直接返回左操作数的值。如果逻辑运算符是 or，左操作数值为 true，同样的，我们不会去计算右操作数，直接返回左操作数的值。
+
+### 4.4 Precedence and grouping
+
+优先级和分组
+
+All of these operators have the same precedence and associativity that you’d expect coming from C. (When we get to parsing, we’ll get way more precise about that.) In cases where the precedence isn’t what you want, you can use () to group stuff.
+
+```
+
+var average = (min + max) / 2;
+
+```
+
+Since they aren’t very technically interesting, I’ve cut the remainder of the typical operator menagerie out of our little language. 
+
+所有这些运算符的优先级和关联性，和C语言中的相同。当我们进入解析过程时候，将会更加理解这一点。如果，优先级不是我们想要的，可以使用 （）对内容进行分组。
+
+因为在技术上不太有趣，在Lox语言中，我删除了一些典型的运算符，例如：位运算，位移，取模，条件运算符等。我不会让你们评分，但是如果你在Lox语言实现中，添加了这些运算符，在我心中，你将会大大加分。
+
+Those are the expression forms (except for a couple related to specific features that we’ll get to later), so let’s move up a level.
+
+上面介绍了表达式形式，除了一些我们下面将要介绍的、与特定功能相关的表达式，让我们继续学习。
+
+## 五、Statements
+
+语句
+
+Now we’re at statements. Where an expression’s main job is to produce a value, a statement’s job is to produce an effect. Since, by definition, statements don’t evaluate to a value, to be useful they have to otherwise change the world in some way—usually modifying some state, reading input, or producing output.
+
+You’ve seen a couple of kinds of statements already. The first one was:
+
+```
+
+print "Hello, world!";
+
+```
+
+A print statement evaluates a single expression and displays the result to the user. You’ve also seen some statements like:
+
+```
+
+"some expression";
+
+```
+
+An expression followed by a semicolon (;) promotes the expression to statement-hood. This is called (imaginatively enough), an expression statement.
+
+If you want to pack a series of statements where a single one is expected, you can wrap them up in a block.
+
+```
+
+{
+  print "One statement.";
+  print "Two statements.";
+}
+
+```
+
+Blocks also affect scoping, which leads us to the next section . . . 
+
+现在，我们开始学习语句。表达式的主要作用是生成值，语句的主要任务是产生效果。因为，语句的结果不是一个具体的值，所以，为了能够有影响，语句的结果必须可以以某种方式改变编程世界，例如：修改某些状态，读取用户输入，产生输出。
+
+你已经看到了几种不同类型的语句，例如:
+
+```
+
+print "Hello, world!";
+
+```
+
+一个print语句，计算出单个表达式，并且向用户展示计算结果。
+
+还有一些其他类型的语句，例如：
+
+```
+
+"some expression";
+
+```
+
+表达式后面加上 ; 该表达式会变为表达式语句。
+
+如果想将一系列语句，组合为一条语句，可以使用{}, 将这些语句打包为一个块
+
+```
+
+{
+  print "One statement.";
+  print "Two statements.";
+}
+
+```
+
+语法块，还影响生命周期，马上我们将会看到。
+
+> Baking print into the language instead of just making it a core library function is a hack. But it’s a useful hack for us: it means our in-progress interpreter can start producing output before we’ve implemented all of the machinery required to define functions, look them up by name, and call them.
+>
+> Lox语言中，将print表示为语句，而不是核心函数库中的一个print函数，是一种黑客行为。这对我们来说是一个有用的技巧：这意味着，解释器运行时，我们可以在定义函数之前，实现输出功能。按照名称查找并且调用它们。
+
+## 六、Variables
+
+变量
+
+You declare variables using var statements. If you omit the initializer, the variable’s value defaults to nil.
+
+```
+
+var imAVariable = "here is my value";
+var iAmNil;
+
+```
+
+Once declared, you can, naturally, access and assign a variable using its name.
+
+```
+
+var breakfast = "bagels";
+print breakfast; // "bagels".
+breakfast = "beignets";
+print breakfast; // "beignets".
+
+```
+
+I won’t get into the rules for variable scope here, because we’re going to spend a surprising amount of time in later chapters mapping every square inch of the rules. In most cases, it works like you would expect coming from C or Java.
+
+可以使用 var语句，声明变量。如果变量省略初始化，该变量的默认值是nil。
+
+一旦声明，我们可以使用变量名，访问和分配变量。
+
+在当前章节，我不会讨论变量的有效使用范围，因为，我们将在后面的章节中，花费很多篇幅讲解变量的使用范围。在多数场景下，Lox语言中，变量的使用范围和 C/Java语言中的规则相同。
+
+> This is one of those cases where not having nil and forcing every variable to be initialized to some value would be more annoying than dealing with nil itself.
+>
+> 这是nil存在的一种好处，如果我们强制要求任意的变量，都必须初始化为具体值，那么，这个强制初始化的过程比我们定一个一个nil类型，更加麻烦。
+>
+>Can you tell that I tend to work on this book in the morning before I’ve had anything to eat?
+>
+> 你可以看出来我倾向于，在吃早餐之前，开始写一会儿书吗？😂
+
+## 七、Control Flow
+
+控制流
+
+It’s hard to write useful programs if you can’t skip some code or execute some more than once. That means control flow. In addition to the logical operators we already covered, Lox lifts three statements straight from C.
+
+1. **if**
+
+   An if statement executes one of two statements based on some condition.
+   
+   ```
+   
+   if (condition) {
+	 print "yes";
+   } else {
+	 print "no";
+   }
+
+   ```
+   
+1. **while**
+
+	A while loop executes the body repeatedly as long as the condition expression evaluates to true.
+	
+	```
+	
+	var a = 1;
+	while (a < 10) {
+	  print a;
+	  a = a + 1;
+	}
+
+	```
+	
+1. **for**
+
+	Finally, we have for loops. This loop does the same thing as the previous while loop. Most modern languages also have some sort of for-in or foreach loop for explicitly iterating over various sequence types. In a real language, that’s nicer than the crude C-style for loop we got here. Lox keeps it basic.
+	
+	```
+	
+	for (var a = 1; a < 10; a = a + 1) {
+	  print a;
+	}
+
+	```
+	
+> We already have and and or for branching, and we could use recursion to repeat code, so that’s theoretically sufficient. It would be pretty awkward to program that way in an imperative-styled language, though.
+>
+> 我们已经有了 and 和 or 逻辑运算符，如果在加上递归调用函数，理论上可以实现重复执行代码。但是，这种函数式编程方式，非常难使用。
+
+> Scheme, on the other hand, has no built-in looping constructs. It does rely on recursion for repetition. Smalltalk has no built-in branching constructs, and relies on dynamic dispatch for selectively executing code.
+>
+> lisp的方言，scheme, 没有内置的循环语句。它依赖递归执行，实现复用代码。Smalltalk语言，没有内置的分支语句，它依赖动态调度，来选择性的执行代码。
+
+>I left do while loops out of Lox because they aren’t that common and wouldn’t teach you anything that you won’t already learn from while. Go ahead and add it to your implementation if it makes you happy. It’s your party.
+>
+> 我没有在Lox语言中，引入 do while循环语句，因为，该循环语句，和while语句，效果一致。如果你想在Lox语言中，实现该语句，那么非常欢迎，因为这是你的语言。
+
+> This is a concession I made because of how the implementation is split across chapters. A for-in loop needs some sort of dynamic dispatch in the iterator protocol to handle different kinds of sequences, but we don’t get that until after we’re done with control flow. We could circle back and add for-in loops later, but I didn’t think doing so would teach you anything super interesting.
+>
+> 这是我做出的让步，我将在后面的章节中，添加 for-in 循环语句。我们需要在迭代器中，根据不同的数据类型，动态调度该数据序列。虽然，我们添加了 for-in语句，但是我并不认为，这个语句非常有趣。
+
+如果语言不支持，跳过执行某些代码或者重复执行某些代码，那么，我们很难写出有用的程序。而这些，表明我们需要引入控制流。除了上面介绍的逻辑运算符之外，我们还从C语言中直接借用了3种控制流。
+
+1. if
+
+	if语句，根据条件，选择执行其中的一个语句。
+	
+    ```
+   
+   if (condition) {
+	 print "yes";
+   } else {
+	 print "no";
+   }
+
+   ```
+
+1. while
+
+	只要while 语句中，表达式执行结果为true，循环语句会一直执行。
+	
+	```
+
+	var a = 1;
+	while (a < 10) {
+	  print a;
+	  a = a + 1;
+	}
+
+	```
+	
+1. for
+
+	最后，我们介绍for 循环语句。
+	
+	```
+	
+	for (var a = 1; a < 10; a = a + 1) {
+	  print a;
+	}
+
+	```
+	
+	for循环语句，和 while循环语句，效果相同。大多数现代语句，还支持for-in，foreach语句，用于迭代各种序列类型数据。在实际编程中，这种新的语句，比C语言的for语句，更加简洁。但是，我们Lox语言，将保持最原始的for语句。
+
+
+
 
 	
 
