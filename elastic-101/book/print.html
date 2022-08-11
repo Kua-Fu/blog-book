@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">实际使用</li><li class="chapter-item expanded "><a href="use/backup/backup.html"><strong aria-hidden="true">3.</strong> elasticsearch集群备份</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="use/backup/snapshot.html"><strong aria-hidden="true">3.1.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="use/backup/meta.html"><strong aria-hidden="true">3.2.</strong> 只备份集群中的策略、模版等信息</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1070,6 +1070,247 @@ cron.cron.timezone	The timezone that triggers the transition.	string	Yes</p>
 <p>转换，索引进入新状态需要满足的条件。例如：一个索引，超过8周，可能需要变更为 delete 状态。</p>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="elasticsearch集群备份"><a class="header" href="#elasticsearch集群备份">elasticsearch集群备份</a></h1>
+<ul>
+<li>
+<p><a href="use/backup/./snapshot.html">快照备份</a></p>
+</li>
+<li>
+<p><a href="use/backup/./meta.html">只备份集群中的策略、模版等信息</a></p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使用快照备份"><a class="header" href="#使用快照备份">使用快照备份</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="只备份集群中的策略模版等信息"><a class="header" href="#只备份集群中的策略模版等信息">只备份集群中的策略、模版等信息</a></h1>
+<h2 id="参考-1"><a class="header" href="#参考-1">参考</a></h2>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html">用户管理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/cluster-update-settings.html">集群配置</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/data-management.html">策略管理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/index-templates.html">模版管理</a></p>
+</blockquote>
+<h2 id="一集群配置"><a class="header" href="#一集群配置">一、集群配置</a></h2>
+<h3 id="11-从现有集群获取集群配置"><a class="header" href="#11-从现有集群获取集群配置">1.1 从现有集群获取集群配置</a></h3>
+<pre><code>
+GET _cluster/settings?flat_settings
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_cluster/settings?flat_settings&quot;
+
+</code></pre>
+<p>返回值如下:</p>
+<pre><code class="language-json">
+{
+  &quot;persistent&quot; : {
+    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
+    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
+    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
+    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  },
+  &quot;transient&quot; : { }
+}
+
+</code></pre>
+<h3 id="12-将集群配置导入到新集群"><a class="header" href="#12-将集群配置导入到新集群">1.2 将集群配置导入到新集群</a></h3>
+<pre><code>
+PUT _cluster/settings
+{
+  &quot;persistent&quot; : {
+    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
+    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
+    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
+    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  },
+  &quot;transient&quot; : { }
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.l:9200/_cluster/settings&quot; -H 'Content-Type: application/json' -d'{  &quot;persistent&quot; : {    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;  },  &quot;transient&quot; : { }}'
+
+</code></pre>
+<h2 id="二索引策略"><a class="header" href="#二索引策略">二、索引策略</a></h2>
+<h3 id="21-从现有集群获取策略信息"><a class="header" href="#21-从现有集群获取策略信息">2.1 从现有集群获取策略信息</a></h3>
+<pre><code>
+GET _ilm/policy
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_ilm/policy&quot;
+
+</code></pre>
+<p>返回值如下:</p>
+<pre><code class="language-json">
+{
+  &quot;.items-default&quot; : {
+    &quot;version&quot; : 1,
+    &quot;modified_date&quot; : &quot;2021-12-30T06:02:12.763Z&quot;,
+    &quot;policy&quot; : {
+      &quot;phases&quot; : {
+        &quot;hot&quot; : {
+          &quot;min_age&quot; : &quot;0ms&quot;,
+          &quot;actions&quot; : {
+            &quot;rollover&quot; : {
+              &quot;max_size&quot; : &quot;50gb&quot;
+            }
+          }
+        }
+      }
+    }
+  }
+  ...
+}
+
+</code></pre>
+<h3 id="22-将策略信息导入到新集群"><a class="header" href="#22-将策略信息导入到新集群">2.2 将策略信息导入到新集群</a></h3>
+<p>⚠️ 一次只能导入一个策略, PUT body 不需要 version/modified_date 信息</p>
+<pre><code>
+PUT _ilm/policy/.items-default
+{
+  &quot;policy&quot;: {
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;rollover&quot;: {
+            &quot;max_size&quot;: &quot;50gb&quot;
+          }
+        }
+      }
+    }
+  }
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_ilm/policy/.items-default&quot; -H 'Content-Type: application/json' -d'{  &quot;policy&quot;: {    &quot;phases&quot;: {      &quot;hot&quot;: {        &quot;min_age&quot;: &quot;0ms&quot;,        &quot;actions&quot;: {          &quot;rollover&quot;: {            &quot;max_size&quot;: &quot;50gb&quot;          }        }      }    }  }}'
+
+</code></pre>
+<h2 id="三索引模版"><a class="header" href="#三索引模版">三、索引模版</a></h2>
+<h3 id="31-从现有集群获取索引模版"><a class="header" href="#31-从现有集群获取索引模版">3.1 从现有集群获取索引模版</a></h3>
+<pre><code>
+GET _template/*
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_template/*&quot;
+
+</code></pre>
+<p>返回结果如下:</p>
+<pre><code class="language-json">
+{
+  &quot;wksp_xxx_template&quot; : {
+    &quot;order&quot; : 0,
+    &quot;index_patterns&quot; : [
+      &quot;wksp_xxx-*&quot;
+    ],
+    &quot;settings&quot; : {
+      &quot;index&quot; : {
+        &quot;lifecycle&quot; : {
+          &quot;name&quot; : &quot;es_rp4&quot;,
+          &quot;rollover_alias&quot; : &quot;wksp_xxx&quot;
+        },
+        &quot;number_of_shards&quot; : &quot;1&quot;,
+        &quot;number_of_replicas&quot; : &quot;1&quot;
+      }
+    },
+    &quot;mappings&quot; : {
+      &quot;dynamic_templates&quot; : [
+        {
+          &quot;strings_as_keywords&quot; : {
+            &quot;mapping&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot; : &quot;string&quot;
+          }
+        }
+      ],
+      &quot;date_detection&quot; : false,
+      &quot;properties&quot; : {
+        &quot;message&quot; : {
+          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;type&quot; : &quot;text&quot;
+        },
+        &quot;title&quot; : {
+          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;type&quot; : &quot;text&quot;
+        }
+      }
+    },
+    &quot;aliases&quot; : { }
+  }
+  
+  ...
+}
+
+</code></pre>
+<h3 id="32-将索引模版导入到新集群"><a class="header" href="#32-将索引模版导入到新集群">3.2 将索引模版导入到新集群</a></h3>
+<p>⚠️ 一次只能导入一个模版</p>
+<pre><code>
+PUT _template/wksp_xxx_template
+{
+  &quot;order&quot;: 0,
+  &quot;index_patterns&quot;: [
+    &quot;wksp_xxx-*&quot;
+  ],
+  &quot;settings&quot;: {
+    &quot;index&quot;: {
+      &quot;lifecycle&quot;: {
+        &quot;name&quot;: &quot;es_rp4&quot;,
+        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;
+      },
+      &quot;number_of_shards&quot;: &quot;1&quot;,
+      &quot;number_of_replicas&quot;: &quot;1&quot;
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;dynamic_templates&quot;: [
+      {
+        &quot;strings_as_keywords&quot;: {
+          &quot;mapping&quot;: {
+            &quot;type&quot;: &quot;keyword&quot;
+          },
+          &quot;match_mapping_type&quot;: &quot;string&quot;
+        }
+      }
+    ],
+    &quot;date_detection&quot;: false,
+    &quot;properties&quot;: {
+      &quot;message&quot;: {
+        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;type&quot;: &quot;text&quot;
+      },
+      &quot;title&quot;: {
+        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  },
+  &quot;aliases&quot;: {}
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_template&quot; -H 'Content-Type: application/json' -d'{  &quot;order&quot;: 0,  &quot;index_patterns&quot;: [    &quot;wksp_xxx-*&quot;  ],  &quot;settings&quot;: {    &quot;index&quot;: {      &quot;lifecycle&quot;: {        &quot;name&quot;: &quot;es_rp4&quot;,        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;      },      &quot;number_of_shards&quot;: &quot;1&quot;,      &quot;number_of_replicas&quot;: &quot;1&quot;    }  },  &quot;mappings&quot;: {    &quot;dynamic_templates&quot;: [      {        &quot;strings_as_keywords&quot;: {          &quot;mapping&quot;: {            &quot;type&quot;: &quot;keyword&quot;          },          &quot;match_mapping_type&quot;: &quot;string&quot;        }      }    ],    &quot;date_detection&quot;: false,    &quot;properties&quot;: {      &quot;message&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      },      &quot;title&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      }    }  },  &quot;aliases&quot;: {}}'
+
+</code></pre>
+<h2 id="四用户"><a class="header" href="#四用户">四、用户</a></h2>
+<p>elasticsearch 无法通过接口，获取用户密码，也就不存在用户密码备份</p>
+<p>如果需要在新集群添加用户，或者重置（内置用户）密码，可以使用 <code>POST /_security/user/username</code> </p>
+<pre><code>POST /_security/user/jacknich
+{
+  &quot;password&quot; : &quot;l0ng-r4nd0m-p@ssw0rd&quot;,
+  &quot;roles&quot; : [ &quot;admin&quot;, &quot;other_role1&quot; ],
+  &quot;full_name&quot; : &quot;Jack Nicholson&quot;,
+  &quot;email&quot; : &quot;jacknich@example.com&quot;,
+  &quot;metadata&quot; : {
+    &quot;intelligence&quot; : 7
+  }
+}
+
+</code></pre>
 
                     </main>
 

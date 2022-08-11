@@ -896,6 +896,104 @@ false; // Not *not* false.
 <p>在语言中，不使用 nil 存在很多好处，空指针报错是编程行业常见的报错。如果，我们要实现一门静态类型语言，那么我们禁止 nil类型是值得的。但是，如果我们要实现一门动态类型语言，通常，保留 nil类型，拥有更多的好处，相比于禁止该类型。</p>
 </li>
 </ol>
+<h2 id="四expressions"><a class="header" href="#四expressions">四、Expressions</a></h2>
+<p>表达式</p>
+<p>If built-in data types and their literals are atoms, then expressions must be the molecules. Most of these will be familiar.</p>
+<p>如果内置的基础数据类型和它们的文字，是原子，那么表达式就是分子，下面将介绍各种表达式</p>
+<h3 id="41-arithmetic"><a class="header" href="#41-arithmetic">4.1 Arithmetic</a></h3>
+<p>算术表达式</p>
+<p>Lox features the basic arithmetic operators you know and love from C and other languages:</p>
+<p>Lox语言具有C语言或者其他语言中，存在的基础算术表达式</p>
+<pre><code>
+add + me;
+subtract - me;
+multiply * me;
+divide / me;
+
+</code></pre>
+<p>The subexpressions on either side of the operator are operands. Because there are two of them, these are called binary operators.(It has nothing to do with the ones-and-zeroes use of “binary”.) </p>
+<p>Because the operator is fixed in the middle of the operands, these are also called infix operators (as opposed to prefix operators where the operator comes before the operands, and postfix where it comes after).</p>
+<p>One arithmetic operator is actually both an infix and a prefix one. The - operator can also be used to negate a number.</p>
+<pre><code>-negateMe;
+</code></pre>
+<p>All of these operators work on numbers, and it’s an error to pass any other types to them. The exception is the + operator—you can also pass it two strings to concatenate them.</p>
+<p>运算符号，两边的子表达式，称为操作数。因为运算符号，有两个操作数，所以称为二元运算符。⚠️这里的二元，和二进制中的0或者1，没有关系。</p>
+<p>因为运算符，固定在操作数的中间，所以，我们称之为中缀运算符。（与前缀运算符不同，前缀运算符位于表达式最前面，后缀运算符位于表达式最后。）</p>
+<p>一元运算符，实际上可以是中缀运算符，也可以是前缀运算符。例如：- 可以表示负数</p>
+<pre><code>-negateMe;
+</code></pre>
+<p>上面的算术运算符的操作数，只能是数值类型，如果操作数是其他数据类型，表达式计算会报错。但是，有个例外，+运算符可以作用于字符串数据类型，两个字符串的 + 运算，表示连接这两个字符串。</p>
+<h3 id="42-comparison-and-equality"><a class="header" href="#42-comparison-and-equality">4.2 Comparison and equality</a></h3>
+<p>比较运算符，相等</p>
+<p>Moving along, we have a few more operators that always return a Boolean result. We can compare numbers (and only numbers), using Ye Olde Comparison Operators.</p>
+<pre><code>less &lt; than;
+lessThan &lt;= orEqual;
+greater &gt; than;
+greaterThan &gt;= orEqual;
+</code></pre>
+<p>We can test two values of any kind for equality or inequality. Even different types. Values of different types are never equivalent.</p>
+<pre><code>1 == 2;         // false.
+&quot;cat&quot; != &quot;dog&quot;; // true.
+314 == &quot;pi&quot;; // false.
+123 == &quot;123&quot;; // false.
+</code></pre>
+<p>I’m generally against implicit conversions.</p>
+<p>接下来，我们将介绍几个返回布尔值的运算符。</p>
+<p>我们可以使用 比较运算符，比较并且仅仅比较数值</p>
+<p>我们也可以比较两个任意类型的数据，是否相等, 甚至这两个数据，不是相同的类型。不同数据类型的两个数据，肯定是不想等的🤔。</p>
+<p>通常，我们不建议使用隐式转换。</p>
+<h3 id="43-logical-operators"><a class="header" href="#43-logical-operators">4.3 Logical operators</a></h3>
+<ol>
+<li>
+<p>The not operator, a prefix !, returns false if its operand is true, and vice versa.</p>
+<pre><code>
+!true;  // false.
+!false; // true.
+
+</code></pre>
+</li>
+<li>
+<p>The other two logical operators really are control flow constructs in the guise of expressions. An and expression determines if two values are both true. It returns the left operand if it’s false, or the right operand otherwise.</p>
+<pre><code>
+true and false; // false.
+true and true;  // true.
+
+</code></pre>
+</li>
+<li>
+<p>And an or expression determines if either of two values (or both) are true. It returns the left operand if it is true and the right operand otherwise.</p>
+</li>
+</ol>
+<p>The reason and and or are like control flow structures is that they short-circuit. Not only does and return the left operand if it is false, it doesn’t even evaluate the right one in that case. Conversely (contrapositively?), if the left operand of an or is true, the right is skipped.</p>
+<p>逻辑运算</p>
+<ol>
+<li>
+<p>逻辑非运算符，使用 ！表示，如果操作数是true，则添加逻辑非的表达式，值为false，反之亦然。</p>
+<pre><code>
+!true;  // false.
+!false; // true.
+
+</code></pre>
+</li>
+<li>
+<p>另外两个逻辑运算符，与其说是表达式，更加准确的说法是，控制流。</p>
+<p>and 逻辑运算符，将确定两个操作数，是否都是true，如果左操作数是false， 则表达式返回左操作数的值；如果左操作数为true，则表达式返回右操作数的值。</p>
+<pre><code>
+true and false; // false.
+true and true;  // true.
+
+</code></pre>
+</li>
+<li>
+<p>or 逻辑运算符，将确定两个操作数，是否包含true，如果左操作数为true，则表达式结果，返回左操作数；如果左操作数为false，表达式将会返回右操作数的值。</p>
+<pre><code>
+false or false; // false.
+true or false;  // true.
+
+</code></pre>
+</li>
+</ol>
+<p>and 和 or 逻辑运算符，本质上是控制流结构的原因是，它们是短路。当逻辑运算符是 and，左操作数值为 false，我们甚至不会去计算右操作数，直接返回左操作数的值。如果逻辑运算符是 or，左操作数值为 true，同样的，我们不会去计算右操作数，直接返回左操作数的值。</p>
 
                     </main>
 

@@ -7,3 +7,11 @@
   
 - [elasticsearch 接口文档](./article/office/api.md)
   - [华为云CSS生命周期管理](./article/office/ism.md)
+
+# 实际使用
+
+- [elasticsearch集群备份](./use/backup/backup.md)
+
+	- [使用快照备份](./use/backup/snapshot.md)
+	
+	- [只备份集群中的策略、模版等信息](./use/backup/meta.md)

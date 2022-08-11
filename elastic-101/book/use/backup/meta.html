@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>只备份集群中的策略、模版等信息 - elastic-101</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="../../article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="../../article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">实际使用</li><li class="chapter-item expanded "><a href="../../use/backup/backup.html"><strong aria-hidden="true">3.</strong> elasticsearch集群备份</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../use/backup/snapshot.html"><strong aria-hidden="true">3.1.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="../../use/backup/meta.html" class="active"><strong aria-hidden="true">3.2.</strong> 只备份集群中的策略、模版等信息</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic-101</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="只备份集群中的策略模版等信息"><a class="header" href="#只备份集群中的策略模版等信息">只备份集群中的策略、模版等信息</a></h1>
+<h2 id="参考"><a class="header" href="#参考">参考</a></h2>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html">用户管理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/cluster-update-settings.html">集群配置</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/data-management.html">策略管理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/index-templates.html">模版管理</a></p>
+</blockquote>
+<h2 id="一集群配置"><a class="header" href="#一集群配置">一、集群配置</a></h2>
+<h3 id="11-从现有集群获取集群配置"><a class="header" href="#11-从现有集群获取集群配置">1.1 从现有集群获取集群配置</a></h3>
+<pre><code>
+GET _cluster/settings?flat_settings
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_cluster/settings?flat_settings&quot;
+
+</code></pre>
+<p>返回值如下:</p>
+<pre><code class="language-json">
+{
+  &quot;persistent&quot; : {
+    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
+    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
+    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
+    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  },
+  &quot;transient&quot; : { }
+}
+
+</code></pre>
+<h3 id="12-将集群配置导入到新集群"><a class="header" href="#12-将集群配置导入到新集群">1.2 将集群配置导入到新集群</a></h3>
+<pre><code>
+PUT _cluster/settings
+{
+  &quot;persistent&quot; : {
+    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
+    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
+    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
+    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  },
+  &quot;transient&quot; : { }
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.l:9200/_cluster/settings&quot; -H 'Content-Type: application/json' -d'{  &quot;persistent&quot; : {    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;  },  &quot;transient&quot; : { }}'
+
+</code></pre>
+<h2 id="二索引策略"><a class="header" href="#二索引策略">二、索引策略</a></h2>
+<h3 id="21-从现有集群获取策略信息"><a class="header" href="#21-从现有集群获取策略信息">2.1 从现有集群获取策略信息</a></h3>
+<pre><code>
+GET _ilm/policy
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_ilm/policy&quot;
+
+</code></pre>
+<p>返回值如下:</p>
+<pre><code class="language-json">
+{
+  &quot;.items-default&quot; : {
+    &quot;version&quot; : 1,
+    &quot;modified_date&quot; : &quot;2021-12-30T06:02:12.763Z&quot;,
+    &quot;policy&quot; : {
+      &quot;phases&quot; : {
+        &quot;hot&quot; : {
+          &quot;min_age&quot; : &quot;0ms&quot;,
+          &quot;actions&quot; : {
+            &quot;rollover&quot; : {
+              &quot;max_size&quot; : &quot;50gb&quot;
+            }
+          }
+        }
+      }
+    }
+  }
+  ...
+}
+
+</code></pre>
+<h3 id="22-将策略信息导入到新集群"><a class="header" href="#22-将策略信息导入到新集群">2.2 将策略信息导入到新集群</a></h3>
+<p>⚠️ 一次只能导入一个策略, PUT body 不需要 version/modified_date 信息</p>
+<pre><code>
+PUT _ilm/policy/.items-default
+{
+  &quot;policy&quot;: {
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;rollover&quot;: {
+            &quot;max_size&quot;: &quot;50gb&quot;
+          }
+        }
+      }
+    }
+  }
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_ilm/policy/.items-default&quot; -H 'Content-Type: application/json' -d'{  &quot;policy&quot;: {    &quot;phases&quot;: {      &quot;hot&quot;: {        &quot;min_age&quot;: &quot;0ms&quot;,        &quot;actions&quot;: {          &quot;rollover&quot;: {            &quot;max_size&quot;: &quot;50gb&quot;          }        }      }    }  }}'
+
+</code></pre>
+<h2 id="三索引模版"><a class="header" href="#三索引模版">三、索引模版</a></h2>
+<h3 id="31-从现有集群获取索引模版"><a class="header" href="#31-从现有集群获取索引模版">3.1 从现有集群获取索引模版</a></h3>
+<pre><code>
+GET _template/*
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_template/*&quot;
+
+</code></pre>
+<p>返回结果如下:</p>
+<pre><code class="language-json">
+{
+  &quot;wksp_xxx_template&quot; : {
+    &quot;order&quot; : 0,
+    &quot;index_patterns&quot; : [
+      &quot;wksp_xxx-*&quot;
+    ],
+    &quot;settings&quot; : {
+      &quot;index&quot; : {
+        &quot;lifecycle&quot; : {
+          &quot;name&quot; : &quot;es_rp4&quot;,
+          &quot;rollover_alias&quot; : &quot;wksp_xxx&quot;
+        },
+        &quot;number_of_shards&quot; : &quot;1&quot;,
+        &quot;number_of_replicas&quot; : &quot;1&quot;
+      }
+    },
+    &quot;mappings&quot; : {
+      &quot;dynamic_templates&quot; : [
+        {
+          &quot;strings_as_keywords&quot; : {
+            &quot;mapping&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot; : &quot;string&quot;
+          }
+        }
+      ],
+      &quot;date_detection&quot; : false,
+      &quot;properties&quot; : {
+        &quot;message&quot; : {
+          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;type&quot; : &quot;text&quot;
+        },
+        &quot;title&quot; : {
+          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;type&quot; : &quot;text&quot;
+        }
+      }
+    },
+    &quot;aliases&quot; : { }
+  }
+  
+  ...
+}
+
+</code></pre>
+<h3 id="32-将索引模版导入到新集群"><a class="header" href="#32-将索引模版导入到新集群">3.2 将索引模版导入到新集群</a></h3>
+<p>⚠️ 一次只能导入一个模版</p>
+<pre><code>
+PUT _template/wksp_xxx_template
+{
+  &quot;order&quot;: 0,
+  &quot;index_patterns&quot;: [
+    &quot;wksp_xxx-*&quot;
+  ],
+  &quot;settings&quot;: {
+    &quot;index&quot;: {
+      &quot;lifecycle&quot;: {
+        &quot;name&quot;: &quot;es_rp4&quot;,
+        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;
+      },
+      &quot;number_of_shards&quot;: &quot;1&quot;,
+      &quot;number_of_replicas&quot;: &quot;1&quot;
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;dynamic_templates&quot;: [
+      {
+        &quot;strings_as_keywords&quot;: {
+          &quot;mapping&quot;: {
+            &quot;type&quot;: &quot;keyword&quot;
+          },
+          &quot;match_mapping_type&quot;: &quot;string&quot;
+        }
+      }
+    ],
+    &quot;date_detection&quot;: false,
+    &quot;properties&quot;: {
+      &quot;message&quot;: {
+        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;type&quot;: &quot;text&quot;
+      },
+      &quot;title&quot;: {
+        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  },
+  &quot;aliases&quot;: {}
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_template&quot; -H 'Content-Type: application/json' -d'{  &quot;order&quot;: 0,  &quot;index_patterns&quot;: [    &quot;wksp_xxx-*&quot;  ],  &quot;settings&quot;: {    &quot;index&quot;: {      &quot;lifecycle&quot;: {        &quot;name&quot;: &quot;es_rp4&quot;,        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;      },      &quot;number_of_shards&quot;: &quot;1&quot;,      &quot;number_of_replicas&quot;: &quot;1&quot;    }  },  &quot;mappings&quot;: {    &quot;dynamic_templates&quot;: [      {        &quot;strings_as_keywords&quot;: {          &quot;mapping&quot;: {            &quot;type&quot;: &quot;keyword&quot;          },          &quot;match_mapping_type&quot;: &quot;string&quot;        }      }    ],    &quot;date_detection&quot;: false,    &quot;properties&quot;: {      &quot;message&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      },      &quot;title&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      }    }  },  &quot;aliases&quot;: {}}'
+
+</code></pre>
+<h2 id="四用户"><a class="header" href="#四用户">四、用户</a></h2>
+<p>elasticsearch 无法通过接口，获取用户密码，也就不存在用户密码备份</p>
+<p>如果需要在新集群添加用户，或者重置（内置用户）密码，可以使用 <code>POST /_security/user/username</code> </p>
+<pre><code>POST /_security/user/jacknich
+{
+  &quot;password&quot; : &quot;l0ng-r4nd0m-p@ssw0rd&quot;,
+  &quot;roles&quot; : [ &quot;admin&quot;, &quot;other_role1&quot; ],
+  &quot;full_name&quot; : &quot;Jack Nicholson&quot;,
+  &quot;email&quot; : &quot;jacknich@example.com&quot;,
+  &quot;metadata&quot; : {
+    &quot;intelligence&quot; : 7
+  }
+}
+
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../use/backup/snapshot.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../use/backup/snapshot.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

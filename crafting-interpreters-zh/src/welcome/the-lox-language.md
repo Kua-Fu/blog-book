@@ -240,6 +240,156 @@ In Lox’s little universe, the atoms that make up all matter are the built-in d
 
 
 
+## 四、Expressions
+
+表达式
+
+If built-in data types and their literals are atoms, then expressions must be the molecules. Most of these will be familiar.
+
+如果内置的基础数据类型和它们的文字，是原子，那么表达式就是分子，下面将介绍各种表达式
+
+### 4.1 Arithmetic
+
+算术表达式
+
+Lox features the basic arithmetic operators you know and love from C and other languages:
+
+Lox语言具有C语言或者其他语言中，存在的基础算术表达式
+
+```
+
+add + me;
+subtract - me;
+multiply * me;
+divide / me;
+
+```
+
+The subexpressions on either side of the operator are operands. Because there are two of them, these are called binary operators.(It has nothing to do with the ones-and-zeroes use of “binary”.) 
+
+Because the operator is fixed in the middle of the operands, these are also called infix operators (as opposed to prefix operators where the operator comes before the operands, and postfix where it comes after).
+
+One arithmetic operator is actually both an infix and a prefix one. The - operator can also be used to negate a number.
+
+```
+-negateMe;
+```
+
+All of these operators work on numbers, and it’s an error to pass any other types to them. The exception is the + operator—you can also pass it two strings to concatenate them.
+
+运算符号，两边的子表达式，称为操作数。因为运算符号，有两个操作数，所以称为二元运算符。⚠️这里的二元，和二进制中的0或者1，没有关系。
+
+因为运算符，固定在操作数的中间，所以，我们称之为中缀运算符。（与前缀运算符不同，前缀运算符位于表达式最前面，后缀运算符位于表达式最后。）
+
+一元运算符，实际上可以是中缀运算符，也可以是前缀运算符。例如：- 可以表示负数
+
+```
+-negateMe;
+```
+
+上面的算术运算符的操作数，只能是数值类型，如果操作数是其他数据类型，表达式计算会报错。但是，有个例外，+运算符可以作用于字符串数据类型，两个字符串的 + 运算，表示连接这两个字符串。
+
+### 4.2 Comparison and equality
+
+比较运算符，相等
+
+Moving along, we have a few more operators that always return a Boolean result. We can compare numbers (and only numbers), using Ye Olde Comparison Operators.
+
+```
+less < than;
+lessThan <= orEqual;
+greater > than;
+greaterThan >= orEqual;
+```
+
+We can test two values of any kind for equality or inequality. Even different types. Values of different types are never equivalent.
+
+```
+1 == 2;         // false.
+"cat" != "dog"; // true.
+314 == "pi"; // false.
+123 == "123"; // false.
+```
+
+I’m generally against implicit conversions.
+
+
+
+接下来，我们将介绍几个返回布尔值的运算符。
+
+我们可以使用 比较运算符，比较并且仅仅比较数值
+
+我们也可以比较两个任意类型的数据，是否相等, 甚至这两个数据，不是相同的类型。不同数据类型的两个数据，肯定是不想等的🤔。
+
+通常，我们不建议使用隐式转换。
+
+
+### 4.3 Logical operators
+
+
+1. The not operator, a prefix !, returns false if its operand is true, and vice versa.
+
+   ```
+   
+   !true;  // false.
+   !false; // true.
+   
+   ```
+
+1. The other two logical operators really are control flow constructs in the guise of expressions. An and expression determines if two values are both true. It returns the left operand if it’s false, or the right operand otherwise.
+
+	```
+	
+	true and false; // false.
+	true and true;  // true.
+	
+	```
+	
+	
+1.  And an or expression determines if either of two values (or both) are true. It returns the left operand if it is true and the right operand otherwise.
+
+The reason and and or are like control flow structures is that they short-circuit. Not only does and return the left operand if it is false, it doesn’t even evaluate the right one in that case. Conversely (contrapositively?), if the left operand of an or is true, the right is skipped.
+
+逻辑运算
+	
+
+1. 逻辑非运算符，使用 ！表示，如果操作数是true，则添加逻辑非的表达式，值为false，反之亦然。
+
+	```
+
+	!true;  // false.
+	!false; // true.
+
+	```
+
+1. 另外两个逻辑运算符，与其说是表达式，更加准确的说法是，控制流。
+
+	and 逻辑运算符，将确定两个操作数，是否都是true，如果左操作数是false， 则表达式返回左操作数的值；如果左操作数为true，则表达式返回右操作数的值。
+
+	```
+
+	true and false; // false.
+	true and true;  // true.
+
+	```
+
+1. or 逻辑运算符，将确定两个操作数，是否包含true，如果左操作数为true，则表达式结果，返回左操作数；如果左操作数为false，表达式将会返回右操作数的值。
+
+	```
+
+	false or false; // false.
+	true or false;  // true.
+
+	```
+
+and 和 or 逻辑运算符，本质上是控制流结构的原因是，它们是短路。当逻辑运算符是 and，左操作数值为 false，我们甚至不会去计算右操作数，直接返回左操作数的值。如果逻辑运算符是 or，左操作数值为 true，同样的，我们不会去计算右操作数，直接返回左操作数的值。
+
+	
+
+
+
+
+
 
 
 
