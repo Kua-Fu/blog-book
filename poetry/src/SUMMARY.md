@@ -43,6 +43,10 @@
 - [Python](learning/python/python.md)
 - [Go](learning/golang/golang.md)
   - [go 101](learning/golang/101.md)
+- [Redis](learning/redis/redis.md)
+  - [基本使用](learning/redis/basic.md)
+  - [内存分析](learning/redis/memory.md)
+  - [Bloom Filter](learning/redis/bloom-filter.md)
 
 
 # 文章阅读
