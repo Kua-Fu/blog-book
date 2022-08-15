@@ -143,6 +143,24 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="emacs"><a class="header" href="#emacs">Emacs</a></h1>
+<h2 id="1-多行行首添加字符"><a class="header" href="#1-多行行首添加字符">1. 多行行首添加字符</a></h2>
+<blockquote>
+<p>参考</p>
+<p><a href="https://emacs.stackexchange.com/questions/11/how-to-add-a-prefix-to-every-line">How to add a prefix to every line?</a></p>
+</blockquote>
+<p>使用命令 <code>M-x string-rectangle</code>, 绑定的快捷键是 <code>C-x r t</code></p>
+<p>流程: </p>
+<ul>
+<li>
+<p>使用 <code>set-mark-command</code>, 绑定快捷键是 <code>M-SPC</code> 选定要修改的行</p>
+</li>
+<li>
+<p>使用 <code>M-x string-rectangle</code> ，添加指定字符串</p>
+</li>
+<li>
+<p><code>Enter</code> 后，所有选定行变化</p>
+</li>
+</ul>
 
                     </main>
 
