@@ -12,14 +12,7 @@
 # 技术学习
 
 - [基础](learning/basic/basic.md)
-  - [Vim](learning/basic/vim/vim.md)
-  - [Emacs](learning/basic/emacs/emacs.md)
-  - [Git](learning/basic/git/git.md)
-  - [RegularExpression](learning/basic/regular_expression/regular_expression.md)
-  - [tmux](learing/basic/tmux.md)
-  - [markdown](learning/basic/markdown/markdown.md)
-  - [mdbook](learning/basic/mdbook/mdbook.md)
-	  		
+
 - [网络](learning/network/network.md)
 - [算法](learning/algorithm/algorithm.md)
 - [操作系统](learning/os/os.md)
