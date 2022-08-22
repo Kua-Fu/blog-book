@@ -42,38 +42,16 @@
 
 # 读书笔记
 
-- [技术类](reading/technology/technology.md)
-  - [elasticsearch7.13官方文档](reading/technology/elasticsearch.md)
-  - [elasticsearch权威指南](reading/technology/elasticsearch-start.md)
-  - [计算之魂](reading/technology/the_essence_of_computing.md)
-  - [crafting interpreters](reading/technology/crafting_interpreters.md)
-  - [nsq](reading/technology/nsq.md)
-	
-- [人物传记](reading/biography/biography.md)
-  - [毛泽东选集](reading/biography/mao.md)
-  - [我心归处是敦煌——樊锦诗自述](reading/biography/fanjinshi.md)
-  
-- [小说](reading/novel/novel.md)
-  - [山海经](reading/novel/shan-hai-jing.md)
-	- [南山经](reading/novel/nan-shan-jing.md)
-  - [精灵宝钻](reading/novel/the_silmarillion.md)
-  - [金庸武侠](reading/novel/jinyong.md)
-- [文史哲](reading/liberal_art/liberal_art.md)
-  - [文学](reading/liberal_art/literature/literature.md)
+- [elasticsearch权威指南](reading/technology/elasticsearch-start.md)
 
-  - [史学](reading/history/history.md)
-	- [三国志](reading/history/san-guo-zhi.md)
+- [crafting interpreters](reading/technology/crafting_interpreters.md)
 	
-  - [哲学](reading/philosophy/philosophy.md)
-    - [道](reading/philosophy/dao/dao.md)
-	  - [道德经](reading/philosophy/dao/dao_de_jing.md)
-	  - [太上清静经](reading/philosophy/dao/tai_shang_qing_jing_jing.md)
-	  - [坐忘歌](reading/philosophy/dao/zuo_wang_ge.md)
-	- [儒](reading/philosophy/ru/ru.md)
-	- [释](reading/philosophy/shi/shi.md)
+- [毛泽东选集](reading/biography/mao.md)
   
-		
-- [线上图书馆](reading/library/online.md)
+- [诗词](reading/liberal_art/literature/literature.md)
+
+- [三国志](reading/history/san-guo-zhi.md)
+
 
 # 奇奇怪怪
 
@@ -87,8 +65,6 @@
 - [歌曲](curiosity/music/music.md)
   - [笑看风云](curiosity/music/xiao_kan_feng_yun.md)
   
-  
-
 -----------
 
 # 总结规划

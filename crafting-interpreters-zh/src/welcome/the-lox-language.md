@@ -1196,3 +1196,110 @@ Because we don’t implement classes until well after we start working with the 
 这就是面向对象的方法，我试图保持功能集最小化，本书结构迫使我做出一定的妥协。Lox不是一种纯粹的面向对象语言，在真正的面向对象语言中，每个对象都是一个类的实例，即使是数值和布尔类型这样的原始值，都是一个类的实例。
 
 因为我们在开始使用内置类后，才实现类，所以，实现纯粹的面向对象，比较困难。因此，从类实例的意义上，基本类型的值不是实例。它们没有方法，也没有属性。如果，我想要让Lox变为一门用户可用的真正的语言，我会尝试解决这个问题。
+
+## 十、The Standard Library
+
+标准库
+
+We’re almost done. That’s the whole language, so all that’s left is the “core” or “standard” library—the set of functionality that is implemented directly in the interpreter and that all user-defined behavior is built on top of.
+
+This is the saddest part of Lox. Its standard library goes beyond minimalism and veers close to outright nihilism. For the sample code in the book, we only need to demonstrate that code is running and doing what it’s supposed to do. For that, we already have the built-in print statement.
+
+Later, when we start optimizing, we’ll write some benchmarks and see how long it takes to execute code. That means we need to track time, so we’ll define one built-in function, clock(), that returns the number of seconds since the program started.
+
+我们差不多完成了Lox语言，这就是整个语言。剩下来的部分是核心库或者称为标准库——直接在解释器中实现的功能，所有用户定义的方法都建立在标准库上面。
+
+这是Lox语言中最悲伤的地方，它的标准库超越了极简主义，转向了完全的虚无主义。对于书中的示例代码，我们只需要证明代码正在运行或者执行它应该执行的操作。为此，我们已经有了内置的print语句。
+
+稍后，当我们优化时候，我们将编写一些基准测试代码，查看执行代码的耗时。这意味着我们需要跟踪时间，因此，我们定义一个内置函数 clock() , 它返回程序启动后的秒数。
+
+And . . . that’s it. I know, right? It’s embarrassing.
+
+
+If you wanted to turn Lox into an actual useful language, the very first thing you should do is flesh this out. String manipulation, trigonometric functions, file I/O, networking, heck, even reading input from the user would help. But we don’t need any of that for this book, and adding it wouldn’t teach you anything interesting, so I’ve left it out.
+
+Don’t worry, we’ll have plenty of exciting stuff in the language itself to keep us busy.
+
+如果你想把Lox语言变为一门真正有用的语言，第一件事情，就是充实Lox语言。字符串操作，三角函数，文件I/O，网络，检查，甚至读取用户输入都会有所帮助，但是本书将不会涉及。因为加上它们，不会增加任何有意义的地方，所以，我把它们删除了。
+
+别担心，语言本身有很多令人兴奋的东西，让我们忙个不停。
+
+## 十一、CHALLENGES
+
+习题
+
+1. Write some sample Lox programs and run them (you can use the implementations of Lox in my repository). Try to come up with edge case behavior I didn’t specify here. Does it do what you expect? Why or why not?
+
+1. This informal introduction leaves a lot unspecified. List several open questions you have about the language’s syntax and semantics. What do you think the answers should be?
+
+1. Lox is a pretty tiny language. What features do you think it is missing that would make it annoying to use for real programs? (Aside from the standard library, of course.)
+
+1. 编写一些Lox程序并且运行它们， 尝试给出一些书中没有提及的边缘示例，它是否符合你的期望，并给出原因？
+
+1. 本章的简短介绍留下了很多没有明确的地方，列出关于语言的语法和语义的几个开放性问题，你认为答案是什么？
+
+1. Lox是一门很小的语言，你觉得还应该添加哪些新功能，这些功能的缺少，让你在实际应用时候感到恼火（除了标准库之外）
+
+
+## 十二、DESIGN NOTE: EXPRESSIONS AND STATEMENTS
+
+设计思想：表达式和语句
+
+Lox has both expressions and statements. Some languages omit the latter. Instead, they treat declarations and control flow constructs as expressions too. These “everything is an expression” languages tend to have functional pedigrees and include most Lisps, SML, Haskell, Ruby, and CoffeeScript.
+
+To do that, for each “statement-like” construct in the language, you need to decide what value it evaluates to. Some of those are easy:
+
+* An if expression evaluates to the result of whichever branch is chosen. Likewise, a switch or other multi-way branch evaluates to whichever case is picked.
+
+* A variable declaration evaluates to the value of the variable.
+
+* A block evaluates to the result of the last expression in the sequence.
+
+Some get a little stranger. What should a loop evaluate to? A while loop in CoffeeScript evaluates to an array containing each element that the body evaluated to. That can be handy, or a waste of memory if you don’t need the array.
+
+You also have to decide how these statement-like expressions compose with other expressions—you have to fit them into the grammar’s precedence table. For example, Ruby allows:
+
+puts 1 + if true then 2 else 3 end + 4
+
+Lox语言既有表达式，也有语句。有些语言省略了语句，它们会将声明和控制流也当作表达式，这些具有“一切都是表达式“特性的语言，往往具有函数式语言特征，例如：LISP，SML，Haskell，Ruby 和 CoffeeScript
+
+要做到这一点，对于语言中的每一个语句结构，我们需要确定语句的最终值。其中，有些语句很简单：
+
+* if 语句的计算结果是所选分支的结果。同样的，switch语句或者其他多路分支，计算结果为根据情况选择的分支的计算结果
+
+* 变量声明语句的结果，为变量的值
+
+* 代码块的计算结果为序列中最后一个表达式的结果
+
+
+还有一些语句，变得有些奇怪，循环语句的计算结果应该是什么？CoffeeScript 语言的循环语句的计算结果是一个数组，该数组包含了主体计算到的每个元素。这很方便，如果不使用这个数组，会浪费内存。
+
+我们还需要确定一些类似语句的表达式，如何和其他表达式组合使用。我们需要将这些表达式放入语法的优先级表中。例如：Ruby语言中，
+
+puts 1 + if true then 2 else 3 end + 4
+
+这就是你所期待的吗？这就是用户期待的吗？这对于你自己设计语句有什么影响？需要注意，Ruby语言有个显示的关键词 end，表示表达式什么时候完成，如果没有end，+4部分可能被解析为else的一部分。
+
+Turning every statement into an expression forces you to answer a few hairy questions like that. In return, you eliminate some redundancy. C has both blocks for sequencing statements, and the comma operator for sequencing expressions. It has both the if statement and the ?: conditional operator. If everything was an expression in C, you could unify each of those.
+
+Languages that do away with statements usually also feature implicit returns—a function automatically returns whatever value its body evaluates to without need for some explicit return syntax. For small functions and methods, this is really handy. In fact, many languages that do have statements have added syntax like => to be able to define functions whose body is the result of evaluating a single expression.
+
+
+将每个语句变为表达式，迫使我们回答上面的棘手问题，作为回报，这样做，消除了一些冗余。C语言中，既有语句，也包含表达式，例如：它既有if语句，也有三元运算符 ?: ，如果C语言中一切都是表达式，那么这两种写法将统一为一种。
+
+不使用语句的语言，通常具有隐式返回特性——函数会自动返回计算结果，而不需要显示返回语句。对于小函数和方法，这样非常方便。事实上，很多存在语句的语言，都实现了=> 这样的语法，定义一个函数，函数体是一个表达式的计算结果
+
+
+But making all functions work that way can be a little strange. If you aren’t careful, your function will leak a return value even if you only intend it to produce a side effect. In practice, though, users of these languages don’t find it to be a problem.
+
+
+For Lox, I gave it statements for prosaic reasons. I picked a C-like syntax for familiarity’s sake, and trying to take the existing C statement syntax and interpret it like expressions gets weird pretty fast.
+
+
+
+
+
+
+
+
+
