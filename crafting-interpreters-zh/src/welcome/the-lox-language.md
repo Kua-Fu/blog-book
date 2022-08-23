@@ -736,6 +736,22 @@ fun returnSum(a, b) {
 
 如果函数执行到末尾，没有return语句，会隐式的返回 nil
 
+> See, I told you nil would sneak in when we weren’t looking.
+>
+> 看吧，我就说过 nil 总会在我们不注意的时候，偷偷溜进来。
+
+> I’ve seen languages that use fn, fun, func, and function. I’m still hoping to discover a funct, functi, or functio somewhere.
+>
+> 我已经见过其他语言中，使用fn fun func function 关键字定义函数，我还在期待，有语言使用关键词 funct functi functio
+
+> Speaking of terminology, some statically typed languages like C make a distinction between declaring a function and defining it. A declaration binds the function’s type to its name so that calls can be type-checked but does not provide a body. A definition declares the function and also fills in the body so that the function can be compiled
+> 
+> 说到术语，一些静态类型语言，例如：C语言，在函数声明和函数定义之间有不同之处。函数声明，函数名称关联着参数类型，以便再调用函数时候，检查参数类型，但是不定义函数体。函数定义，在声明函数的同时，还会定义函数体，以便可以编译函数。
+
+> Since Lox is dynamically typed, this distinction isn’t meaningful. A function declaration fully specifies the function including its body.
+>
+> 因为Lox是一门动态语言，函数声明和函数定义没有区别，函数声明需要指定函数体。
+
 ### 8.1 Closures
 
 闭包
@@ -853,6 +869,14 @@ fn();
 
 可以想象，实现这个闭包功能，会增加一些复杂性，因为我们不能假设变量，严格的像堆栈一样工作，当函数返回时候，局部变量就消失了。我们将有一段愉快的时光，学习如何正确有效的工作。
 
+> Peter J. Landin coined the term “closure”. Yes, he invented damn near half the terms in programming languages. Most of them came out of one incredible paper, “The Next 700 Programming Languages”.
+> 
+> [Peter J. Landin](https://zh.wikipedia.org/zh-tw/%E5%BD%BC%E5%BE%97%C2%B7%E5%85%B0%E4%B8%81) 创造了闭包概念，是的，他几乎发明了一半的编程语言术语，其中大部分都出自那边重要论文 [The Next 700 Programming Languages](https://github.com/Kua-Fu/blog-book-images/blob/main/paper/The-Next-700-Programming-Languages.pdf)
+>
+> In order to implement these kind of functions, you need to create a data structure that bundles together the function’s code and the surrounding variables it needs. He called this a “closure” because it closes over and holds on to the variables it needs.
+> 
+> 为了实现这些函数，我们需要创建一个数据结构，将函数代码和函数所需要变量绑定在一起。他称这种数据结构为闭包，因为它包围着函数，并且包含了相关变量。
+
 ## 九、Classes
 
 类
@@ -932,6 +956,14 @@ I don’t know why that is, but people naturally seem to prefer a class-based (C
 但是我看到很多，使用原型语言编写的代码，包括我自己的一些设计。你知道，人们通常如何利用原型的强大功能和灵活性吗？他们使用原型来改造类。
 
 我不知道为什么会这样，人们似乎更加喜欢基于类的风格，尽管基于原型的语言更加容易理解。但是，基于原型的语言，似乎将更多的复杂性转移到用户身上了，因此，对于Lox语言，我们将省去这些麻烦，一开始就使用基于类的面向对象。
+
+> In a statically typed language like C++, method lookup typically happens at compile time based on the static type of the instance, giving you static dispatch. In contrast, dynamic dispatch looks up the class of the actual instance object at runtime. This is how virtual methods in statically typed languages and all methods in a dynamically typed language like Lox work.
+> 
+> 在C++ 这样的静态语言中，查找实例方法，一般是在编译阶段进行的，在编译时候，根据实例的静态类型，实现静态调度。相反的，动态调度，是在运行时候，才会去查看实例对应的对象类。 这就是，静态语言中的虚拟方法，和动态语言中的所有方法的工作方式。
+
+> In practice the line between class-based and prototype-based languages blurs. JavaScript’s “constructor function” notion pushes you pretty hard towards defining class-like objects. Meanwhile, class-based Ruby is perfectly happy to let you attach methods to individual instances.
+>
+> 在实践中，基于类和基于原型的语言之间的界限已经模糊了，JavaScript 的构造函数，让你很难定义一个基于类的对象；同样的，基于类的Ruby，非常乐意让你把方法添加到具体的实例上。
 
 ### 9.4 Classes in Lox
 

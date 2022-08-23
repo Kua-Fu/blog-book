@@ -663,6 +663,22 @@ fun returnSum(a, b) {
 
 </code></pre>
 <p>如果函数执行到末尾，没有return语句，会隐式的返回 nil</p>
+<blockquote>
+<p>See, I told you nil would sneak in when we weren’t looking.</p>
+<p>看吧，我就说过 nil 总会在我们不注意的时候，偷偷溜进来。</p>
+</blockquote>
+<blockquote>
+<p>I’ve seen languages that use fn, fun, func, and function. I’m still hoping to discover a funct, functi, or functio somewhere.</p>
+<p>我已经见过其他语言中，使用fn fun func function 关键字定义函数，我还在期待，有语言使用关键词 funct functi functio</p>
+</blockquote>
+<blockquote>
+<p>Speaking of terminology, some statically typed languages like C make a distinction between declaring a function and defining it. A declaration binds the function’s type to its name so that calls can be type-checked but does not provide a body. A definition declares the function and also fills in the body so that the function can be compiled</p>
+<p>说到术语，一些静态类型语言，例如：C语言，在函数声明和函数定义之间有不同之处。函数声明，函数名称关联着参数类型，以便再调用函数时候，检查参数类型，但是不定义函数体。函数定义，在声明函数的同时，还会定义函数体，以便可以编译函数。</p>
+</blockquote>
+<blockquote>
+<p>Since Lox is dynamically typed, this distinction isn’t meaningful. A function declaration fully specifies the function including its body.</p>
+<p>因为Lox是一门动态语言，函数声明和函数定义没有区别，函数声明需要指定函数体。</p>
+</blockquote>
 <h3 id="81-closures"><a class="header" href="#81-closures">8.1 Closures</a></h3>
 <p>闭包</p>
 <p>Functions are first class in Lox, which just means they are real values that you can get a reference to, store in variables, pass around, etc. This works:</p>
@@ -753,6 +769,12 @@ fn();
 <p>可以看到，inner函数，调用了外层函数中的局部变量 outside, 这样会报错吗？很多语言都借鉴了 lisp 语言的这种特性，答案是，我们可以使用外层函数中的局部变量。</p>
 <p>为此，inner函数，必须包含对于周围变量的引用，这样即使外部函数已经返回，这些局部变量仍然会保留。我们将实现了这个功能的函数闭包。现如今，这个术语，闭包，经常用于第一类函数，尽管如何函数没有在任何变量上闭合，这个用词有些不太合适。</p>
 <p>可以想象，实现这个闭包功能，会增加一些复杂性，因为我们不能假设变量，严格的像堆栈一样工作，当函数返回时候，局部变量就消失了。我们将有一段愉快的时光，学习如何正确有效的工作。</p>
+<blockquote>
+<p>Peter J. Landin coined the term “closure”. Yes, he invented damn near half the terms in programming languages. Most of them came out of one incredible paper, “The Next 700 Programming Languages”.</p>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E5%BD%BC%E5%BE%97%C2%B7%E5%85%B0%E4%B8%81">Peter J. Landin</a> 创造了闭包概念，是的，他几乎发明了一半的编程语言术语，其中大部分都出自那边重要论文 <a href="https://github.com/Kua-Fu/blog-book-images/blob/main/paper/The-Next-700-Programming-Languages.pdf">The Next 700 Programming Languages</a></p>
+<p>In order to implement these kind of functions, you need to create a data structure that bundles together the function’s code and the surrounding variables it needs. He called this a “closure” because it closes over and holds on to the variables it needs.</p>
+<p>为了实现这些函数，我们需要创建一个数据结构，将函数代码和函数所需要变量绑定在一起。他称这种数据结构为闭包，因为它包围着函数，并且包含了相关变量。</p>
+</blockquote>
 <h2 id="九classes"><a class="header" href="#九classes">九、Classes</a></h2>
 <p>类</p>
 <p>Since Lox has dynamic typing, lexical (roughly, “block”) scope, and closures, it’s about halfway to being a functional language. But as you’ll see, it’s also about halfway to being an object-oriented language. Both paradigms have a lot going for them, so I thought it was worth covering some of each.</p>
@@ -791,6 +813,14 @@ fn();
 <p>这意味着某些方面，基于原型的语言，比基于类的语言，更加基础，它们实现起来非常简洁。此外，我们也可以实现很多不寻常的模式，而这些模式，通常基于类的语言都会尽量远离。</p>
 <p>但是我看到很多，使用原型语言编写的代码，包括我自己的一些设计。你知道，人们通常如何利用原型的强大功能和灵活性吗？他们使用原型来改造类。</p>
 <p>我不知道为什么会这样，人们似乎更加喜欢基于类的风格，尽管基于原型的语言更加容易理解。但是，基于原型的语言，似乎将更多的复杂性转移到用户身上了，因此，对于Lox语言，我们将省去这些麻烦，一开始就使用基于类的面向对象。</p>
+<blockquote>
+<p>In a statically typed language like C++, method lookup typically happens at compile time based on the static type of the instance, giving you static dispatch. In contrast, dynamic dispatch looks up the class of the actual instance object at runtime. This is how virtual methods in statically typed languages and all methods in a dynamically typed language like Lox work.</p>
+<p>在C++ 这样的静态语言中，查找实例方法，一般是在编译阶段进行的，在编译时候，根据实例的静态类型，实现静态调度。相反的，动态调度，是在运行时候，才会去查看实例对应的对象类。 这就是，静态语言中的虚拟方法，和动态语言中的所有方法的工作方式。</p>
+</blockquote>
+<blockquote>
+<p>In practice the line between class-based and prototype-based languages blurs. JavaScript’s “constructor function” notion pushes you pretty hard towards defining class-like objects. Meanwhile, class-based Ruby is perfectly happy to let you attach methods to individual instances.</p>
+<p>在实践中，基于类和基于原型的语言之间的界限已经模糊了，JavaScript 的构造函数，让你很难定义一个基于类的对象；同样的，基于类的Ruby，非常乐意让你把方法添加到具体的实例上。</p>
+</blockquote>
 <h3 id="94-classes-in-lox"><a class="header" href="#94-classes-in-lox">9.4 Classes in Lox</a></h3>
 <p>Lox语言中的类</p>
 <p>Enough rationale, let’s see what we actually have. Classes encompass a constellation of features in most languages. For Lox, I’ve selected what I think are the brightest stars. You declare a class and its methods like so:</p>
