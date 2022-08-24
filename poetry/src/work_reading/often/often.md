@@ -11,6 +11,10 @@
 	
 	> [online 时间](https://tool.lu/timestamp/)
 	
+	> [base64编码](https://base64.us/)
+	
+	> [json格式化](https://www.bejson.com/)
+	
 	> [emoji](https://getemoji.com/)
 	
 	> [临时邮箱](https://temp-mail.org/zh/view/62a03d9c2dc34f03fc14fc14)
