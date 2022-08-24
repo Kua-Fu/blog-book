@@ -1045,6 +1045,14 @@ print breakfast; // "Breakfast instance".
 
 ```
 
+> Larry Wall, Perl’s inventor/prophet calls this the [“waterbed theory”](http://wiki.c2.com/?WaterbedTheory). Some complexity is essential and cannot be eliminated. If you push it down in one place, it swells up in another.
+>
+> Larry Wall, Perl语言创始人，称之为水床理论——有些复杂性是无法消除，必不可少的。如果你在一个地方推它，它会在另一个地方膨胀。
+>
+> Prototypal languages don’t so much eliminate the complexity of classes as they do make the user take that complexity by building their own class-like metaprogramming libraries.
+>
+> 原型语言并没有消除类的复杂性。而是，让用户自己构建元类编程库，来承担复杂性。
+
 ### 9.5 Instantiation and initialization
 
 实例化和初始化
@@ -1228,6 +1236,18 @@ Because we don’t implement classes until well after we start working with the 
 这就是面向对象的方法，我试图保持功能集最小化，本书结构迫使我做出一定的妥协。Lox不是一种纯粹的面向对象语言，在真正的面向对象语言中，每个对象都是一个类的实例，即使是数值和布尔类型这样的原始值，都是一个类的实例。
 
 因为我们在开始使用内置类后，才实现类，所以，实现纯粹的面向对象，比较困难。因此，从类实例的意义上，基本类型的值不是实例。它们没有方法，也没有属性。如果，我想要让Lox变为一门用户可用的真正的语言，我会尝试解决这个问题。
+
+> Why the < operator? I didn’t feel like introducing a new keyword like extends. Lox doesn’t use : for anything else so I didn’t want to reserve that either. Instead, I took a page from Ruby and used <.
+> 
+> 为什么要使用 < 表示继承，而不是使用 extends 这样的关键字。同样的，Lox语言也不使用 : 用于任何用途，我从Ruby语言中得到灵感，使用< 表示继承。
+> 
+> If you know any type theory, you’ll notice it’s not a totally arbitrary choice. Every instance of a subclass is an instance of its superclass too, but there may be instances of the superclass that are not instances of the subclass. That means, in the universe of objects, the set of subclass objects is smaller than the superclass’s set, though type nerds usually use <: for that relation.
+> 
+> 如果你知道一些类型理论，你会注意到，这不是一个完全武断的决定。子类的每个实例，同时，也是父类的一个实例。可能存在一个实例，是父类的实例，但不是其子类的实例。在对象宇宙中，子类对象集合小于父类对象集合，类型理论的书呆子，会使用 <: 表示这种关系。
+> 
+> Lox is different from C++, Java, and C#, which do not inherit constructors, but similar to Smalltalk and Ruby, which do.
+> 
+> 不同于 C++ Java C#, 它们不会继承父类的构造函数，Lox语言，更加类似 Smalltalk Ruby，会继承构造函数。
 
 ## 十、The Standard Library
 

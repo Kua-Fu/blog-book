@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">欢迎</li><li class="chapter-item expanded "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../welcome/introduction.html"><strong aria-hidden="true">1.1.</strong> 介绍</a></li></ol></li><li class="chapter-item expanded "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">2.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="../welcome/the-lox-language.html" class="active"><strong aria-hidden="true">3.</strong> Lox语言</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">欢迎</li><li class="chapter-item expanded "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../welcome/introduction.html"><strong aria-hidden="true">1.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">1.2.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="../welcome/the-lox-language.html" class="active"><strong aria-hidden="true">1.3.</strong> Lox语言</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">解析树</li><li class="chapter-item expanded "><a href="../tree/tree.html"><strong aria-hidden="true">2.</strong> 解析树</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -879,6 +879,12 @@ var breakfast = Breakfast();
 print breakfast; // &quot;Breakfast instance&quot;.
 
 </code></pre>
+<blockquote>
+<p>Larry Wall, Perl’s inventor/prophet calls this the <a href="http://wiki.c2.com/?WaterbedTheory">“waterbed theory”</a>. Some complexity is essential and cannot be eliminated. If you push it down in one place, it swells up in another.</p>
+<p>Larry Wall, Perl语言创始人，称之为水床理论——有些复杂性是无法消除，必不可少的。如果你在一个地方推它，它会在另一个地方膨胀。</p>
+<p>Prototypal languages don’t so much eliminate the complexity of classes as they do make the user take that complexity by building their own class-like metaprogramming libraries.</p>
+<p>原型语言并没有消除类的复杂性。而是，让用户自己构建元类编程库，来承担复杂性。</p>
+</blockquote>
 <h3 id="95-instantiation-and-initialization"><a class="header" href="#95-instantiation-and-initialization">9.5 Instantiation and initialization</a></h3>
 <p>实例化和初始化</p>
 <p>Classes that only have behavior aren’t super useful. The idea behind object-oriented programming is encapsulating behavior and state together. To do that, you need fields. Lox, like other dynamically typed languages, lets you freely add properties onto objects.</p>
@@ -1009,6 +1015,14 @@ class Brunch &lt; Breakfast {
 <p>Because we don’t implement classes until well after we start working with the built-in types, that would have been hard. So values of primitive types aren’t real objects in the sense of being instances of classes. They don’t have methods or properties. If I were trying to make Lox a real language for real users, I would fix that.</p>
 <p>这就是面向对象的方法，我试图保持功能集最小化，本书结构迫使我做出一定的妥协。Lox不是一种纯粹的面向对象语言，在真正的面向对象语言中，每个对象都是一个类的实例，即使是数值和布尔类型这样的原始值，都是一个类的实例。</p>
 <p>因为我们在开始使用内置类后，才实现类，所以，实现纯粹的面向对象，比较困难。因此，从类实例的意义上，基本类型的值不是实例。它们没有方法，也没有属性。如果，我想要让Lox变为一门用户可用的真正的语言，我会尝试解决这个问题。</p>
+<blockquote>
+<p>Why the &lt; operator? I didn’t feel like introducing a new keyword like extends. Lox doesn’t use : for anything else so I didn’t want to reserve that either. Instead, I took a page from Ruby and used &lt;.</p>
+<p>为什么要使用 &lt; 表示继承，而不是使用 extends 这样的关键字。同样的，Lox语言也不使用 : 用于任何用途，我从Ruby语言中得到灵感，使用&lt; 表示继承。</p>
+<p>If you know any type theory, you’ll notice it’s not a totally arbitrary choice. Every instance of a subclass is an instance of its superclass too, but there may be instances of the superclass that are not instances of the subclass. That means, in the universe of objects, the set of subclass objects is smaller than the superclass’s set, though type nerds usually use &lt;: for that relation.</p>
+<p>如果你知道一些类型理论，你会注意到，这不是一个完全武断的决定。子类的每个实例，同时，也是父类的一个实例。可能存在一个实例，是父类的实例，但不是其子类的实例。在对象宇宙中，子类对象集合小于父类对象集合，类型理论的书呆子，会使用 &lt;: 表示这种关系。</p>
+<p>Lox is different from C++, Java, and C#, which do not inherit constructors, but similar to Smalltalk and Ruby, which do.</p>
+<p>不同于 C++ Java C#, 它们不会继承父类的构造函数，Lox语言，更加类似 Smalltalk Ruby，会继承构造函数。</p>
+</blockquote>
 <h2 id="十the-standard-library"><a class="header" href="#十the-standard-library">十、The Standard Library</a></h2>
 <p>标准库</p>
 <p>We’re almost done. That’s the whole language, so all that’s left is the “core” or “standard” library—the set of functionality that is implemented directly in the interpreter and that all user-defined behavior is built on top of.</p>
@@ -1094,6 +1108,9 @@ class Brunch &lt; Breakfast {
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next" href="../tree/tree.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -1105,6 +1122,9 @@ class Brunch &lt; Breakfast {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next" href="../tree/tree.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

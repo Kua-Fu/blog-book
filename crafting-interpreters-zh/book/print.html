@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">欢迎</li><li class="chapter-item expanded "><a href="welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="welcome/introduction.html"><strong aria-hidden="true">1.1.</strong> 介绍</a></li></ol></li><li class="chapter-item expanded "><a href="welcome/a-map-of-the-territory.html"><strong aria-hidden="true">2.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="welcome/the-lox-language.html"><strong aria-hidden="true">3.</strong> Lox语言</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">欢迎</li><li class="chapter-item expanded "><a href="welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="welcome/introduction.html"><strong aria-hidden="true">1.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="welcome/a-map-of-the-territory.html"><strong aria-hidden="true">1.2.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="welcome/the-lox-language.html"><strong aria-hidden="true">1.3.</strong> Lox语言</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">解析树</li><li class="chapter-item expanded "><a href="tree/tree.html"><strong aria-hidden="true">2.</strong> 解析树</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1469,6 +1469,12 @@ var breakfast = Breakfast();
 print breakfast; // &quot;Breakfast instance&quot;.
 
 </code></pre>
+<blockquote>
+<p>Larry Wall, Perl’s inventor/prophet calls this the <a href="http://wiki.c2.com/?WaterbedTheory">“waterbed theory”</a>. Some complexity is essential and cannot be eliminated. If you push it down in one place, it swells up in another.</p>
+<p>Larry Wall, Perl语言创始人，称之为水床理论——有些复杂性是无法消除，必不可少的。如果你在一个地方推它，它会在另一个地方膨胀。</p>
+<p>Prototypal languages don’t so much eliminate the complexity of classes as they do make the user take that complexity by building their own class-like metaprogramming libraries.</p>
+<p>原型语言并没有消除类的复杂性。而是，让用户自己构建元类编程库，来承担复杂性。</p>
+</blockquote>
 <h3 id="95-instantiation-and-initialization"><a class="header" href="#95-instantiation-and-initialization">9.5 Instantiation and initialization</a></h3>
 <p>实例化和初始化</p>
 <p>Classes that only have behavior aren’t super useful. The idea behind object-oriented programming is encapsulating behavior and state together. To do that, you need fields. Lox, like other dynamically typed languages, lets you freely add properties onto objects.</p>
@@ -1599,6 +1605,14 @@ class Brunch &lt; Breakfast {
 <p>Because we don’t implement classes until well after we start working with the built-in types, that would have been hard. So values of primitive types aren’t real objects in the sense of being instances of classes. They don’t have methods or properties. If I were trying to make Lox a real language for real users, I would fix that.</p>
 <p>这就是面向对象的方法，我试图保持功能集最小化，本书结构迫使我做出一定的妥协。Lox不是一种纯粹的面向对象语言，在真正的面向对象语言中，每个对象都是一个类的实例，即使是数值和布尔类型这样的原始值，都是一个类的实例。</p>
 <p>因为我们在开始使用内置类后，才实现类，所以，实现纯粹的面向对象，比较困难。因此，从类实例的意义上，基本类型的值不是实例。它们没有方法，也没有属性。如果，我想要让Lox变为一门用户可用的真正的语言，我会尝试解决这个问题。</p>
+<blockquote>
+<p>Why the &lt; operator? I didn’t feel like introducing a new keyword like extends. Lox doesn’t use : for anything else so I didn’t want to reserve that either. Instead, I took a page from Ruby and used &lt;.</p>
+<p>为什么要使用 &lt; 表示继承，而不是使用 extends 这样的关键字。同样的，Lox语言也不使用 : 用于任何用途，我从Ruby语言中得到灵感，使用&lt; 表示继承。</p>
+<p>If you know any type theory, you’ll notice it’s not a totally arbitrary choice. Every instance of a subclass is an instance of its superclass too, but there may be instances of the superclass that are not instances of the subclass. That means, in the universe of objects, the set of subclass objects is smaller than the superclass’s set, though type nerds usually use &lt;: for that relation.</p>
+<p>如果你知道一些类型理论，你会注意到，这不是一个完全武断的决定。子类的每个实例，同时，也是父类的一个实例。可能存在一个实例，是父类的实例，但不是其子类的实例。在对象宇宙中，子类对象集合小于父类对象集合，类型理论的书呆子，会使用 &lt;: 表示这种关系。</p>
+<p>Lox is different from C++, Java, and C#, which do not inherit constructors, but similar to Smalltalk and Ruby, which do.</p>
+<p>不同于 C++ Java C#, 它们不会继承父类的构造函数，Lox语言，更加类似 Smalltalk Ruby，会继承构造函数。</p>
+</blockquote>
 <h2 id="十the-standard-library"><a class="header" href="#十the-standard-library">十、The Standard Library</a></h2>
 <p>标准库</p>
 <p>We’re almost done. That’s the whole language, so all that’s left is the “core” or “standard” library—the set of functionality that is implemented directly in the interpreter and that all user-defined behavior is built on top of.</p>
@@ -1675,6 +1689,14 @@ class Brunch &lt; Breakfast {
 <p>不使用语句的语言，通常具有隐式返回特性——函数会自动返回计算结果，而不需要显示返回语句。对于小函数和方法，这样非常方便。事实上，很多存在语句的语言，都实现了=&gt; 这样的语法，定义一个函数，函数体是一个表达式的计算结果</p>
 <p>But making all functions work that way can be a little strange. If you aren’t careful, your function will leak a return value even if you only intend it to produce a side effect. In practice, though, users of these languages don’t find it to be a problem.</p>
 <p>For Lox, I gave it statements for prosaic reasons. I picked a C-like syntax for familiarity’s sake, and trying to take the existing C statement syntax and interpret it like expressions gets weird pretty fast.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="解析树"><a class="header" href="#解析树">解析树</a></h1>
+<p>A TREE-WALK INTERPRETER</p>
+<p>With this part, we begin jlox, the first of our two interpreters. Programming languages are a huge topic with piles of concepts and terminology to cram into your brain all at once. Programming language theory requires a level of mental rigor that you probably haven’t had to summon since your last calculus final. (Fortunately there isn’t too much theory in this book.)</p>
+<p>Implementing an interpreter uses a few architectural tricks and design patterns uncommon in other kinds of applications, so we’ll be getting used to the engineering side of things too. Given all of that, we’ll keep the code we have to write as simple and plain as possible.</p>
+<p>In less than two thousand lines of clean Java code, we’ll build a complete interpreter for Lox that implements every single feature of the language, exactly as we’ve specified. The first few chapters work front-to-back through the phases of the interpreter—scanning, parsing, and evaluating code. After that, we add language features one at a time, growing a simple calculator into a full-fledged scripting language.</p>
+<p>第二部分，我们将从jLox解释器开始，jLox解释器，是我们将要介绍的两个解释器之一。编程语言是一个非常大的话题，有成堆的概念和术语，将一下子塞进你的大脑。编程语言理论，需要一定程度上的严谨性，这可能是你上一次微积分考试后，就没有再经历过的。但幸运的是，本书中，我们将很少涉及严谨的理论研究。</p>
+<p>实现一个解释器，使用了其他类型应用程序中，不太使用的，架构技巧和设计模式。因此，我们将熟悉一些软件工程方面的事情，我们将编写尽可能简明的代码。</p>
+<p>在不到两千行Java代码中，我们将实现一个Lox语言的完整的解释器，这个解释器，实现了语言的所有特性，正如我们期望的那样。接下来的几章，我们将介绍解释器的扫描、解析、优化阶段，之后，我们将一次直接添加一个特性，把一个简单的计算器，扩展为一个成熟的脚本语言。</p>
 
                     </main>
 
