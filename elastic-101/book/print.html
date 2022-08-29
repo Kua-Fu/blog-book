@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">实际使用</li><li class="chapter-item expanded "><a href="use/backup/backup.html"><strong aria-hidden="true">3.</strong> elasticsearch集群备份</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="use/backup/snapshot.html"><strong aria-hidden="true">3.1.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="use/backup/meta.html"><strong aria-hidden="true">3.2.</strong> 只备份集群中的策略、模版等信息</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">实际使用</li><li class="chapter-item expanded "><a href="use/backup/backup.html"><strong aria-hidden="true">3.</strong> elasticsearch集群备份</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="use/backup/snapshot.html"><strong aria-hidden="true">3.1.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="use/backup/meta.html"><strong aria-hidden="true">3.2.</strong> 只备份集群中的策略、模版等信息</a></li></ol></li><li class="chapter-item expanded "><a href="use/reindex/reindex.html"><strong aria-hidden="true">4.</strong> reindex 过程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="use/reindex/add-field.html"><strong aria-hidden="true">4.1.</strong> reindex添加新字段</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1310,6 +1310,27 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
   }
 }
 
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reindex-过程"><a class="header" href="#reindex-过程">reindex 过程</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reindex添加新字段"><a class="header" href="#reindex添加新字段">reindex添加新字段</a></h1>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html#modules-scripting-doc-vals">Accessing document fields and special variables</a></p>
+</blockquote>
+<p>假设我们想要知道 之前索引中的日志大小，</p>
+<p>可以在reindex阶段，使用script，计算每个doc 的_source长度</p>
+<pre><code>POST _reindex
+{
+  &quot;source&quot;: {
+    &quot;index&quot;: &quot;yztest-log&quot;
+  },
+  &quot;dest&quot;: {
+    &quot;index&quot;: &quot;yztest-backup&quot;
+  },
+  &quot;script&quot;: {
+    &quot;lang&quot;: &quot;painless&quot;,
+    &quot;source&quot;: &quot;&quot;&quot;ctx._source.len = ctx._source.toString().length()&quot;&quot;&quot;
+  }
+}
 </code></pre>
 
                     </main>

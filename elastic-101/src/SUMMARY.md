@@ -15,3 +15,7 @@
 	- [使用快照备份](./use/backup/snapshot.md)
 	
 	- [只备份集群中的策略、模版等信息](./use/backup/meta.md)
+	
+- [reindex 过程](./use/reindex/reindex.md)
+
+	- [reindex添加新字段](./use/reindex/add-field.md)
