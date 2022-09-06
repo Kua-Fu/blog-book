@@ -9,6 +9,7 @@ title = "诗意人生"
 [output.html]
 git-repository-url = "https://github.com/Kua-Fu/blog-book"
 input-404 = "404.md"
+mathjax-support = true
 
 [output.html.fold]
 enable = true

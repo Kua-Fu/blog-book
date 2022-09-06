@@ -88,6 +88,10 @@
 
 # 处理人类语言
 
+- [概览](./languages/readme.md)
+- [开始处理各种语言](./languages/language-intro.md)
+- [使用语言分析器](./languages/using-language-analyzers.md)
+
 # 聚合
 
 # 地理位置

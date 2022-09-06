@@ -8,6 +8,7 @@
 
 - [经常使用](work_reading/often/often.md)
 - [工作阅读文章](work_reading/read.md)
+- [sls问题概述](work_reading/sls.md)
 
 # 技术学习
 
@@ -64,6 +65,12 @@
 
 - [歌曲](curiosity/music/music.md)
   - [笑看风云](curiosity/music/xiao_kan_feng_yun.md)
+  
+# 面试准备
+
+- [数据库](interview/db.md)
+
+- [算法](interview/algorithm.md)
   
 -----------
 
