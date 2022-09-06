@@ -34,6 +34,7 @@
   - [DataDog实践—大数据百分位实时计算实践](article/technology/datadog_percentile.md)
   - [elasticsearch相关技术文档](article/technology/elastic.md)
   - [LogMine: Fast Pattern Recognition for Log Analytics](article/technology/logmine.md)
+  - [asynq-一种go异步框架源码阅读](article/technology/asynq.md)
   
 - [生活](article/life/life.md)
   - [Kevin Kelly的103条建议](article/life/103_advice.md)
