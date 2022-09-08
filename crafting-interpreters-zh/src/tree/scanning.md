@@ -725,6 +725,29 @@ In each turn of the loop, we scan a single token. This is the real heart of the 
 
 在循环过程中，我们会扫描token，这是扫描器的核心功能，我们从简单开始，设想一下，每个token都是一个简单的字符，我们需要做的是，继续判断下一个token，在Lox语言中，有几个词素是简单的一个字符，我们从这些单字符词素开始：
 
+```java
+
+// lox/Scanner.java, add after scanTokens()
+
+  private void scanToken() {
+    char c = advance();
+    switch (c) {
+      case '(': addToken(LEFT_PAREN); break;
+      case ')': addToken(RIGHT_PAREN); break;
+      case '{': addToken(LEFT_BRACE); break;
+      case '}': addToken(RIGHT_BRACE); break;
+      case ',': addToken(COMMA); break;
+      case '.': addToken(DOT); break;
+      case '-': addToken(MINUS); break;
+      case '+': addToken(PLUS); break;
+      case ';': addToken(SEMICOLON); break;
+      case '*': addToken(STAR); break; 
+    }
+  }
+  
+```
+
+
 
 > Wondering why / isn’t in here? Don’t worry, we’ll get to it.
 > 
@@ -732,9 +755,598 @@ In each turn of the loop, we scan a single token. This is the real heart of the 
 
 Again, we need a couple of helper methods.
 
-同样的，我们还需要定义几个函数。
+The advance() method consumes the next character in the source file and returns it. Where advance() is for input, addToken() is for output. It grabs the text of the current lexeme and creates a new token for it. We’ll use the other overload to handle tokens with literal values soon.
+
+同样的，我们还需要定义几个方法。
+
+advance() 方法获取源文件中的下一个字符，并且返回。 advance() 方法主要用于输入，addToken() 方法用于输出，它会获取当前词素文本，并且创建新的token，下面将很快应用另外一个 addToken() 重载方法
+
+
+```java
+
+// lox/Scanner.java, add after isAtEnd()
+
+  private char advance() {
+    return source.charAt(current++);
+  }
+
+  private void addToken(TokenType type) {
+    addToken(type, null);
+  }
+
+  private void addToken(TokenType type, Object literal) {
+    String text = source.substring(start, current);
+    tokens.add(new Token(type, text, literal, line));
+  }
+  
+```
+
+### 5.1 Lexical errors
+
+词素错误
+
+Before we get too far in, let’s take a moment to think about errors at the lexical level.  What happens if a user throws a source file containing some characters Lox doesn’t use, like @#^, at our interpreter? Right now, those characters get silently discarded. They aren’t used by the Lox language, but that doesn’t mean the interpreter can pretend they aren’t there. Instead, we report an error.
+
+在我们深入探讨之前，需要花一点时间考虑一下词汇层面的错误。如果客户源文件中包含了，Lox语言中未定义的字符，例如 @#^，我们的jlox解释器将会如何处理？现在，我们的处理方式是，悄悄丢弃这些字符。但是，Lox语言中不使用它们，并不表示它们不存在，我们将报告一个错误。
+
+```java
+
+// lox/Scanner.java, in scanToken()
+            case '*':
+                addToken(STAR);
+                break;
+            default:
+                Lox.error(line, "Unexpected character.");
+                break;
+        }
+		
+```
+
+Note that the erroneous character is still consumed by the earlier call to advance(). That’s important so that we don’t get stuck in an infinite loop.
+
+Note also that we keep scanning. There may be other errors later in the program.  It gives our users a better experience if we detect as many of those as possible in one go. Otherwise, they see one tiny error and fix it, only to have the next error appear, and so on. Syntax error Whac-A-Mole is no fun.
+
+(Don’t worry. Since hadError gets set, we’ll never try to execute any of the code, even though we keep going and scan the rest of it.)
+
+需要⚠️，advance()方法，仍然会消费错误的字符，这一点非常重要，否则，我们将陷入到无限循环中。
+
+还需要注意，我们一直在扫描源文件，扫描过程中，可能会有其他报错。如果我们一次性检测到尽可能多的报错，会给使用者更好的体验。否则，使用者看到一个小错误，并且修复，然后，又会出现下一个小错误，一直这样进行着。
+
+别担心，即使遇到报错，我们继续扫描源文件，也不会真的执行程序，因为 hadError 的存在。
+
+> The code reports each invalid character separately, so this shotguns the user with a blast of errors if they accidentally paste a big blob of weird text. Coalescing a run of invalid characters into a single error would give a nicer user experience.
+>
+> 代码会分别报告每一个非法字符，因此，如果客户意外粘贴了一大块非法的文本，使用者将会收到非常多的报错，将一系列的错误合并为一个错误，将提供更好的用户体验。
+
+### 5.2 Operators
+
+操作符
+
+We have single-character lexemes working, but that doesn’t cover all of Lox’s operators. What about !? It’s a single character, right? Sometimes, yes, but if the very next character is an equals sign, then we should instead create a != lexeme. Note that the ! and = are not two independent operators. You can’t write ! = in Lox and have it behave like an inequality operator. That’s why we need to scan != as a single lexeme. Likewise, <, >, and = can all be followed by = to create the other equality and comparison operators.
 
 
 
+我们现在已经考虑到单字符的操作符，但是，这并没有包含lox中的所有操作符。例如：！字符，是一个单字符操作符吗？但是，有时候，紧随着 ！后面的是一个 = ， 此时，我们应该创建一个 != 类型的token，而不是简单的 ！token. ⚠️，! 和 = 不是两个独立的操作符，在lox中，我们不会写 ! = 这种运算符， 一般写法为 != 。这样，我们需要把 !=当作一个单独的词素，相似的，>= <= 也应该视为单独的词素
+
+For all of these, we need to look at the second character.
+
+所以对于这些字符，我们需要继续扫描第二个字符
+
+```java
+
+// lox/Scanner.java, in scanToken()
+
+      case '*': addToken(STAR); break; 
+      case '!':
+        addToken(match('=') ? BANG_EQUAL : BANG);
+        break;
+      case '=':
+        addToken(match('=') ? EQUAL_EQUAL : EQUAL);
+        break;
+      case '<':
+        addToken(match('=') ? LESS_EQUAL : LESS);
+        break;
+      case '>':
+        addToken(match('=') ? GREATER_EQUAL : GREATER);
+        break;
+
+      default:
+	  
+```
+
+Those cases use this new method:
+
+上面场景，需要添加新的方法。
+
+```java
+
+// lox/Scanner.java, add after scanToken()
+
+  private boolean match(char expected) {
+    if (isAtEnd()) return false;
+    if (source.charAt(current) != expected) return false;
+
+    current++;
+    return true;
+  }
+```
+
+It’s like a conditional advance(). We only consume the current character if it’s what we’re looking for.
+
+Using match(), we recognize these lexemes in two stages. When we reach, for example, !, we jump to its switch case. That means we know the lexeme starts with !. Then we look at the next character to determine if we’re on a != or merely a !.
+
+match() 方法好像是一个有条件的 advance(), 只有当现在的字符是我们期望的，才会消费。
+
+使用match()，我们可以分为两个阶段识别这些词素，当扫描到 ！时候，我们进入判断逻辑，判断下一个字符是不是 =，如果是=，则我们的词素是 !=
+
+## 六、Longer Lexemes
+
+长词素
+
+We’re still missing one operator: / for division. That character needs a little special handling because comments begin with a slash too.
+
+我们仍然没有考虑到 / 运算符，一般用于表示除法，但是，该字符需要一些特殊处理，因为lox语言中，注释也是 / 字符开始的。
+
+```java
+
+// lox/Scanner.java, in scanToken()
+
+        break;
+      case '/':
+        if (match('/')) {
+          // A comment goes until the end of the line.
+          while (peek() != '\n' && !isAtEnd()) advance();
+        } else {
+          addToken(SLASH);
+        }
+        break;
+
+      default:
+	  
+```
+
+This is similar to the other two-character operators, except that when we find a second /, we don’t end the token yet. Instead, we keep consuming characters until we reach the end of the line.
+
+This is our general strategy for handling longer lexemes. After we detect the beginning of one, we shunt over to some lexeme-specific code that keeps eating characters until it sees the end.
+
+这类似于其他的两个字符组成的词素，只有当我们找到第二个 /， 才能确定是注释。当我们发现下一个字符依然是 /，我们将不断消耗字符，一直到行尾。
+
+这是我们处理较长词素的一般策略。在我们检测到一个特殊字符后，我们转向一些特定于该词素的代码，而这些代码一直会消费字符，一直到结束。
+
+We’ve got another helper:
+
+这个逻辑，可以变为新函数 peek()
+
+```java
+
+// lox/Scanner.java, add after match()
+
+  private char peek() {
+    if (isAtEnd()) return '\0';
+    return source.charAt(current);
+  }
 
 
+```
+
+It’s sort of like advance(), but doesn’t consume the character. This is called lookahead. Since it only looks at the current unconsumed character, we have one character of lookahead. The smaller this number is, generally, the faster the scanner runs. The rules of the lexical grammar dictate how much lookahead we need. Fortunately, most languages in wide use peek only one or two characters ahead.
+
+peek() 方法和advance() 方法非常相似，但是peek()方法不会消费字符，我们称为前瞻。由于，它只会查看当前没有使用的字符，因此我们称之为前瞻。通常，这个peek() 调用次数越少，我们的扫描器会越快，词法规则，定义了我们可能需要peek() 的次数。幸运的是，大多数语言的只会有1个或者2个字符需要peek()
+
+> Technically, match() is doing lookahead too. advance() and peek() are the fundamental operators and match() combines them.
+> 
+> 从技术角度，match() 方法也是一种前瞻。advance() 和 peek() 方法是基础运算单元，match() 方法，可以由它们组合。
+
+Comments are lexemes, but they aren’t meaningful, and the parser doesn’t want to deal with them. So when we reach the end of the comment, we don’t call addToken(). When we loop back around to start the next lexeme, start gets reset and the comment’s lexeme disappears in a puff of smoke.
+
+While we’re at it, now’s a good time to skip over those other meaningless characters: newlines and whitespace.
+
+注释也是词素，但是它们没有实际意义，解析器也不会处理它们。因此，当我们到达行尾时候，我们不会添加新的token，当我们到达写一个词素时，将更新start，即，我们不会考虑注释部分词素。
+
+同样的，也需要跳过其他没有实际意义的字符，例如：换行符 \n 和 其他空白符
+
+```java
+
+// lox/Scanner.java, in scanToken()
+
+        break;
+
+      case ' ':
+      case '\r':
+      case '\t':
+        // Ignore whitespace.
+        break;
+
+      case '\n':
+        line++;
+        break;
+
+      default:
+        Lox.error(line, "Unexpected character.");
+
+```
+
+When encountering whitespace, we simply go back to the beginning of the scan loop. That starts a new lexeme after the whitespace character. For newlines, we do the same thing, but we also increment the line counter. (This is why we used peek() to find the newline ending a comment instead of match(). We want that newline to get us here so we can update line.)
+
+
+当遇到空白字符，我们将回到扫描循环开始。这将在空白字符后，开始扫描下一个词素。对于换行符，我们同样这样，但是还需要增加行计数器。这就是，我们使用peek() 来查找注释行，行尾的换行符，而不是使用match() 方法，我们希望换行符，走到这个case分支，这样我们就可以增加行计数器，所以，我们可以更新行。
+
+Our scanner is getting smarter. It can handle fairly free-form code like:
+
+我们的扫描器越来越智能了，它可以处理这种类型的代码
+
+```java
+
+// this is a comment
+(( )){} // grouping stuff
+!*+-/=<> <= == // operators
+
+```
+
+### 6.1 String literals
+
+字符串常量
+
+
+Now that we’re comfortable with longer lexemes, we’re ready to tackle literals. We’ll do strings first, since they always begin with a specific character, ".
+
+既然现在，我们已经习惯了较长的词素，我们可以继续处理文字了。我们将首先处理，字符串，它们总是以 " 字符开始。
+
+```java
+
+// lox/Scanner.java, in scanToken()
+        break;
+
+      case '"': string(); break;
+
+      default:
+```
+
+```java
+
+// lox/Scanner.java, add after scanToken()
+
+  private void string() {
+    while (peek() != '"' && !isAtEnd()) {
+      if (peek() == '\n') line++;
+      advance();
+    }
+
+    if (isAtEnd()) {
+      Lox.error(line, "Unterminated string.");
+      return;
+    }
+
+    // The closing ".
+    advance();
+
+    // Trim the surrounding quotes.
+    String value = source.substring(start + 1, current - 1);
+    addToken(STRING, value);
+  }
+
+```
+
+Like with comments, we consume characters until we hit the " that ends the string. We also gracefully handle running out of input before the string is closed and report an error for that.
+
+For no particular reason, Lox supports multi-line strings. There are pros and cons to that, but prohibiting them was a little more complex than allowing them, so I left them in. That does mean we also need to update line when we hit a newline inside a string.
+
+Finally, the last interesting bit is that when we create the token, we also produce the actual string value that will be used later by the interpreter. Here, that conversion only requires a substring() to strip off the surrounding quotes. If Lox supported escape sequences like \n, we’d unescape those here.
+
+和注释一样，我们不断消费字符，直到遇到结尾的 " 字符，如果源文件已经消费完了，但是仍然没有发现字符串结尾 ", 我们将会报告一个错误。
+
+没有什么特殊原因，lox语言支持多行字符串。这样做，各有利弊，但是禁止使用多行字符串，比支持使用更加复杂，所以，我将运行lox使用多行字符串。这意味着，如果字符串中遇到换行符，我们需要更新行计数器。
+
+最后，还有一个有意思的地方，当我们创建token时候，还会包含字符串的实际值，稍后，解释器将会使用字符串的实际值。在这里，还需要一个子字符串函数，去除字符串的 " 字符。如果lox支持转义，例如：\n, 我们在这里将取消转义。
+
+## 6.2 Number literals
+
+数值
+
+All numbers in Lox are floating point at runtime, but both integer and decimal literals are supported. A number literal is a series of digits optionally followed by a . and one or more trailing digits.
+
+lox运行时候，所有的数字都是浮点数，但是，我们支持使用者使用整数 和十进制的数字。数值是一个数字序列，其中可能是整数，也可能是浮点数。
+
+```
+
+1234
+12.34
+
+```
+
+We don’t allow a leading or trailing decimal point, so these are both invalid:
+
+但是我们不允许，小数点之前或者之后，没有实际数字
+
+```
+
+.1234
+1234.
+
+```
+
+> Since we look only for a digit to start a number, that means -123 is not a number literal. Instead, -123, is an expression that applies - to the number literal 123. In practice, the result is the same, though it has one interesting edge case if we were to add method calls on numbers. Consider:
+> 
+> ```print -123.abs();```
+> 
+> This prints -123 because negation has lower precedence than method calls. We could fix that by making - part of the number literal. But then consider:
+> 
+> 
+> ```
+>  var n = 123;
+>  print -n.abs();
+> 
+> ```
+> 
+> 
+> This still produces -123, so now the language seems inconsistent. No matter what you do, some case ends up weird.
+> 
+> 因为我们将数字当作，数值词素的一个开始，这意味着 -123 不是一个数字。对应的，-123 是一个表达式。实际上，表达式的计算结果 和 -123 相同，有一个有趣的边缘场景，如果对于数字进行方法调用，例如:
+> 
+> ```print -123.abs();```
+> 
+> 这将打印出 -123, 因为负数优先级 低于 方法调用，即先执行 abs() 方法，然后才会执行负数运算。我们可以将负数符号，添加到数值中，来解决这个问题。但是，还需要考虑下面场景:
+> 
+> ```
+> var n = 123;
+> print -n.abs();
+> ```
+> 
+> 上面的代码，将仍然打印出 -123，所以现在，lox语言出现了不一致，不管我们怎样修改，都会非常奇怪。
+
+We could easily support the former, but I left it out to keep things simple. The latter gets weird if we ever want to allow methods on numbers like 123.sqrt()
+
+To recognize the beginning of a number lexeme, we look for any digit. It’s kind of tedious to add cases for every decimal digit, so we’ll stuff it in the default case instead.
+
+对于 `.1234`这种形式的数值，我们可以很容易兼容它，但是，为了简单，lox将不支持这种写法。但是，如果我们允许 `1234.` 这种写法，`1234.sqrt()` 将会变得很令人疑惑。
+
+为了识别数字词素的开头，我们将先发现一个数字，为每一个十进制数字添加大小写非常乏味，所以，我们将它们填充为默认的大小写。
+
+```java
+
+// lox/Scanner.java, in scanToken(), replace 1 line
+      default:
+        if (isDigit(c)) {
+          number();
+        } else {
+          Lox.error(line, "Unexpected character.");
+        }
+        break;
+```
+
+This relies on this little utility:
+
+这依赖于新的方法 isDigit()
+
+```java
+
+// lox/Scanner.java, add after peek()
+
+  private boolean isDigit(char c) {
+    return c >= '0' && c <= '9';
+  } 
+
+```
+
+
+> The Java standard library provides Character.isDigit(), which seems like a good fit. Alas, that method allows things like Devanagari digits, full-width numbers, and other funny stuff we don’t want.
+> 
+> java 标准库提供了 Character.isDigit() 函数，用于判断数字，看起俩很符合我们的要求。但是，这个函数可以兼容梵文数字，全宽数字，这样子虽然非常有意思，但不是我们想要的数字。
+
+Once we know we are in a number, we branch to a separate method to consume the rest of the literal, like we do with strings.
+
+一旦我们遇到了数字，我们将不断消费下面的字符，这时候，我们将进入新的独立方法中，就像是我们处理字符串一样。
+
+```java
+
+// lox/Scanner.java, add after scanToken()
+  private void number() {
+    while (isDigit(peek())) advance();
+
+    // Look for a fractional part.
+    if (peek() == '.' && isDigit(peekNext())) {
+      // Consume the "."
+      advance();
+
+      while (isDigit(peek())) advance();
+    }
+
+    addToken(NUMBER,
+        Double.parseDouble(source.substring(start, current)));
+  }
+  
+```
+
+We consume as many digits as we find for the integer part of the literal. Then we look for a fractional part, which is a decimal point (.) followed by at least one digit. If we do have a fractional part, again, we consume as many digits as we can find.
+
+Looking past the decimal point requires a second character of lookahead since we don’t want to consume the . until we’re sure there is a digit after it. So we add:
+
+
+我们将尽可能多的获取数值的整数部分，接下来，我们将寻找小数点部分，它由一个 . 字符开始，后面至少加上一个数字。如果我们有一个分数部分，我们同样将消费尽可能多的数字。
+
+查看小数部分，需要我们前瞻后面的第二个字符，因为，如果小数点后面没有紧随着至少一个数字，我们将不会认为是一个小数部分。
+
+```java
+
+// lox/Scanner.java, add after peek()
+
+  private char peekNext() {
+    if (current + 1 >= source.length()) return '\0';
+    return source.charAt(current + 1);
+  } 
+```
+
+> I could have made peek() take a parameter for the number of characters ahead to look instead of defining two functions, but that would allow arbitrarily far lookahead. Providing these two functions makes it clearer to a reader of the code that our scanner looks ahead at most two characters.
+> 
+> 我本来可以定义一个 peek() 方法，接受一个参数，表示要前瞻的字符数，而不是定义两个函数，但是，这样，我们将允许任意长度的前瞻。提供了peek() 和 peeknext() 两个方法，可以更加明确，我们的扫描器，将最多允许2个字符的前瞻。
+
+Finally, we convert the lexeme to its numeric value. Our interpreter uses Java’s Double type to represent numbers, so we produce a value of that type. We’re using Java’s own parsing method to convert the lexeme to a real Java double. We could implement that ourselves, but, honestly, unless you’re trying to cram for an upcoming programming interview, it’s not worth your time.
+
+The remaining literals are Booleans and nil, but we handle those as keywords, which gets us to . . . 
+
+最后，我们将词素转变为它的数值。我们解释器，使用java double类型表示数字，所以，扫描器这里，我们也将生成一个double数字。我们使用java 的parse方法，将数值变为双精度数字。其实，我们也可以自己实现双精度数字的转换，但是，除非你在准备编程面试，没有必要浪费时间。
+
+剩下来，是布尔类型和 nil，但是我们将这些当作关键字处理，下面我们将探讨这些。
+
+## 七、Reserved Words and Identifiers
+
+保留字和标识符
+
+Our scanner is almost done. The only remaining pieces of the lexical grammar to implement are identifiers and their close cousins, the reserved words. You might think we could match keywords like or in the same way we handle multiple-character operators like <=.
+
+我们的扫描仪几乎快完成了。词法中还没有实现的是，标识符和保留字。你可能认为，我们应该像 <= 一样，一个个字符去匹配关键字，例如：我们要匹配 or ，代码如下
+
+```java
+case 'o':
+  if (match('r')) {
+    addToken(OR);
+  }
+  break;
+```
+
+
+Consider what would happen if a user named a variable orchid.  The scanner would see the first two letters, or, and immediately emit an or keyword token. This gets us to an important principle called maximal munch. When two lexical grammar rules can both match a chunk of code that the scanner is looking at, whichever one matches the most characters wins.
+
+That rule states that if we can match orchid as an identifier and or as a keyword, then the former wins. This is also why we tacitly assumed, previously, that <= should be scanned as a single <= token and not < followed by =.
+
+考虑一下，当我们命名一个变量 orchid ，如果我们扫描到该变量，将会发生什么？扫描器将会根据前面的两个字符 or, 立即提交一个token， 下面我们将介绍扫描器的一个重要的原则，[最大匹配原则](https://en.wikipedia.org/wiki/Maximal_munch), 当扫描器当前扫描的词素，同时满足两个词法规则，匹配最长字符的词法规则被命中。
+
+例如：orchid，能匹配两个词法规则，可以被当作一个标识符orchid，或被当作一个关键词 or, 根据最大匹配原则，我们选择 orchild 为一个标识符。同样的，这也是，为什么我们把 <= 当作一个完整的词素，而不是把 < 当作一个词素。
+
+> Consider this nasty bit of C code:
+> 
+> ```---a;```
+>
+> Is it valid? That depends on how the scanner splits the lexemes. What if the scanner sees it like this:
+>
+> ```- --a```
+>
+>Then it could be parsed. But that would require the scanner to know about the grammatical structure of the surrounding code, which entangles things more than we want. Instead, the maximal munch rule says that it is always scanned like:
+>
+> ```-- -a```
+>
+> It scans it that way even though doing so leads to a syntax error later in the parser.
+>
+> 考虑一下，这个讨厌的c代码
+>
+> ```---a;```
+> 
+> 这个语句是否合法，这取决于扫描器如何分割这个词素，如果扫描器把这个代码看作 
+> 
+> ```- --a;```
+>
+> 这样，是可以被解析的，但是，这需要扫描器了解周围代码的语法结构，这会让事情比我们想象的更加复杂。但是，实际上，按照最大匹配原则，它实际上应该是
+> 
+> ```-- -a;```
+>
+> 扫描器将会如上面这样，扫描代码，即使这样，会导致解析器中的语法错误。
+
+Maximal munch means we can’t easily detect a reserved word until we’ve reached the end of what might instead be an identifier. After all, a reserved word is an identifier, it’s just one that has been claimed by the language for its own use. That’s where the term reserved word comes from.
+
+最大匹配原则，意味着我们无法简单的判断一个词素是标识符，直到我们扫描到了可以确定是标识符结尾的位置。实际上，保留字也是一个标识符，它只是lox语言为了自己本身使用，而声明的一个标识符。这就是术语，保留字的来源。
+
+So we begin by assuming any lexeme starting with a letter or underscore is an identifier.
+
+所以，我们首先假设任何以字母或者下划线，开始的单词，都是一个标识符
+
+```java
+
+// lox/Scanner.java, in scanToken()
+
+      default:
+        if (isDigit(c)) {
+          number();
+        } else if (isAlpha(c)) {
+          identifier();
+        } else {
+          Lox.error(line, "Unexpected character.");
+        }
+
+```
+
+```java
+
+// lox/Scanner.java, add after scanToken()
+  private void identifier() {
+    while (isAlphaNumeric(peek())) advance();
+
+    addToken(IDENTIFIER);
+  }
+
+```
+
+```java
+
+// lox/Scanner.java, add after peekNext()
+
+  private boolean isAlpha(char c) {
+    return (c >= 'a' && c <= 'z') ||
+           (c >= 'A' && c <= 'Z') ||
+            c == '_';
+  }
+
+  private boolean isAlphaNumeric(char c) {
+    return isAlpha(c) || isDigit(c);
+  }
+```
+
+That gets identifiers working. To handle keywords, we see if the identifier’s lexeme is one of the reserved words. If so, we use a token type specific to that keyword. We define the set of reserved words in a map.
+
+上面的代码将会识别出标识符，为了处理关键字，我们将查看标识符的词素是否是一个保留字，如果是保留字，我们将会定义为特殊类型，下面是一组预定义的保留字。
+
+
+```java
+
+// lox/Scanner.java, in class Scanner
+	private static final Map<String, TokenType> keywords;
+
+
+    static {
+        keywords = new HashMap<>();
+        keywords.put("and", AND);
+        keywords.put("class", CLASS);
+        keywords.put("else", ELSE);
+        keywords.put("false", FALSE);
+        keywords.put("for", FOR);
+        keywords.put("fun", FUN);
+        keywords.put("if", IF);
+        keywords.put("nil", NIL);
+        keywords.put("or", OR);
+        keywords.put("print", PRINT);
+        keywords.put("return", RETURN);
+        keywords.put("super", SUPER);
+        keywords.put("this", THIS);
+        keywords.put("true", TRUE);
+        keywords.put("var", VAR);
+        keywords.put("while", WHILE);
+    }
+```
+
+Then, after we scan an identifier, we check to see if it matches anything in the map.
+
+然后，我们在确定一个标识符后，可以在判断一下是否是关键字
+
+```java
+
+// lox/Scanner.java, in identifier(), replace 1 line
+
+    private void identifier() {
+        while (isAlphaNumberic(peek()))
+            advance();
+        String text = source.substring(start, current);
+        TokenType type = keywords.get(text);
+        if (type == null)
+            type = IDENTIFIER;
+        addToken(type);
+    }
+  
+```
+
+If so, we use that keyword’s token type. Otherwise, it’s a regular user-defined identifier.
+
+And with that, we now have a complete scanner for the entire Lox lexical grammar. Fire up the REPL and type in some valid and invalid code. Does it produce the tokens you expect? Try to come up with some interesting edge cases and see if it handles them as it should.
+
+
+如果标识符是一个关键字，我们提交的token需要为关键字类型。
+
+有了这些，我们现在有了一个完整的扫描器。可以扫描整个lox程序。启动扫描器，输入一些lox代码，执行看看。它是否会输出你想要的token列表，尽可能尝试一些边缘示例，看看我们的扫描器是否可以执行呢？
