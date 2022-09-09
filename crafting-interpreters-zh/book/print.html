@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">欢迎</li><li class="chapter-item expanded "><a href="welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="welcome/introduction.html"><strong aria-hidden="true">1.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="welcome/a-map-of-the-territory.html"><strong aria-hidden="true">1.2.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="welcome/the-lox-language.html"><strong aria-hidden="true">1.3.</strong> Lox语言</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">解析树</li><li class="chapter-item expanded "><a href="tree/tree.html"><strong aria-hidden="true">2.</strong> 解析树</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tree/scanning.html"><strong aria-hidden="true">2.1.</strong> 扫描</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">前言</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">欢迎</li><li class="chapter-item expanded "><a href="welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="welcome/introduction.html"><strong aria-hidden="true">1.1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="welcome/a-map-of-the-territory.html"><strong aria-hidden="true">1.2.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="welcome/the-lox-language.html"><strong aria-hidden="true">1.3.</strong> Lox语言</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">解析树</li><li class="chapter-item expanded "><a href="tree/tree.html"><strong aria-hidden="true">2.</strong> 解析树</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tree/scanning.html"><strong aria-hidden="true">2.1.</strong> 扫描</a></li><li class="chapter-item expanded "><a href="tree/representing-code.html"><strong aria-hidden="true">2.2.</strong> Representing Code</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -2682,6 +2682,177 @@ print -n.abs();
 <p>And with that, we now have a complete scanner for the entire Lox lexical grammar. Fire up the REPL and type in some valid and invalid code. Does it produce the tokens you expect? Try to come up with some interesting edge cases and see if it handles them as it should.</p>
 <p>如果标识符是一个关键字，我们提交的token需要为关键字类型。</p>
 <p>有了这些，我们现在有了一个完整的扫描器。可以扫描整个lox程序。启动扫描器，输入一些lox代码，执行看看。它是否会输出你想要的token列表，尽可能尝试一些边缘示例，看看我们的扫描器是否可以执行呢？</p>
+<h2 id="八挑战习题"><a class="header" href="#八挑战习题">八、挑战习题</a></h2>
+<ol>
+<li>
+<p>The lexical grammars of Python and Haskell are not regular. What does that mean, and why aren’t they?</p>
+<p>python 和 Haskell语言词法规则 不是规则的，这是什么意思？它们为什么不是规则的呢？</p>
+</li>
+<li>
+<p>Aside from separating tokens—distinguishing print foo from printfoo—spaces aren’t used for much in most languages. However, in a couple of dark corners, a space does affect how code is parsed in CoffeeScript, Ruby, and the C preprocessor. Where and what effect does it have in each of those languages?</p>
+<p>除了区分 <code>print foo</code> 和 <code>printfoo</code> , 空格在大多数的语言中没有太多作用。然而，在很多偏僻的角落，空格会影响 CoffeeScript, Ruby, C预处理器，解析代码。在这些语言中，它们分别有什么影响呢？</p>
+</li>
+<li>
+<p>Our scanner here, like most, discards comments and whitespace since those aren’t needed by the parser. Why might you want to write a scanner that does not discard those? What would it be useful for?</p>
+<p>我们的扫描器和大多数的扫描器一样，会丢弃注释和空白字符，因为，解释器不需要它。为什么要编写一个保留注释和空白字符的扫描器呢？它有什么作用呢？</p>
+</li>
+<li>
+<p>Add support to Lox’s scanner for C-style /* ... */ block comments. Make sure to handle newlines in them. Consider allowing them to nest. Is adding support for nesting more work than you expected? Why?</p>
+<p>为lox扫描器，添加 /* ... */ 形式的注释语法，确保正确处理其中的换行符。还需要考虑嵌套，添加嵌套支持的工作量是否超过你的预期？为什么？</p>
+</li>
+</ol>
+<h2 id="九design-note-implicit-semicolons"><a class="header" href="#九design-note-implicit-semicolons">九、DESIGN NOTE: IMPLICIT SEMICOLONS</a></h2>
+<p>设计思路：隐式分号</p>
+<p>Programmers today are spoiled for choice in languages and have gotten picky about syntax. They want their language to look clean and modern. One bit of syntactic lichen that almost every new language scrapes off (and some ancient ones like BASIC never had) is ; as an explicit statement terminator.</p>
+<p>Instead, they treat a newline as a statement terminator where it makes sense to do so. The “where it makes sense” part is the challenging bit. While most statements are on their own line, sometimes you need to spread a single statement across a couple of lines. Those intermingled newlines should not be treated as terminators.</p>
+<p>今天的程序员被语言的选择宠坏了，对语法变得非常挑剔，他们希望自己使用的语言看起来干净、现代。几乎每一种现代语言都会删除一些语法苔藓（有些古老语言，例如: BASIC, 从未删除）。例如： ; 作为显示的语句终止符</p>
+<p>相反，它们都将换行符当作语句终止符号，在合适的时候。其中，合适的时候，是指一个语句只会在一行中。但是，还有一些语句，会分散到多行中。这些语句分散的行中，换行符不应该被当作终止符号。</p>
+<p>Most of the obvious cases where the newline should be ignored are easy to detect, but there are a handful of nasty ones:</p>
+<ul>
+<li>
+<p>A return value on the next line:</p>
+<pre><code>if (condition) return
+&quot;value&quot;
+</code></pre>
+<p>Is “value” the value being returned, or do we have a return statement with no value followed by an expression statement containing a string literal?</p>
+</li>
+<li>
+<p>A parenthesized expression on the next line:</p>
+<pre><code>func
+(parenthesized)
+
+</code></pre>
+<p>Is this a call to func(parenthesized), or two expression statements, one for func and one for a parenthesized expression?</p>
+</li>
+<li>
+<p>A - on the next line:</p>
+<pre><code>
+first
+-second
+
+</code></pre>
+<p>Is this first - second—an infix subtraction—or two expression statements, one for first and one to negate second?</p>
+</li>
+</ul>
+<p>大多数应该忽略换行符的场景，都很容易被发现，但是，也有一些令人讨厌的场景：</p>
+<ul>
+<li>
+<p>返回着在下一行</p>
+<pre><code>if (condition) return
+&quot;value&quot;
+</code></pre>
+<p>这是一个return 语句，返回 &quot;value&quot;; 还是一个return语句，没有返回值；紧跟着一个字符串表达式</p>
+</li>
+<li>
+<p>下一行，是括号表达式</p>
+<pre><code>func
+(parenthesized)
+
+</code></pre>
+<p>这是一个函数调用，还是一个func 表达式，紧跟着一个括号表达式</p>
+</li>
+<li>
+<p>负号出现在下一行</p>
+<pre><code>first
+-second
+</code></pre>
+<p>这是一个中缀减法表达式，还是两个表达式呢</p>
+</li>
+</ul>
+<p>In all of these, either treating the newline as a separator or not would both produce valid code, but possibly not the code the user wants. Across languages, there is an unsettling variety of rules used to decide which newlines are separators. Here are a couple:</p>
+<ul>
+<li>
+<p>Lua completely ignores newlines, but carefully controls its grammar such that no separator between statements is needed at all in most cases. This is perfectly legit:</p>
+<p><code>a = 1 b = 2</code></p>
+<p>Lua avoids the return problem by requiring a return statement to be the very last statement in a block. If there is a value after return before the keyword end, it must be for the return. For the other two cases, they allow an explicit ; and expect users to use that. In practice, that almost never happens because there’s no point in a parenthesized or unary negation expression statement.</p>
+</li>
+<li>
+<p>Go handles newlines in the scanner. If a newline appears following one of a handful of token types that are known to potentially end a statement, the newline is treated like a semicolon. Otherwise it is ignored. The Go team provides a canonical code formatter, gofmt, and the ecosystem is fervent about its use, which ensures that idiomatic styled code works well with this simple rule.</p>
+</li>
+<li>
+<p>Python treats all newlines as significant unless an explicit backslash is used at the end of a line to continue it to the next line. However, newlines anywhere inside a pair of brackets ((), [], or {}) are ignored. Idiomatic style strongly prefers the latter.</p>
+<p>This rule works well for Python because it is a highly statement-oriented language. In particular, Python’s grammar ensures a statement never appears inside an expression. C does the same, but many other languages which have a “lambda” or function literal syntax do not.</p>
+<p>An example in JavaScript:</p>
+<pre><code class="language-javascript">console.log(function() {
+  statement();
+});
+</code></pre>
+<p>Here, the console.log() expression contains a function literal which in turn contains the statement statement();.</p>
+<p>Python would need a different set of rules for implicitly joining lines if you could get back into a statement where newlines should become meaningful while still nested inside brackets.</p>
+</li>
+<li>
+<p>JavaScript’s “automatic semicolon insertion” rule is the real odd one. Where other languages assume most newlines are meaningful and only a few should be ignored in multi-line statements, JS assumes the opposite. It treats all of your newlines as meaningless whitespace unless it encounters a parse error. If it does, it goes back and tries turning the previous newline into a semicolon to get something grammatically valid.</p>
+<p>This design note would turn into a design diatribe if I went into complete detail about how that even works, much less all the various ways that JavaScript’s “solution” is a bad idea. It’s a mess. JavaScript is the only language I know where many style guides demand explicit semicolons after every statement even though the language theoretically lets you elide them.</p>
+</li>
+</ul>
+<p>If you’re designing a new language, you almost surely should avoid an explicit statement terminator. Programmers are creatures of fashion like other humans, and semicolons are as passé as ALL CAPS KEYWORDS. Just make sure you pick a set of rules that make sense for your language’s particular grammar and idioms. And don’t do what JavaScript did.</p>
+<p>上面的场景中，将换行符当作分隔符，或者不把换行符当作分隔符，都可以产生有效的代码。但是，这样可能产生的不是用户想要的效果。在不同的语言中，有许多特殊规则，指定了哪些换行符是分隔符。</p>
+<ul>
+<li>
+<p>Lua语言中，完全忽略了换行符，但是，需要小心的使用。在大多数场景，没有换行符的语句，可以正常运行，例如：orchid</p>
+<p><code>a = 1 b = 2</code></p>
+<p>Lua通过将代码块中的最后一条语句定义为return 语句，来避免return问题。</p>
+<p>(1) 如果关键词 return 之后，end关键词之前，存在 &quot;value&quot; 字符串，则Lua中表示返回 &quot;value&quot;</p>
+<pre><code>return 
+&quot;value&quot;
+</code></pre>
+<p>(2) 其他两种情况，几乎不会发生，因为括号或者一元否定表达式语句，几乎没有意义</p>
+</li>
+<li>
+<p>go语言，会处理扫描仪中的换行符。如果换行符，出现在可能是结束标志后，则换行符被当作隔离符。否则，换行符将被忽略。go开发团队提供了一个代码格式化的程序gofmt，go生态中非常热衷于使用它，这保证了习惯风格的代码和换行符规则可以很好的配合。</p>
+</li>
+<li>
+<p>Python语言将所有的换行符，视为有效的。除了，你在一行的末尾，使用显示的 \ ，表示代码将继续到下一行中。但是，在<code>() [] {} </code>中的换行符将被忽略。python习惯风格也是这样的</p>
+<p>在Python中，这些规则很好的运行，因为它是一种高度面向语句的语言。特别的，python的语法规则，保证了表达式中，不会出现语句。C语言也是这样做的，但是很多语言，包含了 <code>lambda</code>函数或者其他函数，可能会在表达式中包含有语句。</p>
+<p>例如，javascript中的代码</p>
+<pre><code class="language-javascript">console.log(function() {
+  statement();
+});
+</code></pre>
+<p>如上，console.log() 函数中，包含了一个匿名函数，函数代码中包含一个语句 statement();</p>
+</li>
+<li>
+<p>javascript语言</p>
+</li>
+</ul>
+<p>如果你正在设计一种语言，你应该避免使用显示分隔符，程序员也会紧跟时尚，分号和所有的大写关键词，都是过时设计。只需要确保，你选择了一套对于新语言特定短语和习语，都有意义的规则。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="representing-code"><a class="header" href="#representing-code">Representing Code</a></h1>
+<blockquote>
+<p>To dwellers in a wood, almost every species of tree has its voice as well as its feature.</p>
+<p align="right"> Thomas Hardy, Under the Greenwood Tree</p>
+<p>对于森林中的居民来说，几乎每一棵树木都有自己的声音和特征。</p>
+</blockquote>
+<p>In the last chapter, we took the raw source code as a string and transformed it into a slightly higher-level representation: a series of tokens. The parser we’ll write in the next chapter takes those tokens and transforms them yet again, into an even richer, more complex representation.</p>
+<p>Before we can produce that representation, we need to define it.That’s the subject of this chapter. Along the way, we’ll cover some theory around formal grammars, feel the difference between functional and object-oriented programming, go over a couple of design patterns, and do some metaprogramming.</p>
+<p>在上一章中，我们通过扫描器，将源代码转换为稍微高级一些的表示：一系列的token。下一章，将要介绍的解释器，会把tokens，转换为更加丰富、复杂的表示。</p>
+<p>在我们使用解释器之前，我们需要先定义token，这是本章节的主题。在本章，我们将介绍一些形式语法理论，感受函数式编程和面向对象编程的区别。我们还将讨论一些设计模式，进行一些元编程。</p>
+<blockquote>
+<p>I was so worried about this being one of the most boring chapters in the book that I kept stuffing more fun ideas into it until I ran out of room.</p>
+<p>我一直担心，本章节是此书中最无聊的一章，所以，我一直添加有意思的东西，直到塞满了本章。</p>
+</blockquote>
+<p>Before we do all that, let’s focus on the main goal—a representation for code. It should be simple for the parser to produce and easy for the interpreter to consume. If you haven’t written a parser or interpreter yet, those requirements aren’t exactly illuminating. Maybe your intuition can help. What is your brain doing when you play the part of a human interpreter? How do you mentally evaluate an arithmetic expression like this:</p>
+<pre><code>1 + 2 * 3 - 4
+</code></pre>
+<p>Because you understand the order of operations—the old “Please Excuse My Dear Aunt Sally” stuff—you know that the multiplication is evaluated before the addition or subtraction. One way to visualize that precedence is using a tree. Leaf nodes are numbers, and interior nodes are operators with branches for each of their operands.</p>
+<p>In order to evaluate an arithmetic node, you need to know the numeric values of its subtrees, so you have to evaluate those first. That means working your way from the leaves up to the root—a post-order traversal:</p>
+<p>A. Starting with the full tree, evaluate the bottom-most operation, 2 * 3.</p>
+<p>B. Now we can evaluate the +.</p>
+<p>C. Next, the -.</p>
+<p>D. The final answer.</p>
+<p>在我们开始做这些之前，让我们先关注主要目标-代码表示。它应该容易被解释器生成，并且解释器更加容易使用它们。但是，如果你还没有编写过解释器或者编译器，那么这些需求你可能不太熟悉。也许，你的直觉将会起作用。当你在扮演人类语言翻译角色时候，你的大脑会如何思考？让我们来看一下下面的示例，你会如何计算下面的算术表达式：</p>
+<pre><code>1 + 2 * 3 - 4
+</code></pre>
+<p>因为我们知道算术运算符的优先级，所以，我们知道乘法会优先加减法，先计算。可视化运算优先级的一种方法是，使用树结构。其中，叶节点是具体的数字，中间层节点是运算符。</p>
+<p>In order to evaluate an arithmetic node, you need to know the numeric values of its subtrees, so you have to evaluate those first. That means working your way from the leaves up to the root—a post-order traversal:</p>
+<p>为了计算算术节点，我们需要知道它的子树的结果，所以，我们需要先计算这些子树的结果，这意味着，我们需要从叶节点到根节点计算，也就是一个后序遍历。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/tree-evaluate.png?raw=true" alt="tree-travel" /></p>
+<p>由上图，可以看到计算步骤</p>
+<p>A. 计算最底层的表达式，2 * 3</p>
+<p>B. 计算加法表达式</p>
+<p>C. 计算减法表达式</p>
+<p>D. 得到最终结果</p>
+<p>If I gave you an arithmetic expression, you could draw one of these trees pretty easily. Given a tree, you can evaluate it without breaking a sweat. So it intuitively seems like a workable representation of our code is a tree that matches the grammatical structure—the operator nesting—of the language.</p>
+<p>如果我们提供了一个算术表达式，那么可以很容易的转变为一棵树，同样的，如果有一棵树，我们也可以容易变为一个表达式。因此，从直觉上，我们可以将代码表示为一棵树，这棵树与我们使用的编程语言的语法结构、</p>
 
                     </main>
 
