@@ -19,3 +19,9 @@
 - [reindex 过程](./use/reindex/reindex.md)
 
 	- [reindex添加新字段](./use/reindex/add-field.md)
+	
+# 业务报错处理
+
+# 原理源码
+
+- [lucene介绍](./lucene/intro.md)

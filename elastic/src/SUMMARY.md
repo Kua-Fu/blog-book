@@ -90,7 +90,12 @@
 
 - [概览](./languages/readme.md)
 - [开始处理各种语言](./languages/language-intro.md)
-- [使用语言分析器](./languages/using-language-analyzers.md)
+   - [使用语言分析器](./languages/using-language-analyzers.md)
+   - [配置语言分析器](./languages/config-language-analyzers.md)
+   - [混合语言的陷阱](./languages/language-pitfalls.md)
+   - [每份文档一种语言](./languages/one-language-docs.md)
+   - [每个域一种语言](./lanaugages/one-language-field.md)
+   - [混合语言域](./languages/mixed-language-fields.md)
 
 # 聚合
 
