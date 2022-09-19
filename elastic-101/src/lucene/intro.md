@@ -14,6 +14,12 @@
 
 > [Lucene 9.0 file format](https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html)
 
+> [存储系统中的算法：LSM 树设计原理](https://mp.weixin.qq.com/s/BsW_SeGdnMHfg1_bM_sgSQ)
+
+> [LSM核心实现讲解](https://mp.weixin.qq.com/s/GsnBpZPzizX9ODuQLT-uAg)
+
+> [RocksDB](https://github.com/facebook/rocksdb/wiki/RocksDB-Overview)
+
 > [Lucene-文件格式](https://zhuanlan.zhihu.com/p/354105864)
 
 > [Using Finite State Transducers in Lucene](https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html)
@@ -21,6 +27,8 @@
 > [Elasticsearch 7.3 的 offheap 原理](https://www.easyice.cn/archives/346)
 
 > [Similarity](https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/search/similarities/Similarity.html)
+
+
 
 ## 一、lucene 初识
 
@@ -146,7 +154,41 @@
 term 可以理解为 token 加上 fieldName，例如： 文档中title字段，值为 hello world, 分析器分析后，生成 hello 和 world两个token，则 term也是两个, <title, hello>, <title, world>
 
 
-### 2.3 索引文件
+### 2.3 LSM树实现 
+
+
+[LSM tree (log-structured merge-tree) ](https://en.wikipedia.org/wiki/Log-structured_merge-tree)
+
+[B-tree](https://en.wikipedia.org/wiki/B-tree)
+
+* 是一种对频繁写操作非常友好的数据结构，同时兼顾了查询效率。
+
+* 之所以有效是基于以下事实：磁盘或内存的连续读写性能远高于随机读写性能(局部性原理)
+
+* 是许多 key-value 型或日志型数据库所依赖的核心数据结构，例如 BigTable、HBase、Cassandra、LevelDB、SQLite、Scylla、RocksDB 等。
+
+
+LSM树 三个主要组成部分: memtable，log，SSTable
+
+* memtable
+
+	是红黑树或者跳表这样的有序内存数据结构，起到缓存和排序的作用，把新写入的数据按照键的大小进行排序。当memtable到达一定大小之后，会被转化成SSTable格式刷入磁盘持久化存储
+
+* SSTable（Sorted String Table）
+
+	说白了就是一个特殊格式的文件，其中的数据按照键的大小排列，你可以把它类比成一个有序数组。而 LSM 树，说白了就是若干SSTable的集合。
+
+* log
+
+	文件记录操作日志，在数据写入memtable的同时也会刷盘写入到log文件，作用是数据恢复。比如在memtable中的数据还没转化成SSTable持久化到磁盘时，如果突然断电，那么memtable里面的数据都会丢失，但有log文件在，就可以恢复这些数据。当然，等memtable中的数据成功转化成SSTable落盘之后，log文件中对应的操作日志就没必要存在了，可以被删除
+
+![RocksDB](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-0.png?raw=true)
+
+![lsm](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-5.png?raw=true)
+
+[持久化变更](https://www.elastic.co/guide/cn/elasticsearch/guide/current/translog.html)
+
+### 2.4 索引文件
 
 下面是[lucene9.3.0](https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html) 中的索引文件 
 
@@ -216,7 +258,7 @@ term 可以理解为 token 加上 fieldName，例如： 文档中title字段，�
 | tip | 947.7mb | term词典的索引，实际上即是下章介绍的fst数据结构| 
 
 
-### 2.4 fst数据结构
+### 2.5 fst数据结构
 
 [Using Finite State Transducers in Lucene](https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html)
 

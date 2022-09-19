@@ -1353,6 +1353,15 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html">Lucene 9.0 file format</a></p>
 </blockquote>
 <blockquote>
+<p><a href="https://mp.weixin.qq.com/s/BsW_SeGdnMHfg1_bM_sgSQ">存储系统中的算法：LSM 树设计原理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/GsnBpZPzizX9ODuQLT-uAg">LSM核心实现讲解</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/facebook/rocksdb/wiki/RocksDB-Overview">RocksDB</a></p>
+</blockquote>
+<blockquote>
 <p><a href="https://zhuanlan.zhihu.com/p/354105864">Lucene-文件格式</a></p>
 </blockquote>
 <blockquote>
@@ -1514,7 +1523,39 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <tr><td>token</td><td>经过分词器后，切分的最小单元</td></tr>
 </tbody></table>
 <p>term 可以理解为 token 加上 fieldName，例如： 文档中title字段，值为 hello world, 分析器分析后，生成 hello 和 world两个token，则 term也是两个, &lt;title, hello&gt;, &lt;title, world&gt;</p>
-<h3 id="23-索引文件"><a class="header" href="#23-索引文件">2.3 索引文件</a></h3>
+<h3 id="23-lsm树实现"><a class="header" href="#23-lsm树实现">2.3 LSM树实现</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Log-structured_merge-tree">LSM tree (log-structured merge-tree) </a></p>
+<p><a href="https://en.wikipedia.org/wiki/B-tree">B-tree</a></p>
+<ul>
+<li>
+<p>是一种对频繁写操作非常友好的数据结构，同时兼顾了查询效率。</p>
+</li>
+<li>
+<p>之所以有效是基于以下事实：磁盘或内存的连续读写性能远高于随机读写性能(局部性原理)</p>
+</li>
+<li>
+<p>是许多 key-value 型或日志型数据库所依赖的核心数据结构，例如 BigTable、HBase、Cassandra、LevelDB、SQLite、Scylla、RocksDB 等。</p>
+</li>
+</ul>
+<p>LSM树 三个主要组成部分: memtable，log，SSTable</p>
+<ul>
+<li>
+<p>memtable</p>
+<p>是红黑树或者跳表这样的有序内存数据结构，起到缓存和排序的作用，把新写入的数据按照键的大小进行排序。当memtable到达一定大小之后，会被转化成SSTable格式刷入磁盘持久化存储</p>
+</li>
+<li>
+<p>SSTable（Sorted String Table）</p>
+<p>说白了就是一个特殊格式的文件，其中的数据按照键的大小排列，你可以把它类比成一个有序数组。而 LSM 树，说白了就是若干SSTable的集合。</p>
+</li>
+<li>
+<p>log</p>
+<p>文件记录操作日志，在数据写入memtable的同时也会刷盘写入到log文件，作用是数据恢复。比如在memtable中的数据还没转化成SSTable持久化到磁盘时，如果突然断电，那么memtable里面的数据都会丢失，但有log文件在，就可以恢复这些数据。当然，等memtable中的数据成功转化成SSTable落盘之后，log文件中对应的操作日志就没必要存在了，可以被删除</p>
+</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-0.png?raw=true" alt="RocksDB" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-5.png?raw=true" alt="lsm" /></p>
+<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/translog.html">持久化变更</a></p>
+<h3 id="24-索引文件"><a class="header" href="#24-索引文件">2.4 索引文件</a></h3>
 <p>下面是<a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html">lucene9.3.0</a> 中的索引文件 </p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lucene-file-format.png?raw=true" alt="file" /></p>
 <table><thead><tr><th>序号</th><th>文件后缀</th><th>描述说明</th><th>示例</th></tr></thead><tbody>
@@ -1571,7 +1612,7 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <tr><td>doc</td><td>8.6gb</td><td>term出现的频率</td></tr>
 <tr><td>tip</td><td>947.7mb</td><td>term词典的索引，实际上即是下章介绍的fst数据结构</td></tr>
 </tbody></table>
-<h3 id="24-fst数据结构"><a class="header" href="#24-fst数据结构">2.4 fst数据结构</a></h3>
+<h3 id="25-fst数据结构"><a class="header" href="#25-fst数据结构">2.5 fst数据结构</a></h3>
 <p><a href="https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html">Using Finite State Transducers in Lucene</a></p>
 <p><a href="https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/">关于Lucene的词典FST深入剖析</a></p>
 <h2 id="三查询"><a class="header" href="#三查询">三、查询</a></h2>
