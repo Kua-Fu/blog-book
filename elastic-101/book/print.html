@@ -1397,9 +1397,7 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 </ul>
 <h3 id="12-发展历程"><a class="header" href="#12-发展历程">1.2 发展历程</a></h3>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/cloudera-doug-cutting.png?raw=true" alt="Doug" /></p>
-<ol>
-<li>
-<p>2000年3月，<a href="https://en.wikipedia.org/wiki/Doug_Cutting">Doug Cutting</a> 第一次发布开源版本 0.01</p>
+<h4 id="1--2000年3月doug-cutting-第一次发布开源版本-001"><a class="header" href="#1--2000年3月doug-cutting-第一次发布开源版本-001">（1）  2000年3月，<a href="https://en.wikipedia.org/wiki/Doug_Cutting">Doug Cutting</a> 第一次发布开源版本 0.01</a></h4>
 <ul>
 <li>
 <p>1997年，Doug 因为工作不稳定和 Java 当时非常热门，所以，他想利用 Java 商业化一些自己的软件，但是后来放弃商业化想法，将 lucene 放到 SourceForge 上开源， Doug曾经是 Apache 基金会主席（2011年）</p>
@@ -1411,9 +1409,7 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <p>lucene 是 Doug 老婆中间的名字</p>
 </li>
 </ul>
-</li>
-<li>
-<p>2000年10月，发布 1.0</p>
+<h4 id="2-2000年10月发布-10"><a class="header" href="#2-2000年10月发布-10">（2） 2000年10月，发布 1.0</a></h4>
 <ul>
 <li>
 <p>2001年9月，lucene 加入 <a href="https://jakarta.apache.org/">Apache Jakarta</a> 项目</p>
@@ -1435,12 +1431,8 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <ul>
 <li>2005年，lucene 成为 Apache 顶级项目</li>
 </ul>
-</li>
-<li>
-<p>2006年5月，发布 2.0</p>
-</li>
-<li>
-<p>2009年11月，发布 3.0</p>
+<h4 id="3-2006年5月发布-20"><a class="header" href="#3-2006年5月发布-20">（3） 2006年5月，发布 2.0</a></h4>
+<h4 id="4-2009年11月发布-30"><a class="header" href="#4-2009年11月发布-30">（4） 2009年11月，发布 3.0</a></h4>
 <ul>
 <li>
 <p>2010年2月7日，Elasticsearch 0.1.0 发布</p>
@@ -1452,9 +1444,7 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <p>2011年，twitter 使用 lucene 实现实时搜索</p>
 </li>
 </ul>
-</li>
-<li>
-<p>2012年，发布 4.0</p>
+<h3 id="5-2012年发布-40"><a class="header" href="#5-2012年发布-40">（5） 2012年，发布 4.0</a></h3>
 <ul>
 <li>
 <p>是一个&quot;革命性&quot;版本，让lucene 进入严肃分析领域，(1) 添加编码/解码器; (2) 新增相似性分析模型(BM25, DFR)</p>
@@ -1463,12 +1453,8 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <p>2012年2月9日，Elastic公司成立</p>
 </li>
 </ul>
-</li>
-<li>
-<p>2015年，发布 5.0</p>
-</li>
-<li>
-<p>2016年，发布 6.0</p>
+<h3 id="6-2015年发布-50"><a class="header" href="#6-2015年发布-50">（6） 2015年，发布 5.0</a></h3>
+<h3 id="7-2016年发布-60"><a class="header" href="#7-2016年发布-60">（7） 2016年，发布 6.0</a></h3>
 <ul>
 <li>
 <p>添加了对多维索引的支持 BKD树</p>
@@ -1480,20 +1466,12 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <p>lucene 源码从 Subversion 转移到 git</p>
 </li>
 </ul>
-</li>
-<li>
-<p>2017年，发布 7.0</p>
-</li>
-<li>
-<p>2019年，发布 8.0</p>
-</li>
-<li>
-<p>2021年，发布 9.0</p>
+<h3 id="8-2017年发布-70"><a class="header" href="#8-2017年发布-70">（8） 2017年，发布 7.0</a></h3>
+<h3 id="9-2019年发布-80"><a class="header" href="#9-2019年发布-80">（9） 2019年，发布 8.0</a></h3>
+<h3 id="10-2021年发布-90"><a class="header" href="#10-2021年发布-90">（10） 2021年，发布 9.0</a></h3>
 <ul>
 <li>solr 独立出 lucene，成为Apache 顶级项目</li>
 </ul>
-</li>
-</ol>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/shayBanon.png?raw=true" alt="elastic" /></p>
 <h2 id="二写入索引"><a class="header" href="#二写入索引">二、写入（索引）</a></h2>
 <h3 id="21-倒排索引-inverted-index"><a class="header" href="#21-倒排索引-inverted-index">2.1 倒排索引 Inverted index</a></h3>
@@ -1514,6 +1492,7 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_templat
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-1.png?raw=true" alt="i1" /></p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-2.png?raw=true" alt="i2" /></p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-3.png?raw=true" alt="i3" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-6.png?raw=true" alt="i6" /></p>
 <table><thead><tr><th>术语</th><th>描述</th></tr></thead><tbody>
 <tr><td>document</td><td>文档</td></tr>
 <tr><td>field</td><td>文档中的字段</td></tr>

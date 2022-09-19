@@ -54,66 +54,67 @@
 
 ![Doug](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/cloudera-doug-cutting.png?raw=true)
 
-1. 2000年3月，[Doug Cutting](https://en.wikipedia.org/wiki/Doug_Cutting) 第一次发布开源版本 0.01
 
-	* 1997年，Doug 因为工作不稳定和 Java 当时非常热门，所以，他想利用 Java 商业化一些自己的软件，但是后来放弃商业化想法，将 lucene 放到 SourceForge 上开源， Doug曾经是 Apache 基金会主席（2011年）
+#### （1）  2000年3月，[Doug Cutting](https://en.wikipedia.org/wiki/Doug_Cutting) 第一次发布开源版本 0.01
+
+* 1997年，Doug 因为工作不稳定和 Java 当时非常热门，所以，他想利用 Java 商业化一些自己的软件，但是后来放弃商业化想法，将 lucene 放到 SourceForge 上开源， Doug曾经是 Apache 基金会主席（2011年）
 	
-	* lucene 是 Doug 的第五个搜索引擎，之前在施乐PARC写过两个，一个在苹果，一个在Excite
+* lucene 是 Doug 的第五个搜索引擎，之前在施乐PARC写过两个，一个在苹果，一个在Excite
 	
-	* lucene 是 Doug 老婆中间的名字
+* lucene 是 Doug 老婆中间的名字
 
-1. 2000年10月，发布 1.0
+#### （2） 2000年10月，发布 1.0
 
-	* 2001年9月，lucene 加入 [Apache Jakarta](https://jakarta.apache.org/) 项目
+* 2001年9月，lucene 加入 [Apache Jakarta](https://jakarta.apache.org/) 项目
 
-	* 2002年，1.2版本成为第一个 Apache 许可证的 lucene 版本
+* 2002年，1.2版本成为第一个 Apache 许可证的 lucene 版本
 	
-	* 2004年，[Shay Banon](https://en.wikipedia.org/wiki/Elasticsearch) 发布了Elasticsearch的前身-[compass](http://www.compass-project.org/overview.html)
+* 2004年，[Shay Banon](https://en.wikipedia.org/wiki/Elasticsearch) 发布了Elasticsearch的前身-[compass](http://www.compass-project.org/overview.html)
 	
-	> 许多年前，一个刚结婚的名叫 Shay Banon 的失业开发者，跟着他的妻子去了伦敦，他的妻子在那里学习厨师。 在寻找一个赚钱的工作的时候，为了给他的妻子做一个食谱搜索引擎，他开始使用 Lucene 的一个早期版本。
-	> 直接使用 Lucene 是很难的，因此 Shay 开始做一个抽象层，Java 开发者使用它可以很简单的给他们的程序添加搜索功能。 他发布了他的第一个开源项目 Compass。
-	>
-	> 后来 Shay 获得了一份工作，主要是高性能，分布式环境下的内存数据网格。这个对于高性能，实时，分布式搜索引擎的需求尤为突出， 他决定重写 Compass，把它变为一个独立的服务并取名 Elasticsearch。
-	>
-	> 第一个公开版本在2010年2月发布，从此以后，Elasticsearch 已经成为了 Github 上最活跃的项目之一，他拥有超过300名 contributors(目前736名 contributors )。 一家公司已经开始围绕 Elasticsearch 提供商业服务，并开发新的特性，但是，Elasticsearch 将永远开源并对所有人可用。
-	> 
-	> 据说，Shay 的妻子还在等着她的食谱搜索引擎…​
+> 许多年前，一个刚结婚的名叫 Shay Banon 的失业开发者，跟着他的妻子去了伦敦，他的妻子在那里学习厨师。 在寻找一个赚钱的工作的时候，为了给他的妻子做一个食谱搜索引擎，他开始使用 Lucene 的一个早期版本。
+> 直接使用 Lucene 是很难的，因此 Shay 开始做一个抽象层，Java 开发者使用它可以很简单的给他们的程序添加搜索功能。 他发布了他的第一个开源项目 Compass。
+>
+> 后来 Shay 获得了一份工作，主要是高性能，分布式环境下的内存数据网格。这个对于高性能，实时，分布式搜索引擎的需求尤为突出， 他决定重写 Compass，把它变为一个独立的服务并取名 Elasticsearch。
+>
+> 第一个公开版本在2010年2月发布，从此以后，Elasticsearch 已经成为了 Github 上最活跃的项目之一，他拥有超过300名 contributors(目前736名 contributors )。 一家公司已经开始围绕 Elasticsearch 提供商业服务，并开发新的特性，但是，Elasticsearch 将永远开源并对所有人可用。
+> 
+> 据说，Shay 的妻子还在等着她的食谱搜索引擎…​
 	
-	* 2005年，lucene 成为 Apache 顶级项目
+* 2005年，lucene 成为 Apache 顶级项目
 
-1. 2006年5月，发布 2.0
+#### （3） 2006年5月，发布 2.0
 
-1. 2009年11月，发布 3.0
+#### （4） 2009年11月，发布 3.0
 
-	* 2010年2月7日，Elasticsearch 0.1.0 发布
+* 2010年2月7日，Elasticsearch 0.1.0 发布
 	
-	* 2010年，solr 作为lucene子项目，合并入lucene
+* 2010年，solr 作为lucene子项目，合并入lucene
 	
-	* 2011年，twitter 使用 lucene 实现实时搜索
+* 2011年，twitter 使用 lucene 实现实时搜索
 
-1. 2012年，发布 4.0
+### （5） 2012年，发布 4.0
 
-	* 是一个"革命性"版本，让lucene 进入严肃分析领域，(1) 添加编码/解码器; (2) 新增相似性分析模型(BM25, DFR)
+* 是一个"革命性"版本，让lucene 进入严肃分析领域，(1) 添加编码/解码器; (2) 新增相似性分析模型(BM25, DFR)
 	
-	* 2012年2月9日，Elastic公司成立
+* 2012年2月9日，Elastic公司成立
 	
-1. 2015年，发布 5.0
+### （6） 2015年，发布 5.0
 
-1. 2016年，发布 6.0
+### （7） 2016年，发布 6.0
 
-	* 添加了对多维索引的支持 BKD树
+* 添加了对多维索引的支持 BKD树
 	
-	* 将BM25 设置为默认相似性模型，之前是 TF/IDF
+* 将BM25 设置为默认相似性模型，之前是 TF/IDF
 	
-	* lucene 源码从 Subversion 转移到 git
+* lucene 源码从 Subversion 转移到 git
 	
-1. 2017年，发布 7.0
+### （8） 2017年，发布 7.0
 
-1. 2019年，发布 8.0
+### （9） 2019年，发布 8.0
 
-1. 2021年，发布 9.0
+### （10） 2021年，发布 9.0
 
-	* solr 独立出 lucene，成为Apache 顶级项目
+* solr 独立出 lucene，成为Apache 顶级项目
 	
 ![elastic](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/shayBanon.png?raw=true)
 	
@@ -141,6 +142,8 @@
 ![i2](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-2.png?raw=true)
 
 ![i3](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-3.png?raw=true)
+
+![i6](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-6.png?raw=true)
 
 | 术语| 描述|
 |---|---|
