@@ -14,6 +14,8 @@
 
 > [Lucene 9.0 file format](https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html)
 
+> [设计数据密集型应用-存储与检索](http://ddia.vonng.com/#/ch3?id=sstables%e5%92%8clsm%e6%a0%91)
+
 > [存储系统中的算法：LSM 树设计原理](https://mp.weixin.qq.com/s/BsW_SeGdnMHfg1_bM_sgSQ)
 
 > [LSM核心实现讲解](https://mp.weixin.qq.com/s/GsnBpZPzizX9ODuQLT-uAg)
@@ -158,6 +160,8 @@ term 可以理解为 token 加上 fieldName，例如： 文档中title字段，�
 
 
 ### 2.3 LSM树实现 
+
+![lsm region](https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-10.png?raw=true)
 
 
 [LSM tree (log-structured merge-tree) ](https://en.wikipedia.org/wiki/Log-structured_merge-tree)
