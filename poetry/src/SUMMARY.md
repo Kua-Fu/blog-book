@@ -47,13 +47,10 @@
 - [elasticsearch权威指南](reading/technology/elasticsearch-start.md)
 
 - [crafting interpreters](reading/technology/crafting_interpreters.md)
-	
-- [毛泽东选集](reading/biography/mao.md)
+
+- [经典细读](reading/classic_book.md)
   
-- [诗词](reading/liberal_art/literature/literature.md)
-
-- [三国志](reading/history/san-guo-zhi.md)
-
+- [诗词](reading/literature.md)
 
 # 奇奇怪怪
 
