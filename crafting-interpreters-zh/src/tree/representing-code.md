@@ -124,6 +124,10 @@ If you start with the rules, you can use them to generate strings that are in th
 
 Each production in a context-free grammar has a head—its name—and a body, which describes what it generates. In its pure form, the body is simply a list of symbols. Symbols come in two delectable flavors:
 
+> Restricting heads to a single symbol is a defining feature of context-free grammars. More powerful formalisms like unrestricted grammars allow a sequence of symbols in the head as well as in the body.
+> 
+> 将头限制为单个符号，是上下文无关语法的一个定义特性，更加强大的形式主义，例如: [无限制文法](https://en.wikipedia.org/wiki/Unrestricted_grammar), 允许头部和body中定义一系列符号
+
 * A terminal is a letter from the grammar’s alphabet. You can think of it like a literal value. In the syntactic grammar we’re defining, the terminals are individual lexemes—tokens coming from the scanner like if or 1234.
 
 	These are called “terminals”, in the sense of an “end point” because they don’t lead to any further “moves” in the game. You simply produce that one symbol.
@@ -153,7 +157,16 @@ I tried to come up with something clean. Each rule is a name, followed by an arr
 
 终止符是带引号的字符串，非终止符是小写字符
 
+
+> Yes, we need to define a syntax to use for the rules that define our syntax. Should we specify that metasyntax too? What notation do we use for it? It’s languages all the way down!
+> 
+> 我们需要定义一个语法，使用这些语法规则，我们将定义语言的语法。我们是否也应该指定元语法？我们用什么符号表示它，一直以来都是语言。
+
 Using that, here’s a grammar for breakfast menus:
+
+> Yes, I really am going to be using breakfast examples throughout this entire book. Sorry.
+> 
+> 很抱歉，我一直在书中，使用早餐举例。
 
 ```
 
@@ -193,6 +206,10 @@ Next, we need a production for cooked, and so we pick "poached". That’s a term
 ```"poached" "eggs" "with" breakfast "on the side"```
 
 The next non-terminal is breakfast again. The first breakfast production we chose recursively refers back to the breakfast rule. Recursion in the grammar is a good sign that the language being defined is context-free instead of regular. In particular, recursion where the recursive nonterminal has productions on both sides implies that the language is not regular.
+
+> Imagine that we’ve recursively expanded the breakfast rule here several times, like “bacon with bacon with bacon with . . . ” In order to complete the string correctly, we need to add an equal number of “on the side” bits to the end. Tracking the number of required trailing parts is beyond the capabilities of a regular grammar. Regular grammars can express repetition, but they can’t keep count of how many repetitions there are, which is necessary to ensure that the string has the same number of with and on the side parts.
+> 
+> 想象一下，我们在这里，递归的扩展了早餐规则好几次，为了正确的产生字符串，我们需要在末尾添加相同数量的位，跟踪所需的尾部部分的数量，超过了常规语法的能力。常规语法，可以表示递归，但是无法计算重复的次数。这对于确保字符串的with 和 on the side 部分，维持相同数量是非常重要的。
 
 We could keep picking the first production for breakfast over and over again yielding all manner of breakfasts like “bacon with sausage with scrambled eggs with bacon . . . ” We won’t though. This time we’ll pick bread. There are three rules for that, each of which contains only a terminal. We’ll pick “English muffin”.
 
@@ -391,6 +408,12 @@ operator       → "==" | "!=" | "<" | "<=" | ">" | ">="
 
 这个语法规则实际上不够明确，但是我们将在遇到它们时候，在探讨，现在我们将继续下面介绍。
 
+> If you’re so inclined, try using this grammar to generate a few expressions like we did with the breakfast grammar before. Do the resulting expressions look right to you? Can you make it generate anything wrong like 1 + / 3?
+> 
+> 如果你这么想，试着使用这些语法规则，生成一些表达式，就像我们之前早餐语法那样。这些生成的表达式是正确的吗？它是否会生成像是 1 + / 3 这样的错误？
+
+
+
 ## 二、Implementing Syntax Trees
 
 实现语法树
@@ -430,6 +453,18 @@ abstract class Expr {
 }
 
 ```
+
+> In particular, we’re defining an abstract syntax tree (AST). In a parse tree, every single grammar production becomes a node in the tree. An AST elides productions that aren’t needed by later phases.
+> 
+> 特别的，我们实现了一个抽象语法树，在解析树中，每个语法生成都是一个节点，AST树省略了后面阶段不需要的部分。
+
+>Tokens aren’t entirely homogeneous either. Tokens for literals store the value, but other kinds of lexemes don’t need that state. I have seen scanners that use different classes for literals and other kinds of lexemes, but I figured I’d keep things simpler.
+> 
+> token 也不是完全相同的，文字的token，会保存文字的值，其他类型的token可能不需要这个信息。我见过扫描器对文字和其他类型的词汇，使用不同的类，但是我将让事情更加简单。
+
+> I avoid abbreviations in my code because they trip up a reader who doesn’t know what they stand for. But in compilers I’ve looked at, “Expr” and “Stmt” are so ubiquitous that I may as well start getting you used to them now.
+>
+> 我在代码中将尽量不使用缩写，因为，缩写会让不明白含义的读者感到困惑。但是，我见过的编译器中，使用 Expr 和 Stmt 是如此的普遍，所以我们将从现在开始习惯使用它们。
 
 Expr is the base class that all expression classes inherit from. As you can see from Binary, the subclasses are nested inside of it. There’s no technical need for this, but it lets us cram all of the classes into a single Java file.
 
@@ -472,6 +507,10 @@ Java可以定义一个没有方法的类，但是我想说Java不太擅长处理
 
 我不想浪费你的时间，或者我的墨水将这些类列举出来。真的，每一个类的本质是什么呢？类名称，类中的类型字段列表。就这样，那么我们可以自动化创建了
 
+> Picture me doing an awkward robot dance when you read that. “AU-TO-MATE.”
+>
+> 当你读到这篇文章时候，想象一下，我在跳舞，跳一个笨拙的机器人舞。
+
 Instead of tediously handwriting each class definition, field declaration, constructor, and initializer, we’ll hack together a script that does it for us. It has a description of each tree type—its name and fields—and it prints out the Java code needed to define a class with that name and state.
 
 我们将编写一个脚本，生成类，而不是，繁琐的编写每一个类定义，字段声明，构造函数，初始化变量。它将描述每一个定义的语法树类型，包含类名称和类字段列表，打印出类名称和相应的Java定义代码
@@ -480,13 +519,696 @@ This script is a tiny Java command-line app that generates a file named “Expr.
 
 这个脚本是一个简单的java代码，生成一个Expr.java 文件
 
+```java
+
+// tool/GenerateAst.java, create new file
+
+package com.craftinginterpreters.tool;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+
+public class GenerateAst {
+  public static void main(String[] args) throws IOException {
+    if (args.length != 1) {
+      System.err.println("Usage: generate_ast <output directory>");
+      System.exit(64);
+    }
+    String outputDir = args[0];
+  }
+}
+
+```
+
+>I got the idea of scripting the syntax tree classes from Jim Hugunin, creator of Jython and IronPython.
+>
+>An actual scripting language would be a better fit for this than Java, but I’m trying not to throw too many languages at you.
+>
+> 我从Jython 和 IronPython的发明者 Jim Hugunin那里获取到灵感，有关编写语法树类脚本的想法。
+> 
+> 实际上一门真的脚本语言更加适合做这件事，但是，我不想一下子抛出这么多的语言。
+
+Note that this file is in a different package, .tool instead of .lox. This script isn’t part of the interpreter itself. It’s a tool we, the people hacking on the interpreter, run ourselves to generate the syntax tree classes. When it’s done, we treat “Expr.java” like any other file in the implementation. We are merely automating how that file gets authored.
+
+要注意，这个新的文件位于新的包 tool，而不是之前的lox中。这个脚本不属于解释器的一部分, 它只是一个工具，编程高手用它来，自动生成语法树。该脚本将生成一个 Expr.java文件
+
+To generate the classes, it needs to have some description of each type and its fields.
+
+For brevity’s sake, I jammed the descriptions of the expression types into strings. Each is the name of the class followed by : and the list of fields, separated by commas. Each field has a type and a name.
+
+The first thing defineAst() needs to do is output the base Expr class.
+
+为了生成一个类，对于每个类的类型和字段，我们需要进行一些描述
+
+```java
+
+// tool/GenerateAst.java, in main()
+
+    String outputDir = args[0];
+    defineAst(outputDir, "Expr", Arrays.asList(
+      "Binary   : Expr left, Token operator, Expr right",
+      "Grouping : Expr expression",
+      "Literal  : Object value",
+      "Unary    : Token operator, Expr right"
+    ));
+  }
+
+
+```
+
+
+为了简洁，我们把表达式类型的描述写入到字符串中，每个类中，后面跟上一个: 符号和一些类字段，字段中间使用逗号分隔。每个字段都有一个类型 和 名称。
+
+defineAst() 需要输出Expr类
+
+```java
+
+// tool/GenerateAst.java add after main()
+
+  private static void defineAst(
+      String outputDir, String baseName, List<String> types)
+      throws IOException {
+    String path = outputDir + "/" + baseName + ".java";
+    PrintWriter writer = new PrintWriter(path, "UTF-8");
+
+    writer.println("package com.craftinginterpreters.lox;");
+    writer.println();
+    writer.println("import java.util.List;");
+    writer.println();
+    writer.println("abstract class " + baseName + " {");
+
+    writer.println("}");
+    writer.close();
+  }
+  
+```
+
+When we call this, baseName is “Expr”, which is both the name of the class and the name of the file it outputs. We pass this as an argument instead of hardcoding the name because we’ll add a separate family of classes later for statements.
+
+当我们调用这个函数，baseName 是 Expr, 它即是类的名称，也是输出的文件的名称。我们将expr当作一个参数，而不是硬编码，因为稍后，我们将添加一个类家族。
+
+Inside the base class, we define each subclass.
+
+在基类中，我们将定义每一个子类
+
+```java
+
+// tool/GenerateAst.java in defineAst()
+
+ writer.println("abstract class " + baseName + " {");
+
+    // The AST classes.
+    for (String type : types) {
+      String className = type.split(":")[0].trim();
+      String fields = type.split(":")[1].trim(); 
+      defineType(writer, baseName, className, fields);
+    }
+    writer.println("}");
+	
+```
+
+```java
+
+// tool/GenerateAst.java add after defineAst()
+
+  private static void defineType(
+      PrintWriter writer, String baseName,
+      String className, String fieldList) {
+    writer.println("  static class " + className + " extends " +
+        baseName + " {");
+
+    // Constructor.
+    writer.println("    " + className + "(" + fieldList + ") {");
+
+    // Store parameters in fields.
+    String[] fields = fieldList.split(", ");
+    for (String field : fields) {
+      String name = field.split(" ")[1];
+      writer.println("      this." + name + " = " + name + ";");
+    }
+
+    writer.println("    }");
+
+    // Fields.
+    writer.println();
+    for (String field : fields) {
+      writer.println("    final " + field + ";");
+    }
+
+    writer.println("  }");
+  }
+  
+```
+
+There we go. All of that glorious Java boilerplate is done. It declares each field in the class body. It defines a constructor for the class with parameters for each field and initializes them in the body.
+
+Compile and run this Java program now and it blasts out a new “.java” file containing a few dozen lines of code. That file’s about to get even longer.
+
+我们已经开始构造了，所有java类已经完成了，它声明了类中的每一个字段，它为类定义了一个构造函数，构造函数中包含有每个字段，并且在函数中进行字段初始化。
+
+编译运行这个程序，将会创建一个新的java文件，其中包含几十行代码，java文件将会变得更长。
+
+>This isn’t the world’s most elegant string manipulation code, but that’s fine. It only runs on the exact set of class definitions we give it. Robustness ain’t a priority.
+>
+> 这不是最优雅的字符串操作代码，但是它可以在我们定义的精确的类集合中，生成我们想要的类定义代码，健壮性不是首要任务。
+
+## 三、Working with Trees
+
+使用树
+
+Put on your imagination hat for a moment. Even though we aren’t there yet, consider what the interpreter will do with the syntax trees. Each kind of expression in Lox behaves differently at runtime. That means the interpreter needs to select a different chunk of code to handle each expression type. With tokens, we can simply switch on the TokenType. But we don’t have a “type” enum for the syntax trees, just a separate Java class for each one.
+
+带上想象的帽子一会儿，尽管我们还没有达到，想象一下，解释器如何出来语法树。Lox的每一种表达式在运行时候，行为都不相同。这意味着，解释器需要选择不同的代码块，来处理不同类型的表达式。使用token，我们可以通过tokenType转换。但是，我们没有语法树的枚举，只是对于每一个语法树，有一个独立的java类。
+
+We could write a long chain of type tests:
+
+我们可以编写一长串类型测试
+
+```java
+
+if (expr instanceof Expr.Binary) {
+  // ...
+} else if (expr instanceof Expr.Grouping) {
+  // ...
+} else // ...
+
+```
+
+But all of those sequential type tests are slow. Expression types whose names are alphabetically later would take longer to execute because they’d fall through more if cases before finding the right type. That’s not my idea of an elegant solution.
+
+We have a family of classes and we need to associate a chunk of behavior with each one. The natural solution in an object-oriented language like Java is to put those behaviors into methods on the classes themselves. We could add an abstract interpret() method on Expr which each subclass would then implement to interpret itself.
+
+但是，所有这些顺序式测试都很慢，如果按照表达式类型名称，按照字母顺序排序，然后执行，可能需要更多时间，因为在找到合适的类型之前，可能包含更多的判断，这不是我们认为的优雅的解决方式。
+
+我们有一个类家族，需要将其中每一个类的行为都关联在一起。在Java这样的面向对象语言中，很自然的解决方式是，将这些类行为放入类方法中。我们可以在每个类中都添加一个抽象的方法，interpret() , Expr基类的每一个子类都实现自身的interpret() 方法。
+
+> This exact thing is literally called the “Interpreter pattern” in Design Patterns: Elements of Reusable Object-Oriented Software, by Erich Gamma, et al.
+> 
+> 这个编程模式被称为[解释器模式](https://en.wikipedia.org/wiki/Interpreter_pattern), 在书籍[《设计模式：可复用面向对象软件的基础》](https://learning.oreilly.com/library/view/design-patterns-elements/0201633612/) 中 
+
+
+This works alright for tiny projects, but it scales poorly. Like I noted before, these tree classes span a few domains. At the very least, both the parser and interpreter will mess with them. As you’ll see later, we need to do name resolution on them. If our language was statically typed, we’d have a type checking pass.
+
+If we added instance methods to the expression classes for every one of those operations, that would smush a bunch of different domains together. That violates separation of concerns and leads to hard-to-maintain code.
+
+这样解决，对于小项目来说很好，它们的规模很小。正如我之前提到的，这些语法树跨域了几个域，至少，解析器和解释器都会使用到语法树。稍后你将看到，我们将进行名称解析。如果我们的语言是静态类型的，我们将有一个类型检查步骤。
+
+如果我们对于每一个操作，都在表达式实例中添加对应的方法，那么将会把一系列的域，混杂在一起。这违反了[关注点分离](https://en.wikipedia.org/wiki/Separation_of_concerns), 会让后面的代码更难维护。
+
+### 3.1 The expression problem
+
+表达式问题
+
+This problem is more fundamental than it may seem at first. We have a handful of types, and a handful of high-level operations like “interpret”. For each pair of type and operation, we need a specific implementation. Picture a table:
+
+这个问题，比最初看起来更加根本，我们有一些类型，还有一些操作，例如: interpret, 对于每一个类型和操作的组合，我们需要一个特定的实现。表格看起来是这样：
+
+![table](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/table.png?raw=true)
+
+Rows are types, and columns are operations. Each cell represents the unique piece of code to implement that operation on that type.
+
+An object-oriented language like Java assumes that all of the code in one row naturally hangs together. It figures all the things you do with a type are likely related to each other, and the language makes it easy to define them together as methods inside the same class.
+
+This makes it easy to extend the table by adding new rows. Simply define a new class. No existing code has to be touched. But imagine if you want to add a new operation—a new column. In Java, that means cracking open each of those existing classes and adding a method to it.
+
+表格中，行是类型，列是操作，每个单元格表示某种类型的某个操作，具体的实现代码。
+
+在Java这样的面向对象语言中，会将一行中的所有操作，自然的放到一起。它认为我们对于每个类型的所有操作都是相互关联的。Java中可以很简单的将这些方法定义到同一个类中
+
+![rows](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/rows.png?raw=true)
+
+这样，我们可以很容易的扩展新的一行，即添加一个新类。无需修改现有代码。但是，想象一下，如果你添加了一个新的操作，即添加了一列。在Java中，这意味着，我们需要在每个类中，添加一个新的方法。
+
+Functional paradigm languages in the ML family flip that around. There, you don’t have classes with methods. Types and functions are totally distinct. To implement an operation for a number of different types, you define a single function. In the body of that function, you use pattern matching—sort of a type-based switch on steroids—to implement the operation for each type all in one place.
+
+This makes it trivial to add new operations—simply define another function that pattern matches on all of the types.
+
+[ML语言](https://craftinginterpreters.com/representing-code.html)家族中的，函数范型语言正好相反，在那里，你没有类和类方法的概念，类型和函数完全不相同。为了定义某个操作（不同的类型），我们可以定义一个函数，在每个函数中，我们使用类型匹配，根据不同的类型，实现不同的具体操作代码。
+
+这样，我们可以很容易添加一个新的操作，在新操作对应的函数中，我们根据不同类型，定义不同的实现。
+
+
+![columns](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/columns.png?raw=true)
+
+But, conversely, adding a new type is hard. You have to go back and add a new case to all of the pattern matches in all of the existing functions.
+
+但是，如果我们想要添加一个新的类型，会非常麻烦，我们必须在所有的函数中，添加一个模式，匹配新的类型，并且添加对应的代码。
+
+> ML, short for “metalanguage” was created by Robin Milner and friends and forms one of the main branches in the great programming language family tree. Its children include SML, Caml, OCaml, Haskell, and F#. Even Scala, Rust, and Swift bear a strong resemblance.
+> 
+> Much like Lisp, it is one of those languages that is so full of good ideas that language designers today are still rediscovering them over forty years later.
+> 
+> ML, 是元语言的缩写，是由[Robin Milner](https://en.wikipedia.org/wiki/Robin_Milner) 和他的朋友们创建，是伟大的编程语言的一个重要分支，受到它影响的语法包括，SML Caml OCaml Haskell F#等等，即使是 Scala, Rust 和 Swift也和它有很多的相似性。
+>
+> 与lisp语言相似，ML是一门充满了想法的语言，以致于语言设计者，在40年后的今天，依然可以发现ML中的新想法。
+
+Each style has a certain “grain” to it. That’s what the paradigm name literally says—an object-oriented language wants you to orient your code along the rows of types. A functional language instead encourages you to lump each column’s worth of code together into a function.
+
+A bunch of smart language nerds noticed that neither style made it easy to add both rows and columns to the table. They called this difficulty the “expression problem” because—like we are now—they first ran into it when they were trying to figure out the best way to model expression syntax tree nodes in a compiler.
+
+People have thrown all sorts of language features, design patterns, and programming tricks to try to knock that problem down but no perfect language has finished it off yet. In the meantime, the best we can do is try to pick a language whose orientation matches the natural architectural seams in the program we’re writing.
+
+Object-orientation works fine for many parts of our interpreter, but these tree classes rub against the grain of Java. Fortunately, there’s a design pattern we can bring to bear on it.
+
+每一种编程方式，都有自己的风格，这也体现在编程范式名称上，面向对象编程语言，希望我们沿着表格中行方向，函数式编程，鼓励我们沿着列方向编程。
+
+一群聪明的书呆子注意到，上面的两种编程风格，都无法简单的添加一行或者一列。他们将这个困难，称为表达式问题，因为和我们现在一样，他们也是在试图找到一种最好的方法，对表达式语法树进行建模时候，遇到这个问题。
+
+人们已经抛弃了各种语言特性、设计模式、编程技巧，试图去解决这个问题，但是，还没有一种语言可以完美的解决这个问题。所以，当前我们最好的方法是，选择一种语言，它的编程方向，和我们要实现的语法树更加契合。
+
+面向对象语言，对于解释器部分一般更加合适，但是这些语法树，和Java的编程风格有冲突，幸运的是，我们可以引入新的设计模式，利用它，更好的编写语法树的实现。
+
+>Languages with multimethods, like Common Lisp’s CLOS, Dylan, and Julia do support adding both new types and operations easily. What they typically sacrifice is either static type checking, or separate compilation.
+>
+> 具有多方法的语言，例如: Common Lisp, 确实支持轻松添加新的类型和操作，但是，它们通常会缺少静态类型的检查或者单独编译。
+
+### 3.2 The Visitor pattern
+
+[访问者模式](https://en.wikipedia.org/wiki/Visitor_pattern)
+
+The Visitor pattern is the most widely misunderstood pattern in all of Design Patterns, which is really saying something when you look at the software architecture excesses of the past couple of decades.
+
+The trouble starts with terminology. The pattern isn’t about “visiting”, and the “accept” method in it doesn’t conjure up any helpful imagery either. Many think the pattern has to do with traversing trees, which isn’t the case at all. We are going to use it on a set of classes that are tree-like, but that’s a coincidence. As you’ll see, the pattern works as well on a single object.
+
+The Visitor pattern is really about approximating the functional style within an OOP language. It lets us add new columns to that table easily. We can define all of the behavior for a new operation on a set of types in one place, without having to touch the types themselves. It does this the same way we solve almost every problem in computer science: by adding a layer of indirection.
+
+当你查看过去几十年的软件架构历史，访问者模式是最容易被误解的模式
+
+问题从术语开始，该模式与访问无关，其中的接受方法，也不会产生任何有用的图像。许多人认为这种模式和遍历语法树有关，但事实并不是这样。我们接下来，将在一组树类，使用访问者模式，但是这只是巧合。正如，你将看到，该模式也适用于单个对象。
+
+访问者模式，在面向对象语言中，类似于函数式。它，可以让我们轻松的添加一列。我们可以在一个地方，定义一组类型上的新操作的所有行为，而不需要接触具体的类型。这与我们解决计算中的几乎所有问题的思想一样——添加一层抽象，间接寻址。
+
+> A beignet (pronounced “ben-yay”, with equal emphasis on both syllables) is a deep-fried pastry in the same family as doughnuts. When the French colonized North America in the 1700s, they brought beignets with them. Today, in the US, they are most strongly associated with the cuisine of New Orleans.
+> 
+> My preferred way to consume them is fresh out of the fryer at Café du Monde, piled high in powdered sugar, and washed down with a cup of café au lait while I watch tourists staggering around trying to shake off their hangover from the previous night’s revelry
+> 
+> beignet是一种油炸糕点，和甜甜圈是同一类型糕点。
+
+Before we apply it to our auto-generated Expr classes, let’s walk through a simpler example. Say we have two kinds of pastries: beignets and crullers.
+
+在我们应用该模式于我们的Expr类之前，我们先进行一个简单示例。假设我们有两类糕点：甜饼和煎饼
+
+```java
+
+
+  abstract class Pastry {
+  }
+
+  class Beignet extends Pastry {
+  }
+
+  class Cruller extends Pastry {
+  }
+  
+  
+```
+
+We want to be able to define new pastry operations—cooking them, eating them, decorating them, etc.—without having to add a new method to each class every time. Here’s how we do it. First, we define a separate interface.
+
+我们想要定义新的糕点操作，烹饪、食用、装饰它们，而不需要向每个类中添加方法，下面是我们的做法。首先，我们定义一个单独的接口
+
+```java 
 
 
 
+  interface PastryVisitor {
+    void visitBeignet(Beignet beignet); 
+    void visitCruller(Cruller cruller);
+  }
+  
+  
+```
+
+> In Design Patterns, both of these methods are confusingly named visit(), and they rely on overloading to distinguish them. This leads some readers to think that the correct visit method is chosen at runtime based on its parameter type. That isn’t the case. Unlike overriding, overloading is statically dispatched at compile time.
+> 
+> Using distinct names for each method makes the dispatch more obvious, and also shows you how to apply this pattern in languages that don’t support overloading.
+>
+> 在设计模式中，所有方法名称都相同，visit(), 它们非常容易混淆，我们需要使用重载来区分它们。这导致一些读者认为，visit()方法的区分是在运行时候根据参数类型不同，执行不同的方法，但是，实际上，与重写不同，重载是在静态编译阶段区分的。
+>
+> 对于每个方法使用不同的名称 visitBeignet/visitCruller 可以让分派更加明显。并且，还可以展示在不支持重载的语言中，如何实现访问者模式。
+
+Each operation that can be performed on pastries is a new class that implements that interface. It has a concrete method for each type of pastry. That keeps the code for the operation on both types all nestled snugly together in one class.
+
+Given some pastry, how do we route it to the correct method on the visitor based on its type? Polymorphism to the rescue! We add this method to Pastry:
+
+
+可以在糕点上执行的每个操作都是一个实现该接口的新类。每个糕点，都有具体的制作方法，这样，两个类型的相同操作代码将写入一个类中
+
+给定一些糕点，我们如何根据其类型将它们发送到访问者的正确方法？我们将使用多态，每个子类都将实现
+
+```java
+
+
+ abstract class Pastry {
+    abstract void accept(PastryVisitor visitor);
+  }
+  
+```
+
+```java
+
+ class Beignet extends Pastry {
+    @Override
+    void accept(PastryVisitor visitor) {
+      visitor.visitBeignet(this);
+    }
+  }
+  
+```
+
+```java
+
+
+  class Cruller extends Pastry {
+    @Override
+    void accept(PastryVisitor visitor) {
+      visitor.visitCruller(this);
+    }
+  }
+  
+```
+
+To perform an operation on a pastry, we call its accept() method and pass in the visitor for the operation we want to execute. The pastry—the specific subclass’s overriding implementation of accept()—turns around and calls the appropriate visit method on the visitor and passes itself to it.
+
+That’s the heart of the trick right there. It lets us use polymorphic dispatch on the pastry classes to select the appropriate method on the visitor class. In the table, each pastry class is a row, but if you look at all of the methods for a single visitor, they form a column.
+
+We added one accept() method to each class, and we can use it for as many visitors as we want without ever having to touch the pastry classes again. It’s a clever pattern.
+
+要在糕点上执行操作，我们调用它的accept() 方法，并且传参是 要执行操作的访问者。糕点的子类，重写 accept() 方法，它会对应不同的访问者，调用不同的访问方法，并将自身当作传参。
+
+这就是关键所在，它允许我们在糕点类上使用多态，选择访问者类上的特定方法，在下面的表格中，每个具体的糕点类都是一行，但是，当你查看单个访问者的所有方法，它们将会是一列
+
+我们为每一个糕点子类，添加了一个accept方法，我们可以根据需要，为任意多的访问者使用不同的accept方法，而无须修改糕点类，这是一个好的模式。
+
+![visitor](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/visitor.png?raw=true)
+
+### 3.3 Visitors for expressions
+
+表达式访问者模式
+
+OK, let’s weave it into our expression classes. We’ll also refine the pattern a little. In the pastry example, the visit and accept() methods don’t return anything. In practice, visitors often want to define operations that produce values. But what return type should accept() have? We can’t assume every visitor class wants to produce the same type, so we’ll use generics to let each implementation fill in a return type.
+
+好的，接下来，让我们在表达式类中，使用访问者模式，我们还将对访问者模式进行一些改进，在糕点示例中，vistor() 和 accept() 方法，没有具体的返回值。实际上，vistor期望定义可以产生值的操作，但是,accept() 方法，应该有什么类型的返回值呢？我们不能假设，每一个visitor都返回相同的类型，所以，我们将使用泛型，让每一个具体实现，去填充类型
+
+>Another common refinement is an additional “context” parameter that is passed to the visit methods and then sent back through as a parameter to accept(). That lets operations take an additional parameter. The visitors we’ll define in the book don’t need that, so I omitted it.
+> 
+> 另一个常见的细化是通过一个参数context, 该参数传递给visit(), 然后，在作为一个参数，发送回accept()， 这允许操作使用附加参数，我们在本书中定义的访问者不需要该参数，所以，我们省略了context的介绍。
+
+First, we define the visitor interface. Again, we nest it inside the base class so that we can keep everything in one file.
+
+首先，我们定义访问者接口，同样的，我们将其嵌套在基类中，以便我们将所有内容保存在一个文件中。
+
+```java
+
+// tool/GenerateAst.java, in defineAst()
+
+    writer.println("abstract class " + baseName + " {");
+
+    defineVisitor(writer, baseName, types);
+
+    // The AST classes.
+
+
+```
+
+```java
+
+// tool/GenerateAst.java, add after defineAst()
+  private static void defineVisitor(
+      PrintWriter writer, String baseName, List<String> types) {
+    writer.println("  interface Visitor<R> {");
+
+    for (String type : types) {
+      String typeName = type.split(":")[0].trim();
+      writer.println("    R visit" + typeName + baseName + "(" +
+          typeName + " " + baseName.toLowerCase() + ");");
+    }
+
+    writer.println("  }");
+  }
+  
+```
+Here, we iterate through all of the subclasses and declare a visit method for each one. When we define new expression types later, this will automatically include them.
+
+Inside the base class, we define the abstract accept() method.
+
+在这里，我们遍历每一个子类，并且为每一个子类，声明了一个访问方法，当我们定义新的表达式类时候，这将自动包括它们
+
+在基类中，我们将定义抽象类 accept() 方法
+
+```java
+
+// tool/GenerateAst.java, in defineAst()
+
+      defineType(writer, baseName, className, fields);
+    }
+
+    // The base accept() method.
+    writer.println();
+    writer.println("  abstract <R> R accept(Visitor<R> visitor);");
+
+    writer.println("}");
+
+
+```
+
+Finally, each subclass implements that and calls the right visit method for its own type.
+
+最后，每一个子类中都实现了accept() 方法，每个具体的accept() 方法将会调用正确的visit方法
+
+```java
+
+// tool/GenerateAst.java, in defineType()
+
+    writer.println("    }");
+
+    // Visitor pattern.
+    writer.println();
+    writer.println("    @Override");
+    writer.println("    <R> R accept(Visitor<R> visitor) {");
+    writer.println("      return visitor.visit" +
+        className + baseName + "(this);");
+    writer.println("    }");
+
+    // Fields.
+
+
+```
+
+There we go. Now we can define operations on expressions without having to muck with the classes or our generator script. Compile and run this generator script to output an updated “Expr.java” file. It contains a generated Visitor interface and a set of expression node classes that support the Visitor pattern using it.
+
+Before we end this rambling chapter, let’s implement that Visitor interface and see the pattern in action.
+
+我们继续开始，现在，我们可以在表达式上定义操作，而不需要处理类和生成类脚本， 编译运行这个脚本，更新Expr.java 文件，它包含一个生成Visitor接口，和一系列表达式节点类，支持Visitor模式。
+
+在我们结束这漫无边际的一章之前，让我们实现Visitor接口，并且实际使用访问者模式。
+
+
+## 四、A (Not Very) Pretty Printer
+
+When we debug our parser and interpreter, it’s often useful to look at a parsed syntax tree and make sure it has the structure we expect. We could inspect it in the debugger, but that can be a chore.
+
+Instead, we’d like some code that, given a syntax tree, produces an unambiguous string representation of it. Converting a tree to a string is sort of the opposite of a parser, and is often called “pretty printing” when the goal is to produce a string of text that is valid syntax in the source language.
+
+That’s not our goal here. We want the string to very explicitly show the nesting structure of the tree. A printer that returned 1 + 2 * 3 isn’t super helpful if what we’re trying to debug is whether operator precedence is handled correctly. We want to know if the + or * is at the top of the tree.
+
+当我们调试解析器和解释器时候，查看已经解析的语法树，并且确保它们拥有我们期望的结构，通常非常重要，我们可以在调试阶段检查。但是，这也是一项繁重的任务
+
+相反，我们更喜欢一些输出，在给定语法树场景，输出明确的字符串，表示这个语法树。将树返回为一个字符串，过程和解析器正好相反，这通常称为完美输出，如果我们输出的字符串是一个合法的原始语言的字符串
+
+但是，这不是我们的目标，我们希望字符串，可以非常明确的显示语法树结构，如果我们想要调试运算符优先级是否正确被处理，那么我们直接输出 1 +  2*3 , 不会有很大的作用。我们想要知道，+ 还是 * 在语法树的顶部。
+
+To that end, the string representation we produce isn’t going to be Lox syntax. Instead, it will look a lot like, well, Lisp. Each expression is explicitly parenthesized, and all of its subexpressions and tokens are contained in that.
+
+为此，我们输出的字符串不是符合lox语法的字符串，相反，它看起来更像是 lisp语言，每个表达式都显示的用括号括起来，其中包含所有的子表达式和token
+
+Given a syntax tree like:
+
+给定下面的语法树，
+
+![expression](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/expression.png?raw=true)
+
+It produces:
+
+它对应的输出字符串是
+
+```(* (- 123) (group 45.67))```
+
+
+Not exactly “pretty”, but it does show the nesting and grouping explicitly. To implement this, we define a new class.
+
+虽然，不是非常完美，但是它，的确显示了嵌套和分组结构，为了实现这个输出，我们定义一个新的类
+
+
+```java
+
+// lox/AstPrinter.java, create new file
+
+package com.craftinginterpreters.lox;
+
+class AstPrinter implements Expr.Visitor<String> {
+  String print(Expr expr) {
+    return expr.accept(this);
+  }
+}
+
+
+```
+
+As you can see, it implements the visitor interface. That means we need visit methods for each of the expression types we have so far.
+
+如我们所见，它实现了访问者模式的接口，这意味着我们需要对每个表达式类型实现访问方法，
+
+```java
+
+// lox/AstPrinter.java, add after print()
+
+    return expr.accept(this);
+  }
+
+  @Override
+  public String visitBinaryExpr(Expr.Binary expr) {
+    return parenthesize(expr.operator.lexeme,
+                        expr.left, expr.right);
+  }
+
+  @Override
+  public String visitGroupingExpr(Expr.Grouping expr) {
+    return parenthesize("group", expr.expression);
+  }
+
+  @Override
+  public String visitLiteralExpr(Expr.Literal expr) {
+    if (expr.value == null) return "nil";
+    return expr.value.toString();
+  }
+
+  @Override
+  public String visitUnaryExpr(Expr.Unary expr) {
+    return parenthesize(expr.operator.lexeme, expr.right);
+  }
+}
+
+```
+
+
+Literal expressions are easy—they convert the value to a string with a little check to handle Java’s null standing in for Lox’s nil. The other expressions have subexpressions, so they use this parenthesize() helper method:
+
+文字表达式的访问者接口很容易实现——它们将值转换为字符串，只需要稍微检查一下，是否是Java 中的null值，如果是，需要转为lox语言中的nil；其他的表达式，含有子表达式，因此，我们还需要借助这个括号处理帮助函数
+
+```java
+
+// lox/AstPrinter.java, add after visitUnaryExpr()
+
+  private String parenthesize(String name, Expr... exprs) {
+    StringBuilder builder = new StringBuilder();
+
+    builder.append("(").append(name);
+    for (Expr expr : exprs) {
+      builder.append(" ");
+      builder.append(expr.accept(this));
+    }
+    builder.append(")");
+
+    return builder.toString();
+  }
+
+
+```
+
+It takes a name and a list of subexpressions and wraps them all up in parentheses, yielding a string like:
+
+它接受一个名称和一串子表达式，并且将它们都是用括号括起来，生成如下的字符串
+
+```
+
+(+ 1 2)
+
+```
+
+Note that it calls accept() on each subexpression and passes in itself. This is the recursive step that lets us print an entire tree.
+
+需要注意的是，每个子表达式都会调用accept() 方法，并且将自身传参，这样，我们可以递归调用，打印出语法树。
+
+> This recursion is also why people think the Visitor pattern itself has to do with trees.
+> 
+> 这种递归，也让人们更加认为，访问者模式和语法树是有关的。
+
+We don’t have a parser yet, so it’s hard to see this in action. For now, we’ll hack together a little main() method that manually instantiates a tree and prints it.
+
+我们还没有解析器，所以很难看到具体的实际应用。但是，我们将先实现一个demo main函数，手动实例化语法树，并且打印
+
+
+```java
+// lox/AstPrinter.java, add after parenthesize()
+
+  public static void main(String[] args) {
+    Expr expression = new Expr.Binary(
+        new Expr.Unary(
+            new Token(TokenType.MINUS, "-", null, 1),
+            new Expr.Literal(123)),
+        new Token(TokenType.STAR, "*", null, 1),
+        new Expr.Grouping(
+            new Expr.Literal(45.67)));
+
+    System.out.println(new AstPrinter().print(expression));
+  }
+
+
+```
+
+If we did everything right, it prints:
+
+接下来，我们运行，将会输出
+
+```(* (- 123) (group 45.67))```
+
+You can go ahead and delete this method. We won’t need it. Also, as we add new syntax tree types, I won’t bother showing the necessary visit methods for them in AstPrinter. If you want to (and you want the Java compiler to not yell at you), go ahead and add them yourself. It will come in handy in the next chapter when we start parsing Lox code into syntax trees. Or, if you don’t care to maintain AstPrinter, feel free to delete it. We won’t need it again.
+
+我们可以继续下去，删除当前demo，我们不需要它。此外，当我们添加新的表达式类型时候，我不会费心在AstPrinter中实现它们的访问方法，如果你想要添加（并且希望Java编译器不会报错），那么你可以自己添加对应的vistor方法，当我们将Lox代码解析为语法树时候，它将在接下来发挥作用。或者，如果你不想维护AstPrinter, 可以随时删除它，我们不再需要它。
 
 
 
+## 五、CHALLENGES
 
+习题
 
+1. Earlier, I said that the |, *, and + forms we added to our grammar metasyntax were just syntactic sugar. Take this grammar:
 
+   早先，我讲了我们的元语法中，只是将 | * + 当作一些语法糖，
+   
+   ```
+   
+   expr → expr ( "(" ( expr ( "," expr )* )? ")" | "." IDENTIFIER )+
+     | IDENTIFIER
+     | NUMBER
 
+   
+   ```
+   
+   请生成同样的语法规则，不使用语法糖，上面这段语法规则，是描述了什么表达式？
+   
+1. The Visitor pattern lets you emulate the functional style in an object-oriented language. Devise a complementary pattern for a functional language. It should let you bundle all of the operations on one type together and let you define new types easily.
+
+   (SML or Haskell would be ideal for this exercise, but Scheme or another Lisp works as well.)
+
+	访问者模式允许我们在面向对象语言中使用模拟函数式编程风格。请，为函数式语言设计一个模式，它允许我们将所有的操作写入到一起，并且允许我们轻松的定义新的类型
+	
+	SML 和 Haskell 是这个练习的理想语言，但是 Scheme 和 Lisp 也可以
+	
+1. In reverse Polish notation (RPN), the operands to an arithmetic operator are both placed before the operator, so 1 + 2 becomes 1 2 +. Evaluation proceeds from left to right. Numbers are pushed onto an implicit stack. An arithmetic operator pops the top two numbers, performs the operation, and pushes the result. Thus, this:
+
+	(1 + 2) * (4 - 3) in RPN becomes: 1 2 + 4 3 - *
+
+	Define a visitor class for our syntax tree classes that takes an expression, converts it to RPN, and returns the resulting string.
+
+	在逆波兰表示法中RPN，算术运算符的操作数放到操作符之前，例如：1 + 2将变为 1 2 + , 执行时候，从左到右。将操作数放入堆栈中，遇到操作符后，将弹出对应的操作数，执行运算，将结果重新放入堆栈
+	
+	例如: 
+	
+	(1 + 2) * (4 - 3)  使用逆波兰表示法 1 2 + 4 3 - *
+	
+	
+	定义一个访问者类，针对不同的表达式类型，输出其逆波兰表示法。
