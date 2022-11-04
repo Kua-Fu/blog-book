@@ -3,6 +3,7 @@
 - [2022年阅读](work_reading/2022/2022.md)
   - [1~3月阅读文章](work_reading/2022/1_3.md)
   - [4~7月阅读文章](work_reading/2022/4_7.md)
+  - [8~10月阅读文章](work_reading/2022/8_10.md)
 - [2021年阅读](work_reading/2021/2021.md)
   - [1月阅读文章](work_reading/2021/1.md)
   - [2月阅读文章](work_reading/2021/2.md)

@@ -388,6 +388,214 @@ primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quo
 <p>递归下降是构造解析器的最简单方法，而且我们不需要使用 yacc, Bison, ANTLR 这样的生成器工具。我们需要的仅仅是简单的手写代码，但是，不要被它的简单所迷惑。递归下降的解析器，速度快，代码健壮，可以支持复杂的错误处理。事实上，很多重量级的解析器，都是用递归下降分析，例如：GCC， V8（chrome中JavaScript的VM），Roslyn（C#编写的C#编译器）</p>
 <p>递归下降被认为是一种自顶向下的解析器，因为它是从最上面或者最外面的语法规则（上文中的 expression规则）开始，一直向下到嵌套的子表达式，最后到达，语法树的叶子节点，这与自底向上的解析器，形成对比。例如：自底向上的解析器LR，会从最底层的 primary开始，然后，一直组合子表达式，语法块越来越大。</p>
 <p>A recursive descent parser is a literal translation of the grammar’s rules straight into imperative code. Each rule becomes a function. The body of the rule translates to code roughly like:</p>
+<table><thead><tr><th>Grammar notation</th><th>Code representation</th></tr></thead><tbody>
+<tr><td>Terminal</td><td>Code to match and consume a token</td></tr>
+<tr><td>Nonterminal</td><td>Call to that rule’s function</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td>* or +</td><td>while or for loop</td></tr>
+<tr><td>?</td><td>if statement</td></tr>
+</tbody></table>
+<p>The descent is described as “recursive” because when a grammar rule refers to itself—directly or indirectly—that translates to a recursive function call.</p>
+<p>递归下降解析器是将语法规则直接翻译为命令式代码的直译，每个规则都成为一个函数，规则的转换可以参考：</p>
+<p>下降将被描述为“递归”，因为当语法规则直接或者间接的引用自身时候，它会转化为递归函数调用</p>
+<h3 id="21-the-parser-class"><a class="header" href="#21-the-parser-class">2.1 The parser class</a></h3>
+<p>解析类</p>
+<p>Each grammar rule becomes a method inside this new class:</p>
+<p>每个语法规则都会变为解析类中的一个方法</p>
+<pre><code class="language-java">
+// lox/Parser.java, create new file
+
+
+package com.craftinginterpreters.lox;
+
+import java.util.List;
+
+import static com.craftinginterpreters.lox.TokenType.*;
+
+class Parser {
+  private final List&lt;Token&gt; tokens;
+  private int current = 0;
+
+  Parser(List&lt;Token&gt; tokens) {
+    this.tokens = tokens;
+  }
+}
+
+</code></pre>
+<p>Like the scanner, the parser consumes a flat input sequence, only now we’re reading tokens instead of characters. We store the list of tokens and use current to point to the next token eagerly waiting to be parsed.</p>
+<p>和扫描器一样，解析器使用输入的序列，只不过我们从扫描器的字符序列，变为了解析器的token序列，在类中，我们会存储 token序列，并且使用 current, 表示下一个等待解析的token</p>
+<p>We’re going to run straight through the expression grammar now and translate each rule to Java code. The first rule, expression, simply expands to the equality rule, so that’s straightforward.</p>
+<p>现在，我们将直接运行表达式语法，并将每个语法规则转为Java 代码，第一条规则，表达式，简单的扩展为等式规则，所以这个非常简单</p>
+<pre><code class="language-java">
+// lox/Parser.java, add after Parser()
+
+  private Expr expression() {
+    return equality();
+  }
+  
+</code></pre>
+<p>Each method for parsing a grammar rule produces a syntax tree for that rule and returns it to the caller. When the body of the rule contains a nonterminal—a reference to another rule—we call that other rule’s method.</p>
+<p>The rule for equality is a little more complex.</p>
+<p>每一个语法规则解析方法，都为该语法规则生成一个语法树，并且将语法树，返回给调用者，当规则中包含有一个非终止符时候——对另一个规则的引用，我们将调用另外一个规则。</p>
+<p>下面等式的规则有些复杂</p>
+<pre><code>
+equality       → comparison ( ( &quot;!=&quot; | &quot;==&quot; ) comparison )* ;
+
+</code></pre>
+<p>In Java, that becomes:</p>
+<p>使用 Java实现，变为：</p>
+<pre><code class="language-java">
+// lox/Parser.java, add after expression()
+
+  private Expr equality() {
+    Expr expr = comparison();
+
+    while (match(BANG_EQUAL, EQUAL_EQUAL)) {
+      Token operator = previous();
+      Expr right = comparison();
+      expr = new Expr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+
+</code></pre>
+<p>Let’s step through it. The first comparison nonterminal in the body translates to the first call to comparison() in the method. We take that result and store it in a local variable.</p>
+<p>Then, the ( ... )* loop in the rule maps to a while loop. We need to know when to exit that loop. We can see that inside the rule, we must first find either a != or == token. So, if we don’t see one of those, we must be done with the sequence of equality operators. We express that check using a handy match() method.</p>
+<p>让我们逐一了解，语法规则中的 comparison 非终止符，将变为解析类中的一个方法—— comparison(), 我们将调用 comparison() ，并且返回结果，存储在局部变量中。</p>
+<p>接下来，语法规则中的 ( ... ) * 循环将变为Java代码中的 while 循环，我们需要知道什么时候，退出循环，从语法规则中，可以发现，我们需要先找到一个 != 或者  == 的 token, 所以，如果我们看不到 == 或者 != , 我们必须对等式运算符序列进行处理，我们将简单的使用一个match() 函数，实现该检查</p>
+<pre><code class="language-java">
+// lox/Parser.java, add after equality()
+
+  private boolean match(TokenType... types) {
+    for (TokenType type : types) {
+      if (check(type)) {
+        advance();
+        return true;
+      }
+    }
+
+    return false;
+  }
+  
+</code></pre>
+<p>This checks to see if the current token has any of the given types. If so, it consumes the token and returns true. Otherwise, it returns false and leaves the current token alone. The match() method is defined in terms of two more fundamental operations.</p>
+<p>The check() method returns true if the current token is of the given type. Unlike match(), it never consumes the token, it only looks at it.</p>
+<p>The advance() method consumes the current token and returns it, similar to how our scanner’s corresponding method crawled through characters.</p>
+<p>These methods bottom out on the last handful of primitive operations.</p>
+<p>这个match()函数，将检查当前的token，是否是参数中的token类型，如果当前token满足给定的类型，将返回 true, 否则，将返回false，并且保留在当前的位置，match() 函数中，将会调用其他两个函数 check() , advance()</p>
+<p>如果当前的token符合给定的 token类型，check() 方法将返回true， 与match() 方法不一样，check()方法，不会前移token（及发现满足条件后，current前移一位），只会检查token类型</p>
+<p>advance() 方法使用current位置的token，并且返回，类似于我们在扫描器中，对应的字符级别的 advance() 方法</p>
+<p>advance() 方法，将会使用到下面的基本方法</p>
+<pre><code class="language-java">
+// lox/Parser.java, add after match()
+
+  private boolean check(TokenType type) {
+    if (isAtEnd()) return false;
+    return peek().type == type;
+  }
+
+
+</code></pre>
+<pre><code class="language-java">
+// lox/Parser.java, add after check()
+
+  private Token advance() {
+    if (!isAtEnd()) current++;
+    return previous();
+  }
+
+
+</code></pre>
+<pre><code class="language-java">
+// lox/Parser.java, add after advance()
+
+  private boolean isAtEnd() {
+    return peek().type == EOF;
+  }
+
+  private Token peek() {
+    return tokens.get(current);
+  }
+
+  private Token previous() {
+    return tokens.get(current - 1);
+  }
+
+
+</code></pre>
+<p>isAtEnd() checks if we’ve run out of tokens to parse. peek() returns the current token we have yet to consume, and previous() returns the most recently consumed token. The latter makes it easier to use match() and then access the just-matched token.</p>
+<p>isAtEnd() 方法，检查token是否已经使用完，peek(） 返回current位置的token，previous() 返回最近使用的token，previous() 方法，让 match() 函数更加容易，访问匹配的token</p>
+<p>That’s most of the parsing infrastructure we need. Where were we? Right, so if we are inside the while loop in equality(), then we know we have found a != or == operator and must be parsing an equality expression.</p>
+<p>We grab the matched operator token so we can track which kind of equality expression we have. Then we call comparison() again to parse the right-hand operand. We combine the operator and its two operands into a new Expr.Binary syntax tree node, and then loop around. For each iteration, we store the resulting expression back in the same expr local variable. As we zip through a sequence of equality expressions, that creates a left-associative nested tree of binary operator nodes.</p>
+<p>这就是我们需要使用的大部分的，解析基础结构，我们在哪里？如果我们在 equality() 方法的while循环中，那么我们需要找到 != 或者 == 运算符，并且必须解析等式表达式。</p>
+<p>我们将获取匹配到的运算符token（ == 或者 != ), 以便跟踪我们拥有哪种等式表达式，然后，我们将再次调用 comparison() 方法，来解析右边的操作数，我们将两个操作数和运算符，组合为一个新的二元表达式语法树，然后，循环，对于每一次迭代，我们都将结果保存在相同的expr 局部变量中，</p>
+<p>当我们创建一系列的等式表达式时候，我们将创建一个二元运算符节点的左关联嵌套树。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/sequence.png?raw=true" alt="sequence" /></p>
+<p>The parser falls out of the loop once it hits a token that’s not an equality operator. Finally, it returns the expression. Note that if the parser never encounters an equality operator, then it never enters the loop. In that case, the equality() method effectively calls and returns comparison(). In that way, this method matches an equality operator or anything of higher precedence.</p>
+<p>一旦解析器碰到不是等式运算符的token， 它就会退出循环，最后，解析器会返回表达式，需要注意的是，如果解析器没有遇到等式运算符，它永远不会进入循环，在这种情况下，equaility() 函数，调用会返回 comparison(). 通过上面的方式，此方法将会匹配相等运算符，或者任何优先级较高的运算符。</p>
+<p>Moving on to the next rule . . . </p>
+<pre><code>
+comparison     → term ( ( &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; ) term )* ;
+
+</code></pre>
+<p>Translated to Java:</p>
+<pre><code class="language-java">
+// lox/Parser.java add after equality()
+
+  private Expr comparison() {
+    Expr expr = term();
+
+    while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL)) {
+      Token operator = previous();
+      Expr right = term();
+      expr = new Expr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+  
+</code></pre>
+<p>The grammar rule is virtually identical to equality and so is the corresponding code. The only differences are the token types for the operators we match, and the method we call for the operands—now term() instead of comparison(). The remaining two binary operator rules follow the same pattern.</p>
+<p>继续进行下个语法规则</p>
+<p>语法规则实际等同于等式，相应的代码也是如此，唯一的区别是我们匹配的运算符token的类型，以及，我们为了操作数调用的方法是 term() 而不是 comparison() , 另外的两个二元运算符规则，遵循相同的模式</p>
+<p>In order of precedence, first addition and subtraction:</p>
+<p>按照运算优先级，首先考虑加法和减法运算</p>
+<pre><code class="language-java">
+// lox/Parser.java add after comparison()
+
+  private Expr term() {
+    Expr expr = factor();
+
+    while (match(MINUS, PLUS)) {
+      Token operator = previous();
+      Expr right = factor();
+      expr = new Expr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+  
+</code></pre>
+<p>And finally, multiplication and division:</p>
+<p>最后，考虑乘法和除法</p>
+<pre><code class="language-java">
+//lox/Parser.java add after term()
+
+ private Expr factor() {
+    Expr expr = unary();
+
+    while (match(SLASH, STAR)) {
+      Token operator = previous();
+      Expr right = unary();
+      expr = new Expr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+  
+</code></pre>
 
                     </main>
 

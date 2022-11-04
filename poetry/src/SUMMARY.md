@@ -79,6 +79,7 @@
 - [总结](life/past/past.md)
   - [工作总结2022-2季度](life/future/work/2022-02.md)
   - [周报](life/future/work/week.md)
+  - [OKR](life/future/work/okr.md)
 - [规划](life/future/future.md)
   - [技术类](life/future/technology.md)
   - [生活类](life/future/life.md)
