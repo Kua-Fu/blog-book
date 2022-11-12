@@ -1,14 +1,30 @@
 # 周报
 
-异步任务框架
+### 2022/10/31 ~ 2022/11/06
 
-dql 文档修改
+---
 
-logstore删除
+一、 本周进展
 
-免费用户升级
+1. 11-03 迭代上线
 
-source字段缓存
+a. kodo引入异步任务框架
+
+b. bugfix, 详见 https://gitlab.jiagouyun.com/cloudcare-tools/kodo/-/issues/469
+
+
+
+二、下周计划
+
+1. 11-17 迭代开发
+
+a. source字段缓存
+
+b. logstore删除/修改logstore保存策略
+
+c. 大日志切分
+
+
 
 
 

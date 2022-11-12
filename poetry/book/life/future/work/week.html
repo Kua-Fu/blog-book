@@ -153,11 +153,21 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="周报"><a class="header" href="#周报">周报</a></h1>
-<p>异步任务框架</p>
-<p>dql 文档修改</p>
-<p>logstore删除</p>
-<p>免费用户升级</p>
-<p>source字段缓存</p>
+<h3 id="20221031--20221106"><a class="header" href="#20221031--20221106">2022/10/31 ~ 2022/11/06</a></h3>
+<hr />
+<p>一、 本周进展</p>
+<ol>
+<li>11-03 迭代上线</li>
+</ol>
+<p>a. kodo引入异步任务框架</p>
+<p>b. bugfix, 详见 https://gitlab.jiagouyun.com/cloudcare-tools/kodo/-/issues/469</p>
+<p>二、下周计划</p>
+<ol>
+<li>11-17 迭代开发</li>
+</ol>
+<p>a. source字段缓存</p>
+<p>b. logstore删除/修改logstore保存策略</p>
+<p>c. 大日志切分</p>
 <h3 id="20221024--20221028"><a class="header" href="#20221024--20221028">2022/10/24 ~ 2022/10/28</a></h3>
 <hr />
 <p>一、 本周进展</p>
@@ -264,6 +274,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

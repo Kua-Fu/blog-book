@@ -20,7 +20,7 @@
   
   - [扫描](./tree/scanning.md)
   
-  - [Representing Code](./tree/representing-code.md)
+  - [代码表示](./tree/representing-code.md)
   
   - [解析表达式](./tree/parsing-expression.md)
 
