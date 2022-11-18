@@ -23,5 +23,7 @@
   - [代码表示](./tree/representing-code.md)
   
   - [解析表达式](./tree/parsing-expression.md)
+  
+  - [计算表达式](./tree/evaluating-expression.md)
 
 
