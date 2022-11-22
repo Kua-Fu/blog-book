@@ -411,3 +411,540 @@ The last pair of operators are equality.
   case BANG_EQUAL: return !isEqual(left, right);
   case EQUAL_EQUAL: return isEqual(left, right);
 ```
+
+Unlike the comparison operators which require numbers, the equality operators support operands of any type, even mixed ones. You can’t ask Lox if 3 is less than "three", but you can ask if it’s equal to it.
+
+与需要数字的比较运算符不同，相等运算符支持所有类型的操作数，甚至是混合操作数，你不能问Lox语言，3是否小于 "three", 但是你可以问Lox语言，3 是否等于 "three"
+
+> Spoiler alert: it’s not.
+> 
+> 剧透提醒，不是
+
+Like truthiness, the equality logic is hoisted out into a separate method.
+
+和 isTruthy() 函数一样，isEqual() 函数也是一个单独的方法
+
+```
+
+// lox/Interpreter.java, add after isTruthy()
+
+ private boolean isEqual(Object a, Object b) {
+    if (a == null && b == null) return true;
+    if (a == null) return false;
+
+    return a.equals(b);
+  }
+  
+```
+
+This is one of those corners where the details of how we represent Lox objects in terms of Java matter. We need to correctly implement Lox’s notion of equality, which may be different from Java’s.
+
+Fortunately, the two are pretty similar. Lox doesn’t do implicit conversions in equality and Java does not either. We do have to handle nil/null specially so that we don’t throw a NullPointerException if we try to call equals() on null. Otherwise, we’re fine. Java’s equals() method on Boolean, Double, and String have the behavior we want for Lox.
+
+这是我们如何用Java实现Lox 对象的细节所在的角落之一，我们需要正确的实现Lox 语言的相等概念，这可能和Java 不一样。
+
+幸运的是，两者非常相似，Lox不会对等式中的隐式转换，Java也不做转换，我们必须考虑到nil/null， 以便在尝试对 null调用 isEqual()  函数时候，不会引发空指针报错，其他的，我们都很好，Java对Boolean，Double，String类型具有相同的equals() 函数。
+
+> What do you expect this to evaluate to:
+>
+> (0 / 0) == (0 / 0)
+> 
+> According to IEEE 754, which specifies the behavior of double-precision numbers, dividing a zero by zero gives you the special NaN (“not a number”) value. Strangely enough, NaN is not equal to itself.
+> 
+> In Java, the == operator on primitive doubles preserves that behavior, but the equals() method on the Double class does not. Lox uses the latter, so doesn’t follow IEEE. These kinds of subtle incompatibilities occupy a dismaying fraction of language implementers’ lives.
+> 
+> 你希望的评估结果是什么呢？
+>
+> 根据 IEEE 754, 它规定了双精度数字的行为，将 0/0 可以得到特殊的 NaN（非数字值），奇怪的是，NaN并不等于自己。
+> 
+> 在Java中，基于Double类型的 == 运算符保留着这种行为，但是 Double类上的equals() 方法则不保留这种行为，Lox使用后者，因此不遵守IEEE，这些微妙的不兼容性，占据了语言实现者生活中令人沮丧的一小部分。
+
+And that’s it! That’s all the code we need to correctly interpret a valid Lox expression. But what about an invalid one? In particular, what happens when a subexpression evaluates to an object of the wrong type for the operation being performed?
+
+就这样！这就是正确解释有效Lox表达式所需的全部代码，但是无效的呢？特别是，当子表达式的计算结果为所执行操作的错误类型的对象时候，会发生什么？
+
+## 三、Runtime Errors
+
+
+I was cavalier about jamming casts in whenever a subexpression produces an Object and the operator requires it to be a number or a string. Those casts can fail. Even though the user’s code is erroneous, if we want to make a usable language, we are responsible for handling that error gracefully.
+
+每当子表达式产生一个Object，但是运算符需要的是数字或者字符串时候，我们会随意的使用强制类型转换。这些类型转换可能会失败，即使用户的代码是错误的，但是，如果我们想要创建一门可用的语言，我们有责任优雅的处理这种错误。
+
+> We could simply not detect or report a type error at all. This is what C does if you cast a pointer to some type that doesn’t match the data that is actually being pointed to. C gains flexibility and speed by allowing that, but is also famously dangerous. Once you misinterpret bits in memory, all bets are off.
+> 
+> Few modern languages accept unsafe operations like that. Instead, most are memory safe and ensure—through a combination of static and runtime checks—that a program can never incorrectly interpret the value stored in a piece of memory.
+> 
+> 我们根本无法检测或者报告类型错误，在C语言中，如果将指针转换为实际数据不相符的某个类型，C语言通常会，允许用户这样转换，以获取速度和灵活性，但是这也是总所周知的危险，一旦我们错误的转换了指针类型，将可能产生严重的错误。
+> 
+> 很少有现代语言接受这样的不安全操作，相反，大多数都是内存安全的，并且通过静态和运行时检查的组合，确保程序不会错误的解释存储在内存中的值。
+
+It’s time for us to talk about runtime errors. I spilled a lot of ink in the previous chapters talking about error handling, but those were all syntax or static errors. Those are detected and reported before any code is executed. Runtime errors are failures that the language semantics demand we detect and report while the program is running (hence the name).
+
+Right now, if an operand is the wrong type for the operation being performed, the Java cast will fail and the JVM will throw a ClassCastException. That unwinds the whole stack and exits the application, vomiting a Java stack trace onto the user. That’s probably not what we want. The fact that Lox is implemented in Java should be a detail hidden from the user. Instead, we want them to understand that a Lox runtime error occurred, and give them an error message relevant to our language and their program.
+
+现在是我们讨论运行时错误的时候了，我们已经在前面的章节中讨论了错误处理，但是它们都是语法和静态错误，在执行任何代码之前，这些错误都会被检测并且报告，运行时错误是语言语义要求我们在程序运行时，检测并且报告故障（因此得名）
+
+现在，如果操作数的类型和正在执行的操作运算不符合，Java的强制转换将失败，JVM会抛出类型转换报错，这将解开整个堆栈，并且退出应用程序，从而向用户抛出Java堆栈跟踪，但是，这可能不是我们想要的，Lox语言是在Java中实现的这一个事实，应该是对用户隐藏的细节。相反，我们希望他们了解发生了运行时错误，并且向用户，提供和我们语言和程序相关的错误消息。
+
+
+The Java behavior does have one thing going for it, though. It correctly stops executing any code when the error occurs. Let’s say the user enters some expression like:
+
+```
+2 * (3 / -"muffin")
+```
+
+You can’t negate a muffin, so we need to report a runtime error at that inner - expression. That in turn means we can’t evaluate the / expression since it has no meaningful right operand. Likewise for the *. So when a runtime error occurs deep in some expression, we need to escape all the way out.
+
+不过，Java的行为确实有一个原因，当发生错误时候，它会停止执行任何代码，假设用户输入下面的表达式
+
+我们无法计算 muffin 的负值，因此我们需要在子表达式计算时候，报告错误，这样，我们也无法计算 / ，因此该操作符的右操作数没有意义，同样， * 运算符也一样。因此，当运行时错误发生在深层的子表达式时候，我们会一直往上忽略。
+
+
+> I don’t know, man, can you negate a muffin?
+> 
+> ![muffin](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/muffin.png?raw=true)
+
+We could print a runtime error and then abort the process and exit the application entirely. That has a certain melodramatic flair. Sort of the programming language interpreter equivalent of a mic drop.
+
+Tempting as that is, we should probably do something a little less cataclysmic. While a runtime error needs to stop evaluating the expression, it shouldn’t kill the interpreter. If a user is running the REPL and has a typo in a line of code, they should still be able to keep the session going and enter more code after that.
+
+我们可以打印一个运行时错误，然后终止进程并且退出应用程序，这有一定的戏剧性，某种语言的解释器，相当于降下麦克风。
+
+尽管如此，我们还是应该做一些事情，不会引发灾难，虽然，运行时错误需要停止计算表达式，但是，它不应该停止解释器，如果用户正在运行一个 REPL 类型的程序，一行代码中有一个错误，那么解释器不应该退出，应该可以继续会话，在终端输入更多的代码。
+
+
+
+### 3.1 Detecting runtime errors
+
+检测运行时错误
+
+Our tree-walk interpreter evaluates nested expressions using recursive method calls, and we need to unwind out of all of those. Throwing an exception in Java is a fine way to accomplish that. However, instead of using Java’s own cast failure, we’ll define a Lox-specific one so that we can handle it how we want.
+
+我们的树遍历解释器，使用递归调用实现了计算嵌套表达式，我们需要解开所有这些。在Java中抛出异常，是实现这一点的好方法。然而，我们将定义一个特定于Lox的失败，而不是使用Java中默认的类型转换错误，这样，我们可以按照自己意愿处理报错。
+
+Before we do the cast, we check the object’s type ourselves. So, for unary -, we add:
+
+在进行强制类型之前，我们需要自己检查对象的类型，因此，对于一元运算符
+
+```java
+
+// lox/Interpreter.java, in visitUnaryExpr()
+
+      case MINUS:
+        checkNumberOperand(expr.operator, right);
+        return -(double)right;
+		
+```
+
+The code to check the operand is:
+
+检查运算数的代码如下，
+
+```java
+
+// lox/Interpreter.java, add after visitUnaryExpr()
+
+  private void checkNumberOperand(Token operator, Object operand) {
+    if (operand instanceof Double) return;
+    throw new RuntimeError(operator, "Operand must be a number.");
+  }
+  
+```
+
+When the check fails, it throws one of these:
+
+当检测到失败，我们会抛出报错
+
+```java
+
+// lox/RuntimeError.java, create new file
+
+package com.craftinginterpreters.lox;
+
+class RuntimeError extends RuntimeException {
+  final Token token;
+
+  RuntimeError(Token token, String message) {
+    super(message);
+    this.token = token;
+  }
+}
+
+```
+
+Unlike the Java cast exception, our class tracks the token that identifies where in the user’s code the runtime error came from. As with static errors, this helps the user know where to fix their code.
+
+和Java中的强制类型转换异常不一样，我们自己实现的类，追踪到用户代码运行时报错的来源token，与静态错误一样，这样有助于用户知道如何修复代码。
+
+
+> I admit the name “RuntimeError” is confusing since Java defines a RuntimeException class. An annoying thing about building interpreters is your names often collide with ones already taken by the implementation language. Just wait until we support Lox classes.
+> 
+> 我承认，我们定义的类，类名是RuntimeError，非常令人困惑，因为Java中定义了RuntimeException 类，构建解释器的一个令人讨厌的问题是，我们的名字经常会和实现语言的已经存在的名字相同。需要我们耐心等待，一直到Lox实现类。
+
+We need similar checking for the binary operators. Since I promised you every single line of code needed to implement the interpreters, I’ll run through them all.
+
+我们还需要对二元运算符进行相似的类型检查，既然，我已经保证了实现解释器的每一行代码都会出现，我会把它们写在下面
+
+```java
+
+
+  @Override
+    public Object visitBinaryExpr(Expr.Binary expr) {
+        Object left = evaluate(expr.left);
+        Object right = evaluate(expr.right);
+
+        switch (expr.operator.type) {
+            case GREATER:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left > (double) right;
+            case GREATER_EQUAL:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left >= (double) right;
+            case LESS:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left < (double) right;
+            case LESS_EQUAL:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left <= (double) right;
+            case MINUS:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left - (double) right;
+            case PLUS:
+                if (left instanceof Double && right instanceof Double) {
+                    return (double) left + (double) right;
+                }
+                if (left instanceof String && right instanceof String) {
+                    return (String) left + (String) right;
+                }
+            case SLASH:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left / (double) right;
+            case STAR:
+                checkNumberOperands(expr.operator, left, right);
+                return (double) left * (double) right;
+            case BANG_EQUAL:
+                return !isEqual(left, right);
+            case EQUAL_EQUAL:
+                return isEqual(left, right);
+        }
+        return null;
+    }
+
+
+```
+
+
+```java
+
+// lox/Interpreter.java, add after checkNumberOperand()
+
+  private void checkNumberOperands(Token operator,
+                                   Object left, Object right) {
+    if (left instanceof Double && right instanceof Double) return;
+    
+    throw new RuntimeError(operator, "Operands must be numbers.");
+  }
+
+
+```
+
+
+> Another subtle semantic choice: We evaluate both operands before checking the type of either. Imagine we have a function say() that prints its argument then returns it. Using that, we write:
+>
+> say("left") - say("right");
+>
+> Our interpreter prints “left” and “right” before reporting the runtime error. We could have instead specified that the left operand is checked before even evaluating the right.
+> 
+> 另外一个微妙的语义选择，我们在检查两个操作数的类型之前，对它们进行求值，假设我们有一个say() 函数，它打印其参数，然后返回它，使用这个函数，我们实现
+>
+> 我们的解释器在报告运算时报错之前，打印出左、右，相反，我们可以指定在计算右操作数之前，检查左操作数。
+
+
+The last remaining operator, again the odd one out, is addition. Since + is overloaded for numbers and strings, it already has code to check the types. All we need to do is fail if neither of the two success cases match.
+
+剩下最后一个操作符，是加法，由于 + 对于数字和字符串是重载的，因此，它已经有代码进行类型检查了，如果两个重载类型都不符合，需要报错
+
+```java
+
+// lox/Interpreter.java, in visitBinaryExpr(), replace 1 line
+
+          return (String)left + (String)right;
+        }
+
+        throw new RuntimeError(expr.operator,
+            "Operands must be two numbers or two strings.");
+      case SLASH:
+	  
+```
+
+That gets us detecting runtime errors deep in the innards of the evaluator. The errors are getting thrown. The next step is to write the code that catches them. For that, we need to wire up the Interpreter class into the main Lox class that drives it.
+
+这使得我们可以检测到计算内部的运行时报错，下一步需要编写捕获错误的代码，为此，我们需要将 Interperter类添加到主Lox类上。
+
+## 四、Hooking Up the Interpreter
+
+连接到解释器
+
+The visit methods are sort of the guts of the Interpreter class, where the real work happens. We need to wrap a skin around them to interface with the rest of the program. The Interpreter’s public API is simply one method.
+
+访问方法是解释器类的核心，因为真正的工作都发生在这里，我们需要将它包裹起来，以便和程序的其他部分交互，解释器的公共API只是一种方法。
+
+```java
+
+// lox/Interpreter.java, in class Interpreter
+
+  void interpret(Expr expression) { 
+    try {
+      Object value = evaluate(expression);
+      System.out.println(stringify(value));
+    } catch (RuntimeError error) {
+      Lox.runtimeError(error);
+    }
+  }
+  
+```
+
+This takes in a syntax tree for an expression and evaluates it. If that succeeds, evaluate() returns an object for the result value. interpret() converts that to a string and shows it to the user. To convert a Lox value to a string, we rely on:
+
+上面方法，将会获取表达式的解析树，并且对其求值，如果求值成功，evaluate()方法，将会返回结果值的对象，interpret() 方法，会将结果转换为字符串，并且返回给用户，要将结果转为字符串，我们需要:
+
+```java
+
+// lox/Interpreter.java, add after isEqual()
+
+  private String stringify(Object object) {
+    if (object == null) return "nil";
+
+    if (object instanceof Double) {
+      String text = object.toString();
+      if (text.endsWith(".0")) {
+        text = text.substring(0, text.length() - 2);
+      }
+      return text;
+    }
+
+    return object.toString();
+  }
+
+```
+
+
+This is another of those pieces of code like isTruthy() that crosses the membrane between the user’s view of Lox objects and their internal representation in Java.
+
+It’s pretty straightforward. Since Lox was designed to be familiar to someone coming from Java, things like Booleans look the same in both languages. The two edge cases are nil, which we represent using Java’s null, and numbers.
+
+Lox uses double-precision numbers even for integer values. In that case, they should print without a decimal point. Since Java has both floating point and integer types, it wants you to know which one you’re using. It tells you by adding an explicit .0 to integer-valued doubles. We don’t care about that, so we hack it off the end.
+
+
+这是另外一段，像是 isTruthy() 方法的代码，它跨越了用户对Lox对象的视图和它们在Java中的内部表示之间的隔阂。
+
+这很简单，因为Lox的设计为了让Java的使用者熟悉，所以，布尔类型在两种语言中几乎相同，这两种边缘情况都是nil，我们使用Java的null 和数字来表示
+
+Lox甚至对整数，使用双精度类型表示，在这种情况下，它们应该没有小数点，由于Java既有浮点型，也有整数型，所以它希望你知道使用的哪一种类型，它通过显式的将 .0 添加到整数，用双精度表示的方法，来告知。我们不在乎这一点，所以，我们从头开始。
+
+
+> Yet again, we take care of this edge case with numbers to ensure that jlox and clox work the same. Handling weird corners of the language like this will drive you crazy but is an important part of the job.
+> 
+> Users rely on these details—either deliberately or inadvertently—and if the implementations aren’t consistent, their program will break when they run it on different interpreters.
+> 
+> 再一次，我们用数字来处理边缘状况，以确保jlox 和 clox的处理方式相同，像这样的处理，语言中奇怪角落会让你发疯，但这是工作的重要组成部分
+> 
+> 用户有意或者无意的依赖这些细节，如果实现不一致，他们的程序将在不同的解释器上，出现中断。
+
+
+### 4.1 Reporting runtime errors
+
+报告运行时报错
+
+If a runtime error is thrown while evaluating the expression, interpret() catches it. This lets us report the error to the user and then gracefully continue. All of our existing error reporting code lives in the Lox class, so we put this method there too:
+
+如果在计算表达式时候，引发运行时报错，interpert() 方法，将会捕获到该类型的错误，这样，我们可以向用户报告错误，然后，优雅的继续运行，我们现在，所有的报错代码都在Lox类中，所以，我们将此方法写在那里：
+
+```java
+
+// lox/Lox.java, add after error()
+
+  static void runtimeError(RuntimeError error) {
+    System.err.println(error.getMessage() +
+        "\n[line " + error.token.line + "]");
+    hadRuntimeError = true;
+  }
+
+
+```
+
+
+We use the token associated with the RuntimeError to tell the user what line of code was executing when the error occurred. Even better would be to give the user an entire call stack to show how they got to be executing that code. But we don’t have function calls yet, so I guess we don’t have to worry about it.
+
+我们使用与 RuntimeError 关联的token，来告诉用户，错误发生时候正在运行的代码行数，更好的方法是给用户一个完整的调用堆栈，以显示他们是如何执行代码的，但是我们还没有函数调用，所以，我想还不需要担心。
+
+After showing the error, runtimeError() sets this field:
+
+显示错误后，将把变量 hadRuntimeError 设置为true
+
+```java
+
+// lox/Lox.java, in class Lox
+
+  static boolean hadError = false;
+  static boolean hadRuntimeError = false;
+
+  public static void main(String[] args) throws IOException {
+  
+```
+
+
+That field plays a small but important role.
+
+这个字段 hadRuntimeError有重要的作用
+
+```java
+
+// lox/Lox.java, in runFile()
+
+    run(new String(bytes, Charset.defaultCharset()));
+
+    // Indicate an error in the exit code.
+    if (hadError) System.exit(65);
+    if (hadRuntimeError) System.exit(70);
+  }
+  
+```
+
+If the user is running a Lox script from a file and a runtime error occurs, we set an exit code when the process quits to let the calling process know. Not everyone cares about shell etiquette, but we do.
+
+如果用户正在从文件运行Lox 脚本，并且发生了运行时报错，我们将在进程退出时候，设置退出代码，让调用进程知道，不是每一个人都关心shell 退出信号，但是我们确实关心。
+
+> If the user is running the REPL, we don’t care about tracking runtime errors. After they are reported, we simply loop around and let them input new code and keep going.
+>
+> 如果用户正在运行 REPL, 我们不关心跟踪运行时报错，在运行时报错报告后，我们只需要循环，让用户继续输入新代码并且继续解释运行。
+
+### 4.2 Running the interpreter
+
+运行解释器
+
+Now that we have an interpreter, the Lox class can start using it.
+
+现在我们已经有了一个解释器，Lox类可以使用它了
+
+```java
+
+// lox/Lox.java, in class Lox
+
+public class Lox {
+  private static final Interpreter interpreter = new Interpreter();
+  static boolean hadError = false;
+
+```
+
+We make the field static so that successive calls to run() inside a REPL session reuse the same interpreter. That doesn’t make a difference now, but it will later when the interpreter stores global variables. Those variables should persist throughout the REPL session.
+
+我们将字段 interpreter 设置为静态，以便于对 REPL会话中，对于run()方法的连续调用，使用相同的解释器，现在，这样并没有什么不同，但是稍后，当解释器存储了全局变量后，情况就会发生变化，这些变量在 REPL 会话中会始终存在。
+
+Finally, we remove the line of temporary code from the last chapter for printing the syntax tree and replace it with this:
+
+最后，我们删除了上一章，用于打印语法树的一行临时代码，并且替换为
+
+```java
+
+// lox/Lox.java, in run(), replace 1 line
+
+    // Stop if there was a syntax error.
+    if (hadError) return;
+
+    interpreter.interpret(expression);
+  }
+
+```
+
+We have an entire language pipeline now: scanning, parsing, and execution. Congratulations, you now have your very own arithmetic calculator.
+
+As you can see, the interpreter is pretty bare bones. But the Interpreter class and the Visitor pattern we’ve set up today form the skeleton that later chapters will stuff full of interesting guts—variables, functions, etc. Right now, the interpreter doesn’t do very much, but it’s alive!
+
+我们现在有了一个完整的语言管道，扫描、解析和执行，恭喜你，现在我们有了自己的算术计算器
+
+正如我们都可以看到的，现在的解释器是非常简单的，但是，我们今天构造的解释器类和访问者模式，构成了一个框架，在后面，将会充满有意思的内脏——变量、函数。现在，解释器做的不多，但是的确有作用！
+
+![skeleton](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/skeleton.png?raw=true)
+
+## 五、CHALLENGES
+
+习题
+
+1. Allowing comparisons on types other than numbers could be useful. The operators might have a reasonable interpretation for strings. Even comparisons among mixed types, like 3 < "pancake" could be handy to enable things like ordered collections of heterogeneous types. Or it could simply lead to bugs and confusion.
+
+   Would you extend Lox to support comparing other types? If so, which pairs of types do you allow and how do you define their ordering? Justify your choices and compare them to other languages.
+
+
+	
+1. Many languages define + such that if either operand is a string, the other is converted to a string and the results are then concatenated. For example, "scone" + 4 would yield scone4. Extend the code in visitBinaryExpr() to support that.
+
+
+1. What happens right now if you divide a number by zero? What do you think should happen? Justify your choice. How do other languages you know handle division by zero, and why do they make the choices they do?
+
+	Change the implementation in visitBinaryExpr() to detect and report a runtime error for this case.
+
+
+
+
+##
+
+1. 	允许对数字之外的类型进行比较，可能会非常有用，运算符可能对字符串有合理的解释，即使是混合类型之间的比较，例如：3 < "pancake", 也可以方便的实现，异构类型的有序集合，或者它可能会导致错误和混乱。
+
+	你会扩展比较运算符，支持不同的数据类型吗？如果扩展，你会支持对于哪些类型，如何定义它们的大小，验证你的想法，并且与其他语法进行比较。
+
+1. 许多语言定义+ 运算符，如果一个操作数是字符串，那么另外一个操作数也会转变为字符串，然后将它们的结果连接，例如: "scone" + 4 将变为 "scone4", 扩展代码，实现这个功能
+
+1. 如果除零，现在Lox会发生什么，你认为应该发生什么？证明你的想法是正确的。其他语言是如何实现除零的，为什么他们会这样做呢？
+
+	修改 visitBinaryExpr()方法，遇到除零情况，报告一个运行时错误
+	
+	
+## 六、DESIGN NOTE: STATIC AND DYNAMIC TYPING
+
+设计说明：静态和动态类型
+
+
+Some languages, like Java, are statically typed which means type errors are detected and reported at compile time before any code is run. Others, like Lox, are dynamically typed and defer checking for type errors until runtime right before an operation is attempted. We tend to consider this a black-and-white choice, but there is actually a continuum between them.
+
+It turns out even most statically typed languages do some type checks at runtime. The type system checks most type rules statically, but inserts runtime checks in the generated code for other operations.
+
+有些语言，例如Java，是静态类型语言，这意味着，在运行任何代码之前，都会在编译时候，检测并且报告类型错误； 其他的，例如：Lox语言，是动态类型语言，将检查类型错误的时间推迟到运行时候，然后再尝试操作。我们倾向于这是一个非黑即白的选择，但是，实际上，它们之间存在连续场景。
+
+事实证明，即使是，大多数的静态类型语言，也会在运行时候，执行一些类型检测。类型系统会静态检查大多数的规则，但是，生成的代码中还是会插入运行时检查，以用于其他操作。
+
+For example, in Java, the static type system assumes a cast expression will always safely succeed. After you cast some value, you can statically treat it as the destination type and not get any compile errors. But downcasts can fail, obviously. The only reason the static checker can presume that casts always succeed without violating the language’s soundness guarantees, is because the cast is checked at runtime and throws an exception on failure.
+
+例如：在Java中，静态类型系统，总是假设强制转换表达式，一定执行成功。在强制转换某个值后，可以将其静态的视为目标类型，而不会出现任何的编译报错。但是，显然，不是所有的类型转换都能成功。静态检查器，可以假设强制转换总是成功，并且不违反语言的可靠性的唯一原因是，强制转换在运行时候还会被检查，并且在转换失败后，抛出异常。
+
+A more subtle example is covariant arrays in Java and C#. The static subtyping rules for arrays allow operations that are not sound. Consider:
+
+一个更加微妙的例子是，Java 或者 C# 中的协变数组，数组的静态子类型规则允许不正确的操作，例如：
+
+```java
+
+Object[] stuff = new Integer[1];
+stuff[0] = "not an int!";
+
+
+```
+
+This code compiles without any errors. The first line upcasts the Integer array and stores it in a variable of type Object array. The second line stores a string in one of its cells. The Object array type statically allows that—strings are Objects—but the actual Integer array that stuff refers to at runtime should never have a string in it! To avoid that catastrophe, when you store a value in an array, the JVM does a runtime check to make sure it’s an allowed type. If not, it throws an ArrayStoreException.
+
+Java could have avoided the need to check this at runtime by disallowing the cast on the first line. It could make arrays invariant such that an array of Integers is not an array of Objects. That’s statically sound, but it prohibits common and safe patterns of code that only read from arrays. Covariance is safe if you never write to the array. Those patterns were particularly important for usability in Java 1.0 before it supported generics. James Gosling and the other Java designers traded off a little static safety and performance—those array store checks take time—in return for some flexibility.
+
+
+
+上面的代码在编译时候，不会报错。第一行代码，转换Integer数组，并且保存在Object数组类型的变量 stuff中，第二行代码，在其中的一个数组单元中，保存字符串。Object数组，在编译时候，允许其中的元素是字符串（字符串也是Object），但是，在实际运行时候，引用的整数数组中不应该有字符串。为了避免这种灾难级错误，当你在数组中存储数值时候，JVM 将会在运行时候进行类型检查，以确保是正确的类型，如果出现不允许的类型，将会抛出 ArrayStoreException 报错。
+
+
+Java 也可以通过静止第一行代码中的，强制类型转换，来避免运行时候的检查。它可以使数组保持不变，从而整数数组不会变为对象数组。这是静态的，但是它禁止，只从数组中读取的常见安全的代码模式。如果从不写入数组，则协变数组是安全的。在Java1.0支持 泛型之前，这些模式对于可用性非常重要。James Gosling 和其他的Java设计人员，交换了一些静态安全性和性能， 因为运行时候的类型检查需要一些时间，但是提高了代码的灵活性。
+
+
+There are few modern statically typed languages that don’t make that trade-off somewhere. Even Haskell will let you run code with non-exhaustive matches. If you find yourself designing a statically typed language, keep in mind that you can sometimes give users more flexibility without sacrificing too many of the benefits of static safety by deferring some type checks until runtime.
+
+On the other hand, a key reason users choose statically typed languages is because of the confidence the language gives them that certain kinds of errors can never occur when their program is run. Defer too many type checks until runtime, and you erode that confidence.
+
+很少有现代的静态类型语言，在某些方面不做出这样的权衡。甚至，Haskell也允许我们使用非穷尽匹配来运行代码。如果，你在设计静态语言。请记住，通过将某些类型检查推迟到运行时进行，有时候可以给用户提供更高的灵活性，而且不会牺牲太多的静态安全性能。
+
+另一方面，用户选择静态类型语言的一个关键原因是，这种语言让他们相信，运行程序时候，永远不会发生类型的错误。如果将过多的类型检查推迟到运行时，将会减少用户的信心。
