@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>hyperloglog - 诗意人生</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="柴米油盐酱醋茶，琴棋书画诗酒花">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../../index.html">关于我</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">工作阅读</li><li class="chapter-item "><a href="../../work_reading/often/often.html"><strong aria-hidden="true">1.</strong> 经常使用</a></li><li class="chapter-item "><a href="../../work_reading/read.html"><strong aria-hidden="true">2.</strong> 工作阅读文章</a></li><li class="chapter-item "><a href="../../work_reading/sls.html"><strong aria-hidden="true">3.</strong> sls问题概述</a></li><li class="chapter-item affix "><li class="part-title">技术学习</li><li class="chapter-item "><a href="../../learning/basic/basic.html"><strong aria-hidden="true">4.</strong> 基础</a></li><li class="chapter-item "><a href="../../learning/network/network.html"><strong aria-hidden="true">5.</strong> 网络</a></li><li class="chapter-item "><a href="../../learning/algorithm/algorithm.html"><strong aria-hidden="true">6.</strong> 算法</a></li><li class="chapter-item "><a href="../../learning/os/os.html"><strong aria-hidden="true">7.</strong> 操作系统</a></li><li class="chapter-item "><a href="../../learning/compile/compile.html"><strong aria-hidden="true">8.</strong> 编译原理</a></li><li class="chapter-item "><a href="../../learning/python/python.html"><strong aria-hidden="true">9.</strong> Python</a></li><li class="chapter-item "><a href="../../learning/golang/golang.html"><strong aria-hidden="true">10.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../learning/golang/101.html"><strong aria-hidden="true">10.1.</strong> go 101</a></li></ol></li><li class="chapter-item "><a href="../../learning/java/java.html"><strong aria-hidden="true">11.</strong> Java</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../learning/java/env.html"><strong aria-hidden="true">11.1.</strong> 环境搭建</a></li></ol></li><li class="chapter-item "><a href="../../learning/redis/redis.html"><strong aria-hidden="true">12.</strong> Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../learning/redis/basic.html"><strong aria-hidden="true">12.1.</strong> 基本使用</a></li><li class="chapter-item "><a href="../../learning/redis/memory.html"><strong aria-hidden="true">12.2.</strong> 内存分析</a></li><li class="chapter-item "><a href="../../learning/redis/bloom-filter.html"><strong aria-hidden="true">12.3.</strong> Bloom Filter</a></li><li class="chapter-item "><a href="../../learning/redis/hyperLogLog.html"><strong aria-hidden="true">12.4.</strong> hyperLogLog</a></li></ol></li><li class="chapter-item "><li class="part-title">文章阅读</li><li class="chapter-item expanded "><a href="../../article/technology/technology.html"><strong aria-hidden="true">13.</strong> 技术类</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../article/technology/datadog_percentile.html"><strong aria-hidden="true">13.1.</strong> DataDog实践—大数据百分位实时计算实践</a></li><li class="chapter-item "><a href="../../article/technology/elastic.html"><strong aria-hidden="true">13.2.</strong> elasticsearch相关技术文档</a></li><li class="chapter-item "><a href="../../article/technology/logmine.html"><strong aria-hidden="true">13.3.</strong> LogMine: Fast Pattern Recognition for Log Analytics</a></li><li class="chapter-item "><a href="../../article/technology/asynq.html"><strong aria-hidden="true">13.4.</strong> asynq-一种go异步框架源码阅读</a></li><li class="chapter-item expanded "><a href="../../article/technology/hyperloglog.html" class="active"><strong aria-hidden="true">13.5.</strong> hyperloglog</a></li></ol></li><li class="chapter-item "><a href="../../article/life/life.html"><strong aria-hidden="true">14.</strong> 生活</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../article/life/103_advice.html"><strong aria-hidden="true">14.1.</strong> Kevin Kelly的103条建议</a></li></ol></li><li class="chapter-item "><a href="../../article/introduce/introduce.html"><strong aria-hidden="true">15.</strong> 官方文档和基本使用</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../article/introduce/datadog.html"><strong aria-hidden="true">15.1.</strong> datadog基本使用</a></li></ol></li><li class="chapter-item "><li class="part-title">读书笔记</li><li class="chapter-item "><a href="../../reading/technology/elasticsearch-start.html"><strong aria-hidden="true">16.</strong> elasticsearch权威指南</a></li><li class="chapter-item "><a href="../../reading/technology/crafting_interpreters.html"><strong aria-hidden="true">17.</strong> crafting interpreters</a></li><li class="chapter-item "><a href="../../reading/classic_book.html"><strong aria-hidden="true">18.</strong> 经典细读</a></li><li class="chapter-item "><a href="../../reading/literature.html"><strong aria-hidden="true">19.</strong> 诗词</a></li><li class="chapter-item affix "><li class="part-title">奇奇怪怪</li><li class="chapter-item "><a href="../../curiosity/health/health.html"><strong aria-hidden="true">20.</strong> 养生</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../curiosity/health/live_longer.html"><strong aria-hidden="true">20.1.</strong> 程序员延寿指南</a></li></ol></li><li class="chapter-item "><a href="../../curiosity/animation/animation.html"><strong aria-hidden="true">21.</strong> 动画</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../curiosity/animation/ghibli.html"><strong aria-hidden="true">21.1.</strong> 吉普力</a></li></ol></li><li class="chapter-item "><a href="../../curiosity/music/music.html"><strong aria-hidden="true">22.</strong> 歌曲</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../curiosity/music/xiao_kan_feng_yun.html"><strong aria-hidden="true">22.1.</strong> 笑看风云</a></li></ol></li><li class="chapter-item "><li class="part-title">面试准备</li><li class="chapter-item "><a href="../../interview/db.html"><strong aria-hidden="true">23.</strong> 数据库</a></li><li class="chapter-item "><a href="../../interview/algorithm.html"><strong aria-hidden="true">24.</strong> 算法</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">总结规划</li><li class="chapter-item "><a href="../../life/past/past.html"><strong aria-hidden="true">25.</strong> 总结</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../life/future/work/2022-02.html"><strong aria-hidden="true">25.1.</strong> 工作总结2022-2季度</a></li><li class="chapter-item "><a href="../../life/future/work/week.html"><strong aria-hidden="true">25.2.</strong> 周报</a></li><li class="chapter-item "><a href="../../life/future/work/okr.html"><strong aria-hidden="true">25.3.</strong> OKR</a></li></ol></li><li class="chapter-item "><a href="../../life/future/future.html"><strong aria-hidden="true">26.</strong> 规划</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../life/future/technology.html"><strong aria-hidden="true">26.1.</strong> 技术类</a></li><li class="chapter-item "><a href="../../life/future/life.html"><strong aria-hidden="true">26.2.</strong> 生活类</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">诗意人生</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hyperloglog"><a class="header" href="#hyperloglog">hyperloglog</a></h1>
+<h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
+<blockquote>
+<p><a href="https://towardsdatascience.com/hyperloglog-a-simple-but-powerful-algorithm-for-data-scientists-aed50fe47869">HyperLogLog: A Simple but Powerful Algorithm for Data Scientists</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Philippe_Flajolet">Philippe Flajolet</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/Kua-Fu/blog-book-images/blob/main/paper/FlMa85.pdf">Pro ba bit istic Cou nting Algorithms for Data Base Applications </a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/Kua-Fu/blog-book-images/blob/main/paper/DuFl03-LNCS.pdf">Loglog Counting of Large Cardinalities (Extended Abstract)</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/Kua-Fu/blog-book-images/blob/main/paper/FlFuGaMe07.pdf">HyperLogLog: the analysis of a near-optimal cardinality estimation algorithm</a></p>
+</blockquote>
+<h2 id="二论文"><a class="header" href="#二论文">二、论文</a></h2>
+<p>Probabitistic Counting Algorithms for Data Base Applications</p>
+<p>数据库应用的概率计数算法</p>
+<p>This paper introduces a class of probabilistic counting algorithms with which one can estimate the number of distinct elements in a large collection of data (typically a large file stored on disk) in a single pass using only a small additional storage (typically less than a hundred binary words) and only a few operations per element scanned. </p>
+<p>The algorithms are based on statistical observations made on bits of hashed values of records. They are by construction totally insensitive to the replicative structure of elements in the file; they can be used in the context of distributed systems without any degradation of performances and prove especially useful in the context of data bases query optirnisation.</p>
+<p>本文介绍了一类概率计数算法，通过该算法，可以在一次扫描中，仅仅使用少量的额外存储（通常少于100个二进制字），通过对每一个扫描元素进行少量的操作，就可以估算大量数据中不同元素的数量（数据通常是保存在磁盘上的大文件）</p>
+<p>该算法，基于对记录散列值的比特进行的统计观察。通过构造，它们对文件中元素的复制结构完全不敏感，它们可以在分布式系统的环境中使用，而不会降低性能，并且在数据库查询优化的环境中特别有效。</p>
+<h3 id="21-introduction"><a class="header" href="#21-introduction">2.1 INTRODUCTION</a></h3>
+<p>介绍</p>
+<p>As data base systems allow the user to specify more and more complex queries, the need arises for efficient processing methods. A complex query can however generally be evaluated in a number of different manners, and the overall performance of a data base system depends rather crucially on the selection of appropriate decomposition strategies in each particular case.</p>
+<p>因为数据库系统允许用户指定越来越复杂的查询，因此，需要更加高效的处理方法。然而，复杂的查询通常可以以多种不同的方式评估，数据库系统的总体性能，关键取决于在每个特定情况下，选择适当的分散策略。</p>
+<p>Even a problem as trivial as computing the intersection of two collections of data A and B lends itself to a number of different treatments: </p>
+<ol>
+<li>
+<p>Sort A, search each element of B in A and retain it if it appears in A;</p>
+</li>
+<li>
+<p>sort A, sort B, then perform a merge-like operation to determine the intersection;</p>
+</li>
+<li>
+<p>eliminate duplicates in A and/or B using hashing or hash filters, then perform Algorithm 1 or 2</p>
+</li>
+</ol>
+<p>即使像是计算两个数据集合 A、B的交集这样一个简单的问题，也有许多不同的方法</p>
+<ol>
+<li>
+<p>先把 A 排序，遍历 B 中的每一个元素，判断是否存在于A中，如果存在，则保留该元素;</p>
+</li>
+<li>
+<p>排序A，排序B，然后执行一个类似于 merge 的操作，计算出交集;</p>
+</li>
+<li>
+<p>先利用hash算法，将A和B集合去重，然后，在使用1或者2中的方法计算交集</p>
+</li>
+</ol>
+<p>Each of these evaluation strategy will have a cost essentially determined by the number of records a, b in A and B, and the number of distinct elements α, β in A and B, and for typical sorting methods, the costs are:</p>
+<p>for strategy 1: \( O(a \cdot log\alpha + b \cdot log\beta) \)</p>
+<p>for strategy 2: \( O(a \cdot log a + b \cdot log b + a + b) \) </p>
+<p>In a number of similar situations, it appears thus that, apart from the sizes of the files on which one operates (i.e., the number of records), a major determinant of efficiency is the cardinalities of the underlying sets, i.e., the number of distinct elements they comprise.</p>
+<p>The situation gets much more complex when operations like projections, selections, multiple joins in combination with various boolean operations appear in queries. As an example, the relational system system R has a sophisticated query optimiser. In order to perform its task, that programme keeps several statistics on relations of the data base.The most important ones are the sizesof relations as well as the number of different elements of some key fields. The choices are made in order to minimise a cer- tain cost function that depends on specific CPU and disk access costs as well as sizes and cardinalities of relations or fields. In system R, this information is periodically recomputed and kept in catalogues that are companions to the data base records and indexes.</p>
+<p>上面每一种计算方法的性能，基本上取决于集合A、B中的元素a, b 的数量，和集合A、B中的不相同元素α, β的数量，对于典型的排序方法，复杂度如下</p>
+<p>因此，在很多类似场景下，似乎除了操作文件的大小（即记录数量）之外，效率的主要决定因素是——基础集合的基数，即集合中包含的不同元素的个数。</p>
+<p>当查询中出现了取子集，取具体列，或者多重join操作，以及布尔运算，查询情况将变得更加复杂。例如，关系型系统 R 有一个复杂的查询优化器。为了执行该任务，该方案保留了关于数据库关系的若干统计数据。最重要的是，关系的大小和一些关键字段的不同元素的数量。这些信息，用于确定在任何给定时间属性的选择，以便决定键的选择，以及计算关系运算符时候，选择适当的算法。这些选择是为了最小化特定的成本函数，该函数取决于特定的CPU和磁盘访问成本，已经关系或字段的大小和基数。在系统R中，该信息会定期更新，并且保存在数据库记录和索引的目录中。</p>
+<p>In this paper, we propose efficient algorithms to estimate the cardinalities of multisets of data as are commonly encountered in data base practice. A trivial method consists in determining card(M) by building a list of all elements of M without replication; this method has the advantage of being exact but it has a cost in number of disk accessesand auxiliary storage (at least \( O(a) \) or \( O(a \cdot log a \) ) if sorting is used) that might be higher than the possible gains which one can obtain using that information.</p>
+<p>在本文中，我们提出了一个有效的算法来估计数据库实践中常见的多个数据集的基数。一个简单的方法是，通过创建一个没有重复值的集合M 来计算 \(card(M) \) ; 该方法的优点是计算值准确，但其磁盘访问和额外存储（如果使用排序，则至少是 \( O(a) \) 或者 \( a \cdot log(a) \)) 的成本可能高于使用该去重值 可以获得的收益。</p>
+<p>The method we propose here is probabilistic in nature since its result depends on the particular hashing function used and on the particular data on which it operates. It uses minimal extra storage in core and provides practically useful estimates on cardinalities of large collections of data. The accuracy is inversely related to the storage: using 64 binary words of typically 32 bits, we attain a typical accuracy of 10%; using 256 words, the accuracy improves to about 5%. The performances do not degrade as files get large: with 32 bit words, one can safely count cardinalities well over 100 million. Furthermore, by design, our algorithms are totally insensitive to the replication structures of files: as opposed to sampling techniques,  the result will be the same whether elements appear a million times or just a few times.</p>
+<p>我们在这里提出的方法，本质上是概率性的，因为它的结果取决于所使用的特定哈希函数和它所操作的特定数据。它的设计核心是使用最少的额外存储，并对大量数据集合的基数提供了实际有用的估计。准确度和额外存储用量成反比，如果使用64个二进制字（每一个都占用32位bit），我们可以获得10%的准确性。如果提高到256个二进制字，准确度相应提高位 5%，当文件变大时候，性能不会降低。使用32个二进制字，用户可以安全的计算超过1亿基数的集合。这个方法的唯一假设是，我们可以用适当方法对记录进行散列，实现伪统一性。然而，这不是一个严重的限制，因为对大型工业文件的实证研究表明，标准哈希技术的谨慎实施确实实现了哈希值的实际一致性。此外，根据设计，我们的算法对于重复的文件结构，不敏感，与采样技术相反：无论元素出现了一百万次，还是出现了几次，基数计算结果都是一样的。</p>
+<p>From a more theoretical standpoint, these techniques constitute yet another illustration of the gains that may be achieved in many situations through the use of probabilistic methods. We mention here Morris’ approximate counting algorithm  which maintains approximate counters with an expected constant relative accuracy using only</p>
+<p>\( log2 \cdot log_2^n + O(1) \)</p>
+<p>bits in order to count up to n. Morris’ algorithm may be used to reduce by a factor of 2 the memory size necessary to store large statistics on a large number of events in computer systems.</p>
+<p>从更加理论的角度看，这些技术构成了通过使用概率方法在许多情况下可能实现收益的另一个例证。这里我们提到了莫里斯的近似计数算法，该算法保持近似计数通过一个可以预测的相对精度. 通过  \( log2 \cdot log_2^n + O(1) \) 个bit，可以估算基数为 n. 莫里斯算法，可以将存储在计算机中的大量事件的大量统计数据，所需要的存储器大小减少2倍。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../article/technology/asynq.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../article/life/life.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../article/technology/asynq.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../article/life/life.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
