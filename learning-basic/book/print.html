@@ -32,6 +32,8 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -82,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item expanded "><a href="emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item expanded "><a href="git/git.html"><strong aria-hidden="true">4.</strong> Git</a></li><li class="chapter-item expanded "><a href="regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item expanded "><a href="tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item expanded "><a href="markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item expanded "><a href="mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a></li><li class="chapter-item expanded "><a href="insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item expanded "><a href="emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item expanded "><a href="git/git.html"><strong aria-hidden="true">4.</strong> Git</a></li><li class="chapter-item expanded "><a href="regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item expanded "><a href="tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item expanded "><a href="markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item expanded "><a href="mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a></li><li class="chapter-item expanded "><a href="insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item expanded "><a href="macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,6 +168,19 @@
 <p><code>Enter</code> 后，所有选定行变化</p>
 </li>
 </ul>
+<h2 id="2-diffediff-比较文本不同"><a class="header" href="#2-diffediff-比较文本不同">2. diff/ediff 比较文本不同</a></h2>
+<blockquote>
+<p>参考</p>
+<p><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Comparing-Files.html">Comparing Files</a></p>
+</blockquote>
+<p>⚠️ ediff 不能一次性展示所有不同处的高亮，</p>
+<p>可以使用session中的</p>
+<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody>
+<tr><td>p</td><td>(表示上一个差异)</td></tr>
+<tr><td>n</td><td>(表示下一个差异）</td></tr>
+<tr><td>j</td><td>(前面可以添加数字，例如：3j 表示跳转到第三个差异之处)</td></tr>
+<tr><td>q</td><td>退出session</td></tr>
+</tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="git"><a class="header" href="#git">Git</a></h1>
 <h2 id="1-查看具体文件的提交历史"><a class="header" href="#1-查看具体文件的提交历史">1. 查看具体文件的提交历史</a></h2>
 <p><code>magit-log-buffer-file</code> + 文件名称</p>
@@ -202,6 +217,15 @@
 </blockquote>
 <blockquote>
 <p><a href="https://rust-lang.github.io/mdBook/index.html">mdBook docs</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/110756681">LaTeX 公式篇</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://rust-lang.github.io/mdBook/format/mathjax.html">MathJax support</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a></p>
 </blockquote>
 <h2 id="一概览"><a class="header" href="#一概览">一、概览</a></h2>
 <p><code>mdBook</code> 是一个开源命令行工具, 由 <code>rust</code>官方维护, 可以简单快捷的创建<code>markdown</code>格式的电子书</p>
@@ -298,6 +322,52 @@ book
 │       ├── fontawesome-webfont.eot
 	
 </code></pre>
+<h2 id="三数学公式"><a class="header" href="#三数学公式">三、数学公式</a></h2>
+<p>mdbook 通过 <a href="https://www.mathjax.org/">MathJax</a> 支持数学公式显示。</p>
+<h3 id="31-需要设置支持-mathjax"><a class="header" href="#31-需要设置支持-mathjax">3.1 需要设置支持 mathjax</a></h3>
+<pre><code class="language-toml">
+[book]
+authors = [&quot;yz&quot;]
+language = &quot;en&quot;
+multilingual = false
+src = &quot;src&quot;
+title = &quot;learning-basic&quot;
+
+[output.html]
+mathjax-support = true
+
+</code></pre>
+<p>注意⚠️ </p>
+<p>现在还不支持直接使用 $$ 作为分隔符，[] 分隔符需要额外添加一个反斜线 ,</p>
+<p>当在公式中，需要使用双反斜线时候，还需要添加额外的两个反斜线</p>
+<h3 id="32-行内公式"><a class="header" href="#32-行内公式">3.2 行内公式</a></h3>
+<p>行内的公式，使用 <code>\\( 和 \\)</code> 分隔，例如: </p>
+<p>\(f(x) = a+b\)</p>
+<p>一般在LaTex中，使用 <code>$公式$</code> 实现。</p>
+<p>表示行内</p>
+<h3 id="33-行间公式"><a class="header" href="#33-行间公式">3.3 行间公式</a></h3>
+<p>行间公式，使用 <code>\\[ 和 \\]</code> 分隔，例如:</p>
+<p>\[\mu = \frac{1}{N} \sum_{i=0} x_i \]</p>
+<p>一般在LaTex中，使用 <code>$$公式$$</code> 实现。</p>
+<h3 id="34-基本公式"><a class="header" href="#34-基本公式">3.4 基本公式</a></h3>
+<p>(1) 手动编号， 命令 <code>\tag{n}</code> 可以进行手动编号</p>
+<p>\[ f(x) = a + b - c \tag{1.1.2} \]</p>
+<p>(2) 拉丁字母、阿拉伯数字、四则运算符都可以直接输入，</p>
+<table><thead><tr><th>命令</th><th>含义</th><th>示例</th></tr></thead><tbody>
+<tr><td>\cdot</td><td>乘法的圆点</td><td>\( a \cdot b \)</td></tr>
+<tr><td>\neq</td><td>不等于号</td><td>\( a \neq b \)</td></tr>
+<tr><td>\equiv</td><td>恒等于</td><td>\( a \equiv b \)</td></tr>
+</tbody></table>
+<p>(3) 希腊字母和一些其他运算符</p>
+<table><thead><tr><th>符号</th><th>含义</th><th>示例</th></tr></thead><tbody>
+<tr><td>\alpha</td><td>希腊字母</td><td>\( \alpha \)</td></tr>
+<tr><td>\beta</td><td>希腊字母</td><td>\( \beta \)</td></tr>
+<tr><td>\gamma</td><td>希腊字母</td><td>\( \gamma \)</td></tr>
+<tr><td>\rho</td><td>希腊字母</td><td>\( \rho \)</td></tr>
+<tr><td>\sigma</td><td>希腊字母</td><td>\( \sigma \)</td></tr>
+<tr><td>\delta</td><td>希腊字母</td><td>\( \delta \)</td></tr>
+<tr><td>\epsilon</td><td>希腊字母</td><td>\( \epsilon \)</td></tr>
+</tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="insomnia"><a class="header" href="#insomnia">insomnia</a></h1>
 <h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
 <blockquote>
@@ -317,6 +387,18 @@ book
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/basic/insomnia/local-env.png?raw=true" alt="local-env" /></p>
 <h3 id="24-创建请求"><a class="header" href="#24-创建请求">2.4 创建请求</a></h3>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/basic/insomnia/req.png?raw=true" alt="req" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="macos"><a class="header" href="#macos">MacOS</a></h1>
+<h2 id="1-使用绝对路径打开文件"><a class="header" href="#1-使用绝对路径打开文件">1. 使用绝对路径，打开文件</a></h2>
+<blockquote>
+<p><a href="https://superuser.com/questions/44086/open-folder-for-a-given-path-in-mac-os-x">Open folder for a given path in Mac OS X</a></p>
+</blockquote>
+<pre><code>1. In the Go menu, choose Go to Folder… option
+
+2. Press ⇧ + ⌘ + G
+
+3. Just paste in modal window your path and press 
+
+</code></pre>
 
                     </main>
 
@@ -371,7 +453,9 @@ book
 
         <script type="text/javascript">
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
 

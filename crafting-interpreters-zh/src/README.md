@@ -16,3 +16,17 @@ gradle build
 java -cp app/build/classes/java/main com.craftinginterpreters.lox.App 
 
 ```
+
+## tool 使用
+
+```
+// 1. 源码下载
+git clone https://github.com/Kua-Fu/jlox.git
+
+// 2. 编译
+gradle build
+
+// 3. 运行
+java -cp app/build/classes/java/main com.craftinginterpreters.tool.GenerateAst someDir
+
+```

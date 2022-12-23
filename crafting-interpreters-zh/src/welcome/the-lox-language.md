@@ -88,7 +88,7 @@ There are plenty of reasons to like static types, but they don’t outweigh the 
 
 Lox是动态类型语言，变量可以存储任何类型的值，单个变量可以在不同时间存储不同类型的数据，如何尝试对于错误类型的值执行操作，例如：数值除以字符串，运行时候会检测，并且报错。
 
-喜欢静态类型有很多理由，但是为了Lox语言更加实用，我们选择了动态类型。静态类型系统需要学习和实现大量工作。跳过静态类型，会让Lox语言实现更加简单。如果在解释器在运行时候，执行类型检查，我们可以更快的执行代码。
+喜欢静态类型有很多理由，但是为了Lox语言更加实用，我们选择了动态类型。静态类型系统需要学习和实现大量工作。跳过静态类型，会让Lox语言实现更加简单。如果在解释器运行时候，执行类型检查，我们可以更快的执行代码。
 
 > Now that JavaScript has taken over the world and is used to build ginormous applications, it’s hard to think of it as a “little scripting language”. But Brendan Eich hacked the first JS interpreter into Netscape Navigator in ten days to make buttons animate on web pages. JavaScript has grown up since then, but it was once a cute little language.
 > 

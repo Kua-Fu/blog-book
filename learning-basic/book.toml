@@ -4,3 +4,6 @@ language = "en"
 multilingual = false
 src = "src"
 title = "learning-basic"
+
+[output.html]
+mathjax-support = true

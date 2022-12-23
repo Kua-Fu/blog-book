@@ -6,6 +6,12 @@
 
 >[mdBook docs](https://rust-lang.github.io/mdBook/index.html)
 
+>[LaTeX 公式篇](https://zhuanlan.zhihu.com/p/110756681)
+
+>[MathJax support](https://rust-lang.github.io/mdBook/format/mathjax.html)
+
+>[Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+
 
 ## 一、概览
 
@@ -119,4 +125,75 @@ book
 │       ├── fontawesome-webfont.eot
 	
 ```
+
+## 三、数学公式
+
+mdbook 通过 [MathJax](https://www.mathjax.org/) 支持数学公式显示。
+
+### 3.1 需要设置支持 mathjax
+
+```toml
+
+[book]
+authors = ["yz"]
+language = "en"
+multilingual = false
+src = "src"
+title = "learning-basic"
+
+[output.html]
+mathjax-support = true
+
+```
+
+注意⚠️ 
+
+现在还不支持直接使用 $$ 作为分隔符，[] 分隔符需要额外添加一个反斜线 \,
+
+当在公式中，需要使用双反斜线时候，还需要添加额外的两个反斜线
+
+### 3.2 行内公式
+
+行内的公式，使用 `\\( 和 \\)` 分隔，例如: 
+
+\\(f(x) = a+b\\)
+
+一般在LaTex中，使用 `$公式$` 实现。
+
+表示行内
+
+### 3.3 行间公式
+
+行间公式，使用 `\\[ 和 \\]` 分隔，例如:
+
+\\[\mu = \frac{1}{N} \sum_{i=0} x_i \\]
+
+一般在LaTex中，使用 `$$公式$$` 实现。
+
+### 3.4 基本公式
+
+(1) 手动编号， 命令 `\tag{n}` 可以进行手动编号
+
+\\[ f(x) = a + b - c \tag{1.1.2} \\]
+
+(2) 拉丁字母、阿拉伯数字、四则运算符都可以直接输入，
+
+| 命令| 含义| 示例|
+|---|---| ---|
+| \cdot | 乘法的圆点 | \\( a \cdot b \\)|
+| \neq  | 不等于号 | \\( a \neq b \\) | 
+| \equiv | 恒等于 | \\( a \equiv b \\) |
+
+
+(3) 希腊字母和一些其他运算符
+
+| 符号| 含义| 示例|
+| --- | --- | --- |
+| \alpha | 希腊字母| \\( \alpha \\) |
+| \beta |  希腊字母 | \\( \beta \\) | 
+| \gamma | 希腊字母| \\( \gamma \\) | 
+| \rho | 希腊字母| \\( \rho \\) |
+| \sigma |希腊字母| \\( \sigma \\) |
+| \delta | 希腊字母| \\( \delta \\) |
+| \epsilon | 希腊字母| \\( \epsilon \\)|
 

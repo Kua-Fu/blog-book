@@ -37,6 +37,7 @@
   - [elasticsearch相关技术文档](article/technology/elastic.md)
   - [LogMine: Fast Pattern Recognition for Log Analytics](article/technology/logmine.md)
   - [asynq-一种go异步框架源码阅读](article/technology/asynq.md)
+  - [hyperloglog](article/technology/hyperloglog.md)
   
 - [生活](article/life/life.md)
   - [Kevin Kelly的103条建议](article/life/103_advice.md)

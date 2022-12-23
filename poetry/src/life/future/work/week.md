@@ -1,5 +1,29 @@
 # 周报
 
+### 2022/11/14 ~ 2022/11/18
+---
+
+一、本周进展
+
+1. 11-17 迭代上线
+
+a. 慢查询记录
+
+b. bugfix, 详见 https://gitlab.jiagouyun.com/cloudcare-tools/kodo/-/issues/496
+
+二、下周计划
+
+1. 12-01 迭代上线
+
+a. rum session 逻辑变更
+
+b. 添加计费项 profile/network
+
+c. tracing 服务拓扑图逻辑修改
+
+d. bulk 分块上传/msg 大字段处理
+
+
 ### 2022/11/07 ~ 2022/11/11
 ---
 
