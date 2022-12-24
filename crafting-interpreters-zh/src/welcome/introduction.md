@@ -4,7 +4,7 @@
   >
   > <p align="right"> —— G.K. Chesterton by way of Neil Gaiman, Coraline </p>
   >
-  > 童话绝不仅是真实的: 不仅仅在于它告诉我们龙的存在，更在于它告诉我们勇士可以战胜恶龙。
+  > 童话不仅仅是真实的: 它不仅告诉我们龙的存在，更在于它告诉我们勇士可以战胜恶龙。
   >
   > <p align="right"> —— G.K. Chesterton by way of Neil Gaiman, Coraline </p>
   
@@ -15,7 +15,7 @@
   
   这是一本介绍编程语言解释器的书， 这本书还会介绍如何自己实现一门语言。
   
-  这本书在我脑海中已经反复编辑了十年了，多么希望在我刚接触编程语言时候能遇到这种书籍。🐶
+  这本书在我脑海中已经反复酝酿了十年了，多么希望在我刚接触编程语言时，能遇到这本书。🐶
   
   > to my friends and family, sorry I've been so absentminded!
   >
@@ -25,9 +25,9 @@
   
   In order to cram two full implementations inside one book without it turning into a doorstop, this text is lighter on theory than others. As we build each piece of the system, I will introduce the history and concepts behind it. I'll try to get your familiar with the lingo so that if you ever find yourself at a cocktail party full of PL(parogramming language) researchers, you'll fit in.
   
-接下来，我们将通过实现两个完整的编译器，去实现一个功能齐全的语言。我会假设你第一次接触语言编程，所以我会详细介绍每一个概念和列出详细的代码，而这一切将会构建完整、可用、快速的语言。
+接下来，我们将通过实现两个完整的解释器，去实现一个功能齐全的语言。我会假设你第一次接触语言编程，所以我会详细介绍每一个概念，列出详细的代码，而这一切将会构建完整、可用、快速的语言。
 
-为了在一本书中，实现两个编译器，相对于其他的编译语言书籍，我们会更少介绍编译原理，我们不想成为介绍编译理论的拦路虎。在构建编译系统的每一个部分，我将介绍其背后的历史和概念。我将尽可能使用行话，这样即使将来你出现在一个编程语言的鸡尾酒会，也可以快速融入其中。
+为了在一本书中，实现两个解释器，相对于其他的编译语言书籍，我们会更少介绍编译原理，我们不想成为学习编译理论的拦路虎。在构建编译系统的每一个部分，我将介绍其背后的历史和概念。我将尽可能使用行话，这样即使将来你出现在一个编程语言的鸡尾酒会，也可以快速融入其中。
   
   > Strangely enough, a situation I have found myself in multiple times. You wouldn't believe how much some of them can drink.
   >
@@ -35,7 +35,7 @@
   
   But we're mostly going to spend our brain juice getting the language up and running. This is not to say theory isn't important. Being able to reason precisely and formally about syntax and semantics is a vital skill when working on a language. But, presonally, I learn best by doing. It's hard for me to wade through paragraphs full of abstract concepts and really absorb them. But if I've coded something, run it, and debugged it, then I get it.
 
-我们将花费精力去开发运行语言，而这并不代表理论不重要。在学习语言时候，掌握语法和语义规则非常重要。但是，个人经验，我总是从实践中获取更多的东西，我通常很难看懂或者真的理解充满抽象概念的段落。但是，但我代码中编码、运行、调试过某个概念，我将能真正掌握它。
+我们将花费精力去开发运行语言，而这并不代表理论不重要。在学习语言时候，掌握语法和语义规则非常重要。但是，个人经验，我总是从实践中获取更多的东西，我通常很难看懂或者真的理解充满抽象概念的段落。但是，当我在代码中编码、运行、调试中，接触过某个概念，我将能真正掌握它。
   
   > Static type systems in particular require rigorous formal reasoning. Hacking on a type system has the same feel as proving a theorem in mathematics. 
   >
@@ -47,7 +47,7 @@
   
   That's my goal for you. I want you to come away with a solid intuition of how a real language lives and breathes. My hope is that when you read other, more theoretical books later, the concepts there will firmly stick in your mind, adhered to this tangible substrate.
   
- 这个本书的一个目标，可以让你更加真切的认识一门语言，可以凭直觉感知一门语言如何编写运行。希望当以后学习更多的编译原理时候，通过现在培养的直觉，可以牢牢记住书中的概念。
+ 本书的一个目标，就是让你更加真切的认识一门语言，可以凭直觉感知一门语言如何编写与运行。希望当以后学习更多的编译原理时候，可以通过现在培养的直觉，牢牢记住书中的概念。
   
 ## 一、Why learn this stuff?
   
@@ -57,7 +57,7 @@
   
   But programming languages are a little different. I suppose it is true that the odds of any of us creating a broadly successful, general-purpose programming language are slim. The designers of the world's widely used languages could fit in a Volkswagen bus, even without putting the pop-top camper up. If joining that elite group was the only reason to learn languages, it would be hard to justify. Fortunately, it isn't.
   
-似乎每本编译器介绍书籍，似乎都包含这个讨论。我不知道，为什么编程语言会出现这样的疑惑。鸟类学研究书籍从来不认为人们会怀疑它是否该存在，他们总是假设读者喜欢鸟，然后开始教学。
+似乎每本编译器介绍书籍，都包含这个讨论。我不知道，为什么编程语言会出现这样的疑惑。鸟类学研究书籍从来不认为人们会怀疑它是否该存在，他们总是假设读者喜欢鸟，然后开始教学。
 
 但是编程语言总是有点不一样。我认为，我们大部分人，都无法创建一个广泛成功的通用编程语言。世界上最广泛使用的语言设计者可以适应驾驶大众汽车，即使车上没有安装流行的露营设备。如果学习编译器，仅仅是为了加入这个编程精英群体，那么大可不必。幸运的是，事实也并非如此。
 
@@ -65,18 +65,20 @@
 
 For every successful general-purpose language, there are a thousand successful niche ones. We used to call them “little languages”, but inflation in the jargon economy led to the name “domain-specific languages”.These are pidgins tailor-built to a specific task. Think application scripting languages, template engines, markup formats, and configuration files.
 
-Almost every large software project needs a handful of these. When you can, it’s good to reuse an existing one instead of rolling your own.
+Almost every large software project needs a handful of these. When you can, it’s good to reuse an existing one instead of rolling your own. Once you factor in documentation, debuggers, editor support, syntax highlighting, and all of the other trappings, doing it yourself becomes a tall order.
 
-A random selection of some little languages you might run into.
+对于每一种通用的流行语言，都对应着成千小众语言。我们可以称为这些语言为小众语言，但是在行业术语中，通常人们会使用领域特定语言(DSL)来描述。它们都是为了执行特定任务设计，想象一下，脚本语言、模版引擎、标记格式、配置文件。
+
+几乎每个大型项目中，我们总会使用上图中的部分语言。通常我们会复用已经出现的语言，而不是自己造轮子。但是，当你考虑到文档、调试、编辑器支持、语法高亮和其他类似功能，就需要自己动手了。😄
+
+> A random selection of some little languages you might run into.
+> 
+> 随机选择一些，你可能会遇到的小语种。
 
 ![A random selection of some little languages you might run into.](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/little-languages.png?raw=true)
 
 But there’s still a good chance you’ll find yourself needing to whip up a parser or other tool when there isn’t an existing library that fits your needs. Even when you are reusing some existing implementation, you’ll inevitably end up needing to debug and maintain it and poke around in its guts.
   
-
-对于每一种通用的流行语言，都对应着成千小众语言。我们可以称为这些语言为小众语言，但是在行业术语中，通常人们会使用领域特定语言(DSL)来描述。它们都是为了执行特定任务设计，想象一下，脚本语言、模版引擎、标记格式、配置文件。
-
-几乎每个大型项目中，我们总会使用上图中的部分语言。通常我们会复用已经出现的语言，而不是自己造轮子。但是，当你考虑到文档、调试、编辑器支持、语法高亮和其他类似功能，就需要自己动手了。😄
 
 当没有现有库匹配新需求时候，可能需要开发新的解析器或者一些小工具。即使对于某些正在使用的第三方库，也会需要不断进行调试和维护，并且需要对其深入研究。
 
@@ -112,9 +114,9 @@ There are a few techniques you don’t often encounter outside of languages, and
 
 And, who knows, maybe you will make the next great language. Someone has to.
 
-最后一个原因我本人很难承认，因为它一直深藏我心底。当我小时候学会接触编程，我就觉得编程语言非常神奇。当我第一次一个按键一个按键敲出 BASIC 程序时候，我无法想象 BASIC 内部是如何运行的。
+最后一个原因我本人很难承认，因为它一直深藏我心底。当我小时候接触编程，我就觉得编程语言非常神奇。当我第一次一个按键一个按键敲出 BASIC 程序时候，我无法想象 BASIC 内部是如何运行的。
 
-后来，当我的朋友们谈论起编译器课程时候，他们脸上充满了敬畏和恐惧，这加深了我的想法：编译器黑客是另外一种人类，一些巫师才能拥有的天赋。
+后来，当我的朋友们谈论起编译器课程时候，他们脸上充满了敬畏和恐惧，这加深了我的想法：编译器高手是另外一种人类，一些巫师才能拥有的天赋。
 
 这是一个迷人的形象，但是它也有黑暗的一面，我不觉得自己是一个巫师，所以我不认为自己拥有巫师的天赋。虽然从我在学校笔记本上，乱写关键词时候，就对于编程语言十分着迷，但是，我花了几十年时间才真正开始学习编译器。编译器的那种神奇之处、不简单的感觉，让我一直徘徊在门外。
 
@@ -123,6 +125,10 @@ And, who knows, maybe you will make the next great language. Someone has to.
 有一些语言之外的技巧，我们不会经常遇到，但是这一部分有些难度。但是，也不会比你所克服的其他障碍更加棘手。我的希望是，如果你和我一样，对编译器感到恐惧，那么这本书将帮助你克服这个恐惧，也许这之后，你将变得更加勇敢。
 
 最后，你还可能成为下一个伟大语言的创始人，必须有人去做。谁知道呢？
+
+> And its practitioners don’t hesitate to play up this image. Two of the seminal texts on programming languages feature a dragon and a wizard on their covers.
+> 
+> 编译原理的从业者很喜欢渲染这种形象，两本关于编程语言的开创性著作封面上都有一条龙和一个巫师
 
   
 ## 二、How the book is organized
@@ -137,11 +143,11 @@ And, who knows, maybe you will make the next great language. Someone has to.
   
   Aside from copious, scintillating English prose, chapters have a few other delightful facets.
   
-  这本书将分为三个部分，现在正在阅读的是第一部分。这几章会让你有一些方向感，教你使用黑客常用的术语。然后，会介绍Lox语言，我们将要实现的语言。
+  这本书将分为三个部分，现在正在阅读的是第一部分。这几章会让你有一些方向感，教你使用高手常用的术语。然后，会介绍Lox语言，我们将要实现的语言。
   
-  其他两个部分，会分别实现一个完整的编译器。在这两个部分，每一章的结构都是相同的，本章节采用单一语言功能，向您介绍背后的概念，并且引导你去实现解析器。
+  其他两个部分，会分别实现一个完整的解释器。在这两个部分，每一章的结构都是相同的，本章节采用单一语言功能，向您介绍背后的概念，并且引导你去实现。
   
-对我来说，需要一些尝试和试错，但我还是把两个编译器分为章节大小的部分，这些章节基于前面几章的基础知识，不需要理解后面几章的内容。从第一章开始，你就拥有了一个可以运行和使用的工作程序。随着更多章节的学习，这个工作程序会越来越全面，直到最终，你会拥有一个完整的编程语言。
+对我来说，需要一些尝试和试错，但我还是把两个解释器分为章节大小的部分，这些章节基于前面几章的基础知识，不需要理解后面几章的内容。从第一章开始，你就拥有了一个可以运行和使用的工作程序。随着更多章节的学习，这个工作程序会越来越全面，直到最终，你会拥有一个完整的编程语言。
 
 除了丰富、华丽的正文外，每个章节还有一些令人愉快的部分。
   
@@ -159,11 +165,11 @@ Also, the code doesn’t have many comments. That’s because each handful of li
 
 While the book contains every line of code and teaches what each means, it does not describe the machinery needed to compile and run the interpreter. I assume you can slap together a makefile or a project in your IDE of choice in order to get the code to run. 
   
-  我们是介绍编译器的，所以本书会包含真是可用的代码。每行代码，每个代码段，都会告诉你它们的作用和在实现的不断完善的编译器中的位置。
+  我们是介绍解释器的，所以本书会包含真是可用的代码。每行代码，每个代码段，都会告诉你它们的作用和在实现的不断完善的解释器中的位置。
   
-  许多其他语言书籍和语言实现书籍中，通常会使用 Lex，Yacc等称为编译编译器的编译语言，这些语言，可以从更高级的描述中自动生成源文件。 直接使用这些语言工具，有好处也有弊端，而对于这两个观点，都有很多宗教信仰般的拥趸。
+  许多其他语言和语言实现书籍中，通常会使用 Lex，Yacc等称为编译编译器的编译语言，这些语言，可以从更高级的描述中自动生成源文件。 直接使用这些语言工具，有好处也有弊端，而对于这两个观点，都有很多宗教信仰般的拥趸。
   
-  本书中将避免使用编译器语言，我想要确保没有黑暗的角落，隐藏着一些魔法和未知，所以我们将手写所有内容。正如你看到的，这并不像听起来那么糟糕，这意味着你将真正理解每一行代码，并且真的理解这两个编译器是如何工作的。
+  本书将避免使用编译器语言，我想要确保没有黑暗的角落，隐藏着一些魔法和未知，所以我们将手写所有内容。正如你看到的，这并不像听起来那么糟糕，这意味着你将真正理解每一行代码，并且真的理解这两个解释器是如何工作的。
   
   一本书不同于真实世界的约束，因此本书的编码风格可能并不是编写可维护性生产级别软件的最佳实践。如果我省略了 private 或者 忽略了全局变量声明，请理解我这么做是为了让代码更加容易理解，而不是来源于傲慢。这里的页面没有 IDE 那么宽，但是它们都非常重要。
   
@@ -171,8 +177,8 @@ While the book contains every line of code and teaches what each means, it does 
 
 虽然这本书包含了编译器的每一行代码，介绍了每一行代码的含义，但是我并没有描述编译和运行代码的具体机器信息。我预想你可以使用自己熟悉的 IDE 创建一个文件或是一个项目。这些具体机器说明很快就会过时，我希望这本书可以像 XO白兰地一样历久弥新，而不是像 backyard hooch（一直保质期不长的蜂蜜酒）一样很快过时。
 
-![yak](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/yak.png?raw=true)
-
+> ![yak](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/yak.png?raw=true)
+>
 > Yacc is a tool that takes in a grammar file and produces a source file for a compiler, so it’s sort of like a “compiler” that outputs a compiler, which is where we get the term “compiler-compiler”.
 >
 > Yacc wasn’t the first of its ilk, which is why it’s named “Yacc”—Yet Another Compiler-Compiler. A later similar tool is Bison, named as a pun on the pronunciation of Yacc like “yak”.
@@ -219,11 +225,11 @@ In the center, you have the new code to add. It may have a few faded out lines a
 
 Asides contain biographical sketches, historical background, references to related topics, and suggestions of other areas to explore. There’s nothing that you need to know in them to understand later parts of the book, so you can skip them if you want. I won’t judge you, but I might be a little sad.
 
-Well, some asides do, at least. Most of them are just dumb jokes and amateurish drawings.
-
 旁白包含了传记历史、历史背景、相关主题的参考文献以及推荐的延伸阅读。如果是为了阅读后面章节的内容，你不需要阅读旁白，也就是说你可以直接跳过旁白。我不会批评你，但是我会感到难过 😫。
 
-嗯，还有些旁白不尽如人意，这些旁白大部分都是愚蠢的笑话和业余水平的绘画。
+> Well, some asides do, at least. Most of them are just dumb jokes and amateurish drawings.
+> 
+> 嗯，还有些旁白不尽如人意，这些旁白大部分都是愚蠢的笑话和业余水平的绘画。
 
 ### 2.4 Challenges
 
@@ -231,13 +237,13 @@ Each chapter ends with a few exercises. Unlike textbook problem sets, which tend
 
 Vanquish the challenges and you’ll come away with a broader understanding and possibly a few bumps and scrapes. Or skip them if you want to stay inside the comfy confines of the tour bus. It’s your book.
 
-A word of warning: the challenges often ask you to make changes to the interpreter you’re building. You’ll want to implement those in a copy of your code. The later chapters assume your interpreter is in a pristine (“unchallenged”?) state.
-
 每个章节都以一些练习题结束。但是不同于教科书的习题集，它们通常让你复习已经学过的知识，本书的习题更加倾向于让你学到更多的东西。这些习题会让你离开章节的已有路径，独自探索更多的未知领域。它们会让你去研究其他语言，去寻找如何实现功能，或者让你走出舒适区。
 
 接受习题集的挑战，并且战胜它们，你将会有更加广阔的视野，虽然你可能会遇到一些坎坷和挫折。如果你想要呆在舒服的游览车内，你也可以跳过这些挑战习题，毕竟这是你的书。
 
-一句警告⚠️，这些挑战通常会要求你修改已构建的编译器，建议你在副本项目中实现这些挑战，我们后面的章节基于没有修改的编译器。
+> A word of warning: the challenges often ask you to make changes to the interpreter you’re building. You’ll want to implement those in a copy of your code. The later chapters assume your interpreter is in a pristine (“unchallenged”?) state.
+> 
+> 一句警告⚠️，这些挑战通常会要求你修改已构建的解释器，建议你在副本项目中实现这些挑战，我们后面的章节基于没有修改的解释器。
 
 ### 2.5 Design notes
 
@@ -257,23 +263,24 @@ I know a lot of language hackers whose careers are based on this. You slide a la
 
 所有这些都深刻的影响着一门新语言的成功与否。我希望你的新语言可以成功，所以我会在某些章节的结尾，发表一些设计方面的思考，这是一些编程语言中人们设计的最佳实践。我不是设计方面的专家，不知道是否有人真的这么想—在一些编程语言的正文中，添加一些设计方面的内容。这应该会让设计内容称为更加美味的思想食粮，这也是我的主要目标。
 
-我认识很多编程老手，他们的职业就在于此——你将一门语言的规范告知他们，等待几个月，你将会得到这门新语言的代码和基准测试结果。希望你的新语言，不会将穿孔纸的宽度信息，硬编码到语言语法中。
+我认识很多编程高手，他们的职业就在于此——你将一门语言的规范告知他们，等待几个月，你将会得到这门新语言的代码和基准测试结果。希望你的新语言，不会将穿孔纸的宽度信息，硬编码到语言语法中。
 
 ## 三、The First Interpreter
 
-第一个编译器
+第一个解释器
 
 We’ll write our first interpreter, jlox, in Java. The focus is on concepts. We’ll write the simplest, cleanest code we can to correctly implement the semantics of the language. This will get us comfortable with the basic techniques and also hone our understanding of exactly how the language is supposed to behave.
 
-The book uses Java and C, but readers have ported the code to many other languages. If the languages I picked aren’t your bag, take a look at those.
-
 Java is a great language for this. It’s high level enough that we don’t get overwhelmed by fiddly implementation details, but it’s still pretty explicit. Unlike in scripting languages, there tends to be less complex machinery hiding under the hood, and you’ve got static types to see what data structures you’re working with.
 
-我们将使用JAVA语言实现第一个编译器，jlox，第一个编译器的重点是基本概念，我们将编写最简洁、最基础的代码，实现编译器的语义。这将让我们熟悉基本的技术，让我们能更加准确理解语言行为。
+我们将使用Java语言实现第一个解释器，jlox，第一个解释器的重点是基本概念，我们将编写最简洁、最基础的代码，实现解释器的语义。这将让我们熟悉基本的技术，让我们能更加准确理解语言行为。
 
-本书将使用 JAVA, C语言，但是读者可能更加熟悉其他的编程语言，如果我使用的语言不是你的菜，可以尝试使用你最熟悉的语言。
 
-JAVA是一门很好的语言，我们不需要关注底层的大量实现细节，因为JAVA是一门高级语言，拥有更多的确定性。和脚本语言不同的是，JAVA与不同机器的关联性并没有那么复杂，通常，你可以使用静态类型去获取查看当前正在使用的结构体。
+Java 是一门很好的语言，我们不需要关注底层的大量实现细节，因为Java 是一门高级语言，拥有更多的确定性。和脚本语言不同的是，Java 与不同机器的关联性并没有那么复杂，通常，你可以使用静态类型去获取查看当前正在使用的数据结构。
+
+> The book uses Java and C, but readers have ported the code to many other languages. If the languages I picked aren’t your bag, take a look at those.
+> 
+> 本书将使用 Java, C语言，但是读者可能更加熟悉其他的编程语言，如果我使用的语言不是你的菜，可以尝试使用你最熟悉的语言。
 
 I also chose Java specifically because it is an object-oriented language.  That paradigm swept the programming world in the ’90s and is now the dominant way of thinking for millions of programmers. Odds are good you’re already used to organizing code into classes and methods, so we’ll keep you in that comfort zone.
 
@@ -289,19 +296,20 @@ By the end of part II, we’ll have a simple, readable implementation. It’s no
 
 最后，Java非常流行。这意味着，这是一个很好机会去使用熟悉这门语言。如果你不熟悉Java，也不用担心，本书中只会使用一小部分功能，我将使用Java7 标准里面的运算符，相对于使用更多的高级用法，这会让编程变得更加简洁。如果你还熟悉其他的面向对象语言，例如: C#, C++, 你也可以尝试使用它们去实现编译器。
 
-在第二部分结束时候，我们将有一个简单易读的编译器实现，它的运行性能不是很高，但是可以保证准确性。但是，我们实现的编译器，是基于Java 语言和 Java 虚拟机底层。我们想要了解 Java本身是如何实现这些功能的。
+在第二部分结束时候，我们将有一个简单易读的解释器实现，它的运行性能不是很高，但是可以保证准确性。但是，我们实现的解释器，是基于Java 语言和 Java 虚拟机底层。我们想要了解 Java本身是如何实现这些功能的。
 
 
-A compiler reads files in one language, translates them, and outputs files in another language.
-You can implement a compiler in any language, including the same language it compiles, a process called self-hosting.
+> A compiler reads files in one language, translates them, and outputs files in another language. You can implement a compiler in any language, including the same language it compiles, a process called self-hosting.
+> 
+> You can’t compile your compiler using itself yet, but if you have another compiler for your language written in some other language, you use that one to compile your compiler once. Now you can use the compiled version of your own compiler to compile future versions of itself, and you can discard the original one compiled from the other compiler. This is called bootstrapping, from the image of pulling yourself up by your own bootstraps.
+> 
+> 编译器读取一种语言的原始文件，翻译它们，然后输出为另外一门语言的文件。你可以用任何语言实现编译器，甚至你可以使用相同的语言去实现该语言的编译器，这通常被称为自编译。
+> 
+> 一开始，你无法使用相同的语言写成一个编译器，但是如果你已经使用过其他语言实现了新语言的编译器，那么你就可以使用已经实现的编译器，去编译一次，然后你可以获取到使用新语言实现的编译器。接下来，你可以愉快的使用新的编译器，去升级新的编译器版本，也可以扔掉之前的其他语言写成的编译器了。专业术语一般称为自举，图中形象的描述了一个人的自举。
+> 
+> ![bootstraps](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/bootstrap.png?raw=true)
 
-You can’t compile your compiler using itself yet, but if you have another compiler for your language written in some other language, you use that one to compile your compiler once. Now you can use the compiled version of your own compiler to compile future versions of itself, and you can discard the original one compiled from the other compiler. This is called bootstrapping, from the image of pulling yourself up by your own bootstraps.
 
-![bootstraps](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/bootstrap.png?raw=true)
-
-编译器读取一种语言的原始文件，翻译它们，然后输出另外一门语言的文件。你可以用任何语言实现编译器，甚至你可以使用相同的语言去实现该语言的编译器，这通常被称为自编译。
-
-一开始，你无法使用相同的语言写成一个编译器，但是如果你已经使用过其他语言实现了新语言的编译器，那么你就可以使用已经实现的编译器，去编译一次，然后你可以获取到使用新语言实现的编译器。接下来，你可以愉快的使用新的编译器，去升级新的编译器版本，也可以扔掉之前的其他语言写成的编译器了。专业术语一般称为自举，图中形象的描述了一个人的自举。
 
 ## 四、The Second Interpreter
 
@@ -313,7 +321,16 @@ A big reason that we’re using C is so I can show you things C is particularly 
 
 If you aren’t there yet, pick up an introductory book on C and chew through it, then come back here when you’re done. In return, you’ll come away from this book an even stronger C programmer. That’s useful given how many language implementations are written in C: Lua, CPython, and Ruby’s MRI, to name a few.
 
+在下个部分中，我们将从头开始，但是这一次将使用C语言。C语言可以让我们更好的理解计算机是如何工作的，深入到底层，例如：内存中的字节和 cpu 执行的代码。
+
+我们使用C语言实现解释器的一个重要原因是，我可以使用C语言一些特别擅长的功能，但是这也意味着你必须非常熟悉C语言。你不需要像创始人 Dennis Ritchie 一样熟悉 C语言，但是你至少不能被指针吓倒。
+
+如果你还不太了解C语言，那么先拿起一本C语言入门书籍仔细阅读后，再回到这里。作为回报，你将变成一个更强大的C语言程序员。你可以先看看有哪些语言是基于C语言实现的：Lua，CPython，Ruby的MRI实现，等等。
+
+
 In our C interpreter, clox, we are forced to implement for ourselves all the things Java gave us for free. We’ll write our own dynamic array and hash table. We’ll decide how objects are represented in memory, and build a garbage collector to reclaim them.
+
+在C语言实现的解释器 clox 中，我们将要实现一些 Java中原生存在的结构，例如：我们将实现动态数组和哈希表，我们将设计决定如何在内存中表示对象，并且构建垃圾采集器回收它们。
 
 > I pronounce the name like “sea-locks”, but you can say it “clocks” or even “cloch”, where you pronounce the “x” like the Greeks do if it makes you happy.
 >
@@ -322,25 +339,15 @@ In our C interpreter, clox, we are forced to implement for ourselves all the thi
 
 Our Java implementation was focused on being correct. Now that we have that down, we’ll turn to also being fast. Our C interpreter will contain a compiler that translates Lox to an efficient bytecode representation (don’t worry, I’ll get into what that means soon), which it then executes. This is the same technique used by implementations of Lua, Python, Ruby, PHP, and many other successful languages.
 
->Did you think this was just an interpreter book? It’s a compiler book as well. Two for the price of one!
+第一部分，我们用Java语言实现的解释器 jlox主要专注于准确性，现在我们已经实现了准确性，接下来将专注于性能。我们的clox解释器，将实现一个编译器，将lox 编译为有效的字节码（别担心，很快我将解释它是什么），然后执行字节码。这与其他语言的实现使用相同技术，例如：Lua，Python，Ruby，PHP等等。
+
+> Did you think this was just an interpreter book? It’s a compiler book as well. Two for the price of one!
 >
->你认为这只是一本解释器介绍书籍吗，其实它还是一个编译器介绍书籍。这两者没有本质区别。
+> 你认为这只是一本解释器介绍书籍吗，其实它还是一个编译器介绍书籍。这两者没有本质区别。
 
 We’ll even try our hand at benchmarking and optimization. By the end, we’ll have a robust, accurate, fast interpreter for our language, able to keep up with other professional caliber implementations out there. Not bad for one book and a few thousand lines of code.
 
-在下个部分中，我们将从头开始，但是这一次将使用C语言。C语言可以让我们更好的理解计算机是如何工作的，深入到底层，例如：内存中的字节和 cpu 执行的代码。
-
-我们使用C语言实现编译器，的一个重要原因是，我可以使用C语言一些特别擅长的功能，但是这也意味着你必须非常熟悉C语言。你不需要像创始人 Dennis Ritchie 一样熟悉 C语言，但是你至少不能被指针吓倒。
-
-如果你还不太了解C语言，那么先拿起一本C语言入门书籍仔细阅读后，再回到这里。作为回报，你将变成一个更强大的C语言程序员。你可以先看看有哪些语言是基于C语言实现的：Lua，CPython，Ruby的MRI实现，等等。
-
-在C语言实现的解释器 clox 中，我们将要实现一些 Java中原生存在的结构，例如：我们将实现动态数组和哈希表，我们将设计决定如何在内存中表示对象，并且构建垃圾采集器回收它们。
-
-第一部分，我们用Java语言实现的编译器 jlox主要专注于准确性，现在我们已经实现了准确性，接下来将专注于性能。我们的clox解释器，将实现一个编译器，将lox 编译为有效的字节码（别担心，很快我将解释它是什么），然后执行字节码。这与其他语言的实现使用相同技术，例如：Lua，Python，Ruby，PHP等等。
-
 我们甚至会尝试基准测试和优化。到最后，我们将实现一个强大、准确、快速的语言解释器，能够和其他专业级别的语言媲美，而这对于一本书和几千行代码而言，并不简单。
-
-
 
 ## 五、 Challenges
 	
@@ -352,7 +359,7 @@ We’ll even try our hand at benchmarking and optimization. By the end, we’ll 
  
 1. Get a "Hello, world!" program written and running in Java. Set up whatever makefiles or IDE projects you need to get it working. If you have a debugger, get comfortable with it and step through your program as it runs.
 
-	使用 Java语言实现一个 "hello, world" 程序，描述一下你使用的IDE 和配置文件，并且在IDE中习惯调试。
+	使用 Java语言实现一个 "hello, world" 程序，描述一下你使用的IDE 和配置文件，如果你的IDE有调试器，请使用调试器，一步步调试代码。
   
 1. Do the same thing for C. To get some practice with pointers, define a [doubly linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) of heap-allocated strings. Write functions to insert, find, and delete items from it. Test them.
 
@@ -362,7 +369,7 @@ We’ll even try our hand at benchmarking and optimization. By the end, we’ll 
   
 ##  六、Design Note: What's in a name?
 
-设计说明：如何命名？
+设计思路：如何命名？
   
   One of the hardest challenges in writing book was coming up with a name for the language it implements. I went through pages of candidates before I found one that worked. As you'll discover on the first day you start building your own language, naming is deviously hard. A good name satisfies a few criteria:
   
