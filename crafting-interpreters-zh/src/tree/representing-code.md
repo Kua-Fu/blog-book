@@ -107,7 +107,7 @@ A formal grammar’s job is to specify which strings are valid and which aren’
 |---|---|---|
 |字母表|字符列表|token列表|
 |字符串|词素（单词）或者token|表达式|
-|实现者|扫描器|解释器|
+|实现者|扫描器|解析器|
 
 形式文法的目标是指定哪些字符串有效，哪些字符串无效。例如：我们想要给一个英语语句，定义语法规则。"eggs are tasty for breakfast" 是一个合法的英语语句，但是，“tasty breakfast for are eggs”就不是一个合法的英语语句。
 
