@@ -1,9 +1,0 @@
-[book]
-authors = ["yz"]
-language = "en"
-multilingual = false
-src = "src"
-title = "asynq"
-
-[output.html]
-mathjax-support = true

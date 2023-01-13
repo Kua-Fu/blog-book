@@ -1,0 +1,702 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ghibli - Poetic life</title>
+
+
+        <!-- Custom HTML head -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="柴米油盐酱醋茶，琴棋书画诗酒花">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">AboutMe</a></li><li class="chapter-item affix "><li class="part-title">Work Reading</li><li class="spacer"></li><li class="chapter-item "><a href="../work_reading/often/often.html"><strong aria-hidden="true">1.</strong> Often Use</a></li><li class="chapter-item "><a href="../work_reading/read.html"><strong aria-hidden="true">2.</strong> Work Reading</a></li><li class="chapter-item "><a href="../work_reading/problem.html"><strong aria-hidden="true">3.</strong> Work Problem</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../work_reading/problem/sls.html"><strong aria-hidden="true">3.1.</strong> sls problem</a></li></ol></li><li class="chapter-item "><li class="part-title">Technical Learning</li><li class="spacer"></li><li class="chapter-item "><a href="../learning/algorithm.html"><strong aria-hidden="true">4.</strong> Algorithm</a></li><li class="chapter-item "><a href="../learning/basic.html"><strong aria-hidden="true">5.</strong> Basic</a></li><li class="chapter-item "><a href="../learning/compile.html"><strong aria-hidden="true">6.</strong> Compilation Principle</a></li><li class="chapter-item "><a href="../learning/middleware.html"><strong aria-hidden="true">7.</strong> Middleware</a></li><li class="chapter-item "><a href="../learning/network.html"><strong aria-hidden="true">8.</strong> Network</a></li><li class="chapter-item "><a href="../learning/os.html"><strong aria-hidden="true">9.</strong> Operating System</a></li><li class="chapter-item "><a href="../learning/language.html"><strong aria-hidden="true">10.</strong> Programing Language</a></li><li class="chapter-item affix "><li class="part-title">Reading Notes</li><li class="spacer"></li><li class="chapter-item "><a href="../reading/classic.html"><strong aria-hidden="true">11.</strong> Classic</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../reading/classic/san_guo_zhi.html"><strong aria-hidden="true">11.1.</strong> 三国志</a></li><li class="chapter-item "><a href="../reading/classic/mao_xuan.html"><strong aria-hidden="true">11.2.</strong> 毛泽东选集</a></li></ol></li><li class="chapter-item "><a href="../reading/technology/crafting_interpreters.html"><strong aria-hidden="true">12.</strong> Crafting Interpreters</a></li><li class="chapter-item "><a href="../reading/technology/elasticsearch-start.html"><strong aria-hidden="true">13.</strong> Elasticsearch Definitive Guide</a></li><li class="chapter-item "><a href="../reading/literature.html"><strong aria-hidden="true">14.</strong> Poetry</a></li><li class="chapter-item "><a href="../reading/technical.html"><strong aria-hidden="true">15.</strong> Technical Articles</a></li><li class="chapter-item affix "><li class="part-title">The Shire Hobbit</li><li class="spacer"></li><li class="chapter-item expanded "><a href="../animation/animation.html"><strong aria-hidden="true">16.</strong> Animation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../animation/ghibli.html" class="active"><strong aria-hidden="true">16.1.</strong> ghibli</a></li></ol></li><li class="chapter-item "><a href="../health/health.html"><strong aria-hidden="true">17.</strong> Health</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../health/live_longer.html"><strong aria-hidden="true">17.1.</strong> How to live longer</a></li></ol></li><li class="chapter-item "><a href="../life/life.html"><strong aria-hidden="true">18.</strong> Life Advice</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../life/103_advice.html"><strong aria-hidden="true">18.1.</strong> Kevin Kelly's 103 advice</a></li></ol></li><li class="chapter-item "><a href="../music/music.html"><strong aria-hidden="true">19.</strong> Music</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../music/xiao_kan_feng_yun.html"><strong aria-hidden="true">19.1.</strong> 笑看风云</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Poetic life</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ghibli"><a class="header" href="#ghibli">ghibli</a></h1>
+<blockquote>
+<p><a href="https://www.ghibli.jp/info/013409/">官方网站</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.ghibli.jp/works/">作品一览</a></p>
+</blockquote>
+<p>下面简单列举一下吉普力的作品、简介(大多来自豆瓣）</p>
+<h2 id="1-1984--风之谷"><a class="header" href="#1-1984--风之谷">1. 1984  风之谷</a></h2>
+<pre><code>風の谷のナウシカ Nausicaä of the Valley of the Wind
+</code></pre>
+<pre><code>
+	工业文明的高度发展，却最终带来灾难，一场为期7天的虫族毁灭战争摧毁了人类文明。
+	一千年后，工业文明遗留下来的症结仍在困扰这个星球。
+	带有强烈毒性的植物组成了令人望而却步的“腐海”森林，
+	随着时间的推移，腐海有条不紊地向四周蔓延，蚕食周边世界。
+	
+	在一片腐海森林的旁边，居住着一群御风而行的人类。
+	女主角娜乌茜卡和族人依靠海风的力量抵御着有毒孢子的侵蚀，过着平静祥和的生活。
+	
+	直到某一天，战火烧到了这里。
+	西方强国特洛梅意欲重新建立人类霸权，他们计划统一周边诸国，然后向虫族发起总攻。
+	
+	另一方面，一千年前曾主导摧毁人类的上古怪兽“猛怪”重现人间。毁灭战争一触即发，人类的命运将会如何……
+	本片根据宫崎骏同名漫画改编，
+	
+	并分获1985年罗马奇幻电影节和1985年电影旬报最佳影片奖、1985年每日电影大藤信郎奖
+
+</code></pre>
+<h2 id="2-1986-天空之城"><a class="header" href="#2-1986-天空之城">2. 1986 天空之城</a></h2>
+<pre><code>天空の城ラピュタ Castle in the Sky
+</code></pre>
+<pre><code>
+	古老帝国拉比达是一座漂浮在空中的巨大的机器岛，传说那里已经无人居住，蕴藏着巨大的财富。
+	因此，无论军方还是海盗，都在找寻着这座传说中的飞行岛。
+	
+	矿工帕克这天偶遇拉比达继承人希达，两人一见如故。
+	因为希达身上有找寻拉比达帝国的重要物件飞行石，军方和海盗两帮人马都在追杀希达。
+	帕克带着希达一起逃亡，最终都没有逃出军方的手中，希达被军队掳走了。
+	
+	为救朋友，帕克只能选择与海盗合作。
+	帕克与海盗成功救出了希达，同时，他们也发现了军方的邪恶计划。
+	为了阻止军方邪恶计划的实施，他们和海盗一起踏上了寻找拉比达之旅。
+
+</code></pre>
+<h2 id="3-1988-萤火虫之墓"><a class="header" href="#3-1988-萤火虫之墓">3. 1988 萤火虫之墓</a></h2>
+<pre><code>火垂るの墓 Grave of the Fireflies
+</code></pre>
+<pre><code>
+	美日战争爆发，14岁的清太带着年幼的妹妹到处逃命，
+	当他们到达防空洞的时候，母亲已身受重伤，没过多久便不久人世。
+	
+	两兄妹自此过着相依为命的日子。
+	他们只好投靠了母亲的姐妹，纵使他们把家里所有的家当都送给了阿姨，
+	但当食物吃完，他们就越感到了寄人篱下的感觉，
+	清太决定带着妹妹离开独自生活。
+	
+	火灾硝烟中的生活并不好过，清太为了妹妹四处偷取食物，但妹妹还是严重营养不良……
+
+</code></pre>
+<h2 id="4-1988-龙猫"><a class="header" href="#4-1988-龙猫">4. 1988 龙猫</a></h2>
+<pre><code>となりのトトロ My Neighbor Totoro
+</code></pre>
+<pre><code>
+	小月的母亲生病住院了，父亲带着她与四岁的妹妹小梅到乡间的居住。
+	
+	她们对那里的环境都感到十分新奇，也发现了很多有趣的事情。
+	她们遇到了很多小精灵，她们来到属于她们的环境中，
+	看到了她们世界中很多的奇怪事物，更与一只大大胖胖的龙猫成为了朋友。
+	龙猫与小精灵们利用他们的神奇力量，
+	为小月与妹妹带来了很多神奇的景观，令她们大开眼界
+	
+	妹妹小梅常常挂念生病中的母亲，嚷着要姐姐带着她去看母亲，但小月拒绝了。
+	小梅竟然自己前往，
+	不料途中迷路了，小月只好寻找她的龙猫及小精灵朋友们帮助。
+
+</code></pre>
+<h2 id="5-1989-魔女宅急便"><a class="header" href="#5-1989-魔女宅急便">5. 1989 魔女宅急便</a></h2>
+<pre><code>魔女の宅急便 Kiki's Delivery Service
+</code></pre>
+<pre><code>
+	琪琪今年13岁了，
+	按照魔法界的规矩，魔法少女年满13岁就要出外进行为期一年的修行。
+	所以琪琪带着宠物黑猫吉吉踏上了修行之旅。
+	
+	然而，修行之旅开始得并不顺利，
+	当琪琪来到海边一座大城市时，人们并没有欢迎她的到来，人人都不搭理她。
+	幸亏琪琪有一颗善良的心，
+	当她拾到了一件别人的失物时，热心的琪琪找到了失主。
+	她的善良赢得了面包店老板娘的好感，
+	琪琪就在面包店开始了她用飞行魔法为客人服务的快递业务。
+	
+	琪琪很快适应了新环境，
+	一次，一个热衷于飞机制造的男孩邀请琪琪去参加飞行俱乐部的聚会，
+	途中琪琪因为帮一位老大娘送东西而被雨淋了。
+	
+	从此，琪琪突然发现自己的魔法正在一天天变弱
+
+</code></pre>
+<h2 id="6-1991-岁月的童话"><a class="header" href="#6-1991-岁月的童话">6. 1991 岁月的童话</a></h2>
+<pre><code>おもひでぽろぽろ Only Yesterday
+</code></pre>
+<pre><code>
+	妙子今年27岁了，她向公司请了十天的假，到乡间享受向往已久的乡村生活。
+	
+	自此，她便常常想起了她五年级那一年的往事。
+	一路上不断回想五年级时发生的往事，到达目的地后，
+	迎接她的是一名乡村小伙子，比她小2岁的俊雄。
+	
+	她开始了农民的生活，并乐在其中，
+	向俊雄分享她小时候的点点滴滴，在乡间看到的景色都能勾起美好的回忆。
+	两人相处甚欢，一起感受岁月流逝的痕迹。
+	
+	正在她要离开的前一天晚上，
+	俊雄的奶奶竟向妙子建议与俊雄结婚，顿时又牵起了妙子的回忆……
+
+</code></pre>
+<h2 id="7-1992-红猪"><a class="header" href="#7-1992-红猪">7. 1992 红猪</a></h2>
+<pre><code>紅の豚 Porco Rosso
+</code></pre>
+<pre><code>
+	罗森是一战中意大利空军的王牌飞行员，但却被施了魔法变了一头猪。
+	
+	虽然变了猪，但罗森还是继续他的老本行，成了一位赏金猎人，
+	专门打击在亚地里亚海空域作恶的空中劫匪。
+	红猪侠一时威名远扬，令劫匪们闻风丧胆。
+	
+	匪徒们为了对付罗森，请来了超级飞行员卡基斯。
+	卡基斯在于罗森对决中趁他发动机故障将其击落。
+	罗森把飞机送到老朋友比克罗处修理时，遇上了比克罗的孙女菲欧。
+	菲欧帮罗森修好了飞机，两人一起再度翱翔蓝天对付空中劫匪。
+	
+	这时，卡基斯出现了，他对菲欧一见钟情。
+	为了争夺菲欧的爱，卡基斯向罗森提出决斗。于是两人再次浴血蓝空。
+	
+</code></pre>
+<h2 id="8-1993-听到涛声"><a class="header" href="#8-1993-听到涛声">8. 1993 听到涛声</a></h2>
+<pre><code>海がきこえる The Ocean Waves
+</code></pre>
+<pre><code>
+	高二那年夏天，
+	美丽的女孩武藤里伽子（坂本洋子 配音）随母亲离开大都会东京，来到了古朴幽静的高知。
+	
+	聪慧美丽的里伽子在这个偏僻的小地方如此靓丽，
+	引来了男孩们的爱恋的目光，而她孤高的性格又让女孩们颇多微词。
+	与她同班的班长松野丰（関俊彦 饰）偷偷喜欢着她，
+	而松野的好友杜崎拓（飛田展男 饰）似乎也对里伽子颇为关注。
+	
+	在黄金周中，
+	里伽子约上拓一同返回东京，拓也第一次感知到这个看似冰冷的女孩内心中最脆弱的情感。
+	他们仿佛走得更近，又仿佛相隔更远……
+	
+	本片为电视电影，根据氷室冴子的原作改编，
+	由擅长纯爱题材动画的望月智充执导，其代表作有《相聚一刻》、《橙路》等。
+	
+</code></pre>
+<h2 id="9-1994-百变狸猫"><a class="header" href="#9-1994-百变狸猫">9. 1994 百变狸猫</a></h2>
+<pre><code>平成狸合戦ぽんぽこ Pom Poko
+</code></pre>
+<pre><code>
+	随着人类文明的发展，城市的规模越来越大，与之相对，青山绿水则迅速减少。
+	
+	东京都提出“多摩新市”的概念，大肆向周边的原始森林扩张。
+	祖辈生长在多摩丘陵的狸猫家族受到巨大冲击，
+	随着树木花草的急剧减少，可供它们生存的食物也开始短缺。
+	最终，鹰之森和玲之森的狸猫发生内战，战况激烈。
+	
+	在火玉婆婆的点拨下，两派狸猫握手言和，转而将主要目标对准破坏森林的人类。
+	为了更好地了解对手，火玉婆婆和龟鹤和尚教授族人已被遗忘很久的变化之术。
+	经过一段时间的艰苦修行，狸猫们终于学会了自由变化。
+	在激进派代表权太的领导下，一部分狸猫向建筑工人发起恐怖袭击，造成多人伤亡。
+	它们的行动虽然取得成效，然而却无法阻挡利益熏心的人类的脚步。
+	
+	森林被一点点蚕食，狸猫家族的命运危在旦夕……
+
+</code></pre>
+<h2 id="10-1995-on-your-mark"><a class="header" href="#10-1995-on-your-mark">10. 1995 On Your Mark</a></h2>
+<pre><code>⚠️ 是短片
+</code></pre>
+<pre><code>
+	未来世界，科技高度发达，但人类早已无心身边美丽的点点滴滴，甚至不惜予以破坏。
+	
+	某天，政府军队闯入某神秘组织的大厦。
+	经过一番激战，终于将这群邪恶之徒消灭，并在仓库找到了长着一双美丽翅膀的天使。
+	军人恰克和飞鸟眼睁睁看着天使被军方接走进行试验研究，这令他们心中闷闷不乐。
+	
+	经过一番准备，他们乔装打扮混入实验室，救出了失去自由的女孩，全力以赴将她送回自由的天地……
+	
+	本片为宫崎骏为日本著名流行组合恰克与飞鸟（Chage &amp; Aska）拍摄的音乐录影带
+
+</code></pre>
+<h2 id="11-1995-侧耳倾听"><a class="header" href="#11-1995-侧耳倾听">11. 1995 侧耳倾听</a></h2>
+<pre><code>耳をすませば Whisper of the Heart
+</code></pre>
+<pre><code>
+	正在读初三的月岛雯是一个喜欢看书的女孩，
+	她每次都能在借书卡上看到一个叫天泽圣司名字，因此她对这个人充满了好奇。 
+	
+	雯一直喜欢写诗，有一天她跟好友夕子在讨论写诗的事，
+	夕子告诉雯自己收到了情书，但事实上夕子已有了喜欢的人。
+	更没有想到的是，夕子喜欢的杉村喜欢的是雯，雯一时间感到十分困惑。
+	
+	雯无意中来到了一个小店，原来店主是圣司的爷爷。
+	认识了圣司之后，听到了圣司对自己理想的追求之后，也激发了雯对自己理想的追求之念。
+	当圣司离开了到意大利学习做小提琴时，雯决定要专心写作。
+	
+	当雯完成了作品之后，她发现原来自己高估了自己，就这样她选择继续考高中，这时她非常想念圣司。 
+	
+	一天凌晨，她站到窗边，突然看到了一个熟悉的身影……
+	
+</code></pre>
+<h2 id="12-1997-幽灵公主"><a class="header" href="#12-1997-幽灵公主">12. 1997 幽灵公主</a></h2>
+<pre><code>もののけ姫 Princess Mononoke
+</code></pre>
+<pre><code>
+	为了拯救危难中的村民，阿斯达卡的右手中了凶煞神的诅咒。
+	达卡只好离开亲人往西方流浪以寻找解除诅咒的方法。
+	
+	旅途中他遇到了由幻姬大人带领的穷苦村民在麒麟兽的森林里开采铁矿，提炼矿石。 
+	白狼神莫娜和她养大的人类女孩“幽灵公主”桑对幻姬恨之入骨，因为她们觉得幻姬带领众人破坏了森林。
+	
+	想帮助人类的阿斯达卡被桑深深吸引，他理解她，但为了帮助穷人又不得不和她作战。
+	一次战斗中，阿斯达卡被麒麟兽所救，他的立场更加摇摆不定。 
+	
+	这时，以疙瘩和尚为首的一群人来杀麒麟兽，
+	幻姬以火枪击毙了麒麟，麒麟的头被疙瘩和尚抢走。
+	愤怒的麒麟的灵魂为夺回自己的头，大肆破坏着森林。
+	
+	阿斯达卡和桑联手决定帮麒麟夺回头颅。
+	
+</code></pre>
+<h2 id="13-1999-我的邻居山田君"><a class="header" href="#13-1999-我的邻居山田君">13. 1999 我的邻居山田君</a></h2>
+<pre><code>ホーホケキョ となりの山田くん My Neighbors the Yamadas
+</code></pre>
+<pre><code>
+	住在山野市的山田家共有五口人：
+	一家之主山田隆年届不惑，是一间小公司杂物课的职员。
+	他有些大男子主义，经常为了些琐事和老婆吵吵闹闹，却又被丈母娘压得抬不起头来；
+	
+	阿隆的妻子松子和丈夫同岁，是个全职的家庭主妇，
+	每天忙忙碌碌，照顾一大家子人的饮食起居，却又迷迷糊糊，经常丢三落四；
+	
+	松子的母亲年近古稀，然而精神矍铄，
+	这位老人家一向特立独行，讲话毒辣，连暴走组也全不畏惧；
+	
+	长子阿升是个长相和学习都平平的中学生，他继承了母亲迷糊的性格，生活中乐事不断；
+	
+	小女儿野野子还是个小学三年级学生，瘦瘦小小的她碰上一群脑瓜秀逗的家人，经常成为被遗忘的对象。
+	
+	就是这样一个平凡的山田家，每日里上演着妙趣横生、欢乐无穷的精彩生活秀。
+	本片根据石井壽一（いしい ひさいち）四格漫画《ホーホケキョ となりの山田くん》改编。
+	
+</code></pre>
+<h2 id="14-2001-千与千寻"><a class="header" href="#14-2001-千与千寻">14. 2001 千与千寻</a></h2>
+<pre><code>千と千尋の神隠し Spirited Away
+</code></pre>
+<pre><code>
+	千寻和爸爸妈妈一同驱车前往新家，
+	在郊外的小路上不慎进入了神秘的隧道——他们去到了另外一个诡异世界—一个中世纪的小镇。
+	远处飘来食物的香味，爸爸妈妈大快朵颐，孰料之后变成了猪！
+	这时小镇上渐渐来了许多样子古怪、半透明的人。
+
+	千寻仓皇逃出，一个叫小白的人救了他，喂了她阻止身体消失的药，
+	并且告诉她怎样去找锅炉爷爷以及汤婆婆，而且必须获得一份工作才能不被魔法变成别的东西。
+	
+	千寻在小白的帮助下幸运地获得了一份在浴池打杂的工作。
+	渐渐她不再被那些怪模怪样的人吓倒，并从小玲那儿知道了小白是凶恶的汤婆婆的弟子。
+	
+	一次，千寻发现小白被一群白色飞舞的纸人打伤，
+	为了救受伤的小白，
+	她用河神送给她的药丸驱出了小白身体内的封印以及守封印的小妖精，但小白还是没有醒过来。
+	
+	为了救小白，千寻又踏上了她的冒险之旅。
+	
+</code></pre>
+<h2 id="15-2002-吉卜力工作室特别短片"><a class="header" href="#15-2002-吉卜力工作室特别短片">15. 2002 吉卜力工作室特别短片</a></h2>
+<pre><code>⚠️ 短片
+</code></pre>
+<h2 id="16-2002-猫的报恩"><a class="header" href="#16-2002-猫的报恩">16. 2002 猫的报恩</a></h2>
+<pre><code>猫の恩返し The Cat Returns
+</code></pre>
+<pre><code>
+	吉冈春（池胁千鹤 配音）是一个普普通通同时又有些迷糊的女高中生，
+	某天放学的路上，她偶然救下了一只险些丧生车轮之下的小猫，
+	谁曾想小猫竟然直立起来以人类的方式对女孩表示感谢。
+	
+	小春更想不到的是，她不经意的善举改变了自己的命运。
+	原来小猫是猫王国的王子，为了报答小春的恩情，猫王国举国上下展开了令人啼笑皆非的报恩行动，
+	只不过它们视为“上品”的老鼠令小春哭笑不得。
+	
+	不久后，小春接受王国的邀请前去做客，期间竟稀里糊涂答应成为王子的妃子。
+	女孩眼看就彻底变成了一只猫，神秘的男爵（袴田吉彦 配音）成为她的救命稻草……
+	
+	本片亦被视为《侧耳倾听》的番外篇。
+
+</code></pre>
+<h2 id="17-2004-哈尔的移动城堡"><a class="header" href="#17-2004-哈尔的移动城堡">17. 2004 哈尔的移动城堡</a></h2>
+<pre><code>ハウルの動く城 Howl's Moving Castle
+</code></pre>
+<pre><code>
+	继母因无力负担生活，将苏菲和她的两个妹妹都送到了制帽店去当学徒。
+	
+	两个妹妹很快先后就离开了制帽店去追寻各自的梦想，只有苏菲坚持了下来。
+	
+	一天，小镇旁边来了一座移动堡垒，
+	传说堡垒的主人哈尔专吸取年青姑娘的灵魂，所以小镇的姑娘都不敢靠近。
+	一个恶毒的巫婆为了报复苏菲与哈尔见面，
+	用巫术把她变成了一个80岁的老太婆，而且苏菲还不能对别人说出自己身中的巫术。
+	
+	无奈，苏菲决定独自一人逃离小镇。
+	天黑了，虚弱的苏菲没走多远，来到了移动城堡。
+	心想自己已经是老太婆了，苏菲壮着胆子走进了城堡。
+	不想，遇到了和她遭遇相同的火焰魔。
+	
+	两人约定彼此帮助对方打破各自的咒语……
+
+</code></pre>
+<h2 id="18-2006-地海传说"><a class="header" href="#18-2006-地海传说">18. 2006 地海传说</a></h2>
+<pre><code>ゲド戦記 Tales from Earthsea
+</code></pre>
+<pre><code>
+	早在远古时期，人类和龙和谐地生活在一起，
+	
+	然而野心勃勃的人类选择了海洋和大地，栖身东方国度；
+	渴望自由的龙则选择风和火，隐藏在西方世界，两者从此不再有交集。
+	
+	直到某天，两条龙出现在人类的世界，并且相互厮杀，这一事件给人类带来难以估量的影响。
+	上千头牲畜死亡，无数农作物枯死，干旱、饥荒、瘟疫蔓延，
+	世界逐渐失衡，人类社会崩溃在即。
+	
+	大法师格德四处寻找灾难的根源，在这一过程中他遇见了惧怕影子的17岁少年——英拉德王子亚刃。
+	
+	这注定以一段不平凡的旅程……
+	
+	本片根据美国女性奇幻文学作家娥苏拉•勒瑰恩（UrsulaK.LeGuin）的“地海系列”原著改编，
+	由宫崎骏之子宫崎吾郎主持制作。
+	
+</code></pre>
+<h2 id="19-2008-悬崖上的波妞"><a class="header" href="#19-2008-悬崖上的波妞">19. 2008 悬崖上的波妞</a></h2>
+<pre><code>崖の上のポニョ Ponyo on the Cliff by the Sea
+</code></pre>
+<pre><code>	
+	海神的女儿波妞从深海出逃玩耍，却被困在玻璃瓶里冲到岸上，
+	碰巧被住在岸边悬崖的宗介救出，两人因此相识。
+	
+	但是波妞的父亲——魔法师藤本，认为人类世界肮脏丑陋，强行把波妞带回海里。
+	面对父亲的阻挠、席卷小镇的海啸，以及永远失去魔法的威胁，
+	波妞仍然大胆而坚决地决定——要变成人类跟宗介在一起。
+	
+	而承诺要永远保护波妞的宗介，也即将面临新的挑战...
+	
+</code></pre>
+<h2 id="20-2010-借东西的小人阿莉埃蒂"><a class="header" href="#20-2010-借东西的小人阿莉埃蒂">20. 2010 借东西的小人阿莉埃蒂</a></h2>
+<pre><code>借りぐらしのアリエッティ Arrietty
+</code></pre>
+<pre><code>
+	虽然患有心脏方面的疾病，但是少年翔（神木隆之介 配音）的父母依然对他疏于呵护。
+	
+	为了准备即将到来的手术，翔来到了位于偏远乡间的姨婆（竹下景子 配音）家静养。
+	姨婆家位于一片幽静的丛林中，这是一幢有着上百年历史的欧式别墅。
+	这里除了生活着姨婆和女佣阿春（树木希林 配音）外，
+	还有一个奇特的三口之家，
+	“借东西一族”——小人阿莉埃蒂（志田未来 配音）和她的爸爸（三浦友和 配音）妈妈（大竹忍 配音），
+	他们生活在别墅的地板下，只有几公分高，过着不为人类察觉的生活。
+	遇到所需的日常用品时，便会在夜深人静之时偷偷潜入厨房借出来。
+	翔无意中瞥见阿莉埃蒂的身影，他有心接近这些传说中的小人，却不知不觉打扰了他们的生活…… 
+	
+	本片根据英国作家玛丽·诺顿的原著《借东西的小人》改编，并荣获2011年日本电影学院奖最佳动画片奖。
+	
+</code></pre>
+<h2 id="21-2011-虞美人盛开的山坡"><a class="header" href="#21-2011-虞美人盛开的山坡">21. 2011 虞美人盛开的山坡</a></h2>
+<pre><code>コクリコ坂から From Up on Poppy Hill
+</code></pre>
+<pre><code>
+	20世纪60年代初，
+	从二战的沉重打击中复苏的日本，正以极快的速度在世人的注视下重新确立自己的地位。
+	
+	位于横滨某个海港小镇，松崎家四姐弟和住客过着平凡的生活。
+	16岁的姐姐海（长泽雅美 配音）照顾所有人的衣食起居，清晨则例行升起祈愿平安航行的信号旗。
+	偶然的机会，海结识了同校新闻部的男孩风间俊（冈田准一 配音），校园生活平添一道靓丽的色彩。
+	
+	与此同时，东京奥运会召开在即，
+	学校内俊和一群好友所栖身的古旧建筑“拉丁区”面临拆毁的命运。
+	
+	为了保护心中的圣地，俊、海以及同好们联合起来。
+	在此过程中，他们心中某种隐秘的情愫悄然滋长，但是意想不到的命运却挡在了彼此的面前……
+	
+	本片根据根据高桥千鹤、佐山哲郎1980年1~8月发表在少女杂志《好朋友（なかよし）》上的同名漫画改编。
+
+</code></pre>
+<h2 id="22-2013-起风了"><a class="header" href="#22-2013-起风了">22. 2013 起风了</a></h2>
+<pre><code>風立ちぬ The Wind Rises
+</code></pre>
+<pre><code>
+	那是一个动荡的年代，
+	战争、饥饿、疾病、天灾，死神的阴影笼罩全球，却无法遮挡心头闪现的梦想和希望的光芒。
+	
+	平凡的日本少年堀越二郎（庵野秀明 配音）迷恋游弋长空的飞机，
+	梦中他与意大利飞机设计师卡普罗尼（野村万斋 配音）成为朋友，享受着飞行带来的乐趣。
+	
+	恐怖的关东大地震，二郎邂逅一生的挂念——里见菜穗子（泷本美织 配音），
+	短暂的相逢，无序的混乱中又失之交臂。
+	
+	在命运的指引下，被称为天才的二郎如愿成为飞机设计师，
+	他和前辈同侪共同努力，绞尽脑汁提升飞机的性能。
+	欧洲的先进设计让他们痛心疾首，另一方面又充满矛盾的打造着融合了梦想和杀人属性的机器。
+	
+	他追逐梦想，并与菜穗子重逢。
+	动荡的昭和时代，风雪飘摇之中步伐从未停止……
+	
+	本片根据零式战斗机设计师堀越二郎的人生事迹和作家堀辰雄的同名小说改编。
+
+</code></pre>
+<h2 id="23-2013-辉夜姬物语"><a class="header" href="#23-2013-辉夜姬物语">23. 2013 辉夜姬物语</a></h2>
+<pre><code>かぐや姫の物語 The Tale of The Princess Kaguya
+</code></pre>
+<pre><code>
+	住在深山老林里的老爷爷（地井武男 配音）一早进山砍竹子，
+	结果竟在附近的一根发光的竹笋中发现了只有掌心大小的娃娃。
+	
+	没有子女的老爷爷兴奋不已，
+	他双手捧着娃娃回到家中，而小家伙竟然在老奶奶（宫本信子 配音）的手中越变越大。
+	
+	之后的岁月里，舐犊情深的爷爷小心呵护他的公主（朝仓亚纪 配音），
+	小女孩则以惊人的速度生长，她与村里的孩子们周游乡间，
+	结识了诚实可靠的舍丸哥哥（高良健吾 饰），而一首莫名的歌曲却令她潸然泪下。
+	
+	老爷爷在山里先后发现金子和美丽布匹，他决心让公主过上贵族的生活，
+	
+	于是举家搬到了京城的豪宅中。
+	公主超凡脱俗，貌美绝伦，从此“辉耀姬”的名字在京城贵族间广为传颂。
+	然而美丽女孩的笑容渐渐退去，这似乎并不是她所向往的生活……
+	
+	本片根据日本民间传说《竹取物语》的故事改编。
+
+</code></pre>
+<h2 id="24-2014-记忆中的玛妮"><a class="header" href="#24-2014-记忆中的玛妮">24. 2014 记忆中的玛妮</a></h2>
+<pre><code>思い出のマーニー When Marnie Was There
+</code></pre>
+<pre><code>
+	初中女孩佐佐木杏奈（高月彩良 配音）深藏无限的愁绪心事，
+	她与疼爱自己的养母赖子（松岛菜菜子 配音）也无法坦然相对。
+	
+	由于上学期间突发过呼吸的情况，
+	于是杏奈利用暑假来到了风光秀美的北海道札幌市，
+	在亲戚大岩清正（寺岛进 配音）和阿节阿姨（根岸季衣 配音）家疗养。
+	
+	在叔叔家不远处的溪地，矗立着一座老旧但风韵独存的西式建筑，奇妙的感觉令杏奈注意到了它的存在。
+	某个夜晚，心情低落的杏奈划着小船超该建筑划去，
+	结果发现本该许多年没人居住的房子居然灯火通明，
+	并且她在那里邂逅了与之年龄相仿的金发碧眼女孩玛妮（有村架纯 饰）。
+	
+	相似的心境让两个女孩成为好朋友，她们依恋着彼此，
+	却不知各自的心底隐藏着怎样令人难以置信的因缘……
+	
+	本片根据英国小说家琼安·G·罗宾森的同名儿童文学改编。
+	
+</code></pre>
+<h2 id="25-2016-红海龟"><a class="header" href="#25-2016-红海龟">25. 2016 红海龟</a></h2>
+<pre><code>レッドタートル ある島の物語 LA TORTUE ROUGE
+⚠️ 合作作品
+</code></pre>
+<pre><code>
+	这部动画由吉卜力工作室与法国合资制作，
+	
+	主要讲述了男主因航船失事流落到了无人岛，存活下的男人企图建造救生筏逃离荒岛，
+	但他的计划却不断被一只神秘的巨型红海龟破坏，
+	在他绝望时，一名神秘女子出现了并挽救其灵魂的故事。
+	
+</code></pre>
+<h2 id="26-2020-阿雅与魔女"><a class="header" href="#26-2020-阿雅与魔女">26. 2020 阿雅与魔女</a></h2>
+<pre><code>アーヤと魔女 Earwig and the Witch
+</code></pre>
+<pre><code>
+	阿雅与魔女》是改编自戴安娜·韦恩·琼斯的同名奇幻小说，
+	
+	故事描述不知道自己是魔女小孩的阿雅，
+	在某一天被奇妙的家庭所收养，并且与坏心的魔女共同展开了生活，属于阿雅的奇幻故事就此展开。
+	
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../animation/animation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../health/health.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../animation/animation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../health/health.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

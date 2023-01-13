@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>percentile pre-calculation - reading-technical</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Alogrithm</li><li class="chapter-item expanded "><a href="hyperloglog.html"><strong aria-hidden="true">2.</strong> hyperloglog</a></li><li class="chapter-item expanded "><a href="logmine.html"><strong aria-hidden="true">3.</strong> LogMine: Fast Pattern Recognition for Log Analytics</a></li><li class="chapter-item expanded "><a href="percentile.html" class="active"><strong aria-hidden="true">4.</strong> percentile pre-calculation</a></li><li class="chapter-item expanded affix "><li class="part-title">Elasticsearch</li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">5.</strong> Elasticsearch 101</a></li><li class="chapter-item expanded affix "><li class="part-title">Task Framework</li><li class="chapter-item expanded "><a href="asynq.html"><strong aria-hidden="true">6.</strong> asynq</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="asynq/dropbox_atf.html"><strong aria-hidden="true">6.1.</strong> Dropbox ATF</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">reading-technical</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="percentile-pre-calculation"><a class="header" href="#percentile-pre-calculation">percentile pre-calculation</a></h1>
+<h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
+<blockquote>
+<p><a href="https://github.com/Kua-Fu/blog-book-images/blob/main/docs/ddSketch.pdf">DDSketch: A Fast and Fully-Mergeable Quantile Sketch with Relative-Error Guarantees</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.datadoghq.com/blog/engineering/computing-accurate-percentiles-with-ddsketch/?_gl=1*tc89tr*_ga*NzA2MjcyNzYyLjE2MjgwNjc5NDc.*_ga_KN80RDFSQK*MTY1MTEzMjMxOS4yNTYuMS4xNjUxMTM2NTgxLjA.#how-accurate-are-those-percentiles">Computing Accurate Percentiles with DDSketch</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/Kua-Fu/blog-book-images/blob/main/docs/quantiles.pdf">Space-Efficient Online Computation of Quantile Summaries</a></p>
+</blockquote>
+<h2 id="二设计背景"><a class="header" href="#二设计背景">二、设计背景</a></h2>
+<p>在 <code>DataFlux</code>，每天都需要处理大量的分布式数据，如果直接在请求时，实时计算百分位值，会非常消耗资源，甚至请求超时。 需要找到一个好的算法，可以满足下面的几个要求，高效的计算百分位值。</p>
+<ol>
+<li>
+<p>保证计算结果，在一定范围内可靠，即存在相对误差；</p>
+</li>
+<li>
+<p>计算消耗资源少，即 <code>cpu/memory</code> 的消耗在一定可控范围；</p>
+</li>
+<li>
+<p>可以分布式计算，充分利用集群分布式性能</p>
+</li>
+</ol>
+<h2 id="三为什么百分位计算特殊"><a class="header" href="#三为什么百分位计算特殊">三、为什么百分位计算特殊？</a></h2>
+<p>当我们需要计算一些统计数据时候，大多数统计值可以很直观得到结果，例如: 最值(<code>max/min</code>)、均值(<code>avg</code>)、计数(<code>count</code>)，但是百分位无法预聚合。</p>
+<h3 id="31-流式计算"><a class="header" href="#31-流式计算">3.1 流式计算</a></h3>
+<p>当计算一个不断新增的数据集(<code>cost_time_list</code>),的最大值(<code>max_cost_time</code>) 时候，我们可以在内存中初始化一个变量(<code>max_value</code>)，表示最大值，随着数据的不断新增，该值(<code>max_value</code>)也会不断变化；但是，当计算该数据集的百分位值，例如: <code>P99</code> ，需要内存中保留所有先前的 <code>cost_time</code> 信息，要维护一个排序的列表 <code>sort_cost_time_list</code> , 通过计算 <code>99%</code> 的 <code>index</code> 值，得到 <code>cost_time</code> 具体的 <code>P99</code> 值。</p>
+<p>想象一下，如果数据集有百万/千万，有序列表 <code>sort_cost_time_list</code> 将占用大量的内存。</p>
+<h3 id="32-分布式计算"><a class="header" href="#32-分布式计算">3.2 分布式计算</a></h3>
+<p>当计算一个分布式数据集的最大值时候，可以先计算出各个独立部分的最大值，然后再次比较这些最大值，可以得到最终的最大值。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/docs/dataflux_percentile/get_max_value.png?raw=true" alt="最大值" /></p>
+<p>但是，我们无法通过简单计算每个子集的百分位值，获取到最终整个数据集的百分位值。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/docs/dataflux_percentile/get_p99_error.png?raw=true" alt="百分位" /></p>
+<p>想要获取到整个数据集的百分位值，需要得到整个数据集的有序列表。这样的方式，我们无法充分利用分布式性能。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/docs/dataflux_percentile/get_p99_value.png?raw=true" alt="百分位计算" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="logmine.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="elasticsearch.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="logmine.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="elasticsearch.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

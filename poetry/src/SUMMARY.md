@@ -1,86 +1,54 @@
 # Summary
 
-[关于我](README.md)
+[AboutMe](README.md)
 
+# Work Reading
 -----------
 
-# 工作阅读
-
-- [经常使用](work_reading/often/often.md)
-- [工作阅读文章](work_reading/read.md)
-- [sls问题概述](work_reading/sls.md)
-
-# 技术学习
-
-- [基础](learning/basic/basic.md)
-
-- [网络](learning/network/network.md)
-- [算法](learning/algorithm/algorithm.md)
-- [操作系统](learning/os/os.md)
-- [编译原理](learning/compile/compile.md)
-- [Python](learning/python/python.md)
-- [Go](learning/golang/golang.md)
-  - [go 101](learning/golang/101.md)
-- [Java](learning/java/java.md)
-  - [环境搭建](learning/java/env.md)
-- [Redis](learning/redis/redis.md)
-  - [基本使用](learning/redis/basic.md)
-  - [内存分析](learning/redis/memory.md)
-  - [Bloom Filter](learning/redis/bloom-filter.md)
-  - [hyperLogLog](learning/redis/hyperLogLog.md)
+- [Often Use](work_reading/often/often.md)
+- [Work Reading](work_reading/read.md)
+- [Work Problem](work_reading/problem.md)
+  - [sls problem](work_reading/problem/sls.md)
 
 
-# 文章阅读
-
-- [技术类](article/technology/technology.md)
-  - [DataDog实践—大数据百分位实时计算实践](article/technology/datadog_percentile.md)
-  - [elasticsearch相关技术文档](article/technology/elastic.md)
-  - [LogMine: Fast Pattern Recognition for Log Analytics](article/technology/logmine.md)
-  - [asynq-一种go异步框架源码阅读](article/technology/asynq.md)
-  - [hyperloglog](article/technology/hyperloglog.md)
-  
-- [生活](article/life/life.md)
-  - [Kevin Kelly的103条建议](article/life/103_advice.md)
-
-- [官方文档和基本使用](article/introduce/introduce.md)
-  - [datadog基本使用](article/introduce/datadog.md)
-
-# 读书笔记
-
-- [elasticsearch权威指南](reading/technology/elasticsearch-start.md)
-
-- [crafting interpreters](reading/technology/crafting_interpreters.md)
-
-- [经典细读](reading/classic_book.md)
-  
-- [诗词](reading/literature.md)
-
-# 奇奇怪怪
-
-- [养生](curiosity/health/health.md)
-  - [程序员延寿指南](curiosity/health/live_longer.md)
-
-- [动画](curiosity/animation/animation.md)
-  - [吉普力](curiosity/animation/ghibli.md)
-  
-
-- [歌曲](curiosity/music/music.md)
-  - [笑看风云](curiosity/music/xiao_kan_feng_yun.md)
-  
-# 面试准备
-
-- [数据库](interview/db.md)
-
-- [算法](interview/algorithm.md)
-  
+# Technical Learning
 -----------
 
-# 总结规划
+- [Algorithm](learning/algorithm.md)
+- [Basic](learning/basic.md)
+- [Compilation Principle](learning/compile.md)
+- [Middleware](learning/middleware.md)
+- [Network](learning/network.md)
+- [Operating System](learning/os.md)
+- [Programing Language](learning/language.md)
 
-- [总结](life/past/past.md)
-  - [工作总结2022-2季度](life/future/work/2022-02.md)
-  - [周报](life/future/work/week.md)
-  - [OKR](life/future/work/okr.md)
-- [规划](life/future/future.md)
-  - [技术类](life/future/technology.md)
-  - [生活类](life/future/life.md)
+
+
+# Reading Notes
+-----------
+
+- [Classic](reading/classic.md)
+  - [三国志](reading/classic/san_guo_zhi.md)
+  - [毛泽东选集](reading/classic/mao_xuan.md)
+- [Crafting Interpreters](reading/technology/crafting_interpreters.md)
+- [Elasticsearch Definitive Guide](reading/technology/elasticsearch-start.md)
+- [Poetry](reading/literature.md)
+- [Technical Articles](reading/technical.md)
+
+
+
+# The Shire Hobbit
+-----------
+
+- [Animation](animation/animation.md)
+  - [ghibli](animation/ghibli.md)
+- [Health](health/health.md)
+  - [How to live longer](health/live_longer.md)
+- [Life Advice](life/life.md)
+  - [Kevin Kelly's 103 advice](life/103_advice.md)
+- [Music](music/music.md)
+  - [笑看风云](music/xiao_kan_feng_yun.md)
+  
+
+
+

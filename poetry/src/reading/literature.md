@@ -1,3 +1,1 @@
-# 诗词
-
-文学阅读，记录在[诗词](https://www.poetries.cn/文学/)
+<meta http-equiv="REFRESH" content="0;url=https://www.poetries.cn/文学/"></HEAD>
