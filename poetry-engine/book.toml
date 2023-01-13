@@ -1,0 +1,6 @@
+[book]
+authors = ["yz"]
+language = "en"
+multilingual = false
+src = "src"
+title = "poetry-engine"

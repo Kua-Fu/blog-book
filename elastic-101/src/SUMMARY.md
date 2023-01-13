@@ -7,3 +7,21 @@
   
 - [elasticsearch 接口文档](./article/office/api.md)
   - [华为云CSS生命周期管理](./article/office/ism.md)
+
+# 实际使用
+
+- [elasticsearch集群备份](./use/backup/backup.md)
+
+	- [使用快照备份](./use/backup/snapshot.md)
+	
+	- [只备份集群中的策略、模版等信息](./use/backup/meta.md)
+	
+- [reindex 过程](./use/reindex/reindex.md)
+
+	- [reindex添加新字段](./use/reindex/add-field.md)
+	
+# 业务报错处理
+
+# 原理源码
+
+- [lucene介绍](./lucene/intro.md)

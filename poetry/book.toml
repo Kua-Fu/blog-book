@@ -4,15 +4,17 @@ description= "柴米油盐酱醋茶，琴棋书画诗酒花"
 language = "zh-cn" # 中文
 multilingual = false
 src = "src"
-title = "诗意人生"
+title = "Poetic life"
 
 [output.html]
 git-repository-url = "https://github.com/Kua-Fu/blog-book"
 input-404 = "404.md"
+mathjax-support = true
 
 [output.html.fold]
 enable = true
 
 [output.html.print]
 enable = false
+
 

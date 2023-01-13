@@ -8,7 +8,17 @@
 
 
         <!-- Custom HTML head -->
-        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160" crossorigin="anonymous"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -82,7 +92,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">技术文章</li><li class="chapter-item expanded "><a href="article/office/blog.html"><strong aria-hidden="true">1.</strong> elasticsearch 官方博客</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/blog/bulk-reject.html"><strong aria-hidden="true">1.1.</strong> bulk 被拒绝</a></li></ol></li><li class="chapter-item expanded "><a href="article/office/api.html"><strong aria-hidden="true">2.</strong> elasticsearch 接口文档</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="article/office/ism.html"><strong aria-hidden="true">2.1.</strong> 华为云CSS生命周期管理</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">实际使用</li><li class="chapter-item expanded "><a href="use/backup/backup.html"><strong aria-hidden="true">3.</strong> elasticsearch集群备份</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="use/backup/snapshot.html"><strong aria-hidden="true">3.1.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="use/backup/meta.html"><strong aria-hidden="true">3.2.</strong> 只备份集群中的策略、模版等信息</a></li></ol></li><li class="chapter-item expanded "><a href="use/reindex/reindex.html"><strong aria-hidden="true">4.</strong> reindex 过程</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="use/reindex/add-field.html"><strong aria-hidden="true">4.1.</strong> reindex添加新字段</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">业务报错处理</li><li class="chapter-item expanded affix "><li class="part-title">原理源码</li><li class="chapter-item expanded "><a href="lucene/intro.html"><strong aria-hidden="true">5.</strong> lucene介绍</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1070,6 +1080,569 @@ cron.cron.timezone	The timezone that triggers the transition.	string	Yes</p>
 <p>转换，索引进入新状态需要满足的条件。例如：一个索引，超过8周，可能需要变更为 delete 状态。</p>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="elasticsearch集群备份"><a class="header" href="#elasticsearch集群备份">elasticsearch集群备份</a></h1>
+<ul>
+<li>
+<p><a href="use/backup/./snapshot.html">快照备份</a></p>
+</li>
+<li>
+<p><a href="use/backup/./meta.html">只备份集群中的策略、模版等信息</a></p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="使用快照备份"><a class="header" href="#使用快照备份">使用快照备份</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="只备份集群中的策略模版等信息"><a class="header" href="#只备份集群中的策略模版等信息">只备份集群中的策略、模版等信息</a></h1>
+<h2 id="参考-1"><a class="header" href="#参考-1">参考</a></h2>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html">用户管理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/cluster-update-settings.html">集群配置</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/data-management.html">策略管理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.3/index-templates.html">模版管理</a></p>
+</blockquote>
+<h2 id="一集群配置"><a class="header" href="#一集群配置">一、集群配置</a></h2>
+<h3 id="11-从现有集群获取集群配置"><a class="header" href="#11-从现有集群获取集群配置">1.1 从现有集群获取集群配置</a></h3>
+<pre><code>
+GET _cluster/settings?flat_settings
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_cluster/settings?flat_settings&quot;
+
+</code></pre>
+<p>返回值如下:</p>
+<pre><code class="language-json">
+{
+  &quot;persistent&quot; : {
+    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
+    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
+    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
+    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  },
+  &quot;transient&quot; : { }
+}
+
+</code></pre>
+<h3 id="12-将集群配置导入到新集群"><a class="header" href="#12-将集群配置导入到新集群">1.2 将集群配置导入到新集群</a></h3>
+<pre><code>
+PUT _cluster/settings
+{
+  &quot;persistent&quot; : {
+    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
+    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
+    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
+    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  },
+  &quot;transient&quot; : { }
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.l:9200/_cluster/settings&quot; -H 'Content-Type: application/json' -d'{  &quot;persistent&quot; : {    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;  },  &quot;transient&quot; : { }}'
+
+</code></pre>
+<h2 id="二索引策略"><a class="header" href="#二索引策略">二、索引策略</a></h2>
+<h3 id="21-从现有集群获取策略信息"><a class="header" href="#21-从现有集群获取策略信息">2.1 从现有集群获取策略信息</a></h3>
+<pre><code>
+GET _ilm/policy
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_ilm/policy&quot;
+
+</code></pre>
+<p>返回值如下:</p>
+<pre><code class="language-json">
+{
+  &quot;.items-default&quot; : {
+    &quot;version&quot; : 1,
+    &quot;modified_date&quot; : &quot;2021-12-30T06:02:12.763Z&quot;,
+    &quot;policy&quot; : {
+      &quot;phases&quot; : {
+        &quot;hot&quot; : {
+          &quot;min_age&quot; : &quot;0ms&quot;,
+          &quot;actions&quot; : {
+            &quot;rollover&quot; : {
+              &quot;max_size&quot; : &quot;50gb&quot;
+            }
+          }
+        }
+      }
+    }
+  }
+  ...
+}
+
+</code></pre>
+<h3 id="22-将策略信息导入到新集群"><a class="header" href="#22-将策略信息导入到新集群">2.2 将策略信息导入到新集群</a></h3>
+<p>⚠️ 一次只能导入一个策略, PUT body 不需要 version/modified_date 信息</p>
+<pre><code>
+PUT _ilm/policy/.items-default
+{
+  &quot;policy&quot;: {
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;rollover&quot;: {
+            &quot;max_size&quot;: &quot;50gb&quot;
+          }
+        }
+      }
+    }
+  }
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_ilm/policy/.items-default&quot; -H 'Content-Type: application/json' -d'{  &quot;policy&quot;: {    &quot;phases&quot;: {      &quot;hot&quot;: {        &quot;min_age&quot;: &quot;0ms&quot;,        &quot;actions&quot;: {          &quot;rollover&quot;: {            &quot;max_size&quot;: &quot;50gb&quot;          }        }      }    }  }}'
+
+</code></pre>
+<h2 id="三索引模版"><a class="header" href="#三索引模版">三、索引模版</a></h2>
+<h3 id="31-从现有集群获取索引模版"><a class="header" href="#31-从现有集群获取索引模版">3.1 从现有集群获取索引模版</a></h3>
+<pre><code>
+GET _template/*
+
+curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_template/*&quot;
+
+</code></pre>
+<p>返回结果如下:</p>
+<pre><code class="language-json">
+{
+  &quot;wksp_xxx_template&quot; : {
+    &quot;order&quot; : 0,
+    &quot;index_patterns&quot; : [
+      &quot;wksp_xxx-*&quot;
+    ],
+    &quot;settings&quot; : {
+      &quot;index&quot; : {
+        &quot;lifecycle&quot; : {
+          &quot;name&quot; : &quot;es_rp4&quot;,
+          &quot;rollover_alias&quot; : &quot;wksp_xxx&quot;
+        },
+        &quot;number_of_shards&quot; : &quot;1&quot;,
+        &quot;number_of_replicas&quot; : &quot;1&quot;
+      }
+    },
+    &quot;mappings&quot; : {
+      &quot;dynamic_templates&quot; : [
+        {
+          &quot;strings_as_keywords&quot; : {
+            &quot;mapping&quot; : {
+              &quot;type&quot; : &quot;keyword&quot;
+            },
+            &quot;match_mapping_type&quot; : &quot;string&quot;
+          }
+        }
+      ],
+      &quot;date_detection&quot; : false,
+      &quot;properties&quot; : {
+        &quot;message&quot; : {
+          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;type&quot; : &quot;text&quot;
+        },
+        &quot;title&quot; : {
+          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
+          &quot;type&quot; : &quot;text&quot;
+        }
+      }
+    },
+    &quot;aliases&quot; : { }
+  }
+  
+  ...
+}
+
+</code></pre>
+<h3 id="32-将索引模版导入到新集群"><a class="header" href="#32-将索引模版导入到新集群">3.2 将索引模版导入到新集群</a></h3>
+<p>⚠️ 一次只能导入一个模版</p>
+<pre><code>
+PUT _template/wksp_xxx_template
+{
+  &quot;order&quot;: 0,
+  &quot;index_patterns&quot;: [
+    &quot;wksp_xxx-*&quot;
+  ],
+  &quot;settings&quot;: {
+    &quot;index&quot;: {
+      &quot;lifecycle&quot;: {
+        &quot;name&quot;: &quot;es_rp4&quot;,
+        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;
+      },
+      &quot;number_of_shards&quot;: &quot;1&quot;,
+      &quot;number_of_replicas&quot;: &quot;1&quot;
+    }
+  },
+  &quot;mappings&quot;: {
+    &quot;dynamic_templates&quot;: [
+      {
+        &quot;strings_as_keywords&quot;: {
+          &quot;mapping&quot;: {
+            &quot;type&quot;: &quot;keyword&quot;
+          },
+          &quot;match_mapping_type&quot;: &quot;string&quot;
+        }
+      }
+    ],
+    &quot;date_detection&quot;: false,
+    &quot;properties&quot;: {
+      &quot;message&quot;: {
+        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;type&quot;: &quot;text&quot;
+      },
+      &quot;title&quot;: {
+        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
+        &quot;type&quot;: &quot;text&quot;
+      }
+    }
+  },
+  &quot;aliases&quot;: {}
+}
+
+curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_template&quot; -H 'Content-Type: application/json' -d'{  &quot;order&quot;: 0,  &quot;index_patterns&quot;: [    &quot;wksp_xxx-*&quot;  ],  &quot;settings&quot;: {    &quot;index&quot;: {      &quot;lifecycle&quot;: {        &quot;name&quot;: &quot;es_rp4&quot;,        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;      },      &quot;number_of_shards&quot;: &quot;1&quot;,      &quot;number_of_replicas&quot;: &quot;1&quot;    }  },  &quot;mappings&quot;: {    &quot;dynamic_templates&quot;: [      {        &quot;strings_as_keywords&quot;: {          &quot;mapping&quot;: {            &quot;type&quot;: &quot;keyword&quot;          },          &quot;match_mapping_type&quot;: &quot;string&quot;        }      }    ],    &quot;date_detection&quot;: false,    &quot;properties&quot;: {      &quot;message&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      },      &quot;title&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      }    }  },  &quot;aliases&quot;: {}}'
+
+</code></pre>
+<h2 id="四用户"><a class="header" href="#四用户">四、用户</a></h2>
+<p>elasticsearch 无法通过接口，获取用户密码，也就不存在用户密码备份</p>
+<p>如果需要在新集群添加用户，或者重置（内置用户）密码，可以使用 <code>POST /_security/user/username</code> </p>
+<pre><code>POST /_security/user/jacknich
+{
+  &quot;password&quot; : &quot;l0ng-r4nd0m-p@ssw0rd&quot;,
+  &quot;roles&quot; : [ &quot;admin&quot;, &quot;other_role1&quot; ],
+  &quot;full_name&quot; : &quot;Jack Nicholson&quot;,
+  &quot;email&quot; : &quot;jacknich@example.com&quot;,
+  &quot;metadata&quot; : {
+    &quot;intelligence&quot; : 7
+  }
+}
+
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reindex-过程"><a class="header" href="#reindex-过程">reindex 过程</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reindex添加新字段"><a class="header" href="#reindex添加新字段">reindex添加新字段</a></h1>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html#modules-scripting-doc-vals">Accessing document fields and special variables</a></p>
+</blockquote>
+<p>假设我们想要知道 之前索引中的日志大小，</p>
+<p>可以在reindex阶段，使用script，计算每个doc 的_source长度</p>
+<pre><code>POST _reindex
+{
+  &quot;source&quot;: {
+    &quot;index&quot;: &quot;yztest-log&quot;
+  },
+  &quot;dest&quot;: {
+    &quot;index&quot;: &quot;yztest-backup&quot;
+  },
+  &quot;script&quot;: {
+    &quot;lang&quot;: &quot;painless&quot;,
+    &quot;source&quot;: &quot;&quot;&quot;ctx._source.len = ctx._source.toString().length()&quot;&quot;&quot;
+  }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lucene介绍"><a class="header" href="#lucene介绍">lucene介绍</a></h1>
+<h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
+<blockquote>
+<p><a href="https://www.apache.org/">Apache</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/cn/celebrating-lucene">Celebrating 20 years of Apache Lucene</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://book.douban.com/subject/3726306/">lucene in action, 2rd</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/foreword_id.html">Elasticsearch: 权威指南</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://learning.oreilly.com/library/view/practical-apache-lucene/9781484263457/">Practical Apache Lucene 8: Uncover the Search Capabilities of Your Application</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html">Lucene 9.0 file format</a></p>
+</blockquote>
+<blockquote>
+<p><a href="http://ddia.vonng.com/#/ch3?id=sstables%e5%92%8clsm%e6%a0%91">设计数据密集型应用-存储与检索</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/BsW_SeGdnMHfg1_bM_sgSQ">存储系统中的算法：LSM 树设计原理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/GsnBpZPzizX9ODuQLT-uAg">LSM核心实现讲解</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/facebook/rocksdb/wiki/RocksDB-Overview">RocksDB</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/354105864">Lucene-文件格式</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html">Using Finite State Transducers in Lucene</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.easyice.cn/archives/346">Elasticsearch 7.3 的 offheap 原理</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/search/similarities/Similarity.html">Similarity</a></p>
+</blockquote>
+<h2 id="一lucene-初识"><a class="header" href="#一lucene-初识">一、lucene 初识</a></h2>
+<h3 id="11-lucene-是什么"><a class="header" href="#11-lucene-是什么">1.1 lucene 是什么？</a></h3>
+<ul>
+<li>
+<p>lucene 是个 Java 搜索库，<a href="https://lucene.apache.org/core/">简单易用，功能强大</a></p>
+</li>
+<li>
+<p>lucene 和 Elasticsearch 关系，可以类比为 发动机和汽车关系，lucene提供写入/查询核心功能，ES实现分布式/分析功能。</p>
+</li>
+<li>
+<p>lucene 和 google 等搜索公司关系，</p>
+<p>lucene 是开源软件，可以免费使用；google公司的搜索功能需要付费</p>
+<p>它们之间的搜索能力不太好比较，lucene经过多年发展，已经成为信息检索领域的开源软件标准</p>
+</li>
+<li>
+<p>lucene 与关系型数据库的区别</p>
+<p>lucene基于文档索引和搜索，一般用于全文搜索，无法实现事务</p>
+</li>
+<li>
+<p>基于lucene，实现搜索功能的公司或者产品有，github/ wiki/ twitter/ linkedin 等等</p>
+</li>
+</ul>
+<h3 id="12-发展历程"><a class="header" href="#12-发展历程">1.2 发展历程</a></h3>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/cloudera-doug-cutting.png?raw=true" alt="Doug" /></p>
+<h4 id="1--2000年3月doug-cutting-第一次发布开源版本-001"><a class="header" href="#1--2000年3月doug-cutting-第一次发布开源版本-001">（1）  2000年3月，<a href="https://en.wikipedia.org/wiki/Doug_Cutting">Doug Cutting</a> 第一次发布开源版本 0.01</a></h4>
+<ul>
+<li>
+<p>1997年，Doug 因为工作不稳定和 Java 当时非常热门，所以，他想利用 Java 商业化一些自己的软件，但是后来放弃商业化想法，将 lucene 放到 SourceForge 上开源， Doug曾经是 Apache 基金会主席（2011年）</p>
+</li>
+<li>
+<p>lucene 是 Doug 的第五个搜索引擎，之前在施乐PARC写过两个，一个在苹果，一个在Excite</p>
+</li>
+<li>
+<p>lucene 是 Doug 老婆中间的名字</p>
+</li>
+</ul>
+<h4 id="2-2000年10月发布-10"><a class="header" href="#2-2000年10月发布-10">（2） 2000年10月，发布 1.0</a></h4>
+<ul>
+<li>
+<p>2001年9月，lucene 加入 <a href="https://jakarta.apache.org/">Apache Jakarta</a> 项目</p>
+</li>
+<li>
+<p>2002年，1.2版本成为第一个 Apache 许可证的 lucene 版本</p>
+</li>
+<li>
+<p>2004年，<a href="https://en.wikipedia.org/wiki/Elasticsearch">Shay Banon</a> 发布了Elasticsearch的前身-<a href="http://www.compass-project.org/overview.html">compass</a></p>
+</li>
+</ul>
+<blockquote>
+<p>许多年前，一个刚结婚的名叫 Shay Banon 的失业开发者，跟着他的妻子去了伦敦，他的妻子在那里学习厨师。 在寻找一个赚钱的工作的时候，为了给他的妻子做一个食谱搜索引擎，他开始使用 Lucene 的一个早期版本。
+直接使用 Lucene 是很难的，因此 Shay 开始做一个抽象层，Java 开发者使用它可以很简单的给他们的程序添加搜索功能。 他发布了他的第一个开源项目 Compass。</p>
+<p>后来 Shay 获得了一份工作，主要是高性能，分布式环境下的内存数据网格。这个对于高性能，实时，分布式搜索引擎的需求尤为突出， 他决定重写 Compass，把它变为一个独立的服务并取名 Elasticsearch。</p>
+<p>第一个公开版本在2010年2月发布，从此以后，Elasticsearch 已经成为了 Github 上最活跃的项目之一，他拥有超过300名 contributors(目前736名 contributors )。 一家公司已经开始围绕 Elasticsearch 提供商业服务，并开发新的特性，但是，Elasticsearch 将永远开源并对所有人可用。</p>
+<p>据说，Shay 的妻子还在等着她的食谱搜索引擎…​</p>
+</blockquote>
+<ul>
+<li>2005年，lucene 成为 Apache 顶级项目</li>
+</ul>
+<h4 id="3-2006年5月发布-20"><a class="header" href="#3-2006年5月发布-20">（3） 2006年5月，发布 2.0</a></h4>
+<h4 id="4-2009年11月发布-30"><a class="header" href="#4-2009年11月发布-30">（4） 2009年11月，发布 3.0</a></h4>
+<ul>
+<li>
+<p>2010年2月7日，Elasticsearch 0.1.0 发布</p>
+</li>
+<li>
+<p>2010年，solr 作为lucene子项目，合并入lucene</p>
+</li>
+<li>
+<p>2011年，twitter 使用 lucene 实现实时搜索</p>
+</li>
+</ul>
+<h3 id="5-2012年发布-40"><a class="header" href="#5-2012年发布-40">（5） 2012年，发布 4.0</a></h3>
+<ul>
+<li>
+<p>是一个&quot;革命性&quot;版本，让lucene 进入严肃分析领域，(1) 添加编码/解码器; (2) 新增相似性分析模型(BM25, DFR)</p>
+</li>
+<li>
+<p>2012年2月9日，Elastic公司成立</p>
+</li>
+</ul>
+<h3 id="6-2015年发布-50"><a class="header" href="#6-2015年发布-50">（6） 2015年，发布 5.0</a></h3>
+<h3 id="7-2016年发布-60"><a class="header" href="#7-2016年发布-60">（7） 2016年，发布 6.0</a></h3>
+<ul>
+<li>
+<p>添加了对多维索引的支持 BKD树</p>
+</li>
+<li>
+<p>将BM25 设置为默认相似性模型，之前是 TF/IDF</p>
+</li>
+<li>
+<p>lucene 源码从 Subversion 转移到 git</p>
+</li>
+</ul>
+<h3 id="8-2017年发布-70"><a class="header" href="#8-2017年发布-70">（8） 2017年，发布 7.0</a></h3>
+<h3 id="9-2019年发布-80"><a class="header" href="#9-2019年发布-80">（9） 2019年，发布 8.0</a></h3>
+<h3 id="10-2021年发布-90"><a class="header" href="#10-2021年发布-90">（10） 2021年，发布 9.0</a></h3>
+<ul>
+<li>solr 独立出 lucene，成为Apache 顶级项目</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/shayBanon.png?raw=true" alt="elastic" /></p>
+<h2 id="二写入索引"><a class="header" href="#二写入索引">二、写入（索引）</a></h2>
+<h3 id="21-倒排索引-inverted-index"><a class="header" href="#21-倒排索引-inverted-index">2.1 倒排索引 Inverted index</a></h3>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/doc-index.png?raw=true" alt="index" /></p>
+<p>⚠️ MySQL 8.0 也实现了倒排索引 （ 2018/4/19 ）</p>
+<h3 id="22-索引流程"><a class="header" href="#22-索引流程">2.2 索引流程</a></h3>
+<ul>
+<li>
+<p>一般先把不同格式的文本，先转变为特定格式文本(json)</p>
+</li>
+<li>
+<p>每个文档要确定field结构，每个field都需要经过分析器分析后，最终持久化</p>
+</li>
+<li>
+<p>分析器分析过程，会流式经过不同类型的分析器，产生token列表</p>
+</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-1.png?raw=true" alt="i1" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-2.png?raw=true" alt="i2" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-3.png?raw=true" alt="i3" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/index-6.png?raw=true" alt="i6" /></p>
+<table><thead><tr><th>术语</th><th>描述</th></tr></thead><tbody>
+<tr><td>document</td><td>文档</td></tr>
+<tr><td>field</td><td>文档中的字段</td></tr>
+<tr><td>index</td><td>名词，lucene中文档保存的集合</td></tr>
+<tr><td>segment</td><td>段，表示写入时候的commit点</td></tr>
+<tr><td>term</td><td>lucene中存储和搜索的基本单元</td></tr>
+<tr><td>token</td><td>经过分词器后，切分的最小单元</td></tr>
+</tbody></table>
+<p>term 可以理解为 token 加上 fieldName，例如： 文档中title字段，值为 hello world, 分析器分析后，生成 hello 和 world两个token，则 term也是两个, &lt;title, hello&gt;, &lt;title, world&gt;</p>
+<h3 id="23-lsm树实现"><a class="header" href="#23-lsm树实现">2.3 LSM树实现</a></h3>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-10.png?raw=true" alt="lsm region" /></p>
+<p><a href="https://en.wikipedia.org/wiki/Log-structured_merge-tree">LSM tree (log-structured merge-tree) </a></p>
+<p><a href="https://en.wikipedia.org/wiki/B-tree">B-tree</a></p>
+<ul>
+<li>
+<p>是一种对频繁写操作非常友好的数据结构，同时兼顾了查询效率。</p>
+</li>
+<li>
+<p>之所以有效是基于以下事实：磁盘或内存的连续读写性能远高于随机读写性能(局部性原理)</p>
+</li>
+<li>
+<p>是许多 key-value 型或日志型数据库所依赖的核心数据结构，例如 BigTable、HBase、Cassandra、LevelDB、SQLite、Scylla、RocksDB 等。</p>
+</li>
+</ul>
+<p>LSM树 三个主要组成部分: memtable，log，SSTable</p>
+<ul>
+<li>
+<p>memtable</p>
+<p>是红黑树或者跳表这样的有序内存数据结构，起到缓存和排序的作用，把新写入的数据按照键的大小进行排序。当memtable到达一定大小之后，会被转化成SSTable格式刷入磁盘持久化存储</p>
+</li>
+<li>
+<p>SSTable（Sorted String Table）</p>
+<p>说白了就是一个特殊格式的文件，其中的数据按照键的大小排列，你可以把它类比成一个有序数组。而 LSM 树，说白了就是若干SSTable的集合。</p>
+</li>
+<li>
+<p>log</p>
+<p>文件记录操作日志，在数据写入memtable的同时也会刷盘写入到log文件，作用是数据恢复。比如在memtable中的数据还没转化成SSTable持久化到磁盘时，如果突然断电，那么memtable里面的数据都会丢失，但有log文件在，就可以恢复这些数据。当然，等memtable中的数据成功转化成SSTable落盘之后，log文件中对应的操作日志就没必要存在了，可以被删除</p>
+</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-0.png?raw=true" alt="RocksDB" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-5.png?raw=true" alt="lsm" /></p>
+<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/translog.html">持久化变更</a></p>
+<h3 id="24-索引文件"><a class="header" href="#24-索引文件">2.4 索引文件</a></h3>
+<p>下面是<a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html">lucene9.3.0</a> 中的索引文件 </p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lucene-file-format.png?raw=true" alt="file" /></p>
+<table><thead><tr><th>序号</th><th>文件后缀</th><th>描述说明</th><th>示例</th></tr></thead><tbody>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90CompoundFormat.html">.cfs</a></td><td>An optional &quot;virtual&quot; file consisting of all the other index files for systems that frequently run out of file handles.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90CompoundFormat.html">.cfe</a></td><td>The &quot;virtual&quot; compound file's entry table holding all entries in the corresponding .cfs file.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PostingsFormat.html">.doc</a></td><td>Frequencies and Skip Data</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90DocValuesFormat.html">.dvd</a></td><td>DocValues data</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90DocValuesFormat.html">.dvm</a></td><td>DocValues metadata</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90StoredFieldsFormat.html">.fdt</a></td><td>This file stores a compact representation of documents in compressed blocks of 16KB or more. When writing a segment, documents are appended to an in-memory byte[] buffer. When its size reaches 16KB or more, some metadata about the documents is flushed to disk, immediately followed by a compressed representation of the buffer using the LZ4 compression format.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90StoredFieldsFormat.html">.fdx</a></td><td>This file stores two monotonic arrays, one for the first doc IDs of each block of compressed documents, and another one for the corresponding offsets on disk. At search time, the array containing doc IDs is binary-searched in order to find the block that contains the expected doc ID, and the associated offset on disk is retrieved from the second array.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90StoredFieldsFormat.html">.fdm</a></td><td>This file stores metadata about the monotonic arrays stored in the index file.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90FieldInfosFormat.html">.fnm</a></td><td>Field names are stored in the field info file</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PointsFormat.html">.kdm</a></td><td>A .kdm file that records metadata about the fields, such as numbers of dimensions or numbers of bytes per dimension.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PointsFormat.html">.kdi</a></td><td>A .kdi file that stores inner nodes of the tree.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PointsFormat.html">.kdd</a></td><td>A .kdd file that stores leaf nodes, where most of the data lives.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90LiveDocsFormat.html">.liv</a></td><td>The .liv file is optional, and only exists when a segment contains deletions.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90NormsFormat.html">.nvd</a></td><td>Norms data</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90NormsFormat.html">.nvm</a></td><td>Norms metadata</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PostingsFormat.html">.pay</a></td><td>Payloads and Offsets</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PostingsFormat.html">.pos</a></td><td>Positions</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90SegmentInfoFormat.html">.si</a></td><td>Header, SegVersion, SegSize, IsCompoundFile, Diagnostics, Files, Attributes, IndexSort, Footer</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PostingsFormat.html">.tim</a></td><td>Term Dictionary</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PostingsFormat.html">.tip</a></td><td>Term Index</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90TermVectorsFormat.html">.tvm</a></td><td>A vector metadata file</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90TermVectorsFormat.html">.tvd</a></td><td>This file stores terms, frequencies, positions, offsets and payloads for every document. Upon writing a new segment, it accumulates data into memory until the buffer used to store terms and payloads grows beyond 4KB. Then it flushes all metadata, terms and positions to disk using LZ4 compression for terms and payloads and blocks of packed ints for positions.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90TermVectorsFormat.html">.tvx</a></td><td>An index file</td><td></td></tr>
+</tbody></table>
+<p>⚠️ <a href="https://lucene.apache.org/core/3_0_3/fileformats.html">lucene3.0.3</a> 中的文件格式</p>
+<table><thead><tr><th>Name</th><th>Extension</th><th>Brief Description</th></tr></thead><tbody>
+<tr><td>Segments File</td><td>segments.gen, segments_N</td><td>Stores information about segments</td></tr>
+<tr><td>Lock File</td><td>write.lock</td><td>The Write lock prevents multiple IndexWriters from writing to the same file.</td></tr>
+<tr><td>Compound File</td><td>.cfs</td><td>An optional &quot;virtual&quot; file consisting of all the other index files for systems that frequently run out of file handles.</td></tr>
+<tr><td>Fields</td><td>.fnm</td><td>Stores information about the fields</td></tr>
+<tr><td>Field Index</td><td>.fdx</td><td>Contains pointers to field data</td></tr>
+<tr><td>Field Data</td><td>.fdt</td><td>The stored fields for documents</td></tr>
+<tr><td>Term Infos</td><td>.tis</td><td>Part of the term dictionary, stores term info</td></tr>
+<tr><td>Term Info Index</td><td>.tii</td><td>The index into the Term Infos file</td></tr>
+<tr><td>Frequencies</td><td>.frq</td><td>Contains the list of docs which contain each term along with frequency</td></tr>
+<tr><td>Positions</td><td>.prx</td><td>Stores position information about where a term occurs in the index</td></tr>
+<tr><td>Norms</td><td>.nrm</td><td>Encodes length and boost factors for docs and fields</td></tr>
+<tr><td>Term Vector Index</td><td>.tvx</td><td>Stores offset into the document data file</td></tr>
+<tr><td>Term Vector Documents</td><td>.tvd</td><td>Contains information about each document that has term vectors</td></tr>
+<tr><td>Term Vector Fields</td><td>.tvf</td><td>The field level info about term vectors</td></tr>
+<tr><td>Deleted Documents</td><td>.del</td><td>Info about what files are deleted</td></tr>
+</tbody></table>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/file-format.png?raw=true" alt="file-format" /></p>
+<p>客户实际示例</p>
+<table><thead><tr><th>文件</th><th>大小</th><th>说明</th></tr></thead><tbody>
+<tr><td>wksp_975d8bf6d6204f9ca72efb65eaee718c_tracing-000033</td><td>303.8gb</td><td>索引大小</td></tr>
+<tr><td>fdt</td><td>154.2gb</td><td>保存每个文档的属性值对应关系</td></tr>
+<tr><td>tim</td><td>57.8gb</td><td>term 词典</td></tr>
+<tr><td>kdd</td><td>32.1gb</td><td><a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=173081898">多维数据结构</a>，叶节点信息</td></tr>
+<tr><td>dvd</td><td>20.7gb</td><td>列式存储原始字段</td></tr>
+<tr><td>doc</td><td>8.6gb</td><td>term出现的频率</td></tr>
+<tr><td>tip</td><td>947.7mb</td><td>term词典的索引，实际上即是下章介绍的fst数据结构</td></tr>
+</tbody></table>
+<h3 id="25-fst数据结构"><a class="header" href="#25-fst数据结构">2.5 fst数据结构</a></h3>
+<p><a href="https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html">Using Finite State Transducers in Lucene</a></p>
+<p><a href="https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/">关于Lucene的词典FST深入剖析</a></p>
+<h2 id="三查询"><a class="header" href="#三查询">三、查询</a></h2>
+<h3 id="31-查询流程"><a class="header" href="#31-查询流程">3.1 查询流程</a></h3>
+<ul>
+<li>lucene查询语句，先经过解析器，然后再经过同样的分析器，最后查询</li>
+</ul>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/search-1.png?raw=true" alt="s1" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/search-2.png?raw=true" alt="s2" /></p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/search-3.png?raw=true" alt="s3" /></p>
+<h3 id="32-相似度算法"><a class="header" href="#32-相似度算法">3.2 相似度算法</a></h3>
+<p>(1)  TF/IDF</p>
+<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/scoring-theory.html">相关度评分背后的理论</a></p>
+<p>相关性判断三个元素</p>
+<p>a. 检索词频率</p>
+<p>检索词在该字段出现的频率？出现频率越高，相关性也越高。 字段中出现过 5 次要比只出现过 1 次的相关性高。</p>
+<p>b. 反向文档频率</p>
+<p>每个检索词在索引中出现的频率？频率越高，相关性越低。检索词出现在多数文档中会比出现在少数文档中的权重更低。</p>
+<p>c. 字段长度准则</p>
+<p>字段的长度是多少？长度越长，相关性越低。 检索词出现在一个短的 title 要比同样的词出现在一个长的 content 字段权重更大。</p>
+<p>具体的计算公式 : <a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html">TFIDFSimilarity</a></p>
+<p>(2) BM25 </p>
+<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/pluggable-similarites.html">可插拔的相似度算法</a></p>
+<p>具体实现方式: <a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/search/similarities/BM25Similarity.html">BM25Similarity</a></p>
+<h2 id="四更多内容"><a class="header" href="#四更多内容">四、更多内容</a></h2>
+<h3 id="41-lucene中的编码解码如何实现的"><a class="header" href="#41-lucene中的编码解码如何实现的">4.1 lucene中的编码/解码如何实现的?</a></h3>
+<p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/package-summary.html">Codec</a> </p>
+<p>Codecs API: API for customization of the encoding and structure of the index.</p>
+<p><a href="https://help.aliyun.com/document_detail/363036.html">使用aliyun-codec插件</a></p>
+<h3 id="42-lucene中的存储类型"><a class="header" href="#42-lucene中的存储类型">4.2 lucene中的存储类型?</a></h3>
+<p>NioFs（ 注：非阻塞文件系统）和 MMapFs （ 注：内存映射文件系统）零拷贝技术？</p>
+<p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/store/FSDirectory.html">FSDirectory</a></p>
+<h3 id="43-force-merge过程-lucene中的事务"><a class="header" href="#43-force-merge过程-lucene中的事务">4.3 force merge过程, lucene中的事务</a></h3>
+<p><a href="https://blog.mikemccandless.com/2012/03/transactional-lucene.html">Transactional Lucene</a></p>
+<h3 id="44-源码分析"><a class="header" href="#44-源码分析">4.4 源码分析</a></h3>
+<h3 id="45-分布式架构--聚合分析--机器学习"><a class="header" href="#45-分布式架构--聚合分析--机器学习">4.5 分布式架构 / 聚合分析 / 机器学习</a></h3>
+<h3 id="46-社区贡献-实际使用--开发新功能-等"><a class="header" href="#46-社区贡献-实际使用--开发新功能-等">4.6 社区贡献 （实际使用 / 开发新功能 等）</a></h3>
 
                     </main>
 
@@ -1088,22 +1661,6 @@ cron.cron.timezone	The timezone that triggers the transition.	string	Yes</p>
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
