@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd /Users/yz/work/github/blog-book/learning-basic
 mdbook build
 
