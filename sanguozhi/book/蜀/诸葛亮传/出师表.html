@@ -7,18 +7,9 @@
 
 
         <!-- Custom HTML head -->
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160" crossorigin="anonymous"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <!-- Global site tag (gtag.js) - Google Analytics -->
 
-  gtag('config', 'G-MMN1K84KRS');
-</script>
 
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -28,7 +19,6 @@
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
@@ -41,16 +31,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -66,7 +58,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -78,7 +70,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../魏.html"><strong aria-hidden="true">1.</strong> 魏書</a></li><li class="chapter-item expanded "><a href="../../蜀.html"><strong aria-hidden="true">2.</strong> 蜀書</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传.html"><strong aria-hidden="true">2.1.</strong> 諸葛亮傳</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传/出师表.html" class="active"><strong aria-hidden="true">2.1.1.</strong> 出師表</a></li><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传/后出师表.html"><strong aria-hidden="true">2.1.2.</strong> 後出師表</a></li><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传/諸葛氏集目錄.html"><strong aria-hidden="true">2.1.3.</strong> 諸葛氏集目錄</a></li><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传/臣壽等言.html"><strong aria-hidden="true">2.1.4.</strong> 臣壽等言</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../吴.html"><strong aria-hidden="true">3.</strong> 吳書</a></li><li class="chapter-item expanded "><a href="../../附录.html"><strong aria-hidden="true">4.</strong> 附錄</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../魏.html"><strong aria-hidden="true">1.</strong> 魏書</a></li><li class="chapter-item expanded "><a href="../../蜀.html"><strong aria-hidden="true">2.</strong> 蜀書</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传.html"><strong aria-hidden="true">2.1.</strong> 諸葛亮傳</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../蜀/诸葛亮传/出师表.html" class="active"><strong aria-hidden="true">2.1.1.</strong> 出師表</a></li><li class="chapter-item "><a href="../../蜀/诸葛亮传/后出师表.html"><strong aria-hidden="true">2.1.2.</strong> 後出師表</a></li><li class="chapter-item "><a href="../../蜀/诸葛亮传/諸葛氏集目錄.html"><strong aria-hidden="true">2.1.3.</strong> 諸葛氏集目錄</a></li><li class="chapter-item "><a href="../../蜀/诸葛亮传/臣壽等言.html"><strong aria-hidden="true">2.1.4.</strong> 臣壽等言</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../吴.html"><strong aria-hidden="true">3.</strong> 吳書</a></li><li class="chapter-item "><a href="../../附录.html"><strong aria-hidden="true">4.</strong> 附錄</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -109,7 +101,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -123,8 +115,8 @@
                     <h1 class="menu-title">sanguo</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
                     </div>
@@ -142,7 +134,7 @@
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -160,6 +152,7 @@
 <p>臣本布衣，躬耕於南阳，苟全性命於乱世，不求闻达於诸侯。先帝不以臣卑鄙，猥自枉屈，三顾臣於草庐之中，谘臣以当世之事，由是感激，遂许先帝以驱驰。后值倾覆，受任於败军之际，奉命於危难之间，尔来二十有一年矣。臣松之案：刘备以建安十三年败，遣亮使吴，亮以建兴五年抗表北伐，自倾覆至此整二十年。然则备始与亮相遇，在败军之前一年时也。先帝知臣谨慎，故临崩寄臣以大事也。受命以来，夙夜忧叹，恐讬付不效，以伤先帝之明，故五月渡泸，深入不毛。汉书地理志曰：泸惟水出牂牁郡句町县。今南方已定，兵甲已足，当奖率三军，北定中原，庶竭驽钝，攘除奸凶，兴复汉室，还于旧都。此臣所以报先帝，而忠陛下之职分也。</p>
 <p>至於斟酌损益，进尽忠言，则攸之、祎、允之任也。原陛下讬臣以讨贼兴复之效；不效，则治臣之罪，以告先帝之灵。〔若无兴德之言，则〕责攸之、祎、允等之慢，以彰其咎。陛下亦宜自谋，以谘诹善道，察纳雅言，深追先帝遗诏。臣不胜受恩感激，今当远离，临表涕零，不知所言。</p>
 
+                        <div id="giscus-container"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -192,20 +185,21 @@
 
 
 
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
 
 
-        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="../../giscus.js"></script>
 
 
     </body>

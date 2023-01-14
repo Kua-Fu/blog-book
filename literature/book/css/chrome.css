@@ -373,6 +373,7 @@ ul#searchresults span.teaser em {
     .sidebar-visible .page-wrapper {
         transform: none;
         margin-left: var(--sidebar-width);
+        /* background-color: aqua; */
     }
 }
 
