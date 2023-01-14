@@ -6,7 +6,7 @@
 
 [`Github`](https://github.com/Kua-Fu) | [`Segmentfault`](https://segmentfault.com/u/yiquguanglingsan) 
 
-`Email: yz15951606335@gmail.com`
+[`Email: yz15951606335@gmail.com`](mailto:yz15951606335@gmail.com)
 
 
 ## Technology Stack
