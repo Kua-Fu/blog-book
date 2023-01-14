@@ -1,0 +1,9 @@
+.giscus, .giscus-frame {
+    width: 100%;
+    height: 100px;
+    background-color: black;
+}
+
+.giscus-frame {
+  border: none;
+}
