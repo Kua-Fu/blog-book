@@ -1,23 +1,25 @@
-# 经常使用
+# Often Use
 
 
-## 一、官方
+## 一、Official Websites
 
-	> [Elasticsearch: 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
+	> [Baidu Translate](https://fanyi.baidu.com/)
+
+	> [Base64 Encode](https://base64.us/)
 	
-	> [ES英文社区](https://discuss.elastic.co/c/elastic-stack/elasticsearch/6)
+	> [Emoji](https://getemoji.com/)
 	
-	> [ES中文社区](https://elasticsearch.cn/)
+	> [Json Format](https://www.bejson.com/)
 	
-	> [online 时间](https://tool.lu/timestamp/)
+	> [Elasticsearch Chinese Community](https://elasticsearch.cn/)
 	
-	> [base64编码](https://base64.us/)
+	> [Elasticsearch Community](https://discuss.elastic.co/c/elastic-stack/elasticsearch/6)
 	
-	> [json格式化](https://www.bejson.com/)
+	> [Elasticsearch: Definitive Guide](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
 	
-	> [emoji](https://getemoji.com/)
-	
-	> [临时邮箱](https://temp-mail.org/zh/view/62a03d9c2dc34f03fc14fc14)
+	> [Online Date](https://tool.lu/timestamp/)
+
+	> [Temp Mail](https://temp-mail.org/zh/view/62a03d9c2dc34f03fc14fc14)
 	
 	
 ```bash
@@ -31,22 +33,21 @@
 	0️⃣ 1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ 🔟
 ```
 
-##  二、工作
-	
-	> [testing kibana](http://testing-ft-kibana.cloudcare.cn/app/home)
-	
-	> [testing nsq](http://172.16.5.19:31655)
-	
-	> [daily kibana](172.16.2.38:30485)
-	
-	> [daily nsq](http://172.16.2.39:31722/)
-	
-	> [百度翻译](https://fanyi.baidu.com/)
-	
-## 三、书
+##  二、Working Links
 
-	> [crafting interpreters](https://craftinginterpreters.com/contents.html)
+	> [Daily NSQ](http://172.16.2.39:31722/)
+	
+	> [Daily Kibana](172.16.2.38:30485)
+	
+	> [Testing Kibana](http://testing-ft-kibana.cloudcare.cn/app/home)
+	
+	> [Testing NSQ](http://172.16.5.19:31655)
+	
+
+## 三、Reading Books
+
+	> [Crafting Interpreters](https://craftinginterpreters.com/contents.html)
 	
 	> [Practical Go Lessons](https://www.practical-go-lessons.com/)
 	
-	> [京东读书web](https://e.m.jd.com/)
+	> [Jing Dong Books](https://e.m.jd.com/)

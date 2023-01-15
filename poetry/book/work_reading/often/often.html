@@ -152,31 +152,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="经常使用"><a class="header" href="#经常使用">经常使用</a></h1>
-<h2 id="一官方"><a class="header" href="#一官方">一、官方</a></h2>
+                        <h1 id="often-use"><a class="header" href="#often-use">Often Use</a></h1>
+<h2 id="一official-websites"><a class="header" href="#一official-websites">一、Official Websites</a></h2>
 <blockquote>
-<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">Elasticsearch: 权威指南</a></p>
+<p><a href="https://fanyi.baidu.com/">Baidu Translate</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://discuss.elastic.co/c/elastic-stack/elasticsearch/6">ES英文社区</a></p>
+<p><a href="https://base64.us/">Base64 Encode</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://elasticsearch.cn/">ES中文社区</a></p>
+<p><a href="https://getemoji.com/">Emoji</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://tool.lu/timestamp/">online 时间</a></p>
+<p><a href="https://www.bejson.com/">Json Format</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://base64.us/">base64编码</a></p>
+<p><a href="https://elasticsearch.cn/">Elasticsearch Chinese Community</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://www.bejson.com/">json格式化</a></p>
+<p><a href="https://discuss.elastic.co/c/elastic-stack/elasticsearch/6">Elasticsearch Community</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://getemoji.com/">emoji</a></p>
+<p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">Elasticsearch: Definitive Guide</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://temp-mail.org/zh/view/62a03d9c2dc34f03fc14fc14">临时邮箱</a></p>
+<p><a href="https://tool.lu/timestamp/">Online Date</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://temp-mail.org/zh/view/62a03d9c2dc34f03fc14fc14">Temp Mail</a></p>
 </blockquote>
 <pre><code class="language-bash">	🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐻‍❄️ 🐨 🐯 🦁 🐮 🐷 🐽 🐸 🐵 🙈 🙉 🙊 🐒 🐔 🐧 🐦 🐤 🐣 
 	🐥 🦆 🦅 🦉 🦇 🐺 🐗 🐴 🦄 🐝 🪱 🐛 🦋 🐌 🐞 🐜 🪰 🪲 🪳 🦟 🦗 🕷 🕸 🦂 🐢 🐍 
@@ -187,31 +190,28 @@
 	✅ ❌ ⚠️ 🔥 
 	0️⃣ 1️⃣ 2️⃣ 3️⃣ 4️⃣ 5️⃣ 6️⃣ 7️⃣ 8️⃣ 9️⃣ 🔟
 </code></pre>
-<h2 id="二工作"><a class="header" href="#二工作">二、工作</a></h2>
+<h2 id="二working-links"><a class="header" href="#二working-links">二、Working Links</a></h2>
 <blockquote>
-<p><a href="http://testing-ft-kibana.cloudcare.cn/app/home">testing kibana</a></p>
+<p><a href="http://172.16.2.39:31722/">Daily NSQ</a></p>
 </blockquote>
 <blockquote>
-<p><a href="http://172.16.5.19:31655">testing nsq</a></p>
+<p><a href="172.16.2.38:30485">Daily Kibana</a></p>
 </blockquote>
 <blockquote>
-<p><a href="172.16.2.38:30485">daily kibana</a></p>
+<p><a href="http://testing-ft-kibana.cloudcare.cn/app/home">Testing Kibana</a></p>
 </blockquote>
 <blockquote>
-<p><a href="http://172.16.2.39:31722/">daily nsq</a></p>
+<p><a href="http://172.16.5.19:31655">Testing NSQ</a></p>
 </blockquote>
+<h2 id="三reading-books"><a class="header" href="#三reading-books">三、Reading Books</a></h2>
 <blockquote>
-<p><a href="https://fanyi.baidu.com/">百度翻译</a></p>
-</blockquote>
-<h2 id="三书"><a class="header" href="#三书">三、书</a></h2>
-<blockquote>
-<p><a href="https://craftinginterpreters.com/contents.html">crafting interpreters</a></p>
+<p><a href="https://craftinginterpreters.com/contents.html">Crafting Interpreters</a></p>
 </blockquote>
 <blockquote>
 <p><a href="https://www.practical-go-lessons.com/">Practical Go Lessons</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://e.m.jd.com/">京东读书web</a></p>
+<p><a href="https://e.m.jd.com/">Jing Dong Books</a></p>
 </blockquote>
 
                         <div id="giscus-container"></div>
@@ -244,6 +244,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
