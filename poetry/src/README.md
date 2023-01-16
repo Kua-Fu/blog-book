@@ -21,7 +21,7 @@
 
 * **Senior Software Engineer**
   
-  [驻云](https://guance.com/)| Nov 2019 ~ Present ｜ Shanghai, China
+  [驻云](https://guance.com/)| Nov 2020 ~ Present ｜ Shanghai, China
   
 * **Senior Software Engineer**
 
