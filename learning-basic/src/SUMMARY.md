@@ -1,6 +1,6 @@
 # Summary
 
-- [简介](index.md)
+- [Introducation](index.md)
 - [Vim](vim/vim.md)
 - [Emacs](emacs/emacs.md)
 - [Git](git/git.md)
@@ -8,6 +8,7 @@
 - [tmux](tmux/tmux.md)
 - [markdown](markdown/markdown.md)
 - [mdbook](mdbook/mdbook.md)
+  - [comment system: giscus](mdbook/giscus.md)
 - [insomnia](insomnia/insomnia.md)
 - [MacOS](macos/macos.md)
 

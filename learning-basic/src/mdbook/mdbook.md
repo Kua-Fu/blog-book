@@ -1,6 +1,6 @@
 # mdbook
 
-## 参考
+## References
 
 >[mdBook source code](https://github.com/rust-lang/mdBook)
 
@@ -13,33 +13,35 @@
 >[Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
 
 
-## 一、概览
+## 一、Overview
 
-`mdBook` 是一个开源命令行工具, 由 `rust`官方维护, 可以简单快捷的创建`markdown`格式的电子书
+mdBook is a command line tool to create books with Markdown.
 
-`rust`语言的[官方教程](https://doc.rust-lang.org/book/)就是由 `mdBook`构建的
+`rust` language office book is write by mdbook [docs](https://doc.rust-lang.org/book/)
 
-主要具有下列优点:
+mdBook has so many advantages:
+
+* Lightweight Markdown syntax helps you focus more on your content
+
+* Integrated search support
+
+* Color syntax highlighting for code blocks for many different languages
+
+* Theme files allow customizing the formatting of the output
+
+* Preprocessors can provide extensions for custom syntax and modifying content
+
+* Backends can render the output to multiple formats
+
+* Written in Rust for speed, safety, and simplicity
+
+* Automated testing of Rust code samples
 
 
-* `Markdown` 格式可以让书写更简洁
-
-* 集成了简单的搜索功能
-
-* 代码高亮
-
-* 自定义一些主题
-
-* `Preprocessors` 各种预处理器可以预先处理文章内容
-
-* `Backends` 各种后端模块，可以渲染文章
-
-* 原生支持`rust`的代码测试
-
-## 二、基本使用
+## 二、Basic Use
 
 
-### 2.1 安装
+### 2.1 Install
 
 ```
 
@@ -47,7 +49,7 @@
 
 ```
 
-### 2.2 创建一本书
+### 2.2 Create a book
 
 ```shell
 
@@ -69,7 +71,7 @@ All done, no errors...
 
 ```
 
-### 2.3 本地运行
+### 2.3 Run local
 
 
 ```
@@ -97,7 +99,7 @@ All done, no errors...
 
 ```
 
-### 2.4 生成静态文件
+### 2.4 Gen Static Files
 
 ```
 
@@ -105,7 +107,7 @@ All done, no errors...
 	
 ```
 
-执行后，项目根目录下会新增一个 `book`目录，保存`html/css/js`等静态文件
+after exec command，there will add one directory named `book` in root directory，in which includes `html/css/js` static files
 
 ```
 
@@ -126,11 +128,11 @@ book
 	
 ```
 
-## 三、数学公式
+## 三、Support Math Formula
 
-mdbook 通过 [MathJax](https://www.mathjax.org/) 支持数学公式显示。
+mdbook support show Math Formula by [MathJax](https://www.mathjax.org/) 
 
-### 3.1 需要设置支持 mathjax
+### 3.1 Set MathJax setting
 
 ```toml
 
@@ -152,7 +154,7 @@ mathjax-support = true
 
 当在公式中，需要使用双反斜线时候，还需要添加额外的两个反斜线
 
-### 3.2 行内公式
+### 3.2 inline 
 
 行内的公式，使用 `\\( 和 \\)` 分隔，例如: 
 
@@ -162,7 +164,7 @@ mathjax-support = true
 
 表示行内
 
-### 3.3 行间公式
+### 3.3 include line
 
 行间公式，使用 `\\[ 和 \\]` 分隔，例如:
 
@@ -170,7 +172,7 @@ mathjax-support = true
 
 一般在LaTex中，使用 `$$公式$$` 实现。
 
-### 3.4 基本公式
+### 3.4 basic formula
 
 (1) 手动编号， 命令 `\tag{n}` 可以进行手动编号
 

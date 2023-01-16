@@ -153,29 +153,41 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="基本介绍"><a class="header" href="#基本介绍">基本介绍</a></h1>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/header.png?raw=true" alt="header" /></p>
-<h2 id="运行解释器"><a class="header" href="#运行解释器">运行解释器</a></h2>
-<pre><code>// 1. 源码下载
+<h2 id="1-jlox"><a class="header" href="#1-jlox">1. jlox</a></h2>
+<p>implement lox by Java</p>
+<h3 id="11-run-interpreter"><a class="header" href="#11-run-interpreter">1.1 run interpreter</a></h3>
+<pre><code>// 1. download source code
 git clone https://github.com/Kua-Fu/jlox.git
 
-// 2. 编译
+// 2. build source code
 gradle build
 
-// 3. 运行
+// 3. run 
 java -cp app/build/classes/java/main com.craftinginterpreters.lox.App 
 
 </code></pre>
-<h2 id="tool-使用"><a class="header" href="#tool-使用">tool 使用</a></h2>
-<pre><code>// 1. 源码下载
+<h3 id="12-run-tool"><a class="header" href="#12-run-tool">1.2 run tool</a></h3>
+<pre><code>// 1. download source code
 git clone https://github.com/Kua-Fu/jlox.git
 
-// 2. 编译
+// 2. build source code
 gradle build
 
-// 3. 运行
+// 3. run
 java -cp app/build/classes/java/main com.craftinginterpreters.tool.GenerateAst someDir
 
+</code></pre>
+<h2 id="2-glox"><a class="header" href="#2-glox">2. glox</a></h2>
+<p>implement lox by Go </p>
+<h3 id="21-run-interpreter"><a class="header" href="#21-run-interpreter">2.1 run interpreter</a></h3>
+<pre><code>// 1. download source code
+
+git@github.com:Kua-Fu/glox.git
+
+// 2. run parse
+go run cmd/parser/main.go 
 </code></pre>
 
                         <div id="giscus-container"></div>

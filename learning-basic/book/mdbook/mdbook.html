@@ -92,7 +92,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> 简介</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item expanded "><a href="../mdbook/mdbook.html" class="active"><strong aria-hidden="true">8.</strong> mdbook</a></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item expanded "><a href="../mdbook/mdbook.html" class="active"><strong aria-hidden="true">8.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">8.1.</strong> comment system: giscus</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,7 +154,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="mdbook"><a class="header" href="#mdbook">mdbook</a></h1>
-<h2 id="参考"><a class="header" href="#参考">参考</a></h2>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
 <blockquote>
 <p><a href="https://github.com/rust-lang/mdBook">mdBook source code</a></p>
 </blockquote>
@@ -170,40 +170,43 @@
 <blockquote>
 <p><a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a></p>
 </blockquote>
-<h2 id="一概览"><a class="header" href="#一概览">一、概览</a></h2>
-<p><code>mdBook</code> 是一个开源命令行工具, 由 <code>rust</code>官方维护, 可以简单快捷的创建<code>markdown</code>格式的电子书</p>
-<p><code>rust</code>语言的<a href="https://doc.rust-lang.org/book/">官方教程</a>就是由 <code>mdBook</code>构建的</p>
-<p>主要具有下列优点:</p>
+<h2 id="一overview"><a class="header" href="#一overview">一、Overview</a></h2>
+<p>mdBook is a command line tool to create books with Markdown.</p>
+<p><code>rust</code> language office book is write by mdbook <a href="https://doc.rust-lang.org/book/">docs</a></p>
+<p>mdBook has so many advantages:</p>
 <ul>
 <li>
-<p><code>Markdown</code> 格式可以让书写更简洁</p>
+<p>Lightweight Markdown syntax helps you focus more on your content</p>
 </li>
 <li>
-<p>集成了简单的搜索功能</p>
+<p>Integrated search support</p>
 </li>
 <li>
-<p>代码高亮</p>
+<p>Color syntax highlighting for code blocks for many different languages</p>
 </li>
 <li>
-<p>自定义一些主题</p>
+<p>Theme files allow customizing the formatting of the output</p>
 </li>
 <li>
-<p><code>Preprocessors</code> 各种预处理器可以预先处理文章内容</p>
+<p>Preprocessors can provide extensions for custom syntax and modifying content</p>
 </li>
 <li>
-<p><code>Backends</code> 各种后端模块，可以渲染文章</p>
+<p>Backends can render the output to multiple formats</p>
 </li>
 <li>
-<p>原生支持<code>rust</code>的代码测试</p>
+<p>Written in Rust for speed, safety, and simplicity</p>
+</li>
+<li>
+<p>Automated testing of Rust code samples</p>
 </li>
 </ul>
-<h2 id="二基本使用"><a class="header" href="#二基本使用">二、基本使用</a></h2>
-<h3 id="21-安装"><a class="header" href="#21-安装">2.1 安装</a></h3>
+<h2 id="二basic-use"><a class="header" href="#二basic-use">二、Basic Use</a></h2>
+<h3 id="21-install"><a class="header" href="#21-install">2.1 Install</a></h3>
 <pre><code>
 	cargo install mdbook
 
 </code></pre>
-<h3 id="22-创建一本书"><a class="header" href="#22-创建一本书">2.2 创建一本书</a></h3>
+<h3 id="22-create-a-book"><a class="header" href="#22-create-a-book">2.2 Create a book</a></h3>
 <pre><code class="language-shell">
 	mdbook init crafting-interpreters-zh
 
@@ -220,7 +223,7 @@ crafting-interpreters-zh
 All done, no errors...
 
 </code></pre>
-<h3 id="23-本地运行"><a class="header" href="#23-本地运行">2.3 本地运行</a></h3>
+<h3 id="23-run-local"><a class="header" href="#23-run-local">2.3 Run local</a></h3>
 <pre><code>
 	mdbook serve
 	
@@ -242,12 +245,12 @@ All done, no errors...
 
 
 </code></pre>
-<h3 id="24-生成静态文件"><a class="header" href="#24-生成静态文件">2.4 生成静态文件</a></h3>
+<h3 id="24-gen-static-files"><a class="header" href="#24-gen-static-files">2.4 Gen Static Files</a></h3>
 <pre><code>
 	mdbook build
 	
 </code></pre>
-<p>执行后，项目根目录下会新增一个 <code>book</code>目录，保存<code>html/css/js</code>等静态文件</p>
+<p>after exec command，there will add one directory named <code>book</code> in root directory，in which includes <code>html/css/js</code> static files</p>
 <pre><code>
 ➜  crafting-interpreters-zh git:(dev) ✗ mdbook build
 2022-06-24 13:01:19 [INFO] (mdbook::book): Book building has started
@@ -265,9 +268,9 @@ book
 │       ├── fontawesome-webfont.eot
 	
 </code></pre>
-<h2 id="三数学公式"><a class="header" href="#三数学公式">三、数学公式</a></h2>
-<p>mdbook 通过 <a href="https://www.mathjax.org/">MathJax</a> 支持数学公式显示。</p>
-<h3 id="31-需要设置支持-mathjax"><a class="header" href="#31-需要设置支持-mathjax">3.1 需要设置支持 mathjax</a></h3>
+<h2 id="三support-math-formula"><a class="header" href="#三support-math-formula">三、Support Math Formula</a></h2>
+<p>mdbook support show Math Formula by <a href="https://www.mathjax.org/">MathJax</a> </p>
+<h3 id="31-set-mathjax-setting"><a class="header" href="#31-set-mathjax-setting">3.1 Set MathJax setting</a></h3>
 <pre><code class="language-toml">
 [book]
 authors = [&quot;yz&quot;]
@@ -283,16 +286,16 @@ mathjax-support = true
 <p>注意⚠️ </p>
 <p>现在还不支持直接使用 $$ 作为分隔符，[] 分隔符需要额外添加一个反斜线 ,</p>
 <p>当在公式中，需要使用双反斜线时候，还需要添加额外的两个反斜线</p>
-<h3 id="32-行内公式"><a class="header" href="#32-行内公式">3.2 行内公式</a></h3>
+<h3 id="32-inline"><a class="header" href="#32-inline">3.2 inline</a></h3>
 <p>行内的公式，使用 <code>\\( 和 \\)</code> 分隔，例如: </p>
 <p>\(f(x) = a+b\)</p>
 <p>一般在LaTex中，使用 <code>$公式$</code> 实现。</p>
 <p>表示行内</p>
-<h3 id="33-行间公式"><a class="header" href="#33-行间公式">3.3 行间公式</a></h3>
+<h3 id="33-include-line"><a class="header" href="#33-include-line">3.3 include line</a></h3>
 <p>行间公式，使用 <code>\\[ 和 \\]</code> 分隔，例如:</p>
 <p>\[\mu = \frac{1}{N} \sum_{i=0} x_i \]</p>
 <p>一般在LaTex中，使用 <code>$$公式$$</code> 实现。</p>
-<h3 id="34-基本公式"><a class="header" href="#34-基本公式">3.4 基本公式</a></h3>
+<h3 id="34-basic-formula"><a class="header" href="#34-basic-formula">3.4 basic formula</a></h3>
 <p>(1) 手动编号， 命令 <code>\tag{n}</code> 可以进行手动编号</p>
 <p>\[ f(x) = a + b - c \tag{1.1.2} \]</p>
 <p>(2) 拉丁字母、阿拉伯数字、四则运算符都可以直接输入，</p>
@@ -321,7 +324,7 @@ mathjax-support = true
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../insomnia/insomnia.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../mdbook/giscus.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -335,7 +338,7 @@ mathjax-support = true
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../insomnia/insomnia.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../mdbook/giscus.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
