@@ -10,7 +10,7 @@ title = "Poetic life"
 git-repository-url = "https://github.com/Kua-Fu/blog-book"
 input-404 = "404.md"
 mathjax-support = true
-additional-js = ["giscus.js"]
+additional-js = ["giscus.js", "guance.js", "guanceRUM.js"]
 
 [output.html.fold]
 enable = true

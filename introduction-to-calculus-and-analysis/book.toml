@@ -1,0 +1,10 @@
+[book]
+authors = ["yz"]
+language = "en"
+multilingual = false
+src = "src"
+title = "calculus-and-analysis"
+
+[output.html]
+mathjax-support = true
+additional-js = ["giscus.js"]
