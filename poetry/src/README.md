@@ -11,7 +11,7 @@
 
 ## Technology Stack
 
-* `Python` ⭐ ⭐ ⭐ ☆ ☆ | `Go` ⭐ ⭐ ⭐ ☆ ☆ | `Java/C/C++/Rust/Shell` ⭐ ☆ ☆ ☆ ☆
+* `Python/Go` ⭐ ⭐ ⭐ ☆ ☆ | `Java/C/C++/Rust/Shell` ⭐ ☆ ☆ ☆ ☆
 
 * `MySQL` `Redis` `Elasticsearch` `InfluxDB` 
 
