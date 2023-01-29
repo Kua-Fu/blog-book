@@ -9,6 +9,19 @@
 
 
         <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	   window.DATAFLUX_RUM &&
+	   window.DATAFLUX_RUM.init({
+	   applicationId: 'thewind_blog',
+	   datakitOrigin: 'https://www.poetries.cn/rum', 
+	   env: 'production',
+	   version: '1.0.0',
+	   trackInteractions: true,
+	   traceType: 'ddtrace',
+	   allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	   })
+	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
 <script>
@@ -127,6 +140,8 @@
                         <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
+
+			<a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 
                     </div>
                 </div>
@@ -280,4 +295,6 @@ GET /website/blog/123/_source
 
 
     </body>
+
+
 </html>
