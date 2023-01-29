@@ -11,16 +11,16 @@
         <!-- Custom HTML head -->
 	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
 	<script>
-	   window.DATAFLUX_RUM &&
-	   window.DATAFLUX_RUM.init({
-	   applicationId: 'thewind_blog',
-	   datakitOrigin: 'https://www.poetries.cn/rum', 
-	   env: 'production',
-	   version: '1.0.0',
-	   trackInteractions: true,
-	   traceType: 'ddtrace',
-	   allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
-	   })
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
@@ -141,7 +141,6 @@
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
-			<a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 
                     </div>
                 </div>
@@ -184,14 +183,19 @@
 <p>这里你可以看到断路器的最大值（比如，一个请求申请更多的内存时会触发断路器）。这个部分还会让你知道断路器被触发了多少次，以及当前配置的间接开销。间接开销用来铺垫评估，因为有些请求比其他请求更难评估。</p>
 <p>主要需要关注的是 tripped 指标。如果这个数字很大或者持续上涨，这是一个信号，说明你的请求需要优化，或者你需要添加更多内存（单机上添加，或者通过添加新节点的方式）。</p>
 
-                        <div id="giscus-container"></div>
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../manage/monitor-individual-nodes-fs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../manage/monitor-individual-nodes-fs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
+                        </a>
 
                             <a rel="next" href="../manage/cluster-stats.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>

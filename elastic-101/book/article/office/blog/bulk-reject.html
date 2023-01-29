@@ -11,16 +11,16 @@
         <!-- Custom HTML head -->
 	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
 	<script>
-	   window.DATAFLUX_RUM &&
-	   window.DATAFLUX_RUM.init({
-	   applicationId: 'thewind_blog',
-	   datakitOrigin: 'https://www.poetries.cn/rum', 
-	   env: 'production',
-	   version: '1.0.0',
-	   trackInteractions: true,
-	   traceType: 'ddtrace',
-	   allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
-	   })
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
@@ -141,7 +141,6 @@
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
-			<a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 
                     </div>
                 </div>
@@ -980,14 +979,19 @@
 <p>如果是整个集群处于过载状态，而不是单个节点承担了过多的写入压力，可能要考虑集群扩容（横向添加节点或者纵向升级配置）。扩容后，整个集群bulk请求队列的总长度将变大，可以承担更多的写入压力。如果只是简单添加现有集群节点bulk请求队列的长度，即使临时解决了问题，实际上后面可能会面临更多的其他性能问题。</p>
 <p>最后，还需要记住的是，bulk被拒绝并不代表所有的文档都写入失败，程序代码中需要考虑到只有一部分文档写入失败，要考虑这一部分文档的重传机制。可以参考logstash,beats 中的重传逻辑。</p>
 
-                        <div id="giscus-container"></div>
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../../article/office/blog.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../../../article/office/blog.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
+                        </a>
 
                             <a rel="next" href="../../../article/office/api.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>

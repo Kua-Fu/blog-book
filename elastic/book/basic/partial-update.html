@@ -11,16 +11,16 @@
         <!-- Custom HTML head -->
 	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
 	<script>
-	   window.DATAFLUX_RUM &&
-	   window.DATAFLUX_RUM.init({
-	   applicationId: 'thewind_blog',
-	   datakitOrigin: 'https://www.poetries.cn/rum', 
-	   env: 'production',
-	   version: '1.0.0',
-	   trackInteractions: true,
-	   traceType: 'ddtrace',
-	   allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
-	   })
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
@@ -141,7 +141,6 @@
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
-			<a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 
                     </div>
                 </div>
@@ -403,14 +402,19 @@ POST /website/_update/1/?retry_on_conflict=5  0️⃣
 <p>0️⃣ 失败之前重试该更新5次</p>
 <p>在增量操作无关顺序的场景，例如递增计数器等这个方法十分有效，但是在其他情况下变更的顺序 是 非常重要的。 类似 index API ， update API 默认采用 最终写入生效 的方案，但它也接受一个 version 参数来允许你使用 optimistic concurrency control 指定想要更新文档的版本。</p>
 
-                        <div id="giscus-container"></div>
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../basic/optimistic-concurrency-control.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../basic/optimistic-concurrency-control.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
+                        </a>
 
                             <a rel="next" href="../basic/retrieving-multiple-docs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>

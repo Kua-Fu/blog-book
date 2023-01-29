@@ -11,16 +11,16 @@
         <!-- Custom HTML head -->
 	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
 	<script>
-	   window.DATAFLUX_RUM &&
-	   window.DATAFLUX_RUM.init({
-	   applicationId: 'thewind_blog',
-	   datakitOrigin: 'https://www.poetries.cn/rum', 
-	   env: 'production',
-	   version: '1.0.0',
-	   trackInteractions: true,
-	   traceType: 'ddtrace',
-	   allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
-	   })
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
@@ -141,7 +141,6 @@
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
-			<a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
 
                     </div>
                 </div>
@@ -188,14 +187,19 @@ GET _all/_stats 2️⃣
 <p>实践中，节点为中心的统计还是显得更有用些。瓶颈往往是针对整个节点而言，而不是对于单个索引。因为索引一般是分布在多个节点上的，这导致以索引为中心的统计值通常不是很有用，因为它们是从不同环境的物理机器上汇聚的数据。</p>
 <p>索引为中心的统计作为一个有用的工具可以保留在你的技能表里，但是通常它不会是第一个用的上的工具。</p>
 
-                        <div id="giscus-container"></div>
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../manage/cluster-stats.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../manage/cluster-stats.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
+                        </a>
 
                             <a rel="next" href="../manage/pending-task.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
