@@ -22,6 +22,21 @@ In the early part of last century, mathematicians stumbled into a series of conf
 
 在上世纪初，数学家偶然发现了一系列令人困惑的悖论，这些悖论导致数学家们开始怀疑数学基础的稳定性，为了解决这个危机，他们回到了原点。从少数的公理、逻辑、集合论出发，他们希望在不漏水的基础上重构数学。
 
+> The most famous is Russell’s paradox. Initially, set theory allowed you to define any sort of set. If you could describe it in English, it was valid. Naturally, given mathematicians’ predilection for self-reference, sets can contain other sets. So Russell, rascal that he was, came up with:
+> 
+> R is the set of all sets that do not contain themselves.
+> 
+> Does R contain itself? If it doesn’t, then according to the second half of the definition it should. But if it does, then it no longer meets the definition. Cue mind exploding.
+> 
+> 最著名的是罗素悖论，最初，集合理论允许定义任何类型的集合。如果你能用英语描述它，它是有效的。自然，考虑到数学家对自我参考的偏好，集合可以包含其他集合。所以，拉塞尔，想出来：
+> 
+> 集合R是不包含自身的所有集合的集合
+> 
+> R包含自身吗？如果没有，那么根据定义的后半部分，它应该包含自身。如果R包含自身，那么它不符合R的定义。这就引发了悖论
+
+
+
+
 They wanted to rigorously answer questions like, “Can all true statements be proven?”, “Can we compute all functions that we can define?”, or even the more general question, “What do we mean when we claim a function is ‘computable’?”
 
 他们想严格回答诸如，“所有真陈述都可以被证明吗？” “我们可以计算我们能够定义的所有函数吗”， 甚至更加一般的问题，“当我们声称一个函数是可计算时候“，这意味着什么？
@@ -34,6 +49,10 @@ What I do want to note is that in the process of proving that the answer to the 
 
 我的确想要指出的是，在证明前面两个问题的答案是否定的过程中，图灵和丘奇设计了最后一个问题的精确答案——什么样的函数是可计算的。他们每个人都用最少的一组机器构建了一个小系统，这些机器仍然足够强大，可以计算任何一个（非常）大的函数类。
 
+> They proved the answer to the first question is “no” by showing that the function that returns the truth value of a given statement is not a computable one.
+> 
+> 他们通过证明，返回给定语句真值的函数不是可计算的函数，证明了第一个问题的答案是否。
+
 These are now considered the “computable functions”. Turing’s system is called a Turing machine. Church’s is the lambda calculus. Both are still widely used as the basis for models of computation and, in fact, many modern functional programming languages use the lambda calculus at their core.
 
 这些现在被认为是可计算函数，图灵设计的系统被称为图灵机，丘奇设计的是lambda 演算，两者仍然被广泛用于计算模型的基础，事实上，许多现代的函数式编程语言都是以lambda 演算为核心。
@@ -44,6 +63,12 @@ Turing machines have better name recognition—there’s no Hollywood film about
 
 图灵机有更好的辨识度（还没有关于图灵和丘奇的好莱坞电影），但是这两种形式主义都非常流行。事实上，任何具有最低表达水平的编程语言，都足以计算任何可计算函数。
 
+> Turing called his inventions “a-machines” for “automatic”. He wasn’t so self-aggrandizing as to put his own name on them. Later mathematicians did that for him. That’s how you get famous while still retaining some modesty.
+> 
+> 图灵将他的发明称为自动机器，他并没有自吹自擂，甚至没有把自己的名字添加到上面。后来的数学家为他做了这件事，这就是你在保持谦逊的同时也能成名的原因。
+
+
+
 You can prove that by writing a simulator for a Turing machine in your language. Since Turing proved his machine can compute any computable function, by extension, that means your language can too. All you need to do is translate the function into a Turing machine, and then run that on your simulator.
 
 你可以用你的语言为图灵机编写一个模拟器来证明这一点，由于图灵证明了他的机器可以计算任何可计算函数，这意味着你的语言也可以。你需要做的是，将函数转换为图灵机，然后在模拟器上运行。
@@ -52,6 +77,9 @@ If your language is expressive enough to do that, it’s considered Turing-compl
 
 如果你的语言有足够的表达能力，那么它就被认为是图灵完备的，图灵机非常简单，不需要太多的功能。你基本上只需要算术、一点控制流、以及内存的分配与使用（理论上是任何大小的内存），我们将去实现一个图灵完备的语言。
 
+> We almost have the third too. You can create and concatenate strings of arbitrary size, so you can store unbounded memory. But we don’t have any way to access parts of a string
+> 
+> 我们几乎还有第三个，你可以创建和连接任意大小的字符串，因此可以存储无限内存。但是我们无法访问字符串的部分。
 
 ## 二、Conditional Execution
 
@@ -76,6 +104,10 @@ Branching is simpler, so we’ll start there. C-derived languages have two main 
 
 if 语句允许有条件的执行语句，条件运算符，允许有条件的执行表达式。
 
+> The conditional operator is also called the “ternary” operator because it’s the only operator in C that takes three operands.
+> 
+> 条件运算符也被称为三元运算符，因为它是C语言中的唯一一个接受三个操作数的运算符
+
 For simplicity’s sake, Lox doesn’t have a conditional operator, so let’s get our if statement on. Our statement grammar gets a new production.
 
 为了简单起见，Lox没有条件运算符，所以让我们从if语句开始，我们的语句语法需要更新
@@ -91,6 +123,10 @@ ifStmt         → "if" "(" expression ")" statement
                ( "else" statement )? ;
 
 ```
+
+> The semicolons in the rules aren’t quoted, which means they are part of the grammar metasyntax, not Lox’s syntax. A block does not have a ; at the end and an if statement doesn’t either, unless the then or else statement happens to be one that ends in a semicolon.
+> 
+> 规则中的分号没有被引用，这意味着，它们是语法元语法的一部分，而不是Lox语法，块没有分号，除非then/else语句恰好以分号结尾
 
 An if statement has an expression for the condition, then a statement to execute if the condition is truthy. Optionally, it may also have an else keyword and a statement to execute if the condition is falsey. The syntax tree node has fields for each of those three pieces.
 
@@ -146,6 +182,14 @@ When it finds one, it calls this new method to parse the rest:
 
 ```
 
+> The parentheses around the condition are only half useful. You need some kind of delimiter between the condition and the then statement, otherwise the parser can’t tell when it has reached the end of the condition expression. But the opening parenthesis after if doesn’t do anything useful. Dennis Ritchie put it there so he could use ) as the ending delimiter without having unbalanced parentheses.
+> 
+> 条件周围的括号，只有一半的作用，在条件和then语句之间需要某种分隔符，否则解析器无法判断何时到达条件表达式的结尾。但是if后面的左括号没有任何用处，Dennis Ritchie 把它放在那里，是为了让语句没有不平衡的括号） 作为结尾分隔符
+>
+> Other languages like Lua and some BASICs use a keyword like then as the ending delimiter and don’t have anything before the condition. Go and Swift instead require the statement to be a braced block. That lets them use the { at the beginning of the statement to tell when the condition is done.
+> 
+> 其他语言，例如: Lua和某些Basic，使用then这样的关键字作为分隔符，在条件之前没有任何内容。Go和Swift语言要求语句是一个支撑块。这允许它们使用语句开始的{来判断条件何时完成
+
 As usual, the parsing code hews closely to the grammar. It detects an else clause by looking for the preceding else keyword. If there isn’t one, the elseBranch field in the syntax tree is null.
 
 与往常一样，解析代码和语法非常接近，我们通过找到else 关键字，检测 else子语句，如果没有，则语法树对应的else为空。
@@ -176,6 +220,10 @@ Since else clauses are optional, and there is no explicit delimiter marking the 
 由于else语句是可选的，并且没有明确的分隔符标记if语句的结尾，因此当你以这种方式嵌套if语句时候，语法是不明确的。这种经典的语法缺陷被称为 [悬挂的else语句](https://en.wikipedia.org/wiki/Dangling_else)
 
 ![dangling-else](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/dangling-else.png?raw=true)
+
+> Here, formatting highlights the two ways the else could be parsed. But note that since whitespace characters are ignored by the parser, this is only a guide to the human reader.
+> 
+> 在这里，格式化强调了解析else的两种方式，但是请注意，由于解析器忽略了空白字符，所以，这只是方便读者阅读
 
 It is possible to define a context-free grammar that avoids the ambiguity directly, but it requires splitting most of the statement rules into pairs, one that allows an if with an else and one that doesn’t. It’s annoying.
 
@@ -250,11 +298,626 @@ logic_and      → equality ( "and" equality )* ;
 
 ```
 
+> I’ve always wondered why they don’t have the same precedence, like the various comparison or equality operators do.
+> 
+> 我一直想要知道，为什么它们不像其他各种比较运算符或者相等运算符那样具有相同的优先级
 
 Instead of falling back to equality, assignment now cascades to logic_or. The two new rules, logic_or and logic_and, are similar to other binary operators. Then logic_and calls out to equality for its operands, and we chain back to the rest of the expression rules.
 
 赋值不会返回到 equality, 而是级联到logic_or, 这两个新的规则，logic_or 和 logic_and, 和其他的二元运算符相似，然后，logic_and 会调用 equality，从而进入到其他的表达式中
 
+> The syntax doesn’t care that they short-circuit. That’s a semantic concern.
+> 
+> 语法并不关心是否短路，这是一个语义问题
+
 We could reuse the existing Expr.Binary class for these two new expressions since they have the same fields. But then visitBinaryExpr() would have to check to see if the operator is one of the logical operators and use a different code path to handle the short circuiting. I think it’s cleaner to define a new class for these operators so that they get their own visit method.
 
-我们可以复用现有的
+我们可以为这两个新的表达式，复用现有的Expr.Binary类，因为它们具有相同的字段，但是，visitBinaryExpr() 方法，必须要检查该运算符是否为逻辑运算符之一，使用不同的代码分支来处理。我认为为这些操作符定义一个新的类，这样，它们就可以获得自己的访问方法。
+
+```java
+// tool/GenerateAst.java, in main()
+
+      "Literal  : Object value",
+      "Logical  : Expr left, Token operator, Expr right",
+      "Unary    : Token operator, Expr right",
+
+
+```
+
+
+To weave the new expressions into the parser, we first change the parsing code for assignment to call or().
+
+为了将新的表达式组合到解析器中，首先，我们要将赋值的解析代码更改为调用 or()
+
+```java
+
+// lox/Parser.java, in assignment(), replace 1 line
+
+ private Expr assignment() {
+    Expr expr = or();
+
+    if (match(EQUAL)) {
+	
+```
+
+The code to parse a series of or expressions mirrors other binary operators.
+ 
+解析一系列或运算表达式的代码，反应了了其他二进制运算符。
+
+```java
+
+// lox/Parser.java, add after assignment()
+
+  private Expr or() {
+    Expr expr = and();
+
+    while (match(OR)) {
+      Token operator = previous();
+      Expr right = and();
+      expr = new Expr.Logical(expr, operator, right);
+    }
+
+    return expr;
+  }
+  
+```
+
+
+Its operands are the next higher level of precedence, the new and expression.
+
+或运算符表达式的操作数，是更高优先级的and运算符表达式
+
+```java
+
+// lox/Parser.java, add after or()
+
+  private Expr and() {
+    Expr expr = equality();
+
+    while (match(AND)) {
+      Token operator = previous();
+      Expr right = equality();
+      expr = new Expr.Logical(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+```
+
+That calls equality() for its operands, and with that, the expression parser is all tied back together again. We’re ready to interpret.
+
+equality() 方法，获取and 运算符表达式的操作数，然后表达式再次绑定在一起，我们准备好开始解释了。
+
+```java
+
+// lox/Interpreter.java, add after visitLiteralExpr()
+
+
+  @Override
+  public Object visitLogicalExpr(Expr.Logical expr) {
+    Object left = evaluate(expr.left);
+
+    if (expr.operator.type == TokenType.OR) {
+      if (isTruthy(left)) return left;
+    } else {
+      if (!isTruthy(left)) return left;
+    }
+
+    return evaluate(expr.right);
+  }
+
+
+```
+
+If you compare this to the earlier chapter’s visitBinaryExpr() method, you can see the difference. Here, we evaluate the left operand first. We look at its value to see if we can short-circuit. If not, and only then, do we evaluate the right operand.
+
+如果将这个方法与前一章的visitBinaryExpr() 方法进行比较，可以看到其中的区别，这里，我们首先计算左操作数，然后我们查看计算的值，看看是否可以形成短路，如果没有，我们才会计算右操作数。
+
+The other interesting piece here is deciding what actual value to return. Since Lox is dynamically typed, we allow operands of any type and use truthiness to determine what each operand represents. We apply similar reasoning to the result. Instead of promising to literally return true or false, a logic operator merely guarantees it will return a value with appropriate truthiness.
+
+这里另一个有趣的部分是决定返回什么实际值，由于Lox是动态类型的，因此我们允许任何类型的操作数，并且使用真假来决定每个操作数表示的内容，我们对结果进行类似的推理，逻辑运算符不承诺字面上返回true/false， 而是保证它的返回值具有真实性。
+
+Fortunately, we have values with proper truthiness right at hand—the results of the operands themselves. So we use those. For example:
+
+幸运的是，我们手边就有具有适当的真实性的值，即操作数本身的结果，所以，我们使用这些，例如：
+
+```java
+
+print "hi" or 2; // "hi".
+print nil or "yes"; // "yes".
+
+```
+
+On the first line, "hi" is truthy, so the or short-circuits and returns that. On the second line, nil is falsey, so it evaluates and returns the second operand, "yes".
+
+上面的第一行中，"hi" 是真的，所以or 运算符会短路，并且返回"hi"
+
+第二行中，nil 是false，因此短路不会发生，我们计算并且返回第二个操作数 "yes"
+
+That covers all of the branching primitives in Lox. We’re ready to jump ahead to loops. You see what I did there? Jump. Ahead. Get it? See, it’s like a reference to . . . oh, forget it.
+
+这涵盖了Lox语言中的所有分支原语，我们准备好跳转到循环了。
+
+## 四、While Loops
+
+循环
+
+Lox features two looping control flow statements, while and for. The while loop is the simpler one, so we’ll start there. Its grammar is the same as in C.
+
+Lox具有两个循环控制流语句，while和for，while循环比较简单，所以我们从这里开始，它的语法和C语言相同。
+
+```java
+
+statement      → exprStmt
+               | ifStmt
+               | printStmt
+               | whileStmt
+               | block ;
+
+whileStmt      → "while" "(" expression ")" statement ;
+
+```
+
+We add another clause to the statement rule that points to the new rule for while. It takes a while keyword, followed by a parenthesized condition expression, then a statement for the body. That new grammar rule gets a syntax tree node.
+
+我们在语句规则中添加一个子句，该子句为while子句，开始于一个while关键字，然后是一个带括号的条件表达式，最后是主体的语句，这个新语法规则得到一个语法树节点。
+
+The node stores the condition and body. Here you can see why it’s nice to have separate base classes for expressions and statements. The field declarations make it clear that the condition is an expression and the body is a statement.
+
+节点存储条件和主体，在这里，我们可以看到为什么表达式和语句，设置独立的基类更好，字段声明清楚的表明，条件是一个表达式，而主体是一个语句。
+
+Over in the parser, we follow the same process we used for if statements. First, we add another case in statement() to detect and match the leading keyword.
+
+在解释器中，我们遵循和if语句相同的过程，首先，我们添加一个分支，检查开始关键字是否是while
+
+```java
+
+// lox/Parser.java, in statement()
+
+ if (match(PRINT)) return printStatement();
+    if (match(WHILE)) return whileStatement();
+    if (match(LEFT_BRACE)) return new Stmt.Block(block());
+
+```
+
+That delegates the real work to this method:
+
+将实际的工作委托给
+
+```java
+
+// lox/Parser.java, add after varDeclaration()
+
+  private Stmt whileStatement() {
+    consume(LEFT_PAREN, "Expect '(' after 'while'.");
+    Expr condition = expression();
+    consume(RIGHT_PAREN, "Expect ')' after condition.");
+    Stmt body = statement();
+
+    return new Stmt.While(condition, body);
+  }
+  
+```
+
+The grammar is dead simple and this is a straight translation of it to Java. Speaking of translating straight to Java, here’s how we execute the new syntax:
+
+语法非常简单，这是它到Java的直接翻译，说到直接翻译为Java，下面是我们如何执行新语法
+
+
+```java
+
+// lox/Interpreter.java, add after visitVarStmt()
+
+ @Override
+  public Void visitWhileStmt(Stmt.While stmt) {
+    while (isTruthy(evaluate(stmt.condition))) {
+      execute(stmt.body);
+    }
+    return null;
+  }
+
+
+```
+
+Like the visit method for if, this visitor uses the corresponding Java feature. This method isn’t complex, but it makes Lox much more powerful. We can finally write a program whose running time isn’t strictly bound by the length of the source code.
+
+和if的访问方法一样，该访问者使用相同的Java特性，这个方法并不复杂，但是它使得Lox更加强大，我们最终可以编写一个运行时间不受源代码长度严格限制的程序。
+
+## 五、For Loops
+
+for循环
+
+We’re down to the last control flow construct, Ye Olde C-style for loop. I probably don’t need to remind you, but it looks like this:
+
+我们将讨论最后一个控制流构造，C语言样式的for循环，我可能不需要提醒你，但是它看起来是这样的
+
+```java
+
+for (var i = 0; i < 10; i = i + 1) print i;
+
+
+```
+
+In grammarese, that’s:
+
+语法中，添加新的规则
+
+```java
+
+
+statement      → exprStmt
+               | forStmt
+               | ifStmt
+               | printStmt
+               | whileStmt
+               | block ;
+
+forStmt        → "for" "(" ( varDecl | exprStmt | ";" )
+                 expression? ";"
+                 expression? ")" statement ;
+				 
+```
+
+> Most modern languages have a higher-level looping statement for iterating over arbitrary user-defined sequences. C# has foreach, Java has “enhanced for”, even C++ has range-based for statements now. Those offer cleaner syntax than C’s for statement by implicitly calling into an iteration protocol that the object being looped over supports.
+> 
+> 大多数现代语言，都有一个更加高级的循环语句。用于迭代任意用户定义的序列。C#有for each, Java有增加的for，甚至C++中现在也有基于范围的for语句。它们通过隐式调用循环对象所支持的迭代协议，提供了比C语言的for循环语句更加简洁的语法
+> 
+> I love those. For Lox, though, we’re limited by building up the interpreter a chapter at a time. We don’t have objects and methods yet, so we have no way of defining an iteration protocol that the for loop could use. So we’ll stick with the old school C for loop. Think of it as “vintage”. The fixie of control flow statements.
+> 
+> 我喜欢这些语法糖。不过，对于Lox来说，我们只能一次为编译器建立一个章节。我们还没有对象和方法，因此我们无法定义for循环可以使用的迭代协议。所以，我们将继续使用C语言的for循环，将其视为复古。控制流语句的修复
+
+Inside the parentheses, you have three clauses separated by semicolons:
+
+1. The first clause is the initializer. It is executed exactly once, before anything else. It’s usually an expression, but for convenience, we also allow a variable declaration. In that case, the variable is scoped to the rest of the for loop—the other two clauses and the body.
+
+1. Next is the condition. As in a while loop, this expression controls when to exit the loop. It’s evaluated once at the beginning of each iteration, including the first. If the result is truthy, it executes the loop body. Otherwise, it bails.
+
+1. The last clause is the increment. It’s an arbitrary expression that does some work at the end of each loop iteration. The result of the expression is discarded, so it must have a side effect to be useful. In practice, it usually increments a variable.
+
+Any of these clauses can be omitted. Following the closing parenthesis is a statement for the body, which is typically a block.
+
+在for循环的括号中，有三个用分号分隔的子句
+
+1. 第一个子句是初始值设定项，它只执行一次，而不执行任何其他操作，它通常是一个表达式，但是为了方便，我们也允许变量声明，在这种情况下，变量的作用域是for循环的其余部分、其他两个子句、主体
+
+1. 接下来是条件，和while循环一样，for循环需要一个条件表达式控制何时退出循环，它在每一次迭代开始时候进行一次评估，包括第一次，如果结果是真，则执行循环体，如果结果是假，不会执行循环体
+
+1. 最后一个子句是增量，这是一个任意表达式，在每次循环迭代结束时候，都会执行一些其他工作。表达式的结果被丢弃，因此它必须有副作用才能有作用。实际上，它通常是一个增量
+
+这三个子句，任意一个都可以省略。右括号后面是正文的语句，通常是一个块。
+
+### 5.1 Desugaring
+
+脱糖
+
+That’s a lot of machinery, but note that none of it does anything you couldn’t do with the statements we already have. If for loops didn’t support initializer clauses, you could just put the initializer expression before the for statement. Without an increment clause, you could simply put the increment expression at the end of the body yourself.
+
+In other words, Lox doesn’t need for loops, they just make some common code patterns more pleasant to write. These kinds of features are called syntactic sugar. For example, the previous for loop could be rewritten like so:
+
+这个一个很大的机器，但是请注意，它的任何一个操作，都可以转化为我们之前的语句。如果for循环，不支持初始值设定子句，则可以将初始值设定，放到for语句之前，如果没有增量子句，我们可以直接将增量表达式放到循环体的末尾。
+
+换句话说，Lox不需要for循环，它们只是使得一些常见的代码模式更易于编写。这些特征被称为语法糖，例如：之前的for循环可以重写为
+
+```java
+
+{
+  var i = 0;
+  while (i < 10) {
+    print i;
+    i = i + 1;
+  }
+}
+
+```
+
+> ![sugar](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/sugar.png?raw=true)
+> 
+> This delightful turn of phrase was coined by Peter J. Landin in 1964 to describe how some of the nice expression forms supported by languages like ALGOL were a sweetener sprinkled over the more fundamental—but presumably less palatable—lambda calculus underneath.
+> 
+> 1964年，Peter.J.Landin 创造了这个令人愉快的短语。用来描述ALGOL等语言所支持的一些漂亮的表达形式是如何在更加基本但是可能不太讨人喜欢的lambda演算上撒上甜味剂。
+
+This script has the exact same semantics as the previous one, though it’s not as easy on the eyes. Syntactic sugar features like Lox’s for loop make a language more pleasant and productive to work in. But, especially in sophisticated language implementations, every language feature that requires back-end support and optimization is expensive.
+
+
+这个脚本和前面的脚本，有相同的语义，尽管看起来不是很像，像Lox for循环这样的语法糖，能使语言工作起来更加愉快和高效，但是，特别是在复杂的语法实现中，每一个需要后端支持和优化的语法功能都是昂贵的
+
+We can have our cake and eat it too by desugaring. That funny word describes a process where the front end takes code using syntax sugar and translates it to a more primitive form that the back end already knows how to execute.
+
+我们可以吃蛋糕，通过脱糖方式。这个有趣的词描述了一个过程，其中前端使用语法糖获取代码，并将其转换为后端已经知道如何执行的更加原始的形式
+
+>  Oh, how I wish the accepted term for this was “caramelization”. Why introduce a metaphor if you aren’t going to stick with it?
+> 
+> 哦， 我多么希望这个被接受的术语是焦糖化，如果你不打算坚持，为什么要引入隐喻呢？
+
+We’re going to desugar for loops to the while loops and other statements the interpreter already handles. In our simple interpreter, desugaring really doesn’t save us much work, but it does give me an excuse to introduce you to the technique. So, unlike the previous statements, we won’t add a new syntax tree node. Instead, we go straight to parsing. First, add an import we’ll need soon.
+
+我们将对while 循环和解释器有已经处理的其他语句，进行降级。在我们简单的翻译中，脱糖真的没有为我们节省多少工作。但是它确实给了我一个向大家介绍这项技术的借口。因此，与前面的语句不同，我们不会添加新的语法树节点，相反，我们将直接进行解析，首先，添加我们很需要的导入
+
+```java
+
+// lox/Parser.java
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+```
+
+Like every statement, we start parsing a for loop by matching its keyword.
+
+和其他的语句相似，我们通过匹配其关键字开始解析for循环
+
+```java
+
+// lox/Parser.java, in statement()
+
+ private Stmt statement() {
+    if (match(FOR)) return forStatement();
+    if (match(IF)) return ifStatement();
+	
+```
+
+Here is where it gets interesting. The desugaring is going to happen here, so we’ll build this method a piece at a time, starting with the opening parenthesis before the clauses.
+
+这里是有意思的地方，我们将要进行脱糖处理，所以我们将一次构建一个方法，从子句前面的左括号开始
+
+```java
+
+// lox/Parser.java, add after statement()
+
+
+  private Stmt forStatement() {
+    consume(LEFT_PAREN, "Expect '(' after 'for'.");
+
+    // More here...
+  }
+  
+```
+
+The first clause following that is the initializer.
+
+for循环的左括号后面紧随着初始化子句
+
+```java
+
+// lox/Parser.java, in forStatement(), replace 1 line
+
+    consume(LEFT_PAREN, "Expect '(' after 'for'.");
+
+    Stmt initializer;
+    if (match(SEMICOLON)) {
+      initializer = null;
+    } else if (match(VAR)) {
+      initializer = varDeclaration();
+    } else {
+      initializer = expressionStatement();
+    }
+  }
+  
+```
+
+If the token following the ( is a semicolon then the initializer has been omitted. Otherwise, we check for a var keyword to see if it’s a variable declaration. If neither of those matched, it must be an expression. We parse that and wrap it in an expression statement so that the initializer is always of type Stmt.
+
+如果左括号后面，紧随着一个分号，则初始值设定项已经被省略，否则，我们将会检查是否是var关键字开始的变量声明，如果两者都不匹配，则它是一个表达式，我们解析表达式，并且将它包装在表达式语句中，使得初始值设定项始终为Stmt 类型
+
+Next up is the condition.
+
+接下来是条件表达式
+
+```java
+
+// lox/Parser.java, in forStatement()
+
+      initializer = expressionStatement();
+    }
+
+    Expr condition = null;
+    if (!check(SEMICOLON)) {
+      condition = expression();
+    }
+    consume(SEMICOLON, "Expect ';' after loop condition.");
+  }
+  
+```
+
+> In a previous chapter, I said we can split expression and statement syntax trees into two separate class hierarchies because there’s no single place in the grammar that allows both an expression and a statement. That wasn’t entirely true, I guess.
+> 
+> 在上一章中，我说过我们可以将表达式和语句语法树，分为两个独立的类层次结构，因为语法中没有一个地方同时允许表达式和语句，我想这不完全是真的
+
+Again, we look for a semicolon to see if the clause has been omitted. The last clause is the increment.
+
+接下来，我们寻找分号，以便查看该子句是否被省略，最后一个子句是增量
+
+```java
+
+// lox/Parser.java, in forStatement()
+
+    consume(SEMICOLON, "Expect ';' after loop condition.");
+
+    Expr increment = null;
+    if (!check(RIGHT_PAREN)) {
+      increment = expression();
+    }
+    consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+  }
+```
+
+It’s similar to the condition clause except this one is terminated by the closing parenthesis. All that remains is the body.
+
+它类似与条件子句，这是这个子句以右括号结尾，剩下来只有循环体了
+
+```java
+
+// lox/Parser.java, in forStatement()
+
+    consume(RIGHT_PAREN, "Expect ')' after for clauses.");
+    Stmt body = statement();
+
+    return body;
+  }
+```
+
+> Is it just me or does that sound morbid? “All that remained . . . was the body”.
+
+We’ve parsed all of the various pieces of the for loop and the resulting AST nodes are sitting in a handful of Java local variables. This is where the desugaring comes in. We take those and use them to synthesize syntax tree nodes that express the semantics of the for loop, like the hand-desugared example I showed you earlier.
+
+我们已经解析了for循环的所有不同部分，生成的AST节点位于Java的本地变量中，这就是降级的原因，我们使用这些节点来合成表示for循环语义的语法树节点，这就像我们前面展示的手动降级示例一样
+
+The code is a little simpler if we work backward, so we start with the increment clause.
+
+如果我们向后操作，代码会稍微简单一些，所以我们从增量子句开始
+
+```java
+
+// lox/Parser.java, in forStatement()
+
+    Stmt body = statement();
+
+    if (increment != null) {
+      body = new Stmt.Block(
+          Arrays.asList(
+              body,
+              new Stmt.Expression(increment)));
+    }
+
+    return body;
+	
+```
+
+The increment, if there is one, executes after the body in each iteration of the loop. We do that by replacing the body with a little block that contains the original body followed by an expression statement that evaluates the increment.
+
+如果有一个增量子句，则在循环的每一个迭代主体后执行，为此，我们用一个包含原始体、增量子句的小的代码块，替换原来的循环体。
+
+```java
+
+// lox/Parser.java, in forStatement()
+
+   }
+
+    if (condition == null) condition = new Expr.Literal(true);
+    body = new Stmt.While(condition, body);
+
+    return body;
+	
+```
+
+Next, we take the condition and the body and build the loop using a primitive while loop. If the condition is omitted, we jam in true to make an infinite loop.
+
+接下来，我们获取条件和主体，并且使用基本的while循环构造，如果省略了条件子句，我们将始终将循环条件设置为true，从而形成一个无限循环
+
+```java
+
+// lox/Parser.java, in forStatement()
+
+    body = new Stmt.While(condition, body);
+
+    if (initializer != null) {
+      body = new Stmt.Block(Arrays.asList(initializer, body));
+    }
+
+    return body;
+	
+```
+
+Finally, if there is an initializer, it runs once before the entire loop. We do that by, again, replacing the whole statement with a block that runs the initializer and then executes the loop.
+
+
+最后，如果有初始值设定子句，它会在循环开始之前运行一次，我们再次通过用运行初始值设定项，然后执行循环的语法块，替换之前的语句，来实现这一点
+
+That’s it. Our interpreter now supports C-style for loops and we didn’t have to touch the Interpreter class at all. Since we desugared to nodes the interpreter already knows how to visit, there is no more work to do.
+
+就是这样，我们的解释器现在已经支持C语言样式的循环了。我们根本不需要接触解释器类。由于我们我们已经降级到节点，解释器已经知道如何访问，因此没有更多的工作要做。
+
+Finally, Lox is powerful enough to entertain us, at least for a few minutes. Here’s a tiny program to print the first 21 elements in the Fibonacci sequence:
+
+最后，Lox语言已经足够强大，至少能让我们开心几分钟。下面是一个打印斐波那契数列中前21个元素的小程序
+
+
+```java
+
+
+var a = 0;
+var temp;
+
+for (var b = 1; a < 10000; b = temp + b) {
+  print a;
+  temp = a;
+  a = b;
+}
+
+```
+
+```java
+
+var a = 0; var temp; for (var b = 1; a < 10000; b = temp + b) { print a; temp = a; a = b;}
+
+```
+
+![fibonacci](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/fibonacci.png?raw=true)
+
+## 六、CHALLENGES
+
+习题
+
+1. A few chapters from now, when Lox supports first-class functions and dynamic dispatch, we technically won’t need branching statements built into the language. Show how conditional execution can be implemented in terms of those. Name a language that uses this technique for its control flow.
+
+
+1. Likewise, looping can be implemented using those same tools, provided our interpreter supports an important optimization. What is it, and why is it necessary? Name a language that uses this technique for iteration.
+
+1. Unlike Lox, most other C-style languages also support break and continue statements inside loops. Add support for break statements.
+
+The syntax is a break keyword followed by a semicolon. It should be a syntax error to have a break statement appear outside of any enclosing loop. At runtime, a break statement causes execution to jump to the end of the nearest enclosing loop and proceeds from there. Note that the break may be nested inside other blocks and if statements that also need to be exited.
+
+
+
+1. 后面几章以后，当Lox支持一级函数和动态分派后，我们在技术上不需要在语言中内置分支语句。展示如果根据这些条件，实现条件执行。指定一种语言，该语言是如何将此技术用于其控制流呢
+
+1. 同样的，只要我们的解释器支持一个重要的优化，就可以使用这些相同的工具实现循环，它是什么呢？为什么有必要呢？举例一种使用此技术进行迭代的语言。
+
+1. 与Lox语言不同，大多数的C样式语言，也支持循环内的break 和 continue语句，添加对break语句的支持。
+
+break语句的关键字是break，后面跟随分号，在任何的循环之外出现break语句都是语法错误。在运行时，break语句会导致执行跳转到最近的循环的末尾，并且从那里继续执行。注意，break可能嵌套在其他块和if语句中，这些语句也需要退出机制。
+
+## 七、DESIGN NOTE: SPOONFULS OF SYNTACTIC SUGAR
+
+设计思路: 几种语法糖
+
+When you design your own language, you choose how much syntactic sugar to pour into the grammar. Do you make an unsweetened health food where each semantic operation maps to a single syntactic unit, or some decadent dessert where every bit of behavior can be expressed ten different ways? Successful languages inhabit all points along this continuum.
+
+当你设计自己的语言时候，你可以选择在语法中添加多少的语法糖，你会选择一种不添加语法糖的健康食品，每一个语义操作都映射为一个语法单元；还是一种充满语法糖的甜点，每一个语义的操作都可以用数十种不同的方式表达？成功的语法存在于这两种极限场景中
+
+On the extreme acrid end are those with ruthlessly minimal syntax like Lisp, Forth, and Smalltalk. Lispers famously claim their language “has no syntax”, while Smalltalkers proudly show that you can fit the entire grammar on an index card. This tribe has the philosophy that the language doesn’t need syntactic sugar. Instead, the minimal syntax and semantics it provides are powerful enough to let library code be as expressive as if it were part of the language itself.
+
+最棘手的是那些语法及其简单的语言，例如：lisp/Forth/Smalltalk,, lispers 宣称他们的语言没有语法，Smalltalker自豪的表明，你可以将这个语法放在索引卡上。这些语言的设计哲学是，语言不需要语法糖。相反，它提供的最小的语法和语义，却足够强大，可以让库代码像语法本身一样具有表达力。
+
+Near these are languages like C, Lua, and Go. They aim for simplicity and clarity over minimalism. Some, like Go, deliberately eschew both syntactic sugar and the kind of syntactic extensibility of the previous category. They want the syntax to get out of the way of the semantics, so they focus on keeping both the grammar and libraries simple. Code should be obvious more than beautiful.
+
+接近这些的是C、Lua和Go等语言，他们的目标简单明了，而不是极简主义。这些人，例如：Go，故意避开了语法糖和前一类极简主义语言的语法可扩展性。他们希望语法摆脱语义的束缚，所以他们专注于保持语法和库的简单，代码应该是显而易见的，而不是漂亮的
+
+Somewhere in the middle you have languages like Java, C#, and Python. Eventually you reach Ruby, C++, Perl, and D—languages which have stuffed so much syntax into their grammar, they are running out of punctuation characters on the keyboard.
+
+中间的某个地方是Java/C#/Python等语言。最终，你会遇到Ruby/C++/Perl/D等语言，它们在语法中填充了更多的语法糖，键盘上的标点符号都要用完了😄。
+
+To some degree, location on the spectrum correlates with age. It’s relatively easy to add bits of syntactic sugar in later releases. New syntax is a crowd pleaser, and it’s less likely to break existing programs than mucking with the semantics. Once added, you can never take it away, so languages tend to sweeten with time. One of the main benefits of creating a new language from scratch is it gives you an opportunity to scrape off those accumulated layers of frosting and start over.
+
+在某种程度上，这些语言的语法糖数量和语言产生的时间有关系。在更后面的语言中，更倾向添加新语法糖。新的语法是一种大众喜闻乐见的语言。它不太可能破坏现有的语言，更不可能剖坏语义。一旦添加，你无法删除这些语法糖。因此，语言往往会随着时间的推移而变甜。从头开始创建一种新的语言的主要好处之一是它给了你一个机会，让你挂掉之前的语法糖，重新开始。
+
+Syntactic sugar has a bad rap among the PL intelligentsia. There’s a real fetish for minimalism in that crowd. There is some justification for that. Poorly designed, unneeded syntax raises the cognitive load without adding enough expressiveness to carry its weight. Since there is always pressure to cram new features into the language, it takes discipline and a focus on simplicity to avoid bloat. Once you add some syntax, you’re stuck with it, so it’s smart to be parsimonious.
+
+语法糖在PL知识分子中有着不好的名声。那群人对极简主义有着痴迷。这是有道理的，设计不当、不必要的语法会增加学习曲线。但是，总是会有新的压力将新的特性添加到语言中，因此，需要遵守纪律并且注重简单性以避免膨胀。一旦你添加了一些语法，你就要坚持下去，所以，遵守简洁是明智的。
+
+At the same time, most successful languages do have fairly complex grammars, at least by the time they are widely used. Programmers spend a ton of time in their language of choice, and a few niceties here and there really can improve the comfort and efficiency of their work.
+
+同时，大多数成功的语言确实有相当复杂的语法，至少在它们被广泛使用的时候，程序员花费大量的时间使用自己选择的语言。这里和那里的一些细节确实可以提高工作的舒适度和效率
+
+Striking the right balance—choosing the right level of sweetness for your language—relies on your own sense of taste.
+
+要达到一个平衡，为你的语言选择合适的甜度取决于你自己的品味。
+
+
+
+
+
+
+
