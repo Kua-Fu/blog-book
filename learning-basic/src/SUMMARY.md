@@ -10,6 +10,7 @@
 - [mdbook](mdbook/mdbook.md)
   - [comment system: giscus](mdbook/giscus.md)
   - [visitor analytics: flag counter](mdbook/flag_counter.md)
+  - [blog license: creativecommons](mdbook/blog_license.md)
 - [insomnia](insomnia/insomnia.md)
 - [MacOS](macos/macos.md)
 
