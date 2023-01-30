@@ -1,14 +1,14 @@
 # datadog
 
-## 一、参考
+## 一、Reference
 
 > [datadog agent](https://docs.datadoghq.com/agent/)
 
 > [How to monitor NGINX with Datadog](https://www.datadoghq.com/blog/how-to-monitor-nginx-with-datadog/)
 
-## 二、安装
+## 二、Install Datadog Agent
 
-### 2.1 安装agent
+### 2.1 install agent
 
 ```
 ➜  ~ cat /etc/system-release
@@ -19,9 +19,9 @@ CentOS Linux release 7.6.1810 (Core)
 
 ```
 
-## 三、配置日志采集
+## 三、Set agent configuration
 
-### 3.1 采集文件中的日志
+### 3.1 Collect logs
 
 
 Custom log collection
@@ -61,9 +61,9 @@ Datadog Agent v6 can collect logs and forward them to Datadog from files, the ne
 
 ![采集文件日志](https://github.com/Kua-Fu/blog-book-images/blob/main/datadog/datadog-custom-file-log.png?raw=true)
 
-### 3.2 采集nginx日志
+### 3.2 collect nginx logs
 
-1. 需要在 `/etc/datadog-agent/conf.d/nginx.d` 中添加配置文件 `conf.yaml`
+1. Add config yaml file, `/etc/datadog-agent/conf.d/nginx.d` add config file `conf.yaml`
 
    ```
    
@@ -77,13 +77,13 @@ Datadog Agent v6 can collect logs and forward them to Datadog from files, the ne
 	 
    ```
    
-1. 重启agent，  `systemctl restart datadog-agent`
+1. restart agent，  `systemctl restart datadog-agent`
 
 ![nginx 日志](https://github.com/Kua-Fu/blog-book-images/blob/main/datadog/datadog-nginx-log.png?raw=true)
 
-## 四、构造大量日志
+## 四、Create Massive Testing logs
 
-执行下面程序，将会构造大量`nginx access.log` 
+create testing script, run it, will create massive logs to file `nginx access.log` 
 
 ```golang
 
