@@ -833,15 +833,15 @@ There are a couple of hard requirements for when the parser runs into a syntax e
 
 Those are the table stakes if you want to get in the parser game at all, but you really want to raise the ante beyond that. A decent parser should:
 
-* **Be fast. **
+* **Be fast**
 
   Computers are thousands of times faster than they were when parser technology was first invented. The days of needing to optimize your parser so that it could get through an entire source file during a coffee break are over. But programmer expectations have risen as quickly, if not faster. They expect their editors to reparse files in milliseconds after every keystroke.
   
-* **Report as many distinct errors as there are. **
+* **Report as many distinct errors as there are**
 
 	Aborting after the first error is easy to implement, but it’s annoying for users if every time they fix what they think is the one error in a file, a new one appears. They want to see them all.
 	
-* **Minimize cascaded errors.**
+* **Minimize cascaded errors**
 
 	Once a single error is found, the parser no longer really knows what’s going on. It tries to get itself back on track and keep going, but if it gets confused, it may report a slew of ghost errors that don’t indicate other real problems in the code. When the first error is fixed, those phantoms disappear, because they reflect only the parser’s own confusion. Cascaded errors are annoying because they can scare the user into thinking their code is in a worse state than it is.
 	

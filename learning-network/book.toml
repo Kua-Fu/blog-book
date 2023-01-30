@@ -3,7 +3,7 @@ authors = ["yz"]
 language = "en"
 multilingual = false
 src = "src"
-title = "learing-basic"
+title = "network"
 
 [output.html]
 git-repository-url = "https://github.com/Kua-Fu/blog-book"

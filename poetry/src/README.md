@@ -6,12 +6,12 @@
 
 [`Github`](https://github.com/Kua-Fu) | [`Segmentfault`](https://segmentfault.com/u/yiquguanglingsan) 
 
-`Email: yz15951606335@gmail.com`
+[`Email: yz15951606335@gmail.com`](mailto:yz15951606335@gmail.com)
 
 
 ## Technology Stack
 
-* `Python` ⭐ ⭐ ⭐ ☆ ☆ | `Go` ⭐ ⭐ ⭐ ☆ ☆ | `Java/C/C++/Rust/Shell` ⭐ ☆ ☆ ☆ ☆
+* `Python/Go` ⭐ ⭐ ⭐ ☆ ☆ | `Java/C/C++/Rust/Shell` ⭐ ☆ ☆ ☆ ☆
 
 * `MySQL` `Redis` `Elasticsearch` `InfluxDB` 
 
@@ -21,7 +21,7 @@
 
 * **Senior Software Engineer**
   
-  [驻云](https://guance.com/)| Nov 2019 ~ Present ｜ Shanghai, China
+  [驻云](https://guance.com/)| Nov 2020 ~ Present ｜ Shanghai, China
   
 * **Senior Software Engineer**
 
