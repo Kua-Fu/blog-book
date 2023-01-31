@@ -20,4 +20,5 @@
   - [计算表达式](./tree/evaluating-expression.md)
   - [语句和状态](./tree/statements-and-state.md)
   - [控制流程](./tree/control-flow.md)
+  - [函数](./tree/functions.md)
   

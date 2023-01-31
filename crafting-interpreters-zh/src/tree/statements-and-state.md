@@ -1331,7 +1331,7 @@ fun playIt(thing) {
 
 When playIt() calls thing.play(), we don’t know if we’re about to hear “Careless Whisper” or “Fore!” It depends on whether you pass a Saxophone or a GolfClub to the function, and we don’t know that until runtime.
 
-当函数playIt() 调用thing.play() 时候，我们不知道返回值是 “Careless Whisper” 还是 “Fore!”，这取决于你是把 Saxophone 还是 GolfClub 传送给函数，而我们知道运行时候，才能知道实参信息
+当函数playIt() 调用thing.play() 时候，我们不知道返回值是 “Careless Whisper” 还是 “Fore!”，这取决于你是把 Saxophone 还是 GolfClub 传送给函数，而我们直到运行时候，才能知道实参信息
 
 Scope and environments are close cousins. The former is the theoretical concept, and the latter is the machinery that implements it. As our interpreter works its way through code, syntax tree nodes that affect scope will change the environment. In a C-ish syntax like Lox’s, scope is controlled by curly-braced blocks. (That’s why we call it block scope.)
 
