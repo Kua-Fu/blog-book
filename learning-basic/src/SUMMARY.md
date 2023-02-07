@@ -13,6 +13,7 @@
   - [blog license: creativecommons](mdbook/blog_license.md)
 - [insomnia](insomnia/insomnia.md)
 - [MacOS](macos/macos.md)
+  - [after MacOS upgrade, can not use git](mdbook/install_xcode.md)
 
 
 

@@ -55,6 +55,32 @@ There’s a lot to unpack in that:
 
 * “Preceding” means appearing before in the program text.
 
+	```java
+	
+		var a = "outer";
+		{
+			print a;
+			var a = "inner";
+		}
+		
+	```
+
+	Here, the a being printed is the outer one since it appears before the print statement that uses it. In most cases, in straight line code, the declaration preceding in text will also precede the usage in time. But that’s not always true. As we’ll see, functions may defer a chunk of code such that its dynamic temporal execution no longer mirrors the static textual ordering.
+
+* “Innermost” is there because of our good friend shadowing. There may be more than one variable with the given name in enclosing scopes, as in:
+
+	```java
+	
+	var a = "outer";
+	{
+		var a = "inner";
+		print a;
+	}
+	
+	```
+	
+	Our rule disambiguates this case by saying the innermost scope wins.
+
 还有一些需要东西需要解释
 
 * 我使用名词，变量用法，而不是变量表达式，是为了包含变量表达式和赋值，与“使用变量的表达式”类似
@@ -62,17 +88,89 @@ There’s a lot to unpack in that:
 * 前置，意味着声明出现在变量表达式的代码前面
 
 
+	 ```java
+
+
+	 var a = "outer";
+	 {
+		 print a;
+		 var a = "inner";
+	 }
+
+	 ```
+
+	 上面的代码中，打印的a，表示外部的变量a，因为它出现在使用它的print语句之前。在大多数情况下，在直接式程序中，文本前面的声明也会比变量表达式，更早的运行。但是，这也不总是对的。正如我们将要看到的，函数可能会延迟执行一些代码，这样它的执行就是动态的，不能反映静态文件的代码顺序。
+
+* 最内部是因为我们已经接触的追踪。内部封闭代码中，可能会出现多个给定名称的变量，例如：
+
+	```java
+	
+	var a = "outer";
+	{
+		var a = "inner";
+		print a;
+	}
+	
+	```
+
+	我们规则，定义了最内层的范围优先级更高，用于消除歧义。
+
+Since this rule makes no mention of any runtime behavior, it implies that a variable expression always refers to the same declaration through the entire execution of the program. Our interpreter so far mostly implements the rule correctly. But when we added closures, an error snuck in.
+
+由于这个规则没有提及任何运行时的行为，因此它意味着变量表达式在程序的整个执行过程中，始终引用相同的声明。到目前为止，我们的解释器基本上是正确执行上面的规则。但是当我们添加闭包时，一个错误悄悄的出现了。
+
+
 ```java
 
-
-var a = "outer";
+var a = "global";
 {
-  print a;
-  var a = "inner";
+  fun showA() {
+    print a;
+  }
+
+  showA();
+  var a = "block";
+  showA();
 }
 
 ```
 
-Here, the a being printed is the outer one since it appears before the print statement that uses it. In most cases, in straight line code, the declaration preceding in text will also precede the usage in time. But that’s not always true. As we’ll see, functions may defer a chunk of code such that its dynamic temporal execution no longer mirrors the static textual ordering.
+Before you type this in and run it, decide what you think it should print.
 
-上面的代码中，打印的a，表示外部的变量a，因为它出现在使用它的print语句之前。在大多数情况下，在直接式程序中，文本前面的声明也会比变量表达式，更早的运行。
+在你键入代码并且运行之前，你认为会输出什么结果呢？
+
+OK . . . got it? If you’re familiar with closures in other languages, you’ll expect it to print “global” twice. The first call to showA() should definitely print “global” since we haven’t even reached the declaration of the inner a yet. And by our rule that a variable expression always resolves to the same variable, that implies the second call to showA() should print the same thing.
+
+Alas, it prints:
+
+```java
+
+global
+block
+
+```
+
+好了，现在我们知道了？如果你熟悉其他语言中的闭包，我们会期望两次输出都是 global, 因为我们还没有到达内部的变量a的声明语句，根据上面的规则，变量表达式始终解析为相同的变量，这意味着对于 showA() 的第二次调用应该打印相同的内容
+
+但是，实际输出的，并不是我们期望的
+
+Let me stress that this program never reassigns any variable and contains only a single print statement. Yet, somehow, that print statement for a never-assigned variable prints two different values at different points in time. We definitely broke something somewhere.
+
+需要强调的是，这个程序从不重新分配任何变量，只包含一个print语句。然而，不知道什么原因，对于从未赋值变量的print语句，在不同的时间点打印出两个不同的值。我们肯定是在什么地方出现了异常。
+
+### 1.1 Scopes and mutable environments
+
+作用域和可变环境
+
+In our interpreter, environments are the dynamic manifestation of static scopes. The two mostly stay in sync with each other—we create a new environment when we enter a new scope, and discard it when we leave the scope. There is one other operation we perform on environments: binding a variable in one. This is where our bug lies.
+
+在我们的解释器中，环境是静态的作用域的动态表现，这两者基本上保持同步——我们在进入新的作用域时候，创建新的环境变量，当我们离开作用域后，我们将丢弃对应的环境。在环境中，我们会执行的操作有：将变量绑定到环境中。这就是我们的bug所在
+
+Let’s walk through that problematic example and see what the environments look like at each step. First, we declare a in the global scope.
+
+让我们通过这个有问题的示例，看看每一步中的环境是什么样子，首先，我们在全局范围内声明变量a
+
+
+
+
+
