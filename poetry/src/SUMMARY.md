@@ -46,6 +46,7 @@
   - [How to live longer](health/live_longer.md)
 - [Life Advice](life/life.md)
   - [Kevin Kelly's 103 advice](life/103_advice.md)
+  - [Investment advice](life/investment_advice.md)
 - [Music](music/music.md)
   - [笑看风云](music/xiao_kan_feng_yun.md)
   
