@@ -9,6 +9,7 @@
 - [Work Reading](work_reading/read.md)
 - [Work Problem](work_reading/problem.md)
   - [sls problem](work_reading/problem/sls.md)
+  - [ali openstore](work_reading/problem/ali_openstore.md)
 
 
 # Technical Learning

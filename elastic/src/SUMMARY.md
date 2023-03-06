@@ -120,6 +120,9 @@
 	- [索引统计](./manage/index-stats.md)
 	- [等待中的任务](./manage/pending-task.md)
 
+# 考试认证
 
-
-
+- [集群搭建](./cert/deploy.md)
+  - [单节点集群搭建](./cert/deploy-single-node.md)
+  - [mac 单节点集群搭建](./cert/mac-deploy-single-node.md)
+  - [多节点集群搭建](./cert/deploy-cluster.md)

@@ -22,4 +22,5 @@
   - [控制流程](./tree/control-flow.md)
   - [函数](./tree/functions.md)
   - [解析与绑定](./tree/resolving-and-binding.md)
+  - [类](./tree/classes.md)
   
