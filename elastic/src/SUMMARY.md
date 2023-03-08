@@ -126,3 +126,11 @@
   - [单节点集群搭建](./cert/deploy-single-node.md)
   - [mac 单节点集群搭建](./cert/mac-deploy-single-node.md)
   - [多节点集群搭建](./cert/deploy-cluster.md)
+- [集群管理](./cert/management.md)
+  - [热温冷架构](./cert/hot-warm-cold.md)
+  - [可搜索快照](./cert/searchable.md)
+  - [跨集群查询、复制](./cert/search-remote.md)
+  
+- [索引管理](./cert/index.md)
+  - [数据流](./cert/index/data-stream.md)
+  - [runtime字段](./cert/index/runtime-field.md)
