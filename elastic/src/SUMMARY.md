@@ -134,3 +134,17 @@
 - [索引管理](./cert/index.md)
   - [数据流](./cert/index/data-stream.md)
   - [runtime字段](./cert/index/runtime-field.md)
+  - [自定义分词器](./cert/index/custom-analyzer.md)
+  - [内部结构](./cert/index/data-type.md)
+  - [painless脚本](./cert/index/painless.md)
+  - [自定义评分](./cert/index/custom-score.md)
+
+- [真题解析](./cert/exercise.md)
+  - [真题1](./cert/exercise1.md)
+  - [真题2](./cert/exercise2.md)
+  - [真题3](./cert/exercise3.md)
+  - [真题4](./cert/exercise4.md)
+  - [7.13真题](./cert/exercise5.md)
+  
+  
+

@@ -7,6 +7,9 @@
   
 # Read Blogs
 
+- [Reading in 2023](work_reading/2023/2023.md)
+  - [January ～ March](work_reading/2023/1_3.md)
+
 - [Reading in 2022](work_reading/2022/2022.md)
   - [January ～ March](work_reading/2022/1_3.md)
   - [April ~ July](work_reading/2022/4_7.md)
