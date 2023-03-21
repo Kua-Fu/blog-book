@@ -5,6 +5,7 @@
 - [Emacs](emacs/emacs.md)
 - [Git](git/git.md)
   - [set proxy for github](git/git_proxy.md)
+  - [delete remote branch](git/git_del.md)
 - [RegularExpression](regular_expression/regular_expression.md)
 - [tmux](tmux/tmux.md)
 - [markdown](markdown/markdown.md)
