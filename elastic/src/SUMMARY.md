@@ -146,5 +146,12 @@
   - [真题4](./cert/exercise4.md)
   - [7.13真题](./cert/exercise5.md)
   
-  
+# 日志易
+
+- [基础](./rizhiyi/index.md)
+
+	- [简介](./rizhiyi/intro.md)
+	- [命令简述](./rizhiyi/resume.md)
+	- [搜索](./rizhiyi/search.md)
+	- [搜索命令函数](./rizhiyi/search_command.md)
 
