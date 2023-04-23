@@ -1,4 +1,4 @@
 # ky
 
 
-> [微积分](https://www.poetries.cn/calculus)
+> [微积分](https://www.poetries.cn/calculus/)
