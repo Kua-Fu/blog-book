@@ -154,4 +154,5 @@
 	- [命令简述](./rizhiyi/resume.md)
 	- [搜索](./rizhiyi/search.md)
 	- [搜索命令函数](./rizhiyi/search_command.md)
+	- [stats相关函数](./rizhiyi/stats.md)
 
