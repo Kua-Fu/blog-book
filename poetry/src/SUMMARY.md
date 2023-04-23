@@ -22,6 +22,7 @@
 - [Network](learning/network.md)
 - [Operating System](learning/os.md)
 - [Programing Language](learning/language.md)
+- [ky](learning/ky.md)
 
 
 
