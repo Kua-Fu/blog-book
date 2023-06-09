@@ -14,20 +14,6 @@
         {{/if}}
 
 
-        <!-- Custom HTML head -->
-	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
-	<script>
-	window.DATAFLUX_RUM &&
-	window.DATAFLUX_RUM.init({
-	applicationId: 'thewind_blog',
-	datakitOrigin: 'https://www.poetries.cn/rum', 
-	env: 'production',
-	version: '1.0.0',
-	trackInteractions: true,
-	traceType: 'ddtrace',
-	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
-	})
-	</script>
         {{> head}}
 
         <meta name="description" content="{{ description }}">

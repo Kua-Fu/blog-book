@@ -35,3 +35,36 @@ Each of these examples describes a rule whereby, given a number (\\(r \\), \\(t\
 A function \\(f \\) is a rule that assigns to each element \\(x \\) in a set \\(D\\) exactly one element, called \\(f(x) \\), in a set \\( E \\).
 
 一个函数 \\( f\\) 是一个规则，它将集合 \\( D \\) 中的每一个元素 \\( x \\) 精确的映射到集合 \\( E \\) 中的一个元素，称为 \\( f(x) \\), 换句话说，对于集合 \\( D\\) 中的每一个元素 \\( x \\) , 函数 \\( f \\) 会给出唯一的输出 \\( f(x) \\)
+
+
+We usually consider functions for which the sets \\( D \\) and \\(E \\) are sets of real numbers. The set \\( D \\) is called the domain of the function. The number \\( f(x) \\) is the value of \\(f \\) at \\(x \\) and is read “f of x.” The range of \\(f \\) is the set of all possible values of \\( f(x) \\) as \\( x \\) varies throughout the domain. A symbol that represents an arbitrary number in the domain of a function \\(f\\) is called an independent variable. A symbol that represents a number in the range of \\(f\\) is called a dependent variable. In Example A, for instance, \\(r\\) is the independent variable and \\(A \\) is the dependent variable.
+
+通常我们考虑的函数，是定义在实数集上的函数，集合 \\( D \\) 和 \\( E \\) 都是实数集。集合 \\( D\\) 称为函数的定义域， 而 \\(f(x)\\) 表示函数 \\( f\\) 在 \\(x \\) 处的值，读作 "f of x", \\( f(x) \\) 的值域是所有可能的 \\(f(x)\\) 值的集合，其中 \\(x\\) 遍历整个定义域，表示函数定义域中的变量的符号称为自变量， 表示函数值域中的变量的符号称为因变量。例如：上面的示例A， 自变量是 \\(r\\), 因变量是 \\(A\\) 
+
+
+It’s helpful to think of a function as a machine (see Figure 2). If \\(x\\) is in the domain of the function \\(f\\), then when \\(x\\) enters the machine, it’s accepted as an input and the machine produces an output \\(f(x)\\) according to the rule of the function. Thus we can think of the domain as the set of all possible inputs and the range as the set of all possible outputs.
+
+The preprogrammed functions in a calculator are good examples of a function as a machine. For example, the square root key on your calculator computes such a function. You press the key labeled \\( \sqrt{x} \\) and enter the input \\(x\\).If \\(x< 0\\),then \\(x \\) is not in the domain of this function; that is, \\(x\\) is not an acceptable input, and the calculator will indicate an error. If \\(x > 0\\), then an approximation to \\(\sqrt{x}\\) will appear in the display. Thus the \\(\sqrt{x}\\) key on your calculator is not quite the same as the exact mathematical function \\(f\\) defined by \\(f(x) = \sqrt{x}\\)
+
+把函数想象为一台机器可能有助于理解，如果 \\( x\\) 在函数 \\(f\\) 的定义域内，那么当我们输入 \\(x\\) 后，根据函数规则，我们将得到 \\( f(x) \\) , 因此，我们可以把定义域看作是所有可能的输入，而函数的值域是所有可能的输出集合。
+
+![2_5](https://github.com/Kua-Fu/blog-book-images/blob/main/calculus/2/2_5.png?raw=true)
+
+计算器中的预定义的函数，是函数当作一台机器的好例子。例如: 计算器上的平方根键，计算是这样的一个函数，首先你将按下键 \\( \sqrt{x }  \\), 然后输入 \\( x\\), 如果我们输入的 \\(x < 0 \\)  则 \\(x\\) 不是一个合法的输入值，计算器将会报错。如果输入的 \\( x \geq 0 \\), 计算器将会显示一个对应的输出 \\( \sqrt{x} \\), 因此，我们可以得到，计算器上的 \\( \sqrt{x} \\) 键并不完全等同于数学定义的 \\( f(x) = \sqrt{x} \\)
+
+Another way to picture a function is by an arrow diagram as in Figure 3. Each arrow connects an element of \\(D\\) to an element of \\(E\\). The arrow indicates that \\(f(x)\\) is associated with \\(x\\), \\(f(a)\\) is associated with \\(a\\), and so on.
+
+另外一种描绘函数的方式是箭头图，每条线连接了定义域\\( D\\) 中的一个元素和值域 \\( E \\) 中的一个元素，箭头表示 \\(f(x) \\) 和 \\(x \\) 相关联，\\( f(a) \\) 和 \\(a \\) 相关联，以此类推。
+
+![2_6](https://github.com/Kua-Fu/blog-book-images/blob/main/calculus/2/2_6.png?raw=true)
+
+
+The most common method for visualizing a function is its graph. If \\(f\\) is a function with domain \\(D\\), then its graph is the set of ordered pairs \\[ {(x, f(x)) | x \in D } \\] (Notice that these are input­output pairs.) In other words, the graph of \\(f\\) consists of all points \\((x,y)\\) in the coordinate plane such that \\(y = f(x) \\) and \\(x\\) is in the domain of \\(f\\).
+
+可视化函数最常用的方式是函数图像， 如果函数 \\(f\\)的定义域是 \\(D\\), 那么它的图像是有序对的集合，其中每一个有序对由一个定义域内的元素 \\(x\\) 和 相应的函数值 \\(f(x)\\) 组成，即  \\[ {(x, f(x)) | x \in D } \\]， 在坐标平面内，这些有序对的集合形成了函数\\(f\\)的图像。
+
+The graph of a function \\(f\\) gives us a useful picture of the behavior or “life history” of a function. Since the y­coordinate of any point \\((x,y)\\) on the graph is \\(y=f(x)\\), we can read the value of \\(f(x)\\) from the graph as being the height of the graph above the point \\(x\\) (see Figure 4). The graph of f also allows us to picture the domain of \\(f\\) on the x­axis and its range on the y­axis as in Figure 5.
+
+函数\\(f \\)的图形给我们提供了函数行为或者函数的生命历程。由于图中的任意点 \\((x, y)\\) 的\\(y \\)值是 \\(y=f(x) \\) 我们可以获取函数在 \\(x\\)处的取值 \\(f(x)\\)等于该点的 \\(y\\)轴的高度。函数的图像也可以让我们在 \\(x\\)轴上绘制出其定义域，在\\(y\\)轴上绘制出其值域。
+
+![2_7](https://github.com/Kua-Fu/blog-book-images/blob/main/calculus/2/2_7.png?raw=true)

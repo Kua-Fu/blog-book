@@ -4,7 +4,7 @@
   >
   > <p align="right"> —— G.K. Chesterton by way of Neil Gaiman, Coraline </p>
   >
-  > 童话不仅仅是真实的: 它不仅告诉我们龙的存在，更在于它告诉我们勇士可以战胜恶龙。
+  > 童话的真实性: 不仅仅在于告诉我们龙的存在，更在于它告诉我们勇士可以战胜恶龙。
   >
   > <p align="right"> —— G.K. Chesterton by way of Neil Gaiman, Coraline </p>
   
@@ -47,7 +47,7 @@
   
   That's my goal for you. I want you to come away with a solid intuition of how a real language lives and breathes. My hope is that when you read other, more theoretical books later, the concepts there will firmly stick in your mind, adhered to this tangible substrate.
   
- 本书的一个目标，就是让你更加真切的认识一门语言，可以凭直觉感知一门语言如何编写与运行。希望当以后学习更多的编译原理时候，可以通过现在培养的直觉，牢牢记住书中的概念。
+ 本书的一个目标，就是让你更加真切的认识一门语言，可以凭直觉感知一门语言如何编写与运行。这样当以后学习更多的编译原理时候，可以通过现在培养的直觉，牢牢记住书中的概念。
   
 ## 一、Why learn this stuff?
   
