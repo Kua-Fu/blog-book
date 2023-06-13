@@ -959,6 +959,7 @@ callback();
 <p>You can start to see how this works like a variable when we get to the resolver.</p>
 <p>当我们开始变量解析器时候，可以开始查看它是如何像变量一样工作的</p>
 <pre><code class="language-java">
+// lox/Resolver.java, add after visitSetExpr()
 
   @Override
   public Void visitThisExpr(Expr.This expr) {
@@ -969,6 +970,382 @@ callback();
 
 
 </code></pre>
+<p>We resolve it exactly like any other local variable using “this” as the name for the “variable”. Of course, that’s not going to work right now, because “this” isn’t declared in any scope. Let’s fix that over in visitClassStmt().</p>
+<p>我们的解决方式是，像是其他本地变量一样，使用<code>this</code> 当成一个变量的名称，当然，现在直接引用 <code>this</code> 不会生效，因为我们还没有声明 <code>this</code> 的作用域，让我们在 visitCLassStmt() 函数中进行。</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitClassStmt()
+
+    define(stmt.name);
+
+    beginScope();
+    scopes.peek().put(&quot;this&quot;, true);
+
+    for (Stmt.Function method : stmt.methods) {
+	
+</code></pre>
+<p>Before we step in and start resolving the method bodies, we push a new scope and define “this” in it as if it were a variable. Then, when we’re done, we discard that surrounding scope.</p>
+<p>在我们开始处理方法体之前，我们先创建一个新的作用域，并且在其中定义this (this 就好像是一个变量一样），当我们完成函数解析后，我们将丢弃该作用域</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitClassStmt()
+
+    }
+
+    endScope();
+
+    return null;
+	
+</code></pre>
+<p>Now, whenever a this expression is encountered (at least inside a method) it will resolve to a “local variable” defined in an implicit scope just outside of the block for the method body.</p>
+<p>现在，每当遇到一个 this表达式（至少在方法内部），它将解析为在方法块之外的一个隐式作用域中定义的局部变量</p>
+<p>The resolver has a new scope for this, so the interpreter needs to create a corresponding environment for it. Remember, we always have to keep the resolver’s scope chains and the interpreter’s linked environments in sync with each other. At runtime, we create the environment after we find the method on the instance. We replace the previous line of code that simply returned the method’s LoxFunction with this:</p>
+<p>解析器为this 创建了一个新的作用域，因此解释器需要为this 创建相应的环境，请记住，我们始终必须保持解析器的作用域链和解释器的环境链，彼此同步。在运行时候，当我们找到实例后的方法后，会创建环境。我们使用this 替换之前的代码行（该代码行返回LoxFunction）</p>
+<pre><code class="language-java">
+// lox/LoxInstance.java, in get(), replace 1 line
+
+    LoxFunction method = klass.findMethod(name.lexeme);
+    if (method != null) return method.bind(this);
+
+    throw new RuntimeError(name, 
+        &quot;Undefined property '&quot; + name.lexeme + &quot;'.&quot;);
+		
+</code></pre>
+<p>Note the new call to bind(). That looks like so:</p>
+<p>请注意新的bind() 函数，该函数看起来如下</p>
+<pre><code class="language-java">
+// lox/LoxFunction.java, add after LoxFunction()
+
+ LoxFunction bind(LoxInstance instance) {
+    Environment environment = new Environment(closure);
+    environment.define(&quot;this&quot;, instance);
+    return new LoxFunction(declaration, environment);
+  }
+  
+</code></pre>
+<p>There isn’t much to it. We create a new environment nestled inside the method’s original closure. Sort of a closure-within-a-closure. When the method is called, that will become the parent of the method body’s environment.</p>
+<p>这并不复杂，我们在方法的原始闭包中，创建了一个新的环境，有点像是闭包中的闭包。当调用方法时候，这将会成为函数的方法体的环境的父级环境。</p>
+<p>We declare “this” as a variable in that environment and bind it to the given instance, the instance that the method is being accessed from. Et voilà, the returned LoxFunction now carries around its own little persistent world where “this” is bound to the object.</p>
+<p>The remaining task is interpreting those this expressions. Similar to the resolver, it is the same as interpreting a variable expression.</p>
+<p>我们在该环境中，将this 声明为一个本地变量，并且将其绑定到给定的实例上，即访问该方法的实例。然后，返回的LoxFunction 将携带持久化的环境，其中this变量绑定为对象实例。</p>
+<p>剩下的任务是解释这些this表达式，与解析器相似，它和解释变量表达式相同。</p>
+<pre><code class="language-java">
+// lox/Interpreter.java, add after visitSetExpr()
+
+ @Override
+  public Object visitThisExpr(Expr.This expr) {
+    return lookUpVariable(expr.keyword, expr);
+  }
+  
+</code></pre>
+<p>Go ahead and give it a try using that cake example from earlier. With less than twenty lines of code, our interpreter handles this inside methods even in all of the weird ways it can interact with nested classes, functions inside methods, handles to methods, etc.</p>
+<p>请尝试使用之前的cake 示例，使用不到20行代码，我们的解释器将可以处理方法内部的this，即使在所有与嵌套类、方法内部的函数、句柄等奇怪的交互方式中，也可以处理。</p>
+<h3 id="61-invalid-uses-of-this"><a class="header" href="#61-invalid-uses-of-this">6.1 Invalid uses of this</a></h3>
+<p>this的非法用法</p>
+<p>Wait a minute. What happens if you try to use this outside of a method? What about:</p>
+<p>请稍等，如果尝试在方法外部调用this，会发生什么呢？</p>
+<pre><code class="language-java">
+print this;
+
+</code></pre>
+<p>OR</p>
+<pre><code>
+fun notAMethod() {
+  print this;
+}
+
+</code></pre>
+<p>There is no instance for this to point to if you’re not in a method. We could give it some default value like nil or make it a runtime error, but the user has clearly made a mistake. The sooner they find and fix that mistake, the happier they’ll be.</p>
+<p>如果不在方法中，this就没有实例可以指向。我们可以给它一些默认值，比如: nil, 或者将其作为运行时报错，但是用户显然是犯了错误。他们越早发现和修复这个错误，将会越开心。</p>
+<p>Our resolution pass is a fine place to detect this error statically. It already detects return statements outside of functions. We’ll do something similar for this. In the vein of our existing FunctionType enum, we define a new ClassType one.</p>
+<p>我们的解析器，将是检测这种错误的好地方。它已经可以检测到在函数外部的return 语句。我们将为this 执行类似的操作。在我们现有的FunctionType 枚举类型中，我们将定义一个新的 ClassType</p>
+<pre><code class="language-java">
+// lox/Resolver.java, add after enum FunctionType
+
+ }
+
+  private enum ClassType {
+    NONE,
+    CLASS
+  }
+
+  private ClassType currentClass = ClassType.NONE;
+
+  void resolve(List&lt;Stmt&gt; statements) {
+  
+</code></pre>
+<p>Yes, it could be a Boolean. When we get to inheritance, it will get a third value, hence the enum right now. We also add a corresponding field, currentClass. Its value tells us if we are currently inside a class declaration while traversing the syntax tree. It starts out NONE which means we aren’t in one.</p>
+<p>When we begin to resolve a class declaration, we change that.</p>
+<p>是的，它可以是一个布尔值。当我们达到继承时候，我们将获得第三个值，因此现在是枚举。我们还添加了一个相应的字段 currentClass 。当我们在遍历语法树的时候，它的值将告知我们，是否在类声明的内部。它的初始值是None，这意味着我们不在其中。</p>
+<p>当我们开始解析类声明时候，我们将会改变该值</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitClassStmt()
+
+  public Void visitClassStmt(Stmt.Class stmt) {
+    ClassType enclosingClass = currentClass;
+    currentClass = ClassType.CLASS;
+
+    declare(stmt.name);
+
+
+</code></pre>
+<p>As with currentFunction, we store the previous value of the field in a local variable. This lets us piggyback onto the JVM to keep a stack of currentClass values. That way we don’t lose track of the previous value if one class nests inside another.</p>
+<p>Once the methods have been resolved, we “pop” that stack by restoring the old value.</p>
+<p>和 currentFunction 一样，我们使用一个局部变量保存该字段的先前值。这使得我们可以利用JVM来保持当前类值的堆栈。这样，如果一个类嵌套在另一个类中，我们也不会失去先前的值。</p>
+<p>一旦方法已经解析完成，我们可以通过恢复旧值来弹出该堆栈。</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitClassStmt()
+
+    endScope();
+
+    currentClass = enclosingClass;
+    return null;
+	
+</code></pre>
+<p>When we resolve a this expression, the currentClass field gives us the bit of data we need to report an error if the expression doesn’t occur nestled inside a method body.</p>
+<p>当我们解析表达式this 时候，currentClass 字段，为我们提供了所需的数据，以便在表达式未嵌套在方法体时候，抛出错误。</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitThisExpr()
+
+  public Void visitThisExpr(Expr.This expr) {
+    if (currentClass == ClassType.NONE) {
+      Lox.error(expr.keyword,
+          &quot;Can't use 'this' outside of a class.&quot;);
+      return null;
+    }
+
+    resolveLocal(expr, expr.keyword);
+	
+</code></pre>
+<p>That should help users use this correctly, and it saves us from having to handle misuse at runtime in the interpreter.</p>
+<p>这应该有助于用户正确使用this，并且它可以避免我们在解释器运行时报错。</p>
+<h2 id="七constructors-and-initializers"><a class="header" href="#七constructors-and-initializers">七、Constructors and Initializers</a></h2>
+<p>构造器和初始化器</p>
+<p>We can do almost everything with classes now, and as we near the end of the chapter we find ourselves strangely focused on a beginning. Methods and fields let us encapsulate state and behavior together so that an object always stays in a valid configuration. But how do we ensure a brand new object starts in a good state?</p>
+<p>For that, we need constructors. I find them one of the trickiest parts of a language to design, and if you peer closely at most other languages, you’ll see cracks around object construction where the seams of the design don’t quite fit together perfectly. Maybe there’s something intrinsically messy about the moment of birth.</p>
+<p>现在，我们几乎可以使用类，来完成所有的事情。在本章接近完成时候，我们发现自己奇怪的关注于起始。方法和字段，让我们将状态和行为封装在一起，以便对象始终有效。但是，我们如何确保一个新的对象，处于一个良好的状态？</p>
+<p>我们，我们需要构造函数，我发现它是语言设计最棘手的一部分。如果你仔细观察大多数语言，你会发现在构造函数周围存在着裂缝，设计的裂缝，不完全完美的契合在一起。也许在创造的开始就存在着一些混乱。</p>
+<blockquote>
+<p>A few examples: In Java, even though final fields must be initialized, it is still possible to read one before it has been. Exceptions—a huge, complex feature—were added to C++ mainly as a way to emit errors from constructors.</p>
+<p>一些例子，在Java中，即使 final 字段也需要初始化，但是我们仍然可以在初始化之前读取到。</p>
+<p>异常——一个巨大切复杂的特性，主要是作为从构造函数中发出错误的一种方式，被添加到C++ 中</p>
+</blockquote>
+<p>“Constructing” an object is actually a pair of operations:</p>
+<ol>
+<li>
+<p>The runtime allocates the memory required for a fresh instance. In most languages, this operation is at a fundamental level beneath what user code is able to access.</p>
+</li>
+<li>
+<p>Then, a user-provided chunk of code is called which initializes the unformed object.</p>
+</li>
+</ol>
+<p>构造一个对象，实际上一组操作</p>
+<ol>
+<li>
+<p>运行时候，为新实例分配所需的内存，在大多数的编程语言中，这个操作位于用户代码可以访问的基本层次之下。</p>
+</li>
+<li>
+<p>然后，调用用户提供的一段代码来初始化未成型的对象。</p>
+</li>
+</ol>
+<blockquote>
+<p>C++’s <a href="https://en.wikipedia.org/wiki/Placement_syntax">“placement new”</a> is a rare example where the bowels of allocation are laid bare for the programmer to prod.</p>
+<p>C++的 placement new是一个罕见的例子，其中分配的内部细节被暴露</p>
+</blockquote>
+<p>The latter is what we tend to think of when we hear “constructor”, but the language itself has usually done some groundwork for us before we get to that point. In fact, our Lox interpreter already has that covered when it creates a new LoxInstance object.</p>
+<p>We’ll do the remaining part—user-defined initialization—now. Languages have a variety of notations for the chunk of code that sets up a new object for a class. C++, Java, and C# use a method whose name matches the class name. Ruby and Python call it init(). The latter is nice and short, so we’ll do that.</p>
+<p>In LoxClass’s implementation of LoxCallable, we add a few more lines.</p>
+<p>后者是我们在听到构造函数时候，通常会想到的。但是，在我们执行这些之前，编程语言已经为我们完成了一些基本工作。实际上，我们的Lox解释器，创建一个新的LoxInstance 时候，已经涵盖了这一部分。</p>
+<p>现在我们将完成剩下的部分——用户定义的初始化，编程语言对于设置类的新对象的代码块有各种表示法。C++ Java 和 C# 使用与类名相匹配的方法名。Ruby 和 Python将其称为 init函数，后者简单明了。所以，我们将采用后一种方式</p>
+<p>在LoxClass 实现 LoxCallable的过程中，我们需要添加一些额外的代码行</p>
+<pre><code class="language-java">
+// lox/LoxClass.java, in call()
+
+                     List&lt;Object&gt; arguments) {
+    LoxInstance instance = new LoxInstance(this);
+    LoxFunction initializer = findMethod(&quot;init&quot;);
+    if (initializer != null) {
+      initializer.bind(instance).call(interpreter, arguments);
+    }
+
+    return instance;
+	
+</code></pre>
+<p>When a class is called, after the LoxInstance is created, we look for an “init” method. If we find one, we immediately bind and invoke it just like a normal method call. The argument list is forwarded along.</p>
+<p>That argument list means we also need to tweak how a class declares its arity.</p>
+<p>当一个类被调用时，在创建了LoxInstance 之后，我们会寻找一个 init 方法，如果我们找到了一个，我们会立即绑定并且调用它，就像是一个普通的方法调用一样。参数列表也会被传递。</p>
+<p>这个参数列表，意味着我们还需要调整类声明其参数个数（arity)的方式。</p>
+<pre><code class="language-java">
+// lox/LoxClass.java, in arity(), replace 1 line
+
+  public int arity() {
+    LoxFunction initializer = findMethod(&quot;init&quot;);
+    if (initializer == null) return 0;
+    return initializer.arity();
+  }
+  
+</code></pre>
+<p>If there is an initializer, that method’s arity determines how many arguments you must pass when you call the class itself. We don’t require a class to define an initializer, though, as a convenience. If you don’t have an initializer, the arity is still zero.</p>
+<p>That’s basically it. Since we bind the init() method before we call it, it has access to this inside its body. That, along with the arguments passed to the class, are all you need to be able to set up the new instance however you desire.</p>
+<p>如果有一个初始化器，那么该方法的参数个数 arity 决定了在调用类本身时，必须传递多少个参数，然而，我们不要求类一定有一个初始化器，这是为了方便，如果没有初始化器，参数个数仍然是0</p>
+<p>基本上就是这样，由于我们在调用init() 方法之前，就已经绑定了它，所以，它就可以在其内部访问 this，然后，在加上我们传递给类的参数，这就是我们需要的全部内容，便于根据我们的需求设置新实例</p>
+<h3 id="71-invoking-init-directly"><a class="header" href="#71-invoking-init-directly">7.1 Invoking init() directly</a></h3>
+<p>As usual, exploring this new semantic territory rustles up a few weird creatures. Consider:</p>
+<p>像往常一样，探索新的语义领域将引出一些奇怪的现象，请考虑：</p>
+<pre><code class="language-java">
+class Foo {
+  init() {
+    print this;
+  }
+}
+
+var foo = Foo();
+print foo.init();
+
+
+</code></pre>
+<p>Can you “re-initialize” an object by directly calling its init() method? If you do, what does it return? A reasonable answer would be nil since that’s what it appears the body returns.</p>
+<p>However—and I generally dislike compromising to satisfy the implementation—it will make clox’s implementation of constructors much easier if we say that init() methods always return this, even when directly called. In order to keep jlox compatible with that, we add a little special case code in LoxFunction.</p>
+<p>可以通过直接调用类的init方法，重新初始化一个对象吗？如果可以调用，它将返回什么呢？一个合理的答案是nil，因为从表面上看，返回体的返回值就是 nil</p>
+<p>然而，尽管我通常不喜欢为了满足实现而妥协。但是，如果我们设计，init() 方法总是返回this，即使直接调用，那么在clox 中实现构造函数会变得容易的多。为了保持jlox 与之兼容，我们将在LoxFunciton中添加一个特殊情况的代码</p>
+<blockquote>
+<p>Maybe “dislike” is too strong a claim. It’s reasonable to have the constraints and resources of your implementation affect the design of the language. There are only so many hours in the day, and if a cut corner here or there lets you get more features to users in less time, it may very well be a net win for their happiness and productivity. The trick is figuring out which corners to cut that won’t cause your users and future self to curse your shortsightedness.</p>
+<p>也许不喜欢，这个说法有点强烈。让实现的约束和资源，影响语言设计是合理的。一天中只有这么多的小时，如果在某个地方稍微简化一下，可以让你在更短的时间内为用户提供更多的功能，那么这可能对于他们的幸福和生产力来说，是一个巨大的优势。关键是找出哪些地方可以简化，而不会让你的用户和未来的自己吐槽。</p>
+</blockquote>
+<pre><code class="language-java">
+// lox/LoxFunction.java, in call()
+
+      return returnValue.value;
+    }
+
+    if (isInitializer) return closure.getAt(0, &quot;this&quot;);
+    return null;
+	
+</code></pre>
+<p>If the function is an initializer, we override the actual return value and forcibly return this. That relies on a new isInitializer field.</p>
+<p>如果函数是一个初始化器，我们会覆盖实际的返回值，并且强制返回this，这依赖于一个新的 isInitializer 字段</p>
+<pre><code class="language-java">
+// lox/LoxFunction.java, in class LoxFunction, replace 1 line
+
+ private final Environment closure;
+
+  private final boolean isInitializer;
+
+  LoxFunction(Stmt.Function declaration, Environment closure,
+              boolean isInitializer) {
+    this.isInitializer = isInitializer;
+    this.closure = closure;
+    this.declaration = declaration;
+	
+</code></pre>
+<p>We can’t simply see if the name of the LoxFunction is “init” because the user could have defined a function with that name. In that case, there is no this to return. To avoid that weird edge case, we’ll directly store whether the LoxFunction represents an initializer method. That means we need to go back and fix the few places where we create LoxFunctions.</p>
+<p>我们不能仅仅通过函数的名称是否是 init，来判断。因为用户可能已经定义了一个具有该名称的函数，在这种情况下，没有this 可以返回，为了避免这种奇怪的边界场景，我们将直接存储LoxFunction 是否表示一个初始化器。这意味着，我们将修复之前的创建LoxFunction 的几个地方。</p>
+<pre><code class="language-java">
+// lox/Interpreter.java, in visitFunctionStmt(), replace 1 line
+
+ public Void visitFunctionStmt(Stmt.Function stmt) {
+    LoxFunction function = new LoxFunction(stmt, environment,
+                                           false);
+    environment.define(stmt.name.lexeme, function);
+	
+</code></pre>
+<p>For actual function declarations, isInitializer is always false. For methods, we check the name.</p>
+<p>对于实际的函数声明，isInitializer始终为false, 对于方法，我们将检查方法名称</p>
+<pre><code class="language-java">
+// lox/Interpreter.java, in visitClassStmt(), replace 1 line
+
+  for (Stmt.Function method : stmt.methods) {
+      LoxFunction function = new LoxFunction(method, environment,
+          method.name.lexeme.equals(&quot;init&quot;));
+      methods.put(method.name.lexeme, function);
+
+</code></pre>
+<p>And then in bind() where we create the closure that binds this to a method, we pass along the original method’s value.</p>
+<p>然后，在bind() 函数中，我们创建一个闭包，来将this 绑定到方法，我们将原始方法的值传递给它</p>
+<pre><code class="language-java">
+// lox/LoxFunction.java, in bind(), replace 1 line
+
+   environment.define(&quot;this&quot;, instance);
+    return new LoxFunction(declaration, environment,
+                           isInitializer);
+  }
+
+
+</code></pre>
+<h3 id="72-returning-from-init"><a class="header" href="#72-returning-from-init">7.2 Returning from init()</a></h3>
+<p>We aren’t out of the woods yet. We’ve been assuming that a user-written initializer doesn’t explicitly return a value because most constructors don’t. What should happen if a user tries:</p>
+<p>我们还没有完全解决问题，我们一直假设用户编写的初始化器不会显示的返回值，因为大多数的构造函数不会这样做。如果用户尝试以下操作，将会发生什么呢？</p>
+<pre><code class="language-java">
+class Foo {
+  init() {
+    return &quot;something else&quot;;
+  }
+}
+
+
+</code></pre>
+<p>It’s definitely not going to do what they want, so we may as well make it a static error. Back in the resolver, we add another case to FunctionType.</p>
+<p>它肯定不会做用户想的事情，所以，我们可以将这种场景当作一个静态错误检查，回到解析器，我们将添加一种新的FunctionType</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in enum FunctionType
+
+   FUNCTION,
+    INITIALIZER,
+    METHOD
+
+
+</code></pre>
+<p>We use the visited method’s name to determine if we’re resolving an initializer or not.</p>
+<p>我们使用visited 方法的名称来确定我们是否正在解析初始化器</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitClassStmt()
+
+    FunctionType declaration = FunctionType.METHOD;
+      if (method.name.lexeme.equals(&quot;init&quot;)) {
+        declaration = FunctionType.INITIALIZER;
+      }
+
+      resolveFunction(method, declaration); 
+	  
+</code></pre>
+<p>When we later traverse into a return statement, we check that field and make it an error to return a value from inside an init() method.</p>
+<p>当我们稍后遍历，返回语句时候，我们检查该字段，并判断从init函数内部返回值是错误方式</p>
+<pre><code class="language-java">
+// lox/Resolver.java, in visitReturnStmt()
+
+ if (stmt.value != null) {
+      if (currentFunction == FunctionType.INITIALIZER) {
+        Lox.error(stmt.keyword,
+            &quot;Can't return a value from an initializer.&quot;);
+      }
+
+      resolve(stmt.value);
+	  
+</code></pre>
+<p>We’re still not done. We statically disallow returning a value from an initializer, but you can still use an empty early return.</p>
+<p>我们还没有完成解析，我们静态的禁止从初始化器中返回值，但是，还可以返回空</p>
+<pre><code class="language-java">
+class Foo {
+  init() {
+    return;
+  }
+}
+
+</code></pre>
+<p>That is actually kind of useful sometimes, so we don’t want to disallow it entirely. Instead, it should return this instead of nil. That’s an easy fix over in LoxFunction.</p>
+<p>有时候，这样是有作用的，因此，我们并不想完全禁用这种语法，相反，它应该返回this，而不是nil，我们在LoxFunction中修复</p>
+<pre><code class="language-java">
+// lox/LoxFunction.java, in call()
+
+  } catch (Return returnValue) {
+      if (isInitializer) return closure.getAt(0, &quot;this&quot;);
+
+      return returnValue.value;
+
+
+</code></pre>
+<p>If we’re in an initializer and execute a return statement, instead of returning the value (which will always be nil), we again return this.</p>
+<p>Phew! That was a whole list of tasks but our reward is that our little interpreter has grown an entire programming paradigm. Classes, methods, fields, this, and constructors. Our baby language is looking awfully grown-up.</p>
+<p>如果我们在初始化器中，调用了return语句，我们将再次返回 this，而不是nil</p>
+<p>哇，这是一整个任务列表，但我们的奖励是我们的解释器，已经成长为一个完整的编程范式，类、方法、字段、this、构造器，我们的语言看起来更加成熟了。</p>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
