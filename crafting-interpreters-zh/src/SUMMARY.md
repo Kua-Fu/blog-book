@@ -23,4 +23,5 @@
   - [函数](./tree/functions.md)
   - [解析与绑定](./tree/resolving-and-binding.md)
   - [类](./tree/classes.md)
+  - [继承](./tree/inheritance.md)
   

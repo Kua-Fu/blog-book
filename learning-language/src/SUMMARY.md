@@ -6,7 +6,9 @@
 
 - [Go](language/go/go.md)
 
-	- [go 101](language/go/101.md)
+   - [go101](language/go/101.md)
+   - [blogs](language/go/blog.md)
+     - [The cover story](language/go/blog/cover.md)
    
 # Java
 

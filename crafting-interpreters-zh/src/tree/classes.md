@@ -1672,3 +1672,125 @@ Phew! That was a whole list of tasks but our reward is that our little interpret
 
 哇，这是一整个任务列表，但我们的奖励是我们的解释器，已经成长为一个完整的编程范式，类、方法、字段、this、构造器，我们的语言看起来更加成熟了。
 
+## 八、CHALLENGES
+
+1. We have methods on instances, but there is no way to define “static” methods that can be called directly on the class object itself. Add support for them. Use a class keyword preceding the method to indicate a static method that hangs off the class object.
+
+	```java
+	class Math {
+	  class square(n) {
+		return n * n;
+	  }
+	}
+
+	print Math.square(3); // Prints "9".
+
+	```
+	
+	You can solve this however you like, but the “metaclasses” used by Smalltalk and Ruby are a particularly elegant approach. Hint: Make LoxClass extend LoxInstance and go from there.
+	
+1. Most modern languages support “getters” and “setters”—members on a class that look like field reads and writes but that actually execute user-defined code. Extend Lox to support getter methods. These are declared without a parameter list. The body of the getter is executed when a property with that name is accessed.
+
+	```java
+	
+	class Circle {
+	  init(radius) {
+		this.radius = radius;
+	  }
+
+	  area {
+		return 3.141592653 * this.radius * this.radius;
+	  }
+	}
+
+	var circle = Circle(4);
+	print circle.area; // Prints roughly "50.2655".
+	```
+
+1. Python and JavaScript allow you to freely access an object’s fields from outside of its own methods. Ruby and Smalltalk encapsulate instance state. Only methods on the class can access the raw fields, and it is up to the class to decide which state is exposed. Most statically typed languages offer modifiers like private and public to control which parts of a class are externally accessible on a per-member basis.
+
+	What are the trade-offs between these approaches and why might a language prefer one or the other?
+
+
+
+习题
+
+1. 我们在实例上有方法，但是没有办法定义可以在类对象本身上调用的“静态”方法，添加对于它们的支持，使用在方法之前添加class 关键字来指示类对象上的静态方法
+
+	你可以用任何喜欢的方式扩展，但是 Smalltalk 和 Ruby 使用的元类是一种特别优雅的方式，提示：使LoxClass 拓展 LoxInstance, 从那里开始
+	
+	
+1. 大多数的现代语言，都支持 getter 和 setter——类成员，看起来像字段读取和写入，但是实际上执行用户定义的代码。扩展Lox支持getter方法，该方法声明时候，不带参数列表，当访问具有该名称的属性时候，将执行getter 的主体
+
+1. Python 和 JavaScript 允许你在自己的方法之外自由访问对象的字段，Ruby 和 Smalltalk 封装实例状态。只有类上的方法可以访问原始字段，由类决定哪些状态是公开的，大多数静态类型语言提供了像private 和 public这样的修饰符，以控制类的哪些部分可以在每一个成员外部访问
+
+这些方法之间的权衡是什么？为什么一种语言更喜欢使用其中的一种方法呢？
+
+## 九、设计思想
+
+DESIGN NOTE: PROTOTYPES AND POWER
+In this chapter, we introduced two new runtime entities, LoxClass and LoxInstance. The former is where behavior for objects lives, and the latter is for state. What if you could define methods right on a single object, inside LoxInstance? In that case, we wouldn’t need LoxClass at all. LoxInstance would be a complete package for defining the behavior and state of an object.
+
+We’d still want some way, without classes, to reuse behavior across multiple instances. We could let a LoxInstance delegate directly to another LoxInstance to reuse its fields and methods, sort of like inheritance.
+
+Users would model their program as a constellation of objects, some of which delegate to each other to reflect commonality. Objects used as delegates represent “canonical” or “prototypical” objects that others refine. The result is a simpler runtime with only a single internal construct, LoxInstance.
+
+That’s where the name prototypes comes from for this paradigm. It was invented by David Ungar and Randall Smith in a language called Self. They came up with it by starting with Smalltalk and following the above mental exercise to see how much they could pare it down.
+
+Prototypes were an academic curiosity for a long time, a fascinating one that generated interesting research but didn’t make a dent in the larger world of programming. That is, until Brendan Eich crammed prototypes into JavaScript, which then promptly took over the world. Many (many) words have been written about prototypes in JavaScript. Whether that shows that prototypes are brilliant or confusing—or both!—is an open question.
+
+
+原型和生产力
+
+在本章中，我们介绍了两个新的运行时实体，LoxClass 和 LoxInstance, 前者存储了对象行为，后者存储了对象的状态。如果，你可以在实例的内部直接定义方法（LoxInstance），那该如何呢？在这种情况下，我们根本不需要LoxClass的存在，LoxInstance将成为保存对象行为和状态的完整实体。
+
+我们仍然希望在没有LoxClass的前提下，以某种方式复用多个实例之间的行为，我们可以让一个LoxInstance直接委托给另一个LoxInstance，以重用字段和方法，有点像是继承
+
+用户会将他们的程序建模为一组对象，其中一些对象相互委托以反映共同性，作为委托的对象，代表规范和原型 对象，其他对象对其进行细化。结果是一个简单的运行时，只有一个内部构造体LoxInstance
+
+这就是这种范式的原型名称的由来，它是由 David Ungar 和 Randall Smith在self 语言中发明的。他们通过从Smalltalk语言开始，按照上面的思维练习来了解能够将其简化到什么程度
+
+原型在很长时间内只是学术上的一种好奇，一种引人入胜的研究，但是，并没有对编程的其他领域产生影响。一直到 Brendan Eich将原型应用到JavaScript，然后立即统治了全世界。关于JavaScript 的原型的许多文章已经出现，原型是一种机智的方式还是一种令人困惑的方式，或者两种都兼有，这是一个开放式的问题
+
+I won’t get into whether or not I think prototypes are a good idea for a language. I’ve made languages that are prototypal and class-based, and my opinions of both are complex. What I want to discuss is the role of simplicity in a language.
+
+Prototypes are simpler than classes—less code for the language implementer to write, and fewer concepts for the user to learn and understand. Does that make them better? We language nerds have a tendency to fetishize minimalism. Personally, I think simplicity is only part of the equation. What we really want to give the user is power, which I define as:
+
+`power = breadth × ease ÷ complexity`
+
+我不想谈论—— 原型是否是一种好的设计方式，我曾经设计过既基于原型，又基于类的语言，对两者的看法都很复杂，我想讨论的是语言中的简单性的作用
+
+原型比类更加简单，（1）对于语言实现者来说，需要编写的代码更少；（2）对于用户来说，需要学习和理解的概念更少；但是，这样就更好吗？我们这些语言发明者有一种崇拜简约主义的倾向。个人认为，简单只是方程式的一部分，我们真正想要赋予使用者的是生产力，我将其定义为
+
+`power = breadth * ease / complexity`
+
+
+
+None of these are precise numeric measures. I’m using math as analogy here, not actual quantification.
+
+* Breadth is the range of different things the language lets you express. C has a lot of breadth—it’s been used for everything from operating systems to user applications to games. Domain-specific languages like AppleScript and Matlab have less breadth.
+
+* Ease is how little effort it takes to make the language do what you want. “Usability” might be another term, though it carries more baggage than I want to bring in. “Higher-level” languages tend to have more ease than “lower-level” ones. Most languages have a “grain” to them where some things feel easier to express than others.
+
+* Complexity is how big the language (including its runtime, core libraries, tools, ecosystem, etc.) is. People talk about how many pages are in a language’s spec, or how many keywords it has. It’s how much the user has to load into their wetware before they can be productive in the system. It is the antonym of simplicity.
+
+Reducing complexity does increase power. The smaller the denominator, the larger the resulting value, so our intuition that simplicity is good is valid. However, when reducing complexity, we must take care not to sacrifice breadth or ease in the process, or the total power may go down. Java would be a strictly simpler language if it removed strings, but it probably wouldn’t handle text manipulation tasks well, nor would it be as easy to get things done.
+
+The art, then, is finding accidental complexity that can be omitted—language features and interactions that don’t carry their weight by increasing the breadth or ease of using the language.
+
+If users want to express their program in terms of categories of objects, then baking classes into the language increases the ease of doing that, hopefully by a large enough margin to pay for the added complexity. But if that isn’t how users are using your language, then by all means leave classes out.
+
+上面公示中的术语，都不是精确的数字度量，我在这里使用数学作为类比，不是实际的量化
+
+(1) 广度，是语言允许你表达的不同事物的范围，C语言具有很大的广度，它被用于从操作系统到用户应用程序、游戏等各种领域，像是 AppleScript和Matlab这样的特定领域语言，则具有较少的使用范围
+
+(2) 易用性，是指语言实现你想要的功能，需要投入的时间，可用性可能是另外一个术语，尽管它带有的比我想要引入的，更多。高级语言往往比低级语言更易用，大多数语言都有一种粒度，其中某些事物感觉比其他事物更加容易达到。
+
+(3) 复杂性，是指语言（运行时、核心库、工具、生态等）的大小，人们谈论语言规范文档有多少页，关键字有多少个，这是用户在能够在系统中高效工作之前需要加载到大脑中的内容，它是简单性的反义词
+
+
+减少负责性，的确能增加生产力，因此，我们对于简约主义的追求直觉是正确的，然而，在降低复杂性时候，必须小心，不要在此过程中过多的牺牲易用性，否则整体的生产力可能会降低。例如：Java删除了字符串类型，它将成为一个更加简单的语言，但是，它将无法很好的处理文本操作任务，也不会像现在这样容易完成任务
+
+因此，艺术在于找到可以省略的复杂性（意外的）——语言的功能和交互，它们通过增加使用语言的广度和易用性来提高生产力
+
+如果用户希望用对象类别，来表达他们的程序，则将类嵌入到语言中，可以增加这种便利性，希望通过足够大的差异来弥补增加的复杂性。但是，如果用户不需要这样使用语言，则可能不需要引入类的概念。
