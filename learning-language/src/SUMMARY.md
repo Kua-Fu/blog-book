@@ -9,6 +9,7 @@
    - [go101](language/go/101.md)
    - [blogs](language/go/blog.md)
      - [The cover story](language/go/blog/cover.md)
+   - [go mock](language/go/mock.md)
    
 # Java
 
