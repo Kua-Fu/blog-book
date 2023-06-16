@@ -915,6 +915,82 @@ super.notEvenInAClass();
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/superhero.png?raw=true" alt="superhero" /></p>
 <p>We did all of that from scratch, with no external dependencies or magic tools. Just you and I, our respective text editors, a couple of collection classes in the Java standard library, and the JVM runtime.</p>
 <p>This marks the end of Part II, but not the end of the book. Take a break. Maybe write a few fun Lox programs and run them in your interpreter. (You may want to add a few more native methods for things like reading user input.) When you’re refreshed and ready, we’ll embark on our next adventure.</p>
+<p>我们从头完成了所有工作，没有外部依赖或者其他神奇工具，只有你和我，我们的编辑器，Java标准库、Java集合类、JVM虚拟机</p>
+<p>这标志着第二部分的完成，但是并不代表本书的完成。好好休息一下吧，也许用Lox语言写一些简单的程序。（你可能还需要添加一些原生方法来读取用户的输入），当你重新精力充沛，准备好了，我们将踏上下一个冒险。</p>
+<h2 id="五challenges"><a class="header" href="#五challenges">五、CHALLENGES</a></h2>
+<ol>
+<li>
+<p>Lox supports only single inheritance—a class may have a single superclass and that’s the only way to reuse methods across classes. Other languages have explored a variety of ways to more freely reuse and share capabilities across classes: mixins, traits, multiple inheritance, virtual inheritance, extension methods, etc.</p>
+<p>If you were to add some feature along these lines to Lox, which would you pick and why? If you’re feeling courageous (and you should be at this point), go ahead and add it.</p>
+</li>
+<li>
+<p>In Lox, as in most other object-oriented languages, when looking up a method, we start at the bottom of the class hierarchy and work our way up—a subclass’s method is preferred over a superclass’s. In order to get to the superclass method from within an overriding method, you use super.</p>
+<p>The language BETA takes the opposite approach. When you call a method, it starts at the top of the class hierarchy and works down. A superclass method wins over a subclass method. In order to get to the subclass method, the superclass method can call inner, which is sort of like the inverse of super. It chains to the next method down the hierarchy.</p>
+<p>The superclass method controls when and where the subclass is allowed to refine its behavior. If the superclass method doesn’t call inner at all, then the subclass has no way of overriding or modifying the superclass’s behavior.</p>
+<p>Take out Lox’s current overriding and super behavior and replace it with BETA’s semantics. In short:</p>
+<ul>
+<li>
+<p>When calling a method on a class, prefer the method highest on the class’s inheritance chain.</p>
+</li>
+<li>
+<p>Inside the body of a method, a call to inner looks for a method with the same name in the nearest subclass along the inheritance chain between the class containing the inner and the class of this. If there is no matching method, the inner call does nothing.</p>
+</li>
+</ul>
+<p>For example:</p>
+<pre><code class="language-java">
+class Doughnut {
+  cook() {
+    print &quot;Fry until golden brown.&quot;;
+    inner();
+    print &quot;Place in a nice box.&quot;;
+  }
+}
+
+class BostonCream &lt; Doughnut {
+  cook() {
+    print &quot;Pipe full of custard and coat with chocolate.&quot;;
+  }
+}
+
+BostonCream().cook();
+
+</code></pre>
+<p>This should print:</p>
+<pre><code class="language-java">
+Fry until golden brown.
+Pipe full of custard and coat with chocolate.
+Place in a nice box.
+
+</code></pre>
+</li>
+<li>
+<p>In the chapter where I introduced Lox, I challenged you to come up with a couple of features you think the language is missing. Now that you know how to build an interpreter, implement one of those features.</p>
+</li>
+</ol>
+<p> </p>
+<ol>
+<li>
+<p>Lox语言只支持单一继承——一个类最多只有一个超类，并且这是在类之间复用方法的唯一方式。但是，其他语言已经探索了各种自由复用和共享类之间能力的方式: 混合类、特征、多重继承、虚拟继承、扩展方法等等</p>
+<p>如果要向Lox中添加类似功能，你会选择哪一个，为什么？如果你有勇气去挑战这个任务，就去实现吧</p>
+</li>
+<li>
+<p>在Lox中，与大多数的面向对象语言一样，查找方法时候，我们从类层次结构的底部开始，向上查找，子类的方法优先级高于超类。为了访问超类的方法，可以使用super语法</p>
+<p>但是，语言BETA采用了相反的设计，当调用一个方法时，它从类层次结构的顶层开始，向下查找。超类方法优先级高于子类方法，为了访问子类方法，超类方法可以调用 inner，有点像是super的反向。它会链接到层次结构的下一个方法。</p>
+<p>超类方法控制子类在何时何地允许细化其方法。如果超类方法不调用inner，则子类无法覆盖或者修改超类的行为。</p>
+<p>将Lox的当前覆盖和super行为替换为BETA语言的语义，简而言之</p>
+<ul>
+<li>
+<p>在调用一个类的方法时候，优先选择类层次结构中最高的方法；</p>
+</li>
+<li>
+<p>在方法体内，调用inner会在包含inner类 和 this类 的继承链查找同名方法，如果没有匹配的方法，inner调用不执行任何操作。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>在我介绍Lox的那一章中，我们提出了一个挑战，想象一些我们认为还需要实现的功能，现在我们都已经实现了一个完整的解释器，那就选择一个功能去实现吧</p>
+</li>
+</ol>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
