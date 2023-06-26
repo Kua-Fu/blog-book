@@ -18,6 +18,9 @@
   - [after MacOS upgrade, can not use git](mdbook/install_xcode.md)
 - [Chrome](chrome/chrome.md)
 - [Docker](docker/docker.md)
+- [make](make/make.md)
+  - [概述](make/overview.md)
+  - [makefile介绍](make/introducation.md)
 
 
 

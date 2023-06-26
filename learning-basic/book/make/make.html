@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>make - learning-basic</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">4.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">4.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">8.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">8.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">8.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">10.1.</strong> after MacOS upgrade, can not use git</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">11.</strong> Chrome</a></li><li class="chapter-item "><a href="../docker/docker.html"><strong aria-hidden="true">12.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../make/make.html" class="active"><strong aria-hidden="true">13.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">13.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">13.2.</strong> makefile介绍</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-basic</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="make"><a class="header" href="#make">make</a></h1>
+<p>重新学习一下 make, 也算是另一种方式纪念 <a href="https://baike.baidu.com/item/%E9%99%88%E7%9A%93/62996252">陈皓</a></p>
+<h2 id="后序"><a class="header" href="#后序">后序</a></h2>
+<p>终于到写结束语的时候了，以上基本上就是GNU make的Makefile的所有细节了。</p>
+<p>其它的厂商的make基本上也就是这样的，无论什么样的make，都是以文件的依赖性为基础的，其基本是都是遵循一个标准的。</p>
+<p>这篇文档中80%的技术细节都适用于任何的make，我猜测“函数”那一章的内容可能不是其它make所支持的，而隐含规则方面，我想不同的make会有不同的实现，我没有精力来查看GNU的make和VC的nmake、BCB的 make ，或是别的UNIX下的make有些什么样的差别，</p>
+<p>一是时间精力不够，</p>
+<p>二是因为我基本上都是在Unix下使用make，</p>
+<p>以前在SCO Unix和 IBM的AIX，现在在Linux、Solaris、HP-UX、AIX和Alpha下使用，Linux和Solaris下更多一点。</p>
+<p>不过，我可以肯定的是，在Unix下的make，无论是哪种平台，几乎都使用了Richard Stallman开发的make和cc/gcc的编译器，而且，基本上都是 GNU的make（公司里所有的UNIX机器上都被装上了GNU的东西，所以，使用GNU的程序也就多了一些）。</p>
+<p>GNU的东西还是很不错的，特别是使用得深了以后，越来越觉得GNU的软件的强大，也越来越觉得GNU的在操作系统中（主要是Unix，甚至Windows）“杀伤力”。</p>
+<p>对于上述所有的make的细节，</p>
+<p>我们不但可以利用make这个工具来编译我们的程序，</p>
+<p>还可以利用make来完成其它的工作，因为规则中的命令可以是任何Shell之下的命令，</p>
+<p>所以，在Unix下，你不一定只是使用程序语言的编译器，你还可以在Makefile中书写其它的命令，如：tar、 awk、mail、sed、cvs、compress 、ls、rm、yacc、rpm、ftp等等，等等，来完成诸如“程序打包”、“程序备份”、“制作程序安装包”、“提交代码”、“使用程序模板”、“合并文件”等等五花八门的功能，文件操作，文件管理，编程开发设计，或是其它一些异想天开的东西。</p>
+<p>比如，以前在书写银行交易程序时，由于银行的交易程序基本一样，就见到有人书写了一些交易的通用程序模板，在该模板中把一些网络通讯、数据库操作的、业务操作共性的东西写在一个文件中，在这些文件中用些诸如“@@@N、###N”奇怪字串标注一些位置，然后书写交易时，只需按照一种特定的规则书写特定的处理，最后在make时，使用awk和sed，把模板中的“@@@N、###N”等字串替代成特定的程序，形成C文件，然后再编译。</p>
+<p>这个动作很像数据库的“扩展C”语言（即在C语言中用“EXEC SQL”的样子执行SQL语句，在用cc/gcc编译之前，需要使用“扩展C”的翻译程序，如cpre，把其翻译成标准C）。如果你在使用make时有一些更为绝妙的方法，请记得告诉我啊。</p>
+<p>回头看看整篇文档，不觉记起几年前刚刚开始在Unix下做开发的时候，有人问我会不会写Makefile时，我两眼发直，根本不知道在说什么。</p>
+<p>一开始看到别人在vi中写完程序后输入“!make”时，还以为是vi的功能，后来才知道有一个Makefile在作怪，于是上网查啊查，那时又不愿意看英文，发现就根本没有中文的文档介绍Makefile，只得看别人写的Makefile，自己瞎碰瞎搞才积累了一点知识，但在很多地方完全是知其然不知所以然。后来开始从事UNIX下产品软件的开发，看到一个400人，近200万行代码的大工程，发现要编译这样一个庞然大物，如果没有Makefile，那会是多么恐怖的一样事啊。</p>
+<p>于是横下心来，狠命地读了一堆英文文档，才觉得对其掌握了。但发现目前网上对Makefile介绍的文章还是少得那么的可怜，所以想写这样一篇文章，共享给大家，希望能对各位有所帮助。</p>
+<p>现在我终于写完了，看了看文件的创建时间，这篇技术文档也写了两个多月了。发现，自己知道是一回事，要写下来，跟别人讲述又是另外一回事，而且，现在越来越没有时间钻研技术细节，所以在写作时，发现在阐述一些细节问题时很难做到严谨和精炼，而且对先讲什么后讲什么不是很清楚，所以，还是参考了一些国外站点上的资料和提纲，以及一些技术书籍的语言风格，才得以完成。</p>
+<p>整篇文档的提纲是基于GNU 的Makefile技术手册的提纲来书写的，并结合了自己的工作经验，以及自己的学习历程。因为从来没有写过这么长，这么细的文档，所以一定会有很多地方存在表达问题，语言歧义或是错误。因些，我迫切地等待各位给我指正和建议，以及任何的反馈。</p>
+<p>最后，还是利用这个后序，介绍一下自己。我目前从事于所有Unix平台下的软件研发，主要是做分布式计算/网格计算方面的系统产品软件，并且我对于下一代的计算机革命——网格计算非常地感兴趣，对于分布式计算、P2P、Web Service、J2EE技术方向也很感兴趣，同时，对于项目实施、团队管理、项目管理也小有心得，希望同样和我战斗在“技术和管理并重”的阵线上的年轻一代，能够和我多多地交流。我的MSN是： haoel@hotmail.com（常用），QQ是：753640（不常用）。（注：请勿给我MSN的邮箱发信，由于hotmail的垃圾邮件导致我拒收这个邮箱的所有来信）</p>
+<p>我欢迎任何形式的交流，无论是讨论技术还是管理，或是其它海阔天空的东西。除了政治和娱乐新闻我不关心，其它只要积极向上的东西我都欢迎！</p>
+<p>最最后，我还想介绍一下make程序的设计开发者。</p>
+<p>首当其冲的是：Richard Stallman</p>
+<p>开源软件的领袖和先驱，从来没有领过一天工资，从来没有使用过Windows操作系统。对于他的事迹和他的软件以及他的思想，我无需说过多的话，相信大家对这个人并不比我陌生，这是他的<a href="http://www.stallman.org/">主页</a> 。这里只贴上一张他的近照：</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Richard_Stallman_at_LibrePlanet_2019.jpg/440px-Richard_Stallman_at_LibrePlanet_2019.jpg" alt="近照" /></p>
+<p>第二位是：Roland McGrath</p>
+<p><a href="http://www.frob.com/%7Eroland/">个人主页是</a> ，下面是他的一些事迹：</p>
+<p>合作编写了并维护GNU make。</p>
+<p>和Thomas Bushnell一同编写了GNU Hurd。</p>
+<p>编写并维护着GNU C library。</p>
+<p>合作编写并维护着部分的GNU Emacs。</p>
+<p>在此，向这两位开源项目的斗士致以最真切的敬意。</p>
+<p>（全文完）</p>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../docker/docker.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../make/overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../docker/docker.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../make/overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>
