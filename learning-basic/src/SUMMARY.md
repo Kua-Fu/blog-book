@@ -21,6 +21,14 @@
 - [make](make/make.md)
   - [概述](make/overview.md)
   - [makefile介绍](make/introducation.md)
+  - [书写规则](make/rules.md)
+  - [书写命令](make/recipes.md)
+  - [使用变量](make/var.md)
+  - [使用条件判断](make/condition.md)
+  - [使用函数](make/func.md)
+  - [make的运行](make/invoke.md)
+  - [隐含规则](make/implicit_rule.md)
+  - [使用make更新函数库文件](make/archives.md)
 
 
 

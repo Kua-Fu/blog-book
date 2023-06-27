@@ -1,0 +1,672 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>隐含规则 - learning-basic</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">4.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">4.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">8.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">8.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">8.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">10.1.</strong> after MacOS upgrade, can not use git</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">11.</strong> Chrome</a></li><li class="chapter-item "><a href="../docker/docker.html"><strong aria-hidden="true">12.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../make/make.html"><strong aria-hidden="true">13.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">13.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">13.2.</strong> makefile介绍</a></li><li class="chapter-item "><a href="../make/rules.html"><strong aria-hidden="true">13.3.</strong> 书写规则</a></li><li class="chapter-item "><a href="../make/recipes.html"><strong aria-hidden="true">13.4.</strong> 书写命令</a></li><li class="chapter-item "><a href="../make/var.html"><strong aria-hidden="true">13.5.</strong> 使用变量</a></li><li class="chapter-item "><a href="../make/condition.html"><strong aria-hidden="true">13.6.</strong> 使用条件判断</a></li><li class="chapter-item "><a href="../make/func.html"><strong aria-hidden="true">13.7.</strong> 使用函数</a></li><li class="chapter-item "><a href="../make/invoke.html"><strong aria-hidden="true">13.8.</strong> make的运行</a></li><li class="chapter-item expanded "><a href="../make/implicit_rule.html" class="active"><strong aria-hidden="true">13.9.</strong> 隐含规则</a></li><li class="chapter-item "><a href="../make/archives.html"><strong aria-hidden="true">13.10.</strong> 使用make更新函数库文件</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-basic</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="隐含规则"><a class="header" href="#隐含规则">隐含规则</a></h1>
+<p>在我们使用Makefile时，有一些我们会经常使用，而且使用频率非常高的东西，比如，我们编译C/C++的源程序为中间目标文件（Unix下是 .o 文件，Windows下是 .obj 文件）。本章讲述的就是一些在Makefile中的“隐含的”，早先约定了的，不需要我们再写出来的规则。</p>
+<p>“隐含规则”也就是一种惯例，make会按照这种“惯例”心照不喧地来运行，那怕我们的Makefile中没有书写这样的规则。例如，把 .c 文件编译成 .o 文件这一规则，你根本就不用写出来，make会自动推导出这种规则，并生成我们需要的 .o 文件。</p>
+<p>隐含规则”会使用一些我们系统变量，我们可以改变这些系统变量的值来定制隐含规则的运行时的参数。如系统变量 CFLAGS 可以控制编译时的编译器参数。</p>
+<p>我们还可以通过“模式规则”的方式写下自己的隐含规则。用“后缀规则”来定义隐含规则会有许多的限制。使用“模式规则”会显得更智能和清楚，但“后缀规则”可以用来保证我们Makefile的兼容性。我们了解了“隐含规则”，可以让其为我们更好的服务，也会让我们知道一些“约定俗成”了的东西，而不至于使得我们在运行Makefile时出现一些我们觉得莫名其妙的东西。当然，任何事物都是矛盾的，水能载舟，亦可覆舟，所以，有时候“隐含规则”也会给我们造成不小的麻烦。只有了解了它，我们才能更好地使用它。</p>
+<h2 id="使用隐含规则"><a class="header" href="#使用隐含规则">使用隐含规则</a></h2>
+<p>如果要使用隐含规则生成你需要的目标，你所需要做的就是不要写出这个目标的规则。那么，make会试图去自动推导产生这个目标的规则和命令，如果 make可以自动推导生成这个目标的规则和命令，那么这个行为就是隐含规则的自动推导。当然，隐含规则是make事先约定好的一些东西。例如，我们有下面的一个Makefile：</p>
+<pre><code class="language-makefile">
+foo: foo.o bar.o
+    cc –o foo foo.o bar.o $(CFLAGS) $(LDFLAGS)
+	
+</code></pre>
+<p>我们可以注意到，这个Makefile中并没有写下如何生成 foo.o 和 bar.o 这两目标的规则和命令。因为make的“隐含规则”功能会自动为我们自动去推导这两个目标的依赖目标和生成命令。</p>
+<p>make会在自己的“隐含规则”库中寻找可以用的规则，如果找到，那么就会使用。如果找不到，那么就会报错。在上面的那个例子中，make调用的隐含规则是，把 .o 的目标的依赖文件置成 .c ，并使用C的编译命令 cc –c $(CFLAGS)  foo.c 来生成 foo.o 的目标。也就是说，我们完全没有必要写下下面的两条规则：</p>
+<pre><code class="language-makefile">
+foo.o: foo.c
+    cc –c foo.c $(CFLAGS)
+bar.o: bar.c
+    cc –c bar.c $(CFLAGS)
+	
+</code></pre>
+<p>因为，这已经是“约定”好了的事了，make和我们约定好了用C编译器 cc 生成 .o 文件的规则，这就是隐含规则。</p>
+<p>当然，如果我们为 .o 文件书写了自己的规则，那么make就不会自动推导并调用隐含规则，它会按照我们写好的规则忠实地执行。</p>
+<p>还有，在make的“隐含规则库”中，每一条隐含规则都在库中有其顺序，越靠前的则是越被经常使用的，所以，这会导致我们有些时候即使我们显示地指定了目标依赖，make也不会管。如下面这条规则（没有命令）：</p>
+<pre><code class="language-makefile">
+foo.o: foo.p
+
+
+</code></pre>
+<p>依赖文件 foo.p （Pascal程序的源文件）有可能变得没有意义。如果目录下存在了 foo.c 文件，那么我们的隐含规则一样会生效，并会通过 foo.c 调用C的编译器生成 foo.o 文件。因为，在隐含规则中，Pascal的规则出现在C的规则之后，所以，make找到可以生成 foo.o 的C的规则就不再寻找下一条规则了。如果你确实不希望任何隐含规则推导，那么，你就不要只写出“依赖规则”，而不写命令。</p>
+<h2 id="隐含规则一览"><a class="header" href="#隐含规则一览">隐含规则一览</a></h2>
+<p>这里我们将讲述所有预先设置（也就是make内建）的隐含规则，如果我们不明确地写下规则，那么，make就会在这些规则中寻找所需要规则和命令。当然，我们也可以使用make的参数 -r 或 --no-builtin-rules 选项来取消所有的预设置的隐含规则。</p>
+<p>当然，即使是我们指定了 -r 参数，某些隐含规则还是会生效，因为有许多的隐含规则都是使用了“后缀规则”来定义的，所以，只要隐含规则中有 “后缀列表”（也就一系统定义在目标 .SUFFIXES 的依赖目标），那么隐含规则就会生效。默认的后缀列表是：.out, .a, .ln, .o, .c, .cc, .C, .p, .f, .F, .r, .y, .l, .s, .S, .mod, .sym, .def, .h, .info, .dvi, .tex, .texinfo, .texi, .txinfo, .w, .ch .web, .sh, .elc, .el。具体的细节，我们会在后面讲述。</p>
+<p>还是先来看一看常用的隐含规则吧。</p>
+<ol>
+<li>
+<p>编译C程序的隐含规则。</p>
+<p><code>&lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.c</code> ，并且其生成命令是 <code>$(CC) –c $(CPPFLAGS) $(CFLAGS)</code></p>
+</li>
+<li>
+<p>编译C++程序的隐含规则</p>
+<p><code>&lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.cc</code> 或是 <code>&lt;n&gt;.C</code> ，并且其生成命令是 <code>$(CXX) –c $(CPPFLAGS) $(CXXFLAGS)</code> 。（建议使用 .cc 作为C++源文件的后缀，而不是 .C ）</p>
+</li>
+<li>
+<p>编译Pascal程序的隐含规则。</p>
+<p><code>&lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.p</code> ，并且其生成命令是 <code>$(PC) –c  $(PFLAGS)</code> 。</p>
+</li>
+<li>
+<p>编译Fortran/Ratfor程序的隐含规则。</p>
+<p><code>&lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.r 或 &lt;n&gt;.F 或 &lt;n&gt;.f</code> ，并且其生成命令是:</p>
+<ul>
+<li>
+<p>.f $(FC) –c  $(FFLAGS)</p>
+</li>
+<li>
+<p>.F $(FC) –c  $(FFLAGS) $(CPPFLAGS)</p>
+</li>
+<li>
+<p>.f $(FC) –c  $(FFLAGS) $(RFLAGS)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>预处理Fortran/Ratfor程序的隐含规则。</p>
+<p><code>&lt;n&gt;.f</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.r 或 &lt;n&gt;.F</code> 。这个规则只是转换Ratfor 或有预处理的Fortran程序到一个标准的Fortran程序。其使用的命令是：</p>
+<ul>
+<li>
+<p>.F $(FC) –F $(CPPFLAGS) $(FFLAGS)</p>
+</li>
+<li>
+<p>.r $(FC) –F $(FFLAGS) $(RFLAGS)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>编译Modula-2程序的隐含规则。</p>
+<p><code>&lt;n&gt;.sym</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.def</code> ，并且其生成命令是： $(M2C) $(M2FLAGS) $(DEFFLAGS) 。<code> &lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.mod</code> ，并且其生成命令是： $(M2C) $(M2FLAGS) $(MODFLAGS) </p>
+</li>
+<li>
+<p>汇编和汇编预处理的隐含规则。</p>
+<p><code>&lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.s</code> ，默认使用编译器 as ，并且其生成命令是： $ (AS) $(ASFLAGS) 。 <code>&lt;n&gt;.s</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.S</code> ，默认使用C预编译器 cpp ，并且其生成命令是： $(AS) $(ASFLAGS) 。</p>
+</li>
+<li>
+<p>链接Object文件的隐含规则。</p>
+<p><code>&lt;n&gt;</code> 目标依赖于 <code>&lt;n&gt;.o</code> ，通过运行C的编译器来运行链接程序生成（一般是 ld ），其生成命令是： $(CC) $(LDFLAGS) <n>.o $(LOADLIBES) $(LDLIBS) 。这个规则对于只有一个源文件的工程有效，同时也对多个Object文件（由不同的源文件生成）的也有效。例如如下规则:</p>
+<pre><code class="language-makefile">
+x: y.o z.o
+</code></pre>
+<p>并且 x.c 、 y.c 和 z.c 都存在时，隐含规则将执行如下命令:</p>
+<pre><code class="language-makefile">
+cc -c x.c -o x.o
+cc -c y.c -o y.o
+cc -c z.c -o z.o
+cc x.o y.o z.o -o x
+rm -f x.o
+rm -f y.o
+rm -f z.o
+</code></pre>
+<p>如果没有一个源文件（如上例中的x.c）和你的目标名字（如上例中的x）相关联，那么，你最好写出自己的生成规则，不然，隐含规则会报错的。</p>
+</li>
+<li>
+<p>Yacc C程序时的隐含规则。</p>
+<p><code>&lt;n&gt;.c</code> 的依赖文件被自动推导为 n.y （Yacc生成的文件），其生成命令是： $(YACC) $(YFALGS) 。（“Yacc”是一个语法分析器，关于其细节请查看相关资料）</p>
+</li>
+<li>
+<p>Lex C程序时的隐含规则。</p>
+<p><code>&lt;n&gt;.c</code> 的依赖文件被自动推导为 n.l （Lex生成的文件），其生成命令是： $(LEX) $(LFALGS) 。（关于“Lex”的细节请查看相关资料）</p>
+</li>
+<li>
+<p>Lex Ratfor程序时的隐含规则。</p>
+<p><code>&lt;n&gt;.r</code> 的依赖文件被自动推导为 n.l （Lex生成的文件），其生成命令是： $(LEX) $(LFALGS) 。</p>
+</li>
+<li>
+<p>从C程序、Yacc文件或Lex文件创建Lint库的隐含规则。</p>
+<p><code>&lt;n&gt;.ln</code> （lint生成的文件）的依赖文件被自动推导为 n.c ，其生成命令是： $(LINT) $(LINTFALGS) $(CPPFLAGS) -i 。对于 <code>&lt;n&gt;.y</code> 和 <code>&lt;n&gt;.l</code> 也是同样的规则。</p>
+</li>
+</ol>
+<h2 id="隐含规则使用的变量"><a class="header" href="#隐含规则使用的变量">隐含规则使用的变量</a></h2>
+<p>在隐含规则中的命令中，基本上都是使用了一些预先设置的变量。你可以在你的makefile中改变这些变量的值，或是在make的命令行中传入这些值，或是在你的环境变量中设置这些值，无论怎么样，只要设置了这些特定的变量，那么其就会对隐含规则起作用。当然，你也可以利用make的 -R 或 --no–builtin-variables 参数来取消你所定义的变量对隐含规则的作用。</p>
+<p>例如，第一条隐含规则——编译C程序的隐含规则的命令是 $(CC) –c $(CFLAGS) $(CPPFLAGS) 。Make默认的编译命令是 cc ，如果你把变量 $(CC) 重定义成 gcc ，把变量 $(CFLAGS) 重定义成 -g ，那么，隐含规则中的命令全部会以 gcc –c -g $(CPPFLAGS) 的样子来执行了。</p>
+<p>我们可以把隐含规则中使用的变量分成两种：一种是命令相关的，如 CC ；一种是参数相的关，如 CFLAGS 。下面是所有隐含规则中会用到的变量：</p>
+<h3 id="关于命令的变量"><a class="header" href="#关于命令的变量">关于命令的变量</a></h3>
+<ul>
+<li>
+<p>AR : 函数库打包程序。默认命令是 ar</p>
+</li>
+<li>
+<p>AS : 汇编语言编译程序。默认命令是 as</p>
+</li>
+<li>
+<p>CC : C语言编译程序。默认命令是 cc</p>
+</li>
+<li>
+<p>CXX : C++语言编译程序。默认命令是 g++</p>
+</li>
+<li>
+<p>CO : 从 RCS文件中扩展文件程序。默认命令是 co</p>
+</li>
+<li>
+<p>CPP : C程序的预处理器（输出是标准输出设备）。默认命令是 $(CC) –E</p>
+</li>
+<li>
+<p>FC : Fortran 和 Ratfor 的编译器和预处理程序。默认命令是 f77</p>
+</li>
+<li>
+<p>GET : 从SCCS文件中扩展文件的程序。默认命令是 get</p>
+</li>
+<li>
+<p>LEX : Lex方法分析器程序（针对于C或Ratfor）。默认命令是 lex</p>
+</li>
+<li>
+<p>PC : Pascal语言编译程序。默认命令是 pc</p>
+</li>
+<li>
+<p>YACC : Yacc文法分析器（针对于C程序）。默认命令是 yacc</p>
+</li>
+<li>
+<p>YACCR : Yacc文法分析器（针对于Ratfor程序）。默认命令是 yacc –r</p>
+</li>
+<li>
+<p>MAKEINFO : 转换Texinfo源文件（.texi）到Info文件程序。默认命令是 makeinfo</p>
+</li>
+<li>
+<p>TEX : 从TeX源文件创建TeX DVI文件的程序。默认命令是 tex</p>
+</li>
+<li>
+<p>TEXI2DVI : 从Texinfo源文件创建军TeX DVI 文件的程序。默认命令是 texi2dvi</p>
+</li>
+<li>
+<p>WEAVE : 转换Web到TeX的程序。默认命令是 weave</p>
+</li>
+<li>
+<p>CWEAVE : 转换C Web 到 TeX的程序。默认命令是 cweave</p>
+</li>
+<li>
+<p>TANGLE : 转换Web到Pascal语言的程序。默认命令是 tangle</p>
+</li>
+<li>
+<p>CTANGLE : 转换C Web 到 C。默认命令是 ctangle</p>
+</li>
+<li>
+<p>RM : 删除文件命令。默认命令是 rm –f</p>
+</li>
+</ul>
+<h3 id="关于命令参数的变量"><a class="header" href="#关于命令参数的变量">关于命令参数的变量</a></h3>
+<p>下面的这些变量都是相关上面的命令的参数。如果没有指明其默认值，那么其默认值都是空。</p>
+<ul>
+<li>
+<p>ARFLAGS : 函数库打包程序AR命令的参数。默认值是 rv</p>
+</li>
+<li>
+<p>ASFLAGS : 汇编语言编译器参数。（当明显地调用 .s 或 .S 文件时）</p>
+</li>
+<li>
+<p>CFLAGS : C语言编译器参数。</p>
+</li>
+<li>
+<p>CXXFLAGS : C++语言编译器参数。</p>
+</li>
+<li>
+<p>COFLAGS : RCS命令参数。</p>
+</li>
+<li>
+<p>CPPFLAGS : C预处理器参数。（ C 和 Fortran 编译器也会用到）。</p>
+</li>
+<li>
+<p>FFLAGS : Fortran语言编译器参数。</p>
+</li>
+<li>
+<p>GFLAGS : SCCS “get”程序参数。</p>
+</li>
+<li>
+<p>LDFLAGS : 链接器参数。（如： ld ）</p>
+</li>
+<li>
+<p>LFLAGS : Lex文法分析器参数。</p>
+</li>
+<li>
+<p>PFLAGS : Pascal语言编译器参数。</p>
+</li>
+<li>
+<p>RFLAGS : Ratfor 程序的Fortran 编译器参数。</p>
+</li>
+<li>
+<p>YFLAGS : Yacc文法分析器参数。</p>
+</li>
+</ul>
+<h2 id="隐含规则链"><a class="header" href="#隐含规则链">隐含规则链</a></h2>
+<p>有些时候，一个目标可能被一系列的隐含规则所作用。例如，一个 .o 的文件生成，可能会是先被 Yacc的[.y]文件先成 .c ，然后再被C的编译器生成。我们把这一系列的隐含规则叫做“隐含规则链”。</p>
+<p>在上面的例子中，如果文件 .c 存在，那么就直接调用C的编译器的隐含规则，如果没有 .c 文件，但有一个 .y 文件，那么Yacc的隐含规则会被调用，生成 .c 文件，然后，再调用C编译的隐含规则最终由 .c 生成 .o 文件，达到目标。</p>
+<p>我们把这种 .c 的文件（或是目标），叫做中间目标。不管怎么样，make会努力自动推导生成目标的一切方法，不管中间目标有多少，其都会执着地把所有的隐含规则和你书写的规则全部合起来分析，努力达到目标，所以，有些时候，可能会让你觉得奇怪，怎么我的目标会这样生成？怎么我的 makefile发疯了？</p>
+<p>在默认情况下，对于中间目标，它和一般的目标有两个地方所不同：第一个不同是除非中间的目标不存在，才会引发中间规则。第二个不同的是，只要目标成功产生，那么，产生最终目标过程中，所产生的中间目标文件会被以 rm -f 删除。</p>
+<p>通常，一个被makefile指定成目标或是依赖目标的文件不能被当作中介。然而，你可以明显地说明一个文件或是目标是中介目标，你可以使用伪目标 .INTERMEDIATE 来强制声明。（如： .INTERMEDIATE : mid ）</p>
+<p>你也可以阻止make自动删除中间目标，要做到这一点，你可以使用伪目标 .SECONDARY 来强制声明（如： .SECONDARY : sec ）。你还可以把你的目标，以模式的方式来指定（如： %.o ）成伪目标 .PRECIOUS 的依赖目标，以保存被隐含规则所生成的中间文件。</p>
+<p>在“隐含规则链”中，禁止同一个目标出现两次或两次以上，这样一来，就可防止在make自动推导时出现无限递归的情况。</p>
+<p>Make会优化一些特殊的隐含规则，而不生成中间文件。如，从文件 foo.c 生成目标程序 foo ，按道理，make会编译生成中间文件 foo.o ，然后链接成 foo ，但在实际情况下，这一动作可以被一条 cc 的命令完成（ cc –o foo foo.c ），于是优化过的规则就不会生成中间文件。</p>
+<h2 id="定义模式规则"><a class="header" href="#定义模式规则">定义模式规则</a></h2>
+<p>你可以使用模式规则来定义一个隐含规则。一个模式规则就好像一个一般的规则，只是在规则中，目标的定义需要有 % 字符。 % 的意思是表示一个或多个任意字符。在依赖目标中同样可以使用 % ，只是依赖目标中的 % 的取值，取决于其目标。</p>
+<p>有一点需要注意的是， % 的展开发生在变量和函数的展开之后，变量和函数的展开发生在make载入 Makefile时，而模式规则中的 % 则发生在运行时。</p>
+<h3 id="模式规则介绍"><a class="header" href="#模式规则介绍">模式规则介绍</a></h3>
+<p>模式规则中，至少在规则的目标定义中要包含 % ，否则，就是一般的规则。目标中的 % 定义表示对文件名的匹配， % 表示长度任意的非空字符串。例如： %.c 表示以 .c 结尾的文件名（文件名的长度至少为3），而 s.%.c 则表示以 s. 开头， .c 结尾的文件名（文件名的长度至少为5）。</p>
+<p>如果 % 定义在目标中，那么，依赖中的 % 的值决定了目标中的 % 的值，也就是说，依赖中的模式的 % 决定了目标中 % 的样子。例如有一个模式规则如下：</p>
+<pre><code class="language-makefile">
+%.o: %.c ; &lt;command ......&gt;;
+
+</code></pre>
+<p>其含义是，指出了怎么从所有的 .c 文件生成相应的 .o 文件的规则。如果要生成的目标是 a.o b.o ，那么 %c 就是 a.c b.c 。</p>
+<p>一旦依赖目标中的 % 模式被确定，那么，make会被要求去匹配当前目录下所有的文件名，一旦找到，make就会规则下的命令，所以，在模式规则中，目标可能会是多个的，如果有模式匹配出多个目标，make就会产生所有的模式目标，此时，make关心的是依赖的文件名和生成目标的命令这两件事。</p>
+<h3 id="模式规则示例"><a class="header" href="#模式规则示例">模式规则示例</a></h3>
+<p>下面这个例子表示了,把所有的 .c 文件都编译成 .o 文件.</p>
+<pre><code class="language-makefile">
+%.o: %.c
+    $(CC) -c $(CFLAGS) $(CPPFLAGS) $&lt; -o $@
+	
+</code></pre>
+<p>其中， $@ 表示所有的目标的挨个值， $&lt; 表示了所有依赖目标的挨个值。这些奇怪的变量我们叫“自动化变量”，后面会详细讲述。</p>
+<p>下面的这个例子中有两个目标是模式的：</p>
+<pre><code class="language-makefile">
+%.tab.c %.tab.h: %.y
+    bison -d $&lt;
+	
+</code></pre>
+<p>这条规则告诉make把所有的 .y 文件都以 bison -d <code>&lt;n&gt;.y</code> 执行，然后生成 <code>&lt;n&gt;.tab.c</code> 和 <code>&lt;n&gt;.tab.h</code> 文件。（其中， <code>&lt;n&gt;</code> 表示一个任意字符串）。如果我们的执行程序 foo 依赖于文件 parse.tab.o 和 scan.o ，并且文件 scan.o 依赖于文件 parse.tab.h ，如果 parse.y 文件被更新了，那么根据上述的规则， bison -d parse.y 就会被执行一次，于是， parse.tab.o 和 scan.o 的依赖文件就齐了。（假设， parse.tab.o 由 parse.tab.c 生成，和 scan.o 由 scan.c 生成，而 foo 由 parse.tab.o 和 scan.o 链接生成，而且 foo 和其 .o 文件的依赖关系也写好，那么，所有的目标都会得到满足）</p>
+<h3 id="自动化变量"><a class="header" href="#自动化变量">自动化变量</a></h3>
+<p>在上述的模式规则中，目标和依赖文件都是一系例的文件，那么我们如何书写一个命令来完成从不同的依赖文件生成相应的目标？因为在每一次的对模式规则的解析时，都会是不同的目标和依赖文件。</p>
+<p>自动化变量就是完成这个功能的。在前面，我们已经对自动化变量有所提涉，相信你看到这里已对它有一个感性认识了。所谓自动化变量，就是这种变量会把模式中所定义的一系列的文件自动地挨个取出，直至所有的符合模式的文件都取完了。这种自动化变量只应出现在规则的命令中。</p>
+<p>下面是所有的自动化变量及其说明：</p>
+<ul>
+<li>
+<p>$@ : 表示规则中的目标文件集。在模式规则中，如果有多个目标，那么， $@ 就是匹配于目标中模式定义的集合。</p>
+</li>
+<li>
+<p>$% : 仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是 foo.a(bar.o) ，那么， $% 就是 bar.o ， $@ 就是 foo.a 。如果目标不是函数库文件（Unix下是 .a ，Windows下是 .lib ），那么，其值为空。</p>
+</li>
+<li>
+<p>$&lt; : 依赖目标中的第一个目标名字。如果依赖目标是以模式（即 % ）定义的，那么 $&lt; 将是符合模式的一系列的文件集。注意，其是一个一个取出来的。</p>
+</li>
+<li>
+<p>$? : 所有比目标新的依赖目标的集合。以空格分隔。</p>
+</li>
+<li>
+<p>$^ : 所有的依赖目标的集合。以空格分隔。如果在依赖目标中有多个重复的，那么这个变量会去除重复的依赖目标，只保留一份。</p>
+</li>
+<li>
+<p>$+ : 这个变量很像 $^ ，也是所有依赖目标的集合。只是它不去除重复的依赖目标。</p>
+</li>
+<li>
+<p>$* : 这个变量表示目标模式中 % 及其之前的部分。如果目标是 dir/a.foo.b ，并且目标的模式是 a.%.b ，那么， $* 的值就是 dir/foo 。这个变量对于构造有关联的文件名是比较有效。如果目标中没有模式的定义，那么 $* 也就不能被推导出，但是，如果目标文件的后缀是make所识别的，那么 $* 就是除了后缀的那一部分。例如：如果目标是 foo.c ，因为 .c 是make所能识别的后缀名，所以， $* 的值就是 foo 。这个特性是GNU make的，很有可能不兼容于其它版本的make，所以，你应该尽量避免使用 $* ，除非是在隐含规则或是静态模式中。如果目标中的后缀是make所不能识别的，那么 $* 就是空值。</p>
+</li>
+</ul>
+<p>当你希望只对更新过的依赖文件进行操作时， $? 在显式规则中很有用，例如，假设有一个函数库文件叫 lib ，其由其它几个object文件更新。那么把object文件打包的比较有效率的Makefile规则是：</p>
+<pre><code class="language-makefile">
+
+lib: foo.o bar.o lose.o win.o
+    ar r lib $?
+	
+</code></pre>
+<p>在上述所列出来的自动量变量中。四个变量（ $@ 、 $&lt; 、 $% 、 $* ）在扩展时只会有一个文件，而另三个的值是一个文件列表。这七个自动化变量还可以取得文件的目录名或是在当前目录下的符合模式的文件名，只需要搭配上 D 或 F 字样。这是GNU make中老版本的特性，在新版本中，我们使用函数 dir 或 notdir 就可以做到了。 D 的含义就是Directory，就是目录， F 的含义就是File，就是文件。</p>
+<p>下面是对于上面的七个变量分别加上 D 或是 F 的含义：</p>
+<ul>
+<li>
+<p>$(@D)</p>
+<p>表示 $@ 的目录部分（不以斜杠作为结尾），如果 $@ 值是 dir/foo.o ，那么 $(@D) 就是 dir ，而如果 $@ 中没有包含斜杠的话，其值就是 . （当前目录）。</p>
+</li>
+<li>
+<p>$(@F) </p>
+<p>表示 $@ 的文件部分，如果 $@ 值是 dir/foo.o ，那么 $(@F) 就是 foo.o ， $(@F) 相当于函数 $(notdir $@) 。</p>
+</li>
+<li>
+<p>$(*D), $(*F)</p>
+<p>和上面所述的同理，也是取文件的目录部分和文件部分。对于上面的那个例子， $(*D) 返回 dir ，而 $(*F) 返回 foo</p>
+</li>
+<li>
+<p>$(%D), $(%F)</p>
+<p>分别表示了函数包文件成员的目录部分和文件部分。这对于形同 archive(member) 形式的目标中的 member 中包含了不同的目录很有用。</p>
+</li>
+<li>
+<p>$(&lt;D), $(&lt;F)</p>
+<p>分别表示依赖文件的目录部分和文件部分。</p>
+</li>
+<li>
+<p>$(^D), $(^F)</p>
+<p>分别表示所有依赖文件的目录部分和文件部分。（无相同的）</p>
+</li>
+<li>
+<p>$(+D), $(+F)</p>
+<p>分别表示所有依赖文件的目录部分和文件部分。（可以有相同的）</p>
+</li>
+<li>
+<p>$(?D), $(?F)</p>
+<p>分别表示被更新的依赖文件的目录部分和文件部分。</p>
+</li>
+</ul>
+<p>最后想提醒一下的是，对于 $&lt; ，为了避免产生不必要的麻烦，我们最好给 $ 后面的那个特定字符都加上圆括号，比如， $(&lt;) 就要比 $&lt; 要好一些。</p>
+<p>还得要注意的是，这些变量只使用在规则的命令中，而且一般都是“显式规则”和“静态模式规则”（参见前面“书写规则”一章）。其在隐含规则中并没有意义。</p>
+<h3 id="模式的匹配"><a class="header" href="#模式的匹配">模式的匹配</a></h3>
+<p>一般来说，一个目标的模式有一个有前缀或是后缀的 % ，或是没有前后缀，直接就是一个 % 。因为 % 代表一个或多个字符，所以在定义好了的模式中，我们把 % 所匹配的内容叫做“茎”，例如 %.c 所匹配的文件“test.c”中“test”就是“茎”。因为在目标和依赖目标中同时有 % 时，依赖目标的“茎”会传给目标，当做目标中的“茎”。</p>
+<p>当一个模式匹配包含有斜杠（实际也不经常包含）的文件时，那么在进行模式匹配时，目录部分会首先被移开，然后进行匹配，成功后，再把目录加回去。在进行“茎”的传递时，我们需要知道这个步骤。例如有一个模式 e%t ，文件 src/eat 匹配于该模式，于是 src/a 就是其“茎”，如果这个模式定义在依赖目标中，而被依赖于这个模式的目标中又有个模式 c%r ，那么，目标就是 src/car 。（“茎”被传递）</p>
+<h3 id="重载内建隐含规则"><a class="header" href="#重载内建隐含规则">重载内建隐含规则</a></h3>
+<p>你可以重载内建的隐含规则（或是定义一个全新的），例如你可以重新构造和内建隐含规则不同的命令，如：</p>
+<pre><code class="language-makefile">
+%.o: %.c
+    $(CC) -c $(CPPFLAGS) $(CFLAGS) -D$(date)
+	
+</code></pre>
+<p>你可以取消内建的隐含规则，只要不在后面写命令就行。如：</p>
+<pre><code class="language-makefile">
+%.o: %.s
+
+</code></pre>
+<p>同样，你也可以重新定义一个全新的隐含规则，其在隐含规则中的位置取决于你在哪里写下这个规则。朝前的位置就靠前。</p>
+<h2 id="老式风格的后缀规则"><a class="header" href="#老式风格的后缀规则">老式风格的“后缀规则”</a></h2>
+<p>后缀规则是一个比较老式的定义隐含规则的方法。后缀规则会被模式规则逐步地取代。因为模式规则更强更清晰。为了和老版本的Makefile兼容，GNU make同样兼容于这些东西。后缀规则有两种方式：“双后缀”和“单后缀”。</p>
+<p>双后缀规则定义了一对后缀：目标文件的后缀和依赖目标（源文件）的后缀。如 .c.o 相当于 %o: %c 。单后缀规则只定义一个后缀，也就是源文件的后缀。如 .c 相当于 %: %.c 。</p>
+<p>后缀规则中所定义的后缀应该是make所认识的，如果一个后缀是make所认识的，那么这个规则就是单后缀规则，而如果两个连在一起的后缀都被make所认识，那就是双后缀规则。例如： .c 和 .o 都是make所知道。因而，如果你定义了一个规则是 .c.o 那么其就是双后缀规则，意义就是 .c 是源文件的后缀， .o 是目标文件的后缀。如下示例：</p>
+<pre><code class="language-makefile">
+.c.o:
+    $(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $&lt;
+	
+</code></pre>
+<p>后缀规则不允许任何的依赖文件，如果有依赖文件的话，那就不是后缀规则，那些后缀统统被认为是文件名，如：</p>
+<pre><code class="language-makefile">
+.c.o: foo.h
+    $(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $&lt;
+	
+</code></pre>
+<p>这个例子，就是说，文件 .c.o 依赖于文件 foo.h ，而不是我们想要的这样：</p>
+<pre><code class="language-makefile">
+%.o: %.c foo.h
+    $(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $&lt;
+	
+</code></pre>
+<p>后缀规则中，如果没有命令，那是毫无意义的。因为他也不会移去内建的隐含规则。</p>
+<p>而要让make知道一些特定的后缀，我们可以使用伪目标 .SUFFIXES 来定义或是删除，如：</p>
+<pre><code class="language-makefile">
+.SUFFIXES: .hack .win
+
+</code></pre>
+<p>把后缀 .hack 和 .win 加入后缀列表中的末尾。</p>
+<pre><code class="language-makefile">
+.SUFFIXES:              # 删除默认的后缀
+.SUFFIXES: .c .o .h   # 定义自己的后缀
+
+</code></pre>
+<p>先清除默认后缀，后定义自己的后缀列表。</p>
+<p>make的参数 -r 或 -no-builtin-rules 也会使用得默认的后缀列表为空。而变量 SUFFIXE 被用来定义默认的后缀列表，你可以用 .SUFFIXES 来改变后缀列表，但请不要改变变量 SUFFIXE 的值。</p>
+<h2 id="隐含规则搜索算法"><a class="header" href="#隐含规则搜索算法">隐含规则搜索算法</a></h2>
+<p>比如我们有一个目标叫 T。下面是搜索目标T的规则的算法。请注意，在下面，我们没有提到后缀规则，原因是，所有的后缀规则在Makefile被载入内存时，会被转换成模式规则。如果目标是 archive(member) 的函数库文件模式，那么这个算法会被运行两次，第一次是找目标T，如果没有找到的话，那么进入第二次，第二次会把 member 当作T来搜索。</p>
+<ol>
+<li>
+<p>把T的目录部分分离出来。叫D，而剩余部分叫N。（如：如果T是 src/foo.o ，那么，D就是 src/ ，N就是 foo.o ）</p>
+</li>
+<li>
+<p>创建所有匹配于T或是N的模式规则列表。</p>
+</li>
+<li>
+<p>如果在模式规则列表中有匹配所有文件的模式，如 % ，那么从列表中移除其它的模式。</p>
+</li>
+<li>
+<p>移除列表中没有命令的规则。</p>
+</li>
+<li>
+<p>对于第一个在列表中的模式规则：</p>
+<ul>
+<li>
+<p>推导其“茎”S，S应该是T或是N匹配于模式中 % 非空的部分。</p>
+</li>
+<li>
+<p>计算依赖文件。把依赖文件中的 % 都替换成“茎”S。如果目标模式中没有包含斜框字符，而把D加在第一个依赖文件的开头。</p>
+</li>
+<li>
+<p>测试是否所有的依赖文件都存在或是理当存在。（如果有一个文件被定义成另外一个规则的目标文件，或者是一个显式规则的依赖文件，那么这个文件就叫“理当存在”）</p>
+</li>
+<li>
+<p>如果所有的依赖文件存在或是理当存在，或是就没有依赖文件。那么这条规则将被采用，退出该算法。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果经过第5步，没有模式规则被找到，那么就做更进一步的搜索。对于存在于列表中的第一个模式规则：</p>
+<ul>
+<li>
+<p>如果规则是终止规则，那就忽略它，继续下一条模式规则。</p>
+</li>
+<li>
+<p>计算依赖文件。（同第5步）</p>
+</li>
+<li>
+<p>测试所有的依赖文件是否存在或是理当存在。</p>
+</li>
+<li>
+<p>对于不存在的依赖文件，递归调用这个算法查找他是否可以被隐含规则找到。</p>
+</li>
+<li>
+<p>如果所有的依赖文件存在或是理当存在，或是就根本没有依赖文件。那么这条规则被采用，退出该算法。</p>
+</li>
+<li>
+<p>如果没有隐含规则可以使用，查看 .DEFAULT 规则，如果有，采用，把 .DEFAULT 的命令给T使用。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>一旦规则被找到，就会执行其相当的命令，而此时，我们的自动化变量的值才会生成。</p>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../make/invoke.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../make/archives.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../make/invoke.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../make/archives.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>

@@ -5,7 +5,7 @@
      crossorigin="anonymous"></script>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Emacs - learning-basic</title>
+        <title>使用make更新函数库文件 - learning-basic</title>
 
 
         <!-- Custom HTML head -->
@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item expanded "><a href="../emacs/emacs.html" class="active"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">4.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">4.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">8.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">8.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">8.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">10.1.</strong> after MacOS upgrade, can not use git</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">11.</strong> Chrome</a></li><li class="chapter-item "><a href="../docker/docker.html"><strong aria-hidden="true">12.</strong> Docker</a></li><li class="chapter-item "><a href="../make/make.html"><strong aria-hidden="true">13.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">13.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">13.2.</strong> makefile介绍</a></li><li class="chapter-item "><a href="../make/rules.html"><strong aria-hidden="true">13.3.</strong> 书写规则</a></li><li class="chapter-item "><a href="../make/recipes.html"><strong aria-hidden="true">13.4.</strong> 书写命令</a></li><li class="chapter-item "><a href="../make/var.html"><strong aria-hidden="true">13.5.</strong> 使用变量</a></li><li class="chapter-item "><a href="../make/condition.html"><strong aria-hidden="true">13.6.</strong> 使用条件判断</a></li><li class="chapter-item "><a href="../make/func.html"><strong aria-hidden="true">13.7.</strong> 使用函数</a></li><li class="chapter-item "><a href="../make/invoke.html"><strong aria-hidden="true">13.8.</strong> make的运行</a></li><li class="chapter-item "><a href="../make/implicit_rule.html"><strong aria-hidden="true">13.9.</strong> 隐含规则</a></li><li class="chapter-item "><a href="../make/archives.html"><strong aria-hidden="true">13.10.</strong> 使用make更新函数库文件</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">4.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">4.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">8.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">8.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">8.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">10.1.</strong> after MacOS upgrade, can not use git</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">11.</strong> Chrome</a></li><li class="chapter-item "><a href="../docker/docker.html"><strong aria-hidden="true">12.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../make/make.html"><strong aria-hidden="true">13.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">13.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">13.2.</strong> makefile介绍</a></li><li class="chapter-item "><a href="../make/rules.html"><strong aria-hidden="true">13.3.</strong> 书写规则</a></li><li class="chapter-item "><a href="../make/recipes.html"><strong aria-hidden="true">13.4.</strong> 书写命令</a></li><li class="chapter-item "><a href="../make/var.html"><strong aria-hidden="true">13.5.</strong> 使用变量</a></li><li class="chapter-item "><a href="../make/condition.html"><strong aria-hidden="true">13.6.</strong> 使用条件判断</a></li><li class="chapter-item "><a href="../make/func.html"><strong aria-hidden="true">13.7.</strong> 使用函数</a></li><li class="chapter-item "><a href="../make/invoke.html"><strong aria-hidden="true">13.8.</strong> make的运行</a></li><li class="chapter-item "><a href="../make/implicit_rule.html"><strong aria-hidden="true">13.9.</strong> 隐含规则</a></li><li class="chapter-item expanded "><a href="../make/archives.html" class="active"><strong aria-hidden="true">13.10.</strong> 使用make更新函数库文件</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,70 +167,66 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="emacs"><a class="header" href="#emacs">Emacs</a></h1>
-<h2 id="1-查看文档"><a class="header" href="#1-查看文档">1. 查看文档</a></h2>
-<p>在 Emacs 中，可以使用 C-h b 快捷键来查看当前缓冲区可用的所有快捷键。这个命令会列出当前缓冲区中定义的所有快捷键和它们的描述。</p>
-<p>另外，你也可以使用 C-h k 快捷键来查看任何一个快捷键的功能。只需按下 C-h k，然后输入要查看的快捷键即可。Emacs 会显示该快捷键的功能和用法。</p>
-<p>如果想要全面了解 Emacs 的使用方法，推荐阅读 Emacs 的官方文档，可以通过 C-h r 快捷键打开 Emacs 自带的 Info 文档阅读器，并查看 Emacs 的完整使用手册。</p>
-<h2 id="2-多行行首添加字符"><a class="header" href="#2-多行行首添加字符">2. 多行行首添加字符</a></h2>
-<blockquote>
-<p>参考</p>
-<p><a href="https://emacs.stackexchange.com/questions/11/how-to-add-a-prefix-to-every-line">How to add a prefix to every line?</a></p>
-</blockquote>
-<p>使用命令 <code>M-x string-rectangle</code>, 绑定的快捷键是 <code>C-x r t</code></p>
-<p>流程: </p>
-<ul>
-<li>
-<p>使用 <code>set-mark-command</code>, 绑定快捷键是 <code>M-SPC</code> 选定要修改的行</p>
-</li>
-<li>
-<p>使用 <code>M-x string-rectangle</code> ，添加指定字符串</p>
-</li>
-<li>
-<p><code>Enter</code> 后，所有选定行变化</p>
-</li>
-</ul>
-<h2 id="3-如何使用emacs在多行代码的每一行后面都添加一个空行"><a class="header" href="#3-如何使用emacs在多行代码的每一行后面都添加一个空行">3. 如何使用emacs，在多行代码的每一行后面，都添加一个空行</a></h2>
-<p>在 Emacs 中 \n 表示一个字符，而不是一个换行符。要在 Emacs 中表示换行符，需要使用 C-q C-j。因此，如果您想在每一行后面添加一个换行符，请按照以下步骤进行操作：</p>
-<ul>
-<li>
-<p>打开要编辑的文件。</p>
-<p>移动光标到要添加空行的第一行。</p>
-<p>按下 C-SPC (Ctrl + Space) 开始标记。</p>
-<p>移动光标到要添加空行的最后一行。</p>
-<p>按下 M-x。</p>
-</li>
-<li>
-<p>输入 replace-regexp 并按下 Enter 键。</p>
-<p>输入 C-q C-j 并按下 Enter 键。</p>
-<p>输入 C-q C-j C-q C-j 并按下 Enter 键。</p>
-</li>
-<li>
-<p>在确认提示中按下 y 键。</p>
-<p>这将在每一行后面添加一个换行符。</p>
-</li>
-</ul>
-<p>⚠️ 输入 C-q C-j 是指按下 Ctrl-q Ctrl-j</p>
-<h2 id="4-diffediff-比较文本不同"><a class="header" href="#4-diffediff-比较文本不同">4. diff/ediff 比较文本不同</a></h2>
-<blockquote>
-<p>参考</p>
-<p><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Comparing-Files.html">Comparing Files</a></p>
-</blockquote>
-<p>⚠️ ediff 不能一次性展示所有不同处的高亮，</p>
-<p>可以使用session中的</p>
-<table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody>
-<tr><td>p</td><td>(表示上一个差异)</td></tr>
-<tr><td>n</td><td>(表示下一个差异）</td></tr>
-<tr><td>j</td><td>(前面可以添加数字，例如：3j 表示跳转到第三个差异之处)</td></tr>
-<tr><td>q</td><td>退出session</td></tr>
-</tbody></table>
-<h2 id="5-emacs-如何查看当前打开的窗口使用了哪些package"><a class="header" href="#5-emacs-如何查看当前打开的窗口使用了哪些package">5. emacs 如何查看当前打开的窗口，使用了哪些package</a></h2>
-<p>在 Emacs 中，您可以使用以下命令来查看当前打开的窗口以及使用了哪些包（packages）：</p>
-<p>打开 Emacs，并进入命令行模式（“M-x”）。</p>
-<p>输入“describe-mode”并按下回车键，这将打开一个新的窗口，其中包含当前正在使用的 major mode 和 minor modes 的详细信息。</p>
-<p>在这个窗口中，您可以看到当前打开的所有窗口以及它们所使用的 mode。此外，您还可以看到当前 mode 所使用的所有 minor modes 和加载的所有包。</p>
-<p>要查看特定窗口中使用的包，请先将光标移动到该窗口中，然后使用上述步骤查看它所使用的 mode 和加载的包。</p>
-<p>请注意，如果您使用了包管理器（如 ELPA 或 MELPA），则可以使用该管理器来列出和管理已安装的包，并查看当前正在使用的包。例如，使用“M-x package-list-packages”命令可以打开包管理器并列出所有可用的包，并且使用“M-x package-menu-quick-describe”命令可以查看特定包的描述和详细信息。</p>
+                        <h1 id="使用make更新函数库文件"><a class="header" href="#使用make更新函数库文件">使用make更新函数库文件</a></h1>
+<p>函数库文件也就是对Object文件（程序编译的中间文件）的打包文件。在Unix下，一般是由命令 ar 来完成打包工作。</p>
+<h2 id="函数库文件的成员"><a class="header" href="#函数库文件的成员">函数库文件的成员</a></h2>
+<p>一个函数库文件由多个文件组成。你可以用如下格式指定函数库文件及其组成:</p>
+<pre><code class="language-makefile">
+archive(member)
+
+</code></pre>
+<p>这个不是一个命令，而一个目标和依赖的定义。一般来说，这种用法基本上就是为了 ar 命令来服务的。如:</p>
+<pre><code class="language-makefile">
+
+foolib(hack.o): hack.o
+    ar cr foolib hack.o
+	
+</code></pre>
+<p>如果要指定多个member，那就以空格分开，如:</p>
+<pre><code class="language-makefile">
+foolib(hack.o kludge.o)
+
+
+</code></pre>
+<p>其等价于:</p>
+<pre><code class="language-makefile">
+foolib(hack.o) foolib(kludge.o)
+
+</code></pre>
+<p>你还可以使用Shell的文件通配符来定义，如:</p>
+<pre><code class="language-makefile">
+foolib(*.o)
+
+</code></pre>
+<h2 id="函数库成员的隐含规则"><a class="header" href="#函数库成员的隐含规则">函数库成员的隐含规则</a></h2>
+<p>当make搜索一个目标的隐含规则时，一个特殊的特性是，如果这个目标是 a(m) 形式的，其会把目标变成 (m) 。于是，如果我们的成员是 %.o 的模式定义，并且如果我们使用 make foo.a(bar.o) 的形式调用Makefile时，隐含规则会去找 bar.o 的规则，如果没有定义 bar.o 的规则，那么内建隐含规则生效，make会去找 bar.c 文件来生成 bar.o ，如果找得到的话，make执行的命令大致如下:</p>
+<pre><code class="language-makefile">
+cc -c bar.c -o bar.o
+ar r foo.a bar.o
+rm -f bar.o
+
+</code></pre>
+<p>还有一个变量要注意的是 $% ，这是专属函数库文件的自动化变量，有关其说明请参见“自动化变量”一节。</p>
+<h2 id="函数库文件的后缀规则"><a class="header" href="#函数库文件的后缀规则">函数库文件的后缀规则</a></h2>
+<p>你可以使用“后缀规则”和“隐含规则”来生成函数库打包文件，如：</p>
+<pre><code class="language-makefile">
+.c.a:
+    $(CC) $(CFLAGS) $(CPPFLAGS) -c $&lt; -o $*.o
+    $(AR) r $@ $*.o
+    $(RM) $*.o
+	
+</code></pre>
+<p>其等效于：</p>
+<pre><code class="language-makefile">
+
+(%.o): %.c
+    $(CC) $(CFLAGS) $(CPPFLAGS) -c $&lt; -o $*.o
+    $(AR) r $@ $*.o
+    $(RM) $*.o
+</code></pre>
+<h2 id="注意事项"><a class="header" href="#注意事项">注意事项</a></h2>
+<p>在进行函数库打包文件生成时，请小心使用make的并行机制（ -j 参数）。如果多个 ar 命令在同一时间运行在同一个函数库打包文件上，就很有可以损坏这个函数库文件。所以，在make未来的版本中，应该提供一种机制来避免并行操作发生在函数打包文件上。</p>
+<p>但就目前而言，你还是应该不要尽量不要使用 -j 参数。</p>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
@@ -242,13 +238,10 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        <a rel="prev" href="../vim/vim.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../make/implicit_rule.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                         </a>
 
-                            <a rel="next" href="../git/git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -256,13 +249,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../vim/vim.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../make/implicit_rule.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../git/git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

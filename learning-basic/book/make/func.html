@@ -1,0 +1,798 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>使用函数 - learning-basic</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">4.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">4.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">4.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">5.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">6.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">7.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">8.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">8.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">8.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">8.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">9.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">10.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">10.1.</strong> after MacOS upgrade, can not use git</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">11.</strong> Chrome</a></li><li class="chapter-item "><a href="../docker/docker.html"><strong aria-hidden="true">12.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../make/make.html"><strong aria-hidden="true">13.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">13.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">13.2.</strong> makefile介绍</a></li><li class="chapter-item "><a href="../make/rules.html"><strong aria-hidden="true">13.3.</strong> 书写规则</a></li><li class="chapter-item "><a href="../make/recipes.html"><strong aria-hidden="true">13.4.</strong> 书写命令</a></li><li class="chapter-item "><a href="../make/var.html"><strong aria-hidden="true">13.5.</strong> 使用变量</a></li><li class="chapter-item "><a href="../make/condition.html"><strong aria-hidden="true">13.6.</strong> 使用条件判断</a></li><li class="chapter-item expanded "><a href="../make/func.html" class="active"><strong aria-hidden="true">13.7.</strong> 使用函数</a></li><li class="chapter-item "><a href="../make/invoke.html"><strong aria-hidden="true">13.8.</strong> make的运行</a></li><li class="chapter-item "><a href="../make/implicit_rule.html"><strong aria-hidden="true">13.9.</strong> 隐含规则</a></li><li class="chapter-item "><a href="../make/archives.html"><strong aria-hidden="true">13.10.</strong> 使用make更新函数库文件</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-basic</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="使用函数"><a class="header" href="#使用函数">使用函数</a></h1>
+<p>在Makefile中可以使用函数来处理变量，从而让我们的命令或是规则更为的灵活和具有智能。make 所支持的函数也不算很多，不过已经足够我们的操作了。函数调用后，函数的返回值可以当做变量来使用。</p>
+<h2 id="函数的调用语法"><a class="header" href="#函数的调用语法">函数的调用语法</a></h2>
+<p>函数调用，很像变量的使用，也是以 $ 来标识的，其语法如下：</p>
+<pre><code class="language-makefile">
+$(&lt;function&gt; &lt;arguments&gt;)
+
+</code></pre>
+<p>或是:</p>
+<pre><code class="language-makefile">
+${&lt;function&gt; &lt;arguments&gt;}
+
+</code></pre>
+<p>这里， <code>&lt;function&gt;</code> 就是函数名，make支持的函数不多。 <code>&lt;arguments&gt;</code> 为函数的参数，参数间以逗号 , 分隔，而函数名和参数之间以“空格”分隔。函数调用以 $ 开头，以圆括号或花括号把函数名和参数括起。感觉很像一个变量，是不是？函数中的参数可以使用变量，为了风格的统一，函数和变量的括号最好一样，如使用 $(subst a,b,$(x)) 这样的形式，而不是 $(subst a,b, ${x}) 的形式。因为统一会更清楚，也会减少一些不必要的麻烦。</p>
+<p>还是来看一个示例：</p>
+<pre><code class="language-makefile">
+comma:= ,
+empty:=
+space:= $(empty) $(empty)
+foo:= a b c
+bar:= $(subst $(space),$(comma),$(foo))
+
+</code></pre>
+<p>在这个示例中， $(comma) 的值是一个逗号。 $(space) 使用了 $(empty) 定义了一个空格， $(foo) 的值是 a b c ， $(bar) 的定义用，调用了函数 subst ，这是一个替换函数，这个函数有三个参数，第一个参数是被替换字串，第二个参数是替换字串，第三个参数是替换操作作用的字串。这个函数也就是把 $(foo) 中的空格替换成逗号，所以 $(bar) 的值是 a,b,c 。</p>
+<h2 id="字符串处理函数"><a class="header" href="#字符串处理函数">字符串处理函数</a></h2>
+<h3 id="subst"><a class="header" href="#subst">subst</a></h3>
+<pre><code class="language-makefile">
+$(subst &lt;from&gt;,&lt;to&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：字符串替换函数</p>
+</li>
+<li>
+<p>功能：把字串 <code>&lt;text&gt;</code> 中的<code>&lt;from&gt;</code> 字符串替换成 <code>&lt;to&gt;</code> 。</p>
+</li>
+<li>
+<p>返回：函数返回被替换过后的字符串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(subst ee,EE,feet on the street)
+
+</code></pre>
+<p>把 feet on the street 中的 ee 替换成 EE ，返回结果是 fEEt on the strEEt 。</p>
+</li>
+</ul>
+<h3 id="patsubst"><a class="header" href="#patsubst">patsubst</a></h3>
+<pre><code class="language-makefile">
+$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：模式字符串替换函数。</p>
+</li>
+<li>
+<p>功能：查找 <code>&lt;text&gt;</code> 中的单词（单词以“空格”、“Tab”或“回车”“换行”分隔）是否符合模式 <code>&lt;pattern&gt;</code> ，如果匹配的话，则以 <code>&lt;replacement&gt;</code> 替换。这里， <code>&lt;pattern&gt;</code> 可以包括通配符 % ，表示任意长度的字串。如果 <code>&lt;replacement&gt;</code> 中也包含 % ，那么， <code>&lt;replacement&gt;</code> 中的这个 % 将是 <code>&lt;pattern&gt;</code> 中的那个 % 所代表的字串。（可以用 \ 来转义，以 % 来表示真实含义的 % 字符）</p>
+</li>
+<li>
+<p>返回：函数返回被替换过后的字符串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(patsubst %.c,%.o,x.c.c bar.c)
+
+</code></pre>
+<p>把字串 x.c.c bar.c 符合模式 %.c 的单词替换成 %.o ，返回结果是 x.c.o bar.o</p>
+</li>
+<li>
+<p>备注：这和我们前面“变量章节”说过的相关知识有点相似。如 <code>$(var:&lt;pattern&gt;=&lt;replacement&gt;;)</code> 相当于 <code>$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,$(var))</code> ，而 <code>$(var: &lt;suffix&gt;=&lt;replacement&gt;)</code> 则相当于 <code>$(patsubst %&lt;suffix&gt;,%&lt;replacement&gt;,$(var))</code> 。</p>
+<p>例如有:</p>
+<pre><code class="language-makefile">
+objects = foo.o bar.o baz.o，
+
+
+</code></pre>
+<p>那么， $(objects:.o=.c) 和 $(patsubst %.o,%.c,$(objects)) 是一样的。</p>
+</li>
+</ul>
+<h3 id="strip"><a class="header" href="#strip">strip</a></h3>
+<pre><code class="language-makefile">
+$(strip &lt;string&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：去空格函数。</p>
+</li>
+<li>
+<p>功能：去掉 <code>&lt;string&gt;</code> 字串中开头和结尾的空字符。</p>
+</li>
+<li>
+<p>返回：返回被去掉空格的字符串值。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(strip a b c )
+
+</code></pre>
+<p>把字串 a b c  去掉开头和结尾的空格，结果是 a b c。</p>
+</li>
+</ul>
+<h3 id="findstring"><a class="header" href="#findstring">findstring</a></h3>
+<pre><code class="language-makefile">
+$(findstring &lt;find&gt;,&lt;in&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：查找字符串函数</p>
+</li>
+<li>
+<p>功能：在字串 <code>&lt;in&gt;</code> 中查找 <code>&lt;find&gt;</code> 字串。</p>
+</li>
+<li>
+<p>返回：如果找到，那么返回 <code>&lt;find&gt;</code> ，否则返回空字符串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(findstring a,a b c)
+$(findstring a,b c)
+
+</code></pre>
+<p>第一个函数返回 a 字符串，第二个返回空字符串</p>
+</li>
+</ul>
+<h3 id="filter"><a class="header" href="#filter">filter</a></h3>
+<pre><code class="language-makefile">
+$(filter &lt;pattern...&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：过滤函数</p>
+</li>
+<li>
+<p>功能：以 <code>&lt;pattern&gt;</code> 模式过滤 <code>&lt;text&gt;</code> 字符串中的单词，保留符合模式<code>&lt;pattern&gt;</code> 的单词。可以有多个模式。</p>
+</li>
+<li>
+<p>返回：返回符合模式 <code>&lt;pattern&gt;</code> 的字串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+sources := foo.c bar.c baz.s ugh.h
+foo: $(sources)
+	cc $(filter %.c %.s,$(sources)) -o foo
+
+</code></pre>
+<p>$(filter %.c %.s,$(sources)) 返回的值是 foo.c bar.c baz.s 。</p>
+</li>
+</ul>
+<h3 id="filter-out"><a class="header" href="#filter-out">filter-out</a></h3>
+<pre><code class="language-makefile">
+
+$(filter-out &lt;pattern...&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：反过滤函数</p>
+</li>
+<li>
+<p>功能：以 <code>&lt;pattern&gt;</code> 模式过滤 <code>&lt;text&gt;</code> 字符串中的单词，去除符合模式 <code>&lt;pattern&gt;</code> 的单词。可以有多个模式。</p>
+</li>
+<li>
+<p>返回：返回不符合模式 <pattern> 的字串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+objects=main1.o foo.o main2.o bar.o
+mains=main1.o main2.o
+
+</code></pre>
+<p>$(filter-out $(mains),$(objects)) 返回值是 foo.o bar.o 。</p>
+</li>
+</ul>
+<h3 id="sort"><a class="header" href="#sort">sort</a></h3>
+<pre><code class="language-makefile">
+$(sort &lt;list&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：排序函数</p>
+</li>
+<li>
+<p>功能：给字符串 <code>&lt;list&gt;</code> 中的单词排序（升序）。</p>
+</li>
+<li>
+<p>返回：返回排序后的字符串。</p>
+</li>
+<li>
+<p>示例： $(sort foo bar lose) 返回 bar foo lose 。</p>
+</li>
+<li>
+<p>备注： sort 函数会去掉 <code>&lt;list&gt;</code> 中相同的单词。</p>
+</li>
+</ul>
+<h3 id="word"><a class="header" href="#word">word</a></h3>
+<pre><code class="language-makefile">
+$(word &lt;n&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取单词函数</p>
+</li>
+<li>
+<p>功能：取字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。（从一开始）</p>
+</li>
+<li>
+<p>返回：返回字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。如果 <code>&lt;n&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数要大，那么返回空字符串。</p>
+</li>
+<li>
+<p>示例： $(word 2, foo bar baz) 返回值是 bar </p>
+</li>
+</ul>
+<h3 id="wordlist"><a class="header" href="#wordlist">wordlist</a></h3>
+<pre><code class="language-makefile">
+$(wordlist &lt;ss&gt;,&lt;e&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取单词串函数</p>
+</li>
+<li>
+<p>功能：从字符串 <code>&lt;text&gt;</code> 中取从 <code>&lt;ss&gt;</code> 开始到 <code>&lt;e&gt;</code> 的单词串。 <code>&lt;ss&gt;</code> 和 <code>&lt;e&gt;</code> 是一个数字。</p>
+</li>
+<li>
+<p>返回：返回字符串 <code>&lt;text&gt;</code> 中从 <code>&lt;ss&gt;</code> 到 <code>&lt;e&gt;</code> 的单词字串。如果 <code>&lt;ss&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数要大，那么返回空字符串。如果 <code>&lt;e&gt;</code> 大于 <code>&lt;text&gt;</code> 的单词数，那么返回从 <code>&lt;ss&gt;</code> 开始，到 <code>&lt;text&gt;</code> 结束的单词串。</p>
+</li>
+<li>
+<p>示例： $(wordlist 2, 3, foo bar baz) 返回值是 bar baz 。</p>
+</li>
+</ul>
+<h3 id="words"><a class="header" href="#words">words</a></h3>
+<pre><code class="language-makefile">
+$(words &lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：单词个数统计函数</p>
+</li>
+<li>
+<p>功能：统计 <code>&lt;text&gt;</code> 中字符串中的单词个数。</p>
+</li>
+<li>
+<p>返回：返回 <code>&lt;text&gt;</code> 中的单词数。</p>
+</li>
+<li>
+<p>示例： $(words, foo bar baz) 返回值是 3 。</p>
+</li>
+<li>
+<p>备注：如果我们要取 <code>&lt;text&gt;</code> 中最后的一个单词，我们可以这样： <code>$(word $(words &lt;text&gt;),&lt;text&gt;)</code> 。</p>
+</li>
+</ul>
+<h3 id="firstword"><a class="header" href="#firstword">firstword</a></h3>
+<pre><code class="language-makefile">
+$(firstword &lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：首单词函数——firstword。</p>
+</li>
+<li>
+<p>功能：取字符串 <code>&lt;text&gt;</code> 中的第一个单词。</p>
+</li>
+<li>
+<p>返回：返回字符串 <code>&lt;text&gt;</code> 的第一个单词</p>
+</li>
+<li>
+<p>示例： $(firstword foo bar) 返回值是 foo。</p>
+</li>
+<li>
+<p>备注：这个函数可以用 word 函数来实现： <code>$(word 1,&lt;text&gt;)</code> 。</p>
+</li>
+</ul>
+<p>以上，是所有的字符串操作函数，如果搭配混合使用，可以完成比较复杂的功能。这里，举一个现实中应用的例子。我们知道，make使用 VPATH 变量来指定“依赖文件”的搜索路径。于是，我们可以利用这个搜索路径来指定编译器对头文件的搜索路径参数 CFLAGS ，如：</p>
+<pre><code class="language-makefile">override CFLAGS += $(patsubst %,-I%,$(subst :, ,$(VPATH)))
+
+</code></pre>
+<p>如果我们的 $(VPATH) 值是 <code>src:../headers</code> ，那么 <code>$(patsubst %,-I%,$(subst :, ,$(VPATH)))</code> 将返回 <code>-Isrc -I../headers</code> ，这正是cc或gcc搜索头文件路径的参数。</p>
+<h2 id="文件名操作函数"><a class="header" href="#文件名操作函数">文件名操作函数</a></h2>
+<p>下面我们要介绍的函数主要是处理文件名的。每个函数的参数字符串都会被当做一个或是一系列的文件名来对待。</p>
+<h3 id="dir"><a class="header" href="#dir">dir</a></h3>
+<pre><code class="language-makefile">
+$(dir &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取目录函数——dir。</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出目录部分。目录部分是指最后一个反斜杠（ / ）之前的部分。如果没有反斜杠，那么返回 ./ 。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的目录部分。</p>
+</li>
+<li>
+<p>示例： <code>$(dir src/foo.c hacks)</code> 返回值是 <code>src/ ./</code></p>
+</li>
+</ul>
+<h3 id="notdir"><a class="header" href="#notdir">notdir</a></h3>
+<pre><code class="language-makefile">
+$(notdir &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取文件函数——notdir。</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出非目录部分。非目录部分是指最後一个反斜杠（ / ）之后的部分。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的非目录部分。</p>
+</li>
+<li>
+<p>示例: <code>$(notdir src/foo.c hacks)</code> 返回值是 <code>foo.c hacks</code> 。</p>
+</li>
+</ul>
+<h3 id="suffix"><a class="header" href="#suffix">suffix</a></h3>
+<pre><code class="language-makefile">
+$(suffix &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取后缀函数——suffix</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的后缀。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的后缀序列，如果文件没有后缀，则返回空字串。</p>
+</li>
+<li>
+<p>示例： <code>$(suffix src/foo.c src-1.0/bar.c hacks)</code> 返回值是 <code>.c .c</code>。</p>
+</li>
+</ul>
+<h3 id="basename"><a class="header" href="#basename">basename</a></h3>
+<pre><code class="language-makefile">
+$(basename &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取前缀函数——basename。</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的前缀部分。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的前缀序列，如果文件没有前缀，则返回空字串。</p>
+</li>
+<li>
+<p>示例： <code>$(basename src/foo.c src-1.0/bar.c hacks)</code> 返回值是 <code>src/foo src-1.0/bar hacks</code> 。</p>
+</li>
+</ul>
+<h3 id="addsuffix"><a class="header" href="#addsuffix">addsuffix</a></h3>
+<pre><code class="language-makefile">
+$(addsuffix &lt;suffix&gt;,&lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：加后缀函数——addsuffix。</p>
+</li>
+<li>
+<p>功能：把后缀 <code>&lt;suffix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词后面。</p>
+</li>
+<li>
+<p>返回：返回加过后缀的文件名序列。</p>
+</li>
+<li>
+<p>示例： <code>$(addsuffix .c,foo bar)</code> 返回值是 <code>foo.c bar.c</code> 。</p>
+</li>
+</ul>
+<h3 id="addprefix"><a class="header" href="#addprefix">addprefix</a></h3>
+<pre><code class="language-makefile">
+$(addprefix &lt;prefix&gt;,&lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：加前缀函数——addprefix。</p>
+</li>
+<li>
+<p>功能：把前缀 <code>&lt;prefix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词前面。</p>
+</li>
+<li>
+<p>返回：返回加过前缀的文件名序列。</p>
+</li>
+<li>
+<p>示例： <code>$(addprefix src/,foo bar)</code> 返回值是 <code>src/foo src/bar</code> 。</p>
+</li>
+</ul>
+<h3 id="join"><a class="header" href="#join">join</a></h3>
+<pre><code class="language-makefile">
+$(join &lt;list1&gt;,&lt;list2&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：连接函数——join。</p>
+</li>
+<li>
+<p>功能：把 <code>&lt;list2&gt;</code> 中的单词对应地加到 <code>&lt;list1&gt;</code> 的单词后面。如果 <code>&lt;list1&gt;</code> 的单词个数要比 <code>&lt;list2&gt;</code> 的多，那么，<code>&lt;list1&gt;</code> 中的多出来的单词将保持原样。如果 <code>&lt;list2&gt;</code> 的单词个数要比 <code>&lt;list1&gt;</code> 多，那么， <code>&lt;list2&gt;</code> 多出来的单词将被复制到 <code>&lt;list1&gt;</code> 中。</p>
+</li>
+<li>
+<p>返回：返回连接过后的字符串。</p>
+</li>
+<li>
+<p>示例：<code> $(join aaa bbb , 111 222 333)</code> 返回值是 <code>aaa111 bbb222 333</code></p>
+</li>
+</ul>
+<h2 id="foreach-函数"><a class="header" href="#foreach-函数">foreach 函数</a></h2>
+<p>foreach函数和别的函数非常的不一样。因为这个函数是用来做循环用的，Makefile中的foreach函数几乎是仿照于Unix标准Shell（/bin/sh）中的for语句，或是C-Shell（/bin/csh）中的foreach语句而构建的。它的语法是：</p>
+<pre><code class="language-makefile">
+$(foreach &lt;var&gt;,&lt;list&gt;,&lt;text&gt;)
+
+</code></pre>
+<p>这个函数的意思是，把参数 <code>&lt;list&gt;</code> 中的单词逐一取出放到参数 <code>&lt;var&gt;</code> 所指定的变量中，然后再执行 <code>&lt;text&gt;</code> 所包含的表达式。每一次 <code>&lt;text&gt;</code> 会返回一个字符串，循环过程中， <code>&lt;text&gt;</code> 的所返回的每个字符串会以空格分隔，最后当整个循环结束时， <code>&lt;text&gt;</code> 所返回的每个字符串所组成的整个字符串（以空格分隔）将会是foreach函数的返回值。</p>
+<p>所以， <code>&lt;var&gt;</code> 最好是一个变量名， <code>&lt;list&gt;</code> 可以是一个表达式，而 <code>&lt;text&gt;</code> 中一般会使用 <code>&lt;var&gt;</code> 这个参数来依次枚举 <code>&lt;list&gt;</code> 中的单词。举个例子：</p>
+<pre><code class="language-makefile">
+names := a b c d
+
+files := $(foreach n,$(names),$(n).o)
+
+
+</code></pre>
+<p>上面的例子中， $(name) 中的单词会被挨个取出，并存到变量 n 中， $(n).o 每次根据 $(n) 计算出一个值，这些值以空格分隔，最后作为foreach函数的返回，所以， $(files) 的值是 a.o b.o c.o d.o 。</p>
+<p>注意，foreach中的 <code>&lt;var&gt;</code> 参数是一个临时的局部变量，foreach函数执行完后，参数 <code>&lt;var&gt;</code> 的变量将不在作用，其作用域只在foreach函数当中。</p>
+<h2 id="if-函数"><a class="header" href="#if-函数">if 函数</a></h2>
+<p>if函数很像GNU的make所支持的条件语句——ifeq（参见前面所述的章节），if函数的语法是：</p>
+<pre><code class="language-makefile">
+
+$(if &lt;condition&gt;,&lt;then-part&gt;)
+
+</code></pre>
+<p>或是</p>
+<pre><code class="language-makefile">
+$(if &lt;condition&gt;,&lt;then-part&gt;,&lt;else-part&gt;)
+
+</code></pre>
+<p>可见，if函数可以包含“else”部分，或是不含。即if函数的参数可以是两个，也可以是三个。 <code>&lt;condition&gt;</code> 参数是if的表达式，如果其返回的为非空字符串，那么这个表达式就相当于返回真，于是， <code>&lt;then-part&gt;</code> 会被计算，否则 <code>&lt;else-part&gt;</code> 会被计算。</p>
+<p>而if函数的返回值是，如果 <code>&lt;condition&gt;</code> 为真（非空字符串），那个 <code>&lt;then-part&gt;</code> 会是整个函数的返回值，如果 <code>&lt;condition&gt;</code> 为假（空字符串），那么 <code>&lt;else-part&gt;</code> 会是整个函数的返回值，此时如果 <code>&lt;else-part&gt;</code> 没有被定义，那么，整个函数返回空字串。</p>
+<p>所以， <code>&lt;then-part&gt;</code> 和 <code>&lt;else-part&gt;</code> 只会有一个被计算。</p>
+<h2 id="call函数"><a class="header" href="#call函数">call函数</a></h2>
+<p>call函数是唯一一个可以用来创建新的参数化的函数。你可以写一个非常复杂的表达式，这个表达式中，你可以定义许多参数，然后你可以call函数来向这个表达式传递参数。其语法是：</p>
+<pre><code class="language-makefile">
+$(call &lt;expression&gt;,&lt;parm1&gt;,&lt;parm2&gt;,...,&lt;parmn&gt;)
+
+</code></pre>
+<p>当make执行这个函数时， <code>&lt;expression&gt;</code> 参数中的变量，如 $(1) 、 $(2) 等，会被参数 <code>&lt;parm1&gt; 、 &lt;parm2&gt; 、 &lt;parm3&gt;</code> 依次取代。而 <code>&lt;expression&gt;</code> 的返回值就是 call 函数的返回值。例如：</p>
+<pre><code class="language-makefile">
+reverse =  $(1) $(2)
+
+foo = $(call reverse,a,b)
+
+</code></pre>
+<p>那么， foo 的值就是 a b 。当然，参数的次序是可以自定义的，不一定是顺序的，如：</p>
+<pre><code class="language-makefile">
+reverse =  $(2) $(1)
+
+foo = $(call reverse,a,b)
+
+</code></pre>
+<p>此时的 foo 的值就是 b a 。</p>
+<p>需要注意：在向 call 函数传递参数时要尤其注意空格的使用。call 函数在处理参数时，第2个及其之后的参数中的空格会被保留，因而可能造成一些奇怪的效果。因而在向call函数提供参数时，最安全的做法是去除所有多余的空格。</p>
+<h2 id="origin函数"><a class="header" href="#origin函数">origin函数</a></h2>
+<p>origin函数不像其它的函数，他并不操作变量的值，他只是告诉你你的这个变量是哪里来的？其语法是：</p>
+<pre><code class="language-makefile">
+
+$(origin &lt;variable&gt;)
+
+</code></pre>
+<p>注意， <code>&lt;variable&gt;</code> 是变量的名字，不应该是引用。所以你最好不要在 <code>&lt;variable&gt;</code> 中使用
+$ 字符。Origin函数会以其返回值来告诉你这个变量的“出生情况”，下面，是origin函数的返回值:</p>
+<ul>
+<li>
+<p>undefined</p>
+<p>如果 <code>&lt;variable&gt;</code> 从来没有定义过，origin函数返回这个值 undefined</p>
+</li>
+<li>
+<p>default</p>
+<p>如果 <code>&lt;variable&gt;</code> 是一个默认的定义，比如“CC”这个变量，这种变量我们将在后面讲述。</p>
+</li>
+<li>
+<p>environment</p>
+<p>如果 <code>&lt;variable&gt;</code> 是一个环境变量，并且当Makefile被执行时， -e 参数没有被打开</p>
+</li>
+<li>
+<p>file</p>
+<p>如果 <code>&lt;variable&gt;</code> 这个变量被定义在Makefile中</p>
+</li>
+<li>
+<p>command line</p>
+<p>如果 <code>&lt;variable&gt;</code> 这个变量是被命令行定义的</p>
+</li>
+<li>
+<p>override</p>
+<p>如果 <code>&lt;variable&gt;</code> 是被override指示符重新定义的</p>
+</li>
+<li>
+<p>automatic</p>
+<p>如果 <code>&lt;variable&gt;</code> 是一个命令运行中的自动化变量。关于自动化变量将在后面讲述</p>
+</li>
+</ul>
+<p>这些信息对于我们编写Makefile是非常有用的，例如，假设我们有一个Makefile其包了一个定义文件 Make.def，在 Make.def中定义了一个变量“bletch”，而我们的环境中也有一个环境变量“bletch”，此时，我们想判断一下，如果变量来源于环境，那么我们就把之重定义了，如果来源于Make.def或是命令行等非环境的，那么我们就不重新定义它。于是，在我们的Makefile中，我们可以这样写：</p>
+<pre><code class="language-makefile">
+ifdef bletch
+    ifeq &quot;$(origin bletch)&quot; &quot;environment&quot;
+        bletch = barf, gag, etc.
+    endif
+endif
+
+</code></pre>
+<p>当然，你也许会说，使用 override 关键字不就可以重新定义环境中的变量了吗？为什么需要使用这样的步骤？是的，我们用 override 是可以达到这样的效果，可是 override 过于粗暴，它同时会把从命令行定义的变量也覆盖了，而我们只想重新定义环境传来的，而不想重新定义命令行传来的。</p>
+<h2 id="shell函数"><a class="header" href="#shell函数">shell函数</a></h2>
+<p>shell函数也不像其它的函数。顾名思义，它的参数应该就是操作系统Shell的命令。它和反引号“`”是相同的功能。这就是说，shell函数把执行操作系统命令后的输出作为函数返回。于是，我们可以用操作系统命令以及字符串处理命令awk，sed等等命令来生成一个变量，如：</p>
+<pre><code class="language-makefile">
+contents := $(shell cat foo)
+files := $(shell echo *.c)
+
+</code></pre>
+<p>注意，这个函数会新生成一个Shell程序来执行命令，所以你要注意其运行性能，如果你的Makefile中有一些比较复杂的规则，并大量使用了这个函数，那么对于你的系统性能是有害的。特别是Makefile的隐式规则可能会让你的shell函数执行的次数比你想像的多得多。</p>
+<h2 id="控制make的函数"><a class="header" href="#控制make的函数">控制make的函数</a></h2>
+<p>make提供了一些函数来控制make的运行。通常，你需要检测一些运行Makefile时的运行时信息，并且根据这些信息来决定，你是让make继续执行，还是停止。</p>
+<pre><code class="language-makefile">
+
+$(error &lt;text ...&gt;)
+
+</code></pre>
+<p>产生一个致命的错误， &lt;text ...&gt; 是错误信息。注意，error函数不会在一被使用就会产生错误信息，所以如果你把其定义在某个变量中，并在后续的脚本中使用这个变量，那么也是可以的。例如：</p>
+<p>示例一：</p>
+<pre><code class="language-makefile">
+ifdef ERROR_001
+    $(error error is $(ERROR_001))
+endif
+
+</code></pre>
+<p>示例二：</p>
+<pre><code class="language-makefile">
+ERR = $(error found an error!)
+
+.PHONY: err
+
+err: $(ERR)
+
+</code></pre>
+<p>示例一会在变量ERROR_001定义了后执行时产生error调用，而示例二则在目录err被执行时才发生error调用。</p>
+<pre><code class="language-makefile">
+$(warning &lt;text ...&gt;)
+
+</code></pre>
+<p>这个函数很像error函数，只是它并不会让make退出，只是输出一段警告信息，而make继续执行。</p>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../make/condition.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../make/invoke.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../make/condition.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../make/invoke.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>
