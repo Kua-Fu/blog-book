@@ -3,6 +3,8 @@
 - [Introducation](index.md)
 - [Vim](vim/vim.md)
 - [Emacs](emacs/emacs.md)
+- [vscode](vs/vs.md)
+  - [MacOS vscode debug C/C++ with makefile](vs/debug_c.md)
 - [Git](git/git.md)
   - [set proxy for github](git/git_proxy.md)
   - [delete remote branch](git/git_del.md)
