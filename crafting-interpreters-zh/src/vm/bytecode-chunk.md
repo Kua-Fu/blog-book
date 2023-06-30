@@ -48,6 +48,10 @@ We need to rethink the core model. This chapter introduces that model, bytecode,
 
 我们需要重新思考核心模型，本章介绍了这个模型——字节码，接下来，我们将开始新的解释器 clox
 
+> This is a comically inefficient way to actually calculate Fibonacci numbers. Our goal is to see how fast the interpreter runs, not to see how fast of a program we can write. A slow program that does a lot of work—pointless or not—is a good test case for that.
+> 
+> 这实际上是一种非常低效的计算fibonacci数列的方式，我们的目标是查看解释器的运行速度，而不是考察我们能编写多快的程序。一个慢，但是能进行大量工作（无论释放有意义）的程序，是一个好的测试案例。
+
 ## 一、Bytecode?
 
 In engineering, few choices are without trade-offs. To best understand why we’re going with bytecode, let’s stack it up against a couple of alternatives.
@@ -218,6 +222,10 @@ int main(int argc, const char* argv[]) {
 }
 
 ```
+
+> Now is a good time to stretch, maybe crack your knuckles. A little montage music wouldn’t hurt either.
+> 
+> 现在是一个好的时机，编写新的代码了，同时播放一些音乐或许更好！
 
 From this tiny seed, we will grow our entire VM. Since C provides us with so little, we first need to spend some time amending the soil. Some of that goes into this header:
 
@@ -749,6 +757,10 @@ We’ll implement something similar. Given a chunk, it will print out all of the
 
 我们将实现类似的东西，给定一个块，它将打印出其中的所有指令，Lox用户不会使用它，但是，我们的Lox维护者会用到。因为，它给了我们查看解释器代码的内部表示的窗口
 
+> In jlox, our analogous tool was the AstPrinter class.
+> 
+> 在jlox中，类似的工具是AstProinter 类。
+
 
 In main(), after we create the chunk, we pass it to the disassembler.
 
@@ -800,6 +812,9 @@ int disassembleInstruction(Chunk* chunk, int offset);
 
 ```
 
+> I promise you we won’t be creating this many new files in later chapters.
+> 
+> 我向你保证，后面的章节中，不会创建这么多的新文件
 
 In main(), we call disassembleChunk() to disassemble all of the instructions in the entire chunk. That’s implemented in terms of the other function, which just disassembles a single instruction. It shows up here in the header because we’ll call it from the VM in later chapters.
 
@@ -871,6 +886,10 @@ static int simpleInstruction(const char* name, int offset) {
 }
 
 ```
+
+> We have only one instruction right now, but this switch will grow throughout the rest of the book.
+> 
+> 我们现在只有一条指令，但是，在本书的其余部分，这个switch 语句，会不断增长。
 
 There isn’t much to a return instruction, so all it does is print the name of the opcode, then return the next byte offset past this instruction. Other instructions will have more going on.
 
@@ -951,6 +970,10 @@ Most virtual machines do something similar. For example, the Java Virtual Machin
 
 大多数的虚拟机都会做相同的事情，例如：Java虚拟机将常量池与每个编译的类关联起来，这对于clox来说足够好，每个代码块将携带在程序中出现的字面量值的列表，为了使事情更加简单，我们将所有的常量放入其中，甚至是简单的整数
 
+> In addition to needing two kinds of constant instructions—one for immediate values and one for constants in the constant table—immediates also force us to worry about alignment, padding, and endianness. Some architectures aren’t happy if you try to say, stuff a 4-byte integer at an odd address.
+> 
+> 除了需要两种常量指令（一种用于立即数，另一种用于常量表中的常量）之外，立即数还需要我们关注对齐、填充和字节序的问题，如果你试图将一个4字节整数存储在奇数位地址上，在某些架构中，可能会出现问题。
+
 ### 5.2 Value arrays
 
 
@@ -974,6 +997,11 @@ typedef struct {
 #endif
 
 ```
+
+> Defining a new struct and manipulation functions each time we need a dynamic array of a different type is a chore. We could cobble together some preprocessor macros to fake generics, but that’s overkill for clox. We won’t need many more of these.
+> 
+> 每次需要不同类型的动态数组时候，都定义一个新的结构体和操作函数，是很繁琐的。我们可以拼凑出一些预处理器宏，来模拟泛型。但这对于clox来说过于繁琐，我们不需要更多这样的操作。
+
 
 As with the bytecode array in Chunk, this struct wraps a pointer to an array along with its allocated capacity and the number of elements in use. We also need the same three functions to work with value arrays.
 
@@ -1036,6 +1064,10 @@ void writeValueArray(ValueArray* array, Value value) {
 }
 
 ```
+
+> Fortunately, we don’t need other operations like insertion and removal.
+> 
+> 幸运的是，我们不需要其他操作，例如: 插入、删除。
 
 The memory-management macros we wrote earlier do let us reuse some of the logic from the code array, so this isn’t too bad. Finally, to release all memory used by the array:
 
@@ -1185,6 +1217,10 @@ To handle cases like this, our bytecode—like most others—allows instructions
 为了处理这种情况，我们的字节码（像是大多数字节码一样），允许指令具有操作数，这些操作数作为二进制数据，立即存储在指令流的操作码之后，让我们对指令的操作进行参数化
 
 ![format](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/14_format.png?raw=true)
+
+> I’m being vague about what it means to “load” or “produce” a constant because we haven’t learned how the virtual machine actually executes code at runtime yet. For that, you’ll have to wait until you get to (or skip ahead to, I suppose) the next chapter.
+> 
+> 
 
 Each opcode determines how many operand bytes it has and what they mean. For example, a simple operation like “return” may have no operands, where an instruction for “load local variable” needs an operand to identify which variable to load. Each time we add a new opcode to clox, we specify what its operands look like—its instruction format.
 
@@ -1506,4 +1542,8 @@ In the remaining chapters, we will flesh this out with lots more kinds of instru
 
 This reduction is a key reason why our new interpreter will be faster than jlox. You can think of bytecode as a sort of compact serialization of the AST, highly optimized for how the interpreter will deserialize it in the order it needs as it executes. In the next chapter, we will see how the virtual machine does exactly that.
 
-我们有一个三字节的chunk，
+我们有一个三字节的chunk，前两个字节是一个常量指令，它从chunk的常量池中加载1.2 ， 第一个字节是 OP_CONSTANT 操作码，第二个是常量池中的索引，第三个字节是（在偏移量2处）是一个单字节的返回指令。
+
+在接下来的章节中，我们将使用更多种类的指令来扩展它。但是基本结构已经在这里了，我们现在拥有了在虚拟机中完全表示可执行代码所需的一切，还记得我们在jlox中，定义的整个AST类族吗？在clox中，我们将其简化为三个数组: 代码字节数组、常量值数组、用于调试的行信息数组
+
+这种简化是我们的新解释器，比jlox更快的最重要原因之一，你可以将字节码视为AST的一种紧凑的序列化形式，高度优化，以便于解释器按照需要执行的顺序，反序列化它。在下一章中，我们将看到虚拟机如何完全做到这一点。
