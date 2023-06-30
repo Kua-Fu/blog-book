@@ -743,3 +743,767 @@ To fix this, we’re going to create a disassembler. An assembler is an old-scho
 
 We’ll implement something similar. Given a chunk, it will print out all of the instructions in it. A Lox user won’t use this, but we Lox maintainers will certainly benefit since it gives us a window into the interpreter’s internal representation of code.
 
+运行并试试，它是否起作用？嗯，谁知道吗？我们所做的只是在内存中移动一些字节，还没有更加好的方式可以查看，程序中创建的块的内容
+
+为了解决这个问题，我们将创建一个反汇编器，汇编器是一种古老的程序，它接受一个人类可读的CPU 指令助记符名称（例如: ADD MULT等）的文件，并且将它们转换为二进制的机器码形式。反汇编器则相反——给定一块机器码，它可以输出指令的文本列表
+
+我们将实现类似的东西，给定一个块，它将打印出其中的所有指令，Lox用户不会使用它，但是，我们的Lox维护者会用到。因为，它给了我们查看解释器代码的内部表示的窗口
+
+
+In main(), after we create the chunk, we pass it to the disassembler.
+
+在main() 函数中，我们创建好chunk后，将其传递给了 反汇编器
+
+```c
+
+// main.c, in main()
+
+  initChunk(&chunk);
+  writeChunk(&chunk, OP_RETURN);
+
+  disassembleChunk(&chunk, "test chunk");
+  freeChunk(&chunk);
+  
+```
+
+Again, we whip up yet another module.
+
+我们将再次创建一个新的模块
+
+```c
+
+// main.c
+
+#include "chunk.h"
+#include "debug.h"
+
+int main(int argc, const char* argv[]) {
+
+```
+
+Here’s that header:
+
+```c
+
+// debug.h, create new file
+
+#ifndef clox_debug_h
+#define clox_debug_h
+
+#include "chunk.h"
+
+void disassembleChunk(Chunk* chunk, const char* name);
+int disassembleInstruction(Chunk* chunk, int offset);
+
+#endif
+
+
+```
+
+
+In main(), we call disassembleChunk() to disassemble all of the instructions in the entire chunk. That’s implemented in terms of the other function, which just disassembles a single instruction. It shows up here in the header because we’ll call it from the VM in later chapters.
+
+Here’s a start at the implementation file:
+
+在main() 函数中，我们调用 disassembleChunk() 来反汇编这个chunk 中的所有指令，这是通过其他函数来实现的， 它只能反汇编单个指令。它在这里出现在头文件中，因为我们在后面的章节中，会从VM 中调用这个函数
+
+下面是实现的开头
+
+```c
+
+// debug.c, create new file
+
+#include <stdio.h>
+
+#include "debug.h"
+
+void disassembleChunk(Chunk* chunk, const char* name) {
+  printf("== %s ==\n", name);
+
+  for (int offset = 0; offset < chunk->count;) {
+    offset = disassembleInstruction(chunk, offset);
+  }
+}
+
+```
+
+To disassemble a chunk, we print a little header (so we can tell which chunk we’re looking at) and then crank through the bytecode, disassembling each instruction. The way we iterate through the code is a little odd. Instead of incrementing offset in the loop, we let disassembleInstruction() do it for us. When we call that function, after disassembling the instruction at the given offset, it returns the offset of the next instruction. This is because, as we’ll see later, instructions can have different sizes.
+
+The core of the “debug” module is this function:
+
+为了反汇编一个代码块，我们首先打印一个小标题，（这样我们就可以知道我们在查看哪一个代码块），然后遍历字节码并且反汇编每个指令，我们迭代代码的方式有点奇怪，我们不是在循环中递增偏移量，而是让disassembleInstruction() 函数为我们完成这个任务，当我们调用该函数时候，在反汇编给定偏移量处的指令后，它会返回下一条指令的偏移量，这是因为，正如我们稍后将看到的，指令的大小可能不相同
+
+debug模块的核心是这个函数
+
+```c
+// debug.c, add after disassembleChunk()
+
+int disassembleInstruction(Chunk* chunk, int offset) {
+  printf("%04d ", offset);
+
+  uint8_t instruction = chunk->code[offset];
+  switch (instruction) {
+    case OP_RETURN:
+      return simpleInstruction("OP_RETURN", offset);
+    default:
+      printf("Unknown opcode %d\n", instruction);
+      return offset + 1;
+  }
+}
+
+```
+
+First, it prints the byte offset of the given instruction—that tells us where in the chunk this instruction is. This will be a helpful signpost when we start doing control flow and jumping around in the bytecode.
+
+Next, it reads a single byte from the bytecode at the given offset. That’s our opcode. We switch on that. For each kind of instruction, we dispatch to a little utility function for displaying it. On the off chance that the given byte doesn’t look like an instruction at all—a bug in our compiler—we print that too. For the one instruction we do have, OP_RETURN, the display function is:
+
+首先，它会打印给定指令的字节偏移量——这告诉我们这个指令在代码块中的位置，当我们开始进行控制流和字节码跳转时候，这将是一个有用的标志。
+
+接下来，它从给定偏移量处的字节码中读取一个字节，这就是我们的操作码，我们对操作码进行 switch语句，对于每种类型的指令，我们会调用一个小的实用程序来显示。万一给定的字节根本不是一个指令——这是编译器中的一个错误——我们也会打印出来，对于我们唯一拥有的指令OP_RETURN, 显示函数是
+
+```c
+
+// debug.c, add after disassembleChunk()
+
+static int simpleInstruction(const char* name, int offset) {
+  printf("%s\n", name);
+  return offset + 1;
+}
+
+```
+
+There isn’t much to a return instruction, so all it does is print the name of the opcode, then return the next byte offset past this instruction. Other instructions will have more going on.
+
+If we run our nascent interpreter now, it actually prints something:
+
+return指令，并没有太多内容，因此它只是打印操作码的名称，然后，返回跳过return 指令的下一个字节偏移量。其他指令将会有更多的内容。
+
+如果我们现在运行 clox解释器，它会打印出一些东西
+
+```c
+
+== test chunk ==
+0000 OP_RETURN
+
+```
+
+It worked! This is sort of the “Hello, world!” of our code representation. We can create a chunk, write an instruction to it, and then extract that instruction back out. Our encoding and decoding of the binary bytecode is working.
+
+它起作用了，这有点像是我们代码表示法 的"hello, world!" 我们可以创建一个代码块，向其中写入一个指令，然后将该指令提取出来，我们的二进制字节码的编码和解码正在工作。
+
+## 五、Constants
+
+Now that we have a rudimentary chunk structure working, let’s start making it more useful. We can store code in chunks, but what about data? Many values the interpreter works with are created at runtime as the result of operations.
+
+现在我们有了一个基本的代码块结构，让我们开始让它更加有用，我们可以在代码块中存储代码，但是数据呢？许多解释器处理的值是在运行时，作为操作结果创建的
+
+```
+1 + 2;
+
+```
+
+The value 3 appears nowhere in the code here. However, the literals 1 and 2 do. To compile that statement to bytecode, we need some sort of instruction that means “produce a constant” and those literal values need to get stored in the chunk somewhere. In jlox, the Expr.Literal AST node held the value. We need a different solution now that we don’t have a syntax tree.
+
+代码中没有出现3， 然而，字面量1 和 2 出现了，为了将该语句编译为字节码，我们需要某种指令，表示生成一个常量，并且这些字面值需要被存储到代码中的某个地方，在jlox 中，Expr.Literal 节点，保存了该值。由于现在我们没有语法树，我们需要一个不同的解决方案
+
+### 5.1 Representing values
+
+表示值
+
+We won’t be running any code in this chapter, but since constants have a foot in both the static and dynamic worlds of our interpreter, they force us to start thinking at least a little bit about how our VM should represent values.
+
+For now, we’re going to start as simple as possible—we’ll support only double-precision, floating-point numbers. This will obviously expand over time, so we’ll set up a new module to give ourselves room to grow.
+
+在本章中，我们不会运行任何代码，但是，由于常量同时涉及到解释器的静态和动态世界，它迫使我们开始考虑如何表示值
+
+现在，我们将尽可能简单的开始——我们仅仅支持 double 类型，随着时间的扩展，这显然会扩展，因此，我们将设置一个新的模块，留出发展空间
+
+```c
+
+
+// value.h, create new file
+
+#ifndef clox_value_h
+#define clox_value_h
+
+#include "common.h"
+
+typedef double Value;
+
+#endif
+
+
+```
+
+This typedef abstracts how Lox values are concretely represented in C. That way, we can change that representation without needing to go back and fix existing code that passes around values.
+
+Back to the question of where to store constants in a chunk. For small fixed-size values like integers, many instruction sets store the value directly in the code stream right after the opcode. These are called immediate instructions because the bits for the value are immediately after the opcode.
+
+That doesn’t work well for large or variable-sized constants like strings. In a native compiler to machine code, those bigger constants get stored in a separate “constant data” region in the binary executable. Then, the instruction to load a constant has an address or offset pointing to where the value is stored in that section.
+
+Most virtual machines do something similar. For example, the Java Virtual Machine associates a constant pool with each compiled class. That sounds good enough for clox to me. Each chunk will carry with it a list of the values that appear as literals in the program. To keep things simpler, we’ll put all constants in there, even simple integers.
+
+这个 typedef 抽象了Lox中的值在C中的具体表示方式，这样，我们可以更改该表达方式，而不需要回到现有代码来修复传递值的代码
+
+回到将常量存储在代码块中的问题，对于像整数这样固定长度的值，许多指令集将该值直接存储到操作码后面的，代码流中。这些被称为立即指令，因为该值的位，紧跟在操作码后面。
+
+但是，这对于像是字符串这样的大的或者可变长度的常量，并不适用。在本机编译到机器码的情况下，这些更大的常量被存储在二进制可执行文件中的单独的——常量数据，区域中。然后，加载常量的指令，具有指向该部分存储值的地址，或者偏移量
+
+大多数的虚拟机都会做相同的事情，例如：Java虚拟机将常量池与每个编译的类关联起来，这对于clox来说足够好，每个代码块将携带在程序中出现的字面量值的列表，为了使事情更加简单，我们将所有的常量放入其中，甚至是简单的整数
+
+### 5.2 Value arrays
+
+
+The constant pool is an array of values. The instruction to load a constant looks up the value by index in that array. As with our bytecode array, the compiler doesn’t know how big the array needs to be ahead of time. So, again, we need a dynamic one. Since C doesn’t have generic data structures, we’ll write another dynamic array data structure, this time for Value.
+
+
+常量池是值的数组，加载常量的指令，在该数组中通过索引查找该值，与字节码数组一样，编译器事先不知道数组的大小，因此，我们再次需要一个动态数组，由于C 没有通用数据结构，我们将为Value编写另一个动态数组数据结构
+
+```c
+
+// value.h
+
+typedef double Value;
+
+typedef struct {
+  int capacity;
+  int count;
+  Value* values;
+} ValueArray;
+
+#endif
+
+```
+
+As with the bytecode array in Chunk, this struct wraps a pointer to an array along with its allocated capacity and the number of elements in use. We also need the same three functions to work with value arrays.
+
+和chunk中的字节码数组一样，这个结构体包装了指向数组的指针，以及其分配的容量和正在使用的元素数，我们还需要三个函数来处理值数组。
+
+```c
+
+// value.h, add after struct ValueArray
+
+} ValueArray;
+
+void initValueArray(ValueArray* array);
+void writeValueArray(ValueArray* array, Value value);
+void freeValueArray(ValueArray* array);
+
+#endif
+
+```
+
+
+The implementations will probably give you déjà vu. First, to create a new one:
+
+这些实现可能会让你有一种似曾相识的感觉，首先，创建一个新的值数组
+
+```c
+
+// value.c, create new file
+
+#include <stdio.h>
+
+#include "memory.h"
+#include "value.h"
+
+void initValueArray(ValueArray* array) {
+  array->values = NULL;
+  array->capacity = 0;
+  array->count = 0;
+}
+
+```
+
+Once we have an initialized array, we can start adding values to it.
+
+当我们有了一个已经初始化的数组，我们就可以向其中添加值了
+
+```c 
+
+// value.c, add after initValueArray()
+
+void writeValueArray(ValueArray* array, Value value) {
+  if (array->capacity < array->count + 1) {
+    int oldCapacity = array->capacity;
+    array->capacity = GROW_CAPACITY(oldCapacity);
+    array->values = GROW_ARRAY(Value, array->values,
+                               oldCapacity, array->capacity);
+  }
+
+  array->values[array->count] = value;
+  array->count++;
+}
+
+```
+
+The memory-management macros we wrote earlier do let us reuse some of the logic from the code array, so this isn’t too bad. Finally, to release all memory used by the array:
+
+我们之前编写的内存管理，可以让我们复用在代码数组中，因此，情况并不算太差。最后，要释放数组使用的所有内存。
+
+```c
+
+// value.c, add after writeValueArray()
+
+void freeValueArray(ValueArray* array) {
+  FREE_ARRAY(Value, array->values, array->capacity);
+  initValueArray(array);
+}
+
+
+```
+
+Now that we have growable arrays of values, we can add one to Chunk to store the chunk’s constants.
+
+现在，我们有了可增长的值数组，我们可以将其添加到 chunk中，用于存储代码块的常量。
+
+```c
+// chunk.h, in struct Chunk
+
+  uint8_t* code;
+  ValueArray constants;
+} Chunk;
+
+```
+
+
+Don’t forget the include.
+
+```c
+
+// chunk.h
+
+#include "common.h"
+#include "value.h"
+
+typedef enum {
+
+```
+
+Ah, C, and its Stone Age modularity story. Where were we? Right. When we initialize a new chunk, we initialize its constant list too.
+
+C  和它的古老的模块化故事，我们在哪里？当我们初始化一个新的代码块时候，我们也初始化它的常量列表
+
+
+```c 
+
+// chunk.c, in initChunk()
+
+  chunk->code = NULL;
+  initValueArray(&chunk->constants);
+}
+
+
+```
+
+Likewise, we free the constants when we free the chunk.
+
+ 同样的，当我们释放代码块时候，我们也会释放常量
+ 
+ 
+```c 
+
+// chunk.c, in freeChunk()
+
+  FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+  freeValueArray(&chunk->constants);
+  initChunk(chunk);
+
+
+```
+
+
+Next, we define a convenience method to add a new constant to the chunk. Our yet-to-be-written compiler could write to the constant array inside Chunk directly—it’s not like C has private fields or anything—but it’s a little nicer to add an explicit function.
+
+接下来，我们定义一个方便的方法，将一个新的常量添加到chunk中，我们还没有编写的编译器，可以直接写入chunk内部的常量数组，——这不像是C 有私有字段或者其他东西——但是，添加一个显式的函数会让事情更加美好
+
+```c 
+
+
+// chunk.h, add after writeChunk()
+
+void writeChunk(Chunk* chunk, uint8_t byte);
+int addConstant(Chunk* chunk, Value value);
+
+#endif
+
+```
+
+Then we implement it.
+
+```c
+
+// chunk.c, add after writeChunk()
+
+int addConstant(Chunk* chunk, Value value) {
+  writeValueArray(&chunk->constants, value);
+  return chunk->constants.count - 1;
+}
+
+```
+
+After we add the constant, we return the index where the constant was appended so that we can locate that same constant later.
+
+我们添加了常量后，返回该常量被追加的索引，以便于以后可以定位到同一个常量
+
+
+### 5.3 Constant instructions
+
+常量指令
+
+We can store constants in chunks, but we also need to execute them. In a piece of code like:
+
+我们可以将常量保存在chunk中，但是，我们还需要执行它们，在下面这样的代码片段中
+
+```c
+
+print 1;
+print 2;
+
+```
+
+The compiled chunk needs to not only contain the values 1 and 2, but know when to produce them so that they are printed in the right order. Thus, we need an instruction that produces a particular constant.
+
+编译后的块，不仅需要包含值1和2，还需要知道何时生成它们，以便以正确的顺序打印它们，因此，我们需要一条指令来生成特定的常量
+
+```c
+
+// chunk.h, in enum OpCode
+
+typedef enum {
+  OP_CONSTANT,
+  OP_RETURN,
+	
+```
+
+When the VM executes a constant instruction, it “loads” the constant for use. This new instruction is a little more complex than OP_RETURN. In the above example, we load two different constants. A single bare opcode isn’t enough to know which constant to load.
+
+当虚拟机执行常量指令时，它会加载该常量，以供使用，这个新指令比OP_RETURN 复杂一些，在上面的例子中，我们加载了两个不同的常量，一个单独的操作码，不足以知道要加载哪个常量
+
+To handle cases like this, our bytecode—like most others—allows instructions to have operands. These are stored as binary data immediately after the opcode in the instruction stream and let us parameterize what the instruction does.
+
+为了处理这种情况，我们的字节码（像是大多数字节码一样），允许指令具有操作数，这些操作数作为二进制数据，立即存储在指令流的操作码之后，让我们对指令的操作进行参数化
+
+![format](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/14_format.png?raw=true)
+
+Each opcode determines how many operand bytes it has and what they mean. For example, a simple operation like “return” may have no operands, where an instruction for “load local variable” needs an operand to identify which variable to load. Each time we add a new opcode to clox, we specify what its operands look like—its instruction format.
+
+每种操作码，确定它有多少操作数字节，以及它们的含义，例如：return 这样简单类型的操作码，可能没有操作数；而 加载本地变量 操作码，还需要一个操作数，用于标识要加载哪个变量；每次像clox 添加新的操作码时候，我们都会指定它们的操作数是什么样的，也就是指令格式
+
+In this case, OP_CONSTANT takes a single byte operand that specifies which constant to load from the chunk’s constant array. Since we don’t have a compiler yet, we “hand-compile” an instruction in our test chunk.
+
+在这种情况下，OP_CONSTANT 指令需要一个单字节操作数，用于指定要从块的常量数组中加载哪个常量，由于我们还没有编译器，因此，我们在测试块中手动编译指令。
+
+```c
+
+// main.c, in main()
+
+  initChunk(&chunk);
+
+  int constant = addConstant(&chunk, 1.2);
+  writeChunk(&chunk, OP_CONSTANT);
+  writeChunk(&chunk, constant);
+
+  writeChunk(&chunk, OP_RETURN);
+
+
+```
+
+
+We add the constant value itself to the chunk’s constant pool. That returns the index of the constant in the array. Then we write the constant instruction, starting with its opcode. After that, we write the one-byte constant index operand. Note that writeChunk() can write opcodes or operands. It’s all raw bytes as far as that function is concerned.
+
+If we try to run this now, the disassembler is going to yell at us because it doesn’t know how to decode the new instruction. Let’s fix that.
+
+
+我们将常量值本身，添加到块的常量池中，这会返回该常量在数组中的索引，然后，我们编写常量指令，从其操作码开始，之后，我们写入一个字节的常量索引操作数，请注意，writeChunk() 可以写入操作数或者操作码。在该函数看来，都是原始字节
+
+如果我们现在尝试运行，反汇编器会因为，不知道如何解码新指令，而出错，接下来，我们将解决这个问题
+
+```c
+
+// debug.c, in disassembleInstruction()
+
+  switch (instruction) {
+    case OP_CONSTANT:
+      return constantInstruction("OP_CONSTANT", chunk, offset);
+    case OP_RETURN:
+		
+```
+
+This instruction has a different instruction format, so we write a new helper function to disassemble it.
+
+由于这个指令有不同的指令格式，因此，我们编写一个新的辅助函数，用于反汇编它
+
+```c
+
+// debug.c, add after disassembleChunk()
+
+static int constantInstruction(const char* name, Chunk* chunk,
+                               int offset) {
+  uint8_t constant = chunk->code[offset + 1];
+  printf("%-16s %4d '", name, constant);
+  printValue(chunk->constants.values[constant]);
+  printf("'\n");
+}
+
+```
+
+There’s more going on here. As with OP_RETURN, we print out the name of the opcode. Then we pull out the constant index from the subsequent byte in the chunk. We print that index, but that isn’t super useful to us human readers. So we also look up the actual constant value—since constants are known at compile time after all—and display the value itself too.
+
+This requires some way to print a clox Value. That function will live in the “value” module, so we include that.
+
+这里有更多的内容，和OP_RETURN 指令一样，我们打印操作码的名称，然后，我们从chunk的下一个字节中，提取常量的索引，我们打印该索引，但是对于读者来说，常量的索引，并不非常有用，因此，我们还需要查找实际的常量数值，并且显示该值本身。
+
+由于常量在编译时候，已知，因此，这需要某种方式来打印clox的值，这个函数将存在于value 模块，因此，我们需要引入 value.h
+
+```c
+
+// debug.c
+
+#include "debug.h"
+#include "value.h"
+
+void disassembleChunk(Chunk* chunk, const char* name) {
+
+```
+
+Over in that header, we declare:
+
+```c
+
+// value.h, add after freeValueArray()
+
+void freeValueArray(ValueArray* array);
+void printValue(Value value);
+
+#endif
+
+```
+
+And here’s an implementation:
+
+```c
+
+// value.c, add after freeValueArray()
+
+void printValue(Value value) {
+  printf("%g", value);
+}
+
+```
+
+Magnificent, right? As you can imagine, this is going to get more complex once we add dynamic typing to Lox and have values of different types.
+
+Back in constantInstruction(), the only remaining piece is the return value.
+
+这很棒，不是吗？正如你想象的那样，一旦我们在clox中，添加了动态类型，并具有不同类型的值，这将变得更加复杂
+
+回到constantInstruction(), 唯一剩下的部分就是返回值了
+
+```c 
+
+// debug.c, in constantInstruction()
+
+  printf("'\n");
+  return offset + 2;
+}
+
+```
+
+Remember that disassembleInstruction() also returns a number to tell the caller the offset of the beginning of the next instruction. Where OP_RETURN was only a single byte, OP_CONSTANT is two—one for the opcode and one for the operand.
+
+记住，disassembleInstruction() 还会返回一个数字，告诉调用者下一条指令的偏移量，其中 OP_RETURN 指令只有一个字节，而 OP_CONSTANT 指令有两个字节——一个是操作码，另外一个是操作数
+
+```c
+
+== test chunk ==
+0000 OP_CONSTANT         0 '1.2'
+0002 OP_RETURN
+
+```
+
+
+## 六、Line Information
+
+行信息
+
+Chunks contain almost all of the information that the runtime needs from the user’s source code. It’s kind of crazy to think that we can reduce all of the different AST classes that we created in jlox down to an array of bytes and an array of constants. There’s only one piece of data we’re missing. We need it, even though the user hopes to never see it.
+
+块包含了运行时候，从用户源代码中需要的几乎所有信息，在jlox中，我们创建的所有不同的AST类，在clox中，我们都可以简化为一系列的字节和常量数组，这似乎有点疯狂，我们只是缺少一个数据片段，即使用户希望永远不会看到它，我们仍然需要它。
+
+When a runtime error occurs, we show the user the line number of the offending source code. In jlox, those numbers live in tokens, which we in turn store in the AST nodes. We need a different solution for clox now that we’ve ditched syntax trees in favor of bytecode. Given any bytecode instruction, we need to be able to determine the line of the user’s source program that it was compiled from.
+
+There are a lot of clever ways we could encode this. I took the absolute simplest approach I could come up with, even though it’s embarrassingly inefficient with memory. In the chunk, we store a separate array of integers that parallels the bytecode. Each number in the array is the line number for the corresponding byte in the bytecode. When a runtime error occurs, we look up the line number at the same index as the current instruction’s offset in the code array.
+
+当运行时，发生了错误，我们会显示错误的代码行号给用户，在jlox中，这些数字存储在token中，而我们将 token保存在AST类节点中，既然我们已经放弃了语法树，而使用字节码。那么，现在我们需要一个不同的解决方案。针对任何的字节码指令，我们需要能够确定它编译自用户原始程序的行数
+
+有很多好的编码方式可供选择，我选择能想到的最简单的方式，尽管，它在内存使用方面，效率非常低。在块中，我们存储一个与字节码对应的整数数组，数组中的每个数字都是对应于字节码中的字节的行号，当运行报错时候，我们查找与代码数组中，当前指令偏移量相同索引处的行号
+
+To implement this, we add another array to Chunk.
+
+为了实现这一点，我们在chunk中添加另一个数组
+
+```c
+
+// chunk.h, in struct Chunk
+
+  uint8_t* code;
+  int* lines;
+  ValueArray constants;
+	
+```
+
+Since it exactly parallels the bytecode array, we don’t need a separate count or capacity. Every time we touch the code array, we make a corresponding change to the line number array, starting with initialization.
+
+由于它和字节码数组完全相对应，因此我们不需要单独的计数或者容量字段，每一次我们操作代码数组时候，都会进行相应的更改，更新行号数组，从初始化开始。
+
+```c
+
+// chunk.c, in initChunk()
+
+  chunk->code = NULL;
+  chunk->lines = NULL;
+  initValueArray(&chunk->constants);
+	
+```
+
+And likewise deallocation:
+
+同样，在释放内存时候
+
+```c
+
+// chunk.c, in freeChunk()
+
+  FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+  FREE_ARRAY(int, chunk->lines, chunk->capacity);
+  freeValueArray(&chunk->constants);
+	
+```
+
+When we write a byte of code to the chunk, we need to know what source line it came from, so we add an extra parameter in the declaration of writeChunk().
+
+当我们像chunk中写入一个字节的代码时候，我们需要知道它来自于哪一行源代码，因此我们在，声明writeChunk()时候，添加了一个额外的参数
+
+```c
+
+// chunk.h, function writeChunk(), replace 1 line
+
+void freeChunk(Chunk* chunk);
+void writeChunk(Chunk* chunk, uint8_t byte, int line);
+int addConstant(Chunk* chunk, Value value);
+
+```
+
+And in the implementation:
+
+```c
+
+// chunk.c, function writeChunk(), replace 1 line
+
+void writeChunk(Chunk* chunk, uint8_t byte, int line) {
+  if (chunk->capacity < chunk->count + 1) {
+
+
+```
+
+When we allocate or grow the code array, we do the same for the line info too.
+
+当我们分配或者扩展代码数组时候，我们也会对行信息，提供相同的操作
+
+```c
+
+// chunk.c, in writeChunk()
+
+    chunk->code = GROW_ARRAY(uint8_t, chunk->code,
+        oldCapacity, chunk->capacity);
+    chunk->lines = GROW_ARRAY(int, chunk->lines,
+        oldCapacity, chunk->capacity);
+  }
+
+
+```
+
+Finally, we store the line number in the array.
+
+```c
+
+// chunk.c, in writeChunk()
+
+  chunk->code[chunk->count] = byte;
+  chunk->lines[chunk->count] = line;
+  chunk->count++;
+	
+```
+
+
+### 6.1 Disassembling line information
+
+反汇编行信息
+
+Alright, let’s try this out with our little, uh, artisanal chunk. First, since we added a new parameter to writeChunk(), we need to fix those calls to pass in some—arbitrary at this point—line number.
+
+好的，让我们实践一下行信息，首先，由于我们需要向wirteChunk() 添加一个新参数，因此我们需要更新一下调用，传递行号信息（此时是任意的）
+
+
+```c
+
+// main.c, in main(), replace 4 lines
+
+  int constant = addConstant(&chunk, 1.2);
+  writeChunk(&chunk, OP_CONSTANT, 123);
+  writeChunk(&chunk, constant, 123);
+
+  writeChunk(&chunk, OP_RETURN, 123);
+
+  disassembleChunk(&chunk, "test chunk");
+
+
+```
+
+Once we have a real front end, of course, the compiler will track the current line as it parses and pass that in.
+
+Now that we have line information for every instruction, let’s put it to good use. In our disassembler, it’s helpful to show which source line each instruction was compiled from. That gives us a way to map back to the original code when we’re trying to figure out what some blob of bytecode is supposed to do. After printing the offset of the instruction—the number of bytes from the beginning of the chunk—we show its source line.
+
+当然，当我们拥有了真正的前端，编译器将会在解析时候，追踪当前行并传递行号。
+
+现在我们的每一个指令都有了行号信息，让我们好好利用它。在我们的反汇编器中，显示每个指令编译源自哪个源代码行，是有用的。这为我们提供了一种，在确定某个字节码应该执行某些操作时候，可以映射回原始代码的方式，在打印指令的偏移量（从块的开头算起的字节数）之后，我们将显示它的源代码行数
+
+```c
+
+// debug.c, in disassembleInstruction()
+
+int disassembleInstruction(Chunk* chunk, int offset) {
+  printf("%04d ", offset);
+  if (offset > 0 &&
+      chunk->lines[offset] == chunk->lines[offset - 1]) {
+    printf("   | ");
+  } else {
+    printf("%4d ", chunk->lines[offset]);
+  }
+
+  uint8_t instruction = chunk->code[offset];
+	
+```
+
+Bytecode instructions tend to be pretty fine-grained. A single line of source code often compiles to a whole sequence of instructions. To make that more visually clear, we show a | for any instruction that comes from the same source line as the preceding one. The resulting output for our handwritten chunk looks like:
+
+字节码指令，通常非常细粒度，一行源代码通常编译为整个指令序列。为了让行信息，更加清晰，我们在任何来自与前一个指令相同源代码行数的指令之间显示一个 | ，下面是，我们运行的结果
+
+```c
+
+== test chunk ==
+0000  123 OP_CONSTANT         0 '1.2'
+0002   | OP_RETURN
+
+
+```
+
+
+We have a three-byte chunk. The first two bytes are a constant instruction that loads 1.2 from the chunk’s constant pool. The first byte is the OP_CONSTANT opcode and the second is the index in the constant pool. The third byte (at offset 2) is a single-byte return instruction.
+
+In the remaining chapters, we will flesh this out with lots more kinds of instructions. But the basic structure is here, and we have everything we need now to completely represent an executable piece of code at runtime in our virtual machine. Remember that whole family of AST classes we defined in jlox? In clox, we’ve reduced that down to three arrays: bytes of code, constant values, and line information for debugging.
+
+This reduction is a key reason why our new interpreter will be faster than jlox. You can think of bytecode as a sort of compact serialization of the AST, highly optimized for how the interpreter will deserialize it in the order it needs as it executes. In the next chapter, we will see how the virtual machine does exactly that.
+
+我们有一个三字节的chunk，
