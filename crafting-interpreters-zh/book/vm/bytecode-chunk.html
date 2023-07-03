@@ -1074,14 +1074,19 @@ typedef enum {
 </code></pre>
 <p>When the VM executes a constant instruction, it “loads” the constant for use. This new instruction is a little more complex than OP_RETURN. In the above example, we load two different constants. A single bare opcode isn’t enough to know which constant to load.</p>
 <p>当虚拟机执行常量指令时，它会加载该常量，以供使用，这个新指令比OP_RETURN 复杂一些，在上面的例子中，我们加载了两个不同的常量，一个单独的操作码，不足以知道要加载哪个常量</p>
+<blockquote>
+<p>I’m being vague about what it means to “load” or “produce” a constant because we haven’t learned how the virtual machine actually executes code at runtime yet. For that, you’ll have to wait until you get to (or skip ahead to, I suppose) the next chapter.</p>
+<p>我对于加载还是生成，常量，的含义保持模糊，因为我们还没有学习虚拟机在运行时，如何执行代码。为此，你将等到下一章才能学习</p>
+</blockquote>
 <p>To handle cases like this, our bytecode—like most others—allows instructions to have operands. These are stored as binary data immediately after the opcode in the instruction stream and let us parameterize what the instruction does.</p>
 <p>为了处理这种情况，我们的字节码（像是大多数字节码一样），允许指令具有操作数，这些操作数作为二进制数据，立即存储在指令流的操作码之后，让我们对指令的操作进行参数化</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/14_format.png?raw=true" alt="format" /></p>
-<blockquote>
-<p>I’m being vague about what it means to “load” or “produce” a constant because we haven’t learned how the virtual machine actually executes code at runtime yet. For that, you’ll have to wait until you get to (or skip ahead to, I suppose) the next chapter.</p>
-</blockquote>
 <p>Each opcode determines how many operand bytes it has and what they mean. For example, a simple operation like “return” may have no operands, where an instruction for “load local variable” needs an operand to identify which variable to load. Each time we add a new opcode to clox, we specify what its operands look like—its instruction format.</p>
 <p>每种操作码，确定它有多少操作数字节，以及它们的含义，例如：return 这样简单类型的操作码，可能没有操作数；而 加载本地变量 操作码，还需要一个操作数，用于标识要加载哪个变量；每次像clox 添加新的操作码时候，我们都会指定它们的操作数是什么样的，也就是指令格式</p>
+<blockquote>
+<p>Bytecode instruction operands are not the same as the operands passed to an arithmetic operator. You’ll see when we get to expressions that arithmetic operand values are tracked separately. Instruction operands are a lower-level notion that modify how the bytecode instruction itself behaves.</p>
+<p>字节码指令的操作数与传递给算术运算符的操作数，不一样。当我们到达表达式部分时候，你会看到算术操作数的值是单独跟踪的，指令操作数是一个更加低级的概念，它会修改字节码本身的行为。</p>
+</blockquote>
 <p>In this case, OP_CONSTANT takes a single byte operand that specifies which constant to load from the chunk’s constant array. Since we don’t have a compiler yet, we “hand-compile” an instruction in our test chunk.</p>
 <p>在这种情况下，OP_CONSTANT 指令需要一个单字节操作数，用于指定要从块的常量数组中加载哪个常量，由于我们还没有编译器，因此，我们在测试块中手动编译指令。</p>
 <pre><code class="language-c">
@@ -1184,6 +1189,10 @@ void printValue(Value value) {
 <p>There are a lot of clever ways we could encode this. I took the absolute simplest approach I could come up with, even though it’s embarrassingly inefficient with memory. In the chunk, we store a separate array of integers that parallels the bytecode. Each number in the array is the line number for the corresponding byte in the bytecode. When a runtime error occurs, we look up the line number at the same index as the current instruction’s offset in the code array.</p>
 <p>当运行时，发生了错误，我们会显示错误的代码行号给用户，在jlox中，这些数字存储在token中，而我们将 token保存在AST类节点中，既然我们已经放弃了语法树，而使用字节码。那么，现在我们需要一个不同的解决方案。针对任何的字节码指令，我们需要能够确定它编译自用户原始程序的行数</p>
 <p>有很多好的编码方式可供选择，我选择能想到的最简单的方式，尽管，它在内存使用方面，效率非常低。在块中，我们存储一个与字节码对应的整数数组，数组中的每个数字都是对应于字节码中的字节的行号，当运行报错时候，我们查找与代码数组中，当前指令偏移量相同索引处的行号</p>
+<blockquote>
+<p>This braindead encoding does do one thing right: it keeps the line information in a separate array instead of interleaving it in the bytecode itself. Since line information is only used when a runtime error occurs, we don’t want it between the instructions, taking up precious space in the CPU cache and causing more cache misses as the interpreter skips past it to get to the opcodes and operands it cares about.</p>
+<p>这种简单的编码方法确实做对了一件事情，将行信息保存到一个单独的数组中，而不是将它与字节码交错在一起。由于在运行时，才会使用该信息，我们不希望它出现在指令之间，占用宝贵的CPU缓存空间，并且在解释器跳过它，访问关心的指令码和操作数时候，导致更多的缓存未命中。 </p>
+</blockquote>
 <p>To implement this, we add another array to Chunk.</p>
 <p>为了实现这一点，我们在chunk中添加另一个数组</p>
 <pre><code class="language-c">
@@ -1306,6 +1315,101 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 <p>我们有一个三字节的chunk，前两个字节是一个常量指令，它从chunk的常量池中加载1.2 ， 第一个字节是 OP_CONSTANT 操作码，第二个是常量池中的索引，第三个字节是（在偏移量2处）是一个单字节的返回指令。</p>
 <p>在接下来的章节中，我们将使用更多种类的指令来扩展它。但是基本结构已经在这里了，我们现在拥有了在虚拟机中完全表示可执行代码所需的一切，还记得我们在jlox中，定义的整个AST类族吗？在clox中，我们将其简化为三个数组: 代码字节数组、常量值数组、用于调试的行信息数组</p>
 <p>这种简化是我们的新解释器，比jlox更快的最重要原因之一，你可以将字节码视为AST的一种紧凑的序列化形式，高度优化，以便于解释器按照需要执行的顺序，反序列化它。在下一章中，我们将看到虚拟机如何完全做到这一点。</p>
+<h2 id="七challenges"><a class="header" href="#七challenges">七、CHALLENGES</a></h2>
+<p>习题</p>
+<ol>
+<li>
+<p>Our encoding of line information is hilariously wasteful of memory. Given that a series of instructions often correspond to the same source line, a natural solution is something akin to run-length encoding of the line numbers.</p>
+<p>Devise an encoding that compresses the line information for a series of instructions on the same line. Change writeChunk() to write this compressed form, and implement a getLine() function that, given the index of an instruction, determines the line where the instruction occurs.</p>
+<p>Hint: It’s not necessary for getLine() to be particularly efficient. Since it is called only when a runtime error occurs, it is well off the critical path where performance matters.</p>
+<p>我们的行信息编码非常浪费内存，考虑到一系列指令，通常对应于一行源代码，一种自然的解决方案是对行号进行类似于运行长度的压缩。</p>
+<p>设计一种编码方式，可以压缩上一行，的一系列指令的行信息，更改writeChunk() 写入这种压缩形式，并且实现一个getLine() 函数，该函数根据指令的索引，确定指令所在的行。</p>
+<p>提示⚠️: getLine() 不需要特别高效，由于它只会在运行报错时候，调用，因此，它的性能并不太重要</p>
+</li>
+<li>
+<p>Because OP_CONSTANT uses only a single byte for its operand, a chunk may only contain up to 256 different constants. That’s small enough that people writing real-world code will hit that limit. We could use two or more bytes to store the operand, but that makes every constant instruction take up more space. Most chunks won’t need that many unique constants, so that wastes space and sacrifices some locality in the common case to support the rare case.</p>
+<p>To balance those two competing aims, many instruction sets feature multiple instructions that perform the same operation but with operands of different sizes. Leave our existing one-byte OP_CONSTANT instruction alone, and define a second OP_CONSTANT_LONG instruction. It stores the operand as a 24-bit number, which should be plenty.</p>
+<p>Implement this function:</p>
+<pre><code class="language-c">
+void writeConstant(Chunk* chunk, Value value, int line) {
+	// Implement me...
+}
+
+</code></pre>
+<p>It adds value to chunk’s constant array and then writes an appropriate instruction to load the constant. Also add support to the disassembler for OP_CONSTANT_LONG instructions.</p>
+<p>Defining two instructions seems to be the best of both worlds. What sacrifices, if any, does it force on us?</p>
+<p>因为，OP_CONSTANT指令，仅仅使用一个字节的操作数，所以，一个chunk最多只能包含256个不同的常量，这个限制，对于实际编写代码的人来说，是非常小的。我们可以使用两个或者更多的字节，来存储操作数。但是，这会让每个常量指令占用更多的空间，大多数chunk 不需要那么多唯一的常量，因此，浪费了空间，并且常见情况下，牺牲了一部分局部性，以支持罕见的情况</p>
+<p>为了平衡这两个目标，许多指标集具有执行相同的操作，但是操作数不同的多个指令。保留现有的一个字节的OP_CONSTANT指令，定义第二个OP_CONSTANT_LONG 指令，它将操作数存储为一个24位的数，应该足够了</p>
+<p>它将值添加到chunk的常量数组中，然后写入适当的指令来加载常量，还需要为 OP_CONSTANT_LONG 指令添加反汇编器支持</p>
+<p>定义两个指令似乎是两全其美的事情，但是，它需要我们做成哪些牺牲，如果有的话？</p>
+</li>
+<li>
+<p>Our reallocate() function relies on the C standard library for dynamic memory allocation and freeing. malloc() and free() aren’t magic. Find a couple of open source implementations of them and explain how they work. How do they keep track of which bytes are allocated and which are free? What is required to allocate a block of memory? Free it? How do they make that efficient? What do they do about fragmentation?</p>
+<p>Hardcore mode: Implement reallocate() without calling realloc(), malloc(), or free(). You are allowed to call malloc() once, at the beginning of the interpreter’s execution, to allocate a single big block of memory, which your reallocate() function has access to. It parcels out blobs of memory from that single region, your own personal heap. It’s your job to define how it does that</p>
+<p>我们的reallocate() 函数，依赖于C的标准库，进行动态内存分配与释放，malloc() 和 free() 不是魔法，需要了解它们的工作原理，它们如何跟踪哪些字节已经分配，哪些是空闲的，分配一块内存需要什么，如何释放它，它们如何实现高效？它们如何实现内存碎片的问题？</p>
+<p>如果想要挑战更高难度的话，可以在不调用 realloc() malloc() free() 的情况下，实现reallocate() 函数，你可以在解释器的执行开始时候，调用一次 malloc(),分配一块大的内存块，并且让reallocate() 函数，可以访问它，然后，从这个单一的内存区域中分配内存块，这是你自己的堆，你需要定义如何实现这个功能。</p>
+<h2 id="八design-note-test-your-language"><a class="header" href="#八design-note-test-your-language">八、DESIGN NOTE: TEST YOUR LANGUAGE</a></h2>
+<p>设计思路: 测试你的语言</p>
+</li>
+</ol>
+<p>We’re almost halfway through the book and one thing we haven’t talked about is testing your language implementation. That’s not because testing isn’t important. I can’t possibly stress enough how vital it is to have a good, comprehensive test suite for your language.</p>
+<p>我们已经读完了这本书的接近一半内容，但是，我们还没有谈论过测试你的语言实现这个话题。这并不意味着测试不重要，我无法强调测试对于你的语言来说是多么重要, 拥有一个好的、全面的测试套件对于保证语言的正确性和可靠性至关重要</p>
+<p>I wrote a test suite for Lox (which you are welcome to use on your own Lox implementation) before I wrote a single word of this book. Those tests found countless bugs in my implementations.</p>
+<p>在本书的第一行代码之前，我就为Lox编写了一个测试套件，（你也可以在自己的代码中实现），这些测试代码帮助我发现了无数的bug</p>
+<p>Tests are important in all software, but they’re even more important for a programming language for at least a couple of reasons:</p>
+<p>测试对于所有软件都很重要，但是，对于编程语言来说，测试至少有以下几个更为重要的原因</p>
+<ul>
+<li>
+<p>Users expect their programming languages to be rock solid. We are so used to mature, stable compilers and interpreters that “It’s your code, not the compiler” is an ingrained part of software culture. If there are bugs in your language implementation, users will go through the full five stages of grief before they can figure out what’s going on, and you don’t want to put them through all that.</p>
+<p>用户期望他们的编程语言是非常稳定的，我们已经习惯了成熟的编译器或者解释器，以致于，出现问题时候，这是你的问题，不是编译器或者解释器的问题，已经成为代码编写的惯例。如果你的语言实现中，存在错误，客户将经历完整的五个悲痛阶段，才能弄清楚发生了什么，你不想让他们经历这一切</p>
+</li>
+<li>
+<p>A language implementation is a deeply interconnected piece of software. Some codebases are broad and shallow. If the file loading code is broken in your text editor, it—hopefully!—won’t cause failures in the text rendering on screen. Language implementations are narrower and deeper, especially the core of the interpreter that handles the language’s actual semantics. That makes it easy for subtle bugs to creep in caused by weird interactions between various parts of the system. It takes good tests to flush those out.</p>
+<p>语言实现是一个深度关联的软件体系，有些代码库是广泛而浅显的，如果你的文本编辑器中的文件加载代码出现了问题，它有可能不会导致屏幕上的文本渲染失败。但是，语言实现更加狭窄和深入，特别是处理语言实际语义的解释器的核心部分，这使得由于系统各个部分之间的奇怪交互，而产生的微妙错误，很容易悄悄出现，测试可以帮助你发现这些错误</p>
+</li>
+<li>
+<p>The input to a language implementation is, by design, combinatorial. There are an infinite number of possible programs a user could write, and your implementation needs to run them all correctly. You obviously can’t test that exhaustively, but you need to work hard to cover as much of the input space as you can.</p>
+<p>设计上，语言实现的输入是组合的，用户可以写成无限数量的可能程序，而你的实现需要正确的运行它们。显然，我们无法对其进行详尽的测试，但是，我们需要覆盖尽可能多的输入空间。</p>
+</li>
+<li>
+<p>Language implementations are often complex, constantly changing, and full of optimizations. That leads to gnarly code with lots of dark corners where bugs can hide.</p>
+<p>语言实现通常是复杂的、不断变化的，并且充满了优化。这导致代码变得棘手，存在许多黑盒，容易隐藏错误</p>
+</li>
+</ul>
+<p>All of that means you’re gonna want a lot of tests. But what tests? Projects I’ve seen focus mostly on end-to-end “language tests”. Each test is a program written in the language along with the output or errors it is expected to produce. Then you have a test runner that pushes the test program through your language implementation and validates that it does what it’s supposed to. Writing your tests in the language itself has a few nice advantages:</p>
+<p>这意味着，我们需要很多测试，但是，应该测试什么呢？我看到的项目，主要关注“端到端语言测试“。每个测试都是用语言编写的程序，以及它预期产生的输出或者错误，然后，我们需要一个测试运行器，将测试程序传递给语言实现，并且验证它是否按照预期执行。使用语言本身，编写测试，有一些好处</p>
+<ul>
+<li>
+<p>The tests aren’t coupled to any particular API or internal architecture decisions of the implementation. This frees you to reorganize or rewrite parts of your interpreter or compiler without needing to update a slew of tests.</p>
+<p>测试与实现特定的API 或者内部构架决策无关，这使得，我们可以重新组织或者重写解释器或者编译器的某些部分，而无需更新大量的测试</p>
+</li>
+<li>
+<p>You can use the same tests for multiple implementations of the language.</p>
+<p>可以将相同的测试，用于语言的多个实现</p>
+</li>
+<li>
+<p>Tests can often be terse and easy to read and maintain since they are simply scripts in your language.</p>
+<p>测试通常要简洁易读，并且易于维护，因为它们只是语言中的脚本。</p>
+</li>
+</ul>
+<p>It’s not all rosy, though:</p>
+<p>然而，并不是所有的，都是好的</p>
+<ul>
+<li>
+<p>End-to-end tests help you determine if there is a bug, but not where the bug is. It can be harder to figure out where the erroneous code in the implementation is because all the test tells you is that the right output didn’t appear.</p>
+<p>端到端测试，可以帮助我们确定是否存在错误，但是，无法确定错误出现在哪里。因为测试只会告诉我们，正确的输出，没有出现，所以，要找出实现中的出现错误的代码可能会更加困难。</p>
+</li>
+<li>
+<p>It can be a chore to craft a valid program that tickles some obscure corner of the implementation. This is particularly true for highly optimized compilers where you may need to write convoluted code to ensure that you end up on just the right optimization path where a bug may be hiding.</p>
+<p>编写一个有效的程序，以测试实现中的某个不常见的角落可能会很繁琐。这对于，高度优化的编译器来说，尤为如此，我们可能需要编写复杂的代码，以确保进入了可能隐藏错误的最佳优化路径</p>
+</li>
+<li>
+<p>The overhead can be high to fire up the interpreter, parse, compile, and run each test script. With a big suite of tests—which you do want, remember—that can mean a lot of time spent waiting for the tests to finish running.</p>
+<p>启动解释器、解析、编译和运行每个测试脚本的开销可能会非常高。对于包含大量测试用例的测试套件来说，这意味着我们需要花费大量时间，等待测试用例执行。</p>
+</li>
+</ul>
+<p>I could go on, but I don’t want this to turn into a sermon. Also, I don’t pretend to be an expert on how to test languages. I just want you to internalize how important it is that you test yours. Seriously. Test your language. You’ll thank me for it.</p>
+<p>我还可以写更多，但是，我不想让这变成一篇布道文章。而且，我并不认为自己是测试方面的专家。我只是想让你们深刻认识到测试，对于一门语言是多么的重要。真的，测试语言实现，你会感谢我的😄</p>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
