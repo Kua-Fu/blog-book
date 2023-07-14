@@ -30,3 +30,4 @@
 
 - [虚拟机](./vm/bytecode-vm.md)
 - [字节码块](./vm/bytecode-chunk.md)
+- [一个虚拟机](./vm/a-virtual-machine.md)

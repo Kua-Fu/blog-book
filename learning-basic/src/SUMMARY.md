@@ -3,6 +3,7 @@
 - [Introducation](index.md)
 - [Vim](vim/vim.md)
 - [Emacs](emacs/emacs.md)
+  - [remote files](emacs/remote_file.md)
 - [vscode](vs/vs.md)
   - [MacOS vscode debug C/C++ with makefile](vs/debug_c.md)
 - [Git](git/git.md)
