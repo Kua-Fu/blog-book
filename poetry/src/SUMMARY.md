@@ -42,6 +42,9 @@
 # The Shire Hobbit
 -----------
 
+- [mulberry](mulberry/mulberry.md)
+  - [meilisearch](mulberry/meili.md)
+
 - [Animation](animation/animation.md)
   - [ghibli](animation/ghibli.md)
 - [Health](health/health.md)

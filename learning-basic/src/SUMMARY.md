@@ -23,6 +23,7 @@
   - [多个窗口滑动，会出现漂移](os/inertial_scroll.md)
 - [Chrome](chrome/chrome.md)
 - [Docker](docker/docker.md)
+  - [rancher](docker/rancher.md)
 - [make](make/make.md)
   - [概述](make/overview.md)
   - [makefile介绍](make/introducation.md)
