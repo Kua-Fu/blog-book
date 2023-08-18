@@ -22,6 +22,8 @@
   - [after MacOS upgrade, can not use git](mdbook/install_xcode.md)
   - [多个窗口滑动，会出现漂移](os/inertial_scroll.md)
 - [Chrome](chrome/chrome.md)
+- [Macos](macos/macos.md)
+  - [彻底删除企业版360](macos/delete_360.md)
 - [Docker](docker/docker.md)
   - [rancher](docker/rancher.md)
 - [make](make/make.md)

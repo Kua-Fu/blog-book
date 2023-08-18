@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>introduction - learning-middleware</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item "><a href="../../redis/redis.html"><strong aria-hidden="true">2.</strong> Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../redis/basic.html"><strong aria-hidden="true">2.1.</strong> Basic</a></li><li class="chapter-item "><a href="../../redis/101.html"><strong aria-hidden="true">2.2.</strong> 101</a></li><li class="chapter-item "><a href="../../redis/memory_analyze.html"><strong aria-hidden="true">2.3.</strong> Memory Analyze</a></li><li class="chapter-item "><a href="../../redis/bloom_filter.html"><strong aria-hidden="true">2.4.</strong> Bloom Filter</a></li><li class="chapter-item "><a href="../../redis/hyperloglog.html"><strong aria-hidden="true">2.5.</strong> HyperLogLog</a></li></ol></li><li class="chapter-item expanded "><a href="../../kafka/kafka.html"><strong aria-hidden="true">3.</strong> kafka</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../kafka/basic.html"><strong aria-hidden="true">3.1.</strong> basic</a></li><li class="chapter-item "><a href="../../kafka/ui.html"><strong aria-hidden="true">3.2.</strong> kafka ui</a></li><li class="chapter-item "><a href="../../kafka/config.html"><strong aria-hidden="true">3.3.</strong> config info</a></li><li class="chapter-item "><a href="../../kafka/101.html"><strong aria-hidden="true">3.4.</strong> kafka101</a></li><li class="chapter-item "><a href="../../kafka/sasl_plain.html"><strong aria-hidden="true">3.5.</strong> SASL/PLAIN</a></li><li class="chapter-item "><a href="../../kafka/sasl_scram_sha_256.html"><strong aria-hidden="true">3.6.</strong> SASL/SCRAM-SHA-256</a></li><li class="chapter-item "><a href="../../kafka/ssl.html"><strong aria-hidden="true">3.7.</strong> SSL</a></li><li class="chapter-item expanded "><a href="../../kafka/security.html"><strong aria-hidden="true">3.8.</strong> security</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../kafka/security/intro.html" class="active"><strong aria-hidden="true">3.8.1.</strong> introduction</a></li><li class="chapter-item "><a href="../../kafka/security/hands_on.html"><strong aria-hidden="true">3.8.2.</strong> hands on</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-middleware</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">introduction</a></h1>
+<h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
+<blockquote>
+<p><a href="https://developer.confluent.io/courses/security/intro/">Introduction to Kafka Security</a></p>
+</blockquote>
+<h2 id="二简介"><a class="header" href="#二简介">二、简介</a></h2>
+<p>Security is a primary consideration for any system design, and Apache Kafka® is no exception. Out of the box, Kafka has relatively little security enabled, so you need a basic familiarity with authentication, authorization, encryption, and audit logs in Kafka in order to securely put your system into production. This course has been created to quickly get you up to speed on what you need to know.</p>
+<p>To secure your Apache Kafka-based system, you must formulate your overall strategy according to several factors: your internal corporate policy, the industry or regulatory requirements that govern your data processing capabilities, and finally the environment in which you plan to deploy your solution.</p>
+<p>Of course, adding security often brings performance costs. For example, the CPU overhead of encrypting data can be significant when using a high throughput system like Kafka, up to 30% in some cases—even with the optimizations that Kafka uses to reduce this cost. On the other hand, you can't focus purely on performance, or you will probably wind up with a poorly protected system.</p>
+<p>安全性是任何系统设计的主要考虑因素，Apache Kafka® 也不例外。Kafka默认情况下的安全性相对较低，因此您需要对Kafka中的认证、授权、加密和审计日志有基本的了解，以确保将系统安全地投入生产。本课程旨在快速让您了解所需的知识。</p>
+<p>为了确保基于 Apache Kafka系统安全，您必须根据多个因素制定整体策略：包括内部企业政策、规管数据处理能力的行业或监管要求，以及计划部署解决方案的环境。</p>
+<p>当然，增加安全性通常会带来性能损耗。例如，在使用像Kafka这样高吞吐量的系统时，加密数据的CPU开销可能相当大，有些情况下甚至可达30%，即使使用Kafka优化以降低这种成本。另一方面，不能完全专注于性能，否则可能会导致系统安全性不足。</p>
+<h2 id="三securing-data-streams-in-kafka"><a class="header" href="#三securing-data-streams-in-kafka">三、Securing Data Streams in Kafka</a></h2>
+<p>保护 Kafka 中的数据流</p>
+<p>A good way to conceptualize the parts that need securing is to consider the way that data (i.e., a message) flows through your Kafka system:</p>
+<p>一个很好的理解需要保护的部分的方法是考虑数据（即消息）在您的 Kafka 系统中的流动方式：</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/kafka/security/data-flows-kafka.jpg?raw=true" alt="data flow" /></p>
+<p>The producer begins the message's journey by creating and sending it to the cluster. The message is received by the leader broker, which writes the message to its local log file. Then a follower broker fetches the message from the leader and similarly writes it to its local log file. The leader broker updates the partition state in ZooKeeper and finally, a consumer receives the message from the broker.</p>
+<p>生产者通过创建并将消息发送到集群，开始消息的旅程。消息被 leader broker 接收，然后将消息写入其本地日志文件。接着，一个 follower broker 从 leader broker 获取消息，并将其写入本地日志文件。leader broker 更新 ZooKeeper 中的分区状态，最后，消费者从 broker 接收消息。</p>
+<h2 id="四how-kafka-security-works"><a class="header" href="#四how-kafka-security-works">四、How Kafka Security Works</a></h2>
+<p>Each step of this data journey requires that a decision be made. For example, the broker authenticates the client to make sure the message is actually originating from the configured producer. Likewise, the producer verifies that it has a secure connection to the broker before sending any messages. Then before the leader broker writes to its log, it makes sure that the producer is authorized to write to the desired topic. This check also applies to the consumer – it must be authorized to read from the topic.</p>
+<p>在这个数据传递的每个步骤中，都需要做出决策。例如，broker 会对客户端进行身份验证，以确保消息确实来自配置的生产者。同样，生产者在发送任何消息之前，会验证其与 broker 之间的安全连接。然后，在 leader broker 写入其日志之前，它会确保生产者有权写入所需的 topic 。这个检查同样也适用于消费者 - 它必须有权从 topic 中读取消息。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/kafka/security/authorized-read-topic.jpg?raw=true" alt="auth" /></p>
+<h2 id="五data-security-and-encryption"><a class="header" href="#五data-security-and-encryption">五、Data Security and Encryption</a></h2>
+<p>数据安全和加密</p>
+<p>Throughout the system, data should be encrypted so that it can't be read in transit or at rest. Additionally, all operations should be recorded in an audit log so that there is an audit trail in case something happens, or the behavior of the cluster needs to be verified.</p>
+<p>在整个系统中，数据应该被加密，以确保在传输或静态状态下无法读取。此外，所有操作应该被记录在审计日志中，以便在发生问题或需要验证集群行为时存在审计跟踪。</p>
+<p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/kafka/security/audit-log.jpg?raw=true" alt="audit" /></p>
+<p>In conclusion, you need to choose the security measures for your system according to the corporate, industry, and environmental requirements particular to your scenario. The informational modules presented in this course detail the tools available to you with respect to Kafka and adjacent technologies, and the exercises teach you how to go about implementing them.</p>
+<p>总之，您需要根据您的情况选择系统的安全措施，考虑到公司、行业和环境的要求。本课程中呈现的信息模块详细介绍了与Kafka和相关技术相关的可用工具，而练习则教会您如何实施这些工具。</p>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../../kafka/security.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../../kafka/security/hands_on.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../kafka/security.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../kafka/security/hands_on.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../giscus.js"></script>
+
+
+    </body>
+
+
+</html>

@@ -17,5 +17,9 @@
 	- [kafka101](kafka/101.md)
 	- [SASL/PLAIN](kafka/sasl_plain.md)
 	- [SASL/SCRAM-SHA-256](kafka/sasl_scram_sha_256.md)
+	- [SSL](kafka/ssl.md)
+	- [security](kafka/security.md)
+		- [introduction](kafka/security/intro.md)
+		- [hands on](kafka/security/hands_on.md)
 
 	

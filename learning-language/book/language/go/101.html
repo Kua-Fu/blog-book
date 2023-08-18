@@ -187,6 +187,14 @@ func TestJSON(t *testing.T) {
 
 </code></pre>
 <p>结论，duplicate field 的字符串，unmarshal 不会报错，如果要使用 json 结构，需要使用 unmarshal 后结构</p>
+<h2 id="2-golang-fmtprintf-byte-和-string"><a class="header" href="#2-golang-fmtprintf-byte-和-string">2. golang fmt.Printf []byte 和 string</a></h2>
+<p>go fmt.Printf(&quot;%s&quot;, message) 其中message 是[]byte ，输出一堆乱码</p>
+<p>当使用 fmt.Printf(&quot;%s&quot;, message) 输出乱码时，通常是因为 message 中包含了非 ASCII 字符或者不可打印字符，导致它们在终端中无法正确显示。</p>
+<p>在 Go 中，fmt.Printf(&quot;%s&quot;, ...) 用于格式化输出字符串，但是在处理 []byte 时，它假定 []byte 中的内容是以 ASCII 字符编码的。如果 []byte 中包含了非 ASCII 字符，fmt.Printf 可能会出现乱码。</p>
+<p>解决方式是 先转换为string, 然后输出</p>
+<pre><code>
+
+</code></pre>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>SSL - learning-middleware</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item "><a href="../redis/redis.html"><strong aria-hidden="true">2.</strong> Redis</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../redis/basic.html"><strong aria-hidden="true">2.1.</strong> Basic</a></li><li class="chapter-item "><a href="../redis/101.html"><strong aria-hidden="true">2.2.</strong> 101</a></li><li class="chapter-item "><a href="../redis/memory_analyze.html"><strong aria-hidden="true">2.3.</strong> Memory Analyze</a></li><li class="chapter-item "><a href="../redis/bloom_filter.html"><strong aria-hidden="true">2.4.</strong> Bloom Filter</a></li><li class="chapter-item "><a href="../redis/hyperloglog.html"><strong aria-hidden="true">2.5.</strong> HyperLogLog</a></li></ol></li><li class="chapter-item expanded "><a href="../kafka/kafka.html"><strong aria-hidden="true">3.</strong> kafka</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../kafka/basic.html"><strong aria-hidden="true">3.1.</strong> basic</a></li><li class="chapter-item "><a href="../kafka/ui.html"><strong aria-hidden="true">3.2.</strong> kafka ui</a></li><li class="chapter-item "><a href="../kafka/config.html"><strong aria-hidden="true">3.3.</strong> config info</a></li><li class="chapter-item "><a href="../kafka/101.html"><strong aria-hidden="true">3.4.</strong> kafka101</a></li><li class="chapter-item "><a href="../kafka/sasl_plain.html"><strong aria-hidden="true">3.5.</strong> SASL/PLAIN</a></li><li class="chapter-item "><a href="../kafka/sasl_scram_sha_256.html"><strong aria-hidden="true">3.6.</strong> SASL/SCRAM-SHA-256</a></li><li class="chapter-item expanded "><a href="../kafka/ssl.html" class="active"><strong aria-hidden="true">3.7.</strong> SSL</a></li><li class="chapter-item "><a href="../kafka/security.html"><strong aria-hidden="true">3.8.</strong> security</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../kafka/security/intro.html"><strong aria-hidden="true">3.8.1.</strong> introduction</a></li><li class="chapter-item "><a href="../kafka/security/hands_on.html"><strong aria-hidden="true">3.8.2.</strong> hands on</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-middleware</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ssl"><a class="header" href="#ssl">SSL</a></h1>
+<h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
+<blockquote>
+<p><a href="https://kafka.apache.org/documentation/#security_ssl">security ssl</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/360159387">【kafka】SSL和ACL的配置</a></p>
+</blockquote>
+<h2 id="二简介"><a class="header" href="#二简介">二、简介</a></h2>
+<pre><code>keytool -keystore server.keystore.jks -alias localhost -keyalg RSA -validity 365  -storetype PKCS12 -genkey -dname &quot;CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN&quot; 
+
+</code></pre>
+<pre><code># password1
+
+keytool -keystore server.keystore.jks -alias localhost -keyalg RSA -validity 365  -storetype PKCS12 -genkey -dname &quot;CN=testkafka.com, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN&quot; -ext &quot;SAN:c=DNS:testkafka.com,IP:10.100.65.93&quot;
+Enter keystore password:
+Re-enter new password:
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 365 days
+        for: CN=testkafka.com, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+
+</code></pre>
+<pre><code>
+keytool -list -v -keystore server.keystore.jks
+
+</code></pre>
+<pre><code>
+openssl req -new -x509 -keyout ca-key -out ca-cert -days 365
+
+</code></pre>
+<pre><code># password2
+
+openssl req -new -x509 -keyout ca-key -out ca-cert -days 365
+Generating a 2048 bit RSA private key
+........................................+++++
+..................................................................................................
+..............+++++
+writing new private key to 'ca-key'
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) []:CN
+State or Province Name (full name) []:Shanghai
+Locality Name (eg, city) []:Shanghai
+Organization Name (eg, company) []:MyCompany
+Organizational Unit Name (eg, section) []:IT
+Common Name (eg, fully qualified host name) []:testkafka.com
+Email Address []:
+
+</code></pre>
+<pre><code>
+keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
+
+</code></pre>
+<pre><code># password3
+
+keytool -keystore server.truststore.jks -alias CARoot -import -file ca-cert
+Enter keystore password:
+Re-enter new password:
+Owner: CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+Issuer: CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+Serial number: c27acf3a4a31a6b1
+Valid from: Mon Jul 31 15:50:19 CST 2023 until: Tue Jul 30 15:50:19 CST 2024
+Certificate fingerprints:
+         SHA1: 59:2A:98:7D:87:25:57:08:A3:B9:03:A4:C5:2F:60:8B:08:48:63:BA
+         SHA256: D6:A6:40:C0:A8:49:0B:AB:4A:79:72:3D:E2:7B:CD:77:BD:F4:61:55:62:63:76:2E:8F:2F:EE:88:F7:73:C7:4B
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+
+</code></pre>
+<pre><code>
+keytool -keystore client.truststore.jks -alias CARoot -import -file ca-cert
+
+</code></pre>
+<pre><code>
+# password4
+
+keytool -keystore client.truststore.jks -alias CARoot -import -file ca-cert
+Enter keystore password:
+Re-enter new password:
+Owner: CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+Issuer: CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+Serial number: c27acf3a4a31a6b1
+Valid from: Mon Jul 31 15:50:19 CST 2023 until: Tue Jul 30 15:50:19 CST 2024
+Certificate fingerprints:
+         SHA1: 59:2A:98:7D:87:25:57:08:A3:B9:03:A4:C5:2F:60:8B:08:48:63:BA
+         SHA256: D6:A6:40:C0:A8:49:0B:AB:4A:79:72:3D:E2:7B:CD:77:BD:F4:61:55:62:63:76:2E:8F:2F:EE:88:F7:73:C7:4B
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+</code></pre>
+<pre><code># password1
+
+ keytool -keystore server.keystore.jks -alias localhost -certreq -file cert-file
+Enter keystore password:
+
+</code></pre>
+<pre><code>
+openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:password2
+
+</code></pre>
+<pre><code># password2
+
+openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:password2
+Signature ok
+subject=/C=CN/ST=Shanghai/L=Shanghai/O=MyCompany/OU=IT/CN=10.100.65.93
+Getting CA Private Key
+
+</code></pre>
+<pre><code># passowrd1
+
+keytool -keystore server.keystore.jks -alias CARoot -import -file ca-cert
+Enter keystore password:
+Owner: CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+Issuer: CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN
+Serial number: c27acf3a4a31a6b1
+Valid from: Mon Jul 31 15:50:19 CST 2023 until: Tue Jul 30 15:50:19 CST 2024
+Certificate fingerprints:
+         SHA1: 59:2A:98:7D:87:25:57:08:A3:B9:03:A4:C5:2F:60:8B:08:48:63:BA
+         SHA256: D6:A6:40:C0:A8:49:0B:AB:4A:79:72:3D:E2:7B:CD:77:BD:F4:61:55:62:63:76:2E:8F:2F:EE:88:F7:73:C7:4B
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+
+</code></pre>
+<pre><code>
+keytool -keystore server.keystore.jks -alias localhost -import -file cert-signed
+Enter keystore password:
+Certificate reply was installed in keystore
+
+</code></pre>
+<pre><code>
+bin/kafka-topics.sh --create --topic test --bootstrap-server 10.100.65.93:9092 --command-config config/client_ssl.properties
+
+
+</code></pre>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../kafka/sasl_scram_sha_256.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../kafka/security.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../kafka/sasl_scram_sha_256.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../kafka/security.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>
