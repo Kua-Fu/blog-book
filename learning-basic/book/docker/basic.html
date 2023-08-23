@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>basic - learning-basic</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MMN1K84KRS');
+</script>
+
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item "><a href="../emacs/emacs.html"><strong aria-hidden="true">3.</strong> Emacs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../emacs/remote_file.html"><strong aria-hidden="true">3.1.</strong> remote files</a></li></ol></li><li class="chapter-item "><a href="../vs/vs.html"><strong aria-hidden="true">4.</strong> vscode</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vs/debug_c.html"><strong aria-hidden="true">4.1.</strong> MacOS vscode debug C/C++ with makefile</a></li></ol></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">5.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">5.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">5.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">6.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">7.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">8.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">9.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">9.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">9.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">9.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">10.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">11.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../os/open_file.html"><strong aria-hidden="true">11.1.</strong> 使用绝对路径，打开文件</a></li><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">11.2.</strong> after MacOS upgrade, can not use git</a></li><li class="chapter-item "><a href="../os/inertial_scroll.html"><strong aria-hidden="true">11.3.</strong> 多个窗口滑动，会出现漂移</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">12.</strong> Chrome</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">13.</strong> Macos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../macos/delete_360.html"><strong aria-hidden="true">13.1.</strong> 彻底删除企业版360</a></li></ol></li><li class="chapter-item expanded "><a href="../docker/docker.html"><strong aria-hidden="true">14.</strong> Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../docker/basic.html" class="active"><strong aria-hidden="true">14.1.</strong> basic</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../docker/basic/image_ls.html"><strong aria-hidden="true">14.1.1.</strong> 列出镜像</a></li></ol></li><li class="chapter-item "><a href="../docker/rancher.html"><strong aria-hidden="true">14.2.</strong> rancher</a></li></ol></li><li class="chapter-item "><a href="../make/make.html"><strong aria-hidden="true">15.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">15.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">15.2.</strong> makefile介绍</a></li><li class="chapter-item "><a href="../make/rules.html"><strong aria-hidden="true">15.3.</strong> 书写规则</a></li><li class="chapter-item "><a href="../make/recipes.html"><strong aria-hidden="true">15.4.</strong> 书写命令</a></li><li class="chapter-item "><a href="../make/var.html"><strong aria-hidden="true">15.5.</strong> 使用变量</a></li><li class="chapter-item "><a href="../make/condition.html"><strong aria-hidden="true">15.6.</strong> 使用条件判断</a></li><li class="chapter-item "><a href="../make/func.html"><strong aria-hidden="true">15.7.</strong> 使用函数</a></li><li class="chapter-item "><a href="../make/invoke.html"><strong aria-hidden="true">15.8.</strong> make的运行</a></li><li class="chapter-item "><a href="../make/implicit_rule.html"><strong aria-hidden="true">15.9.</strong> 隐含规则</a></li><li class="chapter-item "><a href="../make/archives.html"><strong aria-hidden="true">15.10.</strong> 使用make更新函数库文件</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-basic</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="basic"><a class="header" href="#basic">basic</a></h1>
+<h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
+<blockquote>
+<p><a href="https://yeasy.gitbook.io/docker_practice/">docker——从入门到实践</a></p>
+</blockquote>
+<h2 id="二基本概念"><a class="header" href="#二基本概念">二、基本概念</a></h2>
+<table><thead><tr><th>序号</th><th>名称</th><th>说明</th><th>其他</th></tr></thead><tbody>
+<tr><td>1</td><td><code>Image</code> 镜像</td><td>就相当于是一个 <code>root</code> 文件系统。比如官方镜像 <code>ubuntu:18.04</code> 就包含了完整的一套 <code>Ubuntu 18.04</code> 最小系统的 <code>root</code> 文件系统</td><td></td></tr>
+<tr><td>2</td><td><code>Container</code> 容器</td><td>镜像（<code>Image</code>）和容器（<code>Container</code>）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等</td><td></td></tr>
+<tr><td>3</td><td><code>Repository</code> 仓库</td><td>通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。我们可以通过 &lt;仓库名&gt;:&lt;标签&gt; 的格式来指定具体是这个软件哪个版本的镜像。如果不给出标签，将以 <code>latest</code> 作为默认标签。</td><td></td></tr>
+<tr><td>4</td><td><code>Tag</code> 标签</td><td>每个仓库可以包含多个 标签（<code>Tag</code>）；每个标签对应一个镜像</td><td></td></tr>
+<tr><td>5</td><td><code>Docker Registry</code></td><td>镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，<code>Docker Registry</code> 就是这样的服务</td><td></td></tr>
+<tr><td>6</td><td><code>IMAGE ID</code> 镜像 ID</td><td>镜像 ID 则是镜像的唯一标识，一个镜像可以对应多个 标签</td><td></td></tr>
+<tr><td>7</td><td><code>dangling image</code> 虚悬镜像</td><td>镜像既没有仓库名，也没有标签，均为 <code>&lt;none&gt;</code></td><td></td></tr>
+<tr><td>8</td><td>中间层镜像</td><td>为了加速镜像构建、重复利用资源，Docker 会利用 中间层镜像。所以在使用一段时间后，可能会看到一些依赖的中间层镜像</td><td></td></tr>
+</tbody></table>
+<h2 id="三基本命令"><a class="header" href="#三基本命令">三、基本命令</a></h2>
+<table><thead><tr><th>序号</th><th>名称</th><th>说明</th><th>其他</th></tr></thead><tbody>
+<tr><td>1</td><td><code>docker pull</code></td><td>获取镜像 <code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code></td><td><code>docker pull ubuntu:18.04</code></td></tr>
+<tr><td>2</td><td><code>docker run -it --rm ubuntu:18.04 bash</code></td><td>有了镜像后，我们就能够以这个镜像为基础启动并运行一个容器。以上面的 <code>ubuntu:18.04</code> 为例，如果我们打算启动里面的 <code>bash</code> 并且进行交互式操作的话，可以执行下面的命令</td><td></td></tr>
+<tr><td>3</td><td><code>docker image ls</code></td><td>列出已经下载下来的镜像</td><td></td></tr>
+<tr><td>4</td><td><code>docker system df</code></td><td>查看镜像、容器、数据卷所占用的空间</td><td></td></tr>
+</tbody></table>
+<h2 id="四运行容器"><a class="header" href="#四运行容器">四、运行容器</a></h2>
+<h3 id="41-docker-run"><a class="header" href="#41-docker-run">4.1 docker run</a></h3>
+<p><code>docker run -it --rm ubuntu:18.04 bash</code></p>
+<table><thead><tr><th>序号</th><th>参数</th><th>说明</th><th>其他</th></tr></thead><tbody>
+<tr><td>1</td><td><code>-it</code></td><td>这是两个参数，一个是 <code>-i</code> 交互式操作，一个是 <code>-t</code> 终端</td><td></td></tr>
+<tr><td>2</td><td><code>--rm</code></td><td>这个参数是说容器退出后随之将其删除</td><td>默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 --rm 可以避免浪费空间</td></tr>
+<tr><td>3</td><td><code>bash</code></td><td>放在镜像名后的是 命令，这里我们希望有个交互式<code>Shell</code>，因此用的是 <code>bash</code></td><td></td></tr>
+</tbody></table>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../docker/docker.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../docker/basic/image_ls.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../docker/docker.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../docker/basic/image_ls.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>
