@@ -11,6 +11,7 @@
   - [January ～ March](work_reading/2023/1_3.md)
   - [April ~ June](work_reading/2023/4_6.md)
   - [July ~ August](work_reading/2023/7_8.md)
+  - [September ~ October](work_reading/2023/9_10.md)
 
 - [Reading in 2022](work_reading/2022/2022.md)
   - [January ～ March](work_reading/2022/1_3.md)

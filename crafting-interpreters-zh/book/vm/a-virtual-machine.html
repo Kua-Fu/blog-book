@@ -577,6 +577,19 @@ print echo(echo(1) + echo(2)) + echo(echo(4) + echo(5));
 <p>堆——数据结构，不是内存管理的东西——是另一个。还有 Vaughan Pratt的自顶向下的运算符优先级解析方案，我们会适时的了解它</p>
 </blockquote>
 <p>As you’ll see in this chapter, executing instructions in a stack-based VM is dead simple. In later chapters, you’ll also discover that compiling a source language to a stack-based instruction set is a piece of cake. And yet, this architecture is fast enough to be used by production language implementations. It almost feels like cheating at the programming language game.</p>
+<p>正如您在本章中所看到的，执行基于堆栈的虚拟机中的指令非常简单。在后面的章节中，您还将发现将源语言编译为基于堆栈的指令集也是轻而易举的。然而，这种架构的速度足够快，可以用于生产级语言实现。这几乎感觉像是在编程语言游戏中作弊一样。</p>
+<p>Alrighty, it’s codin’ time! Here’s the stack:</p>
+<pre><code class="language-c">
+# vm.h, in struct VM
+
+typedef struct {
+  Chunk* chunk;
+  uint8_t* ip;
+  Value stack[STACK_MAX];
+  Value* stackTop;
+} VM;
+
+</code></pre>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>

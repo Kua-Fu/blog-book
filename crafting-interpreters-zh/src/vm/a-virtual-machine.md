@@ -612,3 +612,19 @@ Maybe this doesn’t seem like a revelation, but I love stack-based VMs. When yo
 
 As you’ll see in this chapter, executing instructions in a stack-based VM is dead simple. In later chapters, you’ll also discover that compiling a source language to a stack-based instruction set is a piece of cake. And yet, this architecture is fast enough to be used by production language implementations. It almost feels like cheating at the programming language game.
 
+正如您在本章中所看到的，执行基于堆栈的虚拟机中的指令非常简单。在后面的章节中，您还将发现将源语言编译为基于堆栈的指令集也是轻而易举的。然而，这种架构的速度足够快，可以用于生产级语言实现。这几乎感觉像是在编程语言游戏中作弊一样。
+
+Alrighty, it’s codin’ time! Here’s the stack:
+
+```c
+
+# vm.h, in struct VM
+
+typedef struct {
+  Chunk* chunk;
+  uint8_t* ip;
+  Value stack[STACK_MAX];
+  Value* stackTop;
+} VM;
+
+```
