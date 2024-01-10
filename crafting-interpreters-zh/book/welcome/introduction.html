@@ -252,7 +252,7 @@
 <p>Each of the other two parts builds one complete Lox interpreter. Within those parts, each chapter is structured the same way. The chapter takes a single language feature, tachers you the concepts bebind it, and walks you through an implementation.</p>
 <p>It took a good bit of trial and error on my part, but I managed to carve up the two interpreters into chapter-sized chunks that build on the previous chapters but require nothing from later ones. From the very first chapter, you'll have a working program you can run and play with. With each passing chapter, it grows increasing full-featured until you eventually have a complete language.</p>
 <p>Aside from copious, scintillating English prose, chapters have a few other delightful facets.</p>
-<p>这本书将分为三个部分，现在正在阅读的是第一部分。这几章会让你有一些方向感，教你使用高手常用的术语。然后，会介绍Lox语言，我们将要实现的语言。</p>
+<p>这本书将分为三个部分，现在正在阅读的是第一部分。这几章会让你有一些方向感，教你使用高手常用的术语。然后，会介绍 Lox 语言，我们将要实现的语言。</p>
 <p>其他两个部分，会分别实现一个完整的解释器。在这两个部分，每一章的结构都是相同的，本章节采用单一语言功能，向您介绍背后的概念，并且引导你去实现。</p>
 <p>对我来说，需要一些尝试和试错，但我还是把两个解释器分为章节大小的部分，这些章节基于前面几章的基础知识，不需要理解后面几章的内容。从第一章开始，你就拥有了一个可以运行和使用的工作程序。随着更多章节的学习，这个工作程序会越来越全面，直到最终，你会拥有一个完整的编程语言。</p>
 <p>除了丰富、华丽的正文外，每个章节还有一些令人愉快的部分。</p>
@@ -264,18 +264,18 @@
 <p>Also, the code doesn’t have many comments. That’s because each handful of lines is surrounded by several paragraphs of honest-to-God prose explaining it. When you write a book to accompany your program, you are welcome to omit comments too. Otherwise, you should probably use // a little more than I do.</p>
 <p>While the book contains every line of code and teaches what each means, it does not describe the machinery needed to compile and run the interpreter. I assume you can slap together a makefile or a project in your IDE of choice in order to get the code to run. </p>
 <p>我们是介绍解释器的，所以本书会包含真是可用的代码。每行代码，每个代码段，都会告诉你它们的作用和在实现的不断完善的解释器中的位置。</p>
-<p>许多其他语言和语言实现书籍中，通常会使用 Lex，Yacc等称为编译编译器的编译语言，这些语言，可以从更高级的描述中自动生成源文件。 直接使用这些语言工具，有好处也有弊端，而对于这两个观点，都有很多宗教信仰般的拥趸。</p>
+<p>许多其他语言和语言实现书籍中，通常会使用 Lex，Yacc 等称为编译编译器的编译语言，这些语言，可以从更高级的描述中自动生成源文件。 直接使用这些语言工具，有好处也有弊端，而对于这两个观点，都有很多宗教信仰般的拥趸。</p>
 <p>本书将避免使用编译器语言，我想要确保没有黑暗的角落，隐藏着一些魔法和未知，所以我们将手写所有内容。正如你看到的，这并不像听起来那么糟糕，这意味着你将真正理解每一行代码，并且真的理解这两个解释器是如何工作的。</p>
 <p>一本书不同于真实世界的约束，因此本书的编码风格可能并不是编写可维护性生产级别软件的最佳实践。如果我省略了 private 或者 忽略了全局变量声明，请理解我这么做是为了让代码更加容易理解，而不是来源于傲慢。这里的页面没有 IDE 那么宽，但是它们都非常重要。</p>
 <p>此外，代码没有太多的注释，这是因为每段代码上下文，都是对其的大段正文说明。当你自己编写一本代码实现的书籍时候，也欢迎你省略其中的注释。当然，你也可以使用更多的 //</p>
-<p>虽然这本书包含了编译器的每一行代码，介绍了每一行代码的含义，但是我并没有描述编译和运行代码的具体机器信息。我预想你可以使用自己熟悉的 IDE 创建一个文件或是一个项目。这些具体机器说明很快就会过时，我希望这本书可以像 XO白兰地一样历久弥新，而不是像 backyard hooch（一直保质期不长的蜂蜜酒）一样很快过时。</p>
+<p>虽然这本书包含了编译器的每一行代码，介绍了每一行代码的含义，但是我并没有描述编译和运行代码的具体机器信息。我预想你可以使用自己熟悉的 IDE 创建一个文件或是一个项目。这些具体机器说明很快就会过时，我希望这本书可以像 XO 白兰地一样历久弥新，而不是像 backyard hooch（一直保质期不长的蜂蜜酒）一样很快过时。</p>
 <blockquote>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/yak.png?raw=true" alt="yak" /></p>
 <p>Yacc is a tool that takes in a grammar file and produces a source file for a compiler, so it’s sort of like a “compiler” that outputs a compiler, which is where we get the term “compiler-compiler”.</p>
 <p>Yacc wasn’t the first of its ilk, which is why it’s named “Yacc”—Yet Another Compiler-Compiler. A later similar tool is Bison, named as a pun on the pronunciation of Yacc like “yak”.</p>
 <p>If you find all of these little self-references and puns charming and fun, you’ll fit right in here. If not, well, maybe the language nerd sense of humor is an acquired taste.</p>
 <p>Yacc 是一个工具，可以接收语法文件，然后为编译器生成源文件。所以，它好像是一个可以输出&quot;编译器&quot;的编译器，一般使用术语&quot;编译器编译程序&quot;形容 Yacc</p>
-<p>Yacc并不是第一个&quot;编译器编译程序&quot;, 这就是这个程序缩写的来源：另一个编译器编译程序。还有一个相似的工具，称为 Bison（野牛), 命名来源于 Yacc的双关语 yak （牦牛)。</p>
+<p>Yacc并不是第一个&quot;编译器编译程序&quot;, 这就是这个程序缩写的来源：另一个编译器编译程序。还有一个相似的工具，称为 Bison（野牛), 命名来源于 Yacc 的双关语 yak （牦牛)。</p>
 <p>如果你发现，这些小小的自我暗示和双关语，很有魅力和乐趣，你将很快适应这里。如果你对此并不感冒，可能书呆子的幽默感是后天养成的。</p>
 </blockquote>
 <h3 id="22-snippets"><a class="header" href="#22-snippets">2.2 Snippets</a></h3>
@@ -329,19 +329,19 @@
 <p>We’ll write our first interpreter, jlox, in Java. The focus is on concepts. We’ll write the simplest, cleanest code we can to correctly implement the semantics of the language. This will get us comfortable with the basic techniques and also hone our understanding of exactly how the language is supposed to behave.</p>
 <p>Java is a great language for this. It’s high level enough that we don’t get overwhelmed by fiddly implementation details, but it’s still pretty explicit. Unlike in scripting languages, there tends to be less complex machinery hiding under the hood, and you’ve got static types to see what data structures you’re working with.</p>
 <p>我们将使用Java语言实现第一个解释器，jlox，第一个解释器的重点是基本概念，我们将编写最简洁、最基础的代码，实现解释器的语义。这将让我们熟悉基本的技术，让我们能更加准确理解语言行为。</p>
-<p>Java 是一门很好的语言，我们不需要关注底层的大量实现细节，因为Java 是一门高级语言，拥有更多的确定性。和脚本语言不同的是，Java 与不同机器的关联性并没有那么复杂，通常，你可以使用静态类型去获取查看当前正在使用的数据结构。</p>
+<p>Java 是一门很好的语言，我们不需要关注底层的大量实现细节，因为 Java 是一门高级语言，拥有更多的确定性。和脚本语言不同的是，Java 与不同机器的关联性并没有那么复杂，通常，你可以使用静态类型去获取查看当前正在使用的数据结构。</p>
 <blockquote>
 <p>The book uses Java and C, but readers have ported the code to many other languages. If the languages I picked aren’t your bag, take a look at those.</p>
-<p>本书将使用 Java, C语言，但是读者可能更加熟悉其他的编程语言，如果我使用的语言不是你的菜，可以尝试使用你最熟悉的语言。</p>
+<p>本书将使用 Java, C 语言，但是读者可能更加熟悉其他的编程语言，如果我使用的语言不是你的菜，可以尝试使用你最熟悉的语言。</p>
 </blockquote>
 <p>I also chose Java specifically because it is an object-oriented language.  That paradigm swept the programming world in the ’90s and is now the dominant way of thinking for millions of programmers. Odds are good you’re already used to organizing code into classes and methods, so we’ll keep you in that comfort zone.</p>
 <p>While academic language folks sometimes look down on object-oriented languages, the reality is that they are widely used even for language work. GCC and LLVM are written in C++, as are most JavaScript virtual machines. Object-oriented languages are ubiquitous, and the tools and compilers for a language are often written in the same language.</p>
 <p>And, finally, Java is hugely popular. That means there’s a good chance you already know it, so there’s less for you to learn to get going in the book. If you aren’t that familiar with Java, don’t freak out. I try to stick to a fairly minimal subset of it.  I use the diamond operator from Java 7 to make things a little more terse,  but that’s about it as far as “advanced” features go. If you know another object-oriented language, like C# or C++, you can muddle through.</p>
 <p>By the end of part II, we’ll have a simple, readable implementation. It’s not very fast, but it’s correct. However, we are only able to accomplish that by building on the Java virtual machine’s own runtime facilities. We want to learn how Java itself implements those things.</p>
-<p>我们选择Java，还因为它是一门面向对象的语言。这种编程范式在90年代席卷了整个世界，现在也是数百万程序员的主流思维方式。很可能你已经习惯了将代码组织成类和方法，接下来我们也会让你处于舒适区中。</p>
-<p>虽然，学术研究语言的人们，有时候看不起面向对象的编程语言，但是实际情况是，即使在他们日常编程工作中，也会广泛使用面向对象语言。GCC/LLVM 还有大多数的 JavaScript 虚拟机都是使用面向对象的C++语言实现的。面向对象语言无处不在，一门语言的编译器和工具，通常会使用相同的语言实现。</p>
-<p>最后，Java非常流行。这意味着，这是一个很好机会去使用熟悉这门语言。如果你不熟悉Java，也不用担心，本书中只会使用一小部分功能，我将使用Java7 标准里面的运算符，相对于使用更多的高级用法，这会让编程变得更加简洁。如果你还熟悉其他的面向对象语言，例如: C#, C++, 你也可以尝试使用它们去实现编译器。</p>
-<p>在第二部分结束时候，我们将有一个简单易读的解释器实现，它的运行性能不是很高，但是可以保证准确性。但是，我们实现的解释器，是基于Java 语言和 Java 虚拟机底层。我们想要了解 Java本身是如何实现这些功能的。</p>
+<p>我们选择 Java，还因为它是一门面向对象的语言。这种编程范式在90年代席卷了整个世界，现在也是数百万程序员的主流思维方式。很可能你已经习惯了将代码组织成类和方法，接下来我们也会让你处于舒适区中。</p>
+<p>虽然，学术研究语言的人们，有时候看不起面向对象的编程语言，但是实际情况是，即使在他们日常编程工作中，也会广泛使用面向对象语言。GCC/LLVM 还有大多数的 JavaScript 虚拟机都是使用面向对象的 C++ 语言实现的。面向对象语言无处不在，一门语言的编译器和工具，通常会使用相同的语言实现。</p>
+<p>最后，Java 非常流行。这意味着，这是一个很好机会去使用熟悉这门语言。如果你不熟悉 Java，也不用担心，本书中只会使用一小部分功能，我将使用 Java7 标准里面的运算符，相对于使用更多的高级用法，这会让编程变得更加简洁。如果你还熟悉其他的面向对象语言，例如: C#, C++, 你也可以尝试使用它们去实现编译器。</p>
+<p>在第二部分结束时候，我们将有一个简单易读的解释器实现，它的运行性能不是很高，但是可以保证准确性。但是，我们实现的解释器，是基于 Java 语言和 Java 虚拟机底层。我们想要了解 Java 本身是如何实现这些功能的。</p>
 <blockquote>
 <p>A compiler reads files in one language, translates them, and outputs files in another language. You can implement a compiler in any language, including the same language it compiles, a process called self-hosting.</p>
 <p>You can’t compile your compiler using itself yet, but if you have another compiler for your language written in some other language, you use that one to compile your compiler once. Now you can use the compiled version of your own compiler to compile future versions of itself, and you can discard the original one compiled from the other compiler. This is called bootstrapping, from the image of pulling yourself up by your own bootstraps.</p>
@@ -354,17 +354,17 @@
 <p>So in the next part, we start all over again, but this time in C. C is the perfect language for understanding how an implementation really works, all the way down to the bytes in memory and the code flowing through the CPU.</p>
 <p>A big reason that we’re using C is so I can show you things C is particularly good at, but that does mean you’ll need to be pretty comfortable with it. You don’t have to be the reincarnation of Dennis Ritchie, but you shouldn’t be spooked by pointers either.</p>
 <p>If you aren’t there yet, pick up an introductory book on C and chew through it, then come back here when you’re done. In return, you’ll come away from this book an even stronger C programmer. That’s useful given how many language implementations are written in C: Lua, CPython, and Ruby’s MRI, to name a few.</p>
-<p>在下个部分中，我们将从头开始，但是这一次将使用C语言。C语言可以让我们更好的理解计算机是如何工作的，深入到底层，例如：内存中的字节和 cpu 执行的代码。</p>
-<p>我们使用C语言实现解释器的一个重要原因是，我可以使用C语言一些特别擅长的功能，但是这也意味着你必须非常熟悉C语言。你不需要像创始人 Dennis Ritchie 一样熟悉 C语言，但是你至少不能被指针吓倒。</p>
-<p>如果你还不太了解C语言，那么先拿起一本C语言入门书籍仔细阅读后，再回到这里。作为回报，你将变成一个更强大的C语言程序员。你可以先看看有哪些语言是基于C语言实现的：Lua，CPython，Ruby的MRI实现，等等。</p>
+<p>在下个部分中，我们将从头开始，但是这一次将使用 C 语言。C 语言可以让我们更好的理解计算机是如何工作的，深入到底层，例如：内存中的字节和 cpu 执行的代码。</p>
+<p>我们使用 C 语言实现解释器的一个重要原因是，我可以使用 C 语言一些特别擅长的功能，但是这也意味着你必须非常熟悉 C 语言。你不需要像创始人 Dennis Ritchie 一样熟悉 C 语言，但是你至少不能被指针吓倒。</p>
+<p>如果你还不太了解 C 语言，那么先拿起一本 C 语言入门书籍仔细阅读后，再回到这里。作为回报，你将变成一个更强大的 C 语言程序员。你可以先看看有哪些语言是基于 C 语言实现的：Lua，CPython，Ruby 的 MRI 实现，等等。</p>
 <p>In our C interpreter, clox, we are forced to implement for ourselves all the things Java gave us for free. We’ll write our own dynamic array and hash table. We’ll decide how objects are represented in memory, and build a garbage collector to reclaim them.</p>
-<p>在C语言实现的解释器 clox 中，我们将要实现一些 Java中原生存在的结构，例如：我们将实现动态数组和哈希表，我们将设计决定如何在内存中表示对象，并且构建垃圾采集器回收它们。</p>
+<p>在 C 语言实现的解释器 clox 中，我们将要实现一些 Java 中原生存在的结构，例如：我们将实现动态数组和哈希表，我们将设计决定如何在内存中表示对象，并且构建垃圾采集器回收它们。</p>
 <blockquote>
 <p>I pronounce the name like “sea-locks”, but you can say it “clocks” or even “cloch”, where you pronounce the “x” like the Greeks do if it makes you happy.</p>
 <p>我把这个名字读成&quot;sea-locks&quot;, 但是你也可以读成，&quot;clocks&quot; 或者 &quot;cloch&quot;, 如果你开心的话，还可以像希腊人一样读 &quot;x&quot;</p>
 </blockquote>
 <p>Our Java implementation was focused on being correct. Now that we have that down, we’ll turn to also being fast. Our C interpreter will contain a compiler that translates Lox to an efficient bytecode representation (don’t worry, I’ll get into what that means soon), which it then executes. This is the same technique used by implementations of Lua, Python, Ruby, PHP, and many other successful languages.</p>
-<p>第一部分，我们用Java语言实现的解释器 jlox主要专注于准确性，现在我们已经实现了准确性，接下来将专注于性能。我们的clox解释器，将实现一个编译器，将lox 编译为有效的字节码（别担心，很快我将解释它是什么），然后执行字节码。这与其他语言的实现使用相同技术，例如：Lua，Python，Ruby，PHP等等。</p>
+<p>第一部分，我们用Java语言实现的解释器 jlox 主要专注于准确性，现在我们已经实现了准确性，接下来将专注于性能。我们的 clox 解释器，将实现一个编译器，将 lox 编译为有效的字节码（别担心，很快我将解释它是什么），然后执行字节码。这与其他语言的实现使用相同技术，例如：Lua，Python，Ruby，PHP 等等。</p>
 <blockquote>
 <p>Did you think this was just an interpreter book? It’s a compiler book as well. Two for the price of one!</p>
 <p>你认为这只是一本解释器介绍书籍吗，其实它还是一个编译器介绍书籍。这两者没有本质区别。</p>
@@ -376,11 +376,11 @@
 <ol>
 <li>
 <p>There are at least siz domain-specific languages used in the <a href="https://github.com/munificent/craftinginterpreters">little system I cobbled together</a> to write and publish this book. What are they?</p>
-<p>在我编写本书中，至少使用了6种小众语言，请列举中它们？</p>
+<p>在我编写本书中，至少使用了 6 种小众语言，请列举中它们？</p>
 </li>
 <li>
 <p>Get a &quot;Hello, world!&quot; program written and running in Java. Set up whatever makefiles or IDE projects you need to get it working. If you have a debugger, get comfortable with it and step through your program as it runs.</p>
-<p>使用 Java语言实现一个 &quot;hello, world&quot; 程序，描述一下你使用的IDE 和配置文件，如果你的IDE有调试器，请使用调试器，一步步调试代码。</p>
+<p>使用 Java 语言实现一个 &quot;hello, world&quot; 程序，描述一下你使用的 IDE 和配置文件，如果你的 IDE 有调试器，请使用调试器，一步步调试代码。</p>
 </li>
 <li>
 <p>Do the same thing for C. To get some practice with pointers, define a <a href="https://en.wikipedia.org/wiki/Doubly_linked_list">doubly linked list</a> of heap-allocated strings. Write functions to insert, find, and delete items from it. Test them.</p>
@@ -415,7 +415,7 @@
 <p>该名字需要朗朗上口，如果一切顺利的话，会有非常多人书写、说出你的语言名称，而任何拗口的名字，都会给人们带来困惑。</p>
 </li>
 <li>
-<p>该名字需要足够特别，更容易搜索到。人们第一时间会使用搜索引擎了解你的语言，如果你使用一个足够特别的单词命名，那么大家将很容易获取到。尽管，随着搜索引擎拥有更多的AI能力，更容易显示你的语言。但是，如果你把自己的新语言命名为&quot;for&quot;, 那么这通常不能带给使用者任何帮助。</p>
+<p>该名字需要足够特别，更容易搜索到。人们第一时间会使用搜索引擎了解你的语言，如果你使用一个足够特别的单词命名，那么大家将很容易获取到。尽管，随着搜索引擎拥有更多的AI能力，更容易显示你的语言。但是，如果你把自己的新语言命名为 &quot;for&quot;, 那么这通常不能带给使用者任何帮助。</p>
 </li>
 <li>
 <p>该名字在其他文化中没有负面含义。这一点很难防范，但是需要认真考虑。Nimrod 的设计者最终将这个语言命名为 &quot;Nim&quot;, Bugs Bunny曾经故意使用有争议的名称 Nimrod 命名新的语言，人们依然记得。</p>

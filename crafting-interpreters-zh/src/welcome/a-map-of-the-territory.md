@@ -35,7 +35,7 @@ Though the area explored by language designers is vast, the trails they’ve car
 
 自计算的黑暗时代以来，工程师们一直在构建编程语言。当我们可以与电脑交流时候，我们发现这样做太难了，需要电脑的帮助。我发现一个有趣的现象，即使今天的机器运行速度快了数百万倍，存储量也增加了几个数量级，但是我们构建编程语言的方式几乎没有任何改变。
 
-虽然，语言设计者探索的领域非常大，但是他们在其中开辟的道路却非常少。并不是所有的语言都走相同的路径，有些语言的实现，会走一、两条捷径。但是从另一个角度来看，它们都是相似的。从第一个 COBOL编译器到现在最新的可以转换为 JavaScript的语言，在它们 git仓库README文件中的描述都是相似的。
+虽然，语言设计者探索的领域非常大，但是他们在其中开辟的道路却非常少。并不是所有的语言都走相同的路径，有些语言的实现，会走一、两条捷径。但是从另一个角度来看，它们都是相似的。从第一个 COBOL 编译器到现在最新的可以转换为 JavaScript 的语言，在它们 git 仓库 README 文件中的描述都是相似的。
 
 >There are certainly dead ends, sad little cul-de-sacs of CS papers with zero citations and now-forgotten optimizations that only made sense when memory was measured in individual bytes.
 >
@@ -49,7 +49,7 @@ Eventually we reach the peak. We have a bird’s-eye view of the user’s progra
 
 我把编译领域图，想象为一幅包含很多路径的爬山图。从底部开始，一开始只是一个文本，实际上只是一个字符串。经过，每个分析阶段，都会生成更加高级的表示，设计者希望计算机执行的语言都更加明确。
 
-最后，我们爬上了山顶。我们鸟瞰全局，可以得到使用者编写的代码含义。我们从山的另一边开始下山，我们将连续将高级别的表示转换为更低级别的表示，以越来越接近计算机 CPU执行的语言。
+最后，我们爬上了山顶。我们鸟瞰全局，可以得到使用者编写的代码含义。我们从山的另一边开始下山，我们将连续将高级别的表示转换为更低级别的表示，以越来越接近计算机 CPU 执行的语言。
 
 Let’s trace through each of those trails and points of interest. Our journey begins on the left with the bare text of the user’s source code:
 
@@ -87,7 +87,7 @@ A parser takes the flat sequence of tokens and builds a tree structure that mirr
 
 下一步是解析，这就是我们获得语法的地方，语法可以将较小的部分组合成较大的表达式和语句。你在英语课堂上画过句子图吗？如果是这样的话，你已经完成了解析器的工作。除了英语有成千上万个关键词和更多的歧义。相较而言，编程语言就简单太多了。
 
-解析器接收token 序列，然后构建出反应语法嵌套性质的树结构。这些树有一些不同的名称，例如：名称解析树，抽象语法树，命名取决于这些树和源语言的简单语法结构的接近程度。在实践中，语言高手经常称它们为语法树，AST或者通常就称为树。
+解析器接收 token 序列，然后构建出反应语法嵌套性质的树结构。这些树有一些不同的名称，例如：名称解析树，抽象语法树，命名取决于这些树和源语言的简单语法结构的接近程度。在实践中，语言高手经常称它们为语法树，AST 或者通常就称为树。
 
 Parsing has a long, rich history in computer science that is closely tied to the artificial intelligence community. Many of the techniques used today to parse programming languages were originally conceived to parse human languages by AI researchers who were trying to get computers to talk to us.
 
@@ -107,7 +107,7 @@ In an expression like a + b, we know we are adding a and b, but we don’t know 
 
 前面两个阶段（扫描、解析）在所有的实现中都是相似的，现在，每种语言的特性开始显现出来了。解析过后，我们知道了代码的语法结构，例如：我们知道了包含了哪些表达式，但是我们了解的还不够多。
 
-在像表达式 a + b中，我们知道表达式是 a与b求和，但是我们并不知道a，b具体表示什么，它们是局部变量吗，是全局变量吗，它们是在哪里定义的呢？
+在像表达式 a + b 中，我们知道表达式是 a 与 b 求和，但是我们并不知道 a，b 具体表示什么，它们是局部变量吗，是全局变量吗，它们是在哪里定义的呢？
 
 The first bit of analysis that most languages do is called binding or resolution. For each identifier, we find out where that name is defined and wire the two together. This is where scope comes into play—the region of source code where a certain name can be used to refer to a certain declaration.
 
@@ -115,7 +115,7 @@ If the language is statically typed, this is when we type check. Once we know wh
 
 大多数语言的第一点分析叫做，绑定或解析。对于每个标识符，我们需要找到该标识符名称的定义位置，并且将两者连接在一起，这就是作用域发挥作用的地方——源代码的某个区域中，可以使用一个具体名称来引用某个声明。
 
-如果语言是静态语言，这时候，我们还要进行类型判断，一旦我们找到了 a，b的声明位置，我们也可以获取到它们的数据类型。然后，如果这些数据类型不支持加法规则，我们将报告一个类型错误。
+如果语言是静态语言，这时候，我们还要进行类型判断，一旦我们找到了 a，b 的声明位置，我们也可以获取到它们的数据类型。然后，如果这些数据类型不支持加法规则，我们将报告一个类型错误。
 
 > The language we’ll build in this book is dynamically typed, so it will do its type checking later, at runtime.
 
@@ -133,7 +133,7 @@ Take a deep breath. We have attained the summit of the mountain and a sweeping v
 
 * 通常，它作为属性存储在语法树的其他字段中，这些字段在解析阶段没有初始化，但是在分析阶段会被填充
 
-* 其他时候，我们可以将数据保存在旁边的查找表中。通常情况下，该查找表的key是标识符（变量名称和声明）。这这种情况下，我们称其为符号表，表中key对应的value，表示该标识符对应的实际值是什么
+* 其他时候，我们可以将数据保存在旁边的查找表中。通常情况下，该查找表的key是标识符（变量名称和声明）。这这种情况下，我们称其为符号表，表中 key 对应的 value，表示该标识符对应的实际值是什么
 
 * 更加强大的记录方式是，将语法树转换为一个全新的数据结构，更加直接的表示代码的含义。这是下一节的内容。
 
@@ -164,7 +164,7 @@ A shared intermediate representation reduces that dramatically. You write one fr
 
 There’s another big reason we might want to transform the code into a form that makes the semantics more apparent . . . 
 
-这种方式，可以让我们更容易支持多种源语言和目标语言的匹配。假设你想要实现，Pascal、C、Fortran语言的编译器，并且这些编译器，可以运行在X86， arm，SPARC等架构上，如果没有使用中间表示，你需要实现9种编译器，例如: Pascal——> x86，C——> arm等等。
+这种方式，可以让我们更容易支持多种源语言和目标语言的匹配。假设你想要实现，Pascal、C、Fortran 语言的编译器，并且这些编译器，可以运行在 X86， arm，SPARC 等架构上，如果没有使用中间表示，你需要实现9种编译器，例如: Pascal——> x86，C——> arm等等。
 
 使用一种共享的中间表示，可以大大减少这些组合。对于每一种源语言，编写一个前端，将源语言解析为中间表示，对于每个目标架构，针对中间表示，编写一个后端。所以，现在只需要实现 6 中前端、后端组合。
 
@@ -214,7 +214,7 @@ We’re mostly going to hop over that rathole in this book. Many successful lang
 
 优化是编程语言的一个重要组成部分，许多语言高手在整个职业生涯都在不断优化，从编译器中榨取每一点性能，最终使得他们的编译器，基准测试结果提高了0.5%，优化是一个不断进行的过程。
 
-本书中，我们会跳过优化这个步骤，有很多成功语言，也很少使用编译时优化。举例，Lua 和 CPython生成相对未优化的代码，将大部分优化放在运行时。
+本书中，我们会跳过优化这个步骤，有很多成功语言，也很少使用编译时优化。举例，Lua 和 CPython 生成相对未优化的代码，将大部分优化放在运行时。
 
 > If you can’t resist poking your foot into that hole, some keywords to get you started are “constant propagation”, “common subexpression elimination”, “loop invariant code motion”, “global value numbering”, “strength reduction”, “scalar replacement of aggregates”, “dead code elimination”, and “loop unrolling”.
 >
@@ -230,15 +230,15 @@ Finally, we are in the back end, descending the other side of the mountain. From
 
 We have a decision to make. Do we generate instructions for a real CPU or a virtual one? If we generate real machine code, we get an executable that the OS can load directly onto the chip. Native code is lightning fast, but generating it is a lot of work. Native code is lightning fast, but generating it is a lot of work. 
 
-我们已经将能够想到的所有优化，应用于用户代码中。最后一步是，将代码转换为机器可以实际运行的形式。换句话说，代码生成（或者生成代码），这里的代码是指，CPU直接运行的类似于原始汇编的指令，而不用人们可以直接阅读的源代码。
+我们已经将能够想到的所有优化，应用于用户代码中。最后一步是，将代码转换为机器可以实际运行的形式。换句话说，代码生成（或者生成代码），这里的代码是指，CPU 直接运行的类似于原始汇编的指令，而不用人们可以直接阅读的源代码。
 
 最后，我们处于后端，从山的另一端往下走。从现在开始，我们对于代码的表示越来越原始，和上山方向相反，我们希望代码变为机器可以直接运行的形式。
 
-我们需要决定，是生成真实的CPU指令，还是生成虚拟的指令。如果我们生成真实的机器代码，我们会得到一个可执行文件，操作系统可以直接加载到芯片中。原生本机代码运行速度非常快，但是，生成真实的 CPU指令需要大量的工作。现在的架构，有成堆的指令集，复杂的管道，和能够塞满747飞机的历史遗留包袱。
+我们需要决定，是生成真实的 CPU 指令，还是生成虚拟的指令。如果我们生成真实的机器代码，我们会得到一个可执行文件，操作系统可以直接加载到芯片中。原生本机代码运行速度非常快，但是，生成真实的 CPU 指令需要大量的工作。现在的架构，有成堆的指令集，复杂的管道，和能够塞满 747 飞机的历史遗留包袱。
 
 > For example, the AAD (“ASCII Adjust AX Before Division”) instruction lets you perform division, which sounds useful. Except that instruction takes, as operands, two binary-coded decimal digits packed into a single 16-bit register. When was the last time you needed BCD on a 16-bit machine
 >
-> 举例，AAD指令可以执行除法运算，这听起来非常有用。除此之外，ADD指令会将两个二进制编码额十进制数字作为操作数压缩到单个16位寄存器上，上一次，你需要BCD，并且在16位机器，是什么时候呢？
+> 举例，AAD 指令可以执行除法运算，这听起来非常有用。除此之外，ADD 指令会将两个二进制编码的十进制数字作为操作数压缩到单个 16 位寄存器上，上一次，你需要 BCD，并且在 16 位机器，是什么时候呢？
 
 Speaking the chip’s language also means your compiler is tied to a specific architecture. If your compiler targets x86 machine code, it’s not going to run on an ARM device.  All the way back in the ’60s, during the Cambrian explosion of computer architectures, that lack of portability was a real obstacle.
 
@@ -246,9 +246,9 @@ To get around that, hackers like Martin Richards and Niklaus Wirth, of BCPL and 
 
 These synthetic instructions are designed to map a little more closely to the language’s semantics, and not be so tied to the peculiarities of any one computer architecture and its accumulated historical cruft. You can think of it like a dense, binary encoding of the language’s low-level operations.
 
-转换为芯片特定语言，意味着你的编译器和特定架构相关联。如果编译器以x86 机器代码为目标，那么它将无法在arm架构机器上运行。一直追溯到上世纪60年代，在当时的计算机体系结构爆炸时期，缺乏可移植性的编译器是一个真正的缺点。
+转换为芯片特定语言，意味着你的编译器和特定架构相关联。如果编译器以 x86 机器代码为目标，那么它将无法在 arm 架构机器上运行。一直追溯到上世纪60 年代，在当时的计算机体系结构爆炸时期，缺乏可移植性的编译器是一个真正的缺点。
 
-为了避免这种问题，编程高手，例如：BCPL 语言的发明者[Martin Richards](https://en.wikipedia.org/wiki/Martin_Richards_(computer_scientist)) 和 Pascal语言的主要开发者[Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth) ,不约而同的，让他们实现的编译器最终生成虚拟机代码。他们为一个假想的、理想化的机器生成代码，而不是为了一些真实的芯片生成指令。[Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth)称这些代码为P代码，因为可移植单词的缩写，但是今天，我们通常称为字节码，因为每条指令通常只有一个字节长度。
+为了避免这种问题，编程高手，例如：BCPL 语言的发明者[Martin Richards](https://en.wikipedia.org/wiki/Martin_Richards_(computer_scientist)) 和 Pascal 语言的主要开发者[Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth) ,不约而同的，让他们实现的编译器最终生成虚拟机代码。他们为一个假想的、理想化的机器生成代码，而不是为了一些真实的芯片生成指令。[Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth)称这些代码为 P 代码，因为可移植单词的缩写，但是今天，我们通常称为字节码，因为每条指令通常只有一个字节长度。
 
 这些合成指令，是为了更加接近代码的语义，而不是因为更加关联那些架构或是其后的历史。我们可以想象字节码是更加底层的二进制编码。
 
@@ -273,13 +273,13 @@ Or you can write a virtual machine (VM), a program that emulates a hypothetical 
 
 第一个选择是，你可以为每一种目标架构编写一个小型编译器，把字节码转换为架构中机器使用的机器码。我们可以为支持的每一种芯片编写对应的编译器，但是最后这个阶段非常简单，你也可以重复使用编译器之前的代码。我们使用编译器生成的字节码当作中间表示。
 
-或者，我们可以编写一个虚拟机，一个在运行时候，模拟虚构芯片的程序。在虚拟机中运行字节码比直接在本机运行机器码，慢一些，因为虚拟机每次运行指令，都必须模拟实际指令。作为回报，我们获得了简单性和可移植性。假设用C语言实现虚拟机，那么我们可以在任何有C编译器的机器上运行代码。本书第二部分实现的编译器采用该原理。
+或者，我们可以编写一个虚拟机，一个在运行时候，模拟虚构芯片的程序。在虚拟机中运行字节码比直接在本机运行机器码，慢一些，因为虚拟机每次运行指令，都必须模拟实际指令。作为回报，我们获得了简单性和可移植性。假设用 C 语言实现虚拟机，那么我们可以在任何有 C 编译器的机器上运行代码。本书第二部分实现的编译器采用该原理。
 
 > The term “virtual machine” also refers to a different kind of abstraction. A system virtual machine emulates an entire hardware platform and operating system in software. This is how you can play Windows games on your Linux machine, and how cloud providers give customers the user experience of controlling their own “server” without needing to physically allocate separate computers for each user.
 >
 >The kind of VMs we’ll talk about in this book are language virtual machines or process virtual machines if you want to be unambiguous.
 >
-> 术语虚拟机是一种抽象。一个系统级别的虚拟机，会模拟整个硬件平台和操作系统。这就是，你可以在Linux服务器上玩Windows游戏的原因，还有，这也是云服务厂商，为用户分配指定的云服务器，而不需要真实提供对应的机器的原因。
+> 术语虚拟机是一种抽象。一个系统级别的虚拟机，会模拟整个硬件平台和操作系统。这就是，你可以在 Linux 服务器上玩 Windows 游戏的原因，还有，这也是云服务厂商，为用户分配指定的云服务器，而不需要真实提供对应的机器的原因。
 >
 > 但是，本书中涉及到的虚拟机，只是语言虚拟机或者进程虚拟机，如果你想要一个准确的描述词。
 
@@ -297,7 +297,7 @@ All of this stuff is going at runtime, so it’s called, appropriately, the runt
 
 在两种场景下，除了最基本的低层语言，当程序运行时，我们还需要提供一些其他服务。例如：如果语言是自动管理内存的，那么我们需要一个垃圾收集器，回收不再使用的内存。如果我们实现的语言，支持实例测试，以便于获取对象的实际数据类型，那么我们需要一些功能，跟踪运行时候的对象。
 
-所有这些都发生在程序运行时候，所以，我们称呼这个阶段为运行时。在一个完全编译的语言中，运行时，代码将直接插入到可执行文件中。举例，在go语言中，每个编译的应用程序都有自己的 go运行时副本，直接嵌入其中。如果语言在解释器或者虚拟机中运行，那么运行时就在其中。这也是 Java/Python/JavaScript等语言的运行工作方式。
+所有这些都发生在程序运行时候，所以，我们称呼这个阶段为运行时。在一个完全编译的语言中，运行时，代码将直接插入到可执行文件中。举例，在 go 语言中，每个编译的应用程序都有自己的 go 运行时副本，直接嵌入其中。如果语言在解释器或者虚拟机中运行，那么运行时就在其中。这也是 Java/Python/JavaScript 等语言的运行工作方式。
 
 ## 二、Shortcuts and Alternate Routes
 
@@ -317,7 +317,7 @@ Pascal and C were designed around this limitation. At the time, memory was so pr
 
 一些简单的编译器，会把解析阶段、分析阶段、代码生成阶段混杂在一起，它们直接在解析过程生成代码，而不需要生成语法树或者其他中间表示。这些单通道编译器限制了语言的设计。你没有中间数据结构来存储有关程序的全局信息，也无法重新访问任何之前解析过的代码。这意味着，一旦看到某个表达式，我们需要足够的信息来，正确的编译表达式。
 
-Pascal 和 C语言是围绕上面的限制设计的。当时，内存非常宝贵，编译器甚至无法将整个源文件放入到内存中，更不用说在内存中，保存整个程序了。这就是为什么Pascal语言要求类型声明首先出现在代码块中，这也是为什么在C语言中，除非有一个明确的正向声明，告诉编译器生成调用后面的函数所需要的代码，否则无法在函数定义的位置上面，调用该函数。
+Pascal 和 C 语言是围绕上面的限制设计的。当时，内存非常宝贵，编译器甚至无法将整个源文件放入到内存中，更不用说在内存中，保存整个程序了。这就是为什么 Pascal 语言要求类型声明首先出现在代码块中，这也是为什么在 C 语言中，除非有一个明确的正向声明，告诉编译器生成调用后面的函数所需要的代码，否则无法在函数定义的位置上面，调用该函数。
 
 > Syntax-directed translation is a structured technique for building these all-at-once compilers. You associate an action with each piece of the grammar, usually one that generates output code. Then, whenever the parser matches that chunk of syntax, it executes the action, building up the target code one rule at a time.
 > 
@@ -337,7 +337,7 @@ This implementation style is common for student projects and little languages, b
 
 > A notable exception is early versions of Ruby, which were tree walkers. At 1.9, the canonical implementation of Ruby switched from the original MRI (Matz’s Ruby Interpreter) to Koichi Sasada’s YARV (Yet Another Ruby VM). YARV is a bytecode virtual machine.
 >
-> 一个著名的例子是，Ruby语言的早期版本，使用了树遍历风格的实现方式。在1.9版本，Ruby的实现从早期的MRI变更为YARV，YARV是一个字节码虚拟机。
+> 一个著名的例子是，Ruby 语言的早期版本，使用了树遍历风格的实现方式。在1.9 版本，Ruby 的实现从早期的 MRI 变更为 YARV，YARV 是一个字节码虚拟机。
 
 ### 2.3 Transpilers
 
@@ -355,7 +355,7 @@ They used to call this a source-to-source compiler or a transcompiler. After the
 
 你为自己的语言编写了前端，然后，在后端，你的想法不是，把用户程序的语义变更为底层原始的目标语言，而是把用户语义转换为一个更高级语言的源代码。然后，你可以使用这种高级语言的已经存在的编译器，作为下山的备选路径。
 
-在以前，这种实现方式被称为源代码到源代码编译器或者 转换编译器，当出现了一些语言，为了能在浏览器运行，，最终编译为JavaScript后，大家想到了一个新的名称 转换机 来描述。
+在以前，这种实现方式被称为源代码到源代码编译器或者 转换编译器，当出现了一些语言，为了能在浏览器运行，最终编译为 JavaScript 后，大家想到了一个新的名称转换机来描述。
 
 While the first transcompiler translated one assembly language to another, today, most transpilers work on higher-level languages. After the viral spread of UNIX to machines various and sundry, there began a long tradition of compilers that produced C as their output language. C compilers were available everywhere UNIX was and produced efficient code, so targeting C was a good way to get your language running on a lot of architectures.
 
@@ -367,9 +367,9 @@ If the two languages are more semantically different, you’ll see more of the t
 
 Either way, you then run that resulting code through the output language’s existing compilation pipeline, and you’re good to go.
 
-虽然第一个转换机，把一种汇编语言转换为另外一种汇编语言，但是现在，我们常常把一门语言转换为更加高级的语言。因为UNIX的风靡，编译器开始了一个传统，那就是把转换机输出语言变为 C语言。C语言编译器，存在于任意的UNIX系统中，支持更多的架构，并且C编译器可以生成更加高效的代码，因此，把C语言作为输出目标，是一个非常好的方向。
+虽然第一个转换机，把一种汇编语言转换为另外一种汇编语言，但是现在，我们常常把一门语言转换为更加高级的语言。因为 UNIX 的风靡，编译器开始了一个传统，那就是把转换机输出语言变为 C 语言。C 语言编译器，存在于任意的 UNIX 系统中，支持更多的架构，并且 C 编译器可以生成更加高效的代码，因此，把 C 语言作为输出目标，是一个非常好的方向。
 
-现在，web浏览器是一种新型机器，这种新机器的运行代码是JavaScript，所以现在很多语言都有一个针对JS的编译器，最终输出JS代码，这样可以让新的语言运行在浏览器中。[详细清单](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js)
+现在，web 浏览器是一种新型机器，这种新机器的运行代码是 JavaScript，所以现在很多语言都有一个针对 JS 的编译器，最终输出 JS 代码，这样可以让新的语言运行在浏览器中。[详细清单](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js)
 
 转换机的前端部分，扫描阶段、解析阶段，和其他的编译器相似，然而，如果新语言只是目标语言的一个简单皮肤，那么编译器可能会完全跳过分析阶段，直接输出目标语言。
 
@@ -383,13 +383,13 @@ Either way, you then run that resulting code through the output language’s exi
 > 
 > He was a sea captain, business owner, licensed pilot, and motorcyclist. A TV host with the Kris Kristofferson-esque look sported by dashing bearded dudes in the ’80s. He took on Bill Gates and, like many, lost, before meeting his end in a biker bar under mysterious circumstances. He died too young, but sure as hell lived before he did.
 >
->第一个转换机，XLT86，把8080 汇编转换为8086汇编，这看起来似乎很简单，但是，请注意，8080是一个8位芯片，而8086是一个16位芯片，可以将8086的寄存器，作为8080的一对寄存器使用，XLT86进行了数据流分析，用于跟踪源程序中的寄存器使用，然后，有效的把这些寄存器，映射为8086的寄存器集。
+>第一个转换机，XLT86，把 8080 汇编转换为 8086 汇编，这看起来似乎很简单，但是，请注意，8080 是一个8位芯片，而 8086 是一个16位芯片，可以将 8086 的寄存器，作为 8080 的一对寄存器使用，XLT86 进行了数据流分析，用于跟踪源程序中的寄存器使用，然后，有效的把这些寄存器，映射为 8086 的寄存器集。
 >
-> XLT86 是由Gary KIldall实现的，他是计算机科学领域的一个悲剧人物，作为最早认识到微型计算机前景的人之一，他开发了PL/M 和 CP/M，而CP/M是第一种和操作系统交互的高级语言。
+> XLT86 是由 Gary KIldall 实现的，他是计算机科学领域的一个悲剧人物，作为最早认识到微型计算机前景的人之一，他开发了 PL/M 和 CP/M，而 CP/M 是第一种和操作系统交互的高级语言。
 
 >JS used to be the only way to execute code in a browser. Thanks to WebAssembly, compilers now have a second, lower-level language they can target that runs on the web.
 >
->JS曾经是浏览器中唯一的运行语言，但是现在我们多了一种选择 [WebAssembly](https://webassembly.org/), 编译器现在拥有了第二种可以直接在浏览器运行的语言。
+>JS 曾经是浏览器中唯一的运行语言，但是现在我们多了一种选择 [WebAssembly](https://webassembly.org/), 编译器现在拥有了第二种可以直接在浏览器运行的语言。
 
 
 ### 2.4 Just-in-time compilation
@@ -404,13 +404,13 @@ The most sophisticated JITs insert profiling hooks into the generated code to se
 
 最后一个不是捷径，而是危险的高山攀岩，最好留给专家。最快的代码执行速度，肯定是翻译为具体的机器码，但是，编译阶段，你可能不知道用户的机器是什么架构，那么我们应该怎么办呢？
 
-你可以借鉴JVM（Java语言虚拟机），CLR（微软的通用语言运行库），还有大多数JS编译器做的，在用户的机器上，当程序加载时候，无论是从源代码，还是在JVM/CLR中加载字节码，你可以将其编译为本机的机器码。很自然的，这个过程称为即时编译。大多数编程高手称这种实现为JIT，发音类似fit。
+你可以借鉴 JVM（Java 语言虚拟机），CLR（微软的通用语言运行库），还有大多数 JS 编译器做的，在用户的机器上，当程序加载时候，无论是从源代码，还是在 JVM/CLR 中加载字节码，你可以将其编译为本机的机器码。很自然的，这个过程称为即时编译。大多数编程高手称这种实现为 JIT，发音类似 fit。
 
-最复杂的JIT，会在生成代码中插入一些性能分析代码，查看哪些代码块、哪些数据结构对于运行性能影响最大。然后，随着时间累积，JIT将自动使用更高级的优化方式，重新编译热点代码。
+最复杂的 JIT，会在生成代码中插入一些性能分析代码，查看哪些代码块、哪些数据结构对于运行性能影响最大。然后，随着时间累积，JIT 将自动使用更高级的优化方式，重新编译热点代码。
 
 > This is, of course, exactly where the HotSpot JVM gets its name.
 >
-> 当然，这也是JVM的一种实现，HotSpot JVM的名称来源。
+> 当然，这也是 JVM 的一种实现，HotSpot JVM 的名称来源。
 
 ## 三、Compilers and Interpreters
 
@@ -451,9 +451,9 @@ In older versions of Matz’s canonical implementation of Ruby, the user ran Rub
 > Now pine nuts, on the other hand, are plant-based foods that are neither fruits nor vegetables. At least as far as I can tell.
 
 
-像苹果和橘子一样，它们是水果但不是蔬菜，有一些实现，是编译器，而不是解释器。GCC和Clang 接收原始的C语言程序，最终编译为机器码。用户最终运行可执行文件，而不需要知道具体使用了哪个编译器，它们都是C语言编译器。
+像苹果和橘子一样，它们是水果但不是蔬菜，有一些实现，是编译器，而不是解释器。GCC 和 Clang 接收原始的 C 语言程序，最终编译为机器码。用户最终运行可执行文件，而不需要知道具体使用了哪个编译器，它们都是 C 语言编译器。
 
-Ruby的老版本中，用户可以直接从Ruby源码运行。Ruby解释器直接解析源程序，生成语法树，然后，遍历语法树，直接执行，无论处于用户角度，还是实际内部机制，都没有其他的转换过程，我们可以确定这种实现为解释器。
+Ruby 的老版本中，用户可以直接从 Ruby 源码运行。Ruby 解释器直接解析源程序，生成语法树，然后，遍历语法树，直接执行，无论处于用户角度，还是实际内部机制，都没有其他的转换过程，我们可以确定这种实现为解释器。
 
 
 But what of CPython? When you run your Python program using it, the code is parsed and converted to an internal bytecode format, which is then executed inside the VM. From the user’s perspective, this is clearly an interpreter—they run their program from source. But if you look under CPython’s scaly skin, you’ll see that there is definitely some compiling going on.
@@ -462,21 +462,21 @@ The answer is that it is both. CPython is an interpreter, and it has a compiler.
 
 ![venn](https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/venn.png?raw=true)
 
-但是，CPython是什么呢？当我们运行Python程序时候，CPython编译器将Python代码转换为内部的字节码，在Python虚拟机中运行。从用户角度看，这是一个解释器，因为我们可以直接从原始代码运行，但是如果从内部实现角度，还存在着一些编译器。
+但是，CPython 是什么呢？当我们运行 Python 程序时候，CPython 编译器将 Python 代码转换为内部的字节码，在 Python 虚拟机中运行。从用户角度看，这是一个解释器，因为我们可以直接从原始代码运行，但是如果从内部实现角度，还存在着一些编译器。
 
-准确答案是，CPython既是一个解释器，也是一个编译器，实际上，大部分的脚本语言都是这样的
+准确答案是，CPython 既是一个解释器，也是一个编译器，实际上，大部分的脚本语言都是这样的
 
 That overlapping region in the center is where our second interpreter lives too, since it internally compiles to bytecode. So while this book is nominally about interpreters, we’ll cover some compilation too.
 
-如上图，我们第二部分实现的Lox解释器，处于中间的重叠部分，因为我们会生成字节码。因此，虽然本书是关于解释器介绍的，但是，我们还是会涉及到编译器的内容。
+如上图，我们第二部分实现的 Lox 解释器，处于中间的重叠部分，因为我们会生成字节码。因此，虽然本书是关于解释器介绍的，但是，我们还是会涉及到编译器的内容。
 
 >The Go tool is even more of a horticultural curiosity. If you run go build, it compiles your Go source code to machine code and stops. If you type go run, it does that, then immediately executes the generated executable.
 >
 > So go is a compiler (you can use it as a tool to compile code without running it), is an interpreter (you can invoke it to immediately run a program from source), and also has a compiler (when you use it as an interpreter, it is still compiling internally).
 >
-> go语言的命令更加能说明问题，例如：执行命令 go build，我们能得到一个可执行文件，如果执行命令，go run，程序会马上运行。
+> go 语言的命令更加能说明问题，例如：执行命令 go build，我们能得到一个可执行文件，如果执行命令，go run，程序会马上运行。
 >
-> 所以，go是一个编译器，可以将go程序编译为可执行文件，go也是一个解释器，可以直接运行go程序，但是解释器中还包含一个编译器，当直接运行go程序时候，内部仍有编译步骤。
+> 所以，go 是一个编译器，可以将 go 程序编译为可执行文件，go 也是一个解释器，可以直接运行 go 程序，但是解释器中还包含一个编译器，当直接运行 go 程序时候，内部仍有编译步骤。
 
 ## 四、Our Journey
 
@@ -506,14 +506,45 @@ But, for now, it’s time for our own journey to begin. Tighten your bootlaces, 
 
    选择一种你熟悉、喜欢的开源语言，下载源码然后浏览一下，尝试找出其中的扫描器、解析器部分，判断它们是自己实现的，还是使用Lex/Yacc等编译器工具实现的，可以查看是否存在 .l, .y 后缀的文件，这通常是工具生成文件。
    
+    [go](https://github.com/golang/go) [rust](https://github.com/rust-lang/rust) 都是自己实现的;
+  
+    [awk](https://github.com/onetrueawk/awk) [postgres](https://github.com/postgres/postgres) [promql](https://github.com/prometheus/prometheus/tree/main/promql) 都在使用 Lex/Yacc 编译工具 
+   
    
 1. Just-in-time compilation tends to be the fastest way to implement dynamically typed languages, but not all of them use it. What reasons are there to not JIT?
 
 	即时编译通常是动态语言最快的实现方式，但是并非所有的语言都利用这种特性，为什么它们不提供即时编译？
 	
+	```
+	 // chatGPT 4.0
+	
+	 即时编译(JIT)确实可以高效地实现动态类型语言，然而并不是所有的语言都选择使用它。以下是一些可能不使用JIT的原因：
+	
+	 (1) 实现复杂性：
+
+	 创建并维护一个即时编译器是一项巨大的工程任务，需要专业的知识和大量的资源。对于某些项目，这可能超出了它们的资源或能力范围。
+
+	 (2) 启动时间：
+
+	 即时编译器并不是立即生效的。实际上，在程序初次运行期间，即时编译可能引起一定的延迟。对于需要快速启动或短时间运行的程序，JIT可能并不是最好的选择。
+
+	 (3) 内存消耗：
+
+	 即时编译在运行时需要更多的内存。对于在资源有限的环境下运行的应用程序，JIT可能并不适合。
+
+	 (4) 代码的可预测性和稳定性：
+
+	 由于即时编译引擎在运行时才对代码进行优化，这就可能会引入一些运行时的不确定性。这可能会对寻找和修复程序中的错误带来困难。
+
+	 (5) 安全性和控制：
+
+	 在一些特性的系统或安全要求较高的环境中，预编译的代码可能更容易控制和审查，从而满足安全性要求。
+
+	```
+	
 1. Most Lisp implementations that compile to C also contain an interpreter that lets them execute Lisp code on the fly as well. Why?
 
-	大多数的Lisp实现，在实现一个编译器，编译为C语言的同时，还提供一个解释器，保证可以动态执行Lisp代码，为什么？
+	大多数的 Lisp 实现，在实现一个编译器，编译为 C 语言的同时，还提供一个解释器，保证可以动态执行 Lisp 代码，为什么？
 
 
 
