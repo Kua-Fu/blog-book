@@ -16,7 +16,7 @@
 	
 	> [Online Date](https://tool.lu/timestamp/)
 
-	> [Temp Mail](https://temp-mail.org/zh/view/62a03d9c2dc34f03fc14fc14)
+	> [Temp Mail](https://email.ml/)
 	
 	> [password generator](https://1password.com/zh-cn/password-generator/)
 	
