@@ -256,6 +256,44 @@
 <p>而不是类型</p>
 <p>integer <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> </p>
 <p>因此，使用函数符号并不会危及从文本证据中确定类型。</p>
+<h2 id="3-physical-iswim-and-logical-iswim"><a class="header" href="#3-physical-iswim-and-logical-iswim">3. Physical ISWIM and :Logical ISWIM</a></h2>
+<p>Like ALGOL 60, ISWIM has no prescribed physical appearance. ALGOL 60'S designers sought to avoid commitment to any particular sets of characters or type faces. Accordingly they distinguish between &quot;publication language,&quot; &quot;reference language&quot; and &quot;hardware languages.&quot; Of these the reference language was the standard and was used in the report itself whenever pieces of ALGOL 60 occurred. Publication and hardware languages are transliterations of the reference language, varying according to the individual taste, needs and physical constraints on available type faces and characters. </p>
+<p>Such variations are different physical representations of a single abstraction, whose most faithful physical representation is the reference language. In describing ISWIM we distinguish an abstract language called &quot;logical ISWIM,&quot; whose texts are made up of &quot;textual elements,&quot; characterized without commitment to a particular physical representation. There is a physical representation suitable for the medium of this report, and used for presenting each piece of ISWIM that occurs in this report. So this physical representation corresponds to &quot;reference ALGOL 60,&quot; and is called &quot;reference ISWIM,&quot; or the &quot;ISWIM reference representation,&quot; or the &quot;ISWIM reference language.&quot; </p>
+<p>To avoid imprecision one should never speak just of &quot;ISWIM,&quot; but always of &quot;logical IswxM&quot; or of &quot;such-and-such physical ISWlM.&quot; However, in loose speech, where the precise intention is clear or unimportant, we refer to &quot;ISWlM&quot; without qualification. We aim at a more formal relation between physical and logical languages than was the case in the ALGOL 60. This is necessary since we wish to systematize and mechanize the use of different physical representations. </p>
+<p>就像 ALGOL 60 一样，ISWIM 没有规定的物理表现形式。ALGOL 60 的设计者们力图避免对任何特定的字符集或字体类型的承诺。因此，他们区分了“出版语言”，“参考语言”和“硬件语言”。其中，参考语言是标准，且在报告本身中，每当出现 ALGOL 60 的部分时，都会使用该语言。出版和硬件语言是参考语言的转写，它们根据个人品味、需求以及可用字体和字符的物理限制而变化。</p>
+<p>这些变化是单个抽象的不同物理表示形式，其最忠实的物理表示形式是参考语言。在描述 ISWIM 时，我们区分了一个称为“逻辑 ISWIM ”的抽象语言，其文本由“文本元素”组成，不依赖于特定的物理表示形式。对于本报告的媒介来说，存在一种适合的物理表示形式，用于呈现本报告中出现的每个 ISWIM 片段。因此，这种物理表示形式对应于“参考 ALGOL 60 ”，并被称为“参考 ISWIM ”或“ ISWIM 参考表示形式”或“ ISWIM 参考语言”。</p>
+<p>为了避免不准确，我们永远不应该只谈论“ ISWIM ”，而应该总是谈论“逻辑 ISWXM ”或“某种物理 ISWIM ”。然而，在松散的口语中，如果精确的意图明确或不重要，我们可以不加限定地提到“ ISWIM”。我们的目标是在物理语言和逻辑语言之间建立比 ALGOL 60 更正式的关系。我们需要这样做，因为我们希望系统化和机械化地使用不同的物理表示。</p>
+<h2 id="4-four-levels-of-abstraction"><a class="header" href="#4-four-levels-of-abstraction">4. Four Levels of Abstraction</a></h2>
+<p>The &quot;physical/logical&quot; terminology is often used to distinguish features that are a fortuitous consequence of physical conditions from features that are in some sense more essential. This idea is carried further by making a similar distinction among the &quot;more essential&quot; features. In fact ISWIM is presented here as a four-level concept comprising the following:</p>
+<p>(1) physical ISWIM'S, of which one is the reference language and others are various publication and hardware languages (not described here)</p>
+<p>(2) logical ISWIM, which is uncommitted as to character sets and type faces, but committed as to the sequence of textual elements, and the grammatical rules for grouping them, e.g., by parentheses, indentation and precedence relations.</p>
+<p>(3) abstract ISWIM, which is uncommitted as to the grammatical rules of sequence and grouping, but committed as to the grammatical categories and their nesting structure. Thus abstract Iswim is a “tree language’ of which logical ISWIM is one linearization</p>
+<p>(4) applicative expressions (AEs), which constitute another tree language, structurally more austere than abstract ISWIM,and providing certain basic grammatical categories in terms of which all of Iswim's more numerous categories can be expressed.</p>
+<p>The set of acceptable texts of a physical Iswim is specified by the relations between 1 and 2, and between 2 and 3. The outcome of each text is specified by these relations, together with a &quot;frame of reference&quot;, i.e., a rule that associates a meaning with each of a chosen set of identifiers</p>
+<p>These are the things that vary from one member of our language family to the next. The specification of the family is completed by the relation between abstract ISWIM and AEs, together with an abstract machine that interpret AEs. These elements are the same for all members of the family and are not discussed in this paper (see [1, 2, 4]).</p>
+<p>The relationship between physical ISWIM and logical ISWIM is fixed by saying what physical texts represent each logical element, and also what layout is permitted in stringing them together. The relationship between logical ISWIM and abstract ISWIM is fixed by a formal grammar not unlike the one in the ALGOL 60 report, together with astatement connecting the phrase categories with the abstract grammatical categories</p>
+<p>These two relations cover what is usually called the “syntax’ or “grammar’ of a language. In this paper syntax is not discussed beyond a few general remarks anda few examples whose meaning should be obvious</p>
+<p>The relationship between abstract ISWIM and AEs is fixed by giving the form of AE equivalent to each abstract ISWIM grammatical category. It happens that these latter include a subset that exactly matches AEs. Hence this link in our chain of relations is roughly a mapping of ISWIM into an essential  kernel’ of ISWIM, of which all the rest is mere decoration.</p>
+<p>“物理/逻辑”术语经常用来区分那些偶然由物理条件产生的特性和在某种意义上更本质的特性。这个理念在区分“更本质”特性中得到了进一步体现。事实上，ISWIM在这里被作为一个四级概念展现，包括以下几点：</p>
+<ol>
+<li>
+<p>物理ISWIM，其中一个是参考语言，其他的是各种出版和硬件语言（这里没有描述）</p>
+</li>
+<li>
+<p>逻辑ISWIM，它不依赖于字符集和字体，但依赖于文本元素的顺序和将它们分组的语法规则，例如使用括号、缩进和优先关系</p>
+</li>
+<li>
+<p>抽象ISWIM，它不依赖于顺序和分组的语法规则，但依赖于语法类别及其嵌套结构。因此，抽象ISWIM是一种“树形语言”，逻辑ISWIM是其一种线性表示形式</p>
+</li>
+<li>
+<p>应用表达式（AEs），它们构成了另一种树形语言，结构上比抽象ISWIM更为简洁，并提供了一些基本的语法类别，可以根据这些类别表达ISWIM中更多的类别。</p>
+</li>
+</ol>
+<p>一个物理 ISWIM 的接受文本集是由 1 和 2 之间的关系，以及 2 和 3 之间的关系来规定的。每个文本的结果由这些关系及一个“参照系”规定，参照系指的是一个规则，它将每个选定的标识符集合的意义关联起来</p>
+<p>这些是从我们的语言家族的一个成员到另一个成员之间变化的事物。通过抽象 ISWIM 和 AEs 之间的关系以及解释 AEs 的抽象机器来完成对家族的规范。这些元素对于家族的所有成员都是相同的，并且本文中没有讨论（请参见[1, 2, 4]）</p>
+<p>物理 ISWIM 和逻辑 ISWIM 之间的关系是通过说明哪些物理文本表示每个逻辑元素以及在将它们连接在一起时允许的布局来固定的。逻辑 ISWIM 和抽象 ISWIM 之间的关系是通过类似于 ALGOL 60 报告中使用的正式语法以及将短语类别与抽象语法类别联系起来的语句来固定的</p>
+<p>这两个关系涵盖了通常被称为语言的“语法”或“句法”。在本文中，除了一些一般性的评论和几个应该很明显的例子之外，不会讨论语法</p>
+<p>抽象 ISWIM 和 AEs 之间的关系是通过给出与每个抽象 ISWIM 语法类别等价的 AE 的形式来固定的。后者包括了一个与 AEs 完全匹配的子集。因此，在我们的关系链中，这个链接大致是将 ISWIM 映射到一个核心的“内核”，其余的都是装饰品</p>
 
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
