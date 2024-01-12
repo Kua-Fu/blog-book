@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -308,13 +308,14 @@ a...b 是合法的，但是 a...b...c 是非法的</p>
 </blockquote>
 <p>Without well-defined precedence and associativity, an expression that uses multiple operators is ambiguous—it can be parsed into different syntax trees, which could in turn evaluate to different results. We’ll fix that in Lox by applying the same precedence rules as C, going from lowest to highest.</p>
 <p>如果没有定义运算符的优先级和关联性，那么使用多个运算符的表达式可能会引起歧义。这样的表达式，会生成不同的语法树，执行这些不同的语法树，会产生不同的结果。我们将在Lox语言中，定义和C语言，相同的运算符优先级。下面的优先级，从低到高</p>
-<table><thead><tr><th>Name</th><th>Operators</th><th>Associates</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Operators</th><th>Associates</th></tr></thead><tbody>
 <tr><td>Equality</td><td>== !=</td><td>Left</td></tr>
 <tr><td>Comparison</td><td>&gt; &gt;= &lt; &lt;=</td><td>Left</td></tr>
 <tr><td>Term</td><td>+ -</td><td>Left</td></tr>
 <tr><td>Factor</td><td>* /</td><td>Left</td></tr>
 <tr><td>Unary</td><td>! -</td><td>Right</td></tr>
 </tbody></table>
+</div>
 <p>Right now, the grammar stuffs all expression types into a single expression rule. That same rule is used as the non-terminal for operands, which lets the grammar accept any kind of expression as a subexpression, regardless of whether the precedence rules allow it.</p>
 <p>现在，语法规则将所有的表达式类型，填充到单个表达式规则中。相同的规则，可以被当作操作数的非终止符，这使得语法可以接受任何类型的表达式当作子表达式，而不管优先级是否允许。</p>
 <p>We fix that by stratifying the grammar. We define a separate rule for each precedence level.</p>
@@ -441,13 +442,14 @@ primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quo
 <p>计算机科学领域，真的需要统一一下表述。甚至，不要让我一开始在了解语法树方向时候，就困惑，为什么树根在最上面。</p>
 </blockquote>
 <p>A recursive descent parser is a literal translation of the grammar’s rules straight into imperative code. Each rule becomes a function. The body of the rule translates to code roughly like:</p>
-<table><thead><tr><th>Grammar notation</th><th>Code representation</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Grammar notation</th><th>Code representation</th></tr></thead><tbody>
 <tr><td>Terminal</td><td>Code to match and consume a token</td></tr>
 <tr><td>Nonterminal</td><td>Call to that rule’s function</td></tr>
 <tr><td></td><td></td></tr>
 <tr><td>* or +</td><td>while or for loop</td></tr>
 <tr><td>?</td><td>if statement</td></tr>
 </tbody></table>
+</div>
 <p>The descent is described as “recursive” because when a grammar rule refers to itself—directly or indirectly—that translates to a recursive function call.</p>
 <p>递归下降解析器是将语法规则直接翻译为命令式代码的直译，每个规则都成为一个函数，规则的转换可以参考：</p>
 <p>下降将被描述为“递归”，因为当语法规则直接或者间接的引用自身时候，它会转化为递归函数调用</p>

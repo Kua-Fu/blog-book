@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -210,12 +210,13 @@ PUT _cluster/settings
 
 </code></pre>
 <h3 id="23-创建索引策略"><a class="header" href="#23-创建索引策略">2.3 创建索引策略</a></h3>
-<table><thead><tr><th>序号</th><th>名称</th><th>描述</th><th></th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>名称</th><th>描述</th><th></th></tr></thead><tbody>
 <tr><td>1</td><td>热阶段</td><td>滚动条件为 最大文档数 5个/最大保留时间7d/ 最大的索引大小5gb</td><td></td></tr>
 <tr><td>2</td><td>温阶段</td><td>合并段为1，设置存储层为 warm</td><td></td></tr>
 <tr><td>3</td><td>冷阶段</td><td>设置存储层为cold</td><td></td></tr>
 <tr><td>4</td><td>删除阶段</td><td>删除数据</td><td></td></tr>
 </tbody></table>
+</div>
 <pre><code>PUT _ilm/policy/yz_policy
 {
   &quot;policy&quot;: {

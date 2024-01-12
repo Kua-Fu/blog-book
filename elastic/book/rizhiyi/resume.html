@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -168,7 +168,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="命令简述"><a class="header" href="#命令简述">命令简述</a></h1>
-<table><thead><tr><th>命令</th><th>描述</th><th>示例</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th><th>示例</th></tr></thead><tbody>
 <tr><td><code>search</code></td><td>指定的搜索条件，或者作为过滤条件</td><td><code>host: localhost AND status: &gt;=200</code></td></tr>
 <tr><td><code>multisearch</code></td><td>同时执行多个搜索，子查询只允许分布式流式命令</td><td>…​ | multisearch [[ status: 200 | eval tag=succ ]] [[ status: 404 | eval tag=err ]]</td></tr>
 <tr><td><code>addinfo</code></td><td>向每个事件添加包含有关搜索的全局通用信息的字段</td><td>…​ | addinfo</td></tr>
@@ -239,7 +239,7 @@
 <tr><td><code>fromes</code></td><td>搜索指定索引的数据</td><td>|fromes host=10.200.0.140 index=logs-my_app-default querydsl='{&quot;query&quot;: {&quot;match_all&quot;: { }}}'</td></tr>
 <tr><td><code>fromkafkapy</code></td><td>消费指定主题的数据</td><td>|fromkafkapy topic=test</td></tr>
 </tbody></table>
-
+</div>
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 

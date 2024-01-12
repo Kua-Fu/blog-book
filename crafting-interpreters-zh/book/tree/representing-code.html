@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -217,21 +217,23 @@
 <p>We need a bigger hammer, and that hammer is a context-free grammar (CFG). It’s the next heaviest tool in the toolbox of formal grammars. A formal grammar takes a set of atomic pieces it calls its “alphabet”. Then it defines a (usually infinite) set of “strings” that are “in” the grammar. Each string is a sequence of “letters” in the alphabet.</p>
 <p>I’m using all those quotes because the terms get a little confusing as you move from lexical to syntactic grammars. In our scanner’s grammar, the alphabet consists of individual characters and the strings are the valid lexemes—roughly “words”. In the syntactic grammar we’re talking about now, we’re at a different level of granularity. Now each “letter” in the alphabet is an entire token and a “string” is a sequence of tokens—an entire expression.</p>
 <p>Oof. Maybe a table will help:</p>
-<table><thead><tr><th>Terminology</th><th>Lexical grammar</th><th>Syntactic grammar</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Terminology</th><th>Lexical grammar</th><th>Syntactic grammar</th></tr></thead><tbody>
 <tr><td>The “alphabet” is . . .</td><td>Characters</td><td>Tokens</td></tr>
 <tr><td>A “string” is . . .</td><td>Lexeme or token</td><td>Expression</td></tr>
 <tr><td>It’s implemented by the . . .</td><td>Scanner</td><td>Parser</td></tr>
 </tbody></table>
+</div>
 <p>A formal grammar’s job is to specify which strings are valid and which aren’t. If we were defining a grammar for English sentences, “eggs are tasty for breakfast” would be in the grammar, but “tasty breakfast for are eggs” would probably not.</p>
 <p>在上一章中，我们定义词汇的规则——将字符分组为token的规则，被称为正则语言。这对于我们实现的扫描器是非常好的，它将输出一个token序列。但是，正则语言的功能不足以处理任何深度嵌套的表达式。</p>
 <p>我们需要更强大的工具，这个工具就是CFG 上下文无关语法。CFG上下文无关语法，是<a href="https://en.wikipedia.org/wiki/Formal_grammar">形式文法</a>中第二重要的工具. 形式文法定义了一组原子化的字符表，称为字母表，然后，我们可以定义一组字符串（通常是无限的），每一个字符串都由字母表中的字母组合。</p>
 <p>我使用了一些引号标注，是因为当我们从词法规则变更到语法规则时候，其中的术语会变得令人困惑。在词法规则中，字母表是单个字符组成的，字符串是有效的词素（即单词）。但是，在我们当前的语法讨论中，现在的字母表中每一个元素都是一个token，我们处于不同的粒度级别。同样的，这时候，一个字符串表示一组token，即实际上是一个表达式。</p>
 <p>它们的区别，详见下表：</p>
-<table><thead><tr><th>术语</th><th>词法规则</th><th>语法规则</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>术语</th><th>词法规则</th><th>语法规则</th></tr></thead><tbody>
 <tr><td>字母表</td><td>字符列表</td><td>token列表</td></tr>
 <tr><td>字符串</td><td>词素（单词）或者token</td><td>表达式</td></tr>
 <tr><td>实现者</td><td>扫描器</td><td>解析器</td></tr>
 </tbody></table>
+</div>
 <p>形式文法的目标是指定哪些字符串有效，哪些字符串无效。例如：我们想要给一个英语语句，定义语法规则。&quot;eggs are tasty for breakfast&quot; 是一个合法的英语语句，但是，“tasty breakfast for are eggs”就不是一个合法的英语语句。</p>
 <h3 id="11-rules-for-grammars"><a class="header" href="#11-rules-for-grammars">1.1 Rules for grammars</a></h3>
 <p>语法规则</p>

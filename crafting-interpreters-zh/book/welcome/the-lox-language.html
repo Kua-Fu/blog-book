@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -175,12 +175,12 @@
 </blockquote>
 <p>We’ll spend the rest of this book illuminating every dark and sundry corner of the Lox language, but it seems cruel to have you immediately start grinding out code for the interpreter without at least a glimpse of what we’re going to end up with.</p>
 <p>At the same time, I don’t want to drag you through reams of language lawyering and specification-ese before you get to touch your text editor. So this will be a gentle, friendly introduction to Lox. It will leave out a lot of details and edge cases. We’ve got plenty of time for those later.</p>
-<p>我们将在本书的剩余部分，阐明Lox语言的每一个黑暗和杂乱的角落。但是，如果我们无法看到 Lox 语言的最终样子，就开始编写解释器代码，看起来有一些匆忙。</p>
-<p>在你使用文本编辑器之前，我不想过多介绍语言的格式和规范，所以，本章将是一个温和友好的Lox介绍。它会遗漏很多细节和边缘部分，我们在后面有足够的时间去学习。</p>
+<p>我们将在本书的剩余部分，阐明 Lox 语言的每一个黑暗和杂乱的角落。但是，如果我们无法看到 Lox 语言的最终样子，就开始编写解释器代码，看起来有一些匆忙。</p>
+<p>在你使用文本编辑器之前，我不想过多介绍语言的格式和规范，所以，本章将是一个温和友好的 Lox 介绍。它会遗漏很多细节和边缘部分，我们在后面有足够的时间去学习。</p>
 <blockquote>
 <p>A tutorial isn’t very fun if you can’t try the code out yourself. Alas, you don’t have a Lox interpreter yet, since you haven’t built one!</p>
 <p>Fear not. You can use mine.</p>
-<p>如果一个教程不能自己写代码，那么这个教程就没有吸引力。但是，你还没有一个Lox解释器，因为我们还没有去实现它。</p>
+<p>如果一个教程不能自己写代码，那么这个教程就没有吸引力。但是，你还没有一个 Lox 解释器，因为我们还没有去实现它。</p>
 <p>不用担心，你可以先使用我的😄。</p>
 </blockquote>
 <h2 id="一hello-lox"><a class="header" href="#一hello-lox">一、Hello, Lox</a></h2>
@@ -195,40 +195,40 @@ print &quot;Hello, world!&quot;;
 <p>Now, I won’t claim that C has a great syntax. If we wanted something elegant, we’d probably mimic Pascal or Smalltalk. If we wanted to go full Scandinavian-furniture-minimalism, we’d do a Scheme. Those all have their virtues.</p>
 <p>What C-like syntax has instead is something you’ll often find more valuable in a language: familiarity.  I know you are already comfortable with that style because the two languages we’ll be using to implement Lox—Java and C—also inherit it. Using a similar syntax for Lox gives you one less thing to learn.</p>
 <p>上面是第一个Lox程序，</p>
-<p>正如 // 行注释，行尾；所暗示的，Lox语言，继承了C语言语法。hello, world 字符串周围不需要括号，因为 print是一个内置语句，而不是一个库函数。</p>
-<p>现在，我不会说C语言有很好的语法，如果我们想要优雅的东西，可能模仿Pascal、Smalltalk更加合适。如果我们想要完全实现 斯堪的纳维亚家具的极简主义，我们需要先做一个计划。这些都有它们的优势。</p>
-<p>相反，我们使用类C语言语法，是因为我们可以从中获得更有价值的东西，熟悉度。我知道，你已经习惯了这种风格，接下来，我们用以实现Lox的两种语言，Java 和C语言，都拥有这种熟悉的风格。Lox语言使用这种风格的语法，可以更加容易入门。</p>
+<p>正如 // 行注释，行尾；所暗示的，Lox 语言，继承了 C 语言语法。hello, world 字符串周围不需要括号，因为 print 是一个内置语句，而不是一个库函数。</p>
+<p>现在，我不会说 C 语言有很好的语法，如果我们想要优雅的东西，可能模仿 Pascal、Smalltalk 更加合适。如果我们想要完全实现 斯堪的纳维亚家具的极简主义，我们需要先做一个计划。这些都有它们的优势。</p>
+<p>相反，我们使用类 C 语言语法，是因为我们可以从中获得更有价值的东西，熟悉度。我知道，你已经习惯了这种风格，接下来，我们用以实现 Lox 的两种语言，Java 和 C 语言，都拥有这种熟悉的风格。Lox 语言使用这种风格的语法，可以更加容易入门。</p>
 <blockquote>
 <p>Your first taste of Lox, the language, that is. I don’t know if you’ve ever had the cured, cold-smoked salmon before. If not, give it a try too.</p>
-<p>你第一次品尝Lox语言，就是这样。我不知道你之前有没有尝试过腌制的冷鲑鱼，如果没有，可以尝试一下。</p>
+<p>你第一次尝试 Lox 语言，就是这样。我不知道你之前有没有尝试过腌制的冷鲑鱼，如果没有，可以尝试一下。</p>
 </blockquote>
 <blockquote>
 <p>I’m surely biased, but I think Lox’s syntax is pretty clean. C’s most egregious grammar problems are around types. Dennis Ritchie had this idea called “declaration reflects use”, where variable declarations mirror the operations you would have to perform on the variable to get to a value of the base type.</p>
 <p>Lox doesn’t have static types, so we avoid that.</p>
-<p>我是有偏见的，从我的角度，我认为Lox语言语法非常简洁。C语言令人惊讶的语法问题是，类型。Dennis Ritchie 提出一个“声明反映使用”的想法，其中变量声明反映了你对于变量执行的操作，以获得基类型的值。这个想法非常好，但我认为，在实践中的效果并不好。</p>
-<p>Lox不是静态类型语言，所以我们避免了这种情况。</p>
+<p>我是有偏见的，从我的角度，我认为 Lox 语言语法非常简洁。C 语言令人惊讶的语法问题是，类型。Dennis Ritchie 提出一个“声明反映使用”的想法，其中变量声明反映了你对于变量执行的操作，以获得基类型的值。这个想法非常好，但我认为，在实践中的效果并不好。</p>
+<p>Lox 不是静态类型语言，所以我们避免了这种情况。</p>
 </blockquote>
 <h2 id="二a-high-level-language"><a class="header" href="#二a-high-level-language">二、A high-level language</a></h2>
 <p>高级语言</p>
 <p>While this book ended up bigger than I was hoping, it’s still not big enough to fit a huge language like Java in it. In order to fit two complete implementations of Lox in these pages, Lox itself has to be pretty compact.</p>
 <p>When I think of languages that are small but useful, what comes to mind are high-level “scripting” languages like JavaScript, Scheme, and Lua. Of those three, Lox looks most like JavaScript, mainly because most C-syntax languages do. As we’ll learn later, Lox’s approach to scoping hews closely to Scheme. The C flavor of Lox we’ll build in Part III is heavily indebted to Lua’s clean, efficient implementation.</p>
-<p>虽然本书内容大大超过了一开始的设想，但是还是无法利用一本书来介绍Java 这样的大型语言。为了在接下来去实现 Lox语言两次，Lox本身需要非常紧凑。</p>
-<p>当我们提到小而有用的语言时候，通常会想到的是一些脚本语言，例如：JavaScript, Scheme, Lua 等。在这三种脚本语言中，Lox更像是 JavaScript，因为它们都是类C 语法。正如后面将要介绍的，Lox的代码块范围表示，和Scheme 语言相似。在第三部分，我们将实现的C语言为解释器的Lox语言，将更加接近Lua语言的简洁、高效特征。</p>
+<p>虽然本书内容大大超过了一开始的设想，但是还是无法利用一本书来介绍 Java 这样的大型语言。为了在接下来去实现 Lox 语言两次，Lox 本身需要非常紧凑。</p>
+<p>当我们提到小而有用的语言时候，通常会想到的是一些脚本语言，例如：JavaScript, Scheme, Lua 等。在这三种脚本语言中，Lox 更像是 JavaScript，因为它们都是类 C 语法。正如后面将要介绍的，Lox 的代码块范围表示，和 Scheme 语言相似。在第三部分，我们将实现的 C 语言为解释器的 Lox 语言，将更加接近 Lua 语言的简洁、高效特征。</p>
 <p>Lox shares two other aspects with those three languages:</p>
-<p>Lox 和脚本语言还有下面3个相同点：</p>
+<p>Lox 和这 3 种脚本语言还有下面 2 个相同点：</p>
 <h3 id="21-dynamic-typing"><a class="header" href="#21-dynamic-typing">2.1 Dynamic typing</a></h3>
 <p>动态类型</p>
 <p>Lox is dynamically typed. Variables can store values of any type, and a single variable can even store values of different types at different times. If you try to perform an operation on values of the wrong type—say, dividing a number by a string—then the error is detected and reported at runtime.</p>
 <p>There are plenty of reasons to like static types, but they don’t outweigh the pragmatic reasons to pick dynamic types for Lox.  A static type system is a ton of work to learn and implement.Skipping it gives you a simpler language and a shorter book. We’ll get our interpreter up and executing bits of code sooner if we defer our type checking to runtime.</p>
-<p>Lox是动态类型语言，变量可以存储任何类型的值，单个变量可以在不同时间存储不同类型的数据，如何尝试对于错误类型的值执行操作，例如：数值除以字符串，运行时候会检测，并且报错。</p>
-<p>喜欢静态类型有很多理由，但是为了Lox语言更加实用，我们选择了动态类型。静态类型系统需要学习和实现大量工作。跳过静态类型，会让Lox语言实现更加简单。如果在解释器运行时候，执行类型检查，我们可以更快的执行代码。</p>
+<p>Lox 是动态类型语言，变量可以存储任何类型的值，单个变量可以在不同时间存储不同类型的数据，如何尝试对于错误类型的值执行操作，例如：数值除以字符串，运行时候会检测，并且报错。</p>
+<p>喜欢静态类型有很多理由，但是为了 Lox 语言更加实用，我们选择了动态类型。静态类型系统需要学习和实现大量工作。跳过静态类型，会让 Lox 语言实现更加简单。如果在解释器运行时候，执行类型检查，我们可以更快的执行代码。</p>
 <blockquote>
 <p>Now that JavaScript has taken over the world and is used to build ginormous applications, it’s hard to think of it as a “little scripting language”. But Brendan Eich hacked the first JS interpreter into Netscape Navigator in ten days to make buttons animate on web pages. JavaScript has grown up since then, but it was once a cute little language.</p>
-<p>既然，JavaScript语言已经风靡语言世界，并且用于构建很多的大型项目，我们很难在将它当作一个小众语言。但是，在网景公司，Brendan Eich 仅仅使用了10天时间，就完成了第一个JS编译器，并且实现了网页中的按钮动态展示。JavaScript 从那时开始，不断成长，但是它曾经是一门可爱的小语言。</p>
+<p>既然，JavaScript 语言已经风靡语言世界，并且用于构建很多的大型项目，我们很难在将它当作一个小众语言。但是，在网景公司，Brendan Eich 仅仅使用了10天时间，就完成了第一个 JS 编译器，并且实现了网页中的按钮动态展示。JavaScript 从那时开始，不断成长，但是它曾经是一门可爱的小语言。</p>
 <p>Because Eich slapped JS together with roughly the same raw materials and time as an episode of MacGyver, it has some weird semantic corners where the duct tape and paper clips show through. Things like variable hoisting, dynamically bound this, holes in arrays, and implicit conversions.</p>
-<p>因为Eich使用了与《麦基弗》一集大致相同的原材料和时间制作了JS语言，所以，它存在着一些奇怪的语法，会出现一些胶带和回形针。例如：变量提升，动态绑定，数组中的漏洞和隐式转换。</p>
+<p>因为 Eich 使用了与《麦基弗》一集大致相同的原材料和时间制作了 JS 语言，所以，它存在着一些奇怪的语法，会出现一些胶带和回形针。例如：变量提升，动态绑定，数组中的漏洞和隐式转换。</p>
 <p>I had the luxury of taking my time on Lox, so it should be a little cleaner. After all, the two languages we’ll be using to implement Lox are both statically typed.</p>
-<p>相比之下，我有更多时间打磨Lox语言，所以，我们会发现，Lox语言会更加简洁。毕竟，我们实现Lox语言的底层语言Java/C都是静态语言。</p>
+<p>相比之下，我有更多时间打磨 Lox 语言，所以，我们会发现，Lox 语言会更加简洁。毕竟，我们实现 Lox 语言的底层语言 Java/C 都是静态语言。</p>
 </blockquote>
 <h3 id="22-automatic-memory-management"><a class="header" href="#22-automatic-memory-management">2.2 Automatic memory management</a></h3>
 <p>自动内存管理</p>
@@ -237,8 +237,8 @@ print &quot;Hello, world!&quot;;
 <p>There are two main techniques for managing memory: reference counting and tracing garbage collection (usually just called garbage collection or GC). Ref counters are much simpler to implement—I think that’s why Perl, PHP, and Python all started out using them. But, over time, the limitations of ref counting become too troublesome. All of those languages eventually ended up adding a full tracing GC, or at least enough of one to clean up object cycles.</p>
 <p>Tracing garbage collection has a fearsome reputation. It is a little harrowing working at the level of raw memory. Debugging a GC can sometimes leave you seeing hex dumps in your dreams. But, remember, this book is about dispelling magic and slaying those monsters, so we are going to write our own garbage collector. I think you’ll find the algorithm is quite simple and a lot of fun to implement.</p>
 <p>内存管理主要有两种技术：引用计数 和 追踪垃圾回收，通常也称为，垃圾回收，缩写为 GC</p>
-<p>引用计数的实现要简单一些，我认为这也是Perl/PHP/Python 语言一开始使用这个技术，实现内存管理的原因。但是，随着时间的变更，引用计数的局限性越来越多。所以，上面的语言，最终都添加了完整的追踪GC 实现，或者有足够的 GC逻辑 周期性清理对象。</p>
-<p>追踪垃圾回收具有可怕的名声。在原生内存级别工作，非常痛苦。调试 GC，会让你在梦里都还在想着16进制转储问题。但是，请记住，本书会带着我们一起驱散魔法，杀死怪兽，所以，我们也会编写自己的垃圾回收程序。我猜想，你一定会发现算法非常简单，并且整个程序非常有趣。</p>
+<p>引用计数的实现要简单一些，我认为这也是 Perl/PHP/Python 语言一开始使用这个技术，实现内存管理的原因。但是，随着时间的变更，引用计数的局限性越来越多。所以，上面的语言，最终都添加了完整的追踪 GC 实现，或者有足够的 GC 逻辑 周期性清理对象。</p>
+<p>追踪垃圾回收具有可怕的名声。在原生内存级别工作，非常痛苦。调试 GC，会让你在梦里都还在想着 16 进制转储问题。但是，请记住，本书会带着我们一起驱散魔法，杀死怪兽，所以，我们也会编写自己的垃圾回收程序。我猜想，你一定会发现算法非常简单，并且整个程序非常有趣。</p>
 <blockquote>
 <p>In practice, ref counting and tracing are more ends of a continuum than opposing sides. Most ref counting systems end up doing some tracing to handle cycles, and the write barriers of a generational collector look a bit like retain calls if you squint.</p>
 <p>在实践中，引用计数和追踪技术会混合使用，而不是相互对立。大多数的引用计数，都会进行一些周期性的追踪，如果你仔细查看，分代采集器的用法看起来像是保留调用。</p>
@@ -260,7 +260,7 @@ false; // Not *not* false.
 </code></pre>
 <blockquote>
 <p>Boolean variables are the only data type in Lox named after a person, George Boole, which is why “Boolean” is capitalized. He died in 1864, nearly a century before digital computers turned his algebra into electricity. I wonder what he’d think to see his name all over billions of lines of Java code.</p>
-<p>布尔变量是Lox语言中，唯一使用人名命名的数据类型。Boolean是为了纪念 George Boole, 他于1864年去世，一个世纪后，计算机科学将他发明的布尔代数，转换为计算机表示。我想知道，当他在数十亿Java代码中，看到自己的名字，会有什么感想😄</p>
+<p>布尔变量是 Lox 语言中，唯一使用人名命名的数据类型。Boolean 是为了纪念 George Boole, 他于 1864 年去世，一个世纪后，计算机科学将他发明的布尔代数，转换为计算机表示。我想知道，当他在数十亿 Java 代码中，看到自己的名字，会有什么感想😄</p>
 </blockquote>
 </li>
 <li>
@@ -285,7 +285,7 @@ false; // Not *not* false.
 </code></pre>
 <blockquote>
 <p>Even that word “character” is a trickster. Is it ASCII? Unicode? A code point or a “grapheme cluster”? How are characters encoded? Is each character a fixed size, or can they vary?</p>
-<p>即使是单词，字节，也包含了一些隐藏信息，字节是ASCII编码的，还是Unicode编码；一个字节是一个代码点，还是一个图形集簇；字节是如何编码的，是定长编码，还是变长编码？</p>
+<p>即使是单词，字节，也包含了一些隐藏信息，字节是 ASCII 编码的，还是 Unicode 编码；一个字节是一个代码点，还是一个图形集簇；字节是如何编码的，是定长编码，还是变长编码？</p>
 </blockquote>
 </li>
 <li>
@@ -294,11 +294,11 @@ false; // Not *not* false.
 <p>There are good arguments for not having a null value in a language since null pointer errors are the scourge of our industry. If we were doing a statically typed language, it would be worth trying to ban it. In a dynamically typed one, though, eliminating it is often more annoying than having it.</p>
 </li>
 </ol>
-<p>在Lox的小宇宙中，构成物质的原子是内置的几种数据类型，详见下面的介绍:</p>
+<p>在 Lox 的小宇宙中，构成物质的原子是内置的几种数据类型，详见下面的介绍:</p>
 <ol>
 <li>
 <p>布尔类型</p>
-<p>没有逻辑运算，我们无法进行编程，而逻辑运算，需要布尔数据类型。真与假，编程世界中的阴与阳，与一些早先语言复用其他数据类型表示布尔类型不同的是，我们会在Lox语言中定义一个专用的布尔数据类型。</p>
+<p>没有逻辑运算，我们无法进行编程，而逻辑运算，需要布尔数据类型。真与假，编程世界中的阴与阳，与一些早先语言复用其他数据类型表示布尔类型不同的是，我们会在 Lox 语言中定义一个专用的布尔数据类型。</p>
 <p>显然，布尔值有两个选择，每个值对应了一个文本</p>
 <pre><code>true;  // Not false.
 false; // Not *not* false.
@@ -306,8 +306,8 @@ false; // Not *not* false.
 </li>
 <li>
 <p>数值类型</p>
-<p>Lox语言，只有一种数值类型，双精度浮点数。因为浮点数，可以包含大范围的整数，这样做，不但可以包含很多其他数据类型，而且可以保持简洁。</p>
-<p>功能齐全的语言，会有很多的数字语法，例如：十六进制表示、科学计数法、八进制表示，以及其他的有趣的东西。但是在Lox语言中，我们将只会满足基本的整数运算和十进制表示。</p>
+<p>Lox 语言，只有一种数值类型，双精度浮点数。因为浮点数，可以包含大范围的整数，这样做，不但可以包含很多其他数据类型，而且可以保持简洁。</p>
+<p>功能齐全的语言，会有很多的数字语法，例如：十六进制表示、科学计数法、八进制表示，以及其他的有趣的东西。但是在 Lox 语言中，我们将只会满足基本的整数运算和十进制表示。</p>
 <pre><code>
 1234;  // An integer.
 12.34; // A decimal number.
@@ -327,18 +327,18 @@ false; // Not *not* false.
 </li>
 <li>
 <p>Nil</p>
-<p>最后，还有一个数据类型，它似乎从来没有被邀请参加编程聚会，但是你总是能看到它的身影。它，代表了不存在，没有数值。在许多语言中，使用 null 表示它，而在Lox语言中，我们将使用 nil 表示它。当我们实现它时，可以更好的与 Java/C语言中的null 区别开。</p>
-<p>在语言中，不使用 nil 存在很多好处，空指针报错是编程行业常见的报错。如果，我们要实现一门静态类型语言，那么我们禁止 nil类型是值得的。但是，如果我们要实现一门动态类型语言，通常，保留 nil类型，拥有更多的好处，相比于禁止该类型。</p>
+<p>最后，还有一个数据类型，它似乎从来没有被邀请参加编程聚会，但是你总是能看到它的身影。它，代表了不存在，没有数值。在许多语言中，使用 null 表示它，而在 Lox 语言中，我们将使用 nil 表示它。当我们实现它时，可以更好的与 Java/C 语言中的 null 区别开。</p>
+<p>在语言中，不使用 nil 存在很多好处，空指针报错是编程行业常见的报错。如果，我们要实现一门静态类型语言，那么我们禁止 nil 类型是值得的。但是，如果我们要实现一门动态类型语言，通常，保留 nil类型，拥有更多的好处，相比于禁止该类型。</p>
 </li>
 </ol>
 <h2 id="四expressions"><a class="header" href="#四expressions">四、Expressions</a></h2>
 <p>表达式</p>
 <p>If built-in data types and their literals are atoms, then expressions must be the molecules. Most of these will be familiar.</p>
-<p>如果内置的基础数据类型和它们的文字，是原子，那么表达式就是分子，下面将介绍各种表达式</p>
+<p>如果内置的基础数据类型和它们的字面值，是原子，那么表达式就是分子，下面将介绍各种表达式</p>
 <h3 id="41-arithmetic"><a class="header" href="#41-arithmetic">4.1 Arithmetic</a></h3>
 <p>算术表达式</p>
 <p>Lox features the basic arithmetic operators you know and love from C and other languages:</p>
-<p>Lox语言具有C语言或者其他语言中，存在的基础算术表达式</p>
+<p>Lox 语言具有 C 语言或者其他语言中，存在的基础算术表达式</p>
 <pre><code>
 add + me;
 subtract - me;
@@ -352,17 +352,17 @@ divide / me;
 <pre><code>-negateMe;
 </code></pre>
 <p>All of these operators work on numbers, and it’s an error to pass any other types to them. The exception is the + operator—you can also pass it two strings to concatenate them.</p>
-<p>运算符号，两边的子表达式，称为操作数。因为运算符号，有两个操作数，所以称为二元运算符。⚠️这里的二元，和二进制中的0或者1，没有关系。</p>
+<p>运算符号，两边的子表达式，称为操作数。因为运算符号，有两个操作数，所以称为二元运算符。⚠️这里的二元，和二进制中的 0 或者 1，没有关系。</p>
 <p>因为运算符，固定在操作数的中间，所以，我们称之为中缀运算符。（与前缀运算符不同，前缀运算符位于表达式最前面，后缀运算符位于表达式最后。）</p>
 <p>一元运算符，实际上可以是中缀运算符，也可以是前缀运算符。例如：- 可以表示负数</p>
 <pre><code>-negateMe;
 </code></pre>
-<p>上面的算术运算符的操作数，只能是数值类型，如果操作数是其他数据类型，表达式计算会报错。但是，有个例外，+运算符可以作用于字符串数据类型，两个字符串的 + 运算，表示连接这两个字符串。</p>
+<p>上面的算术运算符的操作数，只能是数值类型，如果操作数是其他数据类型，表达式计算会报错。但是，有个例外，+ 运算符可以作用于字符串数据类型，两个字符串的 + 运算，表示连接这两个字符串。</p>
 <blockquote>
 <p>There are some operators that have more than two operands and the operators are interleaved between them. The only one in wide usage is the “conditional” or “ternary” operator of C and friends:</p>
 <p>condition ? thenArm : elseArm;</p>
 <p>Some call these mixfix operators. A few languages let you define your own operators and control how they are positioned—their “fixity”.</p>
-<p>有些运算符，可以具有两个以上的操作数，运算符在这些操作数之间。唯一广泛使用的多元运算符是 C语言中的条件（三元）运算符。</p>
+<p>有些运算符，可以具有两个以上的操作数，运算符在这些操作数之间。唯一广泛使用的多元运算符是 C 语言中的条件（三元）运算符。</p>
 <p>condition ? thenArm : elseArm;</p>
 </blockquote>
 <h3 id="42-comparison-and-equality"><a class="header" href="#42-comparison-and-equality">4.2 Comparison and equality</a></h3>
@@ -382,7 +382,7 @@ greaterThan &gt;= orEqual;
 <p>I’m generally against implicit conversions.</p>
 <p>接下来，我们将介绍几个返回布尔值的运算符。</p>
 <p>我们可以使用 比较运算符，比较并且仅仅比较数值</p>
-<p>我们也可以比较两个任意类型的数据，是否相等, 甚至这两个数据，不是相同的类型。不同数据类型的两个数据，肯定是不想等的🤔。</p>
+<p>我们也可以比较两个任意类型的数据，是否相等, 甚至这两个数据，不是相同的类型。不同数据类型的两个数据，肯定是不相等的🤔。</p>
 <p>通常，我们不建议使用隐式转换。</p>
 <h3 id="43-logical-operators"><a class="header" href="#43-logical-operators">4.3 Logical operators</a></h3>
 <ol>
@@ -419,7 +419,7 @@ true and true;  // true.
 </li>
 <li>
 <p>另外两个逻辑运算符，与其说是表达式，更加准确的说法是，控制流。</p>
-<p>and 逻辑运算符，将确定两个操作数，是否都是true，如果左操作数是false， 则表达式返回左操作数的值；如果左操作数为true，则表达式返回右操作数的值。</p>
+<p>and 逻辑运算符，将确定两个操作数，是否都是 true，如果左操作数是 false， 则表达式返回左操作数的值；如果左操作数为 true，则表达式返回右操作数的值。</p>
 <pre><code>
 true and false; // false.
 true and true;  // true.
@@ -427,7 +427,7 @@ true and true;  // true.
 </code></pre>
 </li>
 <li>
-<p>or 逻辑运算符，将确定两个操作数，是否包含true，如果左操作数为true，则表达式结果，返回左操作数；如果左操作数为false，表达式将会返回右操作数的值。</p>
+<p>or 逻辑运算符，将确定两个操作数，是否包含 true，如果左操作数为 true，则表达式结果，返回左操作数；如果左操作数为 false，表达式将会返回右操作数的值。</p>
 <pre><code>
 false or false; // false.
 true or false;  // true.
@@ -444,8 +444,8 @@ var average = (min + max) / 2;
 
 </code></pre>
 <p>Since they aren’t very technically interesting, I’ve cut the remainder of the typical operator menagerie out of our little language. </p>
-<p>所有这些运算符的优先级和关联性，和C语言中的相同。当我们进入解析过程时候，将会更加理解这一点。如果，优先级不是我们想要的，可以使用 （）对内容进行分组。</p>
-<p>因为在技术上不太有趣，在Lox语言中，我删除了一些典型的运算符，例如：位运算，位移，取模，条件运算符等。我不会让你们评分，但是如果你在Lox语言实现中，添加了这些运算符，在我心中，你将会大大加分。</p>
+<p>所有这些运算符的优先级和关联性，和 C 语言中的相同。当我们进入解析过程时候，将会更加理解这一点。如果，优先级不是我们想要的，可以使用 （）对内容进行分组。</p>
+<p>因为在技术上不太有趣，在 Lox 语言中，我删除了一些典型的运算符，例如：位运算，位移，取模，条件运算符等。我不会让你们评分，但是如果你在 Lox 语言实现中，添加了这些运算符，在我心中，你将会大大加分。</p>
 <p>Those are the expression forms (except for a couple related to specific features that we’ll get to later), so let’s move up a level.</p>
 <p>上面介绍了表达式形式，除了一些我们下面将要介绍的、与特定功能相关的表达式，让我们继续学习。</p>
 <h2 id="五statements"><a class="header" href="#五statements">五、Statements</a></h2>
@@ -477,14 +477,14 @@ print &quot;Hello, world!&quot;;
 print &quot;Hello, world!&quot;;
 
 </code></pre>
-<p>一个print语句，计算出单个表达式，并且向用户展示计算结果。</p>
+<p>一个 print 语句，计算出单个表达式，并且向用户展示计算结果。</p>
 <p>还有一些其他类型的语句，例如：</p>
 <pre><code>
 &quot;some expression&quot;;
 
 </code></pre>
 <p>表达式后面加上 ; 该表达式会变为表达式语句。</p>
-<p>如果想将一系列语句，组合为一条语句，可以使用{}, 将这些语句打包为一个块</p>
+<p>如果想将一系列语句，组合为一条语句，可以使用 {}, 将这些语句打包为一个块</p>
 <pre><code>
 {
   print &quot;One statement.&quot;;
@@ -495,7 +495,7 @@ print &quot;Hello, world!&quot;;
 <p>语法块，还影响生命周期，马上我们将会看到。</p>
 <blockquote>
 <p>Baking print into the language instead of just making it a core library function is a hack. But it’s a useful hack for us: it means our in-progress interpreter can start producing output before we’ve implemented all of the machinery required to define functions, look them up by name, and call them.</p>
-<p>Lox语言中，将print表示为语句，而不是核心函数库中的一个print函数，是一种黑客行为。这对我们来说是一个有用的技巧：这意味着，解释器运行时，我们可以在定义函数之前，实现输出功能。按照名称查找并且调用它们。</p>
+<p>Lox 语言中，将 print 表示为语句，而不是核心函数库中的一个 print 函数，是一种黑客行为。这对我们来说是一个有用的技巧：这意味着，解释器运行时，我们可以在定义函数之前，实现输出功能。按照名称查找并且调用它们。</p>
 </blockquote>
 <h2 id="六variables"><a class="header" href="#六variables">六、Variables</a></h2>
 <p>变量</p>
@@ -514,12 +514,12 @@ print breakfast; // &quot;beignets&quot;.
 
 </code></pre>
 <p>I won’t get into the rules for variable scope here, because we’re going to spend a surprising amount of time in later chapters mapping every square inch of the rules. In most cases, it works like you would expect coming from C or Java.</p>
-<p>可以使用 var语句，声明变量。如果变量省略初始化，该变量的默认值是nil。</p>
+<p>可以使用 var 语句，声明变量。如果变量省略初始化，该变量的默认值是 nil。</p>
 <p>一旦声明，我们可以使用变量名，访问和分配变量。</p>
-<p>在当前章节，我不会讨论变量的有效使用范围，因为，我们将在后面的章节中，花费很多篇幅讲解变量的使用范围。在多数场景下，Lox语言中，变量的使用范围和 C/Java语言中的规则相同。</p>
+<p>在当前章节，我不会讨论变量的有效使用范围，因为，我们将在后面的章节中，花费很多篇幅讲解变量的使用范围。在多数场景下，Lox 语言中，变量的使用范围和 C/Java 语言中的规则相同。</p>
 <blockquote>
 <p>This is one of those cases where not having nil and forcing every variable to be initialized to some value would be more annoying than dealing with nil itself.</p>
-<p>这是nil存在的一种好处，如果我们强制要求任意的变量，都必须初始化为具体值，那么，这个强制初始化的过程比我们定一个一个nil类型，更加麻烦。</p>
+<p>这是 nil 存在的一种好处，如果我们强制要求任意的变量，都必须初始化为具体值，那么，这个强制初始化的过程比我们定一个一个 nil 类型，更加麻烦。</p>
 <p>Can you tell that I tend to work on this book in the morning before I’ve had anything to eat?</p>
 <p>你可以看出来我倾向于，在吃早餐之前，开始写一会儿书吗？😂</p>
 </blockquote>
@@ -568,17 +568,17 @@ for (var a = 1; a &lt; 10; a = a + 1) {
 </blockquote>
 <blockquote>
 <p>Scheme, on the other hand, has no built-in looping constructs. It does rely on recursion for repetition. Smalltalk has no built-in branching constructs, and relies on dynamic dispatch for selectively executing code.</p>
-<p>lisp的方言，scheme, 没有内置的循环语句。它依赖递归执行，实现复用代码。Smalltalk语言，没有内置的分支语句，它依赖动态调度，来选择性的执行代码。</p>
+<p>lisp 的方言，scheme, 没有内置的循环语句。它依赖递归执行，实现复用代码。Smalltalk 语言，没有内置的分支语句，它依赖动态调度，来选择性的执行代码。</p>
 </blockquote>
 <blockquote>
 <p>I left do while loops out of Lox because they aren’t that common and wouldn’t teach you anything that you won’t already learn from while. Go ahead and add it to your implementation if it makes you happy. It’s your party.</p>
-<p>我没有在Lox语言中，引入 do while循环语句，因为，该循环语句，和while语句，效果一致。如果你想在Lox语言中，实现该语句，那么非常欢迎，因为这是你的语言。</p>
+<p>我没有在 Lox 语言中，引入 do while 循环语句，因为，该循环语句，和 while 语句，效果一致。如果你想在 Lox 语言中，实现该语句，那么非常欢迎，因为这是你的语言。</p>
 </blockquote>
 <blockquote>
 <p>This is a concession I made because of how the implementation is split across chapters. A for-in loop needs some sort of dynamic dispatch in the iterator protocol to handle different kinds of sequences, but we don’t get that until after we’re done with control flow. We could circle back and add for-in loops later, but I didn’t think doing so would teach you anything super interesting.</p>
-<p>这是我做出的让步，我将在后面的章节中，添加 for-in 循环语句。我们需要在迭代器中，根据不同的数据类型，动态调度该数据序列。虽然，我们添加了 for-in语句，但是我并不认为，这个语句非常有趣。</p>
+<p>这是我做出的让步，我将在后面的章节中，添加 for-in 循环语句。我们需要在迭代器中，根据不同的数据类型，动态调度该数据序列。虽然，我们添加了 for-in 语句，但是我并不认为，这个语句非常有趣。</p>
 </blockquote>
-<p>如果语言不支持，跳过执行某些代码或者重复执行某些代码，那么，我们很难写出有用的程序。而这些，表明我们需要引入控制流。除了上面介绍的逻辑运算符之外，我们还从C语言中直接借用了3种控制流。</p>
+<p>如果语言不支持，跳过执行某些代码或者重复执行某些代码，那么，我们很难写出有用的程序。而这些，表明我们需要引入控制流。除了上面介绍的逻辑运算符之外，我们还从 C 语言中直接借用了 3 种控制流。</p>
 <ol>
 <li>
 <p>if</p>
@@ -613,7 +613,7 @@ for (var a = 1; a &lt; 10; a = a + 1) {
 }
 
 </code></pre>
-<p>for循环语句，和 while循环语句，效果相同。大多数现代语句，还支持for-in，foreach语句，用于迭代各种序列类型数据。在实际编程中，这种新的语句，比C语言的for语句，更加简洁。但是，我们Lox语言，将保持最原始的for语句。</p>
+<p>for 循环语句，和 while 循环语句，效果相同。大多数现代语句，还支持 for-in，foreach 语句，用于迭代各种序列类型数据。在实际编程中，这种新的语句，比 C 语言的 for 语句，更加简洁。但是，我们 Lox 语言，将保持最原始的 for 语句。</p>
 </li>
 </ol>
 <h2 id="八-functions"><a class="header" href="#八-functions">八、 Functions</a></h2>
@@ -646,8 +646,8 @@ makeBreakfast(bacon, eggs, toast);
 makeBreakfast();
 
 </code></pre>
-<p>与 Ruby语言不一样，在这种场景，括号是必须的，如果不使用括号，不会实际调用函数，而只会引用函数。</p>
-<p>如果一门语言无法自定义函数，那么这门语言也不会非常有意义。在Lox语言中，使用 fun 定义一个函数。</p>
+<p>与 Ruby 语言不一样，在这种场景，括号是必须的，如果不使用括号，不会实际调用函数，而只会引用函数。</p>
+<p>如果一门语言无法自定义函数，那么这门语言也不会非常有意义。在 Lox 语言中，使用 fun 定义一个函数。</p>
 <pre><code>
 fun printSum(a, b) {
   print a + b;
@@ -680,29 +680,29 @@ fun returnSum(a, b) {
 <p>parameter 是定义函数时候，保存参数值的变量，人们一般称为 形参，函数定义的时候，会定义一系列的参数列表，称为形参列表。</p>
 </li>
 </ul>
-<p>函数体始终是一个代码块。在函数体中，可以使用return 函数，返回一个值。</p>
+<p>函数体始终是一个代码块。在函数体中，可以使用 return 函数，返回一个值。</p>
 <pre><code>
 fun returnSum(a, b) {
   return a + b;
 }
 
 </code></pre>
-<p>如果函数执行到末尾，没有return语句，会隐式的返回 nil</p>
+<p>如果函数执行到末尾，没有 return 语句，会隐式的返回 nil</p>
 <blockquote>
 <p>See, I told you nil would sneak in when we weren’t looking.</p>
 <p>看吧，我就说过 nil 总会在我们不注意的时候，偷偷溜进来。</p>
 </blockquote>
 <blockquote>
 <p>I’ve seen languages that use fn, fun, func, and function. I’m still hoping to discover a funct, functi, or functio somewhere.</p>
-<p>我已经见过其他语言中，使用fn fun func function 关键字定义函数，我还在期待，有语言使用关键词 funct functi functio</p>
+<p>我已经见过其他语言中，使用 fn fun func function 关键字定义函数，我还在期待，有语言使用关键词 funct functi functio</p>
 </blockquote>
 <blockquote>
 <p>Speaking of terminology, some statically typed languages like C make a distinction between declaring a function and defining it. A declaration binds the function’s type to its name so that calls can be type-checked but does not provide a body. A definition declares the function and also fills in the body so that the function can be compiled</p>
-<p>说到术语，一些静态类型语言，例如：C语言，在函数声明和函数定义之间有不同之处。函数声明，函数名称关联着参数类型，以便再调用函数时候，检查参数类型，但是不定义函数体。函数定义，在声明函数的同时，还会定义函数体，以便可以编译函数。</p>
+<p>说到术语，一些静态类型语言，例如：C 语言，在函数声明和函数定义之间有不同之处。函数声明，函数名称关联着参数类型，以便再调用函数时候，检查参数类型，但是不定义函数体。函数定义，在声明函数的同时，还会定义函数体，以便可以编译函数。</p>
 </blockquote>
 <blockquote>
 <p>Since Lox is dynamically typed, this distinction isn’t meaningful. A function declaration fully specifies the function including its body.</p>
-<p>因为Lox是一门动态语言，函数声明和函数定义没有区别，函数声明需要指定函数体。</p>
+<p>因为 Lox 是一门动态语言，函数声明和函数定义没有区别，函数声明需要指定函数体。</p>
 </blockquote>
 <h3 id="81-closures"><a class="header" href="#81-closures">8.1 Closures</a></h3>
 <p>闭包</p>
@@ -731,7 +731,7 @@ fun outerFunction() {
 
 
 </code></pre>
-<p>函数是Lox语言中的第一类变量，这意味着它们是拥有实际值的变量。我们可以引用/存储/传递这些函数。</p>
+<p>函数是 Lox 语言中的第一类变量，这意味着它们是拥有实际值的变量。我们可以引用/存储/传递这些函数。</p>
 <pre><code>
 fun addPair(a, b) {
   return a + b;
@@ -792,7 +792,7 @@ fn();
 
 </code></pre>
 <p>可以看到，inner函数，调用了外层函数中的局部变量 outside, 这样会报错吗？很多语言都借鉴了 lisp 语言的这种特性，答案是，我们可以使用外层函数中的局部变量。</p>
-<p>为此，inner函数，必须包含对于周围变量的引用，这样即使外部函数已经返回，这些局部变量仍然会保留。我们将实现了这个功能的函数闭包。现如今，这个术语，闭包，经常用于第一类函数，尽管如何函数没有在任何变量上闭合，这个用词有些不太合适。</p>
+<p>为此，inner 函数，必须包含对于周围变量的引用，这样即使外部函数已经返回，这些局部变量仍然会保留。我们将实现了这个功能的函数闭包。现如今，这个术语，闭包，经常用于第一类函数，尽管如何函数没有在任何变量上闭合，这个用词有些不太合适。</p>
 <p>可以想象，实现这个闭包功能，会增加一些复杂性，因为我们不能假设变量，严格的像堆栈一样工作，当函数返回时候，局部变量就消失了。我们将有一段愉快的时光，学习如何正确有效的工作。</p>
 <blockquote>
 <p>Peter J. Landin coined the term “closure”. Yes, he invented damn near half the terms in programming languages. Most of them came out of one incredible paper, “The Next 700 Programming Languages”.</p>
@@ -804,23 +804,23 @@ fn();
 <p>类</p>
 <p>Since Lox has dynamic typing, lexical (roughly, “block”) scope, and closures, it’s about halfway to being a functional language. But as you’ll see, it’s also about halfway to being an object-oriented language. Both paradigms have a lot going for them, so I thought it was worth covering some of each.</p>
 <p>Since classes have come under fire for not living up to their hype, let me first explain why I put them into Lox and this book. There are really two questions:</p>
-<p>因为Lox语言具有动态类型，词法范围、闭包，因此，它已经一部分是函数式语言了，但是，正如我们将看到的，它也同样具有面向语言对象的一部分特性。这两种语言范式分别有很多优点，我们将简单介绍一些：</p>
-<p>下面我将解释一下，为什么Lox语言具有面向对象特性：</p>
+<p>因为 Lox 语言具有动态类型，词法范围、闭包，因此，它已经一部分是函数式语言了，但是，正如我们将看到的，它也同样具有面向语言对象的一部分特性。这两种语言范式分别有很多优点，我们将简单介绍一些：</p>
+<p>下面我将解释一下，为什么 Lox 语言具有面向对象特性：</p>
 <h3 id="91-why-might-any-language-want-to-be-object-oriented"><a class="header" href="#91-why-might-any-language-want-to-be-object-oriented">9.1 Why might any language want to be object oriented?</a></h3>
 <p>为什么所有语言都想要面向对象特性？</p>
 <p>Now that object-oriented languages like Java have sold out and only play arena shows, it’s not cool to like them anymore. Why would anyone make a new language with objects? Isn’t that like releasing music on 8-track?</p>
 <p>It is true that the “all inheritance all the time” binge of the ’90s produced some monstrous class hierarchies, but object-oriented programming (OOP) is still pretty rad. Billions of lines of successful code have been written in OOP languages, shipping millions of apps to happy users. Likely a majority of working programmers today are using an object-oriented language. They can’t all be that wrong.</p>
 <p>In particular, for a dynamically typed language, objects are pretty handy. We need some way of defining compound data types to bundle blobs of stuff together.</p>
 <p>If we can also hang methods off of those, then we avoid the need to prefix all of our functions with the name of the data type they operate on to avoid colliding with similar functions for different types. In, say, Racket, you end up having to name your functions like hash-copy (to copy a hash table) and vector-copy (to copy a vector) so that they don’t step on each other. Methods are scoped to the object, so that problem goes away.</p>
-<p>现在，面向对象语言，例如Java，已经普遍被使用，而且已经被接收到主流编程世界了，现在在喜欢它们，也不是很酷的事情了。为什么还有人用对象创造一门新语言，这好像是在8音节上，写出新的歌曲。</p>
-<p>诚然，90年代的“一直继承”热潮产生了一些可怕的类层次结构，但是面向对象语言（OOP）仍然非常难实现。现在，面向对象语言，已经应用于数十亿行代码，分布于数百万的应用程序中，今天大多数的程序员都在使用面向对象语言。</p>
+<p>现在，面向对象语言，例如 Java，已经普遍被使用，而且已经被接收到主流编程世界了，现在在喜欢它们，也不是很酷的事情了。为什么还有人用对象创造一门新语言，这好像是在 8 音节上，写出新的歌曲。</p>
+<p>诚然，90 年代的“一直继承”热潮产生了一些可怕的类层次结构，但是面向对象语言（OOP）仍然非常难实现。现在，面向对象语言，已经应用于数十亿行代码，分布于数百万的应用程序中，今天大多数的程序员都在使用面向对象语言。</p>
 <p>特别的，对于动态类型，对象非常方便。我们需要一些方法，将一些复杂的数据类型绑定在一起。</p>
-<p>如果我们可以挂起这些方法，那么，我们不需要在所有函数前面加上它们所操作的数据类型的名称，以避免和不同类型的类似函数发生冲突。例如：在Rocket语言中，你需要根据不同的数据类型，分别命名 hash-copy 和 vector-copy 函数，这样它们不会相互重叠。方法的作用域是对象，这样问题，就解决了。</p>
+<p>如果我们可以挂起这些方法，那么，我们不需要在所有函数前面加上它们所操作的数据类型的名称，以避免和不同类型的类似函数发生冲突。例如：在 Rocket 语言中，你需要根据不同的数据类型，分别命名 hash-copy 和 vector-copy 函数，这样它们不会相互重叠。方法的作用域是对象，这样问题，就解决了。</p>
 <h3 id="92-why-is-lox-object-oriented"><a class="header" href="#92-why-is-lox-object-oriented">9.2 Why is Lox object oriented?</a></h3>
-<p>为什么Lox语言是面向对象的？</p>
+<p>为什么 Lox 语言是面向对象的？</p>
 <p>I could claim objects are groovy but still out of scope for the book. Most programming language books, especially ones that try to implement a whole language, leave objects out. To me, that means the topic isn’t well covered. With such a widespread paradigm, that omission makes me sad.</p>
 <p>Given how many of us spend all day using OOP languages, it seems like the world could use a little documentation on how to make one. As you’ll see, it turns out to be pretty interesting. Not as hard as you might fear, but not as simple as you might presume, either.</p>
-<p>我可以说对象是 groovy语言，但是仍然超出了本书的范围。大多数的编程语言书籍，尤其是那些想要实现一门完整语言的书籍，都忽略了面向对象介绍。对我而言，这意味着面向对象这个话题，没有很好的被覆盖。在如此广泛的示例中，这种遗漏让我感到悲伤。</p>
+<p>我可以说对象是 groovy 语言，但是仍然超出了本书的范围。大多数的编程语言书籍，尤其是那些想要实现一门完整语言的书籍，都忽略了面向对象介绍。对我而言，这意味着面向对象这个话题，没有很好的被覆盖。在如此广泛的示例中，这种遗漏让我感到悲伤。</p>
 <p>考虑到我们大部分人，每天都在使用面向对象语言，似乎全世界都需要一些关于面向对象语言的介绍。正如你看到的，结果非常有意思，既没有你想象的那么困难，但是也没你想象的那么简单。</p>
 <h3 id="93-classes-or-prototypes"><a class="header" href="#93-classes-or-prototypes">9.3 Classes or prototypes</a></h3>
 <p>类和原型</p>

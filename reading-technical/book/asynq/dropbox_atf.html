@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Alogrithm</li><li class="chapter-item "><a href="../hyperloglog.html"><strong aria-hidden="true">2.</strong> hyperloglog</a></li><li class="chapter-item "><a href="../logmine.html"><strong aria-hidden="true">3.</strong> LogMine: Fast Pattern Recognition for Log Analytics</a></li><li class="chapter-item "><a href="../percentile.html"><strong aria-hidden="true">4.</strong> percentile pre-calculation</a></li><li class="chapter-item affix "><li class="part-title">Elasticsearch</li><li class="chapter-item "><a href="../elasticsearch.html"><strong aria-hidden="true">5.</strong> Elasticsearch 101</a></li><li class="chapter-item affix "><li class="part-title">Task Framework</li><li class="chapter-item expanded "><a href="../asynq.html"><strong aria-hidden="true">6.</strong> asynq</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../asynq/dropbox_atf.html" class="active"><strong aria-hidden="true">6.1.</strong> Dropbox ATF</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Alogrithm</li><li class="chapter-item "><a href="../hyperloglog.html"><strong aria-hidden="true">2.</strong> hyperloglog</a></li><li class="chapter-item "><a href="../logmine.html"><strong aria-hidden="true">3.</strong> LogMine: Fast Pattern Recognition for Log Analytics</a></li><li class="chapter-item "><a href="../percentile.html"><strong aria-hidden="true">4.</strong> percentile pre-calculation</a></li><li class="chapter-item affix "><li class="part-title">Elasticsearch</li><li class="chapter-item "><a href="../elasticsearch.html"><strong aria-hidden="true">5.</strong> Elasticsearch 101</a></li><li class="chapter-item affix "><li class="part-title">Task Framework</li><li class="chapter-item expanded "><a href="../asynq.html"><strong aria-hidden="true">6.</strong> asynq</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../asynq/dropbox_atf.html" class="active"><strong aria-hidden="true">6.1.</strong> Dropbox ATF</a></li></ol></li><li class="chapter-item "><li class="part-title">Program</li><li class="chapter-item "><a href="../program/700.html"><strong aria-hidden="true">7.</strong> The Next 700 Programming Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,7 +167,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="dropbox-atf"><a class="header" href="#dropbox-atf">Dropbox ATF</a></h1>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="dropbox-atf"><a class="header" href="#dropbox-atf">Dropbox ATF</a></h1>
 <h2 id="参考"><a class="header" href="#参考">参考</a></h2>
 <blockquote>
 <p><a href="https://dropbox.tech/infrastructure/asynchronous-task-scheduling-at-dropbox">How we designed Dropbox ATF: an async task framework</a></p>
@@ -445,7 +446,7 @@ while True:
 </ol>
 <p>异步任务生命周期的每一个状态更新，都伴随着对 edgestore中的任务对应的关联，中下一个触发时间戳的更新。这确保了，如果下一个触发器时间戳内任务的状态没有变化，则数据库消费者，将再次拉动任务。这有助于ATF实现至少一次执行的保证，确保没有异步任务丢失。</p>
 <p>Following are the task entity and association states in ATF and their corresponding timestamp updates:</p>
-<table><thead><tr><th>Entity status</th><th>Assoc status</th><th>next trigger timestamp in Assoc</th><th>Comment</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Entity status</th><th>Assoc status</th><th>next trigger timestamp in Assoc</th><th>Comment</th></tr></thead><tbody>
 <tr><td>new</td><td>new</td><td>scheduled_timestamp of the task</td><td>Pick up new tasks that are ready.</td></tr>
 <tr><td>enqueued</td><td>started</td><td>enqueued_timestamp + enqueue_timeout</td><td>Re-enqueue task if it has been in enqueued state for too long. This can happen if the queue loses data or the controller goes down after polling the queue and before the task is claimed.</td></tr>
 <tr><td>claimed</td><td>started</td><td>claimed_timestamp + claim_timeout</td><td>Re-enqueue if task is claimed but never transfered to processing. This can happen if Controller is down after claiming a task. Task status is changed to enqueued after re-enqueue.</td></tr>
@@ -454,8 +455,9 @@ while True:
 <tr><td>success</td><td>completed</td><td>N/A</td><td></td></tr>
 <tr><td>fatal_failure</td><td>completed</td><td>N/A</td><td></td></tr>
 </tbody></table>
+</div>
 <p>下面是任务主体/任务关联，状态变更和时间戳变化流程。</p>
-<table><thead><tr><th>实体状态</th><th>关联状态</th><th>关联中的下一次触发器时间戳</th><th>备注</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>实体状态</th><th>关联状态</th><th>关联中的下一次触发器时间戳</th><th>备注</th></tr></thead><tbody>
 <tr><td>新建</td><td>新建</td><td>任务的执行时间戳</td><td>选择出准备好的任务</td></tr>
 <tr><td>排队</td><td>启动</td><td>排队时间戳+排队超时</td><td>如果任务在排队状态时间太长了，需要重新入队列；如果队列丢失数据，或者控制器在轮询队列之后和任务声明之前停机，则可能会发生排队时间过长</td></tr>
 <tr><td>声明</td><td>启动</td><td>声明时间戳+声明超时</td><td>如果任务已经声明，但是一直没有变更为处理中，那么会重新入队列; 如果控制器在声明任务后关闭，则可能会发生这种状况；重新排队后，任务状态更新为排队中</td></tr>
@@ -464,6 +466,7 @@ while True:
 <tr><td>成功</td><td>完成</td><td></td><td></td></tr>
 <tr><td>致命故障</td><td>完成</td><td></td><td></td></tr>
 </tbody></table>
+</div>
 <p>Below is the state machine that defines task state transitions: </p>
 <p>下面是，任务状态变化的状态机。</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/atf/dropbox-atf-2.png?raw=true" alt="atf-2" /></p>
@@ -530,6 +533,9 @@ ATF 旨在成为开发者的自服务框架。这种设计想要推动一种所�
                                 <i class="fa fa-angle-left"></i>
                         </a>
 
+                            <a rel="next" href="../program/700.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -541,6 +547,9 @@ ATF 旨在成为开发者的自服务框架。这种设计想要推动一种所�
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next" href="../program/700.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

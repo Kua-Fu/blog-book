@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -216,13 +216,14 @@
 <p>给定一个具有静态类型的Java变量，我们还必须能够确定它在运行时候，持有哪种类型的值。当解释器执行+ 运算时候，它需要判断是两个数字的加法，还是两个字符串的连接。是否有一种Java类型，可以保存数字、字符串、布尔值等，有没有一个可以告知我们运行时候，是什么类型的Java类型，当然有，它就是Java中的 Object类型。</p>
 <p>In places in the interpreter where we need to store a Lox value, we can use Object as the type. Java has boxed versions of its primitive types that all subclass Object, so we can use those for Lox’s built-in types:</p>
 <p>在解释器中，需要保存Lox值的地方，我们可以使用Object当作类型，Java有其所有原始类型，对应的Object子类，因此，我们可以将它们当作Lox语言的内置类型。</p>
-<table><thead><tr><th>Lox Type</th><th>Java representation</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Lox Type</th><th>Java representation</th></tr></thead><tbody>
 <tr><td>Any Lox value</td><td>Object</td></tr>
 <tr><td>nil</td><td>null</td></tr>
 <tr><td>Boolean</td><td>Boolean</td></tr>
 <tr><td>number</td><td>double</td></tr>
 <tr><td>string</td><td>String</td></tr>
 </tbody></table>
+</div>
 <p>Given a value of static type Object, we can determine if the runtime value is a number or a string or whatever using Java’s built-in instanceof operator. In other words, the JVM’s own object representation conveniently gives us everything we need to implement Lox’s built-in types. We’ll have to do a little more work later when we add Lox’s notions of functions, classes, and instances, but Object and the boxed primitive classes are sufficient for the types we need right now.</p>
 <p>给定一个静态类型的对象，我们可以使用Java内置的 instanceof 操作符，来确定运行时候，该对象的值是数字、字符串还是其他什么。也就是说，JVM自己的对象表示，可以方便的为我们提供实现Lox 内置类型的一切。稍后，当我们添加Lox的函数、类、实例时候，我们将需要做更多的工作，但是，Object 和 封装的原始类，对于我们需要的类型已经足够了。</p>
 <blockquote>

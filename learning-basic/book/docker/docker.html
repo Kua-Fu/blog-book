@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -276,13 +276,14 @@ EXPOSE 3000
 
 </code></pre>
 <p>上面代码一共五行，含义如下。</p>
-<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody>
 <tr><td>FROM node:8.4</td><td>该 image 文件继承官方的 node image，冒号表示标签，这里标签是8.4，即8.4版本的 node</td></tr>
 <tr><td>COPY . /app</td><td>将当前目录下的所有文件（除了.dockerignore排除的路径），都拷贝进入 image 文件的/app目录。</td></tr>
 <tr><td>WORKDIR /app</td><td>指定接下来的工作路径为/app</td></tr>
 <tr><td>RUN npm install</td><td>在/app目录下，运行npm install命令安装依赖。注意，安装后所有的依赖，都将打包进入 image 文件。</td></tr>
 <tr><td>EXPOSE 3000</td><td>将容器 3000 端口暴露出来， 允许外部连接这个端口</td></tr>
 </tbody></table>
+</div>
 <h3 id="43-hello-world"><a class="header" href="#43-hello-world">4.3 hello world</a></h3>
 <p>首先，运行下面的命令，将 image 文件从仓库抓取到本地。</p>
 <p><code>docker image pull library/hello-world</code></p>
@@ -319,7 +320,7 @@ For more examples and ideas, visit:
 <p>输出这段提示以后，hello world就会停止运行，容器自动终止。</p>
 <p>有些容器不会自动终止，因为提供的是服务。比如，安装运行 Ubuntu 的 image，就可以在命令行体验 Ubuntu 系统。</p>
 <h3 id="43-基本命令"><a class="header" href="#43-基本命令">4.3 基本命令</a></h3>
-<table><thead><tr><th>命令</th><th>描述</th><th>示例</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>描述</th><th>示例</th></tr></thead><tbody>
 <tr><td>docker version / docker info</td><td>查看docker 版本信息</td><td></td></tr>
 <tr><td>systemctl start docker</td><td>启动 docker 服务</td><td></td></tr>
 <tr><td><strong>image</strong></td><td></td><td></td></tr>
@@ -333,7 +334,7 @@ For more examples and ideas, visit:
 <tr><td>docker container ls --all</td><td>列出本机所有容器，包括终止运行的容器</td><td></td></tr>
 <tr><td>docker container rm [containerID]</td><td>彻底删除容器文件</td><td></td></tr>
 </tbody></table>
-
+</div>
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 

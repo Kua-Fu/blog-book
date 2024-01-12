@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -173,7 +173,7 @@
 <p><a href="https://yeasy.gitbook.io/docker_practice/">docker——从入门到实践</a></p>
 </blockquote>
 <h2 id="二基本概念"><a class="header" href="#二基本概念">二、基本概念</a></h2>
-<table><thead><tr><th>序号</th><th>名称</th><th>说明</th><th>其他</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>名称</th><th>说明</th><th>其他</th></tr></thead><tbody>
 <tr><td>1</td><td><code>Image</code> 镜像</td><td>就相当于是一个 <code>root</code> 文件系统。比如官方镜像 <code>ubuntu:18.04</code> 就包含了完整的一套 <code>Ubuntu 18.04</code> 最小系统的 <code>root</code> 文件系统</td><td></td></tr>
 <tr><td>2</td><td><code>Container</code> 容器</td><td>镜像（<code>Image</code>）和容器（<code>Container</code>）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等</td><td></td></tr>
 <tr><td>3</td><td><code>Repository</code> 仓库</td><td>通常，一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。我们可以通过 &lt;仓库名&gt;:&lt;标签&gt; 的格式来指定具体是这个软件哪个版本的镜像。如果不给出标签，将以 <code>latest</code> 作为默认标签。</td><td></td></tr>
@@ -183,22 +183,24 @@
 <tr><td>7</td><td><code>dangling image</code> 虚悬镜像</td><td>镜像既没有仓库名，也没有标签，均为 <code>&lt;none&gt;</code></td><td></td></tr>
 <tr><td>8</td><td>中间层镜像</td><td>为了加速镜像构建、重复利用资源，Docker 会利用 中间层镜像。所以在使用一段时间后，可能会看到一些依赖的中间层镜像</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="三基本命令"><a class="header" href="#三基本命令">三、基本命令</a></h2>
-<table><thead><tr><th>序号</th><th>名称</th><th>说明</th><th>其他</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>名称</th><th>说明</th><th>其他</th></tr></thead><tbody>
 <tr><td>1</td><td><code>docker pull</code></td><td>获取镜像 <code>docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</code></td><td><code>docker pull ubuntu:18.04</code></td></tr>
 <tr><td>2</td><td><code>docker run -it --rm ubuntu:18.04 bash</code></td><td>有了镜像后，我们就能够以这个镜像为基础启动并运行一个容器。以上面的 <code>ubuntu:18.04</code> 为例，如果我们打算启动里面的 <code>bash</code> 并且进行交互式操作的话，可以执行下面的命令</td><td></td></tr>
 <tr><td>3</td><td><code>docker image ls</code></td><td>列出已经下载下来的镜像</td><td></td></tr>
 <tr><td>4</td><td><code>docker system df</code></td><td>查看镜像、容器、数据卷所占用的空间</td><td></td></tr>
 </tbody></table>
+</div>
 <h2 id="四运行容器"><a class="header" href="#四运行容器">四、运行容器</a></h2>
 <h3 id="41-docker-run"><a class="header" href="#41-docker-run">4.1 docker run</a></h3>
 <p><code>docker run -it --rm ubuntu:18.04 bash</code></p>
-<table><thead><tr><th>序号</th><th>参数</th><th>说明</th><th>其他</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>参数</th><th>说明</th><th>其他</th></tr></thead><tbody>
 <tr><td>1</td><td><code>-it</code></td><td>这是两个参数，一个是 <code>-i</code> 交互式操作，一个是 <code>-t</code> 终端</td><td></td></tr>
 <tr><td>2</td><td><code>--rm</code></td><td>这个参数是说容器退出后随之将其删除</td><td>默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 --rm 可以避免浪费空间</td></tr>
 <tr><td>3</td><td><code>bash</code></td><td>放在镜像名后的是 命令，这里我们希望有个交互式<code>Shell</code>，因此用的是 <code>bash</code></td><td></td></tr>
 </tbody></table>
-
+</div>
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 

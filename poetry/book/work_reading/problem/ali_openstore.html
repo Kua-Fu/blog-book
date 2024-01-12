@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="柴米油盐酱醋茶，琴棋书画诗酒花">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -182,28 +182,30 @@
 <p><a href="https://help.aliyun.com/document_detail/460080.html">analytic-search插件</a> 插件主要作用是，在写入时候，指定 sort fields，通过增加一定的写入消耗，增强某些查询性能。</p>
 <p>目前，我们是把 date 字段启用为 sort fields, 但是查询性能提升不是很明显。</p>
 <h2 id="15-小结"><a class="header" href="#15-小结">1.5 小结</a></h2>
-<table><thead><tr><th>序号</th><th>优点</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>优点</th></tr></thead><tbody>
 <tr><td>1</td><td>openstore的多级存储，保证了滚动出索引存储在对象存储，最大化降低存储成本</td></tr>
 <tr><td>2</td><td>IndexService 的写分离架构，保证了写入的低延迟和对于查询的更小影响</td></tr>
 <tr><td>3</td><td>aliyun-codec插件，更好的压缩性能，降低了存储成本，但是 lucene实际上也支持 zstd压缩算法，ES 目前也可以通过实现接口使用 zstd压缩算法</td></tr>
 </tbody></table>
-<table><thead><tr><th>序号</th><th>缺点</th></tr></thead><tbody>
+</div><div class="table-wrapper"><table><thead><tr><th>序号</th><th>缺点</th></tr></thead><tbody>
 <tr><td>1</td><td>当前我们多租户场景，集群索引会非常多，保存策略、索引模版、索引mapping管理不是很稳定，杭州节点经常出现模版创建超时</td></tr>
 <tr><td>2</td><td>IndexService的写入限流（集群维度 600M，分片维度 30M），会限制集群的写入性能, 或者限制不合理</td></tr>
 <tr><td>3</td><td>IndexService的写入分离，有时候会出现数据实际写入，但是查询不到问题</td></tr>
 </tbody></table>
+</div>
 <h2 id="二数据查询"><a class="header" href="#二数据查询">二、数据查询</a></h2>
 <h3 id="21-概述"><a class="header" href="#21-概述">2.1 概述</a></h3>
 <p>阿里云ES日志增强版本，查询主要还是基于原生ES的。使用过程中，当前我们遇到的问题主要还是，openstore下的冷节点，搜索性能不高（相比较热节点），当多个查询涉及同一个冷节点，经常会导致节点CPU 飙升，查询超时甚至节点崩溃重启。</p>
 <h3 id="22-小结"><a class="header" href="#22-小结">2.2 小结</a></h3>
-<table><thead><tr><th>序号</th><th>优点</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>优点</th></tr></thead><tbody>
 <tr><td>1</td><td>IndexService的读写分离架构，保证了大查询、慢查询对于写入性能的低影响</td></tr>
 <tr><td>2</td><td>阿里云ES内核中，存在一些查询优化，但是这一部分对于客户透明</td></tr>
 </tbody></table>
-<table><thead><tr><th>序号</th><th>缺点</th></tr></thead><tbody>
+</div><div class="table-wrapper"><table><thead><tr><th>序号</th><th>缺点</th></tr></thead><tbody>
 <tr><td>1</td><td>查询冷节点数据，速度慢</td></tr>
 <tr><td>2</td><td>冷数据节点可能由于多个慢查询，导致节点崩溃重启</td></tr>
 </tbody></table>
+</div>
 <h2 id="三运维"><a class="header" href="#三运维">三、运维</a></h2>
 <h3 id="31-资源管理"><a class="header" href="#31-资源管理">3.1 资源管理</a></h3>
 <p>当前使用阿里云ES，版本升级基本可以做到平滑升级，集群添加新节点、升级原有配置等都比较方便，但是，升配后无法降配</p>
@@ -213,12 +215,12 @@
 <p>使用阿里云ES，技术支持有保证。</p>
 <h2 id="四es原生问题"><a class="header" href="#四es原生问题">四、ES原生问题</a></h2>
 <p>针对我们的多租户场景，ES原生的架构有下面问题:</p>
-<table><thead><tr><th>序号</th><th>问题</th><th>描述</th><th>解决思路</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>问题</th><th>描述</th><th>解决思路</th></tr></thead><tbody>
 <tr><td>1</td><td>不支持超多分片</td><td>目前官方建议是单个节点1000个分片，我们的使用场景（单个工作空间，10多种数据类型，占用10多个分片），即使数据量不大，也可能导致集群性能瓶颈;</td><td>多集群</td></tr>
 <tr><td>2</td><td>单索引不支持超多字段</td><td>当前ES 单个索引建议1000个字段以内，当采集数据出现非常多字段，会触发严重的写入延迟</td><td></td></tr>
 <tr><td>3</td><td>单索引不支持字段类型变更</td><td>由于ES 每个索引都有固定的mapping(Scheme), 当前采集数据字段类型变更，会导致无法写入，只能滚动出新索引</td><td></td></tr>
 </tbody></table>
-
+</div>
 			<div id="bottom"> 
 			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 

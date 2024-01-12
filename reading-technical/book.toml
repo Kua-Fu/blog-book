@@ -16,3 +16,6 @@ enable = true
 
 [output.html.print]
 enable = false
+
+[preprocessor.katex]
+after = ["links"]

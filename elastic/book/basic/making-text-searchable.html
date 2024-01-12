@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -170,12 +170,13 @@
                         <h1 id="使文本可被搜索"><a class="header" href="#使文本可被搜索">使文本可被搜索</a></h1>
 <p>必须解决的第一个挑战是如何使文本可被搜索。 传统的数据库每个字段存储单个值，但这对全文检索并不够。文本字段中的每个单词需要被搜索，对数据库意味着需要单个字段有索引多值(这里指单词)的能力。</p>
 <p>最好的支持 一个字段多个值 需求的数据结构是我们在 倒排索引 章节中介绍过的 倒排索引 。 倒排索引包含一个有序列表，列表包含所有文档出现过的不重复个体，或称为 词项 ，对于每一个词项，包含了它所有曾出现过文档的列表。</p>
-<table><thead><tr><th>Term</th><th>Doc 1</th><th>Doc 2</th><th>Doc 3</th><th>...</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Term</th><th>Doc 1</th><th>Doc 2</th><th>Doc 3</th><th>...</th></tr></thead><tbody>
 <tr><td>brown</td><td>X</td><td></td><td>X</td><td>...</td></tr>
 <tr><td>fox</td><td>X</td><td>X</td><td>X</td><td>...</td></tr>
 <tr><td>quick</td><td>X</td><td>X</td><td></td><td>...</td></tr>
 <tr><td>the</td><td>X</td><td></td><td>X</td><td>...</td></tr>
 </tbody></table>
+</div>
 <blockquote>
 <p>🦉 <strong>Note</strong></p>
 <p>当讨论倒排索引时，我们会谈到 文档 标引，因为历史原因，倒排索引被用来对整个非结构化文本文档进行标引。 Elasticsearch 中的 文档 是有字段和值的结构化 JSON 文档。事实上，在 JSON 文档中， 每个被索引的字段都有自己的倒排索引。</p>

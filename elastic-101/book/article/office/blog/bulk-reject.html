@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,8 +208,7 @@
 </code></pre>
 <p>下面我们设计了一个简单的测试，测试bulk性能，测试工具是 <a href="https://github.com/elastic/rally">rally</a>，测试多个具有不同节点的集群。</p>
 <p>在三个不同配置的ES实例，我们会执行相同的bulk请求测试。三个ES实例，分别是1个节点、2个节点、3个节点，其中每个节点配置都是相同的（ 8GB 内存，4G设置为ES 堆内存，4G设置为节点内存）。可以通过接口<code>GET /_nodes/thread_pool</code> 接口查看</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span>
 <span class="boring">fn main() {
 </span>GET _nodes/thread_pool
@@ -926,8 +925,7 @@
 </span><span class="boring"> }
 </span><span class="boring">}
 </span>
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>During the test we indexed into a varying number of shards (2, 4, 8, 16, and 32) using a varying number of concurrent clients (8, 16, 24, 32, 48, and 64) for each cluster. For every combination of shard and client count we indexed 6.4 million documents with a batch size of 100 documents and another 6.4 million documents with a batch size of 200 documents. This means that in total we attempted to index 384 million documents per cluster.</p>
 <p>For this test we treat the clusters as a black box, and perform the analysis from the client’s perspective. To limit the scope we will also not look at the impact of various configurations on performance as that is a quite large topic on its own.</p>
 <p>在测试中，</p>

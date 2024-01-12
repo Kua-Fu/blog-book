@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -266,12 +266,13 @@ curl: (52) Empty reply from server
 
 [2023-03-04T15:13:22,198][WARN ][o.e.x.s.t.n.SecurityNetty4HttpServerTransport] [VM-12-11-centos] received plaintext http traffic on an https channel, closing connection Netty4HttpChannel{localAddress=/127.0.0.1:9200, remoteAddress=/127.0.0.1:50162}
 </code></pre>
-<table><thead><tr><th>序号</th><th>方法</th><th></th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>序号</th><th>方法</th><th></th></tr></thead><tbody>
 <tr><td>1</td><td>因为elasticsearch8.1 默认是开启tls 安全配置，所以，需要使用https 并且证书认证方式访问</td><td><code>curl --cacert /home/elasticsearch/es/elasticsearch-8.1.0/config/certs/http_ca.crt  -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; https://127.0.0.1:9200/</code></td></tr>
 <tr><td>2</td><td>可以使用curl -k 参数，忽略证书认证</td><td><code>curl -k -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; https://127.0.0.1:9200/</code></td></tr>
 <tr><td>3</td><td>修改配置，关闭https认证，使用账号、密码认证，即<code>xpack.security.http.ssl: enabled: false</code>, 详见下文</td><td><code>curl -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; http://127.0.0.1:9200/</code></td></tr>
 <tr><td>4</td><td>关闭所有的安全认证, 即<code>xpack.security.enabled: false</code></td><td><code>curl http://127.0.0.1:9200/</code></td></tr>
 </tbody></table>
+</div>
 <p>安全配置说明</p>
 <pre><code># Enable security features
 xpack.security.enabled: true # 表示是否开启xpack安全模块，如果设置为false，不需要https访问，也不需要账号密码基本认证

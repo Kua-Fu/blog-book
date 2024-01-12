@@ -23,14 +23,14 @@
 	})
 	</script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MMN1K84KRS');
-</script>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -608,20 +608,22 @@ void* reallocate(void* pointer, size_t oldSize, size_t newSize);
 <p>这个宏美化了对 reallocate() 函数的调用，实际的工作发生在这里。宏本身负责获取数组元素类型的大小并将结果 void* 强制转化为正确类型的指针。</p>
 <p>This reallocate() function is the single function we’ll use for all dynamic memory management in clox—allocating memory, freeing it, and changing the size of an existing allocation. Routing all of those operations through a single function will be important later when we add a garbage collector that needs to keep track of how much memory is in use.</p>
 <p>The two size arguments passed to reallocate() control which operation to perform:</p>
-<table><thead><tr><th>oldSize</th><th>newSize</th><th>Operation</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>oldSize</th><th>newSize</th><th>Operation</th></tr></thead><tbody>
 <tr><td>0</td><td>Non‑zero</td><td>Allocate new block.</td></tr>
 <tr><td>Non‑zero</td><td>0</td><td>Free allocation.</td></tr>
 <tr><td>Non‑zero</td><td>Smaller than oldSize</td><td>Shrink existing allocation.</td></tr>
 <tr><td>Non‑zero</td><td>Larger than oldSize</td><td>Grow existing allocation.</td></tr>
 </tbody></table>
+</div>
 <p>这个reallocate 函数是我们在clox 中用于所有动态内存管理的唯一函数——分配内存、释放它、更改现有分配的大小。将所有这些操作路由到一个函数中，在稍后添加需要跟踪使用多少内存的垃圾回收器时，将非常重要。</p>
 <p>传递给reallocate() 的两个参数控制将要执行的操作</p>
-<table><thead><tr><th>旧的size</th><th>新的size</th><th>操作</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>旧的size</th><th>新的size</th><th>操作</th></tr></thead><tbody>
 <tr><td>0</td><td>非0</td><td>分配新块</td></tr>
 <tr><td>非0</td><td>0</td><td>释放块</td></tr>
 <tr><td>非0</td><td>新的size &lt; 旧的size</td><td>缩小现有的分配</td></tr>
 <tr><td>非0</td><td>新的size &gt; 旧的size</td><td>增加现有分配</td></tr>
 </tbody></table>
+</div>
 <p>That sounds like a lot of cases to handle, but here’s the implementation:</p>
 <p>听起来，好像要处理很多的场景，但这是实现</p>
 <pre><code class="language-c">
