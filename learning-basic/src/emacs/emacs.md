@@ -85,3 +85,15 @@
 要查看特定窗口中使用的包，请先将光标移动到该窗口中，然后使用上述步骤查看它所使用的 mode 和加载的包。
 
 请注意，如果您使用了包管理器（如 ELPA 或 MELPA），则可以使用该管理器来列出和管理已安装的包，并查看当前正在使用的包。例如，使用“M-x package-list-packages”命令可以打开包管理器并列出所有可用的包，并且使用“M-x package-menu-quick-describe”命令可以查看特定包的描述和详细信息。
+
+
+## 6. lsp 模式，如何重新加载？
+
+在 Emacs 中，使用 LSP (Language Server Protocol) 模式的时候，如果需要重启 LSP Server，你可以按照以下步骤操作：
+
+1. 打开你正在使用 LSP 的文件
+
+2. 执行 `M-x lsp-restart-workspace` 命令。其中，`M-x` 代表调用 Emacs 的命令，`lsp-restart-workspace` 是重启 LSP 的命令。一般情况下，M 键（或者 Esc 键）和 x 键同时按下即可调用 `M-x`。
+
+这样就可以重启 LSP Server。如果你希望关闭 LSP Server，并且不再为当前的工作区启动，你可以使用 `M-x lsp-disconnect` 命令。
+
