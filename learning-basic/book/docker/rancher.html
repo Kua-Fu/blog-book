@@ -208,7 +208,7 @@ ERROR: Rancher must be ran with the --privileged flag when running outside of Ku
 
 </code></pre>
 <p>报错如上</p>
-<p>修改启动命令 </p>
+<p>修改启动命令</p>
 <pre><code>
 sudo docker run --privileged -d --restart=unless-stopped -p 10080:80 -p 10443:443 rancher/rancher:stable
 

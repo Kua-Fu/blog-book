@@ -171,41 +171,41 @@
 <h2 id="1-reindex"><a class="header" href="#1-reindex">1. reindex</a></h2>
 <p>(1) 把source index 的某个字段(该字段是数组）中的子项，去除前后空格</p>
 <p>(2) 增加一个字段，这个新的字段的值是 source index 的某两个字段的拼接</p>
-<p>解析: </p>
+<p>解析:</p>
 <p>主要考察 reindex with pipeline</p>
 <p>其中，数组遍历可以使用  foreach, 去除前后空格可以使用 trim, 字段拼接可以使用 script</p>
 <pre><code>
 POST _ingest/pipeline/_simulate
 {
-  &quot;pipeline&quot;: {
-    &quot;processors&quot;: [
+  "pipeline": {
+    "processors": [
       {
-        &quot;foreach&quot;: {
-          &quot;field&quot;: &quot;f3&quot;,
-          &quot;processor&quot;: {
-            &quot;trim&quot;: {
-              &quot;field&quot;: &quot;_ingest._value&quot;
+        "foreach": {
+          "field": "f3",
+          "processor": {
+            "trim": {
+              "field": "_ingest._value"
             }
           }
         }
       },
       {
-        &quot;script&quot;: {
-          &quot;lang&quot;: &quot;painless&quot;,
-          &quot;source&quot;: &quot;ctx['f4'] = ctx['f1'] + ctx['f2']&quot;
+        "script": {
+          "lang": "painless",
+          "source": "ctx['f4'] = ctx['f1'] + ctx['f2']"
         }
       }
     ]
   },
-  &quot;docs&quot;: [
+  "docs": [
     {
-      &quot;_index&quot;: &quot;yztest-1&quot;,
-      &quot;_source&quot;: {
-        &quot;f1&quot;: &quot;11&quot;,
-        &quot;f2&quot;: &quot;22&quot;,
-        &quot;f3&quot;: [
-          &quot; 1 &quot;,
-          &quot; 2 &quot;
+      "_index": "yztest-1",
+      "_source": {
+        "f1": "11",
+        "f2": "22",
+        "f3": [
+          " 1 ",
+          " 2 "
         ]
       }
     }
@@ -216,22 +216,22 @@ POST _ingest/pipeline/_simulate
 <p>(1) create pipeline</p>
 <pre><code>PUT _ingest/pipeline/yztest-pipeline-1
 {
-  &quot;description&quot;: &quot;pipeline 1&quot;,
-  &quot;processors&quot;: [
+  "description": "pipeline 1",
+  "processors": [
     {
-      &quot;foreach&quot;: {
-        &quot;field&quot;: &quot;f3&quot;,
-        &quot;processor&quot;: {
-          &quot;trim&quot;: {
-            &quot;field&quot;: &quot;_ingest._value&quot;
+      "foreach": {
+        "field": "f3",
+        "processor": {
+          "trim": {
+            "field": "_ingest._value"
           }
         }
       }
     },
     {
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;ctx['f4'] = ctx['f1'] + ctx['f2']&quot;
+      "script": {
+        "lang": "painless",
+        "source": "ctx['f4'] = ctx['f1'] + ctx['f2']"
       }
     }
   ]
@@ -243,11 +243,11 @@ PUT yztest-1
 
 POST yztest-1/_doc
 {
-  &quot;f1&quot;: &quot;11&quot;,
-  &quot;f2&quot;: &quot;22&quot;,
-  &quot;f3&quot;: [
-    &quot; 1 &quot;,
-    &quot; 2 &quot;
+  "f1": "11",
+  "f2": "22",
+  "f3": [
+    " 1 ",
+    " 2 "
   ]
 }
 
@@ -258,12 +258,12 @@ PUT yztest-1-dest
 <pre><code>
 POST _reindex
 {
-  &quot;source&quot;: {
-    &quot;index&quot;: &quot;yztest-1&quot;
+  "source": {
+    "index": "yztest-1"
   },
-  &quot;dest&quot;: {
-    &quot;index&quot;: &quot;yztest-1-dest&quot;,
-    &quot;pipeline&quot;: &quot;yztest-pipeline-1&quot;
+  "dest": {
+    "index": "yztest-1-dest",
+    "pipeline": "yztest-pipeline-1"
   }
 }
 </code></pre>

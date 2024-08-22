@@ -173,11 +173,11 @@
 <pre><code class="language-json">
 GET /megacorp/_search?pretty
 {
-  &quot;size&quot;: 0,
-  &quot;aggs&quot;: {
-    &quot;all_interests&quot;: {
-      &quot;terms&quot;: {
-        &quot;field&quot;: &quot;interests.keyword&quot;
+  "size": 0,
+  "aggs": {
+    "all_interests": {
+      "terms": {
+        "field": "interests.keyword"
       }
     }
   }
@@ -187,38 +187,38 @@ GET /megacorp/_search?pretty
 <p>暂时忽略掉语法，直接看看结果：</p>
 <pre><code class="language-json">
 {
-  &quot;took&quot;: 1,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 3,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 3,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: null,
-    &quot;hits&quot;: []
+    "max_score": null,
+    "hits": []
   },
-  &quot;aggregations&quot;: {
-    &quot;all_interests&quot;: {
-      &quot;doc_count_error_upper_bound&quot;: 0,
-      &quot;sum_other_doc_count&quot;: 0,
-      &quot;buckets&quot;: [
+  "aggregations": {
+    "all_interests": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
         {
-          &quot;key&quot;: &quot;music&quot;,
-          &quot;doc_count&quot;: 2
+          "key": "music",
+          "doc_count": 2
         },
         {
-          &quot;key&quot;: &quot;forestry&quot;,
-          &quot;doc_count&quot;: 1
+          "key": "forestry",
+          "doc_count": 1
         },
         {
-          &quot;key&quot;: &quot;sports&quot;,
-          &quot;doc_count&quot;: 1
+          "key": "sports",
+          "doc_count": 1
         }
       ]
     }
@@ -230,16 +230,16 @@ GET /megacorp/_search?pretty
 <pre><code class="language-json">
 GET /megacorp/_search
 {
-  &quot;size&quot;: 0,
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;last_name&quot;: &quot;smith&quot;
+  "size": 0,
+  "query": {
+    "match": {
+      "last_name": "smith"
     }
   },
-  &quot;aggs&quot;: {
-    &quot;all_interests&quot;: {
-      &quot;terms&quot;: {
-        &quot;field&quot;: &quot;interests.keyword&quot;
+  "aggs": {
+    "all_interests": {
+      "terms": {
+        "field": "interests.keyword"
       }
     }
   }
@@ -250,34 +250,34 @@ GET /megacorp/_search
 <p>all_interests 聚合已经变为只包含匹配查询的文档：</p>
 <pre><code class="language-json">
 {
-  &quot;took&quot;: 1,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 2,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 2,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: null,
-    &quot;hits&quot;: []
+    "max_score": null,
+    "hits": []
   },
-  &quot;aggregations&quot;: {
-    &quot;all_interests&quot;: {
-      &quot;doc_count_error_upper_bound&quot;: 0,
-      &quot;sum_other_doc_count&quot;: 0,
-      &quot;buckets&quot;: [
+  "aggregations": {
+    "all_interests": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
         {
-          &quot;key&quot;: &quot;music&quot;,
-          &quot;doc_count&quot;: 2
+          "key": "music",
+          "doc_count": 2
         },
         {
-          &quot;key&quot;: &quot;sports&quot;,
-          &quot;doc_count&quot;: 1
+          "key": "sports",
+          "doc_count": 1
         }
       ]
     }
@@ -290,16 +290,16 @@ GET /megacorp/_search
 <pre><code class="language-json">
 GET /megacorp/_search
 {
-  &quot;size&quot;: 0, 
-  &quot;aggs&quot;: {
-    &quot;all_interests&quot;: {
-      &quot;terms&quot;: {
-        &quot;field&quot;: &quot;interests.keyword&quot;
+  "size": 0, 
+  "aggs": {
+    "all_interests": {
+      "terms": {
+        "field": "interests.keyword"
       },
-      &quot;aggs&quot;: {
-        &quot;avg_age&quot;: {
-          &quot;avg&quot;: {
-            &quot;field&quot;: &quot;age&quot;
+      "aggs": {
+        "avg_age": {
+          "avg": {
+            "field": "age"
           }
         }
       }
@@ -311,46 +311,46 @@ GET /megacorp/_search
 <p>得到的聚合结果有点儿复杂，但理解起来还是很简单的：</p>
 <pre><code class="language-json">
 {
-  &quot;took&quot;: 0,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "took": 0,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 3,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 3,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: null,
-    &quot;hits&quot;: []
+    "max_score": null,
+    "hits": []
   },
-  &quot;aggregations&quot;: {
-    &quot;all_interests&quot;: {
-      &quot;doc_count_error_upper_bound&quot;: 0,
-      &quot;sum_other_doc_count&quot;: 0,
-      &quot;buckets&quot;: [
+  "aggregations": {
+    "all_interests": {
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
         {
-          &quot;key&quot;: &quot;music&quot;,
-          &quot;doc_count&quot;: 2,
-          &quot;avg_age&quot;: {
-            &quot;value&quot;: 28.5
+          "key": "music",
+          "doc_count": 2,
+          "avg_age": {
+            "value": 28.5
           }
         },
         {
-          &quot;key&quot;: &quot;forestry&quot;,
-          &quot;doc_count&quot;: 1,
-          &quot;avg_age&quot;: {
-            &quot;value&quot;: 35
+          "key": "forestry",
+          "doc_count": 1,
+          "avg_age": {
+            "value": 35
           }
         },
         {
-          &quot;key&quot;: &quot;sports&quot;,
-          &quot;doc_count&quot;: 1,
-          &quot;avg_age&quot;: {
-            &quot;value&quot;: 25
+          "key": "sports",
+          "doc_count": 1,
+          "avg_age": {
+            "value": 25
           }
         }
       ]

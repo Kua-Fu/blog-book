@@ -193,29 +193,29 @@ PUT /website/blog/123/_create
 <pre><code class="language-json">
 POST /website/_doc/123?op_type=create
 {
-  &quot;title&quot;: &quot;My first blog entry&quot;,
-  &quot;text&quot;: &quot;I am starting to get the hang of this...&quot;,
-  &quot;date&quot;: &quot;2014/01/02&quot;
+  "title": "My first blog entry",
+  "text": "I am starting to get the hang of this...",
+  "date": "2014/01/02"
 }
 
 {
-  &quot;error&quot;: {
-    &quot;root_cause&quot;: [
+  "error": {
+    "root_cause": [
       {
-        &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
-        &quot;reason&quot;: &quot;[123]: version conflict, document already exists (current version [2])&quot;,
-        &quot;index_uuid&quot;: &quot;SjLz7UQ6Q0WbQWLXRl-KeQ&quot;,
-        &quot;shard&quot;: &quot;0&quot;,
-        &quot;index&quot;: &quot;website&quot;
+        "type": "version_conflict_engine_exception",
+        "reason": "[123]: version conflict, document already exists (current version [2])",
+        "index_uuid": "SjLz7UQ6Q0WbQWLXRl-KeQ",
+        "shard": "0",
+        "index": "website"
       }
     ],
-    &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
-    &quot;reason&quot;: &quot;[123]: version conflict, document already exists (current version [2])&quot;,
-    &quot;index_uuid&quot;: &quot;SjLz7UQ6Q0WbQWLXRl-KeQ&quot;,
-    &quot;shard&quot;: &quot;0&quot;,
-    &quot;index&quot;: &quot;website&quot;
+    "type": "version_conflict_engine_exception",
+    "reason": "[123]: version conflict, document already exists (current version [2])",
+    "index_uuid": "SjLz7UQ6Q0WbQWLXRl-KeQ",
+    "shard": "0",
+    "index": "website"
   },
-  &quot;status&quot;: 409
+  "status": 409
 }
 
 </code></pre>

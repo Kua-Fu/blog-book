@@ -238,15 +238,15 @@ clean:
 // .vscode/task.json
 
 {
-    &quot;version&quot;: &quot;2.0.0&quot;,
-    &quot;tasks&quot;: [
+    "version": "2.0.0",
+    "tasks": [
         {
-            &quot;label&quot;: &quot;build&quot;,
-            &quot;type&quot;: &quot;shell&quot;,
-            &quot;command&quot;: &quot;make&quot;,
-            &quot;group&quot;: {
-                &quot;kind&quot;: &quot;build&quot;,
-                &quot;isDefault&quot;: true
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
             }
         }
     ]
@@ -260,7 +260,7 @@ clean:
 
 * command 值为 make，表示执行make
 
-* 可以添加一个 &quot;problemMatcher&quot;: &quot;$gcc&quot; 表示如何查看make执行过程
+* 可以添加一个 "problemMatcher": "$gcc" 表示如何查看make执行过程
 </code></pre>
 <h3 id="32-创建launch"><a class="header" href="#32-创建launch">3.2 创建launch</a></h3>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/vscode/c_launch.png?raw=true" alt="launch" /></p>
@@ -268,25 +268,25 @@ clean:
 // .vscode/lanuch.json
 
 {
-    &quot;version&quot;: &quot;0.2.0&quot;,
-    &quot;configurations&quot;: [
+    "version": "0.2.0",
+    "configurations": [
         {
-            &quot;name&quot;: &quot;(gdb) Launch&quot;,
-            &quot;type&quot;: &quot;cppdbg&quot;,
-            &quot;request&quot;: &quot;launch&quot;,
-            &quot;preLaunchTask&quot;: &quot;build&quot;,
-            &quot;program&quot;: &quot;${workspaceFolder}/bin/clox&quot;,
-            &quot;args&quot;: [],
-            &quot;stopAtEntry&quot;: false,
-            &quot;cwd&quot;: &quot;${workspaceFolder}&quot;,
-            &quot;environment&quot;: [],
-            &quot;externalConsole&quot;: false,
-            &quot;MIMode&quot;: &quot;lldb&quot;,
-            &quot;setupCommands&quot;: [
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/clox",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
                 {
-                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,
-                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,
-                    &quot;ignoreFailures&quot;: true
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
                 }
             ]
         }

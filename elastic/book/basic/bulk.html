@@ -206,99 +206,99 @@
 <p>metadata 应该指定被索引、创建、更新或者删除的文档的 _index 、 _type 和 _id 。</p>
 <p>例如，一个 delete 请求看起来是这样的：</p>
 <pre><code class="language-json">
-{ &quot;delete&quot;: { &quot;_index&quot;: &quot;website&quot;, &quot;_type&quot;: &quot;blog&quot;, &quot;_id&quot;: &quot;123&quot; }}
+{ "delete": { "_index": "website", "_type": "blog", "_id": "123" }}
 
 </code></pre>
 <p>request body 行由文档的 _source 本身组成—​文档包含的字段和值。它是 index 和 create 操作所必需的，这是有道理的：你必须提供文档以索引。</p>
 <p>它也是 update 操作所必需的，并且应该包含你传递给 update API 的相同请求体： doc 、 upsert 、 script 等等。 删除操作不需要 request body 行。</p>
 <pre><code class="language-json">
-{ &quot;create&quot;:  { &quot;_index&quot;: &quot;website&quot;, &quot;_type&quot;: &quot;blog&quot;, &quot;_id&quot;: &quot;123&quot; }}
-{ &quot;title&quot;:    &quot;My first blog post&quot; }
+{ "create":  { "_index": "website", "_type": "blog", "_id": "123" }}
+{ "title":    "My first blog post" }
 
 </code></pre>
 <p>如果不指定 _id ，将会自动生成一个 ID ：</p>
 <pre><code class="language-json">
-{ &quot;index&quot;: { &quot;_index&quot;: &quot;website&quot;, &quot;_type&quot;: &quot;blog&quot; }}
-{ &quot;title&quot;:    &quot;My second blog post&quot; }
+{ "index": { "_index": "website", "_type": "blog" }}
+{ "title":    "My second blog post" }
 
 </code></pre>
 <p>为了把所有的操作组合在一起，一个完整的 bulk 请求 有以下形式:</p>
 <pre><code class="language-json">
 POST /_bulk
-{&quot;delete&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}} 0️⃣
-{&quot;create&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
-{&quot;title&quot;:&quot;My first blog post&quot;}
-{&quot;index&quot;:{&quot;_index&quot;:&quot;website&quot;}}
-{&quot;title&quot;:&quot;My second blog post&quot;}
-{&quot;update&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
-{&quot;doc&quot;:{&quot;title&quot;:&quot;My updated blog post&quot;}} 1️⃣
+{"delete":{"_index":"website","_id":"123"}} 0️⃣
+{"create":{"_index":"website","_id":"123"}}
+{"title":"My first blog post"}
+{"index":{"_index":"website"}}
+{"title":"My second blog post"}
+{"update":{"_index":"website","_id":"123"}}
+{"doc":{"title":"My updated blog post"}} 1️⃣
 
 {
-  &quot;took&quot;: 4,
-  &quot;errors&quot;: false, 2️⃣
-  &quot;items&quot;: [
+  "took": 4,
+  "errors": false, 2️⃣
+  "items": [
     {
-      &quot;delete&quot;: {
-        &quot;_index&quot;: &quot;website&quot;,
-        &quot;_id&quot;: &quot;123&quot;,
-        &quot;_version&quot;: 1,
-        &quot;result&quot;: &quot;not_found&quot;,
-        &quot;_shards&quot;: {
-          &quot;total&quot;: 2,
-          &quot;successful&quot;: 2,
-          &quot;failed&quot;: 0
+      "delete": {
+        "_index": "website",
+        "_id": "123",
+        "_version": 1,
+        "result": "not_found",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
         },
-        &quot;_seq_no&quot;: 14,
-        &quot;_primary_term&quot;: 1,
-        &quot;status&quot;: 404
+        "_seq_no": 14,
+        "_primary_term": 1,
+        "status": 404
       }
     },
     {
-      &quot;create&quot;: {
-        &quot;_index&quot;: &quot;website&quot;,
-        &quot;_id&quot;: &quot;123&quot;,
-        &quot;_version&quot;: 2,
-        &quot;result&quot;: &quot;created&quot;,
-        &quot;_shards&quot;: {
-          &quot;total&quot;: 2,
-          &quot;successful&quot;: 2,
-          &quot;failed&quot;: 0
+      "create": {
+        "_index": "website",
+        "_id": "123",
+        "_version": 2,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
         },
-        &quot;_seq_no&quot;: 15,
-        &quot;_primary_term&quot;: 1,
-        &quot;status&quot;: 201
+        "_seq_no": 15,
+        "_primary_term": 1,
+        "status": 201
       }
     },
     {
-      &quot;index&quot;: {
-        &quot;_index&quot;: &quot;website&quot;,
-        &quot;_id&quot;: &quot;SNmg8IEBZEeCE-yERbMi&quot;,
-        &quot;_version&quot;: 1,
-        &quot;result&quot;: &quot;created&quot;,
-        &quot;_shards&quot;: {
-          &quot;total&quot;: 2,
-          &quot;successful&quot;: 2,
-          &quot;failed&quot;: 0
+      "index": {
+        "_index": "website",
+        "_id": "SNmg8IEBZEeCE-yERbMi",
+        "_version": 1,
+        "result": "created",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
         },
-        &quot;_seq_no&quot;: 16,
-        &quot;_primary_term&quot;: 1,
-        &quot;status&quot;: 201
+        "_seq_no": 16,
+        "_primary_term": 1,
+        "status": 201
       }
     },
     {
-      &quot;update&quot;: {
-        &quot;_index&quot;: &quot;website&quot;,
-        &quot;_id&quot;: &quot;123&quot;,
-        &quot;_version&quot;: 3,
-        &quot;result&quot;: &quot;updated&quot;,
-        &quot;_shards&quot;: {
-          &quot;total&quot;: 2,
-          &quot;successful&quot;: 2,
-          &quot;failed&quot;: 0
+      "update": {
+        "_index": "website",
+        "_id": "123",
+        "_version": 3,
+        "result": "updated",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
         },
-        &quot;_seq_no&quot;: 17,
-        &quot;_primary_term&quot;: 1,
-        &quot;status&quot;: 200
+        "_seq_no": 17,
+        "_primary_term": 1,
+        "status": 200
       }
     }
   ]
@@ -312,43 +312,43 @@ POST /_bulk
 <p>每个子请求都是独立执行，因此某个子请求的失败不会对其他子请求的成功与否造成影响。 如果其中任何子请求失败，最顶层的 error 标志被设置为 true ，并且在相应的请求报告出错误明细：</p>
 <pre><code class="language-json">
 POST /_bulk
-{&quot;create&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
-{&quot;title&quot;:&quot;Cannot create - it already exists&quot;}
-{&quot;index&quot;:{&quot;_index&quot;:&quot;website&quot;,&quot;_id&quot;:&quot;123&quot;}}
-{&quot;title&quot;:&quot;But we can update it&quot;}
+{"create":{"_index":"website","_id":"123"}}
+{"title":"Cannot create - it already exists"}
+{"index":{"_index":"website","_id":"123"}}
+{"title":"But we can update it"}
 
 {
-  &quot;took&quot;: 2,
-  &quot;errors&quot;: true, 0️⃣ 
-  &quot;items&quot;: [
+  "took": 2,
+  "errors": true, 0️⃣ 
+  "items": [
     {
-      &quot;create&quot;: {
-        &quot;_index&quot;: &quot;website&quot;,
-        &quot;_id&quot;: &quot;123&quot;,
-        &quot;status&quot;: 409, 1️⃣
-        &quot;error&quot;: { 2️⃣
-          &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
-          &quot;reason&quot;: &quot;[123]: version conflict, document already exists (current version [3])&quot;,
-          &quot;index_uuid&quot;: &quot;SjLz7UQ6Q0WbQWLXRl-KeQ&quot;,
-          &quot;shard&quot;: &quot;0&quot;,
-          &quot;index&quot;: &quot;website&quot;
+      "create": {
+        "_index": "website",
+        "_id": "123",
+        "status": 409, 1️⃣
+        "error": { 2️⃣
+          "type": "version_conflict_engine_exception",
+          "reason": "[123]: version conflict, document already exists (current version [3])",
+          "index_uuid": "SjLz7UQ6Q0WbQWLXRl-KeQ",
+          "shard": "0",
+          "index": "website"
         }
       }
     },
     {
-      &quot;index&quot;: {
-        &quot;_index&quot;: &quot;website&quot;,
-        &quot;_id&quot;: &quot;123&quot;,
-        &quot;_version&quot;: 4,
-        &quot;result&quot;: &quot;updated&quot;,
-        &quot;_shards&quot;: {
-          &quot;total&quot;: 2,
-          &quot;successful&quot;: 2,
-          &quot;failed&quot;: 0
+      "index": {
+        "_index": "website",
+        "_id": "123",
+        "_version": 4,
+        "result": "updated",
+        "_shards": {
+          "total": 2,
+          "successful": 2,
+          "failed": 0
         },
-        &quot;_seq_no&quot;: 18,
-        &quot;_primary_term&quot;: 1,
-        &quot;status&quot;: 200 3️⃣
+        "_seq_no": 18,
+        "_primary_term": 1,
+        "status": 200 3️⃣
       }
     }
   ]
@@ -365,17 +365,17 @@ POST /_bulk
 <p>也许你正在批量索引日志数据到相同的 index 和 type 中。 但为每一个文档指定相同的元数据是一种浪费。相反，可以像 mget API 一样，在 bulk 请求的 URL 中接收默认的 /_index 或者 /_index/_type ：</p>
 <pre><code class="language-json">
 POST /website/_bulk
-{ &quot;index&quot;: { &quot;_type&quot;: &quot;log&quot; }}
-{ &quot;event&quot;: &quot;User logged in&quot; }
+{ "index": { "_type": "log" }}
+{ "event": "User logged in" }
 
 </code></pre>
 <p>你仍然可以覆盖元数据行中的 _index 和 _type , 但是它将使用 URL 中的这些元数据值作为默认值：</p>
 <pre><code class="language-json">
 POST /website/log/_bulk
-{ &quot;index&quot;: {}}
-{ &quot;event&quot;: &quot;User logged in&quot; }
-{ &quot;index&quot;: { &quot;_type&quot;: &quot;blog&quot; }}
-{ &quot;title&quot;: &quot;Overriding the default type&quot; }
+{ "index": {}}
+{ "event": "User logged in" }
+{ "index": { "_type": "blog" }}
+{ "title": "Overriding the default type" }
 
 </code></pre>
 <h2 id="多大是太大了"><a class="header" href="#多大是太大了">多大是太大了？</a></h2>

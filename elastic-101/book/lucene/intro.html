@@ -285,7 +285,7 @@
 <h3 id="5-2012年发布-40"><a class="header" href="#5-2012年发布-40">（5） 2012年，发布 4.0</a></h3>
 <ul>
 <li>
-<p>是一个&quot;革命性&quot;版本，让lucene 进入严肃分析领域，(1) 添加编码/解码器; (2) 新增相似性分析模型(BM25, DFR)</p>
+<p>是一个"革命性"版本，让lucene 进入严肃分析领域，(1) 添加编码/解码器; (2) 新增相似性分析模型(BM25, DFR)</p>
 </li>
 <li>
 <p>2012年2月9日，Elastic公司成立</p>
@@ -375,11 +375,11 @@
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lsm-5.png?raw=true" alt="lsm" /></p>
 <p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/translog.html">持久化变更</a></p>
 <h3 id="24-索引文件"><a class="header" href="#24-索引文件">2.4 索引文件</a></h3>
-<p>下面是<a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html">lucene9.3.0</a> 中的索引文件 </p>
+<p>下面是<a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/package-summary.html">lucene9.3.0</a> 中的索引文件</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic-101/lucene/lucene-file-format.png?raw=true" alt="file" /></p>
 <div class="table-wrapper"><table><thead><tr><th>序号</th><th>文件后缀</th><th>描述说明</th><th>示例</th></tr></thead><tbody>
-<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90CompoundFormat.html">.cfs</a></td><td>An optional &quot;virtual&quot; file consisting of all the other index files for systems that frequently run out of file handles.</td><td></td></tr>
-<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90CompoundFormat.html">.cfe</a></td><td>The &quot;virtual&quot; compound file's entry table holding all entries in the corresponding .cfs file.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90CompoundFormat.html">.cfs</a></td><td>An optional "virtual" file consisting of all the other index files for systems that frequently run out of file handles.</td><td></td></tr>
+<tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90CompoundFormat.html">.cfe</a></td><td>The "virtual" compound file's entry table holding all entries in the corresponding .cfs file.</td><td></td></tr>
 <tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90PostingsFormat.html">.doc</a></td><td>Frequencies and Skip Data</td><td></td></tr>
 <tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90DocValuesFormat.html">.dvd</a></td><td>DocValues data</td><td></td></tr>
 <tr><td></td><td><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/lucene90/Lucene90DocValuesFormat.html">.dvm</a></td><td>DocValues metadata</td><td></td></tr>
@@ -407,7 +407,7 @@
 <div class="table-wrapper"><table><thead><tr><th>Name</th><th>Extension</th><th>Brief Description</th></tr></thead><tbody>
 <tr><td>Segments File</td><td>segments.gen, segments_N</td><td>Stores information about segments</td></tr>
 <tr><td>Lock File</td><td>write.lock</td><td>The Write lock prevents multiple IndexWriters from writing to the same file.</td></tr>
-<tr><td>Compound File</td><td>.cfs</td><td>An optional &quot;virtual&quot; file consisting of all the other index files for systems that frequently run out of file handles.</td></tr>
+<tr><td>Compound File</td><td>.cfs</td><td>An optional "virtual" file consisting of all the other index files for systems that frequently run out of file handles.</td></tr>
 <tr><td>Fields</td><td>.fnm</td><td>Stores information about the fields</td></tr>
 <tr><td>Field Index</td><td>.fdx</td><td>Contains pointers to field data</td></tr>
 <tr><td>Field Data</td><td>.fdt</td><td>The stored fields for documents</td></tr>
@@ -456,12 +456,12 @@
 <p>c. 字段长度准则</p>
 <p>字段的长度是多少？长度越长，相关性越低。 检索词出现在一个短的 title 要比同样的词出现在一个长的 content 字段权重更大。</p>
 <p>具体的计算公式 : <a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html">TFIDFSimilarity</a></p>
-<p>(2) BM25 </p>
+<p>(2) BM25</p>
 <p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/pluggable-similarites.html">可插拔的相似度算法</a></p>
 <p>具体实现方式: <a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/search/similarities/BM25Similarity.html">BM25Similarity</a></p>
 <h2 id="四更多内容"><a class="header" href="#四更多内容">四、更多内容</a></h2>
 <h3 id="41-lucene中的编码解码如何实现的"><a class="header" href="#41-lucene中的编码解码如何实现的">4.1 lucene中的编码/解码如何实现的?</a></h3>
-<p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/package-summary.html">Codec</a> </p>
+<p><a href="https://lucene.apache.org/core/9_3_0/core/org/apache/lucene/codecs/package-summary.html">Codec</a></p>
 <p>Codecs API: API for customization of the encoding and structure of the index.</p>
 <p><a href="https://help.aliyun.com/document_detail/363036.html">使用aliyun-codec插件</a></p>
 <h3 id="42-lucene中的存储类型"><a class="header" href="#42-lucene中的存储类型">4.2 lucene中的存储类型?</a></h3>

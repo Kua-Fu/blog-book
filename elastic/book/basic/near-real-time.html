@@ -195,8 +195,8 @@ POST /blogs/_refresh 1️⃣
 <pre><code class="language-json">
 PUT /my_logs
 {
-  &quot;settings&quot;: {
-    &quot;refresh_interval&quot;: &quot;30s&quot; 0️⃣
+  "settings": {
+    "refresh_interval": "30s" 0️⃣
   }
 }
 
@@ -205,10 +205,10 @@ PUT /my_logs
 <p>refresh_interval 可以在既存索引上进行动态更新。 在生产环境中，当你正在建立一个大的新索引时，可以先关闭自动刷新，待开始使用该索引时，再把它们调回来：</p>
 <pre><code class="language-json">
 PUT /my_logs/_settings
-{ &quot;refresh_interval&quot;: -1 } 0️⃣
+{ "refresh_interval": -1 } 0️⃣
 
 PUT /my_logs/_settings
-{ &quot;refresh_interval&quot;: &quot;1s&quot; } 1️⃣
+{ "refresh_interval": "1s" } 1️⃣
 
 </code></pre>
 <p>0️⃣ 关闭自动刷新</p>

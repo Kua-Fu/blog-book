@@ -180,45 +180,45 @@
 <pre><code>
 PUT _ilm/policy/yz-data-stream-policy
 {
-  &quot;policy&quot;: {
-    &quot;phases&quot;: {
-      &quot;hot&quot;: {
-        &quot;actions&quot;: {
-          &quot;set_priority&quot;: {
-            &quot;priority&quot;: 100
+  "policy": {
+    "phases": {
+      "hot": {
+        "actions": {
+          "set_priority": {
+            "priority": 100
           },
-          &quot;rollover&quot;: {
-            &quot;max_docs&quot;: 1000,
-            &quot;max_size&quot;: &quot;5gb&quot;
+          "rollover": {
+            "max_docs": 1000,
+            "max_size": "5gb"
           }
         }
       },
-      &quot;warm&quot;: {
-        &quot;min_age&quot;: &quot;0ms&quot;,
-        &quot;actions&quot;: {
-          &quot;set_priority&quot;: {
-            &quot;priority&quot;: 50
+      "warm": {
+        "min_age": "0ms",
+        "actions": {
+          "set_priority": {
+            "priority": 50
           },
-          &quot;shrink&quot;: {
-            &quot;number_of_shards&quot;: 1
+          "shrink": {
+            "number_of_shards": 1
           },
-          &quot;forcemerge&quot;: {
-            &quot;max_num_segments&quot;: 1
+          "forcemerge": {
+            "max_num_segments": 1
           }
         }
       },
-      &quot;cold&quot;: {
-        &quot;min_age&quot;: &quot;3d&quot;,
-        &quot;actions&quot;: {
-          &quot;set_priority&quot;: {
-            &quot;priority&quot;: 0
+      "cold": {
+        "min_age": "3d",
+        "actions": {
+          "set_priority": {
+            "priority": 0
           }
         }
       },
-      &quot;delete&quot;: {
-        &quot;min_age&quot;: &quot;7d&quot;,
-        &quot;actions&quot;: {
-          &quot;delete&quot;: {}
+      "delete": {
+        "min_age": "7d",
+        "actions": {
+          "delete": {}
         }
       }
     }
@@ -231,15 +231,15 @@ PUT _ilm/policy/yz-data-stream-policy
 <pre><code>
 PUT _component_template/yz-data-stream-mappings
 {
-  &quot;template&quot;: {
-    &quot;mappings&quot;: {
-      &quot;properties&quot;: {
-        &quot;@timestamp&quot;: {
-          &quot;type&quot;: &quot;date&quot;,
-          &quot;format&quot;: &quot;date_optional_time||epoch_millis&quot;
+  "template": {
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date",
+          "format": "date_optional_time||epoch_millis"
         },
-        &quot;message&quot;: {
-          &quot;type&quot;: &quot;text&quot;
+        "message": {
+          "type": "text"
         }
       }
     }
@@ -249,9 +249,9 @@ PUT _component_template/yz-data-stream-mappings
 
 PUT _component_template/yz-data-stream-settings
 {
-  &quot;template&quot;: {
-    &quot;settings&quot;: {
-      &quot;index.lifecycle.name&quot;: &quot;yz-data-stream-policy&quot;
+  "template": {
+    "settings": {
+      "index.lifecycle.name": "yz-data-stream-policy"
     }
   }
 }
@@ -259,10 +259,10 @@ PUT _component_template/yz-data-stream-settings
 
 PUT _index_template/yz-data-stream-template
 {
-  &quot;index_patterns&quot;: [&quot;yz-data-stream*&quot;],
-  &quot;data_stream&quot;: {},
-  &quot;composed_of&quot;: [&quot;yz-data-stream-mappings&quot;, &quot;yz-data-stream-settings&quot;],
-  &quot;priority&quot;: 100
+  "index_patterns": ["yz-data-stream*"],
+  "data_stream": {},
+  "composed_of": ["yz-data-stream-mappings", "yz-data-stream-settings"],
+  "priority": 100
 }
 
 
@@ -271,27 +271,27 @@ PUT _index_template/yz-data-stream-template
 <h3 id="23-创建索引"><a class="header" href="#23-创建索引">2.3 创建索引</a></h3>
 <pre><code>
 PUT yz-data-stream/_bulk
-{&quot;create&quot;: {}}
-{&quot;@timestamp&quot;: &quot;2099-05-06T16:21:15.000Z&quot;, &quot;message&quot;: &quot;192.0.2.42 - - [06/May/2099:16:21:15 +0000] \&quot;GET /images/bg.jpg HTTP/1.0\&quot; 200 24736&quot;}
+{"create": {}}
+{"@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736"}
 
 {
-  &quot;took&quot; : 5926,
-  &quot;errors&quot; : false,
-  &quot;items&quot; : [
+  "took" : 5926,
+  "errors" : false,
+  "items" : [
     {
-      &quot;create&quot; : {
-        &quot;_index&quot; : &quot;.ds-yz-data-stream-2023.03.08-000001&quot;,
-        &quot;_id&quot; : &quot;x7HCv4YBU9rsD44rrpfD&quot;,
-        &quot;_version&quot; : 1,
-        &quot;result&quot; : &quot;created&quot;,
-        &quot;_shards&quot; : {
-          &quot;total&quot; : 2,
-          &quot;successful&quot; : 1,
-          &quot;failed&quot; : 0
+      "create" : {
+        "_index" : ".ds-yz-data-stream-2023.03.08-000001",
+        "_id" : "x7HCv4YBU9rsD44rrpfD",
+        "_version" : 1,
+        "result" : "created",
+        "_shards" : {
+          "total" : 2,
+          "successful" : 1,
+          "failed" : 0
         },
-        &quot;_seq_no&quot; : 0,
-        &quot;_primary_term&quot; : 1,
-        &quot;status&quot; : 201
+        "_seq_no" : 0,
+        "_primary_term" : 1,
+        "status" : 201
       }
     }
   ]

@@ -182,16 +182,16 @@
 <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/8.1/docs-update-by-query.html">Update By Query</a></p>
 </blockquote>
 <h2 id="二场景"><a class="header" href="#二场景">二、场景</a></h2>
-<p>现在，我们有一个索引，保存着对于某个电影的评分，其中字段 grade 表示评分，范围是 1-10, 现在，我们希望添加一个新字段 evaluation， 表示对于该电影的评价，其中可选值为 </p>
+<p>现在，我们有一个索引，保存着对于某个电影的评分，其中字段 grade 表示评分，范围是 1-10, 现在，我们希望添加一个新字段 evaluation， 表示对于该电影的评价，其中可选值为</p>
 <p>good [8, 10]</p>
 <p>bad [1, 5)</p>
 <p>common [5, 8)</p>
 <pre><code>PUT test-runtime
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;grade&quot;: {
-        &quot;type&quot;: &quot;integer&quot;
+  "mappings": {
+    "properties": {
+      "grade": {
+        "type": "integer"
       }
     }
   }
@@ -199,33 +199,33 @@
  
  
 POST test-runtime/_bulk
-{&quot;index&quot;:{&quot;_id&quot;:1}}
-{&quot;grade&quot;:1}
-{&quot;index&quot;:{&quot;_id&quot;:2}}
-{&quot;grade&quot;:10}
-{&quot;index&quot;:{&quot;_id&quot;:3}}
-{&quot;grade&quot;:5}
-{&quot;index&quot;:{&quot;_id&quot;:4}}
-{&quot;grade&quot;:7}
+{"index":{"_id":1}}
+{"grade":1}
+{"index":{"_id":2}}
+{"grade":10}
+{"index":{"_id":3}}
+{"grade":5}
+{"index":{"_id":4}}
+{"grade":7}
 </code></pre>
 <h2 id="三使用管道实现"><a class="header" href="#三使用管道实现">三、使用管道实现</a></h2>
 <h3 id="31-创建管道"><a class="header" href="#31-创建管道">3.1 创建管道</a></h3>
 <pre><code>
 PUT _ingest/pipeline/test-runtime-pipeline
 {
-  &quot;processors&quot;: [
+  "processors": [
     {
-      &quot;script&quot;: {
-        &quot;description&quot;: &quot;add new field, evaluation&quot;,
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;
+      "script": {
+        "description": "add new field, evaluation",
+        "lang": "painless",
+        "source": """
         if (ctx['grade'] &gt;= 1 &amp;&amp; ctx['grade'] &lt; 5)
           ctx['evaluation'] = 'bad';
         if (ctx['grade'] &gt;= 5 &amp;&amp; ctx['grade'] &lt; 8)
           ctx['evaluation'] = 'common';
         if (ctx['grade'] &gt;= 8 &amp;&amp; ctx['grade'] &lt;= 10)
           ctx['evaluation'] = 'good';
-        &quot;&quot;&quot;
+        """
       }
     }
   ]
@@ -235,8 +235,8 @@ PUT _ingest/pipeline/test-runtime-pipeline
 <pre><code>
 POST test-runtime/_update_by_query?pipeline=test-runtime-pipeline
 {
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "query": {
+    "match_all": {}
   }
 }
 
@@ -246,55 +246,55 @@ POST test-runtime/_update_by_query?pipeline=test-runtime-pipeline
 GET test-runtime/_search
 
 {
-  &quot;took&quot; : 12,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 12,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 4,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.0,
-    &quot;hits&quot; : [
+    "max_score" : 1.0,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;evaluation&quot; : &quot;bad&quot;,
-          &quot;grade&quot; : 1
+        "_index" : "test-runtime",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "evaluation" : "bad",
+          "grade" : 1
         }
       },
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;evaluation&quot; : &quot;good&quot;,
-          &quot;grade&quot; : 10
+        "_index" : "test-runtime",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "evaluation" : "good",
+          "grade" : 10
         }
       },
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;evaluation&quot; : &quot;common&quot;,
-          &quot;grade&quot; : 5
+        "_index" : "test-runtime",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "evaluation" : "common",
+          "grade" : 5
         }
       },
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;evaluation&quot; : &quot;common&quot;,
-          &quot;grade&quot; : 7
+        "_index" : "test-runtime",
+        "_id" : "4",
+        "_score" : 1.0,
+        "_source" : {
+          "evaluation" : "common",
+          "grade" : 7
         }
       }
     ]
@@ -307,22 +307,22 @@ GET test-runtime/_search
 <h3 id="41-查询语句"><a class="header" href="#41-查询语句">4.1 查询语句</a></h3>
 <pre><code>GET test-runtime/_search
 {
-  &quot;fields&quot;:[&quot;*&quot;], 
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "fields":["*"], 
+  "query": {
+    "match_all": {}
   },
-  &quot;script_fields&quot;: {
-    &quot;evaluation_new&quot;: {
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;
+  "script_fields": {
+    "evaluation_new": {
+      "script": {
+        "lang": "painless",
+        "source": """
         if (doc['grade'].value &gt;=1 &amp;&amp; doc['grade'].value &lt; 5)
           return 'bad';
         if (doc['grade'].value &gt;=5 &amp;&amp; doc['grade'].value &lt; 8)
           return 'common';
         if (doc['grade'].value &gt;=8 &amp;&amp; doc['grade'].value &lt;= 10)
           return 'good';
-        &quot;&quot;&quot;
+        """
       }
     }
   }
@@ -331,94 +331,94 @@ GET test-runtime/_search
 </code></pre>
 <h3 id="42-查询结果"><a class="header" href="#42-查询结果">4.2 查询结果</a></h3>
 <pre><code>{
-  &quot;took&quot; : 1,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 4,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.0,
-    &quot;hits&quot; : [
+    "max_score" : 1.0,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;1&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;fields&quot; : {
-          &quot;evaluation&quot; : [
-            &quot;bad&quot;
+        "_index" : "test-runtime",
+        "_id" : "1",
+        "_score" : 1.0,
+        "fields" : {
+          "evaluation" : [
+            "bad"
           ],
-          &quot;evaluation_new&quot; : [
-            &quot;bad&quot;
+          "evaluation_new" : [
+            "bad"
           ],
-          &quot;grade&quot; : [
+          "grade" : [
             1
           ],
-          &quot;evaluation.keyword&quot; : [
-            &quot;bad&quot;
+          "evaluation.keyword" : [
+            "bad"
           ]
         }
       },
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;2&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;fields&quot; : {
-          &quot;evaluation&quot; : [
-            &quot;good&quot;
+        "_index" : "test-runtime",
+        "_id" : "2",
+        "_score" : 1.0,
+        "fields" : {
+          "evaluation" : [
+            "good"
           ],
-          &quot;evaluation_new&quot; : [
-            &quot;good&quot;
+          "evaluation_new" : [
+            "good"
           ],
-          &quot;grade&quot; : [
+          "grade" : [
             10
           ],
-          &quot;evaluation.keyword&quot; : [
-            &quot;good&quot;
+          "evaluation.keyword" : [
+            "good"
           ]
         }
       },
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;3&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;fields&quot; : {
-          &quot;evaluation&quot; : [
-            &quot;common&quot;
+        "_index" : "test-runtime",
+        "_id" : "3",
+        "_score" : 1.0,
+        "fields" : {
+          "evaluation" : [
+            "common"
           ],
-          &quot;evaluation_new&quot; : [
-            &quot;common&quot;
+          "evaluation_new" : [
+            "common"
           ],
-          &quot;grade&quot; : [
+          "grade" : [
             5
           ],
-          &quot;evaluation.keyword&quot; : [
-            &quot;common&quot;
+          "evaluation.keyword" : [
+            "common"
           ]
         }
       },
       {
-        &quot;_index&quot; : &quot;test-runtime&quot;,
-        &quot;_id&quot; : &quot;4&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;fields&quot; : {
-          &quot;evaluation&quot; : [
-            &quot;common&quot;
+        "_index" : "test-runtime",
+        "_id" : "4",
+        "_score" : 1.0,
+        "fields" : {
+          "evaluation" : [
+            "common"
           ],
-          &quot;evaluation_new&quot; : [
-            &quot;common&quot;
+          "evaluation_new" : [
+            "common"
           ],
-          &quot;grade&quot; : [
+          "grade" : [
             7
           ],
-          &quot;evaluation.keyword&quot; : [
-            &quot;common&quot;
+          "evaluation.keyword" : [
+            "common"
           ]
         }
       }
@@ -434,16 +434,16 @@ GET test-runtime/_search
 <pre><code>
 GET test-runtime/_search
 {
-  &quot;fields&quot;:[&quot;*&quot;], 
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "fields":["*"], 
+  "query": {
+    "match_all": {}
   },
-  &quot;runtime_mappings&quot;: {
-    &quot;evaluation_new&quot;: {
-      &quot;type&quot;: &quot;keyword&quot;,
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;
+  "runtime_mappings": {
+    "evaluation_new": {
+      "type": "keyword",
+      "script": {
+        "lang": "painless",
+        "source": """
         if (doc['grade'].value &gt;=1 &amp;&amp; doc['grade'].value &lt; 5){
           emit('bad')
         }
@@ -453,7 +453,7 @@ GET test-runtime/_search
         if (doc['grade'].value &gt;=8 &amp;&amp; doc['grade'].value &lt;= 10){
           emit('good')
         }
-        &quot;&quot;&quot;
+        """
       }
     }
   }
@@ -464,19 +464,19 @@ GET test-runtime/_search
 <pre><code>
 PUT test-runtime/_mapping
 {
-  &quot;runtime&quot;: {
-    &quot;evaluation_new&quot;: {
-      &quot;type&quot;: &quot;keyword&quot;,
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;&quot;&quot;
+  "runtime": {
+    "evaluation_new": {
+      "type": "keyword",
+      "script": {
+        "lang": "painless",
+        "source": """
         if (doc['grade'].value &gt;=1 &amp;&amp; doc['grade'].value &lt; 5)
           emit('bad');
         if (doc['grade'].value &gt;=5 &amp;&amp; doc['grade'].value &lt; 8)
           emit('common');
         if (doc['grade'].value &gt;=8 &amp;&amp; doc['grade'].value &lt;= 10)
           emit('good');
-      &quot;&quot;&quot;
+      """
       }
     }
   }

@@ -171,22 +171,22 @@
 <p>在大多数应用中，多数实体或对象可以被序列化为包含键值对的 JSON 对象。 一个 键 可以是一个字段或字段的名称，一个 值 可以是一个字符串，一个数字，一个布尔值， 另一个对象，一些数组值，或一些其它特殊类型诸如表示日期的字符串，或代表一个地理位置的对象：</p>
 <pre><code class="language-json">
 {
-  &quot;name&quot;: &quot;John Smith&quot;,
-  &quot;age&quot;: 42,
-  &quot;confirmed&quot;: true,
-  &quot;join_date&quot;: &quot;2014-06-01&quot;,
-  &quot;home&quot;: {
-    &quot;lat&quot;: 51.5,
-    &quot;lon&quot;: 0.1
+  "name": "John Smith",
+  "age": 42,
+  "confirmed": true,
+  "join_date": "2014-06-01",
+  "home": {
+    "lat": 51.5,
+    "lon": 0.1
   },
-  &quot;accounts&quot;: [
+  "accounts": [
     {
-      &quot;type&quot;: &quot;facebook&quot;,
-      &quot;id&quot;: &quot;johnsmith&quot;
+      "type": "facebook",
+      "id": "johnsmith"
     },
     {
-      &quot;type&quot;: &quot;twitter&quot;,
-      &quot;id&quot;: &quot;johnsmith&quot;
+      "type": "twitter",
+      "id": "johnsmith"
     }
   ]
 }
@@ -200,26 +200,26 @@
 <pre><code class="language-json">
 POST blogs/_doc
 {
-  &quot;.1&quot;: &quot;11&quot;
+  ".1": "11"
 }
 
 
 {
-  &quot;error&quot;: {
-    &quot;root_cause&quot;: [
+  "error": {
+    "root_cause": [
       {
-        &quot;type&quot;: &quot;mapper_parsing_exception&quot;,
-        &quot;reason&quot;: &quot;failed to parse&quot;
+        "type": "mapper_parsing_exception",
+        "reason": "failed to parse"
       }
     ],
-    &quot;type&quot;: &quot;mapper_parsing_exception&quot;,
-    &quot;reason&quot;: &quot;failed to parse&quot;,
-    &quot;caused_by&quot;: {
-      &quot;type&quot;: &quot;illegal_argument_exception&quot;,
-      &quot;reason&quot;: &quot;field name cannot contain only whitespace: ['.1']&quot;
+    "type": "mapper_parsing_exception",
+    "reason": "failed to parse",
+    "caused_by": {
+      "type": "illegal_argument_exception",
+      "reason": "field name cannot contain only whitespace: ['.1']"
     }
   },
-  &quot;status&quot;: 400
+  "status": 400
 }
 
 </code></pre>

@@ -179,13 +179,13 @@
 </li>
 <li>
 <p>唯一的特殊情况，当统计函数为count(), 且expression结果为bool类型时，统计当结果仅为当expression 为true 的事件数</p>
-<p>例如：…​ | stats count(eval(status=&quot;404&quot;)) AS count_status BY sourcetype, 统计的结果为status 的404的事件总数</p>
+<p>例如：…​ | stats count(eval(status="404")) AS count_status BY sourcetype, 统计的结果为status 的404的事件总数</p>
 </li>
 </ol>
 <p>以下是可与stats等命令使用的统计函数，后续将扩展到其他的命令。约定：</p>
-<p>&quot;X&quot; 表示指定字段名， +</p>
-<p>&quot;INTERVAL&quot;表示指定时间间隔，描述方式如1m, 1d… 后缀有以下几种：y|M|w|d|h|m|s ， +</p>
-<p>&quot;LIMIT&quot;表示返回值的限制数量。</p>
+<p>"X" 表示指定字段名， +</p>
+<p>"INTERVAL"表示指定时间间隔，描述方式如1m, 1d… 后缀有以下几种：y|M|w|d|h|m|s ， +</p>
+<p>"LIMIT"表示返回值的限制数量。</p>
 <h2 id="二分类"><a class="header" href="#二分类">二、分类</a></h2>
 <h3 id="21-single函数"><a class="header" href="#21-single函数">2.1 single函数</a></h3>
 <p>avg、count、distinct_count / estdc / dc、distinct、earliest、first、last、latest、max、min、rate、stddev、sum、sumsq、var</p>

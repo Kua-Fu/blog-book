@@ -180,32 +180,32 @@
 <pre><code>
 PUT yztest-4-1
 {
-  &quot;settings&quot;: {
-     &quot;analysis&quot;: {
-      &quot;analyzer&quot;: {
-        &quot;my_custom_analyzer&quot;: {
-          &quot;type&quot;: &quot;custom&quot;, 
-          &quot;tokenizer&quot;: &quot;standard&quot;,
-          &quot;char_filter&quot;: [
-            &quot;my_char_filter&quot;
+  "settings": {
+     "analysis": {
+      "analyzer": {
+        "my_custom_analyzer": {
+          "type": "custom", 
+          "tokenizer": "standard",
+          "char_filter": [
+            "my_char_filter"
           ]
         }
       },
-      &quot;char_filter&quot;: {
-        &quot;my_char_filter&quot;: {
-          &quot;type&quot;: &quot;mapping&quot;,
-          &quot;mappings&quot;: [
-            &quot;' =&gt; &quot;
+      "char_filter": {
+        "my_char_filter": {
+          "type": "mapping",
+          "mappings": [
+            "' =&gt; "
           ]
         }
       }
     }
   },
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;f1&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;my_custom_analyzer&quot;
+  "mappings": {
+    "properties": {
+      "f1": {
+        "type": "text",
+        "analyzer": "my_custom_analyzer"
       }
     }
   }
@@ -213,21 +213,21 @@ PUT yztest-4-1
 
 GET yztest-4-1/_analyze
 {
-  &quot;field&quot;: &quot;f1&quot;, 
-  &quot;text&quot;: &quot;tom's toms&quot;
+  "field": "f1", 
+  "text": "tom's toms"
 }
 
 POST yztest-4-1/_bulk
-{&quot;index&quot;:{}}
-{&quot;f1&quot;: &quot;tom's&quot;}
-{&quot;index&quot;:{}}
-{&quot;f1&quot;: &quot;toms&quot;}
+{"index":{}}
+{"f1": "tom's"}
+{"index":{}}
+{"f1": "toms"}
 
 GET yztest-4-1/_search
 {
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;f1&quot;: &quot;tom's&quot;
+  "query": {
+    "match": {
+      "f1": "tom's"
     }
   }
 }
@@ -243,21 +243,21 @@ GET yztest-4-1/_search
 <pre><code>
 PUT yztest-4-2
 {
-  &quot;mappings&quot;: {
-    &quot;dynamic_templates&quot;: [
+  "mappings": {
+    "dynamic_templates": [
       {
-        &quot;long_to_int&quot;: {
-          &quot;match&quot;: &quot;long*&quot;,
-          &quot;mapping&quot;: {
-            &quot;type&quot;: &quot;integer&quot;
+        "long_to_int": {
+          "match": "long*",
+          "mapping": {
+            "type": "integer"
           }
         }
       },
       {
-        &quot;string_to_keyword&quot;: {
-          &quot;match_mapping_type&quot;: &quot;string&quot;,
-          &quot;mapping&quot;: {
-            &quot;type&quot;: &quot;keyword&quot;
+        "string_to_keyword": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
           }
         }
       }
@@ -266,8 +266,8 @@ PUT yztest-4-2
 }
 
 POST yztest-4-2/_bulk
-{&quot;index&quot;:{}}
-{&quot;long1&quot;: 100, &quot;long2&quot;: 1.1, &quot;f1&quot;: &quot;v1&quot;}
+{"index":{}}
+{"long1": 100, "long2": 1.1, "f1": "v1"}
 
 GET yztest-4-2/_mapping
 
@@ -282,45 +282,45 @@ GET yztest-4-2/_mapping
 PUT yztest-4-3
 
 POST yztest-4-3/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;v1&quot;, &quot;f2&quot;: &quot;v2&quot;, &quot;f3&quot;: &quot;v3&quot;}
+{"index": {}}
+{"f1": "v1", "f2": "v2", "f3": "v3"}
 
 POST yztest-4-3/_update_by_query
 {
-  &quot;script&quot;: {
-    &quot;source&quot;: &quot;ctx._source.f4 = ctx._source.f1 + '-' + ctx._source.f2 + '-' + ctx._source.f3&quot;,
-    &quot;lang&quot;: &quot;painless&quot;
+  "script": {
+    "source": "ctx._source.f4 = ctx._source.f1 + '-' + ctx._source.f2 + '-' + ctx._source.f3",
+    "lang": "painless"
   }, 
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "query": {
+    "match_all": {}
   }
 }
 
 {
-  &quot;took&quot; : 1,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 1,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 1,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.0,
-    &quot;hits&quot; : [
+    "max_score" : 1.0,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;yztest-4-3&quot;,
-        &quot;_id&quot; : &quot;U84D5IYBHHgM2AP0bStj&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;f1&quot; : &quot;v1&quot;,
-          &quot;f2&quot; : &quot;v2&quot;,
-          &quot;f3&quot; : &quot;v3&quot;,
-          &quot;f4&quot; : &quot;v1-v2-v3&quot;
+        "_index" : "yztest-4-3",
+        "_id" : "U84D5IYBHHgM2AP0bStj",
+        "_score" : 1.0,
+        "_source" : {
+          "f1" : "v1",
+          "f2" : "v2",
+          "f3" : "v3",
+          "f4" : "v1-v2-v3"
         }
       }
     ]
@@ -332,14 +332,14 @@ POST yztest-4-3/_update_by_query
 PUT yztest-4-3
 
 POST yztest-4-3/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;v1&quot;, &quot;f2&quot;: &quot;v2&quot;, &quot;f3&quot;: &quot;v3&quot;}
+{"index": {}}
+{"f1": "v1", "f2": "v2", "f3": "v3"}
 
 
 POST yztest-4-3/_update_by_query?pipeline=yztest-4-3-pipeline
 {
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "query": {
+    "match_all": {}
   }
 }
 
@@ -356,16 +356,16 @@ GET yztest-4-3/_search
 <pre><code>PUT yztest-4-4
 
 POST yztest-4-4/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;hello&quot;, &quot;f2&quot;: &quot;hello hello&quot;, &quot;f3&quot;: &quot;hello world&quot;}
+{"index": {}}
+{"f1": "hello", "f2": "hello hello", "f3": "hello world"}
 
 GET yztest-4-4/_search
 {
-  &quot;query&quot;: {
-    &quot;multi_match&quot;: {
-      &quot;query&quot;: &quot;hello&quot;,
-      &quot;fields&quot;: [&quot;f1^2&quot;, &quot;f2&quot;, &quot;f3&quot;],
-      &quot;type&quot;: &quot;most_fields&quot;
+  "query": {
+    "multi_match": {
+      "query": "hello",
+      "fields": ["f1^2", "f2", "f3"],
+      "type": "most_fields"
     }
   }
 }
@@ -379,105 +379,105 @@ GET yztest-4-4/_search
 <h3 id="63-解答"><a class="header" href="#63-解答">6.3 解答</a></h3>
 <pre><code>PUT yztest-4-5
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;date&quot;: {
-        &quot;type&quot;: &quot;date&quot; 
+  "mappings": {
+    "properties": {
+      "date": {
+        "type": "date" 
       },
-      &quot;f1&quot;: {
-        &quot;type&quot;: &quot;long&quot;
+      "f1": {
+        "type": "long"
       }
     }
   }
 }
 
 POST yztest-4-5/_bulk
-{&quot;index&quot;: {}}
-{&quot;date&quot;: &quot;2023-01-01&quot;, &quot;f1&quot;: 10}
-{&quot;index&quot;: {}}
-{&quot;date&quot;: &quot;2023-01-02&quot;, &quot;f1&quot;: 20}
-{&quot;index&quot;: {}}
-{&quot;date&quot;: &quot;2023-02-01&quot;, &quot;f1&quot;: 12}
-{&quot;index&quot;: {}}
-{&quot;date&quot;: &quot;2023-03-02&quot;, &quot;f1&quot;: 15}
+{"index": {}}
+{"date": "2023-01-01", "f1": 10}
+{"index": {}}
+{"date": "2023-01-02", "f1": 20}
+{"index": {}}
+{"date": "2023-02-01", "f1": 12}
+{"index": {}}
+{"date": "2023-03-02", "f1": 15}
 
 
 GET yztest-4-5/_search
 {
-  &quot;size&quot;: 0,
-  &quot;aggs&quot;: {
-    &quot;a1&quot;: {
-      &quot;date_histogram&quot;: {
-        &quot;field&quot;: &quot;date&quot;,
-        &quot;calendar_interval&quot;: &quot;month&quot;
+  "size": 0,
+  "aggs": {
+    "a1": {
+      "date_histogram": {
+        "field": "date",
+        "calendar_interval": "month"
       },
-      &quot;aggs&quot;: {
-        &quot;a2&quot;: {
-          &quot;avg&quot;: {
-            &quot;field&quot;: &quot;f1&quot;
+      "aggs": {
+        "a2": {
+          "avg": {
+            "field": "f1"
           }
         }
       }
     },
-    &quot;a3&quot;: {
-      &quot;max_bucket&quot;: {
-        &quot;buckets_path&quot;: &quot;a1&gt;a2&quot;
+    "a3": {
+      "max_bucket": {
+        "buckets_path": "a1&gt;a2"
       }
     }
   }
 }
 
 {
-  &quot;took&quot; : 436,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 436,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 4,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : null,
-    &quot;hits&quot; : [ ]
+    "max_score" : null,
+    "hits" : [ ]
   },
-  &quot;aggregations&quot; : {
-    &quot;a1&quot; : {
-      &quot;buckets&quot; : [
+  "aggregations" : {
+    "a1" : {
+      "buckets" : [
         {
-          &quot;key_as_string&quot; : &quot;2023-01-01T00:00:00.000Z&quot;,
-          &quot;key&quot; : 1672531200000,
-          &quot;doc_count&quot; : 2,
-          &quot;a2&quot; : {
-            &quot;value&quot; : 15.0
+          "key_as_string" : "2023-01-01T00:00:00.000Z",
+          "key" : 1672531200000,
+          "doc_count" : 2,
+          "a2" : {
+            "value" : 15.0
           }
         },
         {
-          &quot;key_as_string&quot; : &quot;2023-02-01T00:00:00.000Z&quot;,
-          &quot;key&quot; : 1675209600000,
-          &quot;doc_count&quot; : 1,
-          &quot;a2&quot; : {
-            &quot;value&quot; : 12.0
+          "key_as_string" : "2023-02-01T00:00:00.000Z",
+          "key" : 1675209600000,
+          "doc_count" : 1,
+          "a2" : {
+            "value" : 12.0
           }
         },
         {
-          &quot;key_as_string&quot; : &quot;2023-03-01T00:00:00.000Z&quot;,
-          &quot;key&quot; : 1677628800000,
-          &quot;doc_count&quot; : 1,
-          &quot;a2&quot; : {
-            &quot;value&quot; : 15.0
+          "key_as_string" : "2023-03-01T00:00:00.000Z",
+          "key" : 1677628800000,
+          "doc_count" : 1,
+          "a2" : {
+            "value" : 15.0
           }
         }
       ]
     },
-    &quot;a3&quot; : {
-      &quot;value&quot; : 15.0,
-      &quot;keys&quot; : [
-        &quot;2023-01-01T00:00:00.000Z&quot;,
-        &quot;2023-03-01T00:00:00.000Z&quot;
+    "a3" : {
+      "value" : 15.0,
+      "keys" : [
+        "2023-01-01T00:00:00.000Z",
+        "2023-03-01T00:00:00.000Z"
       ]
     }
   }
@@ -493,61 +493,61 @@ GET yztest-4-5/_search
 PUT yztest-4-6
 
 POST yztest-4-6/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;test doc&quot;}
+{"index": {}}
+{"f1": "test doc"}
 
 GET yztest-4-6/_search
 {
-  &quot;query&quot;: {
-    &quot;match_phrase&quot;: {
-      &quot;f1&quot;: &quot;test&quot;
+  "query": {
+    "match_phrase": {
+      "f1": "test"
     }
   },
-  &quot;sort&quot;: [
+  "sort": [
     {
-      &quot;f1.keyword&quot;: {
-        &quot;order&quot;: &quot;desc&quot;
+      "f1.keyword": {
+        "order": "desc"
       }
     }
   ],
-  &quot;highlight&quot;: {
-    &quot;fields&quot;: {
-      &quot;f1&quot;: { &quot;pre_tags&quot; : [&quot;&lt;strong&gt;&quot;], &quot;post_tags&quot; : [&quot;&lt;/strong&gt;&quot;] }
+  "highlight": {
+    "fields": {
+      "f1": { "pre_tags" : ["&lt;strong&gt;"], "post_tags" : ["&lt;/strong&gt;"] }
     }
   }
 }
 
 
 {
-  &quot;took&quot; : 1689,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 1689,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 1,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 1,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : null,
-    &quot;hits&quot; : [
+    "max_score" : null,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;yztest-4-6&quot;,
-        &quot;_id&quot; : &quot;Ws4u5IYBHHgM2AP0Gisz&quot;,
-        &quot;_score&quot; : null,
-        &quot;_source&quot; : {
-          &quot;f1&quot; : &quot;test doc&quot;
+        "_index" : "yztest-4-6",
+        "_id" : "Ws4u5IYBHHgM2AP0Gisz",
+        "_score" : null,
+        "_source" : {
+          "f1" : "test doc"
         },
-        &quot;highlight&quot; : {
-          &quot;f1&quot; : [
-            &quot;&lt;strong&gt;test&lt;/strong&gt; doc&quot;
+        "highlight" : {
+          "f1" : [
+            "&lt;strong&gt;test&lt;/strong&gt; doc"
           ]
         },
-        &quot;sort&quot; : [
-          &quot;test doc&quot;
+        "sort" : [
+          "test doc"
         ]
       }
     ]

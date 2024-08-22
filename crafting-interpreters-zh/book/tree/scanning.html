@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item expanded "><a href="../tree/scanning.html" class="active"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item expanded "><a href="../tree/scanning.html" class="active"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,7 +170,7 @@
                         <h1 id="扫描"><a class="header" href="#扫描">扫描</a></h1>
 <blockquote>
 <p>Take big bites. Anything worth doing is worth overdoing.</p>
-<p align="right"> —— Robert A. Heinlein, Time Enough for Love  </p>
+ <p align="right"> —— Robert A. Heinlein, Time Enough for Love  </p>
 <p>大口吃，任何值得做的事情，都值得做的过头。</p>
 </blockquote>
 <p>The first step in any compiler or interpreter is scanning. The scanner takes in raw source code as a series of characters and groups it into a series of chunks we call tokens. These are the meaningful “words” and “punctuation” that make up the language’s grammar.</p>
@@ -195,7 +195,7 @@ import java.util.List;
 public class Lox {
   public static void main(String[] args) throws IOException {
     if (args.length &gt; 1) {
-      System.out.println(&quot;Usage: jlox [script]&quot;);
+      System.out.println("Usage: jlox [script]");
       System.exit(64); 
     } else if (args.length == 1) {
       runFile(args[0]);
@@ -240,7 +240,7 @@ public class Lox {
         BufferedReader reader = new BufferedReader(input);
 
         for (;;) {
-            System.out.print(&quot;&gt; &quot;);
+            System.out.print("&gt; ");
             String line = reader.readLine();
             if (line == null) {
                 break;
@@ -255,7 +255,7 @@ public class Lox {
 <p>Lox语言是一种脚本语言，我的jlox解释器，支持两种运行方式，如果指定一个文件路径，jlox将读取并且运行该文件。</p>
 <p>如果你想要与解释器，交互运行，可以运行交互模式。不携带任何参数运行jlox，将会进入交互模式，一次可以运行一行lox代码。</p>
 <blockquote>
-<p>An interactive prompt is also called a “REPL” (pronounced like “rebel” but with a “p”). The name comes from Lisp where implementing one is as simple as wrapping a loop around a few built-in functions: </p>
+<p>An interactive prompt is also called a “REPL” (pronounced like “rebel” but with a “p”). The name comes from Lisp where implementing one is as simple as wrapping a loop around a few built-in functions:</p>
 <p>(print (eval (read)))</p>
 <p>Working outwards from the most nested call, you Read a line of input, Evaluate it, Print the result, then Loop and do it all over again.</p>
 <p>交互式提示，也称为 REPL, (Read, Evaluate, Print, Loop) , 这个名称来源于 lisp语言，在lisp中，实现一个交互式，就好像使用内置多个函数和一个循环包装一样简单。</p>
@@ -308,23 +308,23 @@ public class Lox {
 <pre><code class="language-java">
 // lox/Lox.java, add after run()
 static void error(int line, String message) {
-	report(line, &quot;&quot;, message);
+	report(line, "", message);
 }
 
 private static void report(int line, String where, String message) {
-	System.err.println(&quot;[line &quot; + line + &quot;] Error&quot; + where + &quot;: &quot; + message);
+	System.err.println("[line " + line + "] Error" + where + ": " + message);
 	hadError = true;
 }
 	
 </code></pre>
 <p>This error() function and its report() helper tells the user some syntax error occurred on a given line. That is really the bare minimum to be able to claim you even have error reporting. Imagine if you accidentally left a dangling comma in some function call and the interpreter printed out:</p>
 <pre><code>
-Error: Unexpected &quot;,&quot; somewhere in your code. Good luck finding it!
+Error: Unexpected "," somewhere in your code. Good luck finding it!
 
 </code></pre>
 <p>That’s not very helpful. We need to at least point them to the right line. Even better would be the beginning and end column so they know where in the line. Even better than that is to show the user the offending line, like:</p>
 <pre><code>
-Error: Unexpected &quot;,&quot; in argument list.
+Error: Unexpected "," in argument list.
 
     15 | function(first, second,);
                                ^-- Here.
@@ -332,12 +332,12 @@ Error: Unexpected &quot;,&quot; in argument list.
 </code></pre>
 <p>error() 函数 和 report() 函数，告诉用户某一行发生了语法错误，这实际上是报错处理的最低要求。想象一下，如果你在代码中添加了一个多余的逗号， 解释器运行结果如下:</p>
 <pre><code>
-Error: Unexpected &quot;,&quot; somewhere in your code. Good luck finding it!
+Error: Unexpected "," somewhere in your code. Good luck finding it!
 
 </code></pre>
 <p>这不是非常有帮助，我们至少应该指向正确的报错位置。更好的方式，是设置报错代码的起始位置和结束位置，以便于展示报错位置，更加好的做法是展示报错的原始代码行，例如：</p>
 <pre><code>
-Error: Unexpected &quot;,&quot; in argument list.
+Error: Unexpected "," in argument list.
 
     15 | function(first, second,);
                                ^-- Here.
@@ -377,7 +377,7 @@ private static void runFile(String path) throws IOException {
         BufferedReader reader = new BufferedReader(input);
 
         for (;;) {
-            System.out.print(&quot;&gt; &quot;);
+            System.out.print("&gt; ");
             String line = reader.readLine();
             if (line == null) {
                 break;
@@ -424,7 +424,7 @@ private static void runFile(String path) throws IOException {
         BufferedReader reader = new BufferedReader(input);
 
         for (;;) {
-            System.out.print(&quot;&gt; &quot;);
+            System.out.print("&gt; ");
             String line = reader.readLine();
             if (line == null) {
                 break;
@@ -451,7 +451,7 @@ private static void runFile(String path) throws IOException {
 <p>词素 和 token</p>
 <p>Here’s a line of Lox code:</p>
 <pre><code class="language-java">
-var language = &quot;lox&quot;;
+var language = "lox";
 
 </code></pre>
 <p>Here, var is the keyword for declaring a variable. That three-character sequence “v-a-r” means something. But if we yank three letters out of the middle of language, like “g-u-a”, those don’t mean anything on their own.</p>
@@ -460,7 +460,7 @@ var language = &quot;lox&quot;;
 <p>The lexemes are only the raw substrings of the source code. However, in the process of grouping character sequences into lexemes, we also stumble upon some other useful information. When we take the lexeme and bundle it together with that other data, the result is a token. It includes useful stuff like:</p>
 <p>下面是一个Lox代码</p>
 <pre><code class="language-java">
-var language = &quot;lox&quot;;
+var language = "lox";
 
 </code></pre>
 <p>在这里，var 用于声明一个变量，是一个关键字，3个字符 var 意味着什么。但是，如果我们从 language中取出3个字符，gua，这些字母没有实际含义。</p>
@@ -562,7 +562,7 @@ class Token {
   }
 
   public String toString() {
-    return type + &quot; &quot; + lexeme + &quot; &quot; + literal;
+    return type + " " + lexeme + " " + literal;
   }
 }
 
@@ -586,7 +586,7 @@ class Token {
   }
 
   public String toString() {
-    return type + &quot; &quot; + lexeme + &quot; &quot; + literal;
+    return type + " " + lexeme + " " + literal;
   }
 }
 
@@ -670,7 +670,7 @@ class Scanner {
       scanToken();
     }
 
-    tokens.add(new Token(EOF, &quot;&quot;, null, line));
+    tokens.add(new Token(EOF, "", null, line));
     return tokens;
   }
 
@@ -761,7 +761,7 @@ class Scanner {
                 addToken(STAR);
                 break;
             default:
-                Lox.error(line, &quot;Unexpected character.&quot;);
+                Lox.error(line, "Unexpected character.");
                 break;
         }
 		
@@ -881,7 +881,7 @@ class Scanner {
         break;
 
       default:
-        Lox.error(line, &quot;Unexpected character.&quot;);
+        Lox.error(line, "Unexpected character.");
 
 </code></pre>
 <p>When encountering whitespace, we simply go back to the beginning of the scan loop. That starts a new lexeme after the whitespace character. For newlines, we do the same thing, but we also increment the line counter. (This is why we used peek() to find the newline ending a comment instead of match(). We want that newline to get us here so we can update line.)</p>
@@ -896,13 +896,13 @@ class Scanner {
 </code></pre>
 <h3 id="61-string-literals"><a class="header" href="#61-string-literals">6.1 String literals</a></h3>
 <p>字符串常量</p>
-<p>Now that we’re comfortable with longer lexemes, we’re ready to tackle literals. We’ll do strings first, since they always begin with a specific character, &quot;.</p>
-<p>既然现在，我们已经习惯了较长的词素，我们可以继续处理文字了。我们将首先处理，字符串，它们总是以 &quot; 字符开始。</p>
+<p>Now that we’re comfortable with longer lexemes, we’re ready to tackle literals. We’ll do strings first, since they always begin with a specific character, ".</p>
+<p>既然现在，我们已经习惯了较长的词素，我们可以继续处理文字了。我们将首先处理，字符串，它们总是以 " 字符开始。</p>
 <pre><code class="language-java">
 // lox/Scanner.java, in scanToken()
         break;
 
-      case '&quot;': string(); break;
+      case '"': string(); break;
 
       default:
 </code></pre>
@@ -910,17 +910,17 @@ class Scanner {
 // lox/Scanner.java, add after scanToken()
 
   private void string() {
-    while (peek() != '&quot;' &amp;&amp; !isAtEnd()) {
+    while (peek() != '"' &amp;&amp; !isAtEnd()) {
       if (peek() == '\n') line++;
       advance();
     }
 
     if (isAtEnd()) {
-      Lox.error(line, &quot;Unterminated string.&quot;);
+      Lox.error(line, "Unterminated string.");
       return;
     }
 
-    // The closing &quot;.
+    // The closing ".
     advance();
 
     // Trim the surrounding quotes.
@@ -929,12 +929,12 @@ class Scanner {
   }
 
 </code></pre>
-<p>Like with comments, we consume characters until we hit the &quot; that ends the string. We also gracefully handle running out of input before the string is closed and report an error for that.</p>
+<p>Like with comments, we consume characters until we hit the " that ends the string. We also gracefully handle running out of input before the string is closed and report an error for that.</p>
 <p>For no particular reason, Lox supports multi-line strings. There are pros and cons to that, but prohibiting them was a little more complex than allowing them, so I left them in. That does mean we also need to update line when we hit a newline inside a string.</p>
 <p>Finally, the last interesting bit is that when we create the token, we also produce the actual string value that will be used later by the interpreter. Here, that conversion only requires a substring() to strip off the surrounding quotes. If Lox supported escape sequences like \n, we’d unescape those here.</p>
-<p>和注释一样，我们不断消费字符，直到遇到结尾的 &quot; 字符，如果源文件已经消费完了，但是仍然没有发现字符串结尾 &quot;, 我们将会报告一个错误。</p>
+<p>和注释一样，我们不断消费字符，直到遇到结尾的 " 字符，如果源文件已经消费完了，但是仍然没有发现字符串结尾 ", 我们将会报告一个错误。</p>
 <p>没有什么特殊原因，lox语言支持多行字符串。这样做，各有利弊，但是禁止使用多行字符串，比支持使用更加复杂，所以，我将运行lox使用多行字符串。这意味着，如果字符串中遇到换行符，我们需要更新行计数器。</p>
-<p>最后，还有一个有意思的地方，当我们创建token时候，还会包含字符串的实际值，稍后，解释器将会使用字符串的实际值。在这里，还需要一个子字符串函数，去除字符串的 &quot; 字符。如果lox支持转义，例如：\n, 我们在这里将取消转义。</p>
+<p>最后，还有一个有意思的地方，当我们创建token时候，还会包含字符串的实际值，稍后，解释器将会使用字符串的实际值。在这里，还需要一个子字符串函数，去除字符串的 " 字符。如果lox支持转义，例如：\n, 我们在这里将取消转义。</p>
 <h2 id="62-number-literals"><a class="header" href="#62-number-literals">6.2 Number literals</a></h2>
 <p>数值</p>
 <p>All numbers in Lox are floating point at runtime, but both integer and decimal literals are supported. A number literal is a series of digits optionally followed by a . and one or more trailing digits.</p>
@@ -978,7 +978,7 @@ print -n.abs();
         if (isDigit(c)) {
           number();
         } else {
-          Lox.error(line, &quot;Unexpected character.&quot;);
+          Lox.error(line, "Unexpected character.");
         }
         break;
 </code></pre>
@@ -1005,7 +1005,7 @@ print -n.abs();
 
     // Look for a fractional part.
     if (peek() == '.' &amp;&amp; isDigit(peekNext())) {
-      // Consume the &quot;.&quot;
+      // Consume the "."
       advance();
 
       while (isDigit(peek())) advance();
@@ -1033,7 +1033,7 @@ print -n.abs();
 <p>我本来可以定义一个 peek() 方法，接受一个参数，表示要前瞻的字符数，而不是定义两个函数，但是，这样，我们将允许任意长度的前瞻。提供了peek() 和 peeknext() 两个方法，可以更加明确，我们的扫描器，将最多允许2个字符的前瞻。</p>
 </blockquote>
 <p>Finally, we convert the lexeme to its numeric value. Our interpreter uses Java’s Double type to represent numbers, so we produce a value of that type. We’re using Java’s own parsing method to convert the lexeme to a real Java double. We could implement that ourselves, but, honestly, unless you’re trying to cram for an upcoming programming interview, it’s not worth your time.</p>
-<p>The remaining literals are Booleans and nil, but we handle those as keywords, which gets us to . . . </p>
+<p>The remaining literals are Booleans and nil, but we handle those as keywords, which gets us to . . .</p>
 <p>最后，我们将词素转变为它的数值。我们解释器，使用java double类型表示数字，所以，扫描器这里，我们也将生成一个double数字。我们使用java 的parse方法，将数值变为双精度数字。其实，我们也可以自己实现双精度数字的转换，但是，除非你在准备编程面试，没有必要浪费时间。</p>
 <p>剩下来，是布尔类型和 nil，但是我们将这些当作关键字处理，下面我们将探讨这些。</p>
 <h2 id="七reserved-words-and-identifiers"><a class="header" href="#七reserved-words-and-identifiers">七、Reserved Words and Identifiers</a></h2>
@@ -1060,7 +1060,7 @@ print -n.abs();
 <p>It scans it that way even though doing so leads to a syntax error later in the parser.</p>
 <p>考虑一下，这个讨厌的c代码</p>
 <p><code>---a;</code></p>
-<p>这个语句是否合法，这取决于扫描器如何分割这个词素，如果扫描器把这个代码看作 </p>
+<p>这个语句是否合法，这取决于扫描器如何分割这个词素，如果扫描器把这个代码看作</p>
 <p><code>- --a;</code></p>
 <p>这样，是可以被解析的，但是，这需要扫描器了解周围代码的语法结构，这会让事情比我们想象的更加复杂。但是，实际上，按照最大匹配原则，它实际上应该是</p>
 <p><code>-- -a;</code></p>
@@ -1079,7 +1079,7 @@ print -n.abs();
         } else if (isAlpha(c)) {
           identifier();
         } else {
-          Lox.error(line, &quot;Unexpected character.&quot;);
+          Lox.error(line, "Unexpected character.");
         }
 
 </code></pre>
@@ -1114,22 +1114,22 @@ print -n.abs();
 
     static {
         keywords = new HashMap&lt;&gt;();
-        keywords.put(&quot;and&quot;, AND);
-        keywords.put(&quot;class&quot;, CLASS);
-        keywords.put(&quot;else&quot;, ELSE);
-        keywords.put(&quot;false&quot;, FALSE);
-        keywords.put(&quot;for&quot;, FOR);
-        keywords.put(&quot;fun&quot;, FUN);
-        keywords.put(&quot;if&quot;, IF);
-        keywords.put(&quot;nil&quot;, NIL);
-        keywords.put(&quot;or&quot;, OR);
-        keywords.put(&quot;print&quot;, PRINT);
-        keywords.put(&quot;return&quot;, RETURN);
-        keywords.put(&quot;super&quot;, SUPER);
-        keywords.put(&quot;this&quot;, THIS);
-        keywords.put(&quot;true&quot;, TRUE);
-        keywords.put(&quot;var&quot;, VAR);
-        keywords.put(&quot;while&quot;, WHILE);
+        keywords.put("and", AND);
+        keywords.put("class", CLASS);
+        keywords.put("else", ELSE);
+        keywords.put("false", FALSE);
+        keywords.put("for", FOR);
+        keywords.put("fun", FUN);
+        keywords.put("if", IF);
+        keywords.put("nil", NIL);
+        keywords.put("or", OR);
+        keywords.put("print", PRINT);
+        keywords.put("return", RETURN);
+        keywords.put("super", SUPER);
+        keywords.put("this", THIS);
+        keywords.put("true", TRUE);
+        keywords.put("var", VAR);
+        keywords.put("while", WHILE);
     }
 </code></pre>
 <p>Then, after we scan an identifier, we check to see if it matches anything in the map.</p>
@@ -1182,7 +1182,7 @@ print -n.abs();
 <li>
 <p>A return value on the next line:</p>
 <pre><code>if (condition) return
-&quot;value&quot;
+"value"
 </code></pre>
 <p>Is “value” the value being returned, or do we have a return statement with no value followed by an expression statement containing a string literal?</p>
 </li>
@@ -1209,9 +1209,9 @@ first
 <li>
 <p>返回着在下一行</p>
 <pre><code>if (condition) return
-&quot;value&quot;
+"value"
 </code></pre>
-<p>这是一个return 语句，返回 &quot;value&quot;; 还是一个return语句，没有返回值；紧跟着一个字符串表达式</p>
+<p>这是一个return 语句，返回 "value"; 还是一个return语句，没有返回值；紧跟着一个字符串表达式</p>
 </li>
 <li>
 <p>下一行，是括号表达式</p>
@@ -1262,9 +1262,9 @@ first
 <p>Lua语言中，完全忽略了换行符，但是，需要小心的使用。在大多数场景，没有换行符的语句，可以正常运行，例如：orchid</p>
 <p><code>a = 1 b = 2</code></p>
 <p>Lua通过将代码块中的最后一条语句定义为return 语句，来避免return问题。</p>
-<p>(1) 如果关键词 return 之后，end关键词之前，存在 &quot;value&quot; 字符串，则Lua中表示返回 &quot;value&quot;</p>
+<p>(1) 如果关键词 return 之后，end关键词之前，存在 "value" 字符串，则Lua中表示返回 "value"</p>
 <pre><code>return 
-&quot;value&quot;
+"value"
 </code></pre>
 <p>(2) 其他两种情况，几乎不会发生，因为括号或者一元否定表达式语句，几乎没有意义</p>
 </li>

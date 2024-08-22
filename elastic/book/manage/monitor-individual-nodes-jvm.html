@@ -178,7 +178,7 @@
 <p>新实例化的对象分配的空间。新生代空间通常都非常小，一般在 100 MB–500 MB。新生代也包含两个 幸存 空间。</p>
 <p><strong>老生代</strong></p>
 <p>较老的对象存储的空间。这些对象预计将长期留存并持续上很长一段时间。老生代通常比新生代大很多。Elasticsearch 节点可以给老生代用到 30 GB。</p>
-<p>当一个对象实例化的时候，它被放在新生代里。当新生代空间满了，就会发生一次新生代垃圾回收（GC）。依然是&quot;存活&quot;状态的对象就被转移到一个幸存区内，而&quot;死掉&quot;的对象被移除。如果一个对象在多次新生代 GC 中都幸存了，它就会被&quot;终身&quot;置于老生代了。</p>
+<p>当一个对象实例化的时候，它被放在新生代里。当新生代空间满了，就会发生一次新生代垃圾回收（GC）。依然是"存活"状态的对象就被转移到一个幸存区内，而"死掉"的对象被移除。如果一个对象在多次新生代 GC 中都幸存了，它就会被"终身"置于老生代了。</p>
 <p>类似的过程在老生代里同样发生：空间满的时候，发生一次垃圾回收，死掉的对象被移除。</p>
 <p>不过，天下没有免费的午餐。新生代、老生代的垃圾回收都有一个阶段会“停止时间”。在这段时间里，JVM 字面意义上的停止了程序运行，以便跟踪对象图，收集死亡对象。在这个时间停止阶段，一切都不会发生。请求不被服务，ping 不被回应，分片不被分配。整个世界都真的停止了。</p>
 <p>对于新生代，这不是什么大问题；那么小的空间意味着 GC 会很快执行完。但是老生代大很多，而这里面一个慢 GC 可能就意味着 1 秒乃至 15 秒的暂停——对于服务器软件来说这是不可接受的。</p>
@@ -188,52 +188,52 @@
 </blockquote>
 <p>因为垃圾回收对 Elasticsearch 是如此重要，你应该非常熟悉 node-stats API 里的这部分内容：</p>
 <pre><code class="language-json">
-      &quot;jvm&quot;: {
-        &quot;timestamp&quot;: 1657854496146,
-        &quot;uptime_in_millis&quot;: 858680867,
-        &quot;mem&quot;: {
-          &quot;heap_used_in_bytes&quot;: 1025882384,
-          &quot;heap_used_percent&quot;: 52,
-          &quot;heap_committed_in_bytes&quot;: 1958739968,
-          &quot;heap_max_in_bytes&quot;: 1958739968,
-          &quot;non_heap_used_in_bytes&quot;: 346164192,
-          &quot;non_heap_committed_in_bytes&quot;: 356843520,
+      "jvm": {
+        "timestamp": 1657854496146,
+        "uptime_in_millis": 858680867,
+        "mem": {
+          "heap_used_in_bytes": 1025882384,
+          "heap_used_percent": 52,
+          "heap_committed_in_bytes": 1958739968,
+          "heap_max_in_bytes": 1958739968,
+          "non_heap_used_in_bytes": 346164192,
+          "non_heap_committed_in_bytes": 356843520,
 					...
 </code></pre>
 <pre><code class="language-json">
- &quot;pools&quot;: {
-            &quot;young&quot;: {
-              &quot;used_in_bytes&quot;: 721420288,
-              &quot;max_in_bytes&quot;: 0,
-              &quot;peak_used_in_bytes&quot;: 1166016512,
-              &quot;peak_max_in_bytes&quot;: 0
+ "pools": {
+            "young": {
+              "used_in_bytes": 721420288,
+              "max_in_bytes": 0,
+              "peak_used_in_bytes": 1166016512,
+              "peak_max_in_bytes": 0
             },
-            &quot;old&quot;: {
-              &quot;used_in_bytes&quot;: 286038520,
-              &quot;max_in_bytes&quot;: 1958739968,
-              &quot;peak_used_in_bytes&quot;: 1245947392,
-              &quot;peak_max_in_bytes&quot;: 1958739968
+            "old": {
+              "used_in_bytes": 286038520,
+              "max_in_bytes": 1958739968,
+              "peak_used_in_bytes": 1245947392,
+              "peak_max_in_bytes": 1958739968
             },
-            &quot;survivor&quot;: {
-              &quot;used_in_bytes&quot;: 18423576,
-              &quot;max_in_bytes&quot;: 0,
-              &quot;peak_used_in_bytes&quot;: 71303168,
-              &quot;peak_max_in_bytes&quot;: 0
+            "survivor": {
+              "used_in_bytes": 18423576,
+              "max_in_bytes": 0,
+              "peak_used_in_bytes": 71303168,
+              "peak_max_in_bytes": 0
             }
           }
         },
 				
 </code></pre>
 <pre><code class="language-json">
-        &quot;gc&quot;: {
-          &quot;collectors&quot;: {
-            &quot;young&quot;: {
-              &quot;collection_count&quot;: 12523,
-              &quot;collection_time_in_millis&quot;: 202427
+        "gc": {
+          "collectors": {
+            "young": {
+              "collection_count": 12523,
+              "collection_time_in_millis": 202427
             },
-            &quot;old&quot;: {
-              &quot;collection_count&quot;: 0,
-              &quot;collection_time_in_millis&quot;: 0
+            "old": {
+              "collection_count": 0,
+              "collection_time_in_millis": 0
             }
           }
         },

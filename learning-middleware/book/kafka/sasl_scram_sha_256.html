@@ -185,7 +185,7 @@ sh bin/kafka-configs.sh --zookeeper localhost:2181 --alter --add-config 'SCRAM-S
 sh bin/kafka-configs.sh --zookeeper localhost:2181 --alter --add-config 'SCRAM-SHA-256=[password=yztestpassword]' --entity-type users --entity-name yztest
 
 </code></pre>
-<p>⚠️ 注意: </p>
+<p>⚠️ 注意:</p>
 <p>需要把各个用户都配置证书</p>
 <p>查看认证信息</p>
 <pre><code>
@@ -204,16 +204,16 @@ Configs for user-principal 'zk' are SCRAM-SHA-256=salt=aDd1d2I1dGgxM2M3b2VnYW5ia
 <pre><code>
 Server {
     org.apache.kafka.common.security.scram.ScramLoginModule required
-    username=&quot;zkadmin&quot;
-    password=&quot;zkadminpassword&quot;
-    user_zk=&quot;zkpassword&quot;;
+    username="zkadmin"
+    password="zkadminpassword"
+    user_zk="zkpassword";
 };
 
 </code></pre>
 <h3 id="32-修改启动脚本"><a class="header" href="#32-修改启动脚本">3.2 修改启动脚本</a></h3>
 <p>在zookeeper 启动脚本 <code>./config/zookeeper-server-start.sh</code> 中添加如下配置</p>
 <pre><code>
-export KAFKA_OPTS=&quot;-Djava.security.auth.login.config=$base_dir/../config/zookeeper_server_jaas.conf&quot;
+export KAFKA_OPTS="-Djava.security.auth.login.config=$base_dir/../config/zookeeper_server_jaas.conf"
 
 
 </code></pre>
@@ -235,16 +235,16 @@ jaasLoginRenew=3600000
 <pre><code>
 KafkaServer {
     org.apache.kafka.common.security.scram.ScramLoginModule required
-    username=&quot;admin&quot;
-    password=&quot;admin-kafka&quot;
-    user_admin=&quot;adminpassword&quot;
-    user_yztest=&quot;yztestpassword&quot;;
+    username="admin"
+    password="admin-kafka"
+    user_admin="adminpassword"
+    user_yztest="yztestpassword";
 };
 
 Client {
     org.apache.kafka.common.security.scram.ScramLoginModule required
-    username=&quot;zk&quot;
-    password=&quot;zkpassword&quot;;
+    username="zk"
+    password="zkpassword";
 };
 
 
@@ -252,7 +252,7 @@ Client {
 <h3 id="42-修改启动脚本"><a class="header" href="#42-修改启动脚本">4.2 修改启动脚本</a></h3>
 <p>修改 <code>./bin/kafka-server-start.sh</code></p>
 <p>添加一行</p>
-<p><code>export KAFKA_OPTS=&quot;-Djava.security.auth.login.config=$base_dir/../config/kafka_server_jaas.conf&quot;</code></p>
+<p><code>export KAFKA_OPTS="-Djava.security.auth.login.config=$base_dir/../config/kafka_server_jaas.conf"</code></p>
 <h3 id="43-修改server-配置"><a class="header" href="#43-修改server-配置">4.3 修改server 配置</a></h3>
 <p>修改 <code>config/server.properties</code>, 添加配置</p>
 <pre><code>listeners=SASL_PLAINTEXT://10.100.65.93:9092

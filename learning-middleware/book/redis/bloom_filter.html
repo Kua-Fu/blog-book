@@ -244,17 +244,17 @@ redis-server --loadmodule ./redisbloom.so
 package main
 
 import (
-	&quot;fmt&quot;
-	&quot;testing&quot;
+	"fmt"
+	"testing"
 
-	&quot;github.com/go-redis/redis&quot;
+	"github.com/go-redis/redis"
 )
 
 // 创建 redis 客户端
 func createRedisClient() (*redis.Client, error) {
 	client := redis.NewClient(&amp;redis.Options{
-		Addr:     &quot;localhost:6379&quot;,
-		Password: &quot;abc123&quot;,
+		Addr:     "localhost:6379",
+		Password: "abc123",
 		DB:       0,
 		PoolSize: 5,
 	})
@@ -275,13 +275,13 @@ func TestBloomFilter(t *testing.T) {
 		return
 	}
 
-	bKey := &quot;bf_key&quot;
+	bKey := "bf_key"
 
 	// 1. 添加一个值
 
-	v := &quot;item0&quot;
+	v := "item0"
 
-	inserted, err := cli.Do(&quot;BF.ADD&quot;, bKey, v).Result()
+	inserted, err := cli.Do("BF.ADD", bKey, v).Result()
 
 	if err != nil {
 		panic(err)
@@ -290,39 +290,39 @@ func TestBloomFilter(t *testing.T) {
 	res, _ := inserted.(int64)
 
 	if res &gt; 0 {
-		fmt.Printf(&quot;%s was inserted \n&quot;, v)
+		fmt.Printf("%s was inserted \n", v)
 	} else {
-		fmt.Printf(&quot;%s already exists \n&quot;, v)
+		fmt.Printf("%s already exists \n", v)
 	}
 
 	// // 2. 添加多个值
 
-	bools, err := cli.Do(&quot;BF.MADD&quot;, bKey, &quot;v1&quot;, &quot;v2&quot;, &quot;v3&quot;).Result()
+	bools, err := cli.Do("BF.MADD", bKey, "v1", "v2", "v3").Result()
 
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println(&quot;--bools--&quot;, bools)
+	fmt.Println("--bools--", bools)
 
 	// 3. 判断某个 key 是否存在
-	for _, item := range []string{&quot;item0&quot;, &quot;item1&quot;} {
-		exists, err := cli.Do(&quot;BF.EXISTS&quot;, bKey, item).Result()
+	for _, item := range []string{"item0", "item1"} {
+		exists, err := cli.Do("BF.EXISTS", bKey, item).Result()
 		if err != nil {
 			panic(err)
 		}
 		res, _ := exists.(int64)
 		if res &gt; 0 {
-			fmt.Printf(&quot;%s does exist\n&quot;, item)
+			fmt.Printf("%s does exist\n", item)
 		} else {
-			fmt.Printf(&quot;%s does not exist\n&quot;, item)
+			fmt.Printf("%s does not exist\n", item)
 		}
 	}
 
 	// 4. 判断多个 key 是否存在
 
-	values := []string{&quot;item0&quot;, &quot;item1&quot;}
-	exists, err := cli.Do(&quot;BF.MEXISTS&quot;, bKey, &quot;item0&quot;, &quot;item1&quot;).Result()
+	values := []string{"item0", "item1"}
+	exists, err := cli.Do("BF.MEXISTS", bKey, "item0", "item1").Result()
 
 	if err != nil {
 		panic(err)
@@ -333,9 +333,9 @@ func TestBloomFilter(t *testing.T) {
 	for i, res := range nExists {
 		r, _ := res.(int64)
 		if r &gt; 0 {
-			fmt.Printf(&quot;%s does exist\n&quot;, values[i])
+			fmt.Printf("%s does exist\n", values[i])
 		} else {
-			fmt.Printf(&quot;%s does not exist\n&quot;, values[i])
+			fmt.Printf("%s does not exist\n", values[i])
 		}
 	}
 
@@ -355,19 +355,19 @@ func TestBloomMemory(t *testing.T) {
 		return
 	}
 
-	f, err := os.Create(&quot;/tmp/bloom.log&quot;)
+	f, err := os.Create("/tmp/bloom.log")
 	if err != nil {
 		return
 	}
 
 	defer f.Close()
-	bKey := &quot;bloom_big_key&quot;
+	bKey := "bloom_big_key"
 
 	for i := 0; i &lt; 100000000; {
 
 		v := xid.New().String()
 
-		inserted, err := cli.Do(&quot;BF.ADD&quot;, bKey, v).Result()
+		inserted, err := cli.Do("BF.ADD", bKey, v).Result()
 
 		if err != nil {
 			panic(err)
@@ -377,17 +377,17 @@ func TestBloomMemory(t *testing.T) {
 
 		if res &gt; 0 {
 			i++
-			s1 := fmt.Sprintf(&quot;%s was inserted, %d \n&quot;, v, i)
+			s1 := fmt.Sprintf("%s was inserted, %d \n", v, i)
 			f.WriteString(s1)
 		} else {
-			s2 := fmt.Sprintf(&quot;%s already exists \n&quot;, v)
+			s2 := fmt.Sprintf("%s already exists \n", v)
 			f.WriteString(s2)
 		}
 	}
 }
 
 </code></pre>
-<p>最终写入太慢了，测试结果如下: </p>
+<p>最终写入太慢了，测试结果如下:</p>
 <p>600 万数据，占用内存 25M， 原始数据大小为 122M, 压缩比例为 20%</p>
 <pre><code>cbr1scq87d5st57kkujg was inserted, 6424491 
 cbr1scq87d5st57kkuk0 was inserted, 6424492 

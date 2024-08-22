@@ -9,6 +9,7 @@
 
 - [Reading in 2024](work_reading/2024/2024.md)
   - [January](work_reading/2024/1.md)
+  - [February ~ July](work_reading/2024/2_7.md)
 
 - [Reading in 2023](work_reading/2023/2023.md)
   - [January ～ March](work_reading/2023/1_3.md)

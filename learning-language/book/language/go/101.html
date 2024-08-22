@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Go</li><li class="chapter-item expanded "><a href="../../language/go/go.html"><strong aria-hidden="true">2.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../language/go/101.html" class="active"><strong aria-hidden="true">2.1.</strong> go101</a></li><li class="chapter-item "><a href="../../language/go/blog.html"><strong aria-hidden="true">2.2.</strong> blogs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../language/go/blog/cover.html"><strong aria-hidden="true">2.2.1.</strong> The cover story</a></li></ol></li><li class="chapter-item "><a href="../../language/go/mock.html"><strong aria-hidden="true">2.3.</strong> go mock</a></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><a href="../../language/java/java.html"><strong aria-hidden="true">3.</strong> Java</a></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item "><a href="../../language/python/python.html"><strong aria-hidden="true">4.</strong> Python</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Go</li><li class="chapter-item expanded "><a href="../../language/go/go.html"><strong aria-hidden="true">2.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../language/go/101.html" class="active"><strong aria-hidden="true">2.1.</strong> go101</a></li><li class="chapter-item "><a href="../../language/go/cover.html"><strong aria-hidden="true">2.2.</strong> The cover story</a></li><li class="chapter-item "><a href="../../language/go/gc.html"><strong aria-hidden="true">2.3.</strong> A Guide to the Go Garbage Collector</a></li><li class="chapter-item "><a href="../../language/go/mock.html"><strong aria-hidden="true">2.4.</strong> go mock</a></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><a href="../../language/java/java.html"><strong aria-hidden="true">3.</strong> Java</a></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item "><a href="../../language/python/python.html"><strong aria-hidden="true">4.</strong> Python</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -173,24 +173,24 @@
 func TestJSON(t *testing.T) {
 	m := map[string]string{}
 	//解析正则表达式，如果成功返回解释器
-	s1 := `{&quot;f1&quot;: &quot;111&quot;, &quot;f2&quot;: &quot;222&quot;, &quot;f1&quot;: &quot;333&quot;}`
+	s1 := `{"f1": "111", "f2": "222", "f1": "333"}`
 	err := json.Unmarshal([]byte(s1), &amp;m)
 	if err != nil {
-		fmt.Println(&quot;---unmarshal fialed--&quot;)
+		fmt.Println("---unmarshal fialed--")
 	}
 	bytes, _ := json.Marshal(m)
-	fmt.Println(&quot;---unmarshal success--&quot;, string(bytes))
+	fmt.Println("---unmarshal success--", string(bytes))
 }
 
 
----unmarshal success-- {&quot;f1&quot;:&quot;333&quot;,&quot;f2&quot;:&quot;222&quot;}
+---unmarshal success-- {"f1":"333","f2":"222"}
 
 </code></pre>
 <p>结论，duplicate field 的字符串，unmarshal 不会报错，如果要使用 json 结构，需要使用 unmarshal 后结构</p>
 <h2 id="2-golang-fmtprintf-byte-和-string"><a class="header" href="#2-golang-fmtprintf-byte-和-string">2. golang fmt.Printf []byte 和 string</a></h2>
-<p>go fmt.Printf(&quot;%s&quot;, message) 其中message 是[]byte ，输出一堆乱码</p>
-<p>当使用 fmt.Printf(&quot;%s&quot;, message) 输出乱码时，通常是因为 message 中包含了非 ASCII 字符或者不可打印字符，导致它们在终端中无法正确显示。</p>
-<p>在 Go 中，fmt.Printf(&quot;%s&quot;, ...) 用于格式化输出字符串，但是在处理 []byte 时，它假定 []byte 中的内容是以 ASCII 字符编码的。如果 []byte 中包含了非 ASCII 字符，fmt.Printf 可能会出现乱码。</p>
+<p>go fmt.Printf("%s", message) 其中message 是[]byte ，输出一堆乱码</p>
+<p>当使用 fmt.Printf("%s", message) 输出乱码时，通常是因为 message 中包含了非 ASCII 字符或者不可打印字符，导致它们在终端中无法正确显示。</p>
+<p>在 Go 中，fmt.Printf("%s", ...) 用于格式化输出字符串，但是在处理 []byte 时，它假定 []byte 中的内容是以 ASCII 字符编码的。如果 []byte 中包含了非 ASCII 字符，fmt.Printf 可能会出现乱码。</p>
 <p>解决方式是 先转换为string, 然后输出</p>
 <pre><code>
 
@@ -210,7 +210,7 @@ func TestJSON(t *testing.T) {
                                 <i class="fa fa-angle-left"></i>
                         </a>
 
-                            <a rel="next" href="../../language/go/blog.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../language/go/cover.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -224,7 +224,7 @@ func TestJSON(t *testing.T) {
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../language/go/blog.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../language/go/cover.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

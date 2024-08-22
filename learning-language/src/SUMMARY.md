@@ -5,11 +5,11 @@
 # Go
 
 - [Go](language/go/go.md)
-
-   - [go101](language/go/101.md)
-   - [blogs](language/go/blog.md)
-     - [The cover story](language/go/blog/cover.md)
-   - [go mock](language/go/mock.md)
+	- [go101](language/go/101.md)
+	- [The cover story](language/go/cover.md)
+	- [A Guide to the Go Garbage Collector](language/go/gc.md)
+	- [go mock](language/go/mock.md)
+   
    
 # Java
 

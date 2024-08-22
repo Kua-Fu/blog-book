@@ -169,7 +169,7 @@
                     <main>
                         <h1 id="delete-remote-branch"><a class="header" href="#delete-remote-branch">delete remote branch</a></h1>
 <pre><code>
-git for-each-ref --format='%(committerdate:short) %(refname:short)' --sort=committerdate refs/remotes | awk '{ if ($1 &lt;= &quot;'$(date -v-3m +%Y-%m-%d)'&quot;) { print $2  }}' | awk -F'/' '{if ($NF != &quot;HEAD&quot; &amp;&amp; $NF != &quot;master&quot;) print $NF}' |  xargs -I{} git push --delete origin {}
+git for-each-ref --format='%(committerdate:short) %(refname:short)' --sort=committerdate refs/remotes | awk '{ if ($1 &lt;= "'$(date -v-3m +%Y-%m-%d)'") { print $2  }}' | awk -F'/' '{if ($NF != "HEAD" &amp;&amp; $NF != "master") print $NF}' |  xargs -I{} git push --delete origin {}
 </code></pre>
 <p>delete remote branchs which commit large than 3 monthes by now!</p>
 

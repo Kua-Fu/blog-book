@@ -182,11 +182,11 @@
 <p>是否保存某些字段，默认不保存</p>
 <pre><code>PUT yztest-stored/
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;message&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;store&quot;: true
+  "mappings": {
+    "properties": {
+      "message": {
+        "type": "text",
+        "store": true
       }
     }
   }
@@ -195,12 +195,12 @@
 
 POST yztest-stored/_doc
 {
-  &quot;message&quot;: &quot;test message&quot;
+  "message": "test message"
 }
 
 GET yztest-stored/_search
 {
-  &quot;stored_fields&quot;: [&quot;message&quot;]
+  "stored_fields": ["message"]
 }
 
 

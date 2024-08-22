@@ -170,30 +170,30 @@
                         <h1 id="索引部分"><a class="header" href="#索引部分">索引部分</a></h1>
 <p>索引(indices) 部分列出了这个节点上所有索引的聚合过的统计值：</p>
 <pre><code class="language-json">
-   &quot;indices&quot;: {
-        &quot;docs&quot;: { 0️⃣
-          &quot;count&quot;: 6539564,
-          &quot;deleted&quot;: 2082
+   "indices": {
+        "docs": { 0️⃣
+          "count": 6539564,
+          "deleted": 2082
         },
-        &quot;shard_stats&quot;: {
-          &quot;total_count&quot;: 97
+        "shard_stats": {
+          "total_count": 97
         },
-        &quot;store&quot;: {
-          &quot;size_in_bytes&quot;: 2646907845,
-          &quot;total_data_set_size_in_bytes&quot;: 2646907845,
-          &quot;reserved_in_bytes&quot;: 0
+        "store": {
+          "size_in_bytes": 2646907845,
+          "total_data_set_size_in_bytes": 2646907845,
+          "reserved_in_bytes": 0
         },
-        &quot;indexing&quot;: {
-          &quot;index_total&quot;: 15286202,
-          &quot;index_time_in_millis&quot;: 2403080,
-          &quot;index_current&quot;: 0,
-          &quot;index_failed&quot;: 14118852,
-          &quot;delete_total&quot;: 20512,
-          &quot;delete_time_in_millis&quot;: 3402,
-          &quot;delete_current&quot;: 0,
-          &quot;noop_update_total&quot;: 1,
-          &quot;is_throttled&quot;: false,
-          &quot;throttle_time_in_millis&quot;: 0 1️⃣
+        "indexing": {
+          "index_total": 15286202,
+          "index_time_in_millis": 2403080,
+          "index_current": 0,
+          "index_failed": 14118852,
+          "delete_total": 20512,
+          "delete_time_in_millis": 3402,
+          "delete_current": 0,
+          "noop_update_total": 1,
+          "is_throttled": false,
+          "throttle_time_in_millis": 0 1️⃣
         },
 		...
 </code></pre>
@@ -207,53 +207,53 @@
 </li>
 </ul>
 <pre><code class="language-json">
- &quot;indexing&quot;: {
-   &quot;index_total&quot;: 15286202,
-   &quot;index_time_in_millis&quot;: 2403080,
-   &quot;index_current&quot;: 0,
-   &quot;index_failed&quot;: 14118852,
-   &quot;delete_total&quot;: 20512,
-   &quot;delete_time_in_millis&quot;: 3402,
-   &quot;delete_current&quot;: 0,
-   &quot;noop_update_total&quot;: 1,
-   &quot;is_throttled&quot;: false,
-   &quot;throttle_time_in_millis&quot;: 0
+ "indexing": {
+   "index_total": 15286202,
+   "index_time_in_millis": 2403080,
+   "index_current": 0,
+   "index_failed": 14118852,
+   "delete_total": 20512,
+   "delete_time_in_millis": 3402,
+   "delete_current": 0,
+   "noop_update_total": 1,
+   "is_throttled": false,
+   "throttle_time_in_millis": 0
  },
- &quot;get&quot;: {
-   &quot;total&quot;: 1980564,
-   &quot;time_in_millis&quot;: 202478,
-   &quot;exists_total&quot;: 1973030,
-   &quot;exists_time_in_millis&quot;: 201941,
-   &quot;missing_total&quot;: 7534,
-   &quot;missing_time_in_millis&quot;: 537,
-   &quot;current&quot;: 0
+ "get": {
+   "total": 1980564,
+   "time_in_millis": 202478,
+   "exists_total": 1973030,
+   "exists_time_in_millis": 201941,
+   "missing_total": 7534,
+   "missing_time_in_millis": 537,
+   "current": 0
  },
- &quot;search&quot;: {
-   &quot;open_contexts&quot;: 0,
-   &quot;query_total&quot;: 3272088,
-   &quot;query_time_in_millis&quot;: 1806935,
-   &quot;query_current&quot;: 0,
-   &quot;fetch_total&quot;: 3129569,
-   &quot;fetch_time_in_millis&quot;: 97430,
-   &quot;fetch_current&quot;: 0,
-   &quot;scroll_total&quot;: 866806,
-   &quot;scroll_time_in_millis&quot;: 7417778,
-   &quot;scroll_current&quot;: 0,
-   &quot;suggest_total&quot;: 0,
-   &quot;suggest_time_in_millis&quot;: 0,
-   &quot;suggest_current&quot;: 0
+ "search": {
+   "open_contexts": 0,
+   "query_total": 3272088,
+   "query_time_in_millis": 1806935,
+   "query_current": 0,
+   "fetch_total": 3129569,
+   "fetch_time_in_millis": 97430,
+   "fetch_current": 0,
+   "scroll_total": 866806,
+   "scroll_time_in_millis": 7417778,
+   "scroll_current": 0,
+   "suggest_total": 0,
+   "suggest_time_in_millis": 0,
+   "suggest_current": 0
  },
- &quot;merges&quot;: {
-   &quot;current&quot;: 0,
-   &quot;current_docs&quot;: 0,
-   &quot;current_size_in_bytes&quot;: 0,
-   &quot;total&quot;: 97527,
-   &quot;total_time_in_millis&quot;: 5367815,
-   &quot;total_docs&quot;: 364477569,
-   &quot;total_size_in_bytes&quot;: 136348510561,
-   &quot;total_stopped_time_in_millis&quot;: 0,
-   &quot;total_throttled_time_in_millis&quot;: 762543,
-   &quot;total_auto_throttle_in_bytes&quot;: 2482171511
+ "merges": {
+   "current": 0,
+   "current_docs": 0,
+   "current_size_in_bytes": 0,
+   "total": 97527,
+   "total_time_in_millis": 5367815,
+   "total_docs": 364477569,
+   "total_size_in_bytes": 136348510561,
+   "total_stopped_time_in_millis": 0,
+   "total_throttled_time_in_millis": 762543,
+   "total_auto_throttle_in_bytes": 2482171511
  }
 		
 </code></pre>
@@ -305,36 +305,36 @@
 </li>
 </ol>
 <pre><code class="language-json">
-&quot;query_cache&quot;: {
-  &quot;memory_size_in_bytes&quot;: 997384,
-  &quot;total_count&quot;: 1037643,
-  &quot;hit_count&quot;: 19450,
-  &quot;miss_count&quot;: 1018193,
-  &quot;cache_size&quot;: 188,
-  &quot;cache_count&quot;: 670,
-  &quot;evictions&quot;: 482
+"query_cache": {
+  "memory_size_in_bytes": 997384,
+  "total_count": 1037643,
+  "hit_count": 19450,
+  "miss_count": 1018193,
+  "cache_size": 188,
+  "cache_count": 670,
+  "evictions": 482
 },
-&quot;fielddata&quot;: {
-  &quot;memory_size_in_bytes&quot;: 736,
-  &quot;evictions&quot;: 0
+"fielddata": {
+  "memory_size_in_bytes": 736,
+  "evictions": 0
 },
-&quot;completion&quot;: {
-  &quot;size_in_bytes&quot;: 0
+"completion": {
+  "size_in_bytes": 0
 },
-&quot;segments&quot;: {
-  &quot;count&quot;: 192,
-  &quot;memory_in_bytes&quot;: 0,
-  &quot;terms_memory_in_bytes&quot;: 0,
-  &quot;stored_fields_memory_in_bytes&quot;: 0,
-  &quot;term_vectors_memory_in_bytes&quot;: 0,
-  &quot;norms_memory_in_bytes&quot;: 0,
-  &quot;points_memory_in_bytes&quot;: 0,
-  &quot;doc_values_memory_in_bytes&quot;: 0,
-  &quot;index_writer_memory_in_bytes&quot;: 4173916,
-  &quot;version_map_memory_in_bytes&quot;: 51318,
-  &quot;fixed_bit_set_memory_in_bytes&quot;: 593296,
-  &quot;max_unsafe_auto_id_timestamp&quot;: 1656995860384,
-  &quot;file_sizes&quot;: {}
+"segments": {
+  "count": 192,
+  "memory_in_bytes": 0,
+  "terms_memory_in_bytes": 0,
+  "stored_fields_memory_in_bytes": 0,
+  "term_vectors_memory_in_bytes": 0,
+  "norms_memory_in_bytes": 0,
+  "points_memory_in_bytes": 0,
+  "doc_values_memory_in_bytes": 0,
+  "index_writer_memory_in_bytes": 4173916,
+  "version_map_memory_in_bytes": 51318,
+  "fixed_bit_set_memory_in_bytes": 593296,
+  "max_unsafe_auto_id_timestamp": 1656995860384,
+  "file_sizes": {}
 },
 
 </code></pre>

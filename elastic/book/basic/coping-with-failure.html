@@ -168,7 +168,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="应对故障"><a class="header" href="#应对故障">应对故障</a></h1>
-<p>我们之前说过 Elasticsearch 可以应对节点故障，接下来让我们尝试下这个功能。 如果我们关闭第一个节点，这时集群的状态如下: </p>
+<p>我们之前说过 Elasticsearch 可以应对节点故障，接下来让我们尝试下这个功能。 如果我们关闭第一个节点，这时集群的状态如下:</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/elastic/basic/elas_0206.png?raw=true" alt="关闭1节点" /></p>
 <p>我们关闭的节点是一个主节点。而集群必须拥有一个主节点来保证正常工作，所以发生的第一件事情就是选举一个新的主节点： Node 2 。</p>
 <p>在我们关闭 Node 1 的同时也失去了主分片 1 和 2 ，并且在缺失主分片的时候索引也不能正常工作。 如果此时来检查集群的状况，我们看到的状态将会为 red ：不是所有主分片都在正常工作。</p>

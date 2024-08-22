@@ -183,47 +183,47 @@
 <pre><code>
 PUT yztest-2-1
 {
-  &quot;settings&quot;: {
-    &quot;analysis&quot;: {
-      &quot;analyzer&quot;: {
-        &quot;my_analyzer&quot;: {
-          &quot;tokenizer&quot;: &quot;standard&quot;,
-          &quot;char_filter&quot;: [
-            &quot;my_mappings_char_filter&quot;
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_analyzer": {
+          "tokenizer": "standard",
+          "char_filter": [
+            "my_mappings_char_filter"
           ]
         }
       },
-      &quot;char_filter&quot;: {
-        &quot;my_mappings_char_filter&quot;: {
-          &quot;type&quot;: &quot;mapping&quot;,
-          &quot;mappings&quot;: [
-            &quot;&amp; =&gt; and&quot;
+      "char_filter": {
+        "my_mappings_char_filter": {
+          "type": "mapping",
+          "mappings": [
+            "&amp; =&gt; and"
           ]
         }
       }
     }
   },
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;message&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;my_analyzer&quot;
+  "mappings": {
+    "properties": {
+      "message": {
+        "type": "text",
+        "analyzer": "my_analyzer"
       }
     }
   }
 }
 
 POST yztest-2-1/_bulk
-{&quot;index&quot;: {}}
-{&quot;message&quot;: &quot;dog &amp; cat&quot;}
-{&quot;index&quot;: {}}
-{&quot;message&quot;: &quot;dog and cat&quot;}
+{"index": {}}
+{"message": "dog &amp; cat"}
+{"index": {}}
+{"message": "dog and cat"}
 
 GET yztest-2-1/_search
 {
-  &quot;query&quot;: {
-    &quot;match_phrase&quot;: {
-      &quot;message&quot;: &quot;dog &amp; cat&quot;
+  "query": {
+    "match_phrase": {
+      "message": "dog &amp; cat"
     }
   }
 }
@@ -231,58 +231,58 @@ GET yztest-2-1/_search
 </code></pre>
 <h2 id="三reindex"><a class="header" href="#三reindex">三、reindex</a></h2>
 <h3 id="31-题目"><a class="header" href="#31-题目">3.1 题目</a></h3>
-<p>有index_a包含一些文档， </p>
-<p>要求创建索引index_b，通过reindex api将index_a的文档索引到index_b。 </p>
-<p>要求增加一个整形字段，value是index_a的field_x的字符长度； </p>
-<p>再增加一个数组类型的字段，value是field_y的词集合。(field_y是空格分割的一组词，比方&quot;foo bar&quot;，索引到index_b后，要求变成[&quot;foo&quot;, &quot;bar&quot;]</p>
+<p>有index_a包含一些文档，</p>
+<p>要求创建索引index_b，通过reindex api将index_a的文档索引到index_b。</p>
+<p>要求增加一个整形字段，value是index_a的field_x的字符长度；</p>
+<p>再增加一个数组类型的字段，value是field_y的词集合。(field_y是空格分割的一组词，比方"foo bar"，索引到index_b后，要求变成["foo", "bar"]</p>
 <h3 id="32-分析"><a class="header" href="#32-分析">3.2 分析</a></h3>
 <p>需要通过 pipeline + reindex 实现，pipeline 中需要使用 split 和 script</p>
 <h3 id="33-先使用-simulate-模拟"><a class="header" href="#33-先使用-simulate-模拟">3.3 先使用 simulate 模拟</a></h3>
 <pre><code>POST _ingest/pipeline/_simulate
 {
-  &quot;pipeline&quot;: {
-    &quot;processors&quot;: [
+  "pipeline": {
+    "processors": [
       {
-       &quot;split&quot;: {
-         &quot;field&quot;: &quot;f1&quot;,
-         &quot;separator&quot;: &quot; &quot;
+       "split": {
+         "field": "f1",
+         "separator": " "
        }
       },
       {
-        &quot;script&quot;: {
-          &quot;lang&quot;: &quot;painless&quot;, 
-          &quot;source&quot;: &quot;ctx['f3'] = ctx['f2'].length()&quot;
+        "script": {
+          "lang": "painless", 
+          "source": "ctx['f3'] = ctx['f2'].length()"
         }
       }
     ]
   },
-  &quot;docs&quot;: [
+  "docs": [
     {
-      &quot;_index&quot;: &quot;index&quot;,
-      &quot;_source&quot;: {
-        &quot;f1&quot;: &quot;v1 v2&quot;,
-        &quot;f2&quot;: &quot;111&quot;
+      "_index": "index",
+      "_source": {
+        "f1": "v1 v2",
+        "f2": "111"
       }
     }
   ]
 }
 
 {
-  &quot;docs&quot; : [
+  "docs" : [
     {
-      &quot;doc&quot; : {
-        &quot;_index&quot; : &quot;index&quot;,
-        &quot;_id&quot; : &quot;_id&quot;,
-        &quot;_source&quot; : {
-          &quot;f1&quot; : [
-            &quot;v1&quot;,
-            &quot;v2&quot;
+      "doc" : {
+        "_index" : "index",
+        "_id" : "_id",
+        "_source" : {
+          "f1" : [
+            "v1",
+            "v2"
           ],
-          &quot;f2&quot; : &quot;111&quot;,
-          &quot;f3&quot; : 3
+          "f2" : "111",
+          "f3" : 3
         },
-        &quot;_ingest&quot; : {
-          &quot;timestamp&quot; : &quot;2023-03-15T05:43:30.46806Z&quot;
+        "_ingest" : {
+          "timestamp" : "2023-03-15T05:43:30.46806Z"
         }
       }
     }
@@ -293,24 +293,24 @@ GET yztest-2-1/_search
 <h3 id="34-reindex"><a class="header" href="#34-reindex">3.4 reindex</a></h3>
 <pre><code>PUT _ingest/pipeline/yztest-2-2-pipeline
 {
-  &quot;description&quot;: &quot;test&quot;,
-  &quot;processors&quot;: [
+  "description": "test",
+  "processors": [
     {
-      &quot;set&quot;: {
-        &quot;field&quot;: &quot;f3&quot;,
-        &quot;value&quot;: &quot;{{f1}}&quot;
+      "set": {
+        "field": "f3",
+        "value": "{{f1}}"
       }
     },
     {
-      &quot;split&quot;: {
-        &quot;field&quot;: &quot;f3&quot;,
-        &quot;separator&quot;: &quot; &quot;
+      "split": {
+        "field": "f3",
+        "separator": " "
       }
     },
     {
-      &quot;script&quot;: {
-        &quot;lang&quot;: &quot;painless&quot;,
-        &quot;source&quot;: &quot;ctx['f4'] = ctx['f2'].length()&quot;
+      "script": {
+        "lang": "painless",
+        "source": "ctx['f4'] = ctx['f2'].length()"
       }
     }
   ]
@@ -323,19 +323,19 @@ PUT yztest-2-2-dest
 
 POST yztest-2-2-source/_doc
 {
-  &quot;f1&quot;: &quot;v1 v2 v3&quot;,
-  &quot;f2&quot;: &quot;test&quot;
+  "f1": "v1 v2 v3",
+  "f2": "test"
 }
 
 
 POST _reindex
 {
-  &quot;source&quot;: {
-    &quot;index&quot;: &quot;yztest-2-2-source&quot;
+  "source": {
+    "index": "yztest-2-2-source"
   },
-  &quot;dest&quot;: {
-    &quot;index&quot;: &quot;yztest-2-2-dest&quot;,
-    &quot;pipeline&quot;: &quot;yztest-2-2-pipeline&quot;
+  "dest": {
+    "index": "yztest-2-2-dest",
+    "pipeline": "yztest-2-2-pipeline"
   }
 }
 
@@ -343,34 +343,34 @@ POST _reindex
 GET yztest-2-2-dest/_search
 
 {
-  &quot;took&quot; : 9,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 9,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 1,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 1,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.0,
-    &quot;hits&quot; : [
+    "max_score" : 1.0,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;yztest-2-2-dest&quot;,
-        &quot;_id&quot; : &quot;RM7N44YBHHgM2AP0Qysd&quot;,
-        &quot;_score&quot; : 1.0,
-        &quot;_source&quot; : {
-          &quot;f1&quot; : &quot;v1 v2 v3&quot;,
-          &quot;f2&quot; : &quot;test&quot;,
-          &quot;f3&quot; : [
-            &quot;v1&quot;,
-            &quot;v2&quot;,
-            &quot;v3&quot;
+        "_index" : "yztest-2-2-dest",
+        "_id" : "RM7N44YBHHgM2AP0Qysd",
+        "_score" : 1.0,
+        "_source" : {
+          "f1" : "v1 v2 v3",
+          "f2" : "test",
+          "f3" : [
+            "v1",
+            "v2",
+            "v3"
           ],
-          &quot;f4&quot; : 4
+          "f4" : 4
         }
       }
     ]
@@ -389,83 +389,83 @@ GET yztest-2-2-dest/_search
 PUT yztest-2-3
 
 POST yztest-2-3/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;hello&quot;, &quot;f2&quot;: &quot;hello&quot;, &quot;f3&quot;: &quot;he&quot;, &quot;f4&quot;: &quot;h&quot;}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;hello&quot;, &quot;f2&quot;: &quot;hell&quot;, &quot;f3&quot;: &quot;he&quot;, &quot;f4&quot;: &quot;h&quot;}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;hello&quot;, &quot;f2&quot;: &quot;hell&quot;, &quot;f3&quot;: &quot;hello&quot;, &quot;f4&quot;: &quot;h&quot;}
+{"index": {}}
+{"f1": "hello", "f2": "hello", "f3": "he", "f4": "h"}
+{"index": {}}
+{"f1": "hello", "f2": "hell", "f3": "he", "f4": "h"}
+{"index": {}}
+{"f1": "hello", "f2": "hell", "f3": "hello", "f4": "h"}
 
 GET yztest-2-3/_search
 {
-  &quot;query&quot;: {
-    &quot;bool&quot;: {
-      &quot;must&quot;: [
+  "query": {
+    "bool": {
+      "must": [
         {
-          &quot;match&quot;: {
-            &quot;f1&quot;: &quot;hello&quot;
+          "match": {
+            "f1": "hello"
           }
         }
       ],
-      &quot;should&quot;: [
+      "should": [
         {
-          &quot;match&quot;: {
-            &quot;f2&quot;: &quot;hello&quot;
+          "match": {
+            "f2": "hello"
           }
         },
         {
-          &quot;match&quot;: {
-            &quot;f3&quot;: &quot;hello&quot;
+          "match": {
+            "f3": "hello"
           }
         },
         {
-          &quot;match&quot;: {
-            &quot;f4&quot;: &quot;hello&quot;
+          "match": {
+            "f4": "hello"
           }
         }
       ],
-      &quot;minimum_should_match&quot;: 1
+      "minimum_should_match": 1
     }
   }
 }
 
 
 {
-  &quot;took&quot; : 4,
-  &quot;timed_out&quot; : false,
-  &quot;_shards&quot; : {
-    &quot;total&quot; : 1,
-    &quot;successful&quot; : 1,
-    &quot;skipped&quot; : 0,
-    &quot;failed&quot; : 0
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
   },
-  &quot;hits&quot; : {
-    &quot;total&quot; : {
-      &quot;value&quot; : 2,
-      &quot;relation&quot; : &quot;eq&quot;
+  "hits" : {
+    "total" : {
+      "value" : 2,
+      "relation" : "eq"
     },
-    &quot;max_score&quot; : 1.1143606,
-    &quot;hits&quot; : [
+    "max_score" : 1.1143606,
+    "hits" : [
       {
-        &quot;_index&quot; : &quot;yztest-2-3&quot;,
-        &quot;_id&quot; : &quot;Rs7f44YBHHgM2AP0Uivz&quot;,
-        &quot;_score&quot; : 1.1143606,
-        &quot;_source&quot; : {
-          &quot;f1&quot; : &quot;hello&quot;,
-          &quot;f2&quot; : &quot;hello&quot;,
-          &quot;f3&quot; : &quot;he&quot;,
-          &quot;f4&quot; : &quot;h&quot;
+        "_index" : "yztest-2-3",
+        "_id" : "Rs7f44YBHHgM2AP0Uivz",
+        "_score" : 1.1143606,
+        "_source" : {
+          "f1" : "hello",
+          "f2" : "hello",
+          "f3" : "he",
+          "f4" : "h"
         }
       },
       {
-        &quot;_index&quot; : &quot;yztest-2-3&quot;,
-        &quot;_id&quot; : &quot;SM7f44YBHHgM2AP0Uivz&quot;,
-        &quot;_score&quot; : 1.1143606,
-        &quot;_source&quot; : {
-          &quot;f1&quot; : &quot;hello&quot;,
-          &quot;f2&quot; : &quot;hell&quot;,
-          &quot;f3&quot; : &quot;hello&quot;,
-          &quot;f4&quot; : &quot;h&quot;
+        "_index" : "yztest-2-3",
+        "_id" : "SM7f44YBHHgM2AP0Uivz",
+        "_score" : 1.1143606,
+        "_source" : {
+          "f1" : "hello",
+          "f2" : "hell",
+          "f3" : "hello",
+          "f4" : "h"
         }
       }
     ]
@@ -480,41 +480,41 @@ GET yztest-2-3/_search
 PUT yztest-2-4
 
 POST yztest-2-4/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;hello world&quot;}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;hello&quot;}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;world&quot;}
+{"index": {}}
+{"f1": "hello world"}
+{"index": {}}
+{"f1": "hello"}
+{"index": {}}
+{"f1": "world"}
 
 
 
 PUT _scripts/yztest-2-4-search-template
 {
-  &quot;script&quot;: {
-    &quot;lang&quot;: &quot;mustache&quot;,
-    &quot;source&quot;: {
-      &quot;query&quot;: {
-        &quot;match&quot;: {
-          &quot;f1&quot;: &quot;{{query_string}}&quot;
+  "script": {
+    "lang": "mustache",
+    "source": {
+      "query": {
+        "match": {
+          "f1": "{{query_string}}"
         }
       },
-      &quot;from&quot;: &quot;{{from}}&quot;,
-      &quot;size&quot;: &quot;{{size}}&quot;
+      "from": "{{from}}",
+      "size": "{{size}}"
     },
-    &quot;params&quot;: {
-      &quot;query_string&quot;: &quot;hello world&quot;
+    "params": {
+      "query_string": "hello world"
     }
   }
 }
 
 GET yztest-2-4/_search/template
 {
-  &quot;id&quot;: &quot;yztest-2-4-search-template&quot;,
-  &quot;params&quot;: {
-    &quot;query_string&quot;: &quot;hello world&quot;,
-    &quot;from&quot;: 0,
-    &quot;size&quot;: 2
+  "id": "yztest-2-4-search-template",
+  "params": {
+    "query_string": "hello world",
+    "from": 0,
+    "size": 2
   }
 }
 

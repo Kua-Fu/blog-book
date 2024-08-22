@@ -223,12 +223,12 @@
 <p>The following example action has a timeout period of one hour. The policy retries this action three times with an exponential backoff policy, with a delay of 10 minutes between each retry:</p>
 <p>下面示例操作的超时时间为1个小时，该操作如果失败，会使用指数策略重试机制，每次重试的延迟为10分钟</p>
 <pre><code class="language-json">
-&quot;actions&quot;: {
-  &quot;timeout&quot;: &quot;1h&quot;,
-  &quot;retry&quot;: {
-    &quot;count&quot;: 3,
-    &quot;backoff&quot;: &quot;exponential&quot;,
-    &quot;delay&quot;: &quot;10m&quot;
+"actions": {
+  "timeout": "1h",
+  "retry": {
+    "count": 3,
+    "backoff": "exponential",
+    "delay": "10m"
   }
 }
 

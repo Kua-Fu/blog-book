@@ -175,15 +175,15 @@
 <p>可以在reindex阶段，使用script，计算每个doc 的_source长度</p>
 <pre><code>POST _reindex
 {
-  &quot;source&quot;: {
-    &quot;index&quot;: &quot;yztest-log&quot;
+  "source": {
+    "index": "yztest-log"
   },
-  &quot;dest&quot;: {
-    &quot;index&quot;: &quot;yztest-backup&quot;
+  "dest": {
+    "index": "yztest-backup"
   },
-  &quot;script&quot;: {
-    &quot;lang&quot;: &quot;painless&quot;,
-    &quot;source&quot;: &quot;&quot;&quot;ctx._source.len = ctx._source.toString().length()&quot;&quot;&quot;
+  "script": {
+    "lang": "painless",
+    "source": """ctx._source.len = ctx._source.toString().length()"""
   }
 }
 </code></pre>

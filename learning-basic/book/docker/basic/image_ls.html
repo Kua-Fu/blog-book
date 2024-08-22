@@ -182,7 +182,7 @@ opensearchproject/opensearch                    latest    5b7cb929b964   3 month
 <p>在上面的例子中，我们可以看到 <code>rancher/rancher:latest</code> 和 <code>rancher/rancher:latest</code> 拥有相同的 ID，因为它们对应的是同一个镜像</p>
 <p><code>docker image ls</code> 显示的是镜像下载到本地后，展开的大小，准确说，是展开后的各层所占空间的总和，因为镜像到本地后，查看空间的时候，更关心的是本地磁盘空间占用的大小</p>
 <p><code>docker image ls</code> 列表中的镜像体积总和并非是所有镜像实际硬盘消耗。由于 <code>Docker</code> 镜像是多层存储结构，并且可以继承、复用，因此不同镜像可能会因为使用相同的基础镜像，从而拥有共同的层。由于 <code>Docker</code> 使用 <code>Union FS</code>，相同的层只需要保存一份即可，因此实际镜像硬盘占用空间很可能要比这个列表镜像大小的总和要小的多</p>
-<p><code>docker image ls -f dangling=true</code> </p>
+<p><code>docker image ls -f dangling=true</code></p>
 <h2 id="二docker-system-df"><a class="header" href="#二docker-system-df">二、docker system df</a></h2>
 <p>通过 <code>docker system df</code> 命令来便捷的查看镜像、容器、数据卷所占用的空间。</p>
 <pre><code>
@@ -220,10 +220,10 @@ Build Cache     11        0         146.6MB   146.6MB
 <p><code>docker image ls -q</code> 产生 ID 列表</p>
 </li>
 <li>
-<p><code>docker image ls --format &quot;{{.ID}}: {{.Repository}}&quot;</code> 直接列出镜像结果，并且只包含镜像ID和仓库名</p>
+<p><code>docker image ls --format "{{.ID}}: {{.Repository}}"</code> 直接列出镜像结果，并且只包含镜像ID和仓库名</p>
 </li>
 <li>
-<p><code>docker image ls --format &quot;table {{.ID}}\t{{.Repository}}\t{{.Tag}}&quot;</code> 以表格等距显示，并且有标题行，和默认一样，不过自己定义列</p>
+<p><code>docker image ls --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"</code> 以表格等距显示，并且有标题行，和默认一样，不过自己定义列</p>
 </li>
 </ul>
 

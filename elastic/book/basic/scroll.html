@@ -172,37 +172,37 @@
 <p>游标查询允许我们 先做查询初始化，然后再批量地拉取结果。 这有点儿像传统数据库中的 cursor 。</p>
 <p>游标查询会取某个时间点的快照数据。 查询初始化之后索引上的任何变化会被它忽略。 它通过保存旧的数据文件来实现这个特性，结果就像保留初始化时的索引 视图 一样。</p>
 <p>深度分页的代价根源是结果集全局排序，如果去掉全局排序的特性的话查询结果的成本就会很低。 游标查询用字段 _doc 来排序。 这个指令让 Elasticsearch 仅仅从还有结果的分片返回下一批结果。</p>
-<p>启用游标查询可以通过在查询的时候设置参数 scroll 的值为我们期望的游标查询的过期时间。 游标查询的过期时间会在每次做查询的时候刷新，所以这个时间只需要足够处理当前批的结果就可以了，而不是处理查询结果的所有文档的所需时间。 </p>
+<p>启用游标查询可以通过在查询的时候设置参数 scroll 的值为我们期望的游标查询的过期时间。 游标查询的过期时间会在每次做查询的时候刷新，所以这个时间只需要足够处理当前批的结果就可以了，而不是处理查询结果的所有文档的所需时间。</p>
 <p>这个过期时间的参数很重要，因为保持这个游标查询窗口需要消耗资源，所以我们期望如果不再需要维护这种资源就该早点儿释放掉。 设置这个超时能够让 Elasticsearch 在稍后空闲的时候自动释放这部分资源。</p>
 <pre><code class="language-json">
 GET /kibana_sample_data_logs/_search?scroll=1m 0️⃣
 {
-  &quot;query&quot;: {
-    &quot;match_all&quot;: {}
+  "query": {
+    "match_all": {}
   },
-  &quot;sort&quot;: [ 1️⃣
-    &quot;_doc&quot;
+  "sort": [ 1️⃣
+    "_doc"
   ],
-  &quot;size&quot;: 1000
+  "size": 1000
 }
 
 {
-  &quot;_scroll_id&quot;: &quot;FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB&quot;,
-  &quot;took&quot;: 4,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "_scroll_id": "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB",
+  "took": 4,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 14074,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 14074,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: null,
-    &quot;hits&quot;: []
+    "max_score": null,
+    "hits": []
   }
 }
 
@@ -213,27 +213,27 @@ GET /kibana_sample_data_logs/_search?scroll=1m 0️⃣
 <pre><code class="language-json">
 GET /_search/scroll
 {
-    &quot;scroll&quot;: &quot;1m&quot;, 0️⃣
-    &quot;scroll_id&quot; : &quot;FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB&quot;
+    "scroll": "1m", 0️⃣
+    "scroll_id" : "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB"
 }
 
 {
-  &quot;_scroll_id&quot;: &quot;FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB&quot;,
-  &quot;took&quot;: 8,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "_scroll_id": "FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kRmV0Y2gBFmxnRlZGdy14VDVDVWlsTENZLUEwUncAAAAAAEJDTBZzbkVCTi1hVlRjS2lKZm9UODdMZ0tB",
+  "took": 8,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 14074,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 14074,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: null,
-    &quot;hits&quot;: []
+    "max_score": null,
+    "hits": []
   }
 }
 

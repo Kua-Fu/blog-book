@@ -173,17 +173,17 @@
 DELETE /website/_doc/123
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;123&quot;,
-  &quot;_version&quot;: 3, 0️⃣
-  &quot;result&quot;: &quot;deleted&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "123",
+  "_version": 3, 0️⃣
+  "result": "deleted",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 3,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 3,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -191,11 +191,11 @@ DELETE /website/_doc/123
 <p>如果文档没有找到，我们将得到 404 Not Found 的响应码和类似这样的响应体：</p>
 <pre><code class="language-json">
 {
-  &quot;found&quot; :    false,
-  &quot;_index&quot; :   &quot;website&quot;,
-  &quot;_type&quot; :    &quot;blog&quot;,
-  &quot;_id&quot; :      &quot;123&quot;,
-  &quot;_version&quot; : 4
+  "found" :    false,
+  "_index" :   "website",
+  "_type" :    "blog",
+  "_id" :      "123",
+  "_version" : 4
 }
 
 </code></pre>

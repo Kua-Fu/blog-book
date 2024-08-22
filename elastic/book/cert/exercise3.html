@@ -187,25 +187,25 @@
 PUT yztest-3-1
 
 POST yztest-3-1/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;v1&quot;, &quot;f2&quot;: &quot;v2&quot;}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;v2&quot;, &quot;f2&quot;: &quot;v1&quot;}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: &quot;v3&quot;, &quot;f2&quot;: &quot;v2&quot;}
+{"index": {}}
+{"f1": "v1", "f2": "v2"}
+{"index": {}}
+{"f1": "v2", "f2": "v1"}
+{"index": {}}
+{"f1": "v3", "f2": "v2"}
 
 POST yztest-3-1/_search
 {
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;f1&quot;: &quot;v1&quot;
+  "query": {
+    "match": {
+      "f1": "v1"
     }
   },
-  &quot;aggs&quot;: {
-    &quot;top10&quot;: {
-      &quot;terms&quot;: {
-        &quot;field&quot;: &quot;f2.keyword&quot;,
-        &quot;size&quot;: 10
+  "aggs": {
+    "top10": {
+      "terms": {
+        "field": "f2.keyword",
+        "size": 10
       }
     }
   }

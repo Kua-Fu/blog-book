@@ -171,11 +171,11 @@
 <p>对于一些实体类，例如:产品、电影、法律声明， 通常这样的一份文本会被翻译成不同语言的文档。虽然这些不同语言的文档可以单独保存在各自的索引中。但另一种更合理的方式是同一份文本的所有翻译统一保存在一个索引中。。</p>
 <pre><code class="language-python">
 {
-   &quot;title&quot;:     &quot;Fight club&quot;,
-   &quot;title_br&quot;:  &quot;Clube de Luta&quot;,
-   &quot;title_cz&quot;:  &quot;Klub rváčů&quot;,
-   &quot;title_en&quot;:  &quot;Fight club&quot;,
-   &quot;title_es&quot;:  &quot;El club de la lucha&quot;,
+   "title":     "Fight club",
+   "title_br":  "Clube de Luta",
+   "title_cz":  "Klub rváčů",
+   "title_en":  "Fight club",
+   "title_es":  "El club de la lucha",
    ...
 }
 
@@ -184,26 +184,26 @@
 <pre><code class="language-python">
 PUT /movies
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;title&quot;: { 0️⃣
-        &quot;type&quot;: &quot;text&quot;
+  "mappings": {
+    "properties": {
+      "title": { 0️⃣
+        "type": "text"
       },
-      &quot;title_br&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;brazilian&quot; 1️⃣
+      "title_br": {
+        "type": "text",
+        "analyzer": "brazilian" 1️⃣
       },
-      &quot;title_cz&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;czech&quot;
+      "title_cz": {
+        "type": "text",
+        "analyzer": "czech"
       },
-      &quot;title_en&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;english&quot;
+      "title_en": {
+        "type": "text",
+        "analyzer": "english"
       },
-      &quot;title_es&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;spanish&quot;
+      "title_es": {
+        "type": "text",
+        "analyzer": "spanish"
       }
     }
   }
@@ -217,14 +217,14 @@ PUT /movies
 <pre><code class="language-python">
 GET /movies/_search
 {
-  &quot;query&quot;: {
-    &quot;multi_match&quot;: {
-      &quot;query&quot;: &quot;club de la lucha&quot;, 0️⃣
-      &quot;fields&quot;: [
-        &quot;title*&quot;,
-        &quot;title_es^2&quot;
+  "query": {
+    "multi_match": {
+      "query": "club de la lucha", 0️⃣
+      "fields": [
+        "title*",
+        "title_es^2"
       ],
-      &quot;type&quot;: &quot;most_fields&quot;
+      "type": "most_fields"
     }
   }
 }

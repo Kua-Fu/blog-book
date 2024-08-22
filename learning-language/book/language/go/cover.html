@@ -36,20 +36,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="../../../favicon.svg">
-        <link rel="shortcut icon" href="../../../favicon.png">
-        <link rel="stylesheet" href="../../../css/variables.css">
-        <link rel="stylesheet" href="../../../css/general.css">
-        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../../../fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../../../highlight.css">
-        <link rel="stylesheet" href="../../../tomorrow-night.css">
-        <link rel="stylesheet" href="../../../ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -59,7 +59,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "../../../";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Go</li><li class="chapter-item expanded "><a href="../../../language/go/go.html"><strong aria-hidden="true">2.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../language/go/101.html"><strong aria-hidden="true">2.1.</strong> go101</a></li><li class="chapter-item expanded "><a href="../../../language/go/blog.html"><strong aria-hidden="true">2.2.</strong> blogs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../language/go/blog/cover.html" class="active"><strong aria-hidden="true">2.2.1.</strong> The cover story</a></li></ol></li><li class="chapter-item "><a href="../../../language/go/mock.html"><strong aria-hidden="true">2.3.</strong> go mock</a></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><a href="../../../language/java/java.html"><strong aria-hidden="true">3.</strong> Java</a></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item "><a href="../../../language/python/python.html"><strong aria-hidden="true">4.</strong> Python</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Go</li><li class="chapter-item expanded "><a href="../../language/go/go.html"><strong aria-hidden="true">2.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../language/go/101.html"><strong aria-hidden="true">2.1.</strong> go101</a></li><li class="chapter-item expanded "><a href="../../language/go/cover.html" class="active"><strong aria-hidden="true">2.2.</strong> The cover story</a></li><li class="chapter-item "><a href="../../language/go/gc.html"><strong aria-hidden="true">2.3.</strong> A Guide to the Go Garbage Collector</a></li><li class="chapter-item "><a href="../../language/go/mock.html"><strong aria-hidden="true">2.4.</strong> go mock</a></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><a href="../../language/java/java.html"><strong aria-hidden="true">3.</strong> Java</a></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item "><a href="../../language/python/python.html"><strong aria-hidden="true">4.</strong> Python</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -211,17 +211,17 @@ package size
 func Size(a int) string {
     switch {
     case a &lt; 0:
-        return &quot;negative&quot;
+        return "negative"
     case a == 0:
-        return &quot;zero&quot;
+        return "zero"
     case a &lt; 10:
-        return &quot;small&quot;
+        return "small"
     case a &lt; 100:
-        return &quot;big&quot;
+        return "big"
     case a &lt; 1000:
-        return &quot;huge&quot;
+        return "huge"
     }
-    return &quot;enormous&quot;
+    return "enormous"
 }
 
 </code></pre>
@@ -229,7 +229,7 @@ func Size(a int) string {
 <pre><code class="language-go">
 package size
 
-import &quot;testing&quot;
+import "testing"
 
 type Test struct {
     in  int
@@ -237,15 +237,15 @@ type Test struct {
 }
 
 var tests = []Test{
-    {-1, &quot;negative&quot;},
-    {5, &quot;small&quot;},
+    {-1, "negative"},
+    {5, "small"},
 }
 
 func TestSize(t *testing.T) {
     for i, test := range tests {
         size := Size(test.in)
         if size != test.out {
-            t.Errorf(&quot;#%d: Size(%d)=%s; want %s&quot;, i, test.in, size, test.out)
+            t.Errorf("#%d: Size(%d)=%s; want %s", i, test.in, size, test.out)
         }
     }
 }
@@ -267,22 +267,22 @@ func Size(a int) string {
     switch {
     case a &lt; 0:
         GoCover.Count[2] = 1
-        return &quot;negative&quot;
+        return "negative"
     case a == 0:
         GoCover.Count[3] = 1
-        return &quot;zero&quot;
+        return "zero"
     case a &lt; 10:
         GoCover.Count[4] = 1
-        return &quot;small&quot;
+        return "small"
     case a &lt; 100:
         GoCover.Count[5] = 1
-        return &quot;big&quot;
+        return "big"
     case a &lt; 1000:
         GoCover.Count[6] = 1
-        return &quot;huge&quot;
+        return "huge"
     }
     GoCover.Count[1] = 1
-    return &quot;enormous&quot;
+    return "enormous"
 }
 
 </code></pre>
@@ -296,24 +296,24 @@ package size
 func Size(a int) string {
     switch {
     case a &lt; 0:
-        return &quot;negative&quot;
+        return "negative"
     case a == 0:
-        return &quot;zero&quot;
+        return "zero"
     case a &lt; 10:
-        return &quot;small&quot;
+        return "small"
     case a &lt; 100:
-        return &quot;big&quot;
+        return "big"
     case a &lt; 1000:
-        return &quot;huge&quot;
+        return "huge"
     }
-    return &quot;enormous&quot;
+    return "enormous"
 }
 
 </code></pre>
 <pre><code class="language-go">
 package size
 
-import &quot;testing&quot;
+import "testing"
 
 type Test struct {
     in  int
@@ -321,15 +321,15 @@ type Test struct {
 }
 
 var tests = []Test{
-    {-1, &quot;negative&quot;},
-    {5, &quot;small&quot;},
+    {-1, "negative"},
+    {5, "small"},
 }
 
 func TestSize(t *testing.T) {
     for i, test := range tests {
         size := Size(test.in)
         if size != test.out {
-            t.Errorf(&quot;#%d: Size(%d)=%s; want %s&quot;, i, test.in, size, test.out)
+            t.Errorf("#%d: Size(%d)=%s; want %s", i, test.in, size, test.out)
         }
     }
 }
@@ -346,7 +346,7 @@ ok      size    0.026s
 
 </code></pre>
 <p>请注意，覆盖率为 42.9%，这并不是很好。在我们询问如何提高这个数字之前，让我们看看是如何计算出来的。</p>
-<p>当启用测试覆盖率时，<code>go test</code> 会运行 &quot;cover&quot; 工具（与发行版一起提供的单独程序）在编译之前重写源代码。以下是重写后的 Size 函数的样子：</p>
+<p>当启用测试覆盖率时，<code>go test</code> 会运行 "cover" 工具（与发行版一起提供的单独程序）在编译之前重写源代码。以下是重写后的 Size 函数的样子：</p>
 <pre><code class="language-go">
 
 func Size(a int) string {
@@ -354,22 +354,22 @@ func Size(a int) string {
     switch {
     case a &lt; 0:
         GoCover.Count[2] = 1
-        return &quot;negative&quot;
+        return "negative"
     case a == 0:
         GoCover.Count[3] = 1
-        return &quot;zero&quot;
+        return "zero"
     case a &lt; 10:
         GoCover.Count[4] = 1
-        return &quot;small&quot;
+        return "small"
     case a &lt; 100:
         GoCover.Count[5] = 1
-        return &quot;big&quot;
+        return "big"
     case a &lt; 1000:
         GoCover.Count[6] = 1
-        return &quot;huge&quot;
+        return "huge"
     }
     GoCover.Count[1] = 1
-    return &quot;enormous&quot;
+    return "enormous"
 }
 
 </code></pre>
@@ -581,11 +581,11 @@ f() &amp;&amp; g()
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        <a rel="prev" href="../../../language/go/blog.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../../language/go/101.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                         </a>
 
-                            <a rel="next" href="../../../language/go/mock.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../language/go/gc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -595,11 +595,11 @@ f() &amp;&amp; g()
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../../language/go/blog.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../language/go/101.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../../language/go/mock.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../language/go/gc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -614,16 +614,16 @@ f() &amp;&amp; g()
         </script>
 
 
-        <script src="../../../elasticlunr.min.js"></script>
-        <script src="../../../mark.min.js"></script>
-        <script src="../../../searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="../../../clipboard.min.js"></script>
-        <script src="../../../highlight.js"></script>
-        <script src="../../../book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="../../../giscus.js"></script>
+        <script src="../../giscus.js"></script>
 
 
     </body>

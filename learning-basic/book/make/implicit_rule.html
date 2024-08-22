@@ -243,7 +243,7 @@ foo.o: foo.p
 </li>
 <li>
 <p>编译Modula-2程序的隐含规则。</p>
-<p><code>&lt;n&gt;.sym</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.def</code> ，并且其生成命令是： $(M2C) $(M2FLAGS) $(DEFFLAGS) 。<code> &lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.mod</code> ，并且其生成命令是： $(M2C) $(M2FLAGS) $(MODFLAGS) </p>
+<p><code>&lt;n&gt;.sym</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.def</code> ，并且其生成命令是： $(M2C) $(M2FLAGS) $(DEFFLAGS) 。<code> &lt;n&gt;.o</code> 的目标的依赖目标会自动推导为 <code>&lt;n&gt;.mod</code> ，并且其生成命令是： $(M2C) $(M2FLAGS) $(MODFLAGS)</p>
 </li>
 <li>
 <p>汇编和汇编预处理的隐含规则。</p>
@@ -472,7 +472,7 @@ lib: foo.o bar.o lose.o win.o
 <p>表示 $@ 的目录部分（不以斜杠作为结尾），如果 $@ 值是 dir/foo.o ，那么 $(@D) 就是 dir ，而如果 $@ 中没有包含斜杠的话，其值就是 . （当前目录）。</p>
 </li>
 <li>
-<p>$(@F) </p>
+<p>$(@F)</p>
 <p>表示 $@ 的文件部分，如果 $@ 值是 dir/foo.o ，那么 $(@F) 就是 foo.o ， $(@F) 相当于函数 $(notdir $@) 。</p>
 </li>
 <li>

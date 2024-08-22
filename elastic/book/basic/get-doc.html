@@ -173,17 +173,17 @@
 GET /website/_doc/123?pretty
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;123&quot;,
-  &quot;_version&quot;: 1,
-  &quot;_seq_no&quot;: 0,
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;type&quot;: &quot;blog&quot;,
-    &quot;title&quot;: &quot;My first blog entry&quot;,
-    &quot;text&quot;: &quot;Just trying this out...&quot;,
-    &quot;date&quot;: &quot;2014/01/01&quot;
+  "_index": "website",
+  "_id": "123",
+  "_version": 1,
+  "_seq_no": 0,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "type": "blog",
+    "title": "My first blog entry",
+    "text": "Just trying this out...",
+    "date": "2014/01/01"
   }
 }
 
@@ -193,7 +193,7 @@ GET /website/_doc/123?pretty
 <p>🦉<strong>Note</strong></p>
 <p>在请求的查询串参数中加上 pretty 参数，正如前面的例子中看到的，这将会调用 Elasticsearch 的 pretty-print 功能，该功能 使得 JSON 响应体更加可读。但是， _source 字段不能被格式化打印出来。相反，我们得到的 _source 字段中的 JSON 串，刚好是和我们传给它的一样。</p>
 </blockquote>
-<p>GET 请求的响应体包括 {&quot;found&quot;: true} ，这证实了文档已经被找到。 如果我们请求一个不存在的文档，我们仍旧会得到一个 JSON 响应体，但是 found 将会是 false 。 此外， HTTP 响应码将会是 404 Not Found ，而不是 200 OK 。</p>
+<p>GET 请求的响应体包括 {"found": true} ，这证实了文档已经被找到。 如果我们请求一个不存在的文档，我们仍旧会得到一个 JSON 响应体，但是 found 将会是 false 。 此外， HTTP 响应码将会是 404 Not Found ，而不是 200 OK 。</p>
 <p>我们可以通过传递 -i 参数给 curl 命令，该参数能够显示响应的头部：</p>
 <pre><code>curl -i -XGET http://localhost:9200/website/blog/124?pretty
 
@@ -202,10 +202,10 @@ Content-Type: application/json; charset=UTF-8
 Content-Length: 83
 
 {
-  &quot;_index&quot; : &quot;website&quot;,
-  &quot;_type&quot; :  &quot;blog&quot;,
-  &quot;_id&quot; :    &quot;124&quot;,
-  &quot;found&quot; :  false
+  "_index" : "website",
+  "_type" :  "blog",
+  "_id" :    "124",
+  "found" :  false
 }
 
 </code></pre>
@@ -215,15 +215,15 @@ Content-Length: 83
 GET /website/_doc/123?_source=title,text
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;123&quot;,
-  &quot;_version&quot;: 1,
-  &quot;_seq_no&quot;: 0,
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;title&quot;: &quot;My first blog entry&quot;,
-    &quot;text&quot;: &quot;Just trying this out...&quot;
+  "_index": "website",
+  "_id": "123",
+  "_version": 1,
+  "_seq_no": 0,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "title": "My first blog entry",
+    "text": "Just trying this out..."
   }
 }
 
@@ -234,9 +234,9 @@ GET /website/_doc/123?_source=title,text
 GET /website/blog/123/_source
 
 {
-   &quot;title&quot;: &quot;My first blog entry&quot;,
-   &quot;text&quot;:  &quot;Just trying this out...&quot;,
-   &quot;date&quot;:  &quot;2014/01/01&quot;
+   "title": "My first blog entry",
+   "text":  "Just trying this out...",
+   "date":  "2014/01/01"
 }
 
 

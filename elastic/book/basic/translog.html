@@ -242,12 +242,12 @@ POST /_flush?wait_if_ongoing 1️⃣
 <p>这个行为可以通过设置 durability 参数为 async 来启用：</p>
 <pre><code>PUT /my_index/_settings
 {
-   &quot;index.translog.durability&quot;: &quot;async&quot;,
-   &quot;index.translog.sync_interval&quot;: &quot;5s&quot;
+   "index.translog.durability": "async",
+   "index.translog.sync_interval": "5s"
 }
 </code></pre>
 <p>这个选项可以针对索引单独设置，并且可以动态进行修改。如果你决定使用异步 translog 的话，你需要 保证 在发生crash时，丢失掉 sync_interval 时间段的数据也无所谓。请在决定前知晓这个特性。</p>
-<p>如果你不确定这个行为的后果，最好是使用默认的参数（ &quot;index.translog.durability&quot;: &quot;request&quot; ）来避免数据丢失。</p>
+<p>如果你不确定这个行为的后果，最好是使用默认的参数（ "index.translog.durability": "request" ）来避免数据丢失。</p>
 </blockquote>
 
 			<div id="bottom"> 

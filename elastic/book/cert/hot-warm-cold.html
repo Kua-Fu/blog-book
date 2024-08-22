@@ -190,22 +190,22 @@
 <pre><code>
 PUT _cluster/settings
 {
-  &quot;persistent&quot;: {
-    &quot;indices.lifecycle.poll_interval&quot;: &quot;3s&quot;
+  "persistent": {
+    "indices.lifecycle.poll_interval": "3s"
   }
 }
 
 #! [xpack.monitoring.collection.enabled] setting was deprecated in Elasticsearch and will be removed in a future release.
 {
-  &quot;acknowledged&quot; : true,
-  &quot;persistent&quot; : {
-    &quot;indices&quot; : {
-      &quot;lifecycle&quot; : {
-        &quot;poll_interval&quot; : &quot;3s&quot;
+  "acknowledged" : true,
+  "persistent" : {
+    "indices" : {
+      "lifecycle" : {
+        "poll_interval" : "3s"
       }
     }
   },
-  &quot;transient&quot; : { }
+  "transient" : { }
 }
 
 </code></pre>
@@ -219,54 +219,54 @@ PUT _cluster/settings
 </div>
 <pre><code>PUT _ilm/policy/yz_policy
 {
-  &quot;policy&quot;: {
-    &quot;phases&quot;: {
-      &quot;hot&quot;: {
-        &quot;actions&quot;: {
-          &quot;set_priority&quot;: {
-            &quot;priority&quot;: 100
+  "policy": {
+    "phases": {
+      "hot": {
+        "actions": {
+          "set_priority": {
+            "priority": 100
           },
-          &quot;rollover&quot;: {
-            &quot;max_age&quot;: &quot;7d&quot;,
-            &quot;max_docs&quot;: 5,
-            &quot;max_size&quot;: &quot;5gb&quot;
+          "rollover": {
+            "max_age": "7d",
+            "max_docs": 5,
+            "max_size": "5gb"
           }
         }
       },
-      &quot;warm&quot;: {
-        &quot;min_age&quot;: &quot;0ms&quot;,
-        &quot;actions&quot;: {
-          &quot;set_priority&quot;: {
-            &quot;priority&quot;: 50
+      "warm": {
+        "min_age": "0ms",
+        "actions": {
+          "set_priority": {
+            "priority": 50
           },
-          &quot;forcemerge&quot;: {
-            &quot;max_num_segments&quot;: 1
+          "forcemerge": {
+            "max_num_segments": 1
           },
-          &quot;allocate&quot;: {
-            &quot;require&quot;: {
-              &quot;data&quot;: &quot;warm&quot;
+          "allocate": {
+            "require": {
+              "data": "warm"
             }
           }
         }
       },
-      &quot;cold&quot;: {
-        &quot;min_age&quot;: &quot;3m&quot;,
-        &quot;actions&quot;: {
-          &quot;set_priority&quot;: {
-            &quot;priority&quot;: 20
+      "cold": {
+        "min_age": "3m",
+        "actions": {
+          "set_priority": {
+            "priority": 20
           },
-          &quot;allocate&quot;: {
-            &quot;number_of_replicas&quot;: 0,
-              &quot;require&quot;: {
-              &quot;data&quot;: &quot;cold&quot;
+          "allocate": {
+            "number_of_replicas": 0,
+              "require": {
+              "data": "cold"
             }
           }
         }
       },
-      &quot;delete&quot;: {
-        &quot;min_age&quot;: &quot;1d&quot;,
-        &quot;actions&quot;: {
-          &quot;delete&quot;: {}
+      "delete": {
+        "min_age": "1d",
+        "actions": {
+          "delete": {}
         }
       }
     }
@@ -277,14 +277,14 @@ PUT _cluster/settings
 <pre><code>
 PUT _index_template/yz_template
 {
-  &quot;index_patterns&quot;: [&quot;yztest-*&quot;], 
-  &quot;template&quot;: {
-    &quot;settings&quot;: {
-      &quot;number_of_shards&quot;: 1,
-      &quot;number_of_replicas&quot;: 1,
-      &quot;index.lifecycle.name&quot;: &quot;yz_policy&quot;, 
-      &quot;index.lifecycle.rollover_alias&quot;: &quot;yztest&quot;,
-      &quot;index.routing.allocation.require.data&quot;: &quot;hot&quot;
+  "index_patterns": ["yztest-*"], 
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "index.lifecycle.name": "yz_policy", 
+      "index.lifecycle.rollover_alias": "yztest",
+      "index.routing.allocation.require.data": "hot"
     }
   }
 }
@@ -293,9 +293,9 @@ PUT _index_template/yz_template
 <h3 id="25-创建索引"><a class="header" href="#25-创建索引">2.5 创建索引</a></h3>
 <pre><code>PUT yztest-000001
 {
-  &quot;aliases&quot;: {
-    &quot;yztest&quot;: {
-      &quot;is_write_index&quot;: true
+  "aliases": {
+    "yztest": {
+      "is_write_index": true
     }
   }
 }
@@ -303,16 +303,16 @@ PUT _index_template/yz_template
 <h3 id="26-写入数据"><a class="header" href="#26-写入数据">2.6 写入数据</a></h3>
 <pre><code>
 POST _bulk
-{ &quot;index&quot; : { &quot;_index&quot; : &quot;yztest&quot;, &quot;_id&quot; : &quot;1&quot; } }
-{ &quot;field1&quot; : &quot;value1&quot; }
-{ &quot;index&quot; : { &quot;_index&quot; : &quot;yztest&quot;, &quot;_id&quot; : &quot;2&quot; } }
-{ &quot;field1&quot; : &quot;value1&quot; }
-{ &quot;index&quot; : { &quot;_index&quot; : &quot;yztest&quot;, &quot;_id&quot; : &quot;3&quot; } }
-{ &quot;field1&quot; : &quot;value1&quot; }
-{ &quot;index&quot; : { &quot;_index&quot; : &quot;yztest&quot;, &quot;_id&quot; : &quot;4&quot; } }
-{ &quot;field1&quot; : &quot;value1&quot; }
-{ &quot;index&quot; : { &quot;_index&quot; : &quot;yztest&quot;, &quot;_id&quot; : &quot;5&quot; } }
-{ &quot;field1&quot; : &quot;value1&quot; }
+{ "index" : { "_index" : "yztest", "_id" : "1" } }
+{ "field1" : "value1" }
+{ "index" : { "_index" : "yztest", "_id" : "2" } }
+{ "field1" : "value1" }
+{ "index" : { "_index" : "yztest", "_id" : "3" } }
+{ "field1" : "value1" }
+{ "index" : { "_index" : "yztest", "_id" : "4" } }
+{ "field1" : "value1" }
+{ "index" : { "_index" : "yztest", "_id" : "5" } }
+{ "field1" : "value1" }
 </code></pre>
 <h3 id="27-查看索引生命周期"><a class="header" href="#27-查看索引生命周期">2.7 查看索引生命周期</a></h3>
 <pre><code>GET yztest/_ilm/explain

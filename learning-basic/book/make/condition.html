@@ -236,9 +236,9 @@ endif
 <pre><code class="language-makefile">
 ifeq (&lt;arg1&gt;, &lt;arg2&gt;)
 ifeq '&lt;arg1&gt;' '&lt;arg2&gt;'
-ifeq &quot;&lt;arg1&gt;&quot; &quot;&lt;arg2&gt;&quot;
-ifeq &quot;&lt;arg1&gt;&quot; '&lt;arg2&gt;'
-ifeq '&lt;arg1&gt;' &quot;&lt;arg2&gt;&quot;
+ifeq "&lt;arg1&gt;" "&lt;arg2&gt;"
+ifeq "&lt;arg1&gt;" '&lt;arg2&gt;'
+ifeq '&lt;arg1&gt;' "&lt;arg2&gt;"
 
 </code></pre>
 <p>比较参数 arg1 和 arg2 的值是否相同。当然，参数中我们还可以使用make的函数。如:</p>
@@ -253,9 +253,9 @@ endif
 <pre><code class="language-makefile">
 ifneq (&lt;arg1&gt;, &lt;arg2&gt;)
 ifneq '&lt;arg1&gt;' '&lt;arg2&gt;'
-ifneq &quot;&lt;arg1&gt;&quot; &quot;&lt;arg2&gt;&quot;
-ifneq &quot;&lt;arg1&gt;&quot; '&lt;arg2&gt;'
-ifneq '&lt;arg1&gt;' &quot;&lt;arg2&gt;&quot;
+ifneq "&lt;arg1&gt;" "&lt;arg2&gt;"
+ifneq "&lt;arg1&gt;" '&lt;arg2&gt;'
+ifneq '&lt;arg1&gt;' "&lt;arg2&gt;"
 
 </code></pre>
 <p>其比较参数 arg1 和 arg2 的值是否相同，如果不同，则为真。和 ifeq 类似。</p>

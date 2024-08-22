@@ -201,10 +201,10 @@
 <pre><code>./bin/kibana
 </code></pre>
 <pre><code>➜  kibana-8.1.0 ./bin/kibana
-[2023-03-06T13:22:37.762+08:00][INFO ][plugins-service] Plugin &quot;metricsEntities&quot; is disabled.
+[2023-03-06T13:22:37.762+08:00][INFO ][plugins-service] Plugin "metricsEntities" is disabled.
 [2023-03-06T13:22:37.841+08:00][INFO ][http.server.Preboot] http server running at http://localhost:5601
 [2023-03-06T13:22:37.883+08:00][INFO ][plugins-system.preboot] Setting up [1] plugins: [interactiveSetup]
-[2023-03-06T13:22:37.885+08:00][INFO ][preboot] &quot;interactiveSetup&quot; plugin is holding setup: Validating Elasticsearch connection configuration…
+[2023-03-06T13:22:37.885+08:00][INFO ][preboot] "interactiveSetup" plugin is holding setup: Validating Elasticsearch connection configuration…
 [2023-03-06T13:22:37.918+08:00][INFO ][root] Holding setup until preboot stage is completed.
 
 
@@ -217,21 +217,21 @@ Go to http://localhost:5601/?code=579260 to get started.
 <pre><code>GET /
 
 {
-  &quot;name&quot; : &quot;node-1&quot;,
-  &quot;cluster_name&quot; : &quot;my-application&quot;,
-  &quot;cluster_uuid&quot; : &quot;65mxew5NS6GEWPmmeb1VMg&quot;,
-  &quot;version&quot; : {
-    &quot;number&quot; : &quot;8.1.0&quot;,
-    &quot;build_flavor&quot; : &quot;default&quot;,
-    &quot;build_type&quot; : &quot;tar&quot;,
-    &quot;build_hash&quot; : &quot;3700f7679f7d95e36da0b43762189bab189bc53a&quot;,
-    &quot;build_date&quot; : &quot;2022-03-03T14:20:00.690422633Z&quot;,
-    &quot;build_snapshot&quot; : false,
-    &quot;lucene_version&quot; : &quot;9.0.0&quot;,
-    &quot;minimum_wire_compatibility_version&quot; : &quot;7.17.0&quot;,
-    &quot;minimum_index_compatibility_version&quot; : &quot;7.0.0&quot;
+  "name" : "node-1",
+  "cluster_name" : "my-application",
+  "cluster_uuid" : "65mxew5NS6GEWPmmeb1VMg",
+  "version" : {
+    "number" : "8.1.0",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "3700f7679f7d95e36da0b43762189bab189bc53a",
+    "build_date" : "2022-03-03T14:20:00.690422633Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.0.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
   },
-  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+  "tagline" : "You Know, for Search"
 }
 
 
@@ -239,21 +239,21 @@ GET _cluster/health
 
 
 {
-  &quot;cluster_name&quot; : &quot;my-application&quot;,
-  &quot;status&quot; : &quot;green&quot;,
-  &quot;timed_out&quot; : false,
-  &quot;number_of_nodes&quot; : 1,
-  &quot;number_of_data_nodes&quot; : 1,
-  &quot;active_primary_shards&quot; : 10,
-  &quot;active_shards&quot; : 10,
-  &quot;relocating_shards&quot; : 0,
-  &quot;initializing_shards&quot; : 0,
-  &quot;unassigned_shards&quot; : 0,
-  &quot;delayed_unassigned_shards&quot; : 0,
-  &quot;number_of_pending_tasks&quot; : 0,
-  &quot;number_of_in_flight_fetch&quot; : 0,
-  &quot;task_max_waiting_in_queue_millis&quot; : 0,
-  &quot;active_shards_percent_as_number&quot; : 100.0
+  "cluster_name" : "my-application",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 10,
+  "active_shards" : 10,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
 }
 
 </code></pre>

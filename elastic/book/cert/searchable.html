@@ -175,15 +175,15 @@
 <h2 id="二可搜索快照"><a class="header" href="#二可搜索快照">二、可搜索快照</a></h2>
 <h3 id="21-创建共享存储"><a class="header" href="#21-创建共享存储">2.1 创建共享存储</a></h3>
 <p>每个节点都修改 elasticsearch.yml ，添加</p>
-<pre><code>path.repo: &quot;/Users/yz/work/env/es/share&quot;
+<pre><code>path.repo: "/Users/yz/work/env/es/share"
 </code></pre>
 <h3 id="22-依次重启节点"><a class="header" href="#22-依次重启节点">2.2 依次重启节点</a></h3>
 <h3 id="23-创建快照存储库"><a class="header" href="#23-创建快照存储库">2.3 创建快照存储库</a></h3>
 <pre><code>PUT /_snapshot/yz_repository
 {
-  &quot;type&quot;: &quot;fs&quot;,
-  &quot;settings&quot;: {
-    &quot;location&quot;: &quot;/Users/yz/work/env/es/share&quot;
+  "type": "fs",
+  "settings": {
+    "location": "/Users/yz/work/env/es/share"
   }
 }
 </code></pre>
@@ -192,15 +192,15 @@
 POST _snapshot/yz_repository/_verify
 
 {
-  &quot;nodes&quot; : {
-    &quot;gaWrkXVFSXen6BbmqxhFow&quot; : {
-      &quot;name&quot; : &quot;node2&quot;
+  "nodes" : {
+    "gaWrkXVFSXen6BbmqxhFow" : {
+      "name" : "node2"
     },
-    &quot;PM08omCVR465UByrpGeVKw&quot; : {
-      &quot;name&quot; : &quot;node1&quot;
+    "PM08omCVR465UByrpGeVKw" : {
+      "name" : "node1"
     },
-    &quot;0QbfdkZET8-s5OZ0bZ72eA&quot; : {
-      &quot;name&quot; : &quot;node3&quot;
+    "0QbfdkZET8-s5OZ0bZ72eA" : {
+      "name" : "node3"
     }
   }
 }
@@ -209,37 +209,37 @@ POST _snapshot/yz_repository/_verify
 <h3 id="24-创建快照"><a class="header" href="#24-创建快照">2.4 创建快照</a></h3>
 <pre><code>PUT /_snapshot/yz_repository/yz_search_snapshot?wait_for_completion=true
 {
-  &quot;indices&quot;: &quot;yztest&quot;,
-  &quot;ignore_unavailable&quot;: true,
-  &quot;include_global_state&quot;: false
+  "indices": "yztest",
+  "ignore_unavailable": true,
+  "include_global_state": false
 }
 
 {
-  &quot;snapshot&quot; : {
-    &quot;snapshot&quot; : &quot;yz_search_snapshot&quot;,
-    &quot;uuid&quot; : &quot;9Ul_b_aRRnqgRiakj0CXUg&quot;,
-    &quot;repository&quot; : &quot;yz_repository&quot;,
-    &quot;version_id&quot; : 8010099,
-    &quot;version&quot; : &quot;8.1.0&quot;,
-    &quot;indices&quot; : [
-      &quot;yztest-000002&quot;,
-      &quot;yztest-000001&quot;
+  "snapshot" : {
+    "snapshot" : "yz_search_snapshot",
+    "uuid" : "9Ul_b_aRRnqgRiakj0CXUg",
+    "repository" : "yz_repository",
+    "version_id" : 8010099,
+    "version" : "8.1.0",
+    "indices" : [
+      "yztest-000002",
+      "yztest-000001"
     ],
-    &quot;data_streams&quot; : [ ],
-    &quot;include_global_state&quot; : false,
-    &quot;state&quot; : &quot;SUCCESS&quot;,
-    &quot;start_time&quot; : &quot;2023-03-06T10:58:37.776Z&quot;,
-    &quot;start_time_in_millis&quot; : 1678100317776,
-    &quot;end_time&quot; : &quot;2023-03-06T10:58:39.812Z&quot;,
-    &quot;end_time_in_millis&quot; : 1678100319812,
-    &quot;duration_in_millis&quot; : 2036,
-    &quot;failures&quot; : [ ],
-    &quot;shards&quot; : {
-      &quot;total&quot; : 2,
-      &quot;failed&quot; : 0,
-      &quot;successful&quot; : 2
+    "data_streams" : [ ],
+    "include_global_state" : false,
+    "state" : "SUCCESS",
+    "start_time" : "2023-03-06T10:58:37.776Z",
+    "start_time_in_millis" : 1678100317776,
+    "end_time" : "2023-03-06T10:58:39.812Z",
+    "end_time_in_millis" : 1678100319812,
+    "duration_in_millis" : 2036,
+    "failures" : [ ],
+    "shards" : {
+      "total" : 2,
+      "failed" : 0,
+      "successful" : 2
     },
-    &quot;feature_states&quot; : [ ]
+    "feature_states" : [ ]
   }
 }
 
@@ -247,24 +247,24 @@ POST _snapshot/yz_repository/_verify
 <h3 id="25-将快照挂载为可搜索快照"><a class="header" href="#25-将快照挂载为可搜索快照">2.5 将快照挂载为可搜索快照</a></h3>
 <pre><code>POST /_snapshot/yz_repository/yz_search_snapshot/_mount?wait_for_completion=true
 {
-  &quot;index&quot;: &quot;yztest-000001&quot;, 
-  &quot;renamed_index&quot;: &quot;yz-searchable&quot;, 
-  &quot;index_settings&quot;: { 
-    &quot;index.number_of_replicas&quot;: 0
+  "index": "yztest-000001", 
+  "renamed_index": "yz-searchable", 
+  "index_settings": { 
+    "index.number_of_replicas": 0
   },
-  &quot;ignore_index_settings&quot;: [ &quot;index.refresh_interval&quot; ] 
+  "ignore_index_settings": [ "index.refresh_interval" ] 
 }
 
 {
-  &quot;snapshot&quot; : {
-    &quot;snapshot&quot; : &quot;yz_search_snapshot&quot;,
-    &quot;indices&quot; : [
-      &quot;yz-searchable&quot;
+  "snapshot" : {
+    "snapshot" : "yz_search_snapshot",
+    "indices" : [
+      "yz-searchable"
     ],
-    &quot;shards&quot; : {
-      &quot;total&quot; : 1,
-      &quot;failed&quot; : 0,
-      &quot;successful&quot; : 1
+    "shards" : {
+      "total" : 1,
+      "failed" : 0,
+      "successful" : 1
     }
   }
 }

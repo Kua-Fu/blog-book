@@ -173,53 +173,53 @@
 <pre><code class="language-json">
 GET /megacorp/_search?pretty
 {
-  &quot;query&quot;: {
-    &quot;match_phrase&quot;: {
-      &quot;about&quot;: &quot;rock climbing&quot;
+  "query": {
+    "match_phrase": {
+      "about": "rock climbing"
     }
   },
-  &quot;highlight&quot;: {
-    &quot;fields&quot;: {
-      &quot;about&quot;: {}
+  "highlight": {
+    "fields": {
+      "about": {}
     }
   }
 }
 
 # 返回结果
 {
-  &quot;took&quot;: 65,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "took": 65,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 1,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: 1.4167401,
-    &quot;hits&quot;: [
+    "max_score": 1.4167401,
+    "hits": [
       {
-        &quot;_index&quot;: &quot;megacorp&quot;,
-        &quot;_id&quot;: &quot;1&quot;,
-        &quot;_score&quot;: 1.4167401,
-        &quot;_source&quot;: {
-          &quot;type&quot;: &quot;employee&quot;,
-          &quot;first_name&quot;: &quot;John&quot;,
-          &quot;last_name&quot;: &quot;Smith&quot;,
-          &quot;age&quot;: 25,
-          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
-          &quot;interests&quot;: [
-            &quot;sports&quot;,
-            &quot;music&quot;
+        "_index": "megacorp",
+        "_id": "1",
+        "_score": 1.4167401,
+        "_source": {
+          "type": "employee",
+          "first_name": "John",
+          "last_name": "Smith",
+          "age": 25,
+          "about": "I love to go rock climbing",
+          "interests": [
+            "sports",
+            "music"
           ]
         },
-        &quot;highlight&quot;: {
-          &quot;about&quot;: [
-            &quot;I love to go &lt;em&gt;rock&lt;/em&gt; &lt;em&gt;climbing&lt;/em&gt;&quot; 0️⃣
+        "highlight": {
+          "about": [
+            "I love to go &lt;em&gt;rock&lt;/em&gt; &lt;em&gt;climbing&lt;/em&gt;" 0️⃣
           ]
         }
       }

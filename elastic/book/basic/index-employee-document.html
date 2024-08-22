@@ -172,7 +172,7 @@
 <p>一个 Elasticsearch 集群可以 包含多个 索引 ，相应的每个索引可以包含多个 类型 。 这些不同的类型存储着多个 文档 ，每个文档又有 多个 属性 。</p>
 <p>⚠️ 高版本(<code>v8.0</code>) 已经没有 type 概念</p>
 <blockquote>
-<p><strong>Index Versus Index Versus Index</strong> </p>
+<p><strong>Index Versus Index Versus Index</strong></p>
 <p>你也许已经注意到 索引 这个词在 Elasticsearch 语境中有多种含义， 这里有必要做一些说明：</p>
 <p>(1) 索引（名词）</p>
 <p>如前所述，一个 索引 类似于传统关系数据库中的一个 数据库 ，是一个存储关系型文档的地方。 索引 (index) 的复数词为 indices 或 indexes 。</p>
@@ -201,14 +201,14 @@
 <pre><code class="language-json">
 POST /megacorp/_doc/1?pretty
 {
-  &quot;type&quot;: &quot;employee&quot;,
-  &quot;first_name&quot;: &quot;John&quot;,
-  &quot;last_name&quot;: &quot;Smith&quot;,
-  &quot;age&quot;: 25,
-  &quot;about&quot;: &quot;I love to go rock climbing&quot;,
-  &quot;interests&quot;: [
-    &quot;sports&quot;,
-    &quot;music&quot;
+  "type": "employee",
+  "first_name": "John",
+  "last_name": "Smith",
+  "age": 25,
+  "about": "I love to go rock climbing",
+  "interests": [
+    "sports",
+    "music"
   ]
 }
 
@@ -231,26 +231,26 @@ POST /megacorp/_doc/1?pretty
 <pre><code class="language-json">
 POST /megacorp/_doc/2?pretty
 {
-  &quot;type&quot;: &quot;employee&quot;,
-  &quot;first_name&quot;: &quot;Jane&quot;,
-  &quot;last_name&quot;: &quot;Smith&quot;,
-  &quot;age&quot;: 32,
-  &quot;about&quot;: &quot;I like to collect rock albums&quot;,
-  &quot;interests&quot;: [
-    &quot;music&quot;
+  "type": "employee",
+  "first_name": "Jane",
+  "last_name": "Smith",
+  "age": 32,
+  "about": "I like to collect rock albums",
+  "interests": [
+    "music"
   ]
 }
 
 
 POST /megacorp/_doc/3?pretty
 {
-  &quot;type&quot;: &quot;employee&quot;,
-  &quot;first_name&quot;: &quot;Douglas&quot;,
-  &quot;last_name&quot;: &quot;Fir&quot;,
-  &quot;age&quot;: 35,
-  &quot;about&quot;: &quot;I like to build cabinets&quot;,
-  &quot;interests&quot;: [
-    &quot;forestry&quot;
+  "type": "employee",
+  "first_name": "Douglas",
+  "last_name": "Fir",
+  "age": 35,
+  "about": "I like to build cabinets",
+  "interests": [
+    "forestry"
   ]
 }
 

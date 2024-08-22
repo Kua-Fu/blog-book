@@ -175,21 +175,21 @@ GET /megacorp/_doc/1?pretty
 
 // 返回结果
 {
-  &quot;_index&quot;: &quot;megacorp&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 1,
-  &quot;_seq_no&quot;: 0,
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;type&quot;: &quot;employee&quot;,
-    &quot;first_name&quot;: &quot;John&quot;,
-    &quot;last_name&quot;: &quot;Smith&quot;,
-    &quot;age&quot;: 25,
-    &quot;about&quot;: &quot;I love to go rock climbing&quot;,
-    &quot;interests&quot;: [
-      &quot;sports&quot;,
-      &quot;music&quot;
+  "_index": "megacorp",
+  "_id": "1",
+  "_version": 1,
+  "_seq_no": 0,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "type": "employee",
+    "first_name": "John",
+    "last_name": "Smith",
+    "age": 25,
+    "about": "I love to go rock climbing",
+    "interests": [
+      "sports",
+      "music"
     ]
   }
 }
@@ -197,7 +197,7 @@ GET /megacorp/_doc/1?pretty
 </code></pre>
 <p>返回结果包含了文档的一些元数据，以及 _source 属性，内容是 John Smith 雇员的原始 JSON 文档：</p>
 <blockquote>
-<p>🐌  <strong>Tip</strong> 
+<p>🐌  <strong>Tip</strong>
 将 HTTP 命令由 POST 改为 GET 可以用来检索文档，同样的，可以使用 DELETE 命令来删除文档，以及使用 HEAD 指令来检查文档是否存在。如果想更新已存在的文档，只需再次 POST 。</p>
 </blockquote>
 

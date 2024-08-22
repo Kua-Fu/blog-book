@@ -187,47 +187,47 @@
 <pre><code class="language-python">
 PUT /my_index
 {
-  &quot;settings&quot;: {
-    &quot;analysis&quot;: {
-      &quot;analyzer&quot;: {
-        &quot;my_english&quot;: {
-          &quot;type&quot;: &quot;english&quot;,
-          &quot;stem_exclusion&quot;: [  0️⃣
-            &quot;organization&quot;,
-            &quot;organizations&quot;
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_english": {
+          "type": "english",
+          "stem_exclusion": [  0️⃣
+            "organization",
+            "organizations"
           ],
-          &quot;stopwords&quot;: [ 1️⃣
-            &quot;a&quot;,
-            &quot;an&quot;,
-            &quot;and&quot;,
-            &quot;are&quot;,
-            &quot;as&quot;,
-            &quot;at&quot;,
-            &quot;be&quot;,
-            &quot;but&quot;,
-            &quot;by&quot;,
-            &quot;for&quot;,
-            &quot;if&quot;,
-            &quot;in&quot;,
-            &quot;into&quot;,
-            &quot;is&quot;,
-            &quot;it&quot;,
-            &quot;of&quot;,
-            &quot;on&quot;,
-            &quot;or&quot;,
-            &quot;such&quot;,
-            &quot;that&quot;,
-            &quot;the&quot;,
-            &quot;their&quot;,
-            &quot;then&quot;,
-            &quot;there&quot;,
-            &quot;these&quot;,
-            &quot;they&quot;,
-            &quot;this&quot;,
-            &quot;to&quot;,
-            &quot;was&quot;,
-            &quot;will&quot;,
-            &quot;with&quot;
+          "stopwords": [ 1️⃣
+            "a",
+            "an",
+            "and",
+            "are",
+            "as",
+            "at",
+            "be",
+            "but",
+            "by",
+            "for",
+            "if",
+            "in",
+            "into",
+            "is",
+            "it",
+            "of",
+            "on",
+            "or",
+            "such",
+            "that",
+            "the",
+            "their",
+            "then",
+            "there",
+            "these",
+            "they",
+            "this",
+            "to",
+            "was",
+            "will",
+            "with"
           ]
         }
       }
@@ -246,60 +246,60 @@ PUT /my_index
 
 GET /my_index/_analyze
 {
-  &quot;analyzer&quot;: &quot;my_english&quot;,
-  &quot;text&quot;: &quot;The World Health Organization does not sell organs.&quot;
+  "analyzer": "my_english",
+  "text": "The World Health Organization does not sell organs."
 }
 
 {
-  &quot;tokens&quot;: [ 0️⃣
+  "tokens": [ 0️⃣
     {
-      &quot;token&quot;: &quot;world&quot;,
-      &quot;start_offset&quot;: 4,
-      &quot;end_offset&quot;: 9,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 1
+      "token": "world",
+      "start_offset": 4,
+      "end_offset": 9,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 1
     },
     {
-      &quot;token&quot;: &quot;health&quot;,
-      &quot;start_offset&quot;: 10,
-      &quot;end_offset&quot;: 16,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 2
+      "token": "health",
+      "start_offset": 10,
+      "end_offset": 16,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 2
     },
     {
-      &quot;token&quot;: &quot;organization&quot;,
-      &quot;start_offset&quot;: 17,
-      &quot;end_offset&quot;: 29,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 3
+      "token": "organization",
+      "start_offset": 17,
+      "end_offset": 29,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 3
     },
     {
-      &quot;token&quot;: &quot;doe&quot;,
-      &quot;start_offset&quot;: 30,
-      &quot;end_offset&quot;: 34,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 4
+      "token": "doe",
+      "start_offset": 30,
+      "end_offset": 34,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 4
     },
     {
-      &quot;token&quot;: &quot;not&quot;,
-      &quot;start_offset&quot;: 35,
-      &quot;end_offset&quot;: 38,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 5
+      "token": "not",
+      "start_offset": 35,
+      "end_offset": 38,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 5
     },
     {
-      &quot;token&quot;: &quot;sell&quot;,
-      &quot;start_offset&quot;: 39,
-      &quot;end_offset&quot;: 43,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 6
+      "token": "sell",
+      "start_offset": 39,
+      "end_offset": 43,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 6
     },
     {
-      &quot;token&quot;: &quot;organ&quot;,
-      &quot;start_offset&quot;: 44,
-      &quot;end_offset&quot;: 50,
-      &quot;type&quot;: &quot;&lt;ALPHANUM&gt;&quot;,
-      &quot;position&quot;: 7
+      "token": "organ",
+      "start_offset": 44,
+      "end_offset": 50,
+      "type": "&lt;ALPHANUM&gt;",
+      "position": 7
     }
   ]
 }

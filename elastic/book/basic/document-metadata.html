@@ -203,21 +203,21 @@
 <pre><code class="language-json">PUT YZtest
 
 {
-  &quot;error&quot;: {
-    &quot;root_cause&quot;: [
+  "error": {
+    "root_cause": [
       {
-        &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
-        &quot;reason&quot;: &quot;Invalid index name [YZtest], must be lowercase&quot;,
-        &quot;index_uuid&quot;: &quot;_na_&quot;,
-        &quot;index&quot;: &quot;YZtest&quot;
+        "type": "invalid_index_name_exception",
+        "reason": "Invalid index name [YZtest], must be lowercase",
+        "index_uuid": "_na_",
+        "index": "YZtest"
       }
     ],
-    &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
-    &quot;reason&quot;: &quot;Invalid index name [YZtest], must be lowercase&quot;,
-    &quot;index_uuid&quot;: &quot;_na_&quot;,
-    &quot;index&quot;: &quot;YZtest&quot;
+    "type": "invalid_index_name_exception",
+    "reason": "Invalid index name [YZtest], must be lowercase",
+    "index_uuid": "_na_",
+    "index": "YZtest"
   },
-  &quot;status&quot;: 400
+  "status": 400
 }
 
 </code></pre>
@@ -226,21 +226,21 @@ PUT _yztest
 
 
 {
-  &quot;error&quot;: {
-    &quot;root_cause&quot;: [
+  "error": {
+    "root_cause": [
       {
-        &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
-        &quot;reason&quot;: &quot;Invalid index name [_yztest], must not start with '_', '-', or '+'&quot;,
-        &quot;index_uuid&quot;: &quot;_na_&quot;,
-        &quot;index&quot;: &quot;_yztest&quot;
+        "type": "invalid_index_name_exception",
+        "reason": "Invalid index name [_yztest], must not start with '_', '-', or '+'",
+        "index_uuid": "_na_",
+        "index": "_yztest"
       }
     ],
-    &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
-    &quot;reason&quot;: &quot;Invalid index name [_yztest], must not start with '_', '-', or '+'&quot;,
-    &quot;index_uuid&quot;: &quot;_na_&quot;,
-    &quot;index&quot;: &quot;_yztest&quot;
+    "type": "invalid_index_name_exception",
+    "reason": "Invalid index name [_yztest], must not start with '_', '-', or '+'",
+    "index_uuid": "_na_",
+    "index": "_yztest"
   },
-  &quot;status&quot;: 400
+  "status": 400
 }
 
 </code></pre>
@@ -248,27 +248,27 @@ PUT _yztest
 PUT yz,test
 
 {
-  &quot;error&quot;: {
-    &quot;root_cause&quot;: [
+  "error": {
+    "root_cause": [
       {
-        &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
-        &quot;reason&quot;: &quot;&quot;&quot;Invalid index name [yz,test], must not contain the following characters ['\','/','*','?','&quot;','&lt;','&gt;','|',' ',',']&quot;&quot;&quot;,
-        &quot;index_uuid&quot;: &quot;_na_&quot;,
-        &quot;index&quot;: &quot;yz,test&quot;
+        "type": "invalid_index_name_exception",
+        "reason": """Invalid index name [yz,test], must not contain the following characters ['\','/','*','?','"','&lt;','&gt;','|',' ',',']""",
+        "index_uuid": "_na_",
+        "index": "yz,test"
       }
     ],
-    &quot;type&quot;: &quot;invalid_index_name_exception&quot;,
-    &quot;reason&quot;: &quot;&quot;&quot;Invalid index name [yz,test], must not contain the following characters ['\','/','*','?','&quot;','&lt;','&gt;','|',' ',',']&quot;&quot;&quot;,
-    &quot;index_uuid&quot;: &quot;_na_&quot;,
-    &quot;index&quot;: &quot;yz,test&quot;
+    "type": "invalid_index_name_exception",
+    "reason": """Invalid index name [yz,test], must not contain the following characters ['\','/','*','?','"','&lt;','&gt;','|',' ',',']""",
+    "index_uuid": "_na_",
+    "index": "yz,test"
   },
-  &quot;status&quot;: 400
+  "status": 400
 }
 
 </code></pre>
 <h2 id="二_type"><a class="header" href="#二_type">二、_type</a></h2>
 <p>⚠️ 高版本，没有_type概念</p>
-<p>数据可能在索引中只是松散的组合在一起，但是通常明确定义一些数据中的子分区是很有用的。 例如，所有的产品都放在一个索引中，但是你有许多不同的产品类别，比如 &quot;electronics&quot; 、 &quot;kitchen&quot; 和 &quot;lawn-care&quot;。</p>
+<p>数据可能在索引中只是松散的组合在一起，但是通常明确定义一些数据中的子分区是很有用的。 例如，所有的产品都放在一个索引中，但是你有许多不同的产品类别，比如 "electronics" 、 "kitchen" 和 "lawn-care"。</p>
 <p>这些文档共享一种相同的（或非常相似）的模式：他们有一个标题、描述、产品代码和价格。他们只是正好属于“产品”下的一些子类。</p>
 <p>Elasticsearch 公开了一个称为 types （类型）的特性，它允许您在索引中对数据进行逻辑分区。不同 types 的文档可能有不同的字段，但最好能够非常相似。 我们将在 类型和映射 中更多的讨论关于 types 的一些应用和限制。</p>
 <p>一个 _type 命名可以是大写或者小写，但是不能以下划线或者句号开头，不应该包含逗号， 并且长度限制为256个字符. 我们使用 blog 作为类型名举例。</p>

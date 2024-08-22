@@ -186,30 +186,30 @@
 GET kibana_sample_data_logs/_search
 
 {
-  &quot;took&quot;: 2,
-  &quot;timed_out&quot;: false, 0️⃣
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "took": 2,
+  "timed_out": false, 0️⃣
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 10000,
-      &quot;relation&quot;: &quot;gte&quot;
+  "hits": {
+    "total": {
+      "value": 10000,
+      "relation": "gte"
     },
-    &quot;max_score&quot;: 1,
-    &quot;hits&quot;: []
+    "max_score": 1,
+    "hits": []
   }
 }
 
 </code></pre>
 <p>0️⃣ 这个搜索请求超时了</p>
 <blockquote>
-<p>🦐<strong>Warning</strong> </p>
+<p>🦐<strong>Warning</strong></p>
 <p>超时仍然是一个最有效的操作，知道这一点很重要； 很可能查询会超过设定的超时时间。这种行为有两个原因：</p>
-<p>1.超时检查是基于每文档做的。 但是某些查询类型有大量的工作在文档评估之前需要完成。 这种 &quot;setup&quot; 阶段并不考虑超时设置，所以太长的建立时间会导致超过超时时间的整体延迟。</p>
+<p>1.超时检查是基于每文档做的。 但是某些查询类型有大量的工作在文档评估之前需要完成。 这种 "setup" 阶段并不考虑超时设置，所以太长的建立时间会导致超过超时时间的整体延迟。</p>
 <p>2.因为时间检查是基于每个文档的，一次长时间查询在单个文档上执行并且在下个文档被评估之前不会超时。 这也意味着差的脚本（比如带无限循环的脚本）将会永远执行下去。</p>
 </blockquote>
 <h2 id="路由"><a class="header" href="#路由">路由</a></h2>

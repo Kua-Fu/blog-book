@@ -167,8 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="hyperloglog"><a class="header" href="#hyperloglog">hyperloglog</a></h1>
+                        <h1 id="hyperloglog"><a class="header" href="#hyperloglog">hyperloglog</a></h1>
 <h2 id="一参考"><a class="header" href="#一参考">一、参考</a></h2>
 <blockquote>
 <p><a href="https://towardsdatascience.com/hyperloglog-a-simple-but-powerful-algorithm-for-data-scientists-aed50fe47869">HyperLogLog: A Simple but Powerful Algorithm for Data Scientists</a></p>
@@ -188,7 +187,7 @@
 <h2 id="二论文"><a class="header" href="#二论文">二、论文</a></h2>
 <p>Probabitistic Counting Algorithms for Data Base Applications</p>
 <p>数据库应用的概率计数算法</p>
-<p>This paper introduces a class of probabilistic counting algorithms with which one can estimate the number of distinct elements in a large collection of data (typically a large file stored on disk) in a single pass using only a small additional storage (typically less than a hundred binary words) and only a few operations per element scanned. </p>
+<p>This paper introduces a class of probabilistic counting algorithms with which one can estimate the number of distinct elements in a large collection of data (typically a large file stored on disk) in a single pass using only a small additional storage (typically less than a hundred binary words) and only a few operations per element scanned.</p>
 <p>The algorithms are based on statistical observations made on bits of hashed values of records. They are by construction totally insensitive to the replicative structure of elements in the file; they can be used in the context of distributed systems without any degradation of performances and prove especially useful in the context of data bases query optirnisation.</p>
 <p>本文介绍了一类概率计数算法，通过该算法，可以在一次扫描中，仅仅使用少量的额外存储（通常少于100个二进制字），通过对每一个扫描元素进行少量的操作，就可以估算大量数据中不同元素的数量（数据通常是保存在磁盘上的大文件）</p>
 <p>该算法，基于对记录散列值的比特进行的统计观察。通过构造，它们对文件中元素的复制结构完全不敏感，它们可以在分布式系统的环境中使用，而不会降低性能，并且在数据库查询优化的环境中特别有效。</p>
@@ -196,7 +195,7 @@
 <p>介绍</p>
 <p>As data base systems allow the user to specify more and more complex queries, the need arises for efficient processing methods. A complex query can however generally be evaluated in a number of different manners, and the overall performance of a data base system depends rather crucially on the selection of appropriate decomposition strategies in each particular case.</p>
 <p>因为数据库系统允许用户指定越来越复杂的查询，因此，需要更加高效的处理方法。然而，复杂的查询通常可以以多种不同的方式评估，数据库系统的总体性能，关键取决于在每个特定情况下，选择适当的分散策略。</p>
-<p>Even a problem as trivial as computing the intersection of two collections of data A and B lends itself to a number of different treatments: </p>
+<p>Even a problem as trivial as computing the intersection of two collections of data A and B lends itself to a number of different treatments:</p>
 <ol>
 <li>
 <p>Sort A, search each element of B in A and retain it if it appears in A;</p>
@@ -222,7 +221,7 @@
 </ol>
 <p>Each of these evaluation strategy will have a cost essentially determined by the number of records a, b in A and B, and the number of distinct elements α, β in A and B, and for typical sorting methods, the costs are:</p>
 <p>for strategy 1: \( O(a \cdot log\alpha + b \cdot log\beta) \)</p>
-<p>for strategy 2: \( O(a \cdot log a + b \cdot log b + a + b) \) </p>
+<p>for strategy 2: \( O(a \cdot log a + b \cdot log b + a + b) \)</p>
 <p>In a number of similar situations, it appears thus that, apart from the sizes of the files on which one operates (i.e., the number of records), a major determinant of efficiency is the cardinalities of the underlying sets, i.e., the number of distinct elements they comprise.</p>
 <p>The situation gets much more complex when operations like projections, selections, multiple joins in combination with various boolean operations appear in queries. As an example, the relational system system R has a sophisticated query optimiser. In order to perform its task, that programme keeps several statistics on relations of the data base.The most important ones are the sizesof relations as well as the number of different elements of some key fields. The choices are made in order to minimise a cer- tain cost function that depends on specific CPU and disk access costs as well as sizes and cardinalities of relations or fields. In system R, this information is periodically recomputed and kept in catalogues that are companions to the data base records and indexes.</p>
 <p>上面每一种计算方法的性能，基本上取决于集合A、B中的元素a, b 的数量，和集合A、B中的不相同元素α, β的数量，对于典型的排序方法，复杂度如下</p>

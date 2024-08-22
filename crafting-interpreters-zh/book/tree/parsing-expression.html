@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item expanded "><a href="../tree/parsing-expression.html" class="active"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item expanded "><a href="../tree/parsing-expression.html" class="active"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -210,12 +210,12 @@ expression     → literal
                | binary
                | grouping ;
 
-literal        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quot;nil&quot; ;
-grouping       → &quot;(&quot; expression &quot;)&quot; ;
-unary          → ( &quot;-&quot; | &quot;!&quot; ) expression ;
+literal        → NUMBER | STRING | "true" | "false" | "nil" ;
+grouping       → "(" expression ")" ;
+unary          → ( "-" | "!" ) expression ;
 binary         → expression operator expression ;
-operator       → &quot;==&quot; | &quot;!=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; | &quot;&gt;&quot; | &quot;&gt;=&quot;
-               | &quot;+&quot;  | &quot;-&quot;  | &quot;*&quot; | &quot;/&quot; ;
+operator       → "==" | "!=" | "&lt;" | "&lt;=" | "&gt;" | "&gt;="
+               | "+"  | "-"  | "*" | "/" ;
 			   
 </code></pre>
 <p>This is a valid string in that grammar:</p>
@@ -229,7 +229,7 @@ operator       → &quot;==&quot; | &quot;!=&quot; | &quot;&lt;&quot; | &quot;&l
 <p>For the left-hand expression, pick NUMBER, and use 6.</p>
 </li>
 <li>
-<p>For the operator, pick &quot;/&quot;.</p>
+<p>For the operator, pick "/".</p>
 </li>
 <li>
 <p>For the right-hand expression, pick binary again.</p>
@@ -250,28 +250,28 @@ operator       → &quot;==&quot; | &quot;!=&quot; | &quot;&lt;&quot; | &quot;&l
 <p>In that nested binary expression, pick 6 / 3.</p>
 </li>
 <li>
-<p>Back at the outer binary, for the operator, pick &quot;-&quot;.</p>
+<p>Back at the outer binary, for the operator, pick "-".</p>
 </li>
 <li>
 <p>For the right-hand expression, pick NUMBER, and use 1.</p>
 </li>
 </ol>
 <p>Those produce the same strings, but not the same syntax trees:</p>
-<p>下面一个合法的lox代码，但是我们可以使用两种方式生成, 生成的语法树如下: </p>
+<p>下面一个合法的lox代码，但是我们可以使用两种方式生成, 生成的语法树如下:</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/syntax-trees.png?raw=true" alt="syntax-trees" /></p>
 <p>In other words, the grammar allows seeing the expression as (6 / 3) - 1 or 6 / (3 - 1). The binary rule lets operands nest any which way you want. That in turn affects the result of evaluating the parsed tree. The way mathematicians have addressed this ambiguity since blackboards were first invented is by defining rules for precedence and associativity.</p>
 <ul>
 <li>
-<p>Precedence </p>
+<p>Precedence</p>
 <p>determines which operator is evaluated first in an expression containing a mixture of different operators. Precedence rules tell us that we evaluate the / before the - in the above example. Operators with higher precedence are evaluated before operators with lower precedence. Equivalently, higher precedence operators are said to “bind tighter”.</p>
 </li>
 <li>
-<p>Associativity </p>
+<p>Associativity</p>
 <p>determines which operator is evaluated first in a series of the same operator. When an operator is left-associative (think “left-to-right”), operators on the left evaluate before those on the right. Since - is left-associative, this expression:</p>
 <p>Assignment, on the other hand, is right-associative. This:</p>
 </li>
 </ul>
-<p>换句话说，语法规则，可以将 </p>
+<p>换句话说，语法规则，可以将</p>
 <p><code>6/3-1</code> 视为 <code>(6/3)-1</code>  或者 <code>6/(3-1)</code></p>
 <p>二叉树允许我们按照任意的方式嵌套，而这又会反过来影响，我们的解析过程，自从黑板被发明出来，数学家解决这个歧义的方式是：定义优先级，关联性规则。</p>
 <ul>
@@ -303,7 +303,7 @@ operator       → &quot;==&quot; | &quot;!=&quot; | &quot;&lt;&quot; | &quot;&l
 <p>While not common these days, some languages specify that certain pairs of operators have no relative precedence. That makes it a syntax error to mix those operators in an expression without using explicit grouping.</p>
 <p>Likewise, some operators are non-associative. That means it’s an error to use that operator more than once in a sequence. For example, Perl’s range operator isn’t associative, so a .. b is OK, but a .. b .. c is an error.</p>
 <p>虽然现在不常见，但是有一些语言，没有指定运算符的相对优先级，如果在一个表达式中包含不同的运算符，并且没有使用显示的分组，解析器会报错，语法错误。</p>
-<p>同样，有一些运算符是非关联的。这意味着，在一个序列中，多次使用该运算符是错误的，举例: Perl语言中范围运算符是非关联的，即 
+<p>同样，有一些运算符是非关联的。这意味着，在一个序列中，多次使用该运算符是错误的，举例: Perl语言中范围运算符是非关联的，即
 a...b 是合法的，但是 a...b...c 是非法的</p>
 </blockquote>
 <p>Without well-defined precedence and associativity, an expression that uses multiple operators is ambiguous—it can be parsed into different syntax trees, which could in turn evaluate to different results. We’ll fix that in Lox by applying the same precedence rules as C, going from lowest to highest.</p>
@@ -354,8 +354,8 @@ expression     → equality
 <p>Over at the other end of the precedence table, a primary expression contains all the literals and grouping expressions.</p>
 <p>在优先级表格的另外一边，主表达式包含文本和括号表达式</p>
 <pre><code>
-primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quot;nil&quot;
-               | &quot;(&quot; expression &quot;)&quot; ;
+primary        → NUMBER | STRING | "true" | "false" | "nil"
+               | "(" expression ")" ;
 
 </code></pre>
 <p>A unary expression starts with a unary operator followed by the operand. Since unary operators can nest—!!true is a valid if weird expression—the operand can itself be a unary operator. A recursive rule handles that nicely.</p>
@@ -363,14 +363,14 @@ primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quo
 <p>例如: !true 是一个奇怪但是有效的表达式，</p>
 <p>我们使用递归规则可以很好的处理</p>
 <pre><code>
-unary          → ( &quot;!&quot; | &quot;-&quot; ) unary ;
+unary          → ( "!" | "-" ) unary ;
 
 </code></pre>
 <p>But this rule has a problem. It never terminates.</p>
 <p>Remember, each rule needs to match expressions at that precedence level or higher, so we also need to let this match a primary expression.</p>
 <p>但是一元表达式规则，有个问题，它可能永远不会终止。请记住，每一个规则匹配优先级相同或者更高的表达式，因此，我们还需要匹配主表达式</p>
 <pre><code class="language-C">
-unary          → ( &quot;!&quot; | &quot;-&quot; ) unary
+unary          → ( "!" | "-" ) unary
                | primary ;
 
 </code></pre>
@@ -379,7 +379,7 @@ unary          → ( &quot;!&quot; | &quot;-&quot; ) unary
 <p>The remaining rules are all binary operators. We’ll start with the rule for multiplication and division. Here’s a first try:</p>
 <p>其余规则都是二元运算符，我们首先从乘法和除法开始，下面是第一次尝试</p>
 <pre><code class="language-c">
-factor         → factor ( &quot;/&quot; | &quot;*&quot; ) unary
+factor         → factor ( "/" | "*" ) unary
                | unary ;
 			   
 </code></pre>
@@ -401,7 +401,7 @@ factor         → factor ( &quot;/&quot; | &quot;*&quot; ) unary
 <p>There are many grammars you can define that match the same language. The choice for how to model a particular language is partially a matter of taste and partially a pragmatic one. This rule is correct, but not optimal for how we intend to parse it. Instead of a left recursive rule, we’ll use a different one.</p>
 <p>我们可以定义许多语法，和同一个语言相匹配。如果为一门语言建模，一部分取决于编程品味，一部分取决于应用。这个规则是正确的，但是，对于我们如何解析它来说不是最佳的，我们将使用新的规则，而不是使用左递归规则</p>
 <pre><code class="language-c">
-factor         → unary ( ( &quot;/&quot; | &quot;*&quot; ) unary )* ;
+factor         → unary ( ( "/" | "*" ) unary )* ;
 
 </code></pre>
 <p>We define a factor expression as a flat sequence of multiplications and divisions. This matches the same syntax as the previous rule, but better mirrors the code we’ll write to parse Lox. We use the same structure for all of the other binary operator precedence levels, giving us this complete expression grammar:</p>
@@ -409,19 +409,19 @@ factor         → unary ( ( &quot;/&quot; | &quot;*&quot; ) unary )* ;
 <pre><code class="language-C">
 expression -&gt; equality;
 
-equality -&gt; comparison (( &quot;!=&quot; | &quot;==&quot; ) comparison )* ;
+equality -&gt; comparison (( "!=" | "==" ) comparison )* ;
 
-comparison -&gt; term ( ( &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; ) term)* ;
+comparison -&gt; term ( ( "&gt;" | "&gt;=" | "&lt;" | "&lt;=" ) term)* ;
 
-term           → factor ( ( &quot;-&quot; | &quot;+&quot; ) factor )* ;
+term           → factor ( ( "-" | "+" ) factor )* ;
 
-factor         → unary ( ( &quot;/&quot; | &quot;*&quot; ) unary )* ;
+factor         → unary ( ( "/" | "*" ) unary )* ;
 
-unary          → ( &quot;!&quot; | &quot;-&quot; ) unary
+unary          → ( "!" | "-" ) unary
 	           | primary ;
 			   
-primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quot;nil&quot;
-	           | &quot;(&quot; expression &quot;)&quot; ;
+primary        → NUMBER | STRING | "true" | "false" | "nil"
+	           | "(" expression ")" ;
 			   
 </code></pre>
 <p>This grammar is more complex than the one we had before, but in return we have eliminated the previous one’s ambiguity. It’s just what we need to make a parser.</p>
@@ -498,7 +498,7 @@ class Parser {
 </blockquote>
 <p>下面等式的规则有些复杂</p>
 <pre><code>
-equality       → comparison ( ( &quot;!=&quot; | &quot;==&quot; ) comparison )* ;
+equality       → comparison ( ( "!=" | "==" ) comparison )* ;
 
 </code></pre>
 <p>In Java, that becomes:</p>
@@ -599,9 +599,9 @@ equality       → comparison ( ( &quot;!=&quot; | &quot;==&quot; ) comparison )
 </blockquote>
 <p>The parser falls out of the loop once it hits a token that’s not an equality operator. Finally, it returns the expression. Note that if the parser never encounters an equality operator, then it never enters the loop. In that case, the equality() method effectively calls and returns comparison(). In that way, this method matches an equality operator or anything of higher precedence.</p>
 <p>一旦解析器碰到不是等式运算符的token， 它就会退出循环，最后，解析器会返回表达式，需要注意的是，如果解析器没有遇到等式运算符，它永远不会进入循环，在这种情况下，equaility() 函数，调用会返回 comparison(). 通过上面的方式，此方法将会匹配相等运算符，或者任何优先级较高的运算符。</p>
-<p>Moving on to the next rule . . . </p>
+<p>Moving on to the next rule . . .</p>
 <pre><code>
-comparison     → term ( ( &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; ) term )* ;
+comparison     → term ( ( "&gt;" | "&gt;=" | "&lt;" | "&lt;=" ) term )* ;
 
 </code></pre>
 <p>Translated to Java:</p>
@@ -667,7 +667,7 @@ comparison     → term ( ( &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;&lt;&qu
 <p>That’s all of the binary operators, parsed with the correct precedence and associativity. We’re crawling up the precedence hierarchy and now we’ve reached the unary operators.</p>
 <p>这就是所有的二元运算符，以正确的优先级和关联性解析，我们正在往优先级更高的运算符进行解析，下一步，我们将解析一元运算符</p>
 <pre><code>
-unary          → ( &quot;!&quot; | &quot;-&quot; ) unary
+unary          → ( "!" | "-" ) unary
                | primary ;
 			   
 </code></pre>
@@ -696,8 +696,8 @@ unary          → ( &quot;!&quot; | &quot;-&quot; ) unary
 <p>Otherwise, we must have reached the highest level of precedence, primary expressions.</p>
 <p>接下来，我们将进入主表达式的解析方法，主表达式是优先级最高的表达式</p>
 <pre><code>
-primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quot;nil&quot;
-               | &quot;(&quot; expression &quot;)&quot; ;
+primary        → NUMBER | STRING | "true" | "false" | "nil"
+               | "(" expression ")" ;
 			   
 </code></pre>
 <p>Most of the cases for the rule are single terminals, so parsing is straightforward.</p>
@@ -716,7 +716,7 @@ primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quo
 
     if (match(LEFT_PAREN)) {
       Expr expr = expression();
-      consume(RIGHT_PAREN, &quot;Expect ')' after expression.&quot;);
+      consume(RIGHT_PAREN, "Expect ')' after expression.");
       return new Expr.Grouping(expr);
     }
   }
@@ -793,7 +793,7 @@ primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quo
 <p>上面两点是入局解析器游戏的基本条件，但是，如果你想提高自己的筹码，一个更好的解析器应该:</p>
 <ul>
 <li>
-<p>编译更快 </p>
+<p>编译更快</p>
 <p>计算机的运行速度，比解析器技术，首次发明的时候，快了数千倍。需要优化解析器编译速度，需要喝完一整杯咖啡才能编译完成的日子，已经过去了。但是，程序员的期望值也在不断变高，他们希望在毫秒内重新编译源码。</p>
 </li>
 <li>
@@ -859,9 +859,9 @@ primary        → NUMBER | STRING | &quot;true&quot; | &quot;false&quot; | &quo
 
   static void error(Token token, String message) {
     if (token.type == TokenType.EOF) {
-      report(token.line, &quot; at end&quot;, message);
+      report(token.line, " at end", message);
     } else {
-      report(token.line, &quot; at '&quot; + token.lexeme + &quot;'&quot;, message);
+      report(token.line, " at '" + token.lexeme + "'", message);
     }
   }
   
@@ -887,7 +887,7 @@ class Parser {
 <blockquote>
 <p>Another way to handle common syntax errors is with error productions. You augment the grammar with a rule that successfully matches the erroneous syntax. The parser safely parses it but then reports it as an error instead of producing a syntax tree.</p>
 <p>For example, some languages have a unary + operator, like +123, but Lox does not. Instead of getting confused when the parser stumbles onto a + at the beginning of an expression, we could extend the unary rule to allow it.</p>
-<pre><code>unary → ( &quot;!&quot; | &quot;-&quot; | &quot;+&quot; ) unary
+<pre><code>unary → ( "!" | "-" | "+" ) unary
      | primary ;
 </code></pre>
 <p>This lets the parser consume + without going into panic mode or leaving the parser in a weird state.</p>
@@ -961,11 +961,11 @@ class Parser {
         }
         if (match(LEFT_PAREN)) {
             Expr expr = expression();
-            consume(RIGHT_PAREN, &quot;Expect ')' after expression.&quot;);
+            consume(RIGHT_PAREN, "Expect ')' after expression.");
             return new Expr.Grouping(expr);
         }
 
-        throw error(peek(), &quot;Expect expression.&quot;);
+        throw error(peek(), "Expect expression.");
     }
 	
 </code></pre>

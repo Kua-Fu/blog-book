@@ -182,41 +182,41 @@
 PUT yztest-5-1
 
 POST yztest-5-1/_bulk
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: 1, &quot;f2&quot;: 10}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: 10, &quot;f2&quot;: 100}
-{&quot;index&quot;: {}}
-{&quot;f1&quot;: 100, &quot;f2&quot;: 1000}
+{"index": {}}
+{"f1": 1, "f2": 10}
+{"index": {}}
+{"f1": 10, "f2": 100}
+{"index": {}}
+{"f1": 100, "f2": 1000}
 
 
 GET yztest-5-1/_search
 {
-  &quot;size&quot;: 0, 
-  &quot;runtime_mappings&quot;: {
-    &quot;f3&quot;: {
-      &quot;type&quot;: &quot;long&quot;,
-      &quot;script&quot;: {
-        &quot;source&quot;: &quot;&quot;&quot;
+  "size": 0, 
+  "runtime_mappings": {
+    "f3": {
+      "type": "long",
+      "script": {
+        "source": """
           emit(doc['f2'].value - doc['f1'].value);
-          &quot;&quot;&quot;
+          """
       }
     }
   },
-  &quot;aggs&quot;: {
-    &quot;a1&quot;: {
-      &quot;range&quot;: {
-        &quot;field&quot;: &quot;f3&quot;,
-        &quot;ranges&quot;: [
+  "aggs": {
+    "a1": {
+      "range": {
+        "field": "f3",
+        "ranges": [
           {
-            &quot;to&quot;: 0
+            "to": 0
           },
           {
-            &quot;from&quot;: 0,
-            &quot;to&quot;: 100
+            "from": 0,
+            "to": 100
           },
           {
-            &quot;from&quot;: 100
+            "from": 100
           }
         ]
       }

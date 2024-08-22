@@ -176,12 +176,12 @@
 <p><a href="https://zhuanlan.zhihu.com/p/360159387">【kafka】SSL和ACL的配置</a></p>
 </blockquote>
 <h2 id="二简介"><a class="header" href="#二简介">二、简介</a></h2>
-<pre><code>keytool -keystore server.keystore.jks -alias localhost -keyalg RSA -validity 365  -storetype PKCS12 -genkey -dname &quot;CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN&quot; 
+<pre><code>keytool -keystore server.keystore.jks -alias localhost -keyalg RSA -validity 365  -storetype PKCS12 -genkey -dname "CN=10.100.65.93, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN" 
 
 </code></pre>
 <pre><code># password1
 
-keytool -keystore server.keystore.jks -alias localhost -keyalg RSA -validity 365  -storetype PKCS12 -genkey -dname &quot;CN=testkafka.com, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN&quot; -ext &quot;SAN:c=DNS:testkafka.com,IP:10.100.65.93&quot;
+keytool -keystore server.keystore.jks -alias localhost -keyalg RSA -validity 365  -storetype PKCS12 -genkey -dname "CN=testkafka.com, OU=IT, O=MyCompany, L=Shanghai, ST=Shanghai, C=CN" -ext "SAN:c=DNS:testkafka.com,IP:10.100.65.93"
 Enter keystore password:
 Re-enter new password:
 Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 365 days

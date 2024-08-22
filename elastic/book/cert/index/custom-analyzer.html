@@ -186,7 +186,7 @@
 <p>来自星友的一个真实业务场景问题：</p>
 <p>我现在的业务需求是这样的。有一个作者字段，比如是这样的Li,LeiLei;Han,MeiMei;</p>
 <p>还有一些是LeiLei Li...。</p>
-<p>现在要精确匹配。 </p>
+<p>现在要精确匹配。</p>
 <p>我的想法是：用自定义分词通过分号分词。</p>
 <p>但是这样我检索Li,LeiLei那么LeiLei Li就不能搜索到，</p>
 <p>我希望的结果是LeiLei Li也被搜索到</p>
@@ -202,56 +202,56 @@
 <pre><code>
 PUT test-custom-analyzer
 {
-  &quot;settings&quot;: {
-    &quot;analysis&quot;: {
-      &quot;analyzer&quot;: {
-        &quot;custom_analyzer&quot;: {
-          &quot;type&quot;: &quot;custom&quot;,
-          &quot;char_filter&quot;: [
-            &quot;custom_char_filter&quot;
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "custom_analyzer": {
+          "type": "custom",
+          "char_filter": [
+            "custom_char_filter"
           ],
-          &quot;tokenizer&quot;: &quot;custom_tokenizer&quot;,
-          &quot;filter&quot;: [
-            &quot;lowercase&quot;,
-            &quot;custom_filter&quot;
+          "tokenizer": "custom_tokenizer",
+          "filter": [
+            "lowercase",
+            "custom_filter"
           ]
         }
       },
-      &quot;char_filter&quot;: {
-        &quot;custom_char_filter&quot;: {
-          &quot;type&quot;: &quot;mapping&quot;,
-          &quot;mappings&quot;: [
-            &quot;, =&gt; &quot;
+      "char_filter": {
+        "custom_char_filter": {
+          "type": "mapping",
+          "mappings": [
+            ", =&gt; "
           ]
         }
       },
-      &quot;tokenizer&quot;: {
-        &quot;custom_tokenizer&quot;: {
-          &quot;type&quot;: &quot;char_group&quot;,
-          &quot;tokenize_on_chars&quot;: [
-            &quot;;&quot;
+      "tokenizer": {
+        "custom_tokenizer": {
+          "type": "char_group",
+          "tokenize_on_chars": [
+            ";"
           ]
         }
       },
-      &quot;filter&quot;: {
-        &quot;custom_filter&quot;: {
-          &quot;type&quot;: &quot;synonym&quot;,
-          &quot;lenient&quot;: true,
-          &quot;synonyms&quot;: [
-            &quot;li leilei =&gt; leileili&quot;,
-            &quot;han meimei =&gt; meimeihan&quot;,
-            &quot;lileilei =&gt; leileili&quot;,
-            &quot;hanmeimei =&gt; meimeihan&quot;
+      "filter": {
+        "custom_filter": {
+          "type": "synonym",
+          "lenient": true,
+          "synonyms": [
+            "li leilei =&gt; leileili",
+            "han meimei =&gt; meimeihan",
+            "lileilei =&gt; leileili",
+            "hanmeimei =&gt; meimeihan"
           ]
         }
       }
     }
   },
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;message&quot;: {
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;analyzer&quot;: &quot;custom_analyzer&quot;
+  "mappings": {
+    "properties": {
+      "message": {
+        "type": "text",
+        "analyzer": "custom_analyzer"
       }
     }
   }
@@ -262,36 +262,36 @@ PUT test-custom-analyzer
 <pre><code>
 GET test-custom-analyzer/_analyze
 {
-  &quot;field&quot;: &quot;message&quot;,
-  &quot;text&quot;: &quot;Li leilei&quot;
+  "field": "message",
+  "text": "Li leilei"
 }
 
 {
-  &quot;tokens&quot; : [
+  "tokens" : [
     {
-      &quot;token&quot; : &quot;leileili&quot;,
-      &quot;start_offset&quot; : 0,
-      &quot;end_offset&quot; : 9,
-      &quot;type&quot; : &quot;SYNONYM&quot;,
-      &quot;position&quot; : 0
+      "token" : "leileili",
+      "start_offset" : 0,
+      "end_offset" : 9,
+      "type" : "SYNONYM",
+      "position" : 0
     }
   ]
 }
 
 GET test-custom-analyzer/_analyze
 {
-  &quot;field&quot;: &quot;message&quot;,
-  &quot;text&quot;: &quot;Li,leilei&quot;
+  "field": "message",
+  "text": "Li,leilei"
 }
 
 {
-  &quot;tokens&quot; : [
+  "tokens" : [
     {
-      &quot;token&quot; : &quot;leileili&quot;,
-      &quot;start_offset&quot; : 0,
-      &quot;end_offset&quot; : 9,
-      &quot;type&quot; : &quot;SYNONYM&quot;,
-      &quot;position&quot; : 0
+      "token" : "leileili",
+      "start_offset" : 0,
+      "end_offset" : 9,
+      "type" : "SYNONYM",
+      "position" : 0
     }
   ]
 }

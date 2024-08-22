@@ -169,8 +169,8 @@
                     <main>
                         <h1 id="单节点集群搭建"><a class="header" href="#单节点集群搭建">单节点集群搭建</a></h1>
 <h2 id="一环境"><a class="header" href="#一环境">一、环境</a></h2>
-<p>腾讯云服务器 </p>
-<p>Centos7.6 </p>
+<p>腾讯云服务器</p>
+<p>Centos7.6</p>
 <p>4 core/ 4G</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/es-cert/tx.png?raw=true" alt="tx" /></p>
 <p>安装包下载</p>
@@ -259,17 +259,17 @@ ERROR: Elasticsearch did not exit normally - check the logs at /home/elasticsear
 <pre><code>sysctl -w vm.max_map_count=262144
 </code></pre>
 <p>(5) 查看集群状态，无返回值</p>
-<pre><code>curl -u &quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; 127.0.0.1:9200
+<pre><code>curl -u "elastic:hpM8wQzc+b*2q-06AF6j" 127.0.0.1:9200
 
-➜  ~ curl -u &quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; 127.0.0.1:9200
+➜  ~ curl -u "elastic:hpM8wQzc+b*2q-06AF6j" 127.0.0.1:9200
 curl: (52) Empty reply from server
 
 [2023-03-04T15:13:22,198][WARN ][o.e.x.s.t.n.SecurityNetty4HttpServerTransport] [VM-12-11-centos] received plaintext http traffic on an https channel, closing connection Netty4HttpChannel{localAddress=/127.0.0.1:9200, remoteAddress=/127.0.0.1:50162}
 </code></pre>
 <div class="table-wrapper"><table><thead><tr><th>序号</th><th>方法</th><th></th></tr></thead><tbody>
-<tr><td>1</td><td>因为elasticsearch8.1 默认是开启tls 安全配置，所以，需要使用https 并且证书认证方式访问</td><td><code>curl --cacert /home/elasticsearch/es/elasticsearch-8.1.0/config/certs/http_ca.crt  -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; https://127.0.0.1:9200/</code></td></tr>
-<tr><td>2</td><td>可以使用curl -k 参数，忽略证书认证</td><td><code>curl -k -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; https://127.0.0.1:9200/</code></td></tr>
-<tr><td>3</td><td>修改配置，关闭https认证，使用账号、密码认证，即<code>xpack.security.http.ssl: enabled: false</code>, 详见下文</td><td><code>curl -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; http://127.0.0.1:9200/</code></td></tr>
+<tr><td>1</td><td>因为elasticsearch8.1 默认是开启tls 安全配置，所以，需要使用https 并且证书认证方式访问</td><td><code>curl --cacert /home/elasticsearch/es/elasticsearch-8.1.0/config/certs/http_ca.crt  -u"elastic:hpM8wQzc+b*2q-06AF6j" https://127.0.0.1:9200/</code></td></tr>
+<tr><td>2</td><td>可以使用curl -k 参数，忽略证书认证</td><td><code>curl -k -u"elastic:hpM8wQzc+b*2q-06AF6j" https://127.0.0.1:9200/</code></td></tr>
+<tr><td>3</td><td>修改配置，关闭https认证，使用账号、密码认证，即<code>xpack.security.http.ssl: enabled: false</code>, 详见下文</td><td><code>curl -u"elastic:hpM8wQzc+b*2q-06AF6j" http://127.0.0.1:9200/</code></td></tr>
 <tr><td>4</td><td>关闭所有的安全认证, 即<code>xpack.security.enabled: false</code></td><td><code>curl http://127.0.0.1:9200/</code></td></tr>
 </tbody></table>
 </div>
@@ -292,7 +292,7 @@ xpack.security.transport.ssl:
   truststore.path: certs/transport.p12
 # Create a new cluster with the current node only
 # Additional nodes can still join the cluster later
-cluster.initial_master_nodes: [&quot;VM-12-11-centos&quot;]
+cluster.initial_master_nodes: ["VM-12-11-centos"]
 
 # Allow HTTP API connections from localhost and local networks
 # Connections are encrypted and require user authentication
@@ -304,23 +304,23 @@ http.host: [_local_, _site_]
 </code></pre>
 <p>正常运行</p>
 <pre><code>
-➜  ~ curl -u&quot;elastic:hpM8wQzc+b*2q-06AF6j&quot; http://127.0.0.1:9200/
+➜  ~ curl -u"elastic:hpM8wQzc+b*2q-06AF6j" http://127.0.0.1:9200/
 {
-  &quot;name&quot; : &quot;VM-12-11-centos&quot;,
-  &quot;cluster_name&quot; : &quot;elasticsearch&quot;,
-  &quot;cluster_uuid&quot; : &quot;suMBivwmSJCHFPNduQCvrQ&quot;,
-  &quot;version&quot; : {
-    &quot;number&quot; : &quot;8.1.0&quot;,
-    &quot;build_flavor&quot; : &quot;default&quot;,
-    &quot;build_type&quot; : &quot;tar&quot;,
-    &quot;build_hash&quot; : &quot;3700f7679f7d95e36da0b43762189bab189bc53a&quot;,
-    &quot;build_date&quot; : &quot;2022-03-03T14:20:00.690422633Z&quot;,
-    &quot;build_snapshot&quot; : false,
-    &quot;lucene_version&quot; : &quot;9.0.0&quot;,
-    &quot;minimum_wire_compatibility_version&quot; : &quot;7.17.0&quot;,
-    &quot;minimum_index_compatibility_version&quot; : &quot;7.0.0&quot;
+  "name" : "VM-12-11-centos",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "suMBivwmSJCHFPNduQCvrQ",
+  "version" : {
+    "number" : "8.1.0",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "3700f7679f7d95e36da0b43762189bab189bc53a",
+    "build_date" : "2022-03-03T14:20:00.690422633Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.0.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
   },
-  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+  "tagline" : "You Know, for Search"
 }
 
 </code></pre>

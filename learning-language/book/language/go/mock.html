@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Go</li><li class="chapter-item expanded "><a href="../../language/go/go.html"><strong aria-hidden="true">2.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../language/go/101.html"><strong aria-hidden="true">2.1.</strong> go101</a></li><li class="chapter-item "><a href="../../language/go/blog.html"><strong aria-hidden="true">2.2.</strong> blogs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../language/go/blog/cover.html"><strong aria-hidden="true">2.2.1.</strong> The cover story</a></li></ol></li><li class="chapter-item expanded "><a href="../../language/go/mock.html" class="active"><strong aria-hidden="true">2.3.</strong> go mock</a></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><a href="../../language/java/java.html"><strong aria-hidden="true">3.</strong> Java</a></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item "><a href="../../language/python/python.html"><strong aria-hidden="true">4.</strong> Python</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item affix "><li class="part-title">Go</li><li class="chapter-item expanded "><a href="../../language/go/go.html"><strong aria-hidden="true">2.</strong> Go</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../language/go/101.html"><strong aria-hidden="true">2.1.</strong> go101</a></li><li class="chapter-item "><a href="../../language/go/cover.html"><strong aria-hidden="true">2.2.</strong> The cover story</a></li><li class="chapter-item "><a href="../../language/go/gc.html"><strong aria-hidden="true">2.3.</strong> A Guide to the Go Garbage Collector</a></li><li class="chapter-item expanded "><a href="../../language/go/mock.html" class="active"><strong aria-hidden="true">2.4.</strong> go mock</a></li></ol></li><li class="chapter-item "><li class="part-title">Java</li><li class="chapter-item "><a href="../../language/java/java.html"><strong aria-hidden="true">3.</strong> Java</a></li><li class="chapter-item affix "><li class="part-title">Python</li><li class="chapter-item "><a href="../../language/python/python.html"><strong aria-hidden="true">4.</strong> Python</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -196,7 +196,7 @@ mockgen -source=foo.go [other options]
 </code></pre>
 <h4 id="222-reflect-mode"><a class="header" href="#222-reflect-mode">2.2.2 Reflect mode</a></h4>
 <p>Reflect mode generates mock interfaces by building a program that uses reflection to understand interfaces. It is enabled by passing two non-flag arguments: an import path, and a comma-separated list of symbols.</p>
-<p>You can use &quot;.&quot; to refer to the current path's package.</p>
+<p>You can use "." to refer to the current path's package.</p>
 <p>反射模式通过构建一个使用反射理解接口的程序来生成模拟接口。它通过传递两个非标志参数来启用：一个导入路径和一个逗号分隔的符号列表。</p>
 <p>您可以使用“.”来引用当前路径的包。</p>
 <p>Example:</p>
@@ -351,9 +351,9 @@ func SUT(f Foo) {
 package yzmock
 
 import (
-	reflect &quot;reflect&quot;
+	reflect "reflect"
 
-	gomock &quot;github.com/golang/mock/gomock&quot;
+	gomock "github.com/golang/mock/gomock"
 )
 
 // MockFoo is a mock of Foo interface.
@@ -382,7 +382,7 @@ func (m *MockFoo) EXPECT() *MockFooMockRecorder {
 // Bar mocks base method.
 func (m *MockFoo) Bar(x int) int {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, &quot;Bar&quot;, x)
+	ret := m.ctrl.Call(m, "Bar", x)
 	ret0, _ := ret[0].(int)
 	return ret0
 }
@@ -390,7 +390,7 @@ func (m *MockFoo) Bar(x int) int {
 // Bar indicates an expected call of Bar.
 func (mr *MockFooMockRecorder) Bar(x interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, &quot;Bar&quot;, reflect.TypeOf((*MockFoo)(nil).Bar), x)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Bar", reflect.TypeOf((*MockFoo)(nil).Bar), x)
 }
 
 
@@ -451,7 +451,7 @@ Want: is equal to 1
 <pre><code class="language-go">
 
 gomock.WantFormatter(
-  gomock.StringerFunc(func() string { return &quot;is equal to fifteen&quot; }),
+  gomock.StringerFunc(func() string { return "is equal to fifteen" }),
   gomock.Eq(15),
 )
 
@@ -462,7 +462,7 @@ gomock.WantFormatter(
 gomock.GotFormatterAdapter(
   gomock.GotFormatterFunc(func(i interface{}) string {
     // Leading 0s
-    return fmt.Sprintf(&quot;%02d&quot;, i)
+    return fmt.Sprintf("%02d", i)
   }),
   gomock.Eq(15),
 )
@@ -472,7 +472,7 @@ gomock.GotFormatterAdapter(
 <h3 id="26-debugging-errors"><a class="header" href="#26-debugging-errors">2.6 Debugging Errors</a></h3>
 <h4 id="261-reflect-vendoring-error"><a class="header" href="#261-reflect-vendoring-error">2.6.1 reflect vendoring error</a></h4>
 <pre><code class="language-go">
-cannot find package &quot;.&quot;
+cannot find package "."
 ... github.com/golang/mock/mockgen/model
 
 </code></pre>
@@ -482,7 +482,7 @@ cannot find package &quot;.&quot;
 <p>Use source mode.</p>
 </li>
 <li>
-<p>Include an empty import import _ &quot;github.com/golang/mock/mockgen/model&quot;.</p>
+<p>Include an empty import import _ "github.com/golang/mock/mockgen/model".</p>
 </li>
 <li>
 <p>Add --build_flags=--mod=mod to your mockgen command.</p>
@@ -500,7 +500,7 @@ cannot find package &quot;.&quot;
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        <a rel="prev" href="../../language/go/blog/cover.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <a rel="prev" href="../../language/go/gc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                         </a>
 
@@ -514,7 +514,7 @@ cannot find package &quot;.&quot;
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../language/go/blog/cover.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../language/go/gc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item expanded "><a href="../tree/inheritance.html" class="active"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item expanded "><a href="../tree/inheritance.html" class="active"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -185,7 +185,7 @@
 <h2 id="一superclasses-and-subclasses"><a class="header" href="#一superclasses-and-subclasses">一、Superclasses and Subclasses</a></h2>
 <p>超类和子类</p>
 <p>Given that the concept is “inheritance”, you would hope they would pick a consistent metaphor and call them “parent” and “child” classes, but that would be too easy. Way back when, C. A. R. Hoare coined the term “subclass” to refer to a record type that refines another type. Simula borrowed that term to refer to a class that inherits from another. I don’t think it was until Smalltalk came along that someone flipped the Latin prefix to get “superclass” to refer to the other side of the relationship. From C++, you also hear “base” and “derived” classes. I’ll mostly stick with “superclass” and “subclass”.</p>
-<p>鉴于这个概念是继承，你希望他们会选择一个一致的隐喻，称之为父类和子类，这样太容易了。很久以前，C.A.R.Hoare 创造了术语&quot;子类&quot; 来指代一种类型——改进了一种类型。Simula 引入了这个概念，表示从另一个类继承的类。我认为一直到Smalltalk出现，才有人翻转了拉丁前缀，得到超类来指代关系的另一侧，从C++中，你可能还会得到 基类和派生类，多数场景，我会使用超类和子类描述</p>
+<p>鉴于这个概念是继承，你希望他们会选择一个一致的隐喻，称之为父类和子类，这样太容易了。很久以前，C.A.R.Hoare 创造了术语"子类" 来指代一种类型——改进了一种类型。Simula 引入了这个概念，表示从另一个类继承的类。我认为一直到Smalltalk出现，才有人翻转了拉丁前缀，得到超类来指代关系的另一侧，从C++中，你可能还会得到 基类和派生类，多数场景，我会使用超类和子类描述</p>
 <p>Our first step towards supporting inheritance in Lox is a way to specify a superclass when declaring a class. There’s a lot of variety in syntax for this. C++ and C# place a : after the subclass’s name, followed by the superclass name. Java uses extends instead of the colon. Python puts the superclass(es) in parentheses after the class name. Simula puts the superclass’s name before the class keyword.</p>
 <p>This late in the game, I’d rather not add a new reserved word or token to the lexer. We don’t have extends or even :, so we’ll follow Ruby and use a less-than sign (&lt;).</p>
 <p>我们在Lox中支持继承的第一步是，在声明类时候，指定超类的方式。这方面的语法有很多种，</p>
@@ -242,8 +242,8 @@ class BostonCream &lt; Doughnut {
 <p>To work this into the grammar, we add a new optional clause in our existing classDecl rule.</p>
 <p>为了将其纳入到语法规则中，我们在classDecl 中添加一个新的分支</p>
 <pre><code class="language-java">
-classDecl      → &quot;class&quot; IDENTIFIER ( &quot;&lt;&quot; IDENTIFIER )?
-                 &quot;{&quot; function* &quot;}&quot; ;
+classDecl      → "class" IDENTIFIER ( "&lt;" IDENTIFIER )?
+                 "{" function* "}" ;
 				 
 </code></pre>
 <p>After the class name, you can have a &lt; followed by the superclass’s name. The superclass clause is optional because you don’t have to have a superclass. Unlike some other object-oriented languages like Java, Lox has no root “Object” class that everything inherits from, so when you omit the superclass clause, the class has no superclass, not even an implicit one.</p>
@@ -251,10 +251,10 @@ classDecl      → &quot;class&quot; IDENTIFIER ( &quot;&lt;&quot; IDENTIFIER )?
 <pre><code class="language-java">
 // tool/GenerateAst.java, in main(), replace 1 line
 
-      &quot;Block      : List&lt;Stmt&gt; statements&quot;,
-      &quot;Class      : Token name, Expr.Variable superclass,&quot; +
-                  &quot; List&lt;Stmt.Function&gt; methods&quot;,
-      &quot;Expression : Expr expression&quot;,
+      "Block      : List&lt;Stmt&gt; statements",
+      "Class      : Token name, Expr.Variable superclass," +
+                  " List&lt;Stmt.Function&gt; methods",
+      "Expression : Expr expression",
 
 
 </code></pre>
@@ -266,15 +266,15 @@ classDecl      → &quot;class&quot; IDENTIFIER ( &quot;&lt;&quot; IDENTIFIER )?
 <pre><code class="language-java">
 // lox/Parser.java, in classDeclaration()
 
-  Token name = consume(IDENTIFIER, &quot;Expect class name.&quot;);
+  Token name = consume(IDENTIFIER, "Expect class name.");
 
     Expr.Variable superclass = null;
     if (match(LESS)) {
-      consume(IDENTIFIER, &quot;Expect superclass name.&quot;);
+      consume(IDENTIFIER, "Expect superclass name.");
       superclass = new Expr.Variable(previous());
     }
 
-    consume(LEFT_BRACE, &quot;Expect '{' before class body.&quot;);
+    consume(LEFT_BRACE, "Expect '{' before class body.");
 	
 </code></pre>
 <p>Once we’ve (possibly) parsed a superclass declaration, we store it in the AST.</p>
@@ -282,7 +282,7 @@ classDecl      → &quot;class&quot; IDENTIFIER ( &quot;&lt;&quot; IDENTIFIER )?
 <pre><code class="language-java">
 // lox/Parser.java, in classDeclaration(), replace 1 line
 
-   consume(RIGHT_BRACE, &quot;Expect '}' after class body.&quot;);
+   consume(RIGHT_BRACE, "Expect '}' after class body.");
 
     return new Stmt.Class(name, superclass, methods);
   }
@@ -320,7 +320,7 @@ class Oops &lt; Oops {}
     if (stmt.superclass != null &amp;&amp;
         stmt.name.lexeme.equals(stmt.superclass.name.lexeme)) {
       Lox.error(stmt.superclass.name,
-          &quot;A class can't inherit from itself.&quot;);
+          "A class can't inherit from itself.");
     }
 
     if (stmt.superclass != null) {
@@ -337,7 +337,7 @@ class Oops &lt; Oops {}
       superclass = evaluate(stmt.superclass);
       if (!(superclass instanceof LoxClass)) {
         throw new RuntimeError(stmt.superclass.name,
-            &quot;Superclass must be a class.&quot;);
+            "Superclass must be a class.");
       }
     }
 
@@ -347,7 +347,7 @@ class Oops &lt; Oops {}
 <p>If the class has a superclass expression, we evaluate it. Since that could potentially evaluate to some other kind of object, we have to check at runtime that the thing we want to be the superclass is actually a class. Bad things would happen if we allowed code like:</p>
 <p>如果类有 superclass 表达式，我们会先计算它，由于它可能会被计算为其他类型的对象，因此，我们必须在运行时候，检查我们想要作为超类的东西是一个类。否则，如果我们允许像下面这样的代码存在，将发生糟糕的事情</p>
 <pre><code class="language-java">
-var NotAClass = &quot;I am totally not a class&quot;;
+var NotAClass = "I am totally not a class";
 
 class Subclass &lt; NotAClass {} // ?!
 
@@ -419,7 +419,7 @@ class Subclass &lt; NotAClass {} // ?!
 
 class Doughnut {
   cook() {
-    print &quot;Fry until golden brown.&quot;;
+    print "Fry until golden brown.";
   }
 }
 
@@ -441,14 +441,14 @@ BostonCream().cook();
 <pre><code class="language-java">
 class Doughnut {
   cook() {
-    print &quot;Fry until golden brown.&quot;;
+    print "Fry until golden brown.";
   }
 }
 
 class BostonCream &lt; Doughnut {
   cook() {
     super.cook();
-    print &quot;Pipe full of custard and coat with chocolate.&quot;;
+    print "Pipe full of custard and coat with chocolate.";
   }
 }
 
@@ -474,9 +474,9 @@ print super; // Syntax error.
 <p>So the new clause we add to the primary rule in our grammar includes the property access as well.</p>
 <p>所以，我们在语法规则中添加了新的子句，包含了属性访问</p>
 <pre><code>
-primary        → &quot;true&quot; | &quot;false&quot; | &quot;nil&quot; | &quot;this&quot;
-               | NUMBER | STRING | IDENTIFIER | &quot;(&quot; expression &quot;)&quot;
-               | &quot;super&quot; &quot;.&quot; IDENTIFIER ;
+primary        → "true" | "false" | "nil" | "this"
+               | NUMBER | STRING | IDENTIFIER | "(" expression ")"
+               | "super" "." IDENTIFIER ;
 			   
 </code></pre>
 <p>Typically, a super expression is used for a method call, but, as with regular methods, the argument list is not part of the expression. Instead, a super call is a super access followed by a function call. Like other method calls, you can get a handle to a superclass method and invoke it separately.</p>
@@ -499,9 +499,9 @@ method();
 
     if (match(SUPER)) {
       Token keyword = previous();
-      consume(DOT, &quot;Expect '.' after 'super'.&quot;);
+      consume(DOT, "Expect '.' after 'super'.");
       Token method = consume(IDENTIFIER,
-          &quot;Expect superclass method name.&quot;);
+          "Expect superclass method name.");
       return new Expr.Super(keyword, method);
     }
 
@@ -517,13 +517,13 @@ method();
 <pre><code class="language-java">
 class A {
   method() {
-    print &quot;A method&quot;;
+    print "A method";
   }
 }
 
 class B &lt; A {
   method() {
-    print &quot;B method&quot;;
+    print "B method";
   }
 
   test() {
@@ -539,7 +539,7 @@ C().test();
 </code></pre>
 <p>Translate this program to Java, C#, or C++ and it will print “A method”, which is what we want Lox to do too. When this program runs, inside the body of test(), this is an instance of C. The superclass of C is B, but that is not where the lookup should start. If it did, we would hit B’s method().</p>
 <p>Instead, lookup should start on the superclass of the class containing the super expression. In this case, since test() is defined inside B, the super expression inside it should start the lookup on B’s superclass—A.</p>
-<p>将上面程序翻译为 Java C# C++， 我们将得到 &quot;A method&quot;, 这也是我们希望Lox做的。当这个程序运行时候，在test() 函数内部，this 是C的一个实例，C的超类是B，但是，这不是应该查找开始的地方，因为如果是从此开始，我们将会得到 B method.</p>
+<p>将上面程序翻译为 Java C# C++， 我们将得到 "A method", 这也是我们希望Lox做的。当这个程序运行时候，在test() 函数内部，this 是C的一个实例，C的超类是B，但是，这不是应该查找开始的地方，因为如果是从此开始，我们将会得到 B method.</p>
 <p>相反，查找应该从包含super表达式的类的超类开始，如此，在B中定义的test() 函数，因此super表达式所表示的超类是A,所以，我们应该从A开始查找。</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/classes.png?raw=true" alt="classes" /></p>
 <p>The execution flow looks something like this:</p>
@@ -594,7 +594,7 @@ C().test();
 
     if (stmt.superclass != null) {
       beginScope();
-      scopes.peek().put(&quot;super&quot;, true);
+      scopes.peek().put("super", true);
     }
 
     beginScope();
@@ -602,7 +602,7 @@ C().test();
 
 </code></pre>
 <p>If the class declaration has a superclass, then we create a new scope surrounding all of its methods. In that scope, we define the name “super”. Once we’re done resolving the class’s methods, we discard that scope.</p>
-<p>如果类声明有一个超类，我们将在所有方法周围创建一个新的作用域，在这个作用域中，我们定义名称 &quot;super&quot;, 当完成类的方法解析之后，我们将会丢弃该作用域</p>
+<p>如果类声明有一个超类，我们将在所有方法周围创建一个新的作用域，在这个作用域中，我们定义名称 "super", 当完成类的方法解析之后，我们将会丢弃该作用域</p>
 <pre><code class="language-java">
 // lox/Resolver.java, in visitClassStmt()
 
@@ -637,7 +637,7 @@ C().test();
 // lox/Interpreter.java, in visitClassStmt()
 
         throw new RuntimeError(stmt.superclass.name,
-            &quot;Superclass must be a class.&quot;);
+            "Superclass must be a class.");
       }
     }
 
@@ -645,7 +645,7 @@ C().test();
 
     if (stmt.superclass != null) {
       environment = new Environment(environment);
-      environment.define(&quot;super&quot;, superclass);
+      environment.define("super", superclass);
     }
 
     Map&lt;String, LoxFunction&gt; methods = new HashMap&lt;&gt;();
@@ -675,7 +675,7 @@ C().test();
   public Object visitSuperExpr(Expr.Super expr) {
     int distance = locals.get(expr);
     LoxClass superclass = (LoxClass)environment.getAt(
-        distance, &quot;super&quot;);
+        distance, "super");
   }
   
 </code></pre>
@@ -689,10 +689,10 @@ C().test();
 // lox/Interpreter.java, in visitSuperExpr()
 
     LoxClass superclass = (LoxClass)environment.getAt(
-        distance, &quot;super&quot;);
+        distance, "super");
 
     LoxInstance object = (LoxInstance)environment.getAt(
-        distance - 1, &quot;this&quot;);
+        distance - 1, "this");
   }
   
 </code></pre>
@@ -708,7 +708,7 @@ C().test();
 // lox/Interpreter.java, in visitSuperExpr()
 
     LoxInstance object = (LoxInstance)environment.getAt(
-        distance - 1, &quot;this&quot;);
+        distance - 1, "this");
 
     LoxFunction method = superclass.findMethod(expr.method.lexeme);
     return method.bind(object);
@@ -727,7 +727,7 @@ C().test();
 
     if (method == null) {
       throw new RuntimeError(expr.method,
-          &quot;Undefined property '&quot; + expr.method.lexeme + &quot;'.&quot;);
+          "Undefined property '" + expr.method.lexeme + "'.");
     }
 
     return method.bind(object);
@@ -745,7 +745,7 @@ C().test();
 class Eclair {
   cook() {
     super.cook();
-    print &quot;Pipe full of crème pâtissière.&quot;;
+    print "Pipe full of crème pâtissière.";
   }
 }
 
@@ -788,10 +788,10 @@ super.notEvenInAClass();
   public Void visitSuperExpr(Expr.Super expr) {
     if (currentClass == ClassType.NONE) {
       Lox.error(expr.keyword,
-          &quot;Can't use 'super' outside of a class.&quot;);
+          "Can't use 'super' outside of a class.");
     } else if (currentClass != ClassType.SUBCLASS) {
       Lox.error(expr.keyword,
-          &quot;Can't use 'super' in a class with no superclass.&quot;);
+          "Can't use 'super' in a class with no superclass.");
     }
 
     resolveLocal(expr, expr.keyword);
@@ -803,7 +803,7 @@ super.notEvenInAClass();
 <p>最后，当我们解析super表达式时候，会检查当前是否允许使用super表达式</p>
 <p>如果当前不能使用 super表达式——可以确定，用户使用错误。</p>
 <h2 id="四conclusion"><a class="header" href="#四conclusion">四、Conclusion</a></h2>
-<p>We made it! That final bit of error handling is the last chunk of code needed to complete our Java implementation of Lox. This is a real accomplishment and one you should be proud of. In the past dozen chapters and a thousand or so lines of code, we have learned and implemented . . . </p>
+<p>We made it! That final bit of error handling is the last chunk of code needed to complete our Java implementation of Lox. This is a real accomplishment and one you should be proud of. In the past dozen chapters and a thousand or so lines of code, we have learned and implemented . . .</p>
 <ul>
 <li>
 <p>tokens and lexing,</p>
@@ -851,7 +851,7 @@ super.notEvenInAClass();
 <p>fields,</p>
 </li>
 <li>
-<p>methods, </p>
+<p>methods,</p>
 </li>
 </ul>
 <p>and finally,</p>
@@ -940,15 +940,15 @@ super.notEvenInAClass();
 <pre><code class="language-java">
 class Doughnut {
   cook() {
-    print &quot;Fry until golden brown.&quot;;
+    print "Fry until golden brown.";
     inner();
-    print &quot;Place in a nice box.&quot;;
+    print "Place in a nice box.";
   }
 }
 
 class BostonCream &lt; Doughnut {
   cook() {
-    print &quot;Pipe full of custard and coat with chocolate.&quot;;
+    print "Pipe full of custard and coat with chocolate.";
   }
 }
 

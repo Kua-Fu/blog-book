@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item expanded "><a href="../vm/bytecode-chunk.html" class="active"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item expanded "><a href="../vm/bytecode-chunk.html" class="active"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -315,7 +315,7 @@ print after - before;
 <pre><code class="language-c">
 // main.c, create new file
 
-#include &quot;common.h&quot;
+#include "common.h"
 
 int main(int argc, const char* argv[]) {
   return 0;
@@ -352,7 +352,7 @@ int main(int argc, const char* argv[]) {
 #ifndef clox_chunk_h
 #define clox_chunk_h
 
-#include &quot;common.h&quot;
+#include "common.h"
 
 #endif
 
@@ -363,7 +363,7 @@ int main(int argc, const char* argv[]) {
 <pre><code class="language-c">
 // chunk.h
 
-#include &quot;common.h&quot;
+#include "common.h"
 
 typedef enum {
   OP_RETURN,
@@ -406,7 +406,7 @@ typedef struct {
 <p>牛油山核桃冰淇淋实际上是我的最爱</p>
 </blockquote>
 <p>Those features are exactly why we used dynamic arrays all the time in jlox under the guise of Java’s ArrayList class. Now that we’re in C, we get to roll our own. If you’re rusty on dynamic arrays, the idea is pretty simple. In addition to the array itself, we keep two numbers: the number of elements in the array we have allocated (“capacity”) and how many of those allocated entries are actually in use (“count”).</p>
-<p>目前，这只是一个包装在字节数组周围的结构体，由于在编译块之前，我们不知道数组有多大，因此它必须是动态的，动态数组是我最喜欢的结构之一，这听起来像是声称香草是我最喜欢的冰淇淋口味，但是，请听我解释，动态数组提供了: </p>
+<p>目前，这只是一个包装在字节数组周围的结构体，由于在编译块之前，我们不知道数组有多大，因此它必须是动态的，动态数组是我最喜欢的结构之一，这听起来像是声称香草是我最喜欢的冰淇淋口味，但是，请听我解释，动态数组提供了:</p>
 <ul>
 <li>
 <p>缓存友好，密集的存储方式</p>
@@ -510,7 +510,7 @@ void initChunk(Chunk* chunk);
 
 #include &lt;stdlib.h&gt;
 
-#include &quot;chunk.h&quot;
+#include "chunk.h"
 
 void initChunk(Chunk* chunk) {
   chunk-&gt;count = 0;
@@ -557,8 +557,8 @@ void writeChunk(Chunk* chunk, uint8_t byte) {
 <pre><code class="language-c">
 // chunk.c
 
-#include &quot;chunk.h&quot;
-#include &quot;memory.h&quot;
+#include "chunk.h"
+#include "memory.h"
 
 void initChunk(Chunk* chunk) {
 
@@ -570,7 +570,7 @@ void initChunk(Chunk* chunk) {
 #ifndef clox_memory_h
 #define clox_memory_h
 
-#include &quot;common.h&quot;
+#include "common.h"
 
 #define GROW_CAPACITY(capacity) \
     ((capacity) &lt; 8 ? 8 : (capacity) * 2)
@@ -632,7 +632,7 @@ void* reallocate(void* pointer, size_t oldSize, size_t newSize);
 
 #include &lt;stdlib.h&gt;
 
-#include &quot;memory.h&quot;
+#include "memory.h"
 
 void* reallocate(void* pointer, size_t oldSize, size_t newSize) {
   if (newSize == 0) {
@@ -736,8 +736,8 @@ int main(int argc, const char* argv[]) {
 <pre><code class="language-c">
 // main.c
 
-#include &quot;common.h&quot;
-#include &quot;chunk.h&quot;
+#include "common.h"
+#include "chunk.h"
 
 int main(int argc, const char* argv[]) {
 
@@ -760,7 +760,7 @@ int main(int argc, const char* argv[]) {
   initChunk(&amp;chunk);
   writeChunk(&amp;chunk, OP_RETURN);
 
-  disassembleChunk(&amp;chunk, &quot;test chunk&quot;);
+  disassembleChunk(&amp;chunk, "test chunk");
   freeChunk(&amp;chunk);
   
 </code></pre>
@@ -769,8 +769,8 @@ int main(int argc, const char* argv[]) {
 <pre><code class="language-c">
 // main.c
 
-#include &quot;chunk.h&quot;
-#include &quot;debug.h&quot;
+#include "chunk.h"
+#include "debug.h"
 
 int main(int argc, const char* argv[]) {
 
@@ -782,7 +782,7 @@ int main(int argc, const char* argv[]) {
 #ifndef clox_debug_h
 #define clox_debug_h
 
-#include &quot;chunk.h&quot;
+#include "chunk.h"
 
 void disassembleChunk(Chunk* chunk, const char* name);
 int disassembleInstruction(Chunk* chunk, int offset);
@@ -804,10 +804,10 @@ int disassembleInstruction(Chunk* chunk, int offset);
 
 #include &lt;stdio.h&gt;
 
-#include &quot;debug.h&quot;
+#include "debug.h"
 
 void disassembleChunk(Chunk* chunk, const char* name) {
-  printf(&quot;== %s ==\n&quot;, name);
+  printf("== %s ==\n", name);
 
   for (int offset = 0; offset &lt; chunk-&gt;count;) {
     offset = disassembleInstruction(chunk, offset);
@@ -822,14 +822,14 @@ void disassembleChunk(Chunk* chunk, const char* name) {
 <pre><code class="language-c">// debug.c, add after disassembleChunk()
 
 int disassembleInstruction(Chunk* chunk, int offset) {
-  printf(&quot;%04d &quot;, offset);
+  printf("%04d ", offset);
 
   uint8_t instruction = chunk-&gt;code[offset];
   switch (instruction) {
     case OP_RETURN:
-      return simpleInstruction(&quot;OP_RETURN&quot;, offset);
+      return simpleInstruction("OP_RETURN", offset);
     default:
-      printf(&quot;Unknown opcode %d\n&quot;, instruction);
+      printf("Unknown opcode %d\n", instruction);
       return offset + 1;
   }
 }
@@ -843,7 +843,7 @@ int disassembleInstruction(Chunk* chunk, int offset) {
 // debug.c, add after disassembleChunk()
 
 static int simpleInstruction(const char* name, int offset) {
-  printf(&quot;%s\n&quot;, name);
+  printf("%s\n", name);
   return offset + 1;
 }
 
@@ -862,7 +862,7 @@ static int simpleInstruction(const char* name, int offset) {
 
 </code></pre>
 <p>It worked! This is sort of the “Hello, world!” of our code representation. We can create a chunk, write an instruction to it, and then extract that instruction back out. Our encoding and decoding of the binary bytecode is working.</p>
-<p>它起作用了，这有点像是我们代码表示法 的&quot;hello, world!&quot; 我们可以创建一个代码块，向其中写入一个指令，然后将该指令提取出来，我们的二进制字节码的编码和解码正在工作。</p>
+<p>它起作用了，这有点像是我们代码表示法 的"hello, world!" 我们可以创建一个代码块，向其中写入一个指令，然后将该指令提取出来，我们的二进制字节码的编码和解码正在工作。</p>
 <h2 id="五constants"><a class="header" href="#五constants">五、Constants</a></h2>
 <p>Now that we have a rudimentary chunk structure working, let’s start making it more useful. We can store code in chunks, but what about data? Many values the interpreter works with are created at runtime as the result of operations.</p>
 <p>现在我们有了一个基本的代码块结构，让我们开始让它更加有用，我们可以在代码块中存储代码，但是数据呢？许多解释器处理的值是在运行时，作为操作结果创建的</p>
@@ -884,7 +884,7 @@ static int simpleInstruction(const char* name, int offset) {
 #ifndef clox_value_h
 #define clox_value_h
 
-#include &quot;common.h&quot;
+#include "common.h"
 
 typedef double Value;
 
@@ -946,8 +946,8 @@ void freeValueArray(ValueArray* array);
 
 #include &lt;stdio.h&gt;
 
-#include &quot;memory.h&quot;
-#include &quot;value.h&quot;
+#include "memory.h"
+#include "value.h"
 
 void initValueArray(ValueArray* array) {
   array-&gt;values = NULL;
@@ -1003,8 +1003,8 @@ void freeValueArray(ValueArray* array) {
 <pre><code class="language-c">
 // chunk.h
 
-#include &quot;common.h&quot;
-#include &quot;value.h&quot;
+#include "common.h"
+#include "value.h"
 
 typedef enum {
 
@@ -1113,7 +1113,7 @@ typedef enum {
 
   switch (instruction) {
     case OP_CONSTANT:
-      return constantInstruction(&quot;OP_CONSTANT&quot;, chunk, offset);
+      return constantInstruction("OP_CONSTANT", chunk, offset);
     case OP_RETURN:
 		
 </code></pre>
@@ -1125,9 +1125,9 @@ typedef enum {
 static int constantInstruction(const char* name, Chunk* chunk,
                                int offset) {
   uint8_t constant = chunk-&gt;code[offset + 1];
-  printf(&quot;%-16s %4d '&quot;, name, constant);
+  printf("%-16s %4d '", name, constant);
   printValue(chunk-&gt;constants.values[constant]);
-  printf(&quot;'\n&quot;);
+  printf("'\n");
 }
 
 </code></pre>
@@ -1138,8 +1138,8 @@ static int constantInstruction(const char* name, Chunk* chunk,
 <pre><code class="language-c">
 // debug.c
 
-#include &quot;debug.h&quot;
-#include &quot;value.h&quot;
+#include "debug.h"
+#include "value.h"
 
 void disassembleChunk(Chunk* chunk, const char* name) {
 
@@ -1159,7 +1159,7 @@ void printValue(Value value);
 // value.c, add after freeValueArray()
 
 void printValue(Value value) {
-  printf(&quot;%g&quot;, value);
+  printf("%g", value);
 }
 
 </code></pre>
@@ -1170,7 +1170,7 @@ void printValue(Value value) {
 <pre><code class="language-c">
 // debug.c, in constantInstruction()
 
-  printf(&quot;'\n&quot;);
+  printf("'\n");
   return offset + 2;
 }
 
@@ -1193,7 +1193,7 @@ void printValue(Value value) {
 <p>有很多好的编码方式可供选择，我选择能想到的最简单的方式，尽管，它在内存使用方面，效率非常低。在块中，我们存储一个与字节码对应的整数数组，数组中的每个数字都是对应于字节码中的字节的行号，当运行报错时候，我们查找与代码数组中，当前指令偏移量相同索引处的行号</p>
 <blockquote>
 <p>This braindead encoding does do one thing right: it keeps the line information in a separate array instead of interleaving it in the bytecode itself. Since line information is only used when a runtime error occurs, we don’t want it between the instructions, taking up precious space in the CPU cache and causing more cache misses as the interpreter skips past it to get to the opcodes and operands it cares about.</p>
-<p>这种简单的编码方法确实做对了一件事情，将行信息保存到一个单独的数组中，而不是将它与字节码交错在一起。由于在运行时，才会使用该信息，我们不希望它出现在指令之间，占用宝贵的CPU缓存空间，并且在解释器跳过它，访问关心的指令码和操作数时候，导致更多的缓存未命中。 </p>
+<p>这种简单的编码方法确实做对了一件事情，将行信息保存到一个单独的数组中，而不是将它与字节码交错在一起。由于在运行时，才会使用该信息，我们不希望它出现在指令之间，占用宝贵的CPU缓存空间，并且在解释器跳过它，访问关心的指令码和操作数时候，导致更多的缓存未命中。</p>
 </blockquote>
 <p>To implement this, we add another array to Chunk.</p>
 <p>为了实现这一点，我们在chunk中添加另一个数组</p>
@@ -1279,7 +1279,7 @@ void writeChunk(Chunk* chunk, uint8_t byte, int line) {
 
   writeChunk(&amp;chunk, OP_RETURN, 123);
 
-  disassembleChunk(&amp;chunk, &quot;test chunk&quot;);
+  disassembleChunk(&amp;chunk, "test chunk");
 
 
 </code></pre>
@@ -1291,12 +1291,12 @@ void writeChunk(Chunk* chunk, uint8_t byte, int line) {
 // debug.c, in disassembleInstruction()
 
 int disassembleInstruction(Chunk* chunk, int offset) {
-  printf(&quot;%04d &quot;, offset);
+  printf("%04d ", offset);
   if (offset &gt; 0 &amp;&amp;
       chunk-&gt;lines[offset] == chunk-&gt;lines[offset - 1]) {
-    printf(&quot;   | &quot;);
+    printf("   | ");
   } else {
-    printf(&quot;%4d &quot;, chunk-&gt;lines[offset]);
+    printf("%4d ", chunk-&gt;lines[offset]);
   }
 
   uint8_t instruction = chunk-&gt;code[offset];

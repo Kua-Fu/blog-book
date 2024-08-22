@@ -173,58 +173,58 @@
 <pre><code class="language-json">
 GET /megacorp/_search?pretty
 {
-  &quot;query&quot;: {
-    &quot;match&quot;: {
-      &quot;last_name&quot;: &quot;Smith&quot;
+  "query": {
+    "match": {
+      "last_name": "Smith"
     }
   }
 }
 
 // 返回结果与之前的查询一样
 {
-  &quot;took&quot;: 1,
-  &quot;timed_out&quot;: false,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 1,
-    &quot;successful&quot;: 1,
-    &quot;skipped&quot;: 0,
-    &quot;failed&quot;: 0
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
   },
-  &quot;hits&quot;: {
-    &quot;total&quot;: {
-      &quot;value&quot;: 2,
-      &quot;relation&quot;: &quot;eq&quot;
+  "hits": {
+    "total": {
+      "value": 2,
+      "relation": "eq"
     },
-    &quot;max_score&quot;: 0.4700036,
-    &quot;hits&quot;: [
+    "max_score": 0.4700036,
+    "hits": [
       {
-        &quot;_index&quot;: &quot;megacorp&quot;,
-        &quot;_id&quot;: &quot;1&quot;,
-        &quot;_score&quot;: 0.4700036,
-        &quot;_source&quot;: {
-          &quot;type&quot;: &quot;employee&quot;,
-          &quot;first_name&quot;: &quot;John&quot;,
-          &quot;last_name&quot;: &quot;Smith&quot;,
-          &quot;age&quot;: 25,
-          &quot;about&quot;: &quot;I love to go rock climbing&quot;,
-          &quot;interests&quot;: [
-            &quot;sports&quot;,
-            &quot;music&quot;
+        "_index": "megacorp",
+        "_id": "1",
+        "_score": 0.4700036,
+        "_source": {
+          "type": "employee",
+          "first_name": "John",
+          "last_name": "Smith",
+          "age": 25,
+          "about": "I love to go rock climbing",
+          "interests": [
+            "sports",
+            "music"
           ]
         }
       },
       {
-        &quot;_index&quot;: &quot;megacorp&quot;,
-        &quot;_id&quot;: &quot;2&quot;,
-        &quot;_score&quot;: 0.4700036,
-        &quot;_source&quot;: {
-          &quot;type&quot;: &quot;employee&quot;,
-          &quot;first_name&quot;: &quot;Jane&quot;,
-          &quot;last_name&quot;: &quot;Smith&quot;,
-          &quot;age&quot;: 32,
-          &quot;about&quot;: &quot;I like to collect rock albums&quot;,
-          &quot;interests&quot;: [
-            &quot;music&quot;
+        "_index": "megacorp",
+        "_id": "2",
+        "_score": 0.4700036,
+        "_source": {
+          "type": "employee",
+          "first_name": "Jane",
+          "last_name": "Smith",
+          "age": 32,
+          "about": "I like to collect rock albums",
+          "interests": [
+            "music"
           ]
         }
       }

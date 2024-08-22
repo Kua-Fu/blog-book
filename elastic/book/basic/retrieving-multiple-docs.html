@@ -173,42 +173,42 @@
 <pre><code class="language-json">
 GET /_mget
 {
-  &quot;docs&quot;: [
+  "docs": [
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: 2
+      "_index": "website",
+      "_id": 2
     },
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: 1,
-      &quot;_source&quot;: &quot;views&quot;
+      "_index": "website",
+      "_id": 1,
+      "_source": "views"
     }
   ]
 }
 
 {
-  &quot;docs&quot;: [
+  "docs": [
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: &quot;2&quot;,
-      &quot;_version&quot;: 10,
-      &quot;_seq_no&quot;: 6,
-      &quot;_primary_term&quot;: 1,
-      &quot;found&quot;: true,
-      &quot;_source&quot;: {
-        &quot;title&quot;: &quot;My first external blog entry&quot;,
-        &quot;text&quot;: &quot;This is a piece of cake...&quot;
+      "_index": "website",
+      "_id": "2",
+      "_version": 10,
+      "_seq_no": 6,
+      "_primary_term": 1,
+      "found": true,
+      "_source": {
+        "title": "My first external blog entry",
+        "text": "This is a piece of cake..."
       }
     },
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: &quot;1&quot;,
-      &quot;_version&quot;: 1,
-      &quot;_seq_no&quot;: 13,
-      &quot;_primary_term&quot;: 1,
-      &quot;found&quot;: true,
-      &quot;_source&quot;: {
-        &quot;views&quot;: 0
+      "_index": "website",
+      "_id": "1",
+      "_version": 1,
+      "_seq_no": 13,
+      "_primary_term": 1,
+      "found": true,
+      "_source": {
+        "views": 0
       }
     }
   ]
@@ -223,38 +223,38 @@ GET /_mget
 <pre><code class="language-json">
 GET /_mget
 {
-  &quot;docs&quot;: [
+  "docs": [
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: 2
+      "_index": "website",
+      "_id": 2
     },
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: 12,
-      &quot;_source&quot;: &quot;views&quot;
+      "_index": "website",
+      "_id": 12,
+      "_source": "views"
     }
   ]
 }
 
 
 {
-  &quot;docs&quot;: [
+  "docs": [
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: &quot;2&quot;,
-      &quot;_version&quot;: 10,
-      &quot;_seq_no&quot;: 6,
-      &quot;_primary_term&quot;: 1,
-      &quot;found&quot;: true,
-      &quot;_source&quot;: {
-        &quot;title&quot;: &quot;My first external blog entry&quot;,
-        &quot;text&quot;: &quot;This is a piece of cake...&quot;
+      "_index": "website",
+      "_id": "2",
+      "_version": 10,
+      "_seq_no": 6,
+      "_primary_term": 1,
+      "found": true,
+      "_source": {
+        "title": "My first external blog entry",
+        "text": "This is a piece of cake..."
       }
     },
     {
-      &quot;_index&quot;: &quot;website&quot;,
-      &quot;_id&quot;: &quot;12&quot;,
-      &quot;found&quot;: false 0️⃣
+      "_index": "website",
+      "_id": "12",
+      "found": false 0️⃣
     }
   ]
 }

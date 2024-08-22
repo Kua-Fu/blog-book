@@ -182,16 +182,16 @@
 <pre><code class="language-json">
 PUT /blogs
 {
-   &quot;settings&quot; : {
-      &quot;number_of_shards&quot; : 3,
-      &quot;number_of_replicas&quot; : 1
+   "settings" : {
+      "number_of_shards" : 3,
+      "number_of_replicas" : 1
    }
 }
 
 {
-  &quot;acknowledged&quot;: true,
-  &quot;shards_acknowledged&quot;: true,
-  &quot;index&quot;: &quot;blogs&quot;
+  "acknowledged": true,
+  "shards_acknowledged": true,
+  "index": "blogs"
 }
 
 </code></pre>
@@ -201,16 +201,16 @@ PUT /blogs
 <pre><code class="language-json">
 PUT /blogs
 {
-   &quot;settings&quot; : {
-      &quot;number_of_shards&quot; : 3,
-      &quot;number_of_replicas&quot; : 2
+   "settings" : {
+      "number_of_shards" : 3,
+      "number_of_replicas" : 2
    }
 }
 
 {
-  &quot;acknowledged&quot;: true,
-  &quot;shards_acknowledged&quot;: true,
-  &quot;index&quot;: &quot;blogs&quot;
+  "acknowledged": true,
+  "shards_acknowledged": true,
+  "index": "blogs"
 }
 
 </code></pre>
@@ -220,21 +220,21 @@ PUT /blogs
 GET _cluster/health
 
 {
-  &quot;cluster_name&quot;: &quot;a2ff16d9aa2645dc87ab1714e6e16a84&quot;,
-  &quot;status&quot;: &quot;yellow&quot;, 0️⃣
-  &quot;timed_out&quot;: false,
-  &quot;number_of_nodes&quot;: 3,
-  &quot;number_of_data_nodes&quot;: 2,
-  &quot;active_primary_shards&quot;: 95,
-  &quot;active_shards&quot;: 190,
-  &quot;relocating_shards&quot;: 0,
-  &quot;initializing_shards&quot;: 0,
-  &quot;unassigned_shards&quot;: 3, 1️⃣
-  &quot;delayed_unassigned_shards&quot;: 0,
-  &quot;number_of_pending_tasks&quot;: 0,
-  &quot;number_of_in_flight_fetch&quot;: 0,
-  &quot;task_max_waiting_in_queue_millis&quot;: 0,
-  &quot;active_shards_percent_as_number&quot;: 98.44559585492227
+  "cluster_name": "a2ff16d9aa2645dc87ab1714e6e16a84",
+  "status": "yellow", 0️⃣
+  "timed_out": false,
+  "number_of_nodes": 3,
+  "number_of_data_nodes": 2,
+  "active_primary_shards": 95,
+  "active_shards": 190,
+  "relocating_shards": 0,
+  "initializing_shards": 0,
+  "unassigned_shards": 3, 1️⃣
+  "delayed_unassigned_shards": 0,
+  "number_of_pending_tasks": 0,
+  "number_of_in_flight_fetch": 0,
+  "task_max_waiting_in_queue_millis": 0,
+  "active_shards_percent_as_number": 98.44559585492227
 }
 
 </code></pre>

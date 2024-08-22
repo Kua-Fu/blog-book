@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item expanded "><a href="../tree/resolving-and-binding.html" class="active"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item "><a href="../tree/functions.html"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item expanded "><a href="../tree/resolving-and-binding.html" class="active"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -183,9 +183,9 @@
 <p>A quick refresher: Lox, like most modern languages, uses lexical scoping. This means that you can figure out which declaration a variable name refers to just by reading the text of the program. For example:</p>
 <p>快速复习：与大多数现代语言一样，Lox使用词汇作用域。这意味着，只需要读取程序的文本，就可以找出变量名所值的声明。例如：</p>
 <pre><code class="language-java">
-var a = &quot;outer&quot;;
+var a = "outer";
 {
-  var a = &quot;inner&quot;;
+  var a = "inner";
   print a;
 }
 
@@ -211,10 +211,10 @@ var a = &quot;outer&quot;;
 <li>
 <p>“Preceding” means appearing before in the program text.</p>
 <pre><code class="language-java">
-	var a = &quot;outer&quot;;
+	var a = "outer";
 	{
 		print a;
-		var a = &quot;inner&quot;;
+		var a = "inner";
 	}
 	
 </code></pre>
@@ -223,9 +223,9 @@ var a = &quot;outer&quot;;
 <li>
 <p>“Innermost” is there because of our good friend shadowing. There may be more than one variable with the given name in enclosing scopes, as in:</p>
 <pre><code class="language-java">
-var a = &quot;outer&quot;;
+var a = "outer";
 {
-	var a = &quot;inner&quot;;
+	var a = "inner";
 	print a;
 }
 
@@ -235,18 +235,18 @@ var a = &quot;outer&quot;;
 </ul>
 <blockquote>
 <p>In JavaScript, variables declared using var are implicitly “hoisted” to the beginning of the block. Any use of that name in the block will refer to that variable, even if the use appears before the declaration. When you write this in JavaScript:</p>
-<p>在JavaScript中，使用var 声明的变量，隐式的被提升到代码块的开始，块中对该名称的任何引用，都是引用该变量，即使该引用出现在声明之前，例如: </p>
+<p>在JavaScript中，使用var 声明的变量，隐式的被提升到代码块的开始，块中对该名称的任何引用，都是引用该变量，即使该引用出现在声明之前，例如:</p>
 <pre><code>
 {
   console.log(a);
-  var a = &quot;value&quot;;
+  var a = "value";
 }
 </code></pre>
 <p>It behaves like:</p>
 <p>{
 var a; // Hoist.
 console.log(a);
-a = &quot;value&quot;;
+a = "value";
 }</p>
 <p>That means that in some cases you can read a variable before its initializer has run—an annoying source of bugs. The alternate let syntax for declaring variables was added later to address this problem.</p>
 <p>这意味着某些情况下，我们可以读取到某个变量，即使它还没有初始化。稍后，我们添加了用于声明变量的let 语法，将解决该问题</p>
@@ -260,10 +260,10 @@ a = &quot;value&quot;;
 <p>前置，意味着声明出现在变量表达式的代码前面</p>
 <pre><code class="language-java">
 
-var a = &quot;outer&quot;;
+var a = "outer";
 {
     print a;
-    var a = &quot;inner&quot;;
+    var a = "inner";
 }
 
 </code></pre>
@@ -272,9 +272,9 @@ var a = &quot;outer&quot;;
 <li>
 <p>最内部是因为我们已经接触的追踪。内部封闭代码中，可能会出现多个给定名称的变量，例如：</p>
 <pre><code class="language-java">
-var a = &quot;outer&quot;;
+var a = "outer";
 {
-	var a = &quot;inner&quot;;
+	var a = "inner";
 	print a;
 }
 
@@ -285,14 +285,14 @@ var a = &quot;outer&quot;;
 <p>Since this rule makes no mention of any runtime behavior, it implies that a variable expression always refers to the same declaration through the entire execution of the program. Our interpreter so far mostly implements the rule correctly. But when we added closures, an error snuck in.</p>
 <p>由于这个规则没有提及任何运行时的行为，因此它意味着变量表达式在程序的整个执行过程中，始终引用相同的声明。到目前为止，我们的解释器基本上是正确执行上面的规则。但是当我们添加闭包时，一个错误悄悄的出现了。</p>
 <pre><code class="language-java">
-var a = &quot;global&quot;;
+var a = "global";
 {
   fun showA() {
     print a;
   }
 
   showA();
-  var a = &quot;block&quot;;
+  var a = "block";
   showA();
 }
 
@@ -301,7 +301,7 @@ var a = &quot;global&quot;;
 <p>在你键入代码并且运行之前，你认为会输出什么结果呢？</p>
 <blockquote>
 <p>I know, it’s a totally pathological, contrived program. It’s just weird. No reasonable person would ever write code like this. Alas, more of your life than you’d expect will be spent dealing with bizarro snippets of code like this if you stay in the programming language game for long.</p>
-<p>我知道，这个完全是人为构造的代码。这段代码很奇怪，没有一个理智的人会写出这样的代码，哎，如果你在编程语言游戏中呆久了，你的生活中，会出现很多这样的古怪代码需要考虑 </p>
+<p>我知道，这个完全是人为构造的代码。这段代码很奇怪，没有一个理智的人会写出这样的代码，哎，如果你在编程语言游戏中呆久了，你的生活中，会出现很多这样的古怪代码需要考虑</p>
 </blockquote>
 <p>OK . . . got it? If you’re familiar with closures in other languages, you’ll expect it to print “global” twice. The first call to showA() should definitely print “global” since we haven’t even reached the declaration of the inner a yet. And by our rule that a variable expression always resolves to the same variable, that implies the second call to showA() should print the same thing.</p>
 <p>Alas, it prints:</p>
@@ -332,11 +332,11 @@ block
 <p>The interpreter dynamically creates a new environment for the function body of showA(). It’s empty since that function doesn’t declare any variables. The parent of that environment is the function’s closure—the outer block environment.</p>
 <p>The interpreter dynamically creates a new environment for the function body of showA(). It’s empty since that function doesn’t declare any variables. The parent of that environment is the function’s closure—the outer block environment.</p>
 <p>解释器为showA() 函数的函数体，动态的创建了一个新环境，该环境是空的，因为该函数没有声明任何变量。该环境的父级环境，是函数的闭包，即外部块环境。</p>
-<p>Inside the body of showA(), we print the value of a. The interpreter looks up this value by walking the chain of environments. It gets all the way to the global environment before finding it there and printing &quot;global&quot;. Great.</p>
-<p>Next, we declare the second a, this time inside the block. </p>
-<p>在showA()的函数体中，我们输出变量a的值。解释器通过遍历环境链来查找该值。它会一直找到global 环境，并且输出字符串&quot;global&quot;, 接下来，我们在块内声明了第二个变量a</p>
+<p>Inside the body of showA(), we print the value of a. The interpreter looks up this value by walking the chain of environments. It gets all the way to the global environment before finding it there and printing "global". Great.</p>
+<p>Next, we declare the second a, this time inside the block.</p>
+<p>在showA()的函数体中，我们输出变量a的值。解释器通过遍历环境链来查找该值。它会一直找到global 环境，并且输出字符串"global", 接下来，我们在块内声明了第二个变量a</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/environment-4.png?raw=true" alt="env-4" /></p>
-<p>It’s in the same block—the same scope—as showA(), so it goes into the same environment, which is also the same environment showA()’s closure refers to. This is where it gets interesting. We call showA() again. </p>
+<p>It’s in the same block—the same scope—as showA(), so it goes into the same environment, which is also the same environment showA()’s closure refers to. This is where it gets interesting. We call showA() again.</p>
 <p>第二个变量a 和showA() 在同一个块中，作用域相同，因此该变量将进入相同的环境，这也是showA() 的闭包所指的相同环境，这就是它有趣的地方，我们再次调用showA()</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/crafting-interpreters/environment-5.png?raw=true" alt="env-5" /></p>
 <p>We create a new empty environment for the body of showA() again, wire it up to that closure, and run the body. When the interpreter walks the chain of environments to find a, it now discovers the new a in the block environment. Boo.</p>
@@ -591,7 +591,7 @@ class Resolver implements Expr.Visitor&lt;Void&gt;, Stmt.Visitor&lt;Void&gt; {
 <p>We split binding into two steps, declaring then defining, in order to handle funny edge cases like this:</p>
 <p>我们将绑定分为两个步骤，声明然后定义，以便处理向下面这样的边界场景</p>
 <pre><code class="language-java">
-var a = &quot;outer&quot;;
+var a = "outer";
 {
   var a = a;
 }
@@ -683,7 +683,7 @@ var a = &quot;outer&quot;;
     if (!scopes.isEmpty() &amp;&amp;
         scopes.peek().get(expr.name.lexeme) == Boolean.FALSE) {
       Lox.error(expr.name,
-          &quot;Can't read local variable in its own initializer.&quot;);
+          "Can't read local variable in its own initializer.");
     }
 
     resolveLocal(expr, expr.name);
@@ -1129,8 +1129,8 @@ class Interpreter implements Expr.Visitor&lt;Object&gt;,
 <p>由于，我们正在进行语义分析，我们有机会使Lox的语义更加精确，并帮助用户在运行代码之前，尽早的发现错误，看看下面这个错误示例</p>
 <pre><code class="language-java">
 fun bad() {
-  var a = &quot;first&quot;;
-  var a = &quot;second&quot;;
+  var a = "first";
+  var a = "second";
 }
 
 </code></pre>
@@ -1144,7 +1144,7 @@ fun bad() {
     Map&lt;String, Boolean&gt; scope = scopes.peek();
     if (scope.containsKey(name.lexeme)) {
       Lox.error(name,
-          &quot;Already a variable with this name in this scope.&quot;);
+          "Already a variable with this name in this scope.");
     }
 
     scope.put(name.lexeme, false);
@@ -1157,7 +1157,7 @@ fun bad() {
 <p>Here’s another nasty little script:</p>
 <p>下面是一个错误示例</p>
 <pre><code class="language-java">
-return &quot;at top level&quot;;
+return "at top level";
 
 </code></pre>
 <p>This executes a return statement, but it’s not even inside a function at all. It’s top-level code. I don’t know what the user thinks is going to happen, but I don’t think we want Lox to allow this.</p>
@@ -1228,7 +1228,7 @@ return &quot;at top level&quot;;
 
   public Void visitReturnStmt(Stmt.Return stmt) {
     if (currentFunction == FunctionType.NONE) {
-      Lox.error(stmt.keyword, &quot;Can't return from top-level code.&quot;);
+      Lox.error(stmt.keyword, "Can't return from top-level code.");
     }
 
     if (stmt.value != null) {
@@ -1278,7 +1278,7 @@ return &quot;at top level&quot;;
 <li>
 <p>How do other languages you know handle local variables that refer to the same name in their initializer, like:</p>
 <pre><code class="language-java">
-	var a = &quot;outer&quot;;
+	var a = "outer";
 	{
 		var a = a;
 	}
@@ -1291,7 +1291,7 @@ return &quot;at top level&quot;;
 </li>
 <li>
 <p>Our resolver calculates which environment the variable is found in, but it’s still looked up by name in that map. A more efficient environment representation would store local variables in an array and look them up by index.</p>
-<p>Extend the resolver to associate a unique index for each local variable declared in a scope. When resolving a variable access, look up both the scope the variable is in and its index and store that. In the interpreter, use that to quickly access a variable by its index instead of using a map. </p>
+<p>Extend the resolver to associate a unique index for each local variable declared in a scope. When resolving a variable access, look up both the scope the variable is in and its index and store that. In the interpreter, use that to quickly access a variable by its index instead of using a map.</p>
 </li>
 </ol>
 <p>习题</p>
@@ -1300,9 +1300,9 @@ return &quot;at top level&quot;;
 <p>为什么一个变量，绑定了一个函数名称是安全的，但是，其他类型的变量，必须要等到初始化之后，才能使用？</p>
 </li>
 <li>
-<p>其他语言中，是如何处理这种场景，本地变量声明时候，引用了同名的本地变量，例如: </p>
+<p>其他语言中，是如何处理这种场景，本地变量声明时候，引用了同名的本地变量，例如:</p>
 <pre><code class="language-java">
-	var a = &quot;outer&quot;;
+	var a = "outer";
 	{
 		var a = a;
 	}

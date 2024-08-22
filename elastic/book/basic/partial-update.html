@@ -174,26 +174,26 @@
 <pre><code class="language-json">
 POST /website/_update/1
 {
-  &quot;doc&quot;: {
-    &quot;tags&quot;: [
-      &quot;testing&quot;
+  "doc": {
+    "tags": [
+      "testing"
     ],
-    &quot;views&quot;: 0
+    "views": 0
   }
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 2,
-  &quot;result&quot;: &quot;noop&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 0,
-    &quot;successful&quot;: 0,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "1",
+  "_version": 2,
+  "result": "noop",
+  "_shards": {
+    "total": 0,
+    "successful": 0,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 7,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 7,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -203,19 +203,19 @@ POST /website/_update/1
 GET website/_doc/1
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 2,
-  &quot;_seq_no&quot;: 7,
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;type&quot;: &quot;blog&quot;,
-    &quot;title&quot;: &quot;My first blog entry&quot;,
-    &quot;text&quot;: &quot;Just trying this out...&quot;,
-    &quot;views&quot;: 0, 0️⃣
-    &quot;tags&quot;: [ 1️⃣
-      &quot;testing&quot;
+  "_index": "website",
+  "_id": "1",
+  "_version": 2,
+  "_seq_no": 7,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "type": "blog",
+    "title": "My first blog entry",
+    "text": "Just trying this out...",
+    "views": 0, 0️⃣
+    "tags": [ 1️⃣
+      "testing"
     ]
   }
 }
@@ -227,21 +227,21 @@ GET website/_doc/1
 <pre><code class="language-json">
 POST /website/_update/1
 {
-  &quot;script&quot;: &quot;ctx._source.views+=1&quot;
+  "script": "ctx._source.views+=1"
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 3,
-  &quot;result&quot;: &quot;updated&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "1",
+  "_version": 3,
+  "result": "updated",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 8,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 8,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -259,27 +259,27 @@ POST /website/_update/1
 <pre><code class="language-json">
 POST /website/_update/1
 {
-  &quot;script&quot;: {
-    &quot;source&quot;: &quot;ctx._source.tags.add(params.new_tag)&quot;,
-    &quot;lang&quot;: &quot;painless&quot;,
-    &quot;params&quot;: {
-      &quot;new_tag&quot;: &quot;search&quot;
+  "script": {
+    "source": "ctx._source.tags.add(params.new_tag)",
+    "lang": "painless",
+    "params": {
+      "new_tag": "search"
     }
   }
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 5,
-  &quot;result&quot;: &quot;updated&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "1",
+  "_version": 5,
+  "result": "updated",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 10,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 10,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -288,21 +288,21 @@ POST /website/_update/1
 GET website/_doc/1
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 5,
-  &quot;_seq_no&quot;: 10,
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;type&quot;: &quot;blog&quot;,
-    &quot;title&quot;: &quot;My first blog entry&quot;,
-    &quot;text&quot;: &quot;Just trying this out...&quot;,
-    &quot;views&quot;: 1, 0️⃣
-    &quot;tags&quot;: [
-      &quot;testing&quot;,
+  "_index": "website",
+  "_id": "1",
+  "_version": 5,
+  "_seq_no": 10,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "type": "blog",
+    "title": "My first blog entry",
+    "text": "Just trying this out...",
+    "views": 1, 0️⃣
+    "tags": [
+      "testing",
       null,
-      &quot;search&quot; 1️⃣
+      "search" 1️⃣
     ]
   }
 }
@@ -314,26 +314,26 @@ GET website/_doc/1
 <pre><code class="language-json">
 POST /website/_update/1/
 {
-  &quot;script&quot;: {
-    &quot;source&quot;: &quot;ctx.op = ctx._source.views == params.count ? 'delete' : 'none'&quot;,
-    &quot;params&quot;: {
-      &quot;count&quot;: 1
+  "script": {
+    "source": "ctx.op = ctx._source.views == params.count ? 'delete' : 'none'",
+    "params": {
+      "count": 1
     }
   }
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 6,
-  &quot;result&quot;: &quot;deleted&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "1",
+  "_version": 6,
+  "result": "deleted",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 11,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 11,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -344,27 +344,27 @@ POST /website/_update/1/
 <pre><code class="language-json">
 POST /website/_update/11/
 {
-  &quot;script&quot;: {
-    &quot;source&quot;: &quot;ctx._source.views+=1&quot;
+  "script": {
+    "source": "ctx._source.views+=1"
   },
-  &quot;upsert&quot;: {
-    &quot;views&quot;: 1
+  "upsert": {
+    "views": 1
   }
 }
 
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;11&quot;,
-  &quot;_version&quot;: 1,
-  &quot;result&quot;: &quot;created&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "11",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 12,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 12,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -372,14 +372,14 @@ POST /website/_update/11/
 GET website/_doc/11
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;11&quot;,
-  &quot;_version&quot;: 1,
-  &quot;_seq_no&quot;: 12,
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;views&quot;: 1
+  "_index": "website",
+  "_id": "11",
+  "_version": 1,
+  "_seq_no": 12,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "views": 1
   }
 }
 
@@ -392,9 +392,9 @@ GET website/_doc/11
 <pre><code class="language-json">
 POST /website/_update/1/?retry_on_conflict=5  0️⃣
 {
-  &quot;script&quot;: &quot;ctx._source.views+=1&quot;,
-  &quot;upsert&quot;: {
-    &quot;views&quot;: 0
+  "script": "ctx._source.views+=1",
+  "upsert": {
+    "views": 0
   }
 }
 

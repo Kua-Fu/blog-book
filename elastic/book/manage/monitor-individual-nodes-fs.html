@@ -170,42 +170,42 @@
                         <h1 id="文件系统和网络部分"><a class="header" href="#文件系统和网络部分">文件系统和网络部分</a></h1>
 <p>继续向下阅读 node-stats API，你会看到一串和你的文件系统相关的统计值：</p>
 <pre><code class="language-json">
-&quot;fs&quot;: {
-        &quot;timestamp&quot;: 1657854496146,
-        &quot;total&quot;: {
-          &quot;total_in_bytes&quot;: 193273528320,
-          &quot;free_in_bytes&quot;: 189751767040,
-          &quot;available_in_bytes&quot;: 189751767040
+"fs": {
+        "timestamp": 1657854496146,
+        "total": {
+          "total_in_bytes": 193273528320,
+          "free_in_bytes": 189751767040,
+          "available_in_bytes": 189751767040
         },
-        &quot;data&quot;: [
+        "data": [
           {
-            &quot;path&quot;: &quot;/app/data&quot;,
-            &quot;mount&quot;: &quot;/app (/dev/mapper/lxc-data)&quot;,
-            &quot;type&quot;: &quot;xfs&quot;,
-            &quot;total_in_bytes&quot;: 193273528320,
-            &quot;free_in_bytes&quot;: 189751767040,
-            &quot;available_in_bytes&quot;: 189751767040
+            "path": "/app/data",
+            "mount": "/app (/dev/mapper/lxc-data)",
+            "type": "xfs",
+            "total_in_bytes": 193273528320,
+            "free_in_bytes": 189751767040,
+            "available_in_bytes": 189751767040
           }
         ],
-        &quot;io_stats&quot;: {
-          &quot;devices&quot;: [
+        "io_stats": {
+          "devices": [
             {
-              &quot;device_name&quot;: &quot;dm-1&quot;,
-              &quot;operations&quot;: 637486387,
-              &quot;read_operations&quot;: 139559703,
-              &quot;write_operations&quot;: 497926684,
-              &quot;read_kilobytes&quot;: 4781145648,
-              &quot;write_kilobytes&quot;: 4130851568,
-              &quot;io_time_in_millis&quot;: 184204436
+              "device_name": "dm-1",
+              "operations": 637486387,
+              "read_operations": 139559703,
+              "write_operations": 497926684,
+              "read_kilobytes": 4781145648,
+              "write_kilobytes": 4130851568,
+              "io_time_in_millis": 184204436
             }
           ],
-          &quot;total&quot;: {
-            &quot;operations&quot;: 637486387,
-            &quot;read_operations&quot;: 139559703,
-            &quot;write_operations&quot;: 497926684,
-            &quot;read_kilobytes&quot;: 4781145648,
-            &quot;write_kilobytes&quot;: 4130851568,
-            &quot;io_time_in_millis&quot;: 184204436
+          "total": {
+            "operations": 637486387,
+            "read_operations": 139559703,
+            "write_operations": 497926684,
+            "read_kilobytes": 4781145648,
+            "write_kilobytes": 4130851568,
+            "io_time_in_millis": 184204436
           }
         }
       }
@@ -226,17 +226,17 @@
 <p>显然，Elasticsearch 在磁盘空间满的时候很难运行——所以请确保不会这样。</p>
 <p>还有两个跟网络统计值相关的部分：</p>
 <pre><code class="language-json">
-      &quot;transport&quot;: {
-        &quot;server_open&quot;: 24,
-        &quot;total_outbound_connections&quot;: 8,
-        &quot;rx_count&quot;: 20373580,
-        &quot;rx_size_in_bytes&quot;: 67490236995,
-        &quot;tx_count&quot;: 20373578,
-        &quot;tx_size_in_bytes&quot;: 42900769252,
+      "transport": {
+        "server_open": 24,
+        "total_outbound_connections": 8,
+        "rx_count": 20373580,
+        "rx_size_in_bytes": 67490236995,
+        "tx_count": 20373578,
+        "tx_size_in_bytes": 42900769252,
 		
-	  &quot;http&quot;: {
-        &quot;current_open&quot;: 377,
-        &quot;total_opened&quot;: 13176,
+	  "http": {
+        "current_open": 377,
+        "total_opened": 13176,
 </code></pre>
 <ol>
 <li>

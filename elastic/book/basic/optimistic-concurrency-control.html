@@ -175,23 +175,23 @@
 <pre><code class="language-json">
 POST /website/_doc/1?op_type=create
 {
-  &quot;type&quot;: &quot;blog&quot;,
-  &quot;title&quot;: &quot;My first blog entry&quot;,
-  &quot;text&quot;: &quot;Just trying this out...&quot;
+  "type": "blog",
+  "title": "My first blog entry",
+  "text": "Just trying this out..."
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 1,
-  &quot;result&quot;: &quot;created&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "1",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 4,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 4,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -201,73 +201,73 @@ POST /website/_doc/1?op_type=create
 GET /website/_doc/1
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;1&quot;,
-  &quot;_version&quot;: 1, 0️⃣
-  &quot;_seq_no&quot;: 4, 
-  &quot;_primary_term&quot;: 1,
-  &quot;found&quot;: true,
-  &quot;_source&quot;: {
-    &quot;type&quot;: &quot;blog&quot;,
-    &quot;title&quot;: &quot;My first blog entry&quot;,
-    &quot;text&quot;: &quot;Just trying this out...&quot;
+  "_index": "website",
+  "_id": "1",
+  "_version": 1, 0️⃣
+  "_seq_no": 4, 
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "type": "blog",
+    "title": "My first blog entry",
+    "text": "Just trying this out..."
   }
 }
 
 </code></pre>
-<p>响应体包含相同的 _version 版本号 1 </p>
+<p>响应体包含相同的 _version 版本号 1</p>
 <p>现在，当我们尝试通过重建文档的索引来保存修改，我们指定 version 为我们的修改会被应用的版本：</p>
 <pre><code class="language-json">
 PUT /website/_doc/1?version=1 0️⃣
 {
-  &quot;title&quot;: &quot;My first blog entry&quot;,
-  &quot;text&quot;: &quot;Starting to get the hang of this...&quot;
+  "title": "My first blog entry",
+  "text": "Starting to get the hang of this..."
 }
 
 {
-  &quot;error&quot;: {
-    &quot;root_cause&quot;: [
+  "error": {
+    "root_cause": [
       {
-        &quot;type&quot;: &quot;action_request_validation_exception&quot;,
-        &quot;reason&quot;: &quot;Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;&quot;
+        "type": "action_request_validation_exception",
+        "reason": "Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;"
       }
     ],
-    &quot;type&quot;: &quot;action_request_validation_exception&quot;,
-    &quot;reason&quot;: &quot;Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;&quot;
+    "type": "action_request_validation_exception",
+    "reason": "Validation Failed: 1: internal versioning can not be used for optimistic concurrency control. Please use `if_seq_no` and `if_primary_term` instead;"
   },
-  &quot;status&quot;: 400
+  "status": 400
 }
 </code></pre>
 <p>0️⃣ 我们想这个在我们索引中的文档只有现在的 _version 为 1 时，本次更新才能成功</p>
 <p>此请求成功，并且响应体告诉我们 _version 已经递增到 2 ：</p>
 <pre><code class="language-json">
 {
-  &quot;_index&quot;:   &quot;website&quot;,
-  &quot;_type&quot;:    &quot;blog&quot;,
-  &quot;_id&quot;:      &quot;1&quot;,
-  &quot;_version&quot;: 2
-  &quot;created&quot;:  false
+  "_index":   "website",
+  "_type":    "blog",
+  "_id":      "1",
+  "_version": 2
+  "created":  false
 }
 
 </code></pre>
 <p>然而，如果我们重新运行相同的索引请求，仍然指定 version=1 ， Elasticsearch 返回 409 Conflict HTTP 响应码，和一个如下所示的响应体：</p>
 <pre><code class="language-json">
 {
-   &quot;error&quot;: {
-      &quot;root_cause&quot;: [
+   "error": {
+      "root_cause": [
          {
-            &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
-            &quot;reason&quot;: &quot;[blog][1]: version conflict, current [2], provided [1]&quot;,
-            &quot;index&quot;: &quot;website&quot;,
-            &quot;shard&quot;: &quot;3&quot;
+            "type": "version_conflict_engine_exception",
+            "reason": "[blog][1]: version conflict, current [2], provided [1]",
+            "index": "website",
+            "shard": "3"
          }
       ],
-      &quot;type&quot;: &quot;version_conflict_engine_exception&quot;,
-      &quot;reason&quot;: &quot;[blog][1]: version conflict, current [2], provided [1]&quot;,
-      &quot;index&quot;: &quot;website&quot;,
-      &quot;shard&quot;: &quot;3&quot;
+      "type": "version_conflict_engine_exception",
+      "reason": "[blog][1]: version conflict, current [2], provided [1]",
+      "index": "website",
+      "shard": "3"
    },
-   &quot;status&quot;: 409
+   "status": 409
 }
 
 </code></pre>
@@ -283,23 +283,23 @@ PUT /website/_doc/1?version=1 0️⃣
 <pre><code class="language-json">
 POST /website/_doc/2?version=5&amp;version_type=external
 {
-  &quot;type&quot;: &quot;blog&quot;,
-  &quot;title&quot;: &quot;My first external blog entry&quot;,
-  &quot;text&quot;: &quot;Starting to get the hang of this...&quot;
+  "type": "blog",
+  "title": "My first external blog entry",
+  "text": "Starting to get the hang of this..."
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;2&quot;,
-  &quot;_version&quot;: 5,
-  &quot;result&quot;: &quot;created&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "2",
+  "_version": 5,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 5,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 5,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -307,22 +307,22 @@ POST /website/_doc/2?version=5&amp;version_type=external
 <pre><code class="language-json">
 POST /website/_doc/2?version=10&amp;version_type=external
 {
-  &quot;title&quot;: &quot;My first external blog entry&quot;,
-  &quot;text&quot;:  &quot;This is a piece of cake...&quot;
+  "title": "My first external blog entry",
+  "text":  "This is a piece of cake..."
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;2&quot;,
-  &quot;_version&quot;: 10,
-  &quot;result&quot;: &quot;updated&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "2",
+  "_version": 10,
+  "result": "updated",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 6,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 6,
+  "_primary_term": 1
 }
 
 </code></pre>

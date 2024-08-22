@@ -105,7 +105,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item expanded "><a href="../tree/functions.html" class="active"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">前言</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item affix "><li class="part-title">欢迎</li><li class="chapter-item "><a href="../welcome/welcome.html"><strong aria-hidden="true">1.</strong> 欢迎</a></li><li class="chapter-item "><a href="../welcome/introduction.html"><strong aria-hidden="true">2.</strong> 介绍</a></li><li class="chapter-item "><a href="../welcome/a-map-of-the-territory.html"><strong aria-hidden="true">3.</strong> 总览图</a></li><li class="chapter-item "><a href="../welcome/the-lox-language.html"><strong aria-hidden="true">4.</strong> Lox语言</a></li><li class="chapter-item affix "><li class="part-title">解析树</li><li class="chapter-item "><a href="../tree/tree.html"><strong aria-hidden="true">5.</strong> 解析树</a></li><li class="chapter-item "><a href="../tree/scanning.html"><strong aria-hidden="true">6.</strong> 扫描</a></li><li class="chapter-item "><a href="../tree/representing-code.html"><strong aria-hidden="true">7.</strong> 代码表示</a></li><li class="chapter-item "><a href="../tree/parsing-expression.html"><strong aria-hidden="true">8.</strong> 解析表达式</a></li><li class="chapter-item "><a href="../tree/evaluating-expression.html"><strong aria-hidden="true">9.</strong> 计算表达式</a></li><li class="chapter-item "><a href="../tree/statements-and-state.html"><strong aria-hidden="true">10.</strong> 语句和状态</a></li><li class="chapter-item "><a href="../tree/control-flow.html"><strong aria-hidden="true">11.</strong> 控制流程</a></li><li class="chapter-item expanded "><a href="../tree/functions.html" class="active"><strong aria-hidden="true">12.</strong> 函数</a></li><li class="chapter-item "><a href="../tree/resolving-and-binding.html"><strong aria-hidden="true">13.</strong> 解析与绑定</a></li><li class="chapter-item "><a href="../tree/classes.html"><strong aria-hidden="true">14.</strong> 类</a></li><li class="chapter-item "><a href="../tree/inheritance.html"><strong aria-hidden="true">15.</strong> 继承</a></li><li class="chapter-item affix "><li class="part-title">虚拟机</li><li class="chapter-item "><a href="../vm/bytecode-vm.html"><strong aria-hidden="true">16.</strong> 虚拟机</a></li><li class="chapter-item "><a href="../vm/bytecode-chunk.html"><strong aria-hidden="true">17.</strong> 字节码块</a></li><li class="chapter-item "><a href="../vm/a-virtual-machine.html"><strong aria-hidden="true">18.</strong> 一个虚拟机</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -198,20 +198,20 @@ getCallback()();
 <p>This “operator” has higher precedence than any other operator, even the unary ones. So we slot it into the grammar by having the unary rule bubble up to a new call rule.</p>
 <p>这个运算符的优先级高于任何其他运算符，即使是一元运算符。因此，我们通过将一元规则冒泡为新的调用规则，将其插入语法中</p>
 <pre><code class="language-java">
-unary          → ( &quot;!&quot; | &quot;-&quot; ) unary | call ;
-call           → primary ( &quot;(&quot; arguments? &quot;)&quot; )* ;
+unary          → ( "!" | "-" ) unary | call ;
+call           → primary ( "(" arguments? ")" )* ;
 
 </code></pre>
 <blockquote>
 <p>The rule uses * to allow matching a series of calls like fn(1)(2)(3). Code like that isn’t common in C-style languages, but it is in the family of languages derived from ML. There, the normal way of defining a function that takes multiple arguments is as a series of nested functions. Each function takes one argument and returns a new function. That function consumes the next argument, returns yet another function, and so on. Eventually, once all of the arguments are consumed, the last function completes the operation.</p>
 <p>这个规则使用* 匹配一系列的调用，例如: fn(1)(2)(3), 这样的代码在C风格语言中并不常见，但是它在ML派生的语言家族中很常见，在那里，定义一个包含多个参数的函数的正常方式是一系列嵌套函数。每个函数接受一个参数，并且返回一个新函数，该函数使用下一个参数，返回另一个函数，以此类推。最终，一旦所有参数都被使用，最后一个函数完成操作。</p>
 <p>This style, called currying, after Haskell Curry (the same guy whose first name graces that other well-known functional language), is baked directly into the language syntax so it’s not as weird looking as it would be here.</p>
-<p>这种风格被称为 <a href="https://en.wikipedia.org/wiki/Haskell_Curry">currying</a>, </p>
+<p>这种风格被称为 <a href="https://en.wikipedia.org/wiki/Haskell_Curry">currying</a>,</p>
 </blockquote>
 <p>This rule matches a primary expression followed by zero or more function calls. If there are no parentheses, this parses a bare primary expression. Otherwise, each call is recognized by a pair of parentheses with an optional list of arguments inside. The argument list grammar is:</p>
 <p>此规则匹配一个主表达式，后面跟随零个或者多个函数调用，如果没有括号，这将解析一个空的主表达式，否则，每个调用都由一对括号识别，括号内有可选的参数列表，参数列表语法为</p>
 <pre><code class="language-java">
-arguments      → expression ( &quot;,&quot; expression )* ;
+arguments      → expression ( "," expression )* ;
 
 </code></pre>
 <p>This rule requires at least one argument expression, followed by zero or more other expressions, each preceded by a comma. To handle zero-argument calls, the call rule itself considers the entire arguments production to be optional.</p>
@@ -223,9 +223,9 @@ arguments      → expression ( &quot;,&quot; expression )* ;
 <pre><code class="language-java">
 // tool/GenerateAst.java in main()
 
-&quot;Binary   : Expr left, Token operator, Expr right&quot;,
-&quot;Call     : Expr callee, Token paren, List&lt;Expr&gt; arguments&quot;,
-&quot;Grouping : Expr expression&quot;,
+"Binary   : Expr left, Token operator, Expr right",
+"Call     : Expr callee, Token paren, List&lt;Expr&gt; arguments",
+"Grouping : Expr expression",
 
 </code></pre>
 <p>It stores the callee expression and a list of expressions for the arguments. It also stores the token for the closing parenthesis. We’ll use that token’s location when we report a runtime error caused by a function call.</p>
@@ -282,7 +282,7 @@ arguments      → expression ( &quot;,&quot; expression )* ;
     }
 
     Token paren = consume(RIGHT_PAREN,
-                          &quot;Expect ')' after arguments.&quot;);
+                          "Expect ')' after arguments.");
 
     return new Expr.Call(callee, paren, arguments);
   }
@@ -308,7 +308,7 @@ arguments      → expression ( &quot;,&quot; expression )* ;
 // lox/Parser.java, in finishCall()
       do {
         if (arguments.size() &gt;= 255) {
-          error(peek(), &quot;Can't have more than 255 arguments.&quot;);
+          error(peek(), "Can't have more than 255 arguments.");
         }
         arguments.add(expression());
 		
@@ -353,7 +353,7 @@ import java.util.List;
 <p>一旦我们准备好了被调用者和参数，剩下的就是执行调用函数，我们通过将被调用者强制转换为LoxCallable, 然后对其调用call() 方法来实现这一点。可以像函数一样调用的任何Lox对象，都需要实现这个接口。这当然包含用户定义的函数，但是也包含类对象。因为类也可以被调用构造新的实例。不久，我们还会将其用于另外一个目的</p>
 <blockquote>
 <p>I stuck “Lox” before the name to distinguish it from the Java standard library’s own Callable interface. Alas, all the good simple names are already taken.</p>
-<p>我在名称之前添加上&quot;Lox&quot;, 以区别Java标准库自己的Callable接口，哎，所有简单的好名字，已经被占用了。</p>
+<p>我在名称之前添加上"Lox", 以区别Java标准库自己的Callable接口，哎，所有简单的好名字，已经被占用了。</p>
 </blockquote>
 <p>There isn’t too much to this new interface.</p>
 <p>这个新接口没有太多代码</p>
@@ -376,7 +376,7 @@ interface LoxCallable {
 <p>Before we get to implementing LoxCallable, we need to make the visit method a little more robust. It currently ignores a couple of failure modes that we can’t pretend won’t occur. First, what happens if the callee isn’t actually something you can call? What if you try to do this:</p>
 <p>在实现LoxCallable接口之前，我们需要使调用方法更加健壮。它目前忽略了一些我们无法假装不会发生的错误。首先，如果被调用者实际上不是我们可以调用的对象，会发生什么？如果我们尝试这样做</p>
 <pre><code class="language-java">
-&quot;totally not a function&quot;();
+"totally not a function"();
 
 </code></pre>
 <p>Strings aren’t callable in Lox. The runtime representation of a Lox string is a Java string, so when we cast that to LoxCallable, the JVM will throw a ClassCastException. We don’t want our interpreter to vomit out some nasty Java stack trace and die. Instead, we need to check the type ourselves first.</p>
@@ -388,7 +388,7 @@ interface LoxCallable {
 
     if (!(callee instanceof LoxCallable)) {
       throw new RuntimeError(expr.paren,
-          &quot;Can only call functions and classes.&quot;);
+          "Can only call functions and classes.");
     }
 
     LoxCallable function = (LoxCallable)callee;
@@ -420,9 +420,9 @@ add(1, 2);       // Too few.
 
     LoxCallable function = (LoxCallable)callee;
     if (arguments.size() != function.arity()) {
-      throw new RuntimeError(expr.paren, &quot;Expected &quot; +
-          function.arity() + &quot; arguments but got &quot; +
-          arguments.size() + &quot;.&quot;);
+      throw new RuntimeError(expr.paren, "Expected " +
+          function.arity() + " arguments but got " +
+          arguments.size() + ".");
     }
 
     return function.call(this, arguments);
@@ -490,7 +490,7 @@ class Interpreter implements Expr.Visitor&lt;Object&gt;,
   private Environment environment = globals;
 
   Interpreter() {
-    globals.define(&quot;clock&quot;, new LoxCallable() {
+    globals.define("clock", new LoxCallable() {
       @Override
       public int arity() { return 0; }
 
@@ -501,7 +501,7 @@ class Interpreter implements Expr.Visitor&lt;Object&gt;,
       }
 
       @Override
-      public String toString() { return &quot;&lt;native fn&gt;&quot;; }
+      public String toString() { return "&lt;native fn&gt;"; }
     });
   }
 
@@ -509,10 +509,10 @@ class Interpreter implements Expr.Visitor&lt;Object&gt;,
   
 </code></pre>
 <p>This defines a variable named “clock”. Its value is a Java anonymous class that implements LoxCallable. The clock() function takes no arguments, so its arity is zero. The implementation of call() calls the corresponding Java function and converts the result to a double value in seconds.</p>
-<p>这定义了一个名为&quot;clock&quot;的变量，它的值是一个实现了LoxCallable接口的Java匿名类，clock()函数不带参数，因此它的arity 为零，call() 的实现调用相应的Java函数，并在结果转换为单位为秒的double 值</p>
+<p>这定义了一个名为"clock"的变量，它的值是一个实现了LoxCallable接口的Java匿名类，clock()函数不带参数，因此它的arity 为零，call() 的实现调用相应的Java函数，并在结果转换为单位为秒的double 值</p>
 <p>If we wanted to add other native functions—reading input from the user, working with files, etc.—we could add them each as their own anonymous class that implements LoxCallable. But for the book, this one is really all we need.</p>
 <p>如果我们想要添加其他读取用户输入、处理文件等的本地函数，我们可以将它们各自添加为实现LoxCallable的匿名类，但是对于本书来说，clock() 函数是我们目前需要的本地函数</p>
-<p>Let’s get ourselves out of the function-defining business and let our users take over . . . </p>
+<p>Let’s get ourselves out of the function-defining business and let our users take over . . .</p>
 <p>让我们脱离功能定义业务，让我们的用户接管</p>
 <blockquote>
 <p>In Lox, functions and variables occupy the same namespace. In Common Lisp, the two live in their own worlds. A function and variable with the same name don’t collide. If you call the name, it looks up the function. If you refer to it, it looks up the variable. This does require jumping through some hoops when you do want to refer to a function as a first-class value.</p>
@@ -546,8 +546,8 @@ declaration    → funDecl
 <p>The updated declaration rule references this new rule:</p>
 <p>更新的声明规则中，引用了新规则</p>
 <pre><code class="language-java">
-funDecl        → &quot;fun&quot; function ;
-function       → IDENTIFIER &quot;(&quot; parameters? &quot;)&quot; block ;
+funDecl        → "fun" function ;
+function       → IDENTIFIER "(" parameters? ")" block ;
 
 
 </code></pre>
@@ -559,7 +559,7 @@ function       → IDENTIFIER &quot;(&quot; parameters? &quot;)&quot; block ;
 <p>The function itself is a name followed by the parenthesized parameter list and the body. The body is always a braced block, using the same grammar rule that block statements use. The parameter list uses this rule:</p>
 <p>函数本身是一个名称，后面跟随带括号的参数列表和函数正文，主体始终是一个代码块，使用块语句相同的语法规则。参数列表使用下面的规则</p>
 <pre><code class="language-java">
-parameters     → IDENTIFIER ( &quot;,&quot; IDENTIFIER )* ;
+parameters     → IDENTIFIER ( "," IDENTIFIER )* ;
 
 </code></pre>
 <p>It’s like the earlier arguments rule, except that each parameter is an identifier, not an expression. That’s a lot of new syntax for the parser to chew through, but the resulting AST node isn’t too bad.</p>
@@ -567,10 +567,10 @@ parameters     → IDENTIFIER ( &quot;,&quot; IDENTIFIER )* ;
 <pre><code class="language-java">
 // tool/GenerateAst.java, in main()
 
-      &quot;Expression : Expr expression&quot;,
-      &quot;Function   : Token name, List&lt;Token&gt; params,&quot; +
-                  &quot; List&lt;Stmt&gt; body&quot;,
-      &quot;If         : Expr condition, Stmt thenBranch,&quot; +
+      "Expression : Expr expression",
+      "Function   : Token name, List&lt;Token&gt; params," +
+                  " List&lt;Stmt&gt; body",
+      "If         : Expr condition, Stmt thenBranch," +
 	  
 </code></pre>
 <p>A function node has a name, a list of parameters (their names), and then the body. We store the body as the list of statements contained inside the curly braces.</p>
@@ -581,7 +581,7 @@ parameters     → IDENTIFIER ( &quot;,&quot; IDENTIFIER )* ;
 // lox/Parser.java, in declaration()
 
     try {
-      if (match(FUN)) return function(&quot;function&quot;);
+      if (match(FUN)) return function("function");
       if (match(VAR)) return varDeclaration();
 	  
 </code></pre>
@@ -591,7 +591,7 @@ parameters     → IDENTIFIER ( &quot;,&quot; IDENTIFIER )* ;
 // lox/Parser.java, add after expressionStatement()
 
   private Stmt.Function function(String kind) {
-    Token name = consume(IDENTIFIER, &quot;Expect &quot; + kind + &quot; name.&quot;);
+    Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
   }
 
 </code></pre>
@@ -602,20 +602,20 @@ parameters     → IDENTIFIER ( &quot;,&quot; IDENTIFIER )* ;
 <pre><code class="language-java">
 // lox/Parser.java, in function()
 
-    Token name = consume(IDENTIFIER, &quot;Expect &quot; + kind + &quot; name.&quot;);
-    consume(LEFT_PAREN, &quot;Expect '(' after &quot; + kind + &quot; name.&quot;);
+    Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
+    consume(LEFT_PAREN, "Expect '(' after " + kind + " name.");
     List&lt;Token&gt; parameters = new ArrayList&lt;&gt;();
     if (!check(RIGHT_PAREN)) {
       do {
         if (parameters.size() &gt;= 255) {
-          error(peek(), &quot;Can't have more than 255 parameters.&quot;);
+          error(peek(), "Can't have more than 255 parameters.");
         }
 
         parameters.add(
-            consume(IDENTIFIER, &quot;Expect parameter name.&quot;));
+            consume(IDENTIFIER, "Expect parameter name."));
       } while (match(COMMA));
     }
-    consume(RIGHT_PAREN, &quot;Expect ')' after parameters.&quot;);
+    consume(RIGHT_PAREN, "Expect ')' after parameters.");
   }
 
 </code></pre>
@@ -628,9 +628,9 @@ parameters     → IDENTIFIER ( &quot;,&quot; IDENTIFIER )* ;
 <pre><code class="language-java">
 // lox/Parser.java, in function()
 
-    consume(RIGHT_PAREN, &quot;Expect ')' after parameters.&quot;);
+    consume(RIGHT_PAREN, "Expect ')' after parameters.");
 
-    consume(LEFT_BRACE, &quot;Expect '{' before &quot; + kind + &quot; body.&quot;);
+    consume(LEFT_BRACE, "Expect '{' before " + kind + " body.");
     List&lt;Stmt&gt; body = block();
     return new Stmt.Function(name, parameters, body);
   }
@@ -739,13 +739,13 @@ add(1, 2, 3);
 
 </code></pre>
 <p>That’s most of our object representation. While we’re in here, we may as well implement toString().</p>
-<p>这是我们的大多数对象表示，在这里，我们不妨实现toString() </p>
+<p>这是我们的大多数对象表示，在这里，我们不妨实现toString()</p>
 <pre><code class="language-java">
 // lox/LoxFunction.java, add after LoxFunction()
 
   @Override
   public String toString() {
-    return &quot;&lt;fn &quot; + declaration.name.lexeme + &quot;&gt;&quot;;
+    return "&lt;fn " + declaration.name.lexeme + "&gt;";
   }
   
 </code></pre>
@@ -756,7 +756,7 @@ fun add(a, b) {
   print a + b;
 }
 
-print add; // &quot;&lt;fn add&gt;&quot;.
+print add; // "&lt;fn add&gt;".
 
 </code></pre>
 <h3 id="41-interpreting-function-declarations"><a class="header" href="#41-interpreting-function-declarations">4.1 Interpreting function declarations</a></h3>
@@ -783,10 +783,10 @@ print add; // &quot;&lt;fn add&gt;&quot;.
 <p>这样，我们就可以在Lox定义和调用自己的函数，试试看</p>
 <pre><code class="language-java">
 fun sayHi(first, last) {
-  print &quot;Hi, &quot; + first + &quot; &quot; + last + &quot;!&quot;;
+  print "Hi, " + first + " " + last + "!";
 }
 
-sayHi(&quot;Dear&quot;, &quot;Reader&quot;);
+sayHi("Dear", "Reader");
 
 </code></pre>
 <p>I don’t know about you, but that looks like an honest-to-God programming language to me.</p>
@@ -804,7 +804,7 @@ statement      → exprStmt
                | whileStmt
                | block ;
 
-returnStmt     → &quot;return&quot; expression? &quot;;&quot; ;
+returnStmt     → "return" expression? ";" ;
 
 </code></pre>
 <blockquote>
@@ -816,7 +816,7 @@ returnStmt     → &quot;return&quot; expression? &quot;;&quot; ;
 <p>如果函数不需要返回有用值，return 语句是可选的，return语句可以提前退出函数。在静态类型语言中，void 函数不返回值，而非void 的函数，需要返回一个值。由于Lox是动态类型语言，因此没有真正的void函数，编译器无法阻止您获取对不包含return 语句的函数的调用的结果值</p>
 <pre><code class="language-java">
 fun procedure() {
-  print &quot;don't return anything&quot;;
+  print "don't return anything";
 }
 
 var result = procedure();
@@ -824,7 +824,7 @@ print result; // ?
 
 </code></pre>
 <p>This means every Lox function must return something, even if it contains no return statements at all. We use nil for this, which is why LoxFunction’s implementation of call() returns null at the end. In that same vein, if you omit the value in a return statement, we simply treat it as equivalent to:</p>
-<p>这意味着每个Lox函数都必须返回一些东西，即使它根本不包含返回语句。我们对此使用nil, 这就是为什么LoxFunction的call() 实现在结尾返回null，同样，如果忽略return语句中的值，我们只需要将其等效为 </p>
+<p>这意味着每个Lox函数都必须返回一些东西，即使它根本不包含返回语句。我们对此使用nil, 这就是为什么LoxFunction的call() 实现在结尾返回null，同样，如果忽略return语句中的值，我们只需要将其等效为</p>
 <pre><code class="language-java">
 return nil;
 
@@ -834,9 +834,9 @@ return nil;
 <pre><code class="language-java">
 // tool/GenerateAst.java, in main()
 
-      &quot;Print      : Expr expression&quot;,
-      &quot;Return     : Token keyword, Expr value&quot;,
-      &quot;Var        : Token name, Expr initializer&quot;,
+      "Print      : Expr expression",
+      "Return     : Token keyword, Expr value",
+      "Var        : Token name, Expr initializer",
 
 </code></pre>
 <p>It keeps the return keyword token so we can use its location for error reporting, and the value being returned, if any. We parse it like other statements, first by recognizing the initial keyword.</p>
@@ -860,7 +860,7 @@ return nil;
       value = expression();
     }
 
-    consume(SEMICOLON, &quot;Expect ';' after return value.&quot;);
+    consume(SEMICOLON, "Expect ';' after return value.");
     return new Stmt.Return(keyword, value);
   }
   
@@ -1003,8 +1003,8 @@ fun makeCounter() {
 }
 
 var counter = makeCounter();
-counter(); // &quot;1&quot;.
-counter(); // &quot;2&quot;.
+counter(); // "1".
+counter(); // "2".
 
 </code></pre>
 <p>Here, count() uses i, which is declared outside of itself in the containing function makeCounter(). makeCounter() returns a reference to the count() function and then its own body finishes executing completely.</p>
@@ -1092,9 +1092,9 @@ fun thrice(fn) {
 thrice(fun (a) {
   print a;
 });
-// &quot;1&quot;.
-// &quot;2&quot;.
-// &quot;3&quot;.
+// "1".
+// "2".
+// "3".
 
 </code></pre>
 <p>How do you handle the tricky case of an anonymous function expression occurring in an expression statement:</p>
@@ -1107,7 +1107,7 @@ fun () {};
 <p>Is this program valid?</p>
 <pre><code class="language-java">
 fun scope(a) {
-  var a = &quot;local&quot;;
+  var a = "local";
 }
 </code></pre>
 <p>In other words, are a function’s parameters in the same scope as its local variables, or in an outer scope? What does Lox do? What about other languages you are familiar with? What do you think a language should do?</p>

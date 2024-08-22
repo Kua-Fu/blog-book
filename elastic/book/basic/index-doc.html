@@ -174,7 +174,7 @@
 <pre><code class="language-json">
 PUT /{index}/{type}/{id}
 {
-  &quot;field&quot;: &quot;value&quot;,
+  "field": "value",
   ...
 }
 
@@ -183,33 +183,33 @@ PUT /{index}/{type}/{id}
 <pre><code class="language-json">
 PUT /website/blog/123
 {
-  &quot;title&quot;: &quot;My first blog entry&quot;,
-  &quot;text&quot;:  &quot;Just trying this out...&quot;,
-  &quot;date&quot;:  &quot;2014/01/01&quot;
+  "title": "My first blog entry",
+  "text":  "Just trying this out...",
+  "date":  "2014/01/01"
 }
 
 </code></pre>
 <pre><code class="language-json">
 POST /website/_doc/123
 {
-  &quot;type&quot;: &quot;blog&quot;,
-  &quot;title&quot;: &quot;My first blog entry&quot;,
-  &quot;text&quot;: &quot;Just trying this out...&quot;,
-  &quot;date&quot;: &quot;2014/01/01&quot;
+  "type": "blog",
+  "title": "My first blog entry",
+  "text": "Just trying this out...",
+  "date": "2014/01/01"
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;123&quot;,
-  &quot;_version&quot;: 1,
-  &quot;result&quot;: &quot;created&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "123",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 0,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 0,
+  "_primary_term": 1
 }
 
 </code></pre>
@@ -221,9 +221,9 @@ POST /website/_doc/123
 <pre><code class="language-json">
 POST /website/blog/
 {
-  &quot;title&quot;: &quot;My second blog entry&quot;,
-  &quot;text&quot;:  &quot;Still trying this out...&quot;,
-  &quot;date&quot;:  &quot;2014/01/01&quot;
+  "title": "My second blog entry",
+  "text":  "Still trying this out...",
+  "date":  "2014/01/01"
 }
 
 </code></pre>
@@ -231,24 +231,24 @@ POST /website/blog/
 <pre><code class="language-json">
 POST /website/_doc
 {
-  &quot;type&quot;: &quot;blog&quot;,
-  &quot;title&quot;: &quot;My second blog entry&quot;,
-  &quot;text&quot;: &quot;Still trying this out...&quot;,
-  &quot;date&quot;: &quot;2014/01/01&quot;
+  "type": "blog",
+  "title": "My second blog entry",
+  "text": "Still trying this out...",
+  "date": "2014/01/01"
 }
 
 {
-  &quot;_index&quot;: &quot;website&quot;,
-  &quot;_id&quot;: &quot;jrkq4oEBZEeCE-yEdE3s&quot;,
-  &quot;_version&quot;: 1,
-  &quot;result&quot;: &quot;created&quot;,
-  &quot;_shards&quot;: {
-    &quot;total&quot;: 2,
-    &quot;successful&quot;: 2,
-    &quot;failed&quot;: 0
+  "_index": "website",
+  "_id": "jrkq4oEBZEeCE-yEdE3s",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 2,
+    "failed": 0
   },
-  &quot;_seq_no&quot;: 1,
-  &quot;_primary_term&quot;: 1
+  "_seq_no": 1,
+  "_primary_term": 1
 }
 
 </code></pre>

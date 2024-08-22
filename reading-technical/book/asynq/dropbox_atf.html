@@ -167,8 +167,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="dropbox-atf"><a class="header" href="#dropbox-atf">Dropbox ATF</a></h1>
+                        <h1 id="dropbox-atf"><a class="header" href="#dropbox-atf">Dropbox ATF</a></h1>
 <h2 id="参考"><a class="header" href="#参考">参考</a></h2>
 <blockquote>
 <p><a href="https://dropbox.tech/infrastructure/asynchronous-task-scheduling-at-dropbox">How we designed Dropbox ATF: an async task framework</a></p>
@@ -186,7 +185,7 @@
 <p>我们如何设计一个异步任务框架</p>
 <p>I joined Dropbox not long after graduating with a Master’s degree in computer science. Aside from an internship, this was my first big-league engineering job. My team had already begun designing a critical internal service that most of our software would use: It would handle asynchronous computing requests behind the scenes, powering everything from dragging a file into a Dropbox folder to scheduling a marketing campaign.</p>
 <p>This Asynchronous Task Framework (ATF) would replace multiple bespoke async systems used by different engineering teams. It would reduce redundant development, incompatibilities, and reliance on legacy software. There were no open-source projects or buy-not-build solutions that worked well for our use case and scale, so we had to create our own. ATF is both an important and interesting challenge, though, so we were happy to design, build and deploy our own in-house service.、</p>
-<p>ATF not only had to work well, it had to work well at scale: It would be a foundational building block of Dropbox infrastructure. It would need to handle 10,000 async tasks per second from the start, and be architected for future growth.  It would need to support nearly 100 unique async task types from the start, again with room to grow. There were at least two dozen engineering teams that would want to use it for entirely different parts of our codebase, for many products and services. </p>
+<p>ATF not only had to work well, it had to work well at scale: It would be a foundational building block of Dropbox infrastructure. It would need to handle 10,000 async tasks per second from the start, and be architected for future growth.  It would need to support nearly 100 unique async task types from the start, again with room to grow. There were at least two dozen engineering teams that would want to use it for entirely different parts of our codebase, for many products and services.</p>
 <p>As any engineer would, we Googled to see what other companies with mega-scale services had done to handle async tasks. We were disappointed to find little material published by engineers who built supersized async services.</p>
 <p>Now that ATF is deployed and currently serving 9,000 async tasks scheduled per second and in use by 28 engineering teams internally, we’re glad to fill that information gap</p>
 <p>我在硕士毕业不久后，就加入了Dropbox公司。除了实习，这是我的第一份大公司工作。我所在的团队，开始设计公司内部都会使用的关键内部组件：它将会在后台处理异步请求，为将文件移动到Dropbox文件夹或者准备一个促销活动等服务提供动力。</p>
@@ -197,7 +196,7 @@
 <h2 id="一introduction"><a class="header" href="#一introduction">一、Introduction</a></h2>
 <p>介绍</p>
 <p>Scheduling asynchronous tasks on-demand is a critical capability that powers many features and internal platforms at Dropbox. Async Task Framework (ATF) is the infrastructural system that supports this capability at Dropbox through a callback-based architecture. ATF enables developers to define callbacks, and schedule tasks that execute against these pre-defined callbacks.</p>
-<p>Since its introduction over a year ago, ATF has gone on to become an important building block in the Dropbox infrastructure, used by nearly 30 internal teams across our codebase. It currently supports 100+ use cases which require either immediate or delayed task scheduling. </p>
+<p>Since its introduction over a year ago, ATF has gone on to become an important building block in the Dropbox infrastructure, used by nearly 30 internal teams across our codebase. It currently supports 100+ use cases which require either immediate or delayed task scheduling.</p>
 <p>按照需求，异步调度任务，是Dropbox许多功能和内部平台的关键功能。ATF是基于回调的体系结构创建的。ATF使得开发人员可以定义回调函数，当执行异步任务时候，会执行这些预定义的回调函数。</p>
 <p>自从推出ATF一年多以来，它已经成为基础设施的重要组成部分。我们的代码库已经有近30个团队在调用。它目前支持100多个需要立即执行或者延迟调度的用例。</p>
 <h2 id="二glossary"><a class="header" href="#二glossary">二、Glossary</a></h2>
@@ -214,7 +213,7 @@
 <p>Collection: A labeled subset of tasks belonging to a lambda. If send email is implemented as a lambda, then password reset email and marketing email would be collections.</p>
 </li>
 <li>
-<p>Priority: Labels defining priority of execution of tasks within a lambda. </p>
+<p>Priority: Labels defining priority of execution of tasks within a lambda.</p>
 </li>
 </ul>
 <p>下面是本文将重复使用的一些术语。</p>
@@ -289,13 +288,13 @@
 <p>执行异步任务的worker可能在任何时间点挂掉。ATF将会重试这些失败的异步任务，当然，可能retry发生在其他主机。Lambda 设计者，需要考虑在不同主机上执行相同的异步任务，不会影响准确性。</p>
 <h3 id="53-terminal-state-handling"><a class="header" href="#53-terminal-state-handling">5.3 Terminal state handling</a></h3>
 <p>状态处理</p>
-<p>ATF retries tasks until they are signaled to be complete from the lambda logic. </p>
+<p>ATF retries tasks until they are signaled to be complete from the lambda logic.</p>
 <p>ATF重新发送异步任务，一直到它接收到任务完成的信号。客户端可以将任务标记为，完成、终止、重试。lambda设计者需要考虑，合适时候发送任务完成信号，需要避免错误行为，例如：无限次重试。这一点非常重要。</p>
 <h2 id="六architecture"><a class="header" href="#六architecture">六、Architecture</a></h2>
 <p>架构图</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/atf/dropbox-atf.png?raw=true" alt="dropbox atf" /></p>
 <p>In this section, we describe the high-level architecture of ATF and give brief description of its different components. Dropbox uses gRPC for remote calls and our in-house Edgestore to store tasks.</p>
-<p>ATF consists of the following components: </p>
+<p>ATF consists of the following components:</p>
 <ul>
 <li>
 <p>Frontend</p>
@@ -331,8 +330,8 @@
 <p>ATF的异步任务保存在数据库中。保存任务的数据库，可以是任何具有查询能力的数据库。在我们公司，使用内部自研的Edgestore数据库保存任务。</p>
 <h3 id="63-store-consumer"><a class="header" href="#63-store-consumer">6.3 Store Consumer</a></h3>
 <p>数据库消费者</p>
-<p>The Store Consumer is a service that periodically polls the task store to find tasks that are ready for execution and pushes them onto the right queues, as described in the queue section below. These could be tasks that are newly ready for execution, or older tasks that are ready for execution again because they either failed in a retriable way on execution, or were dropped elsewhere within the ATF system. </p>
-<p>Below is a simple walkthrough of the Store Consumer’s function: </p>
+<p>The Store Consumer is a service that periodically polls the task store to find tasks that are ready for execution and pushes them onto the right queues, as described in the queue section below. These could be tasks that are newly ready for execution, or older tasks that are ready for execution again because they either failed in a retriable way on execution, or were dropped elsewhere within the ATF system.</p>
+<p>Below is a simple walkthrough of the Store Consumer’s function:</p>
 <pre><code>repeat every second:
 
   1. poll tasks ready for execution from task store
@@ -356,11 +355,11 @@
 <p>数据库消费者会轮询先前执行失败的任务。这是保证ATF至少执行一次的特性的设计。关于，消费者，如何轮询新任务、失败的旧任务，可以继续阅读下面内容。</p>
 <h3 id="64-queue"><a class="header" href="#64-queue">6.4 Queue</a></h3>
 <p>ATF uses AWS Simple Queue Service (SQS) to queue tasks internally. These queues act as a buffer between the Store Consumer and Controllers (described below). Each &lt;lambda, priority&gt;  pair gets a dedicated SQS queue. The total number of SQS queues used by ATF is #lambdas x #priorities.</p>
-<p>ATF使用 aws的简单队列服务，作为内部任务队列。这些队列充当数据库消费者和控制器之间的缓存区。每个  &lt;lambda, priority&gt; 都有一个专有的队列。ATF使用的aws SQS队列数量为 </p>
+<p>ATF使用 aws的简单队列服务，作为内部任务队列。这些队列充当数据库消费者和控制器之间的缓存区。每个  &lt;lambda, priority&gt; 都有一个专有的队列。ATF使用的aws SQS队列数量为</p>
 <p>\[ \sum_{i=0}^n  lambda_i \ast priority_i  \]</p>
 <h3 id="65-controller"><a class="header" href="#65-controller">6.5 Controller</a></h3>
 <p>控制器</p>
-<p>Worker hosts are physical hosts dedicated for task execution. Each worker host has one controller process responsible for polling tasks from SQS queues in a background thread, and then pushing them onto process local buffered queues. The Controller is only aware of the lambdas it is serving and thus polls only the limited set of necessary queues. </p>
+<p>Worker hosts are physical hosts dedicated for task execution. Each worker host has one controller process responsible for polling tasks from SQS queues in a background thread, and then pushing them onto process local buffered queues. The Controller is only aware of the lambdas it is serving and thus polls only the limited set of necessary queues.</p>
 <p>The Controller serves tasks from its process local queue as a response to NextWork RPCs. This is the layer where execution level task prioritization occurs. The Controller has different process level queues for tasks of different priorities and can thus prioritize tasks in response to NextWork RPCs.</p>
 <p>工作主机是专用于任务执行的物理主机。每个主机，都有一个控制器进程，该控制器进程负责在后台轮询来自aws SQS队列的任务，然后将 SQS队列 的任务，推送到本地的进程缓冲队列。控制器，只知道它正在服务的lambdas, 因此它只会轮询一部分 SQS 队列。</p>
 <p>控制器将本地进程队列中的任务，作为对NextWork RPC的响应。这是执行任务优先级排序发生的层。控制层，对于不同优先级的任务，具有不同的进程队列，因此，可以响应Nextwork RPC不同的优先级队列。</p>
@@ -405,19 +404,19 @@ while True:
 <p>任务生命周期</p>
 <ol>
 <li>
-<p>Client performs a Schedule RPC call to Frontend with task information, including execution time. </p>
+<p>Client performs a Schedule RPC call to Frontend with task information, including execution time.</p>
 </li>
 <li>
-<p>Frontend creates Edgestore entity and assoc for the task. </p>
+<p>Frontend creates Edgestore entity and assoc for the task.</p>
 </li>
 <li>
-<p>When it is time to process the task, Store Consumer pulls the task from Edgestore and pushes it to a related SQS queue. </p>
+<p>When it is time to process the task, Store Consumer pulls the task from Edgestore and pushes it to a related SQS queue.</p>
 </li>
 <li>
-<p>Executor makes NextWork RPC call to Controller, which pulls tasks from the SQS queue, makes a ClaimTask RPC to the HSC and then returns the task to the Executor. </p>
+<p>Executor makes NextWork RPC call to Controller, which pulls tasks from the SQS queue, makes a ClaimTask RPC to the HSC and then returns the task to the Executor.</p>
 </li>
 <li>
-<p>Executor invokes the callback for the task. While processing, Executor performs Heartbeat RPC calls to Heartbeat and Status Controller (HSC). Once processing is done, Executor performs TaskStatus RPC call to HSC. </p>
+<p>Executor invokes the callback for the task. While processing, Executor performs Heartbeat RPC calls to Heartbeat and Status Controller (HSC). Once processing is done, Executor performs TaskStatus RPC call to HSC.</p>
 </li>
 <li>
 <p>Upon getting Heartbeat and TaskStatus RPC calls, HSC updates the Edgestore entity and assoc.</p>
@@ -467,7 +466,7 @@ while True:
 <tr><td>致命故障</td><td>完成</td><td></td><td></td></tr>
 </tbody></table>
 </div>
-<p>Below is the state machine that defines task state transitions: </p>
+<p>Below is the state machine that defines task state transitions:</p>
 <p>下面是，任务状态变化的状态机。</p>
 <p><img src="https://github.com/Kua-Fu/blog-book-images/blob/main/atf/dropbox-atf-2.png?raw=true" alt="atf-2" /></p>
 <h2 id="九achieving-guarantees"><a class="header" href="#九achieving-guarantees">九、Achieving guarantees</a></h2>
@@ -479,7 +478,7 @@ while True:
 <h3 id="92-no-concurrent-task-execution"><a class="header" href="#92-no-concurrent-task-execution">9.2 No concurrent task execution</a></h3>
 <p>没有并发执行的任务</p>
 <p>Concurrent task execution is avoided through a combination of two methods in ATF. First, tasks are explicitly claimed through an exclusive task state (Claimed) before starting execution. Once the task execution is complete, the task status is updated to one of Success, FatalFailure or RetriableFailure.  A task can be claimed only if its existing task state is Enqueued (retried tasks go to the Enqueued state as well once they are re-pushed onto SQS).</p>
-<p>However, there might be situations where once a long running task starts execution, its heartbeats might fail repeatedly yet the task execution continues. ATF would retry this task by polling it from the store consumer because the heartbeat timeouts would’ve expired. This task can then be claimed by another worker and lead to concurrent execution. </p>
+<p>However, there might be situations where once a long running task starts execution, its heartbeats might fail repeatedly yet the task execution continues. ATF would retry this task by polling it from the store consumer because the heartbeat timeouts would’ve expired. This task can then be claimed by another worker and lead to concurrent execution.</p>
 <p>To avoid this situation, there is a termination logic in the Executor processes whereby an Executor process terminates itself as soon as three consecutive heartbeat calls fail.  Each heartbeat timeout is large enough to eclipse three consecutive heartbeat failures. This ensures that the Store Consumer cannot pull such tasks before the termination logic ends them—the second method that helps achieve this guarantee.</p>
 <p>通过ATF中两种方法的组合，避免了并发执行异步任务。首先，在开始执行之前，通过独占任务状态（已声明）显式声明任务。任务执行完成后，状态更新为成功、失败、可重试失败。只有当任务的现有状态为已排队时候，才可以声明任务，重试状态的任务，在重新推送到SQS队列后，也会重新更新为排队状态。</p>
 <p>但是，可能存在一种场景，一个长时间运行的任务开始执行，任务心跳重复失败，但是实际上，任务仍然在运行着。ATF将通过数据库消费者，轮询该任务，因为该任务心跳超时。然而，这时候任务实际在运行中，这样，将导致并发运行。</p>
@@ -499,7 +498,7 @@ Each executor process is bound to one lambda. Owners have the option of deployin
 ATF 旨在成为开发者的自服务框架。这种设计想要推动一种所有权模式，其中，lambda所有者拥有lambda操作的所有配置。为了促进，所有lambda工作集群都由lambda所有者拥有。lambda所有者，完全控制集群上的操作，例如：代码部署，集群资源管理。每个执行器都绑定到一个lambda上，所有者可以选择在工作集群上部署多个lambda，只需要在主机上生成新的执行器。</p>
 <h2 id="十一extending-atf"><a class="header" href="#十一extending-atf">十一、Extending ATF</a></h2>
 <p>扩展ATF</p>
-<p>As described above, ATF provides an infrastructural building block for scheduling asynchronous tasks. With this foundation established, ATF can be extended to support more generic use cases and provide more features as a framework. Following are some examples of what could be built as an extension to ATF. </p>
+<p>As described above, ATF provides an infrastructural building block for scheduling asynchronous tasks. With this foundation established, ATF can be extended to support more generic use cases and provide more features as a framework. Following are some examples of what could be built as an extension to ATF.</p>
 <p>如上所述，ATF为异步调度任务提供了基础模块。在此基础上，ATF可以扩展支持更加通用的用例，并作为框架提供更多功能。下面是一些示例</p>
 <h3 id="111-periodic-task-execution"><a class="header" href="#111-periodic-task-execution">11.1 Periodic task execution</a></h3>
 <p>定期执行任务</p>

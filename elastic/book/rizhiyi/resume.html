@@ -176,37 +176,37 @@
 <tr><td><code>union</code></td><td>同时执行多个搜索，子查询可以用任意命令</td><td>…​ | union [[ * | stats max(status) by appname ]] [[ * | stats max(status) by tag ]]</td></tr>
 <tr><td><code>appendcols</code></td><td>添加一个子搜索，并将子搜索的结果按顺序合并到父搜索上</td><td>…​ | appendcols [[ * | stats min(timestamp)]]</td></tr>
 <tr><td><code>autoregress</code></td><td>拷贝一个或者多个当前事件之前的事件中的字段值到当前事件</td><td>…​ | autoregress clientip p=1-2</td></tr>
-<tr><td><code>chart</code></td><td>按照over字段进行分桶后的统计行为</td><td>…​ | chart sep=&quot;,&quot; format=&quot;$VAL**$AGG&quot; limit=5 cont=false rendertype=&quot;pie&quot; count(apache.x_forward) over apache.status</td></tr>
-<tr><td><code>collect</code></td><td>将查询的结果写到索引</td><td>…​ |collect index=test marker=&quot;appname=&quot;test&quot;, tag=&quot;tag1&quot;&quot;</td></tr>
+<tr><td><code>chart</code></td><td>按照over字段进行分桶后的统计行为</td><td>…​ | chart sep="," format="$VAL**$AGG" limit=5 cont=false rendertype="pie" count(apache.x_forward) over apache.status</td></tr>
+<tr><td><code>collect</code></td><td>将查询的结果写到索引</td><td>…​ |collect index=test marker="appname="test", tag="tag1""</td></tr>
 <tr><td><code>bucket</code></td><td>将连续的值放入离散集中</td><td>…​ | bucket timestamp span=1h as ts</td></tr>
 <tr><td><code>dedup</code></td><td>对搜索结果中指定字段值的重复情况进行去重和过滤</td><td>…​ | dedup 3 apache.status, apache.geo.city</td></tr>
-<tr><td><code>dbxlookup</code></td><td>类似sql的连接，将来自远程数据库表的结果和子管道的结果连接在一起</td><td>| dbxlookup lookup=&quot;test1&quot; <br>  | dbxlookup test1,test2 connection=&quot;179test&quot; query=&quot;select * from test&quot; on id=bid</td></tr>
-<tr><td><code>dbxoutput</code></td><td>将当前搜索的数据按照已配置的dbxoutput名称写出到远程数据库。</td><td>| dbxoutput output=&quot;test1&quot;</td></tr>
-<tr><td><code>dbxquery</code></td><td>是一个可以使用sql来查远程数据库的数据并作为spl的查询语句的命令</td><td>| dbxquery connection=&quot;179test&quot; query=&quot;select * from test&quot;</td></tr>
+<tr><td><code>dbxlookup</code></td><td>类似sql的连接，将来自远程数据库表的结果和子管道的结果连接在一起</td><td>| dbxlookup lookup="test1" <br>  | dbxlookup test1,test2 connection="179test" query="select * from test" on id=bid</td></tr>
+<tr><td><code>dbxoutput</code></td><td>将当前搜索的数据按照已配置的dbxoutput名称写出到远程数据库。</td><td>| dbxoutput output="test1"</td></tr>
+<tr><td><code>dbxquery</code></td><td>是一个可以使用sql来查远程数据库的数据并作为spl的查询语句的命令</td><td>| dbxquery connection="179test" query="select * from test"</td></tr>
 <tr><td><code>esma</code></td><td>对某一个字段的未来值进行预测</td><td>…​ | esma latency timefield=ts period=7 futurecount=30</td></tr>
 <tr><td><code>eval</code></td><td>计算表达式，并将表达式的值放入字段中，请参阅 搜索命令函数</td><td>…​ | eval username = case(user_name, user)</td></tr>
 <tr><td><code>eventstats</code></td><td>提供统计信息，可以选择字段进行分组，并且将按照当前行所属于的分组的统计结果作为新的字段值添加在本行</td><td>…​ | eventstats count() by logtype</td></tr>
 <tr><td><code>fields</code></td><td>通过操作符保留或排除结果中的系列字段</td><td>…​ | fields status, clientip</td></tr>
 <tr><td><code>filldown</code></td><td>将某些字段的null值用之前最近的非null值进行填充，支持通配符</td><td>…​ | filldown hostname app*</td></tr>
-<tr><td><code>fillnull</code></td><td>将空值替换为指定值</td><td>…​ | fillnull value=&quot;aaa&quot; foo,bar</td></tr>
-<tr><td><code>gentimes</code></td><td>可以生成指定时间范围内的时间戳</td><td>| gentimes start=&quot;2019-01-01:00:00:00&quot; end=&quot;2019-01-04:00:00:00&quot;</td></tr>
+<tr><td><code>fillnull</code></td><td>将空值替换为指定值</td><td>…​ | fillnull value="aaa" foo,bar</td></tr>
+<tr><td><code>gentimes</code></td><td>可以生成指定时间范围内的时间戳</td><td>| gentimes start="2019-01-01:00:00:00" end="2019-01-04:00:00:00"</td></tr>
 <tr><td><code>geostats</code></td><td>可以基于地理位置信息，即经纬度进行分区域统计</td><td>…​ | geostats count(appname)</td></tr>
 <tr><td><code>inputlookup</code></td><td>可以读取csv文件</td><td>| inputlookup a.csv</td></tr>
 <tr><td><code>join</code></td><td>类似sql的连接，将来自主管道的结果和子管道的结果连接在一起</td><td>…​ | join type=left clientip [[ * | stats avg(resp_len) by clientip ]]</td></tr>
-<tr><td><code>jpath</code></td><td>类似xpath抽取json中的字段值</td><td>…​ | jpath output=prices path=&quot;store.book[*].price&quot;</td></tr>
+<tr><td><code>jpath</code></td><td>类似xpath抽取json中的字段值</td><td>…​ | jpath output=prices path="store.book[*].price"</td></tr>
 <tr><td><code>kvextract</code></td><td>将指定字段按键值对抽取</td><td>…​ | kvextract json.kvex</td></tr>
 <tr><td><code>limit</code></td><td>返回前n个结果</td><td>…​ | limit 10</td></tr>
 <tr><td><code>lookup</code></td><td>显示调用字段值查找</td><td>…​ | lookup email http://data.cn/user.csv on id=userId</td></tr>
 <tr><td><code>lookup2</code></td><td>显示调用指定方式查找</td><td>…​ | lookup2 external_file outputfields appname,hostname</td></tr>
 <tr><td><code>makecontinuous</code></td><td>在一定数值或时间范围内，根据给定的区间大小，对原始数据升序处理，并补充不连续的区间，区间的划分采用向前圆整的方式</td><td>…​ | makecontinuous time span=3 start=216 end=226</td></tr>
 <tr><td><code>makeresults</code></td><td>构造指定的结果</td><td>| makeresults count=1</td></tr>
-<tr><td><code>map</code></td><td>将前一个查询的结果用于下一个查询</td><td>…​ | map &quot;apache.status:$apache.status$ | stats count()&quot;</td></tr>
+<tr><td><code>map</code></td><td>将前一个查询的结果用于下一个查询</td><td>…​ | map "apache.status:$apache.status$ | stats count()"</td></tr>
 <tr><td><code>movingavg</code></td><td>计算移动平均值</td><td>…​ | movingavg sum_len,10 as smooth_sum_len</td></tr>
 <tr><td><code>mvexpand</code></td><td>拆分多值字段</td><td>…​ | mvexpand iplist limit=100</td></tr>
-<tr><td><code> mvcombine</code></td><td>合并指定字段</td><td>…​ | mvcombine sep=&quot;,&quot; ip</td></tr>
-<tr><td><code>nomv</code></td><td>将多值字段转换为单值字段</td><td>…​ | nomv delim=&quot;,&quot; a</td></tr>
+<tr><td><code> mvcombine</code></td><td>合并指定字段</td><td>…​ | mvcombine sep="," ip</td></tr>
+<tr><td><code>nomv</code></td><td>将多值字段转换为单值字段</td><td>…​ | nomv delim="," a</td></tr>
 <tr><td><code>outputlookup</code></td><td>导出csv文件</td><td>…​ | outputlookup createempty=false overrideifempty=false maxresult=100 filename.csv</td></tr>
-<tr><td><code>parse</code></td><td>搜索时抽取字段</td><td>…​ | parse &quot;(?&lt;ip_addr&gt;\d+.\d+.\d+.\d+)&quot;</td></tr>
+<tr><td><code>parse</code></td><td>搜索时抽取字段</td><td>…​ | parse "(?&lt;ip_addr&gt;\d+.\d+.\d+.\d+)"</td></tr>
 <tr><td><code>rename</code></td><td>重新命名指定字段</td><td>…​ | rename apache.status as http_code</td></tr>
 <tr><td><code>rollingstd</code></td><td>计算移动的标准差</td><td>…​ | rollingstd sum_resp_len, 10 as resp_len_rolling_std</td></tr>
 <tr><td><code>save</code></td><td>将搜索结果输出为外部文件</td><td>…​ | save /data/spldata/apahce_clientip.csv</td></tr>
@@ -218,25 +218,25 @@
 <tr><td><code>timewrap</code></td><td>对timechart命令的结果 进行展示或者折叠</td><td>…​ | top 3 apache.clientip by apache.method</td></tr>
 <tr><td><code>top</code></td><td>返回指定字段top的值集合</td><td>…​ | top 3 apache.clientip by apache.method</td></tr>
 <tr><td><code>rare</code></td><td>返回指定字段最少出现次数的值集合</td><td>…​ | rare apache.clientip by apache.method</td></tr>
-<tr><td><code>transaction</code></td><td>将结果分组成交易</td><td>…​ | transaction apache.clientip startswith=&quot;Android 4.3&quot; endswith=&quot;AndroidPhone&quot; maxopenevents = 10</td></tr>
+<tr><td><code>transaction</code></td><td>将结果分组成交易</td><td>…​ | transaction apache.clientip startswith="Android 4.3" endswith="AndroidPhone" maxopenevents = 10</td></tr>
 <tr><td><code>transpose</code></td><td>将查询的表格结果进行行列转换</td><td>…​ | transpose row=apache.method column=apache.status valuefield=cnt</td></tr>
 <tr><td><code>where</code></td><td>使用表达式对结果进行过滤</td><td>…​ | where apache.status &lt; 200 &amp;&amp; apache.status&gt;400</td></tr>
-<tr><td><code>xpath</code></td><td>提供对xml数据的处理和抽取</td><td>…​ | xpath input=json.xp output=lyly path=&quot;/purchases/book/title&quot;</td></tr>
+<tr><td><code>xpath</code></td><td>提供对xml数据的处理和抽取</td><td>…​ | xpath input=json.xp output=lyly path="/purchases/book/title"</td></tr>
 <tr><td><code>unpivot</code></td><td>行转列转换</td><td>…​ | unpivot 10 header_field=count column_name=title</td></tr>
 <tr><td><code>foreach</code></td><td>对字段列表执行流式命令</td><td>…​ | foreach count* [[ eval &lt;<FIELD>&gt; = &lt;<FIELD>&gt; + 1 ]]</td></tr>
 <tr><td><code>iplocation</code></td><td>从ip地址抽取地理信息</td><td>…​ | iplocation clientip</td></tr>
-<tr><td><code>replace</code></td><td>使用指定字符串替换字段值，可以指定一个或多个字段，仅替换指定字段的值，如果没有指定字段，则替换所有字段</td><td>…​ | replace &quot;192.168.1.1&quot; with &quot;localhost&quot;</td></tr>
-<tr><td><code>makemv</code></td><td>使用分隔符或者带捕获组的正则表达式，将单值字段转换为多值字段</td><td>…​ | makemv delim=&quot;,&quot; testmv</td></tr>
+<tr><td><code>replace</code></td><td>使用指定字符串替换字段值，可以指定一个或多个字段，仅替换指定字段的值，如果没有指定字段，则替换所有字段</td><td>…​ | replace "192.168.1.1" with "localhost"</td></tr>
+<tr><td><code>makemv</code></td><td>使用分隔符或者带捕获组的正则表达式，将单值字段转换为多值字段</td><td>…​ | makemv delim="," testmv</td></tr>
 <tr><td><code>localop</code></td><td>localop命令强制随后的命令都是spl 单机执行</td><td>…​ | localop</td></tr>
-<tr><td><code>strcat</code></td><td>连接来自2个或更多字段的值。将字段值和指定字符串组合到一个新字段中</td><td>…​ | eval field1=&quot;10.192.1.1&quot;,field2=&quot;192.168.1.1&quot; |strcat field1 &quot;abcd&quot; field2</td></tr>
-<tr><td><code>loadjob</code></td><td>加载先前完成的定时任务或告警的执行结果。由ID 和type唯一确定一个任务。如果最近一次时间点的结果不存在，则临时运行原始查询。</td><td>…​ | loadjob id=1,type=&quot;savedschedule&quot;</td></tr>
+<tr><td><code>strcat</code></td><td>连接来自2个或更多字段的值。将字段值和指定字符串组合到一个新字段中</td><td>…​ | eval field1="10.192.1.1",field2="192.168.1.1" |strcat field1 "abcd" field2</td></tr>
+<tr><td><code>loadjob</code></td><td>加载先前完成的定时任务或告警的执行结果。由ID 和type唯一确定一个任务。如果最近一次时间点的结果不存在，则临时运行原始查询。</td><td>…​ | loadjob id=1,type="savedschedule"</td></tr>
 <tr><td><code>accum</code></td><td>对每个事件中为数字的指定字段进行逐次累加，得到的累加结果会放入该字段或者新字段中。</td><td>…​ | accum apache.resp_len as sum_resp_len</td></tr>
 <tr><td><code>untable</code></td><td>table指令的逆操作，使用该指令可以将表格的查看方式转换到事件列表的查看方式。</td><td>…​ | untable</td></tr>
-<tr><td><code>rest</code></td><td>调用日志易API，返回对应结果</td><td>…​ | rest /agentgroup/ apikey=&quot;user apikey&quot; count=2</td></tr>
-<tr><td><code>typeahead</code></td><td>返回指定前缀的字段信息。返回的最大结果数取决于为size参数指定的值。typeahead命令可以以指定索引为目标，并受时间限制</td><td>…​ | typeahead prefix=&quot;app&quot; size=5 index=yotta</td></tr>
+<tr><td><code>rest</code></td><td>调用日志易API，返回对应结果</td><td>…​ | rest /agentgroup/ apikey="user apikey" count=2</td></tr>
+<tr><td><code>typeahead</code></td><td>返回指定前缀的字段信息。返回的最大结果数取决于为size参数指定的值。typeahead命令可以以指定索引为目标，并受时间限制</td><td>…​ | typeahead prefix="app" size=5 index=yotta</td></tr>
 <tr><td><code>history</code></td><td>查看搜索历史记录</td><td>…​ | history</td></tr>
 <tr><td><code>correlation</code></td><td>计算的与搜索结果相关性高的字段与字段值</td><td>…​ | bucket timestamp ranges=0, 1000),(1000, 10000),(1000, 1753587702986 as ts| correlation bucket_field=ts|sort by correlation| sort by -ts</td></tr>
-<tr><td><code>fromes</code></td><td>搜索指定索引的数据</td><td>|fromes host=10.200.0.140 index=logs-my_app-default querydsl='{&quot;query&quot;: {&quot;match_all&quot;: { }}}'</td></tr>
+<tr><td><code>fromes</code></td><td>搜索指定索引的数据</td><td>|fromes host=10.200.0.140 index=logs-my_app-default querydsl='{"query": {"match_all": { }}}'</td></tr>
 <tr><td><code>fromkafkapy</code></td><td>消费指定主题的数据</td><td>|fromkafkapy topic=test</td></tr>
 </tbody></table>
 </div>

@@ -389,7 +389,7 @@ $(word &lt;n&gt;,&lt;text&gt;)
 <p>返回：返回字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。如果 <code>&lt;n&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数要大，那么返回空字符串。</p>
 </li>
 <li>
-<p>示例： $(word 2, foo bar baz) 返回值是 bar </p>
+<p>示例： $(word 2, foo bar baz) 返回值是 bar</p>
 </li>
 </ul>
 <h3 id="wordlist"><a class="header" href="#wordlist">wordlist</a></h3>
@@ -691,7 +691,7 @@ $ 字符。Origin函数会以其返回值来告诉你这个变量的“出生情
 <p>这些信息对于我们编写Makefile是非常有用的，例如，假设我们有一个Makefile其包了一个定义文件 Make.def，在 Make.def中定义了一个变量“bletch”，而我们的环境中也有一个环境变量“bletch”，此时，我们想判断一下，如果变量来源于环境，那么我们就把之重定义了，如果来源于Make.def或是命令行等非环境的，那么我们就不重新定义它。于是，在我们的Makefile中，我们可以这样写：</p>
 <pre><code class="language-makefile">
 ifdef bletch
-    ifeq &quot;$(origin bletch)&quot; &quot;environment&quot;
+    ifeq "$(origin bletch)" "environment"
         bletch = barf, gag, etc.
     endif
 endif

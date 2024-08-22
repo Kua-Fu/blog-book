@@ -172,14 +172,14 @@
 <pre><code class="language-python">
 PUT /blogs-en
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;title&quot;: { 0️⃣
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;fields&quot;: {
-          &quot;stemmed&quot;: {
-            &quot;type&quot;: &quot;text&quot;,
-            &quot;analyzer&quot;: &quot;english&quot; 1️⃣
+  "mappings": {
+    "properties": {
+      "title": { 0️⃣
+        "type": "text",
+        "fields": {
+          "stemmed": {
+            "type": "text",
+            "analyzer": "english" 1️⃣
           }
         }
       }
@@ -189,14 +189,14 @@ PUT /blogs-en
 
 PUT /blogs-fr
 {
-  &quot;mappings&quot;: {
-    &quot;properties&quot;: {
-      &quot;title&quot;: { 0️⃣
-        &quot;type&quot;: &quot;text&quot;,
-        &quot;fields&quot;: {
-          &quot;stemmed&quot;: {
-            &quot;type&quot;: &quot;text&quot;,
-            &quot;analyzer&quot;: &quot;french&quot; 1️⃣
+  "mappings": {
+    "properties": {
+      "title": { 0️⃣
+        "type": "text",
+        "fields": {
+          "stemmed": {
+            "type": "text",
+            "analyzer": "french" 1️⃣
           }
         }
       }
@@ -212,22 +212,22 @@ PUT /blogs-fr
 <pre><code class="language-python">
 GET /blogs-*/_search 0️⃣
 {
-  &quot;query&quot;: {
-    &quot;multi_match&quot;: {
-      &quot;query&quot;: &quot;deja vu&quot;,
-      &quot;fields&quot;: [ 1️⃣
-        &quot;title&quot;,
-        &quot;title.stemmed&quot;
+  "query": {
+    "multi_match": {
+      "query": "deja vu",
+      "fields": [ 1️⃣
+        "title",
+        "title.stemmed"
       ],
-      &quot;type&quot;: &quot;most_fields&quot;
+      "type": "most_fields"
     }
   },
-  &quot;indices_boost&quot;: [ 2️⃣
+  "indices_boost": [ 2️⃣
     {
-      &quot;blogs-en&quot;: 3
+      "blogs-en": 3
     },
     {
-      &quot;blogs-fr&quot;: 2
+      "blogs-fr": 2
     }
   ]
 }

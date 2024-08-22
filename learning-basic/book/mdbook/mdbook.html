@@ -283,25 +283,25 @@ book
 	
 </code></pre>
 <h2 id="三support-math-formula"><a class="header" href="#三support-math-formula">三、Support Math Formula</a></h2>
-<p>mdbook support show Math Formula by <a href="https://www.mathjax.org/">MathJax</a> </p>
+<p>mdbook support show Math Formula by <a href="https://www.mathjax.org/">MathJax</a></p>
 <h3 id="31-set-mathjax-setting"><a class="header" href="#31-set-mathjax-setting">3.1 Set MathJax setting</a></h3>
 <pre><code class="language-toml">
 [book]
-authors = [&quot;yz&quot;]
-language = &quot;en&quot;
+authors = ["yz"]
+language = "en"
 multilingual = false
-src = &quot;src&quot;
-title = &quot;learning-basic&quot;
+src = "src"
+title = "learning-basic"
 
 [output.html]
 mathjax-support = true
 
 </code></pre>
-<p>注意⚠️ </p>
+<p>注意⚠️</p>
 <p>现在还不支持直接使用 $$ 作为分隔符，[] 分隔符需要额外添加一个反斜线 ,</p>
 <p>当在公式中，需要使用双反斜线时候，还需要添加额外的两个反斜线</p>
 <h3 id="32-inline"><a class="header" href="#32-inline">3.2 inline</a></h3>
-<p>行内的公式，使用 <code>\\( 和 \\)</code> 分隔，例如: </p>
+<p>行内的公式，使用 <code>\\( 和 \\)</code> 分隔，例如:</p>
 <p>\(f(x) = a+b\)</p>
 <p>一般在LaTex中，使用 <code>$公式$</code> 实现。</p>
 <p>表示行内</p>

@@ -177,7 +177,7 @@
 </blockquote>
 <h2 id="一giscus"><a class="header" href="#一giscus">一、Giscus</a></h2>
 <p>you can find more details about Giscus from office website</p>
-<p>We assume that </p>
+<p>We assume that</p>
 <ul>
 <li>
 <p>you have one book named test-book</p>
@@ -200,46 +200,46 @@ test-book
 </code></pre>
 <p>modify <code>book.toml</code>, add custom js info</p>
 <pre><code>[book]
-authors = [&quot;yz&quot;]
-language = &quot;en&quot;
+authors = ["yz"]
+language = "en"
 multilingual = false
-src = &quot;src&quot;
-title = &quot;test-book&quot;
+src = "src"
+title = "test-book"
 
 [output.html]
-additional-js = [&quot;giscus.js&quot;]
+additional-js = ["giscus.js"]
 
 </code></pre>
-<p>add <code>giscus.js</code> file at book root dir, </p>
+<p>add <code>giscus.js</code> file at book root dir,</p>
 <p>⚠️ the script info, can get from <a href="https://giscus.app/">giscus</a></p>
 <pre><code class="language-js">
 var giscus = function () {
-    const script = document.createElement(&quot;script&quot;);
-    script.type = &quot;text/javascript&quot;;
-    script.src = &quot;https://giscus.app/client.js&quot;;
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://giscus.app/client.js";
 var giscus = function () {
-    const script = document.createElement(&quot;script&quot;);
-    script.type = &quot;text/javascript&quot;;
-    script.src = &quot;https://giscus.app/client.js&quot;;
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://giscus.app/client.js";
 
 
-    script.setAttribute(&quot;data-repo&quot;, &quot;your github project repo&quot;);
-    script.setAttribute(&quot;data-repo-id&quot;, &quot;your github project repo id&quot;);
-    script.setAttribute(&quot;data-category&quot;, &quot;Announcements&quot;);
-    script.setAttribute(&quot;data-category-id&quot;, &quot;xxx&quot;);
+    script.setAttribute("data-repo", "your github project repo");
+    script.setAttribute("data-repo-id", "your github project repo id");
+    script.setAttribute("data-category", "Announcements");
+    script.setAttribute("data-category-id", "xxx");
 
-    script.setAttribute(&quot;data-mapping&quot;, &quot;title&quot;);
-    script.setAttribute(&quot;data-term&quot;, &quot;0&quot;);
-    script.setAttribute(&quot;data-reactions-enabled&quot;, &quot;1&quot;);
-    script.setAttribute(&quot;data-emit-metadata&quot;, &quot;0&quot;);
-    script.setAttribute(&quot;data-input-position&quot;, &quot;top&quot;);
-    script.setAttribute(&quot;data-theme&quot;, &quot;light&quot;);
-    script.setAttribute(&quot;data-lang&quot;, &quot;zh-CN&quot;);
-    script.setAttribute(&quot;data-loading&quot;, &quot;lazy&quot;);
+    script.setAttribute("data-mapping", "title");
+    script.setAttribute("data-term", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "top");
+    script.setAttribute("data-theme", "light");
+    script.setAttribute("data-lang", "zh-CN");
+    script.setAttribute("data-loading", "lazy");
 
-    script.crossOrigin = &quot;anonymous&quot;;
+    script.crossOrigin = "anonymous";
     script.async = true;
-    document.getElementById(&quot;giscus-container&quot;).appendChild(script);
+    document.getElementById("giscus-container").appendChild(script);
   };
 
   window.addEventListener('load', giscus);
@@ -253,10 +253,10 @@ mkdir theme &amp;&amp; cd theme
 
 wget https://raw.githubusercontent.com/rust-lang/mdBook/master/src/theme/index.hbs 
 </code></pre>
-<p>modify <code>index.hbs</code>, add <code>div</code> </p>
+<p>modify <code>index.hbs</code>, add <code>div</code></p>
 <pre><code class="language-js">&lt;main&gt;
     {{{ content }}}
-    &lt;div id=&quot;giscus-container&quot;&gt;&lt;/div&gt;
+    &lt;div id="giscus-container"&gt;&lt;/div&gt;
 &lt;/main&gt;
 </code></pre>
 <h2 id="13-rebuild-book"><a class="header" href="#13-rebuild-book">1.3 rebuild book</a></h2>

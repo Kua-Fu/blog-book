@@ -186,19 +186,19 @@
 <pre><code>
 GET _cluster/settings?flat_settings
 
-curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_cluster/settings?flat_settings&quot;
+curl -u elastic:xxx -XGET "http://127.0.0.1:9200/_cluster/settings?flat_settings"
 
 </code></pre>
 <p>返回值如下:</p>
 <pre><code class="language-json">
 {
-  &quot;persistent&quot; : {
-    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
-    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
-    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
-    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  "persistent" : {
+    "action.auto_create_index" : "+.*,-*",
+    "action.destructive_requires_name" : "false",
+    "cluster.max_shards_per_node" : "5000",
+    "xpack.monitoring.collection.enabled" : "true"
   },
-  &quot;transient&quot; : { }
+  "transient" : { }
 }
 
 </code></pre>
@@ -206,16 +206,16 @@ curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_cluster/settings?flat_set
 <pre><code>
 PUT _cluster/settings
 {
-  &quot;persistent&quot; : {
-    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,
-    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,
-    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,
-    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;
+  "persistent" : {
+    "action.auto_create_index" : "+.*,-*",
+    "action.destructive_requires_name" : "false",
+    "cluster.max_shards_per_node" : "5000",
+    "xpack.monitoring.collection.enabled" : "true"
   },
-  &quot;transient&quot; : { }
+  "transient" : { }
 }
 
-curl -u elastic:xxx -XPUT &quot;http://127.0.0.l:9200/_cluster/settings&quot; -H 'Content-Type: application/json' -d'{  &quot;persistent&quot; : {    &quot;action.auto_create_index&quot; : &quot;+.*,-*&quot;,    &quot;action.destructive_requires_name&quot; : &quot;false&quot;,    &quot;cluster.max_shards_per_node&quot; : &quot;5000&quot;,    &quot;xpack.monitoring.collection.enabled&quot; : &quot;true&quot;  },  &quot;transient&quot; : { }}'
+curl -u elastic:xxx -XPUT "http://127.0.0.l:9200/_cluster/settings" -H 'Content-Type: application/json' -d'{  "persistent" : {    "action.auto_create_index" : "+.*,-*",    "action.destructive_requires_name" : "false",    "cluster.max_shards_per_node" : "5000",    "xpack.monitoring.collection.enabled" : "true"  },  "transient" : { }}'
 
 </code></pre>
 <h2 id="二索引策略"><a class="header" href="#二索引策略">二、索引策略</a></h2>
@@ -223,22 +223,22 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.l:9200/_cluster/settings&quot; -H
 <pre><code>
 GET _ilm/policy
 
-curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_ilm/policy&quot;
+curl -u elastic:xxx -XGET "http://127.0.0.1:9200/_ilm/policy"
 
 </code></pre>
 <p>返回值如下:</p>
 <pre><code class="language-json">
 {
-  &quot;.items-default&quot; : {
-    &quot;version&quot; : 1,
-    &quot;modified_date&quot; : &quot;2021-12-30T06:02:12.763Z&quot;,
-    &quot;policy&quot; : {
-      &quot;phases&quot; : {
-        &quot;hot&quot; : {
-          &quot;min_age&quot; : &quot;0ms&quot;,
-          &quot;actions&quot; : {
-            &quot;rollover&quot; : {
-              &quot;max_size&quot; : &quot;50gb&quot;
+  ".items-default" : {
+    "version" : 1,
+    "modified_date" : "2021-12-30T06:02:12.763Z",
+    "policy" : {
+      "phases" : {
+        "hot" : {
+          "min_age" : "0ms",
+          "actions" : {
+            "rollover" : {
+              "max_size" : "50gb"
             }
           }
         }
@@ -254,13 +254,13 @@ curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_ilm/policy&quot;
 <pre><code>
 PUT _ilm/policy/.items-default
 {
-  &quot;policy&quot;: {
-    &quot;phases&quot;: {
-      &quot;hot&quot;: {
-        &quot;min_age&quot;: &quot;0ms&quot;,
-        &quot;actions&quot;: {
-          &quot;rollover&quot;: {
-            &quot;max_size&quot;: &quot;50gb&quot;
+  "policy": {
+    "phases": {
+      "hot": {
+        "min_age": "0ms",
+        "actions": {
+          "rollover": {
+            "max_size": "50gb"
           }
         }
       }
@@ -268,7 +268,7 @@ PUT _ilm/policy/.items-default
   }
 }
 
-curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_ilm/policy/.items-default&quot; -H 'Content-Type: application/json' -d'{  &quot;policy&quot;: {    &quot;phases&quot;: {      &quot;hot&quot;: {        &quot;min_age&quot;: &quot;0ms&quot;,        &quot;actions&quot;: {          &quot;rollover&quot;: {            &quot;max_size&quot;: &quot;50gb&quot;          }        }      }    }  }}'
+curl -u elastic:xxx -XPUT "http://127.0.0.1:9200/_ilm/policy/.items-default" -H 'Content-Type: application/json' -d'{  "policy": {    "phases": {      "hot": {        "min_age": "0ms",        "actions": {          "rollover": {            "max_size": "50gb"          }        }      }    }  }}'
 
 </code></pre>
 <h2 id="三索引模版"><a class="header" href="#三索引模版">三、索引模版</a></h2>
@@ -276,55 +276,55 @@ curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_ilm/policy/.items-default
 <pre><code>
 GET _template/*
 
-curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_template/*&quot;
+curl -u elastic:xxx -XGET "http://127.0.0.1:9200/_template/*"
 
 </code></pre>
 <p>返回结果如下:</p>
 <pre><code class="language-json">
 {
-  &quot;wksp_xxx_template&quot; : {
-    &quot;order&quot; : 0,
-    &quot;index_patterns&quot; : [
-      &quot;wksp_xxx-*&quot;
+  "wksp_xxx_template" : {
+    "order" : 0,
+    "index_patterns" : [
+      "wksp_xxx-*"
     ],
-    &quot;settings&quot; : {
-      &quot;index&quot; : {
-        &quot;lifecycle&quot; : {
-          &quot;name&quot; : &quot;es_rp4&quot;,
-          &quot;rollover_alias&quot; : &quot;wksp_xxx&quot;
+    "settings" : {
+      "index" : {
+        "lifecycle" : {
+          "name" : "es_rp4",
+          "rollover_alias" : "wksp_xxx"
         },
-        &quot;number_of_shards&quot; : &quot;1&quot;,
-        &quot;number_of_replicas&quot; : &quot;1&quot;
+        "number_of_shards" : "1",
+        "number_of_replicas" : "1"
       }
     },
-    &quot;mappings&quot; : {
-      &quot;dynamic_templates&quot; : [
+    "mappings" : {
+      "dynamic_templates" : [
         {
-          &quot;strings_as_keywords&quot; : {
-            &quot;mapping&quot; : {
-              &quot;type&quot; : &quot;keyword&quot;
+          "strings_as_keywords" : {
+            "mapping" : {
+              "type" : "keyword"
             },
-            &quot;match_mapping_type&quot; : &quot;string&quot;
+            "match_mapping_type" : "string"
           }
         }
       ],
-      &quot;date_detection&quot; : false,
-      &quot;properties&quot; : {
-        &quot;message&quot; : {
-          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
-          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
-          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
-          &quot;type&quot; : &quot;text&quot;
+      "date_detection" : false,
+      "properties" : {
+        "message" : {
+          "search_analyzer" : "ik_max_word",
+          "search_quote_analyzer" : "ik_max_word",
+          "analyzer" : "ik_max_word",
+          "type" : "text"
         },
-        &quot;title&quot; : {
-          &quot;search_analyzer&quot; : &quot;ik_max_word&quot;,
-          &quot;search_quote_analyzer&quot; : &quot;ik_max_word&quot;,
-          &quot;analyzer&quot; : &quot;ik_max_word&quot;,
-          &quot;type&quot; : &quot;text&quot;
+        "title" : {
+          "search_analyzer" : "ik_max_word",
+          "search_quote_analyzer" : "ik_max_word",
+          "analyzer" : "ik_max_word",
+          "type" : "text"
         }
       }
     },
-    &quot;aliases&quot; : { }
+    "aliases" : { }
   }
   
   ...
@@ -336,64 +336,64 @@ curl -u elastic:xxx -XGET &quot;http://127.0.0.1:9200/_template/*&quot;
 <pre><code>
 PUT _template/wksp_xxx_template
 {
-  &quot;order&quot;: 0,
-  &quot;index_patterns&quot;: [
-    &quot;wksp_xxx-*&quot;
+  "order": 0,
+  "index_patterns": [
+    "wksp_xxx-*"
   ],
-  &quot;settings&quot;: {
-    &quot;index&quot;: {
-      &quot;lifecycle&quot;: {
-        &quot;name&quot;: &quot;es_rp4&quot;,
-        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;
+  "settings": {
+    "index": {
+      "lifecycle": {
+        "name": "es_rp4",
+        "rollover_alias": "wksp_xxx"
       },
-      &quot;number_of_shards&quot;: &quot;1&quot;,
-      &quot;number_of_replicas&quot;: &quot;1&quot;
+      "number_of_shards": "1",
+      "number_of_replicas": "1"
     }
   },
-  &quot;mappings&quot;: {
-    &quot;dynamic_templates&quot;: [
+  "mappings": {
+    "dynamic_templates": [
       {
-        &quot;strings_as_keywords&quot;: {
-          &quot;mapping&quot;: {
-            &quot;type&quot;: &quot;keyword&quot;
+        "strings_as_keywords": {
+          "mapping": {
+            "type": "keyword"
           },
-          &quot;match_mapping_type&quot;: &quot;string&quot;
+          "match_mapping_type": "string"
         }
       }
     ],
-    &quot;date_detection&quot;: false,
-    &quot;properties&quot;: {
-      &quot;message&quot;: {
-        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
-        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
-        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
-        &quot;type&quot;: &quot;text&quot;
+    "date_detection": false,
+    "properties": {
+      "message": {
+        "search_analyzer": "ik_max_word",
+        "search_quote_analyzer": "ik_max_word",
+        "analyzer": "ik_max_word",
+        "type": "text"
       },
-      &quot;title&quot;: {
-        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,
-        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,
-        &quot;analyzer&quot;: &quot;ik_max_word&quot;,
-        &quot;type&quot;: &quot;text&quot;
+      "title": {
+        "search_analyzer": "ik_max_word",
+        "search_quote_analyzer": "ik_max_word",
+        "analyzer": "ik_max_word",
+        "type": "text"
       }
     }
   },
-  &quot;aliases&quot;: {}
+  "aliases": {}
 }
 
-curl -u elastic:xxx -XPUT &quot;http://127.0.0.1:9200/_template/wksp_xxx_template&quot; -H 'Content-Type: application/json' -d'{  &quot;order&quot;: 0,  &quot;index_patterns&quot;: [    &quot;wksp_xxx-*&quot;  ],  &quot;settings&quot;: {    &quot;index&quot;: {      &quot;lifecycle&quot;: {        &quot;name&quot;: &quot;es_rp4&quot;,        &quot;rollover_alias&quot;: &quot;wksp_xxx&quot;      },      &quot;number_of_shards&quot;: &quot;1&quot;,      &quot;number_of_replicas&quot;: &quot;1&quot;    }  },  &quot;mappings&quot;: {    &quot;dynamic_templates&quot;: [      {        &quot;strings_as_keywords&quot;: {          &quot;mapping&quot;: {            &quot;type&quot;: &quot;keyword&quot;          },          &quot;match_mapping_type&quot;: &quot;string&quot;        }      }    ],    &quot;date_detection&quot;: false,    &quot;properties&quot;: {      &quot;message&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      },      &quot;title&quot;: {        &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;search_quote_analyzer&quot;: &quot;ik_max_word&quot;,        &quot;analyzer&quot;: &quot;ik_max_word&quot;,        &quot;type&quot;: &quot;text&quot;      }    }  },  &quot;aliases&quot;: {}}'
+curl -u elastic:xxx -XPUT "http://127.0.0.1:9200/_template/wksp_xxx_template" -H 'Content-Type: application/json' -d'{  "order": 0,  "index_patterns": [    "wksp_xxx-*"  ],  "settings": {    "index": {      "lifecycle": {        "name": "es_rp4",        "rollover_alias": "wksp_xxx"      },      "number_of_shards": "1",      "number_of_replicas": "1"    }  },  "mappings": {    "dynamic_templates": [      {        "strings_as_keywords": {          "mapping": {            "type": "keyword"          },          "match_mapping_type": "string"        }      }    ],    "date_detection": false,    "properties": {      "message": {        "search_analyzer": "ik_max_word",        "search_quote_analyzer": "ik_max_word",        "analyzer": "ik_max_word",        "type": "text"      },      "title": {        "search_analyzer": "ik_max_word",        "search_quote_analyzer": "ik_max_word",        "analyzer": "ik_max_word",        "type": "text"      }    }  },  "aliases": {}}'
 
 </code></pre>
 <h2 id="四用户"><a class="header" href="#四用户">四、用户</a></h2>
 <p>elasticsearch 无法通过接口，获取用户密码，也就不存在用户密码备份</p>
-<p>如果需要在新集群添加用户，或者重置（内置用户）密码，可以使用 <code>POST /_security/user/username</code> </p>
+<p>如果需要在新集群添加用户，或者重置（内置用户）密码，可以使用 <code>POST /_security/user/username</code></p>
 <pre><code>POST /_security/user/jacknich
 {
-  &quot;password&quot; : &quot;l0ng-r4nd0m-p@ssw0rd&quot;,
-  &quot;roles&quot; : [ &quot;admin&quot;, &quot;other_role1&quot; ],
-  &quot;full_name&quot; : &quot;Jack Nicholson&quot;,
-  &quot;email&quot; : &quot;jacknich@example.com&quot;,
-  &quot;metadata&quot; : {
-    &quot;intelligence&quot; : 7
+  "password" : "l0ng-r4nd0m-p@ssw0rd",
+  "roles" : [ "admin", "other_role1" ],
+  "full_name" : "Jack Nicholson",
+  "email" : "jacknich@example.com",
+  "metadata" : {
+    "intelligence" : 7
   }
 }
 

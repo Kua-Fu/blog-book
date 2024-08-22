@@ -174,36 +174,36 @@
 <pre><code class="language-json">GET _cluster/pending_tasks
 
 {
-   &quot;tasks&quot;: []
+   "tasks": []
 }
 
 </code></pre>
 <p>通常，响应都是像这样的, 这意味着没有等待中的任务。如果你有一个罕见的集群在主节点出现瓶颈了，等待中的任务列表可能会像这样：</p>
 <pre><code class="language-json">
 {
-   &quot;tasks&quot;: [
+   "tasks": [
       {
-         &quot;insert_order&quot;: 101,
-         &quot;priority&quot;: &quot;URGENT&quot;,
-         &quot;source&quot;: &quot;create-index [foo_9], cause [api]&quot;,
-         &quot;time_in_queue_millis&quot;: 86,
-         &quot;time_in_queue&quot;: &quot;86ms&quot;
+         "insert_order": 101,
+         "priority": "URGENT",
+         "source": "create-index [foo_9], cause [api]",
+         "time_in_queue_millis": 86,
+         "time_in_queue": "86ms"
       },
       {
-         &quot;insert_order&quot;: 46,
-         &quot;priority&quot;: &quot;HIGH&quot;,
-         &quot;source&quot;: &quot;shard-started ([foo_2][1], node[tMTocMvQQgGCkj7QDHl3OA], [P],
-         s[INITIALIZING]), reason [after recovery from gateway]&quot;,
-         &quot;time_in_queue_millis&quot;: 842,
-         &quot;time_in_queue&quot;: &quot;842ms&quot;
+         "insert_order": 46,
+         "priority": "HIGH",
+         "source": "shard-started ([foo_2][1], node[tMTocMvQQgGCkj7QDHl3OA], [P],
+         s[INITIALIZING]), reason [after recovery from gateway]",
+         "time_in_queue_millis": 842,
+         "time_in_queue": "842ms"
       },
       {
-         &quot;insert_order&quot;: 45,
-         &quot;priority&quot;: &quot;HIGH&quot;,
-         &quot;source&quot;: &quot;shard-started ([foo_2][0], node[tMTocMvQQgGCkj7QDHl3OA], [P],
-         s[INITIALIZING]), reason [after recovery from gateway]&quot;,
-         &quot;time_in_queue_millis&quot;: 858,
-         &quot;time_in_queue&quot;: &quot;858ms&quot;
+         "insert_order": 45,
+         "priority": "HIGH",
+         "source": "shard-started ([foo_2][0], node[tMTocMvQQgGCkj7QDHl3OA], [P],
+         s[INITIALIZING]), reason [after recovery from gateway]",
+         "time_in_queue_millis": 858,
+         "time_in_queue": "858ms"
       }
   ]
 }
