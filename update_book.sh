@@ -57,4 +57,7 @@ mdbook build
 cd /Users/yz/work/github/blog-book/calculus
 mdbook build
 
+cd /Users/yz/work/github/blog-book/山海塔防
+mdbook build
+
 

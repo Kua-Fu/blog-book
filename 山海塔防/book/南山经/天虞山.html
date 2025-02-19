@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>天虞山</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../山海塔防.html"><strong aria-hidden="true">1.</strong> 山海塔防</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../山海经原文.html"><strong aria-hidden="true">1.1.</strong> 山海经原文</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../南山经.html"><strong aria-hidden="true">1.1.1.</strong> 南山经</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../南山经/䧿山.html"><strong aria-hidden="true">1.1.1.1.</strong> 䧿山</a></li><li class="chapter-item expanded "><a href="../南山经/柜山.html"><strong aria-hidden="true">1.1.1.2.</strong> 柜山</a></li><li class="chapter-item expanded "><a href="../南山经/天虞山.html" class="active"><strong aria-hidden="true">1.1.1.3.</strong> 天虞山</a></li></ol></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="天虞山"><a class="header" href="#天虞山">天虞山</a></h1>
+<p>南方第三列山系之第一座山，叫做天虞山，</p>
+<pre><code>山下有很多水，不能上去。
+</code></pre>
+<p>往东五百里，叫做祷过山，</p>
+<pre><code>山上有很多金属和玉石，山下有很多犀牛和兕，大象也有很多。
+
+山中有一种禽鸟，形状像䴔䴖却长着白色的脑袋，三只脚，长着人的面孔，名字叫瞿如，它发出的叫声便是它的名字。
+
+垠水从这座山发源，然后向南流入大海。
+
+山中有虎蛟，形状像鱼的身子却长着蛇的尾巴，发出的声音如同鸳鸯鸣叫，人吃了它就不会得浮肿病，可以治愈痔疮。
+</code></pre>
+<p>再往东五百里，叫做丹穴山，</p>
+<pre><code>山上有很多金属和玉石。
+
+丹水从这座山发源，然后向南流入渤海。
+
+山中有一种禽鸟，形状像鸡，身上有五种色彩的花纹，名字叫凤凰，头上的花纹是德，翅膀上的花纹是义，背上的花纹是礼，胸口的花纹是仁，腹部的花纹是信。
+
+这只鸟，饮食悠然自得，自己唱歌跳舞，一出现天下就安宁了
+</code></pre>
+<p>再往东五百里，叫做发爽山，</p>
+<pre><code>没有花草树木，有很多水，还有很多白猿。
+
+泛水从这座山发源，然后向南流入渤海。
+</code></pre>
+<p>再往东四百里，就到了旄山的尾部。</p>
+<pre><code>它的南边有个山谷，叫做育遗谷，那里有很多怪鸟，南风从这里产生。
+</code></pre>
+<p>再往东四百里，就到了非山的头部，</p>
+<pre><code>山上有很多金属和玉石，没有水，山下有很多蝮虫。
+</code></pre>
+<p>再往东五百里，叫做阳夹山，</p>
+<pre><code>没有花草树木，有很多水。
+</code></pre>
+<p>再往东五百里，叫做灌湘山，</p>
+<pre><code>山上有很多树木，但没有花草，有很多怪鸟，没有野兽。
+</code></pre>
+<p>再往东五百里，叫做鸡山，</p>
+<pre><code>山上有很多金属，山下有很多丹雘。
+
+黑水从这座山发源，然后向南流入大海。
+
+水中有一种 tuán 鱼，形状像鲫鱼但长着猪毛，发出的声音如同小猪，一出现天下就会大旱。
+</code></pre>
+<p>再往东四百里，叫做令丘山，</p>
+<pre><code>没有花草树木，有很多火焰。
+
+它的南面有个山谷，叫中谷，东北风从这里产生。
+
+山中有一种禽鸟，形状像猫头鹰，长着人的面孔，四只眼睛而有耳朵，名称是 yú ，它发出的叫声便是它的名字，一出现天下就会发生大旱。
+</code></pre>
+<p>再往东三百七十里，叫做仑者山，</p>
+<pre><code>山上有很多金属和玉石，山下有很多青雘。
+
+山中有一种树木，形状像谷物却长着红色的纹理，它的汁液像漆，味道像糖，人吃了它就不觉得饥饿，可以用来解除疲劳，名字叫白䓘 gāo，可以用来给玉石染色。
+</code></pre>
+<p>再往东五百八十里，叫做禺稿山，</p>
+<pre><code>山上有很多怪兽，还有很多大蛇。
+</code></pre>
+<p>向东五百八十里，叫做南禺山，</p>
+<pre><code>山上有很多金属和玉石，山下有很多水。
+
+有个洞穴，到了春天就流进去，夏天就流出来，冬天就关闭。
+
+佐水从这座山发源，然后向东南流入大海。有凤凰和鹓 yuān 雏。
+</code></pre>
+<p>南方第三列山系，从天虞山到南禺山，一共十四座山，六千五百三十里。这些山的山神的都是龙的身子人的脸。他们的祭祀都用一只白狗，祭祀的米用稻米。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../南山经/柜山.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../南山经/柜山.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
