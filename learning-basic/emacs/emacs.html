@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Emacs - learning-basic</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Introducation</a></li><li class="chapter-item "><a href="../vim/vim.html"><strong aria-hidden="true">2.</strong> Vim</a></li><li class="chapter-item expanded "><a href="../emacs/emacs.html" class="active"><strong aria-hidden="true">3.</strong> Emacs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../emacs/remote_file.html"><strong aria-hidden="true">3.1.</strong> remote files</a></li><li class="chapter-item "><a href="../emacs/project.html"><strong aria-hidden="true">3.2.</strong> project</a></li></ol></li><li class="chapter-item "><a href="../vs/vs.html"><strong aria-hidden="true">4.</strong> vscode</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../vs/debug_c.html"><strong aria-hidden="true">4.1.</strong> MacOS vscode debug C/C++ with makefile</a></li></ol></li><li class="chapter-item "><a href="../git/git.html"><strong aria-hidden="true">5.</strong> Git</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../git/git_proxy.html"><strong aria-hidden="true">5.1.</strong> set proxy for github</a></li><li class="chapter-item "><a href="../git/git_del.html"><strong aria-hidden="true">5.2.</strong> delete remote branch</a></li></ol></li><li class="chapter-item "><a href="../regular_expression/regular_expression.html"><strong aria-hidden="true">6.</strong> RegularExpression</a></li><li class="chapter-item "><a href="../tmux/tmux.html"><strong aria-hidden="true">7.</strong> tmux</a></li><li class="chapter-item "><a href="../markdown/markdown.html"><strong aria-hidden="true">8.</strong> markdown</a></li><li class="chapter-item "><a href="../mdbook/mdbook.html"><strong aria-hidden="true">9.</strong> mdbook</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../mdbook/giscus.html"><strong aria-hidden="true">9.1.</strong> comment system: giscus</a></li><li class="chapter-item "><a href="../mdbook/flag_counter.html"><strong aria-hidden="true">9.2.</strong> visitor analytics: flag counter</a></li><li class="chapter-item "><a href="../mdbook/blog_license.html"><strong aria-hidden="true">9.3.</strong> blog license: creativecommons</a></li></ol></li><li class="chapter-item "><a href="../insomnia/insomnia.html"><strong aria-hidden="true">10.</strong> insomnia</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">11.</strong> MacOS</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../os/open_file.html"><strong aria-hidden="true">11.1.</strong> 使用绝对路径，打开文件</a></li><li class="chapter-item "><a href="../mdbook/install_xcode.html"><strong aria-hidden="true">11.2.</strong> after MacOS upgrade, can not use git</a></li><li class="chapter-item "><a href="../os/inertial_scroll.html"><strong aria-hidden="true">11.3.</strong> 多个窗口滑动，会出现漂移</a></li></ol></li><li class="chapter-item "><a href="../chrome/chrome.html"><strong aria-hidden="true">12.</strong> Chrome</a></li><li class="chapter-item "><a href="../macos/macos.html"><strong aria-hidden="true">13.</strong> Macos</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../macos/delete_360.html"><strong aria-hidden="true">13.1.</strong> 彻底删除企业版360</a></li></ol></li><li class="chapter-item "><a href="../docker/docker.html"><strong aria-hidden="true">14.</strong> Docker</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../docker/basic.html"><strong aria-hidden="true">14.1.</strong> basic</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../docker/basic/image_ls.html"><strong aria-hidden="true">14.1.1.</strong> 列出镜像</a></li></ol></li><li class="chapter-item "><a href="../docker/rancher.html"><strong aria-hidden="true">14.2.</strong> rancher</a></li></ol></li><li class="chapter-item "><a href="../make/make.html"><strong aria-hidden="true">15.</strong> make</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make/overview.html"><strong aria-hidden="true">15.1.</strong> 概述</a></li><li class="chapter-item "><a href="../make/introducation.html"><strong aria-hidden="true">15.2.</strong> makefile介绍</a></li><li class="chapter-item "><a href="../make/rules.html"><strong aria-hidden="true">15.3.</strong> 书写规则</a></li><li class="chapter-item "><a href="../make/recipes.html"><strong aria-hidden="true">15.4.</strong> 书写命令</a></li><li class="chapter-item "><a href="../make/var.html"><strong aria-hidden="true">15.5.</strong> 使用变量</a></li><li class="chapter-item "><a href="../make/condition.html"><strong aria-hidden="true">15.6.</strong> 使用条件判断</a></li><li class="chapter-item "><a href="../make/func.html"><strong aria-hidden="true">15.7.</strong> 使用函数</a></li><li class="chapter-item "><a href="../make/invoke.html"><strong aria-hidden="true">15.8.</strong> make的运行</a></li><li class="chapter-item "><a href="../make/implicit_rule.html"><strong aria-hidden="true">15.9.</strong> 隐含规则</a></li><li class="chapter-item "><a href="../make/archives.html"><strong aria-hidden="true">15.10.</strong> 使用make更新函数库文件</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">learning-basic</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="emacs"><a class="header" href="#emacs">Emacs</a></h1>
+<h2 id="1-查看文档"><a class="header" href="#1-查看文档">1. 查看文档</a></h2>
+<p>在 Emacs 中，可以使用 C-h b 快捷键来查看当前缓冲区可用的所有快捷键。这个命令会列出当前缓冲区中定义的所有快捷键和它们的描述。</p>
+<p>另外，你也可以使用 C-h k 快捷键来查看任何一个快捷键的功能。只需按下 C-h k，然后输入要查看的快捷键即可。Emacs 会显示该快捷键的功能和用法。</p>
+<p>如果想要全面了解 Emacs 的使用方法，推荐阅读 Emacs 的官方文档，可以通过 C-h r 快捷键打开 Emacs 自带的 Info 文档阅读器，并查看 Emacs 的完整使用手册。</p>
+<h2 id="2-多行行首添加字符"><a class="header" href="#2-多行行首添加字符">2. 多行行首添加字符</a></h2>
+<blockquote>
+<p>参考</p>
+<p><a href="https://emacs.stackexchange.com/questions/11/how-to-add-a-prefix-to-every-line">How to add a prefix to every line?</a></p>
+</blockquote>
+<p>使用命令 <code>M-x string-rectangle</code>, 绑定的快捷键是 <code>C-x r t</code></p>
+<p>流程:</p>
+<ul>
+<li>
+<p>使用 <code>set-mark-command</code>, 绑定快捷键是 <code>M-SPC</code> 选定要修改的行</p>
+</li>
+<li>
+<p>使用 <code>M-x string-rectangle</code> ，添加指定字符串</p>
+</li>
+<li>
+<p><code>Enter</code> 后，所有选定行变化</p>
+</li>
+</ul>
+<h2 id="3-如何使用emacs在多行代码的每一行后面都添加一个空行"><a class="header" href="#3-如何使用emacs在多行代码的每一行后面都添加一个空行">3. 如何使用emacs，在多行代码的每一行后面，都添加一个空行</a></h2>
+<p>在 Emacs 中 \n 表示一个字符，而不是一个换行符。要在 Emacs 中表示换行符，需要使用 C-q C-j。因此，如果您想在每一行后面添加一个换行符，请按照以下步骤进行操作：</p>
+<ul>
+<li>
+<p>打开要编辑的文件。</p>
+<p>移动光标到要添加空行的第一行。</p>
+<p>按下 C-SPC (Ctrl + Space) 开始标记。</p>
+<p>移动光标到要添加空行的最后一行。</p>
+<p>按下 M-x。</p>
+</li>
+<li>
+<p>输入 replace-regexp 并按下 Enter 键。</p>
+<p>输入 C-q C-j 并按下 Enter 键。</p>
+<p>输入 C-q C-j C-q C-j 并按下 Enter 键。</p>
+</li>
+<li>
+<p>在确认提示中按下 y 键。</p>
+<p>这将在每一行后面添加一个换行符。</p>
+</li>
+</ul>
+<p>⚠️ 输入 C-q C-j 是指按下 Ctrl-q Ctrl-j</p>
+<h2 id="4-diffediff-比较文本不同"><a class="header" href="#4-diffediff-比较文本不同">4. diff/ediff 比较文本不同</a></h2>
+<blockquote>
+<p>参考</p>
+<p><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Comparing-Files.html">Comparing Files</a></p>
+</blockquote>
+<p>⚠️ ediff 不能一次性展示所有不同处的高亮，</p>
+<p>可以使用session中的</p>
+<div class="table-wrapper"><table><thead><tr><th>命令</th><th>说明</th></tr></thead><tbody>
+<tr><td>p</td><td>(表示上一个差异)</td></tr>
+<tr><td>n</td><td>(表示下一个差异）</td></tr>
+<tr><td>j</td><td>(前面可以添加数字，例如：3j 表示跳转到第三个差异之处)</td></tr>
+<tr><td>q</td><td>退出session</td></tr>
+</tbody></table>
+</div>
+<h2 id="5-emacs-如何查看当前打开的窗口使用了哪些package"><a class="header" href="#5-emacs-如何查看当前打开的窗口使用了哪些package">5. emacs 如何查看当前打开的窗口，使用了哪些package</a></h2>
+<p>在 Emacs 中，您可以使用以下命令来查看当前打开的窗口以及使用了哪些包（packages）：</p>
+<p>打开 Emacs，并进入命令行模式（“M-x”）。</p>
+<p>输入“describe-mode”并按下回车键，这将打开一个新的窗口，其中包含当前正在使用的 major mode 和 minor modes 的详细信息。</p>
+<p>在这个窗口中，您可以看到当前打开的所有窗口以及它们所使用的 mode。此外，您还可以看到当前 mode 所使用的所有 minor modes 和加载的所有包。</p>
+<p>要查看特定窗口中使用的包，请先将光标移动到该窗口中，然后使用上述步骤查看它所使用的 mode 和加载的包。</p>
+<p>请注意，如果您使用了包管理器（如 ELPA 或 MELPA），则可以使用该管理器来列出和管理已安装的包，并查看当前正在使用的包。例如，使用“M-x package-list-packages”命令可以打开包管理器并列出所有可用的包，并且使用“M-x package-menu-quick-describe”命令可以查看特定包的描述和详细信息。</p>
+<h2 id="6-lsp-模式如何重新加载"><a class="header" href="#6-lsp-模式如何重新加载">6. lsp 模式，如何重新加载？</a></h2>
+<p>在 Emacs 中，使用 LSP (Language Server Protocol) 模式的时候，如果需要重启 LSP Server，你可以按照以下步骤操作：</p>
+<ol>
+<li>
+<p>打开你正在使用 LSP 的文件</p>
+</li>
+<li>
+<p>执行 <code>M-x lsp-restart-workspace</code> 命令。其中，<code>M-x</code> 代表调用 Emacs 的命令，<code>lsp-restart-workspace</code> 是重启 LSP 的命令。一般情况下，M 键（或者 Esc 键）和 x 键同时按下即可调用 <code>M-x</code>。</p>
+</li>
+</ol>
+<p>这样就可以重启 LSP Server。如果你希望关闭 LSP Server，并且不再为当前的工作区启动，你可以使用 <code>M-x lsp-disconnect</code> 命令。</p>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../vim/vim.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../emacs/remote_file.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../vim/vim.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../emacs/remote_file.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>

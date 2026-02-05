@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博书 - Blog Book</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            border-color: var(--primary-color);
+        }
+        .card h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+        .card p {
+            margin: 0.5rem 0 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 我的知识库</h1>
+    <div class="grid" id="book-grid">
+        <!-- 书籍列表将由构建脚本或手动维护 -->
+        <a href="calculus/" class="card"><h2>微积分 (Calculus)</h2><p>数学笔记与练习</p></a>
+        <a href="poetry/" class="card"><h2>诗歌 (Poetry)</h2><p>诗词文集</p></a>
+        <a href="learning-basic/" class="card"><h2>基础学习</h2><p>计算机基础知识</p></a>
+        <a href="learning-language/" class="card"><h2>语言学习</h2><p>编程语言探索</p></a>
+        <a href="learning-algorithm/" class="card"><h2>算法学习</h2><p>算法与数据结构</p></a>
+        <a href="learning-compile/" class="card"><h2>编译原理</h2><p>探索编译器背后的秘密</p></a>
+        <a href="learning-os/" class="card"><h2>操作系统</h2><p>底层机制解析</p></a>
+        <a href="learning-network/" class="card"><h2>网络协议</h2><p>计算机网络知识</p></a>
+        <a href="learning-middleware/" class="card"><h2>中间件</h2><p>各类中间件学习</p></a>
+        <a href="learning-observe/" class="card"><h2>观测监控</h2><p>可观测性技术实践</p></a>
+        <a href="elastic/" class="card"><h2>Elasticsearch</h2><p>搜索技术深度进阶</p></a>
+        <a href="elastic-101/" class="card"><h2>Elastic 101</h2><p>Elastic 入门指南</p></a>
+        <a href="literature/" class="card"><h2>文学</h2><p>文学阅读笔记</p></a>
+        <a href="shijing/" class="card"><h2>诗经</h2><p>诗经研读</p></a>
+        <a href="sanguozhi/" class="card"><h2>三国志</h2><p>历史阅读</p></a>
+        <a href="毛选/" class="card"><h2>毛选</h2><p>经典著作阅读</p></a>
+        <a href="crafting-interpreters-zh/" class="card"><h2>解释器构造</h2><p>Crafting Interpreters 中文版</p></a>
+        <a href="reading-technical/" class="card"><h2>技术阅读</h2><p>技术书籍点评与总结</p></a>
+        <a href="work-reading/" class="card"><h2>工作相关阅读</h2><p>职业技能与实践</p></a>
+        <a href="山海塔防/" class="card"><h2>山海塔防</h2><p>项目开发记录</p></a>
+    </div>
+</body>
+</html>

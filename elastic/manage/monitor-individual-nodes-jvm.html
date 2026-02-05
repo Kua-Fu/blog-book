@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4717236929129160"
+     crossorigin="anonymous"></script>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>jvm部分 - elastic</title>
+
+
+        <!-- Custom HTML head -->
+	<script src="https://static.guance.com/browser-sdk/v2/dataflux-rum.js" type="text/javascript"></script>
+	<script>
+	window.DATAFLUX_RUM &&
+	window.DATAFLUX_RUM.init({
+	applicationId: 'thewind_blog',
+	datakitOrigin: 'https://www.poetries.cn/rum', 
+	env: 'production',
+	version: '1.0.0',
+	trackInteractions: true,
+	traceType: 'ddtrace',
+	allowedTracingOrigins: [/https:\/\/.*\.poetries\.cn/, "https://poetries.cn"], 
+	})
+	</script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN1K84KRS"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MMN1K84KRS');
+        </script>
+        
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">简介</a></li><li class="chapter-item affix "><li class="part-title">概览</li><li class="chapter-item "><a href="../perface.html"><strong aria-hidden="true">1.</strong> 前言</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../perface/who-should-read.html"><strong aria-hidden="true">1.1.</strong> 谁应该读这本书</a></li><li class="chapter-item "><a href="../perface/why-we-write-this-book.html"><strong aria-hidden="true">1.2.</strong> 为什么我们要写这本书</a></li><li class="chapter-item "><a href="../perface/how-to-read-this-book.html"><strong aria-hidden="true">1.3.</strong> 如何读这本书</a></li><li class="chapter-item "><a href="../perface/acknowledgment.html"><strong aria-hidden="true">1.4.</strong> 鸣谢</a></li></ol></li><li class="chapter-item "><li class="part-title">基础</li><li class="chapter-item "><a href="../basic/basic.html"><strong aria-hidden="true">2.</strong> 基础入门</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/intro.html"><strong aria-hidden="true">2.1.</strong> 你知道的, 为了搜索…​</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/running-elastic.html"><strong aria-hidden="true">2.1.1.</strong> 安装使用</a></li><li class="chapter-item "><a href="../basic/document-oriented.html"><strong aria-hidden="true">2.1.2.</strong> 面向文档</a></li><li class="chapter-item "><a href="../basic/find-your-feet.html"><strong aria-hidden="true">2.1.3.</strong> 适应新环境</a></li><li class="chapter-item "><a href="../basic/index-employee-document.html"><strong aria-hidden="true">2.1.4.</strong> 索引员工文档</a></li><li class="chapter-item "><a href="../basic/retrieving-a-document.html"><strong aria-hidden="true">2.1.5.</strong> 检索文档</a></li><li class="chapter-item "><a href="../basic/search-lite.html"><strong aria-hidden="true">2.1.6.</strong> 轻量搜索</a></li><li class="chapter-item "><a href="../basic/search-with-query-dsl.html"><strong aria-hidden="true">2.1.7.</strong> 使用查询表达式搜索</a></li><li class="chapter-item "><a href="../basic/more-complicated-search.html"><strong aria-hidden="true">2.1.8.</strong> 更复杂的搜索</a></li><li class="chapter-item "><a href="../basic/full-text-search.html"><strong aria-hidden="true">2.1.9.</strong> 全文搜索</a></li><li class="chapter-item "><a href="../basic/phrase-search.html"><strong aria-hidden="true">2.1.10.</strong> 短语搜索</a></li><li class="chapter-item "><a href="../basic/highlighting-intro.html"><strong aria-hidden="true">2.1.11.</strong> 高亮搜索</a></li><li class="chapter-item "><a href="../basic/analytics.html"><strong aria-hidden="true">2.1.12.</strong> 分析</a></li><li class="chapter-item "><a href="../basic/conclusion.html"><strong aria-hidden="true">2.1.13.</strong> 小结</a></li><li class="chapter-item "><a href="../basic/distributed_nature.html"><strong aria-hidden="true">2.1.14.</strong> 分布式特性</a></li><li class="chapter-item "><a href="../basic/next-step.html"><strong aria-hidden="true">2.1.15.</strong> 后续步骤</a></li></ol></li><li class="chapter-item "><a href="../basic/distributed-cluster.html"><strong aria-hidden="true">2.2.</strong> 集群内的原理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/empty-cluster.html"><strong aria-hidden="true">2.2.1.</strong> 空集群</a></li><li class="chapter-item "><a href="../basic/cluster-health.html"><strong aria-hidden="true">2.2.2.</strong> 集群健康</a></li><li class="chapter-item "><a href="../basic/add-an-index.html"><strong aria-hidden="true">2.2.3.</strong> 添加索引</a></li><li class="chapter-item "><a href="../basic/add-failover.html"><strong aria-hidden="true">2.2.4.</strong> 添加故障转移</a></li><li class="chapter-item "><a href="../basic/scale-horizontally.html"><strong aria-hidden="true">2.2.5.</strong> 水平扩容</a></li><li class="chapter-item "><a href="../basic/coping-with-failure.html"><strong aria-hidden="true">2.2.6.</strong> 应对故障</a></li></ol></li><li class="chapter-item "><a href="../basic/data-in-data-out.html"><strong aria-hidden="true">2.3.</strong> 数据输入和输出</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/document.html"><strong aria-hidden="true">2.3.1.</strong> 什么是文档</a></li><li class="chapter-item "><a href="../basic/document-metadata.html"><strong aria-hidden="true">2.3.2.</strong> 文档元数据</a></li><li class="chapter-item "><a href="../basic/index-doc.html"><strong aria-hidden="true">2.3.3.</strong> 索引文档</a></li><li class="chapter-item "><a href="../basic/get-doc.html"><strong aria-hidden="true">2.3.4.</strong> 取回一个文档</a></li><li class="chapter-item "><a href="../basic/doc-exists.html"><strong aria-hidden="true">2.3.5.</strong> 检查文档是否存在</a></li><li class="chapter-item "><a href="../basic/update-doc.html"><strong aria-hidden="true">2.3.6.</strong> 更新整个文档</a></li><li class="chapter-item "><a href="../basic/create-doc.html"><strong aria-hidden="true">2.3.7.</strong> 创建新文档</a></li><li class="chapter-item "><a href="../basic/delete-doc.html"><strong aria-hidden="true">2.3.8.</strong> 删除文档</a></li><li class="chapter-item "><a href="../basic/version-control.html"><strong aria-hidden="true">2.3.9.</strong> 处理冲突</a></li><li class="chapter-item "><a href="../basic/optimistic-concurrency-control.html"><strong aria-hidden="true">2.3.10.</strong> 乐观并发控制</a></li><li class="chapter-item "><a href="../basic/partial-update.html"><strong aria-hidden="true">2.3.11.</strong> 文档的部分更新</a></li><li class="chapter-item "><a href="../basic/retrieving-multiple-docs.html"><strong aria-hidden="true">2.3.12.</strong> 取回多个文档</a></li><li class="chapter-item "><a href="../basic/bulk.html"><strong aria-hidden="true">2.3.13.</strong> 代价较小的批量操作</a></li></ol></li><li class="chapter-item "><a href="../basic/distributed-docs.html"><strong aria-hidden="true">2.4.</strong> 分布式文档存储</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/routing-value.html"><strong aria-hidden="true">2.4.1.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item "><a href="../basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">2.4.2.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item "><a href="../basic/distrib-write.html"><strong aria-hidden="true">2.4.3.</strong> 新建、索引和删除文档</a></li><li class="chapter-item "><a href="../basic/distrib-read.html"><strong aria-hidden="true">2.4.4.</strong> 取回一个文档</a></li><li class="chapter-item "><a href="../basic/partial-update-to-a-doc.html"><strong aria-hidden="true">2.4.5.</strong> 局部更新文档</a></li><li class="chapter-item "><a href="../basic/distrib-multi-doc.html"><strong aria-hidden="true">2.4.6.</strong> 多文档模式</a></li></ol></li><li class="chapter-item "><a href="../basic/search.html"><strong aria-hidden="true">2.5.</strong> 搜索-最基本的工具</a></li><li class="chapter-item "><a href="../basic/mapping-analysis.html"><strong aria-hidden="true">2.6.</strong> 映射和分析</a></li><li class="chapter-item "><a href="../basic/full-search-body.html"><strong aria-hidden="true">2.7.</strong> 请求体查询</a></li><li class="chapter-item "><a href="../basic/sorting.html"><strong aria-hidden="true">2.8.</strong> 排序与相关性</a></li><li class="chapter-item "><a href="../basic/distributed-search.html"><strong aria-hidden="true">2.9.</strong> 执行分布式检索</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/query-phase.html"><strong aria-hidden="true">2.9.1.</strong> 查询阶段</a></li><li class="chapter-item "><a href="../basic/fetch-phase.html"><strong aria-hidden="true">2.9.2.</strong> 取回阶段</a></li><li class="chapter-item "><a href="../basic/search-options.html"><strong aria-hidden="true">2.9.3.</strong> 搜索选项</a></li><li class="chapter-item "><a href="../basic/scroll.html"><strong aria-hidden="true">2.9.4.</strong> 查询游标</a></li></ol></li><li class="chapter-item "><a href="../basic/index-management.html"><strong aria-hidden="true">2.10.</strong> 索引管理</a></li><li class="chapter-item "><a href="../basic/inside-a-shard.html"><strong aria-hidden="true">2.11.</strong> 分片内部原理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../basic/making-text-searchable.html"><strong aria-hidden="true">2.11.1.</strong> 使文本可被搜索</a></li><li class="chapter-item "><a href="../basic/dynamic-indices.html"><strong aria-hidden="true">2.11.2.</strong> 动态更新索引</a></li><li class="chapter-item "><a href="../basic/near-real-time.html"><strong aria-hidden="true">2.11.3.</strong> 近实时搜索</a></li><li class="chapter-item "><a href="../basic/translog.html"><strong aria-hidden="true">2.11.4.</strong> 持久化变更</a></li><li class="chapter-item "><a href="../basic/merge-process.html"><strong aria-hidden="true">2.11.5.</strong> 段合并</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">深入搜索</li><li class="chapter-item affix "><li class="part-title">处理人类语言</li><li class="chapter-item "><a href="../languages/index.html"><strong aria-hidden="true">3.</strong> 概览</a></li><li class="chapter-item "><a href="../languages/language-intro.html"><strong aria-hidden="true">4.</strong> 开始处理各种语言</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../languages/using-language-analyzers.html"><strong aria-hidden="true">4.1.</strong> 使用语言分析器</a></li><li class="chapter-item "><a href="../languages/config-language-analyzers.html"><strong aria-hidden="true">4.2.</strong> 配置语言分析器</a></li><li class="chapter-item "><a href="../languages/language-pitfalls.html"><strong aria-hidden="true">4.3.</strong> 混合语言的陷阱</a></li><li class="chapter-item "><a href="../languages/one-language-docs.html"><strong aria-hidden="true">4.4.</strong> 每份文档一种语言</a></li><li class="chapter-item "><a href="../lanaugages/one-language-field.html"><strong aria-hidden="true">4.5.</strong> 每个域一种语言</a></li><li class="chapter-item "><a href="../languages/mixed-language-fields.html"><strong aria-hidden="true">4.6.</strong> 混合语言域</a></li></ol></li><li class="chapter-item "><li class="part-title">聚合</li><li class="chapter-item affix "><li class="part-title">地理位置</li><li class="chapter-item affix "><li class="part-title">数据建模</li><li class="chapter-item affix "><li class="part-title">管理、监控和部署</li><li class="chapter-item expanded "><a href="../manage/administration.html"><strong aria-hidden="true">5.</strong> 管理、监控入门</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../manage/cluster-admin.html"><strong aria-hidden="true">5.1.</strong> 监控</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../manage/marval.html"><strong aria-hidden="true">5.1.1.</strong> Marval监控</a></li><li class="chapter-item "><a href="../manage/cluster-health.html"><strong aria-hidden="true">5.1.2.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes.html"><strong aria-hidden="true">5.1.3.</strong> 监控单个节点</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">5.1.3.1.</strong> 索引部分</a></li><li class="chapter-item "><a href="../manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">5.1.3.2.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../manage/monitor-individual-nodes-jvm.html" class="active"><strong aria-hidden="true">5.1.3.3.</strong> jvm部分</a></li><li class="chapter-item "><a href="../manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">5.1.3.4.</strong> 线程池部分</a></li><li class="chapter-item "><a href="../manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">5.1.3.5.</strong> 文件系统和网络部分</a></li><li class="chapter-item "><a href="../manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">5.1.3.6.</strong> 断路器部分</a></li></ol></li><li class="chapter-item "><a href="../manage/cluster-stats.html"><strong aria-hidden="true">5.1.4.</strong> 集群统计</a></li><li class="chapter-item "><a href="../manage/index-stats.html"><strong aria-hidden="true">5.1.5.</strong> 索引统计</a></li><li class="chapter-item "><a href="../manage/pending-task.html"><strong aria-hidden="true">5.1.6.</strong> 等待中的任务</a></li></ol></li></ol></li><li class="chapter-item "><li class="part-title">考试认证</li><li class="chapter-item "><a href="../cert/deploy.html"><strong aria-hidden="true">6.</strong> 集群搭建</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cert/deploy-single-node.html"><strong aria-hidden="true">6.1.</strong> 单节点集群搭建</a></li><li class="chapter-item "><a href="../cert/mac-deploy-single-node.html"><strong aria-hidden="true">6.2.</strong> mac 单节点集群搭建</a></li><li class="chapter-item "><a href="../cert/deploy-cluster.html"><strong aria-hidden="true">6.3.</strong> 多节点集群搭建</a></li></ol></li><li class="chapter-item "><a href="../cert/management.html"><strong aria-hidden="true">7.</strong> 集群管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cert/hot-warm-cold.html"><strong aria-hidden="true">7.1.</strong> 热温冷架构</a></li><li class="chapter-item "><a href="../cert/searchable.html"><strong aria-hidden="true">7.2.</strong> 可搜索快照</a></li><li class="chapter-item "><a href="../cert/search-remote.html"><strong aria-hidden="true">7.3.</strong> 跨集群查询、复制</a></li></ol></li><li class="chapter-item "><a href="../cert/index.html"><strong aria-hidden="true">8.</strong> 索引管理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cert/index/data-stream.html"><strong aria-hidden="true">8.1.</strong> 数据流</a></li><li class="chapter-item "><a href="../cert/index/runtime-field.html"><strong aria-hidden="true">8.2.</strong> runtime字段</a></li><li class="chapter-item "><a href="../cert/index/custom-analyzer.html"><strong aria-hidden="true">8.3.</strong> 自定义分词器</a></li><li class="chapter-item "><a href="../cert/index/data-type.html"><strong aria-hidden="true">8.4.</strong> 内部结构</a></li><li class="chapter-item "><a href="../cert/index/painless.html"><strong aria-hidden="true">8.5.</strong> painless脚本</a></li><li class="chapter-item "><a href="../cert/index/custom-score.html"><strong aria-hidden="true">8.6.</strong> 自定义评分</a></li></ol></li><li class="chapter-item "><a href="../cert/exercise.html"><strong aria-hidden="true">9.</strong> 真题解析</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cert/exercise1.html"><strong aria-hidden="true">9.1.</strong> 真题1</a></li><li class="chapter-item "><a href="../cert/exercise2.html"><strong aria-hidden="true">9.2.</strong> 真题2</a></li><li class="chapter-item "><a href="../cert/exercise3.html"><strong aria-hidden="true">9.3.</strong> 真题3</a></li><li class="chapter-item "><a href="../cert/exercise4.html"><strong aria-hidden="true">9.4.</strong> 真题4</a></li><li class="chapter-item "><a href="../cert/exercise5.html"><strong aria-hidden="true">9.5.</strong> 7.13真题</a></li></ol></li><li class="chapter-item "><li class="part-title">日志易</li><li class="chapter-item "><a href="../rizhiyi/index.html"><strong aria-hidden="true">10.</strong> 基础</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../rizhiyi/intro.html"><strong aria-hidden="true">10.1.</strong> 简介</a></li><li class="chapter-item "><a href="../rizhiyi/resume.html"><strong aria-hidden="true">10.2.</strong> 命令简述</a></li><li class="chapter-item "><a href="../rizhiyi/search.html"><strong aria-hidden="true">10.3.</strong> 搜索</a></li><li class="chapter-item "><a href="../rizhiyi/search_command.html"><strong aria-hidden="true">10.4.</strong> 搜索命令函数</a></li><li class="chapter-item "><a href="../rizhiyi/stats.html"><strong aria-hidden="true">10.5.</strong> stats相关函数</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">elastic</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/Kua-Fu/blog-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="jvm部分"><a class="header" href="#jvm部分">jvm部分</a></h1>
+<p>jvm 部分包括了运行 Elasticsearch 的 JVM 进程一些很关键的信息。最重要的，它包括了垃圾回收的细节，这对你的 Elasticsearch 集群的稳定性有着重大影响。</p>
+<blockquote>
+<p><strong>垃圾回收入门</strong></p>
+<p>在我们描述统计值之前，先上一门速成课程讲解垃圾回收以及它对 Elasticsearch 的影响是非常有用的。如果你对 JVM 的垃圾回收很熟悉，请跳过这段。</p>
+<p>Java 是一门 垃圾回收 语言，也就是说程序员不用手动管理内存分配和回收。程序员只管写代码，然后 Java 虚拟机（JVM）按需分配内存，然后在稍后不再需要的时候清理这部分内存。</p>
+<p>当内存分配给一个 JVM 进程，它是分配到一个大块里，这个块叫做 堆 。JVM 把堆分成两组，用 代 来表示</p>
+<p><strong>新生代（或者伊甸园）</strong></p>
+<p>新实例化的对象分配的空间。新生代空间通常都非常小，一般在 100 MB–500 MB。新生代也包含两个 幸存 空间。</p>
+<p><strong>老生代</strong></p>
+<p>较老的对象存储的空间。这些对象预计将长期留存并持续上很长一段时间。老生代通常比新生代大很多。Elasticsearch 节点可以给老生代用到 30 GB。</p>
+<p>当一个对象实例化的时候，它被放在新生代里。当新生代空间满了，就会发生一次新生代垃圾回收（GC）。依然是"存活"状态的对象就被转移到一个幸存区内，而"死掉"的对象被移除。如果一个对象在多次新生代 GC 中都幸存了，它就会被"终身"置于老生代了。</p>
+<p>类似的过程在老生代里同样发生：空间满的时候，发生一次垃圾回收，死掉的对象被移除。</p>
+<p>不过，天下没有免费的午餐。新生代、老生代的垃圾回收都有一个阶段会“停止时间”。在这段时间里，JVM 字面意义上的停止了程序运行，以便跟踪对象图，收集死亡对象。在这个时间停止阶段，一切都不会发生。请求不被服务，ping 不被回应，分片不被分配。整个世界都真的停止了。</p>
+<p>对于新生代，这不是什么大问题；那么小的空间意味着 GC 会很快执行完。但是老生代大很多，而这里面一个慢 GC 可能就意味着 1 秒乃至 15 秒的暂停——对于服务器软件来说这是不可接受的。</p>
+<p>JVM 的垃圾回收采用了 非常 精密的算法，在减少暂停方面做得很棒。而且 Elasticsearch 非常努力的变成对 垃圾回收友好 的程序，比如内部智能的重用对象，重用网络缓冲，以及默认启用 Doc Values 功能。但最终，GC 的频率和时长依然是你需要去观察的指标。因为它是集群不稳定的头号嫌疑人。</p>
+<p>一个经常发生长 GC 的集群就会因为内存不足而处于高负载压力下。这些长 GC 会导致节点短时间内从集群里掉线。这种不稳定会导致分片频繁重定位，因为 Elasticsearch 会尝试保持集群均衡，保证有足够的副本在线。这接着就导致网络流量和磁盘 I/O 的增加。而所有这些都是在你的集群努力服务于正常的索引和查询的同时发生的。</p>
+<p>总而言之，长时间 GC 总是不好的，需要尽可能的减少。</p>
+</blockquote>
+<p>因为垃圾回收对 Elasticsearch 是如此重要，你应该非常熟悉 node-stats API 里的这部分内容：</p>
+<pre><code class="language-json">
+      "jvm": {
+        "timestamp": 1657854496146,
+        "uptime_in_millis": 858680867,
+        "mem": {
+          "heap_used_in_bytes": 1025882384,
+          "heap_used_percent": 52,
+          "heap_committed_in_bytes": 1958739968,
+          "heap_max_in_bytes": 1958739968,
+          "non_heap_used_in_bytes": 346164192,
+          "non_heap_committed_in_bytes": 356843520,
+					...
+</code></pre>
+<pre><code class="language-json">
+ "pools": {
+            "young": {
+              "used_in_bytes": 721420288,
+              "max_in_bytes": 0,
+              "peak_used_in_bytes": 1166016512,
+              "peak_max_in_bytes": 0
+            },
+            "old": {
+              "used_in_bytes": 286038520,
+              "max_in_bytes": 1958739968,
+              "peak_used_in_bytes": 1245947392,
+              "peak_max_in_bytes": 1958739968
+            },
+            "survivor": {
+              "used_in_bytes": 18423576,
+              "max_in_bytes": 0,
+              "peak_used_in_bytes": 71303168,
+              "peak_max_in_bytes": 0
+            }
+          }
+        },
+				
+</code></pre>
+<pre><code class="language-json">
+        "gc": {
+          "collectors": {
+            "young": {
+              "collection_count": 12523,
+              "collection_time_in_millis": 202427
+            },
+            "old": {
+              "collection_count": 0,
+              "collection_time_in_millis": 0
+            }
+          }
+        },
+
+</code></pre>
+<ol>
+<li>
+<p>jvm 部分首先列出一些和 heap 内存使用有关的常见统计值。</p>
+<ul>
+<li>
+<p>你可以看到有多少 heap 被使用了，多少被指派了（当前被分配给进程的），以及 heap 被允许分配的最大值。理想情况下，heap_committed_in_bytes 应该等于 heap_max_in_bytes 。如果指派的大小更小，JVM 最终会被迫调整 heap 大小——这是一个非常昂贵的操作。如果你的数字不相等，阅读 堆内存:大小和交换 学习如何正确的配置它。</p>
+</li>
+<li>
+<p>heap_used_percent 指标是值得关注的一个数字。Elasticsearch 被配置为当 heap 达到 75% 的时候开始 GC。如果你的节点一直 &gt;= 75%，你的节点正处于 内存压力 状态。这是个危险信号，不远的未来可能就有慢 GC 要出现了。</p>
+</li>
+<li>
+<p>如果 heap 使用率一直 &gt;=85%，你就麻烦了。Heap 在 90–95% 之间，则面临可怕的性能风险，此时最好的情况是长达 10–30s 的 GC，最差的情况就是内存溢出（OOM）异常。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>新生代(young) 、 幸存区(survivor) 和 老生代(old) 部分分别展示 GC 中每一个代的内存使用情况。这些统计值很方便观察其相对大小，但是在调试问题的时候，通常并不怎么重要。</p>
+</li>
+<li>
+<p>gc 部分显示新生代和老生代的垃圾回收次数和累积时间。</p>
+<ul>
+<li>
+<p>大多数时候你可以忽略掉新生代的次数：这个数字通常都很大。这是正常的。</p>
+</li>
+<li>
+<p>与之相反，老生代的次数应该很小，而且 collection_time_in_millis 也应该很小。这些是累积值，所以很难给出一个阈值表示你要开始操心了（比如，一个跑了一整年的节点，即使很健康，也会有一个比较大的计数）。这就是像 Marvel 这类工具很有用的一个原因。GC 计数的 时间趋势 是个重要的考虑因素。</p>
+</li>
+<li>
+<p>GC 花费的时间也很重要。比如，在索引文档时，一系列垃圾生成了。这是很常见的情况，每时每刻都会导致 GC。这些 GC 绝大多数时候都很快，对节点影响很小：新生代一般就花一两毫秒，老生代花一百多毫秒。这些跟 10 秒级别的 GC 是很不一样的。</p>
+</li>
+<li>
+<p>我们的最佳建议是定期收集 GC 计数和时长（或者使用 Marvel）然后观察 GC 频率。你也可以开启慢 GC 日志记录，在 日志记录 小节已经讨论过。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+			<div id="bottom"> 
+			     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+
+			     <a href="https://info.flagcounter.com/42Wy"><img src="https://s01.flagcounter.com/count/42Wy/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_9/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+		       </div>   	 							 
+                       <div id="giscus-container"></div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <a rel="prev" href="../manage/monitor-individual-nodes-os.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                        </a>
+
+                            <a rel="next" href="../manage/monitor-individual-nodes-thread-pool.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../manage/monitor-individual-nodes-os.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../manage/monitor-individual-nodes-thread-pool.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../giscus.js"></script>
+
+
+    </body>
+
+
+</html>
