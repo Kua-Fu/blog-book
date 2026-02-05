@@ -1,0 +1,573 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Next 700 Programming Languages - Poetic Life</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> About Me</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/index.html"><strong aria-hidden="true">2.</strong> 山海塔防</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/山海塔防.html"><strong aria-hidden="true">2.1.</strong> 山海塔防</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/山海经原文.html"><strong aria-hidden="true">2.2.</strong> 山海经原文</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经.html"><strong aria-hidden="true">2.3.</strong> 南山经</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经/䧿山.html"><strong aria-hidden="true">2.4.</strong> 䧿山</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经/柜山.html"><strong aria-hidden="true">2.5.</strong> 柜山</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经/天虞山.html"><strong aria-hidden="true">2.6.</strong> 天虞山</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/西山经.html"><strong aria-hidden="true">2.7.</strong> 西山经</a></li></ol></li><li class="chapter-item expanded "><a href="../../../work-reading/index.html"><strong aria-hidden="true">3.</strong> Work Reading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../work-reading/index.html"><strong aria-hidden="true">3.1.</strong> Introducing</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/introduce/introduce.html"><strong aria-hidden="true">3.2.</strong> Official Docs</a></li><li class="chapter-item expanded "><a href="../../../work-reading/article/introduce/datadog.html"><strong aria-hidden="true">3.3.</strong> datadog</a></li><li class="chapter-item expanded "><a href="../../../work-reading/index.html"><strong aria-hidden="true">3.4.</strong> Read Blogs</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2024/2024.html"><strong aria-hidden="true">3.5.</strong> Reading in 2024</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2024/1.html"><strong aria-hidden="true">3.6.</strong> January</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2024/2_7.html"><strong aria-hidden="true">3.7.</strong> February ~ July</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/2023.html"><strong aria-hidden="true">3.8.</strong> Reading in 2023</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/1_3.html"><strong aria-hidden="true">3.9.</strong> January ～ March</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/4_6.html"><strong aria-hidden="true">3.10.</strong> April ~ June</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/7_8.html"><strong aria-hidden="true">3.11.</strong> July ~ August</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/9_10.html"><strong aria-hidden="true">3.12.</strong> September ~ October</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/11_12.html"><strong aria-hidden="true">3.13.</strong> November ~ December</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/2022.html"><strong aria-hidden="true">3.14.</strong> Reading in 2022</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/1_3.html"><strong aria-hidden="true">3.15.</strong> January ～ March</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/4_7.html"><strong aria-hidden="true">3.16.</strong> April ~ July</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/8_10.html"><strong aria-hidden="true">3.17.</strong> August ~ October</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/2021.html"><strong aria-hidden="true">3.18.</strong> Reading in 2021</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/1.html"><strong aria-hidden="true">3.19.</strong> January</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/2.html"><strong aria-hidden="true">3.20.</strong> February</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/3_4.html"><strong aria-hidden="true">3.21.</strong> March ~ April</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/5.html"><strong aria-hidden="true">3.22.</strong> May</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/6_7.html"><strong aria-hidden="true">3.23.</strong> June ~ July</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/8_11.html"><strong aria-hidden="true">3.24.</strong> August ~ December</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/2020.html"><strong aria-hidden="true">3.25.</strong> Reading in 2020</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/5_6.html"><strong aria-hidden="true">3.26.</strong> May ~ June</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/7_8.html"><strong aria-hidden="true">3.27.</strong> July ~ August</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/9_10.html"><strong aria-hidden="true">3.28.</strong> September ~ October</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/11.html"><strong aria-hidden="true">3.29.</strong> November</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/12.html"><strong aria-hidden="true">3.30.</strong> December</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/algorithm/index.html"><strong aria-hidden="true">4.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/algorithm/chapter_1.html"><strong aria-hidden="true">4.1.</strong> Chapter 1</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/index.html"><strong aria-hidden="true">5.</strong> Basic</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/basic/index.html"><strong aria-hidden="true">5.1.</strong> Introducation</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/vim/vim.html"><strong aria-hidden="true">5.2.</strong> Vim</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/emacs/emacs.html"><strong aria-hidden="true">5.3.</strong> Emacs</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/emacs/remote_file.html"><strong aria-hidden="true">5.4.</strong> remote files</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/emacs/project.html"><strong aria-hidden="true">5.5.</strong> project</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/vs/vs.html"><strong aria-hidden="true">5.6.</strong> vscode</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/vs/debug_c.html"><strong aria-hidden="true">5.7.</strong> MacOS vscode debug C/C++ with makefile</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/git/git.html"><strong aria-hidden="true">5.8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/git/git_proxy.html"><strong aria-hidden="true">5.9.</strong> set proxy for github</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/git/git_del.html"><strong aria-hidden="true">5.10.</strong> delete remote branch</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/regular_expression/regular_expression.html"><strong aria-hidden="true">5.11.</strong> RegularExpression</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/tmux/tmux.html"><strong aria-hidden="true">5.12.</strong> tmux</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/markdown/markdown.html"><strong aria-hidden="true">5.13.</strong> markdown</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/mdbook.html"><strong aria-hidden="true">5.14.</strong> mdbook</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/giscus.html"><strong aria-hidden="true">5.15.</strong> comment system: giscus</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/flag_counter.html"><strong aria-hidden="true">5.16.</strong> visitor analytics: flag counter</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/blog_license.html"><strong aria-hidden="true">5.17.</strong> blog license: creativecommons</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/insomnia/insomnia.html"><strong aria-hidden="true">5.18.</strong> insomnia</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/macos/macos.html"><strong aria-hidden="true">5.19.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/os/open_file.html"><strong aria-hidden="true">5.20.</strong> 使用绝对路径，打开文件</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/install_xcode.html"><strong aria-hidden="true">5.21.</strong> after MacOS upgrade, can not use git</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/os/inertial_scroll.html"><strong aria-hidden="true">5.22.</strong> 多个窗口滑动，会出现漂移</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/chrome/chrome.html"><strong aria-hidden="true">5.23.</strong> Chrome</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/macos/macos.html"><strong aria-hidden="true">5.24.</strong> Macos</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/macos/delete_360.html"><strong aria-hidden="true">5.25.</strong> 彻底删除企业版360</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/docker.html"><strong aria-hidden="true">5.26.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/basic.html"><strong aria-hidden="true">5.27.</strong> basic</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/basic/image_ls.html"><strong aria-hidden="true">5.28.</strong> 列出镜像</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/rancher.html"><strong aria-hidden="true">5.29.</strong> rancher</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/make.html"><strong aria-hidden="true">5.30.</strong> make</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/overview.html"><strong aria-hidden="true">5.31.</strong> 概述</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/introducation.html"><strong aria-hidden="true">5.32.</strong> makefile介绍</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/rules.html"><strong aria-hidden="true">5.33.</strong> 书写规则</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/recipes.html"><strong aria-hidden="true">5.34.</strong> 书写命令</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/var.html"><strong aria-hidden="true">5.35.</strong> 使用变量</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/condition.html"><strong aria-hidden="true">5.36.</strong> 使用条件判断</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/func.html"><strong aria-hidden="true">5.37.</strong> 使用函数</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/invoke.html"><strong aria-hidden="true">5.38.</strong> make的运行</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/implicit_rule.html"><strong aria-hidden="true">5.39.</strong> 隐含规则</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/archives.html"><strong aria-hidden="true">5.40.</strong> 使用make更新函数库文件</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/compile/index.html"><strong aria-hidden="true">6.</strong> Compilation Principle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/compile/index.html"><strong aria-hidden="true">6.1.</strong> 基础概念</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/compile/basic/term.html"><strong aria-hidden="true">6.2.</strong> 名词</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/compile/basic/term/pc.html"><strong aria-hidden="true">6.3.</strong> program counter</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/index.html"><strong aria-hidden="true">7.</strong> Middleware</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/index.html"><strong aria-hidden="true">7.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/redis.html"><strong aria-hidden="true">7.2.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/basic.html"><strong aria-hidden="true">7.3.</strong> Basic</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/101.html"><strong aria-hidden="true">7.4.</strong> 101</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/memory_analyze.html"><strong aria-hidden="true">7.5.</strong> Memory Analyze</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/bloom_filter.html"><strong aria-hidden="true">7.6.</strong> Bloom Filter</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/hyperloglog.html"><strong aria-hidden="true">7.7.</strong> HyperLogLog</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/kafka.html"><strong aria-hidden="true">7.8.</strong> kafka</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/basic.html"><strong aria-hidden="true">7.9.</strong> basic</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/ui.html"><strong aria-hidden="true">7.10.</strong> kafka ui</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/config.html"><strong aria-hidden="true">7.11.</strong> config info</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/101.html"><strong aria-hidden="true">7.12.</strong> kafka101</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/sasl_plain.html"><strong aria-hidden="true">7.13.</strong> SASL/PLAIN</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/sasl_scram_sha_256.html"><strong aria-hidden="true">7.14.</strong> SASL/SCRAM-SHA-256</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/ssl.html"><strong aria-hidden="true">7.15.</strong> SSL</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/security.html"><strong aria-hidden="true">7.16.</strong> security</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/security/intro.html"><strong aria-hidden="true">7.17.</strong> introduction</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/security/hands_on.html"><strong aria-hidden="true">7.18.</strong> hands on</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/network/index.html"><strong aria-hidden="true">8.</strong> Network</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/network/chapter_1.html"><strong aria-hidden="true">8.1.</strong> Chapter 1</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/os/index.html"><strong aria-hidden="true">9.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/os/basic.html"><strong aria-hidden="true">9.1.</strong> 入门篇</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/os/start_to_know_container.html"><strong aria-hidden="true">9.2.</strong> 初识容器</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.</strong> Programing Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/language/introduction.html"><strong aria-hidden="true">10.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.2.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/go.html"><strong aria-hidden="true">10.3.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/101.html"><strong aria-hidden="true">10.4.</strong> go101</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/cover.html"><strong aria-hidden="true">10.5.</strong> The cover story</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/gc.html"><strong aria-hidden="true">10.6.</strong> A Guide to the Go Garbage Collector</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/mock.html"><strong aria-hidden="true">10.7.</strong> go mock</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.8.</strong> Java</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/java/java.html"><strong aria-hidden="true">10.9.</strong> Java</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.10.</strong> Python</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/python/python.html"><strong aria-hidden="true">10.11.</strong> Python</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/index.html"><strong aria-hidden="true">11.</strong> Calculus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/preface.html"><strong aria-hidden="true">11.1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/functions_and_models.html"><strong aria-hidden="true">11.2.</strong> 函数和模型</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/functions/four_way.html"><strong aria-hidden="true">11.3.</strong> 函数的四种表达方式</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/fuctions/four_way/examples.html"><strong aria-hidden="true">11.4.</strong> examples</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/observe/index.html"><strong aria-hidden="true">12.</strong> Observe</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/observe/apm.html"><strong aria-hidden="true">12.1.</strong> apm</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/observe/apm/elastic_apm.html"><strong aria-hidden="true">12.2.</strong> elasticsearch apm 实践</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.</strong> Elastic Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.2.</strong> 概览</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface.html"><strong aria-hidden="true">13.3.</strong> 前言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/who-should-read.html"><strong aria-hidden="true">13.4.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/why-we-write-this-book.html"><strong aria-hidden="true">13.5.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/how-to-read-this-book.html"><strong aria-hidden="true">13.6.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/acknowledgment.html"><strong aria-hidden="true">13.7.</strong> 鸣谢</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.8.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/basic.html"><strong aria-hidden="true">13.9.</strong> 基础入门</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/intro.html"><strong aria-hidden="true">13.10.</strong> 你知道的, 为了搜索…​</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/running-elastic.html"><strong aria-hidden="true">13.11.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/document-oriented.html"><strong aria-hidden="true">13.12.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/find-your-feet.html"><strong aria-hidden="true">13.13.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/index-employee-document.html"><strong aria-hidden="true">13.14.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/retrieving-a-document.html"><strong aria-hidden="true">13.15.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search-lite.html"><strong aria-hidden="true">13.16.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search-with-query-dsl.html"><strong aria-hidden="true">13.17.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/more-complicated-search.html"><strong aria-hidden="true">13.18.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/full-text-search.html"><strong aria-hidden="true">13.19.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/phrase-search.html"><strong aria-hidden="true">13.20.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/highlighting-intro.html"><strong aria-hidden="true">13.21.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/analytics.html"><strong aria-hidden="true">13.22.</strong> 分析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/conclusion.html"><strong aria-hidden="true">13.23.</strong> 小结</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed_nature.html"><strong aria-hidden="true">13.24.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/next-step.html"><strong aria-hidden="true">13.25.</strong> 后续步骤</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed-cluster.html"><strong aria-hidden="true">13.26.</strong> 集群内的原理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/empty-cluster.html"><strong aria-hidden="true">13.27.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/cluster-health.html"><strong aria-hidden="true">13.28.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/add-an-index.html"><strong aria-hidden="true">13.29.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/add-failover.html"><strong aria-hidden="true">13.30.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/scale-horizontally.html"><strong aria-hidden="true">13.31.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/coping-with-failure.html"><strong aria-hidden="true">13.32.</strong> 应对故障</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/data-in-data-out.html"><strong aria-hidden="true">13.33.</strong> 数据输入和输出</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/document.html"><strong aria-hidden="true">13.34.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/document-metadata.html"><strong aria-hidden="true">13.35.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/index-doc.html"><strong aria-hidden="true">13.36.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/get-doc.html"><strong aria-hidden="true">13.37.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/doc-exists.html"><strong aria-hidden="true">13.38.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/update-doc.html"><strong aria-hidden="true">13.39.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/create-doc.html"><strong aria-hidden="true">13.40.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/delete-doc.html"><strong aria-hidden="true">13.41.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/version-control.html"><strong aria-hidden="true">13.42.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/optimistic-concurrency-control.html"><strong aria-hidden="true">13.43.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/partial-update.html"><strong aria-hidden="true">13.44.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/retrieving-multiple-docs.html"><strong aria-hidden="true">13.45.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/bulk.html"><strong aria-hidden="true">13.46.</strong> 代价较小的批量操作</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed-docs.html"><strong aria-hidden="true">13.47.</strong> 分布式文档存储</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/routing-value.html"><strong aria-hidden="true">13.48.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">13.49.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distrib-write.html"><strong aria-hidden="true">13.50.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distrib-read.html"><strong aria-hidden="true">13.51.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/partial-update-to-a-doc.html"><strong aria-hidden="true">13.52.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distrib-multi-doc.html"><strong aria-hidden="true">13.53.</strong> 多文档模式</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search.html"><strong aria-hidden="true">13.54.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/mapping-analysis.html"><strong aria-hidden="true">13.55.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/full-search-body.html"><strong aria-hidden="true">13.56.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/sorting.html"><strong aria-hidden="true">13.57.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed-search.html"><strong aria-hidden="true">13.58.</strong> 执行分布式检索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/query-phase.html"><strong aria-hidden="true">13.59.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/fetch-phase.html"><strong aria-hidden="true">13.60.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search-options.html"><strong aria-hidden="true">13.61.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/scroll.html"><strong aria-hidden="true">13.62.</strong> 查询游标</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/index-management.html"><strong aria-hidden="true">13.63.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/inside-a-shard.html"><strong aria-hidden="true">13.64.</strong> 分片内部原理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/making-text-searchable.html"><strong aria-hidden="true">13.65.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/dynamic-indices.html"><strong aria-hidden="true">13.66.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/near-real-time.html"><strong aria-hidden="true">13.67.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/translog.html"><strong aria-hidden="true">13.68.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/merge-process.html"><strong aria-hidden="true">13.69.</strong> 段合并</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.70.</strong> 深入搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.71.</strong> 处理人类语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/index.html"><strong aria-hidden="true">13.72.</strong> 概览</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/language-intro.html"><strong aria-hidden="true">13.73.</strong> 开始处理各种语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/using-language-analyzers.html"><strong aria-hidden="true">13.74.</strong> 使用语言分析器</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/config-language-analyzers.html"><strong aria-hidden="true">13.75.</strong> 配置语言分析器</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/language-pitfalls.html"><strong aria-hidden="true">13.76.</strong> 混合语言的陷阱</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/one-language-docs.html"><strong aria-hidden="true">13.77.</strong> 每份文档一种语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/lanaugages/one-language-field.html"><strong aria-hidden="true">13.78.</strong> 每个域一种语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/mixed-language-fields.html"><strong aria-hidden="true">13.79.</strong> 混合语言域</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.80.</strong> 聚合</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.81.</strong> 地理位置</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.82.</strong> 数据建模</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.83.</strong> 管理、监控和部署</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/administration.html"><strong aria-hidden="true">13.84.</strong> 管理、监控入门</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/cluster-admin.html"><strong aria-hidden="true">13.85.</strong> 监控</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/marval.html"><strong aria-hidden="true">13.86.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/cluster-health.html"><strong aria-hidden="true">13.87.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes.html"><strong aria-hidden="true">13.88.</strong> 监控单个节点</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">13.89.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">13.90.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">13.91.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">13.92.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">13.93.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">13.94.</strong> 断路器部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/cluster-stats.html"><strong aria-hidden="true">13.95.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/index-stats.html"><strong aria-hidden="true">13.96.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/pending-task.html"><strong aria-hidden="true">13.97.</strong> 等待中的任务</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.98.</strong> 考试认证</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/deploy.html"><strong aria-hidden="true">13.99.</strong> 集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/deploy-single-node.html"><strong aria-hidden="true">13.100.</strong> 单节点集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/mac-deploy-single-node.html"><strong aria-hidden="true">13.101.</strong> mac 单节点集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/deploy-cluster.html"><strong aria-hidden="true">13.102.</strong> 多节点集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/management.html"><strong aria-hidden="true">13.103.</strong> 集群管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/hot-warm-cold.html"><strong aria-hidden="true">13.104.</strong> 热温冷架构</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/searchable.html"><strong aria-hidden="true">13.105.</strong> 可搜索快照</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/search-remote.html"><strong aria-hidden="true">13.106.</strong> 跨集群查询、复制</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index.html"><strong aria-hidden="true">13.107.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/data-stream.html"><strong aria-hidden="true">13.108.</strong> 数据流</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/runtime-field.html"><strong aria-hidden="true">13.109.</strong> runtime字段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/custom-analyzer.html"><strong aria-hidden="true">13.110.</strong> 自定义分词器</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/data-type.html"><strong aria-hidden="true">13.111.</strong> 内部结构</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/painless.html"><strong aria-hidden="true">13.112.</strong> painless脚本</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/custom-score.html"><strong aria-hidden="true">13.113.</strong> 自定义评分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise.html"><strong aria-hidden="true">13.114.</strong> 真题解析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise1.html"><strong aria-hidden="true">13.115.</strong> 真题1</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise2.html"><strong aria-hidden="true">13.116.</strong> 真题2</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise3.html"><strong aria-hidden="true">13.117.</strong> 真题3</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise4.html"><strong aria-hidden="true">13.118.</strong> 真题4</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise5.html"><strong aria-hidden="true">13.119.</strong> 7.13真题</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.120.</strong> 日志易</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/index.html"><strong aria-hidden="true">13.121.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/intro.html"><strong aria-hidden="true">13.122.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/resume.html"><strong aria-hidden="true">13.123.</strong> 命令简述</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/search.html"><strong aria-hidden="true">13.124.</strong> 搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/search_command.html"><strong aria-hidden="true">13.125.</strong> 搜索命令函数</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/stats.html"><strong aria-hidden="true">13.126.</strong> stats相关函数</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.</strong> Elastic 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.2.</strong> 技术文章</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/blog.html"><strong aria-hidden="true">14.3.</strong> elasticsearch 官方博客</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/blog/bulk-reject.html"><strong aria-hidden="true">14.4.</strong> bulk 被拒绝</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/api.html"><strong aria-hidden="true">14.5.</strong> elasticsearch 接口文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/ism.html"><strong aria-hidden="true">14.6.</strong> 华为云CSS生命周期管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.7.</strong> 实际使用</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/backup/backup.html"><strong aria-hidden="true">14.8.</strong> elasticsearch集群备份</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/backup/snapshot.html"><strong aria-hidden="true">14.9.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/backup/meta.html"><strong aria-hidden="true">14.10.</strong> 只备份集群中的策略、模版等信息</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/reindex/reindex.html"><strong aria-hidden="true">14.11.</strong> reindex 过程</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/reindex/add-field.html"><strong aria-hidden="true">14.12.</strong> reindex添加新字段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.13.</strong> 业务报错处理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.14.</strong> 原理源码</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/lucene/intro.html"><strong aria-hidden="true">14.15.</strong> lucene介绍</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/index.html"><strong aria-hidden="true">15.</strong> Poetry</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/mulberry/mulberry.html"><strong aria-hidden="true">15.1.</strong> mulberry</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/mulberry/meili.html"><strong aria-hidden="true">15.2.</strong> meilisearch</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/animation/animation.html"><strong aria-hidden="true">15.3.</strong> Animation</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/animation/ghibli.html"><strong aria-hidden="true">15.4.</strong> ghibli</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/health/health.html"><strong aria-hidden="true">15.5.</strong> Health</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/health/live_longer.html"><strong aria-hidden="true">15.6.</strong> How to live longer</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/life.html"><strong aria-hidden="true">15.7.</strong> Life Advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/103_advice.html"><strong aria-hidden="true">15.8.</strong> Kevin Kelly's 103 advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/investment_advice.html"><strong aria-hidden="true">15.9.</strong> Investment advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/software_engineer_advice.html"><strong aria-hidden="true">15.10.</strong> software engineer advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/music/music.html"><strong aria-hidden="true">15.11.</strong> Music</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/music/xiao_kan_feng_yun.html"><strong aria-hidden="true">15.12.</strong> 笑看风云</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry-engine/index.html"><strong aria-hidden="true">16.</strong> Poetry Engine</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/poetry-engine/chapter_1.html"><strong aria-hidden="true">16.1.</strong> Chapter 1</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.</strong> Crafting Interpreters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.1.</strong> 欢迎</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/welcome.html"><strong aria-hidden="true">17.2.</strong> 欢迎</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/introduction.html"><strong aria-hidden="true">17.3.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/a-map-of-the-territory.html"><strong aria-hidden="true">17.4.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/the-lox-language.html"><strong aria-hidden="true">17.5.</strong> Lox语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.6.</strong> 解析树</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/tree.html"><strong aria-hidden="true">17.7.</strong> 解析树</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/scanning.html"><strong aria-hidden="true">17.8.</strong> 扫描</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/representing-code.html"><strong aria-hidden="true">17.9.</strong> 代码表示</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/parsing-expression.html"><strong aria-hidden="true">17.10.</strong> 解析表达式</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/evaluating-expression.html"><strong aria-hidden="true">17.11.</strong> 计算表达式</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/statements-and-state.html"><strong aria-hidden="true">17.12.</strong> 语句和状态</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/control-flow.html"><strong aria-hidden="true">17.13.</strong> 控制流程</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/functions.html"><strong aria-hidden="true">17.14.</strong> 函数</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/resolving-and-binding.html"><strong aria-hidden="true">17.15.</strong> 解析与绑定</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/classes.html"><strong aria-hidden="true">17.16.</strong> 类</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/inheritance.html"><strong aria-hidden="true">17.17.</strong> 继承</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.18.</strong> 虚拟机</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/vm/bytecode-vm.html"><strong aria-hidden="true">17.19.</strong> 虚拟机</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/vm/bytecode-chunk.html"><strong aria-hidden="true">17.20.</strong> 字节码块</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/vm/a-virtual-machine.html"><strong aria-hidden="true">17.21.</strong> 一个虚拟机</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/index.html"><strong aria-hidden="true">18.</strong> Literature</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/literature/index.html"><strong aria-hidden="true">18.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/the_book_of_songs/the_book_of_songs.html"><strong aria-hidden="true">18.2.</strong> 诗经</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/san_guo/san_guo.html"><strong aria-hidden="true">18.3.</strong> 三国文学</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/san_guo/chu_shi_biao.html"><strong aria-hidden="true">18.4.</strong> 出师表</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/san_guo/cao_cao.html"><strong aria-hidden="true">18.5.</strong> 曹操诗集</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/five_poet.html"><strong aria-hidden="true">18.6.</strong> 诗意人生五典型</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/tao/tao.html"><strong aria-hidden="true">18.7.</strong> 陶渊明</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/li/li.html"><strong aria-hidden="true">18.8.</strong> 李白</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/du/du.html"><strong aria-hidden="true">18.9.</strong> 杜甫</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/bai/bai.html"><strong aria-hidden="true">18.10.</strong> 白居易</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/su/su.html"><strong aria-hidden="true">18.11.</strong> 苏轼</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_poetry/ming_qing_poetry.html"><strong aria-hidden="true">18.12.</strong> 明清诗词</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_poetry/nian_er_shi_si_shi_tan_ci.html"><strong aria-hidden="true">18.13.</strong> 廿二十四史弹词</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_prose/ming_qing_prose.html"><strong aria-hidden="true">18.14.</strong> 明清散文</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_prose/song_dong_yang_ma_sheng_xv.html"><strong aria-hidden="true">18.15.</strong> 送东阳马生序</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_prose/xiang_ji_xuan_zhi.html"><strong aria-hidden="true">18.16.</strong> 项脊轩志</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/people.html"><strong aria-hidden="true">18.17.</strong> 人物词典</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.</strong> Technical Reading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.2.</strong> Alogrithm</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/hyperloglog.html"><strong aria-hidden="true">19.3.</strong> hyperloglog</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/logmine.html"><strong aria-hidden="true">19.4.</strong> LogMine: Fast Pattern Recognition for Log Analytics</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/percentile.html"><strong aria-hidden="true">19.5.</strong> percentile pre-calculation</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.6.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/elasticsearch.html"><strong aria-hidden="true">19.7.</strong> Elasticsearch 101</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.8.</strong> Task Framework</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/asynq.html"><strong aria-hidden="true">19.9.</strong> asynq</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/asynq/dropbox_atf.html"><strong aria-hidden="true">19.10.</strong> Dropbox ATF</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.11.</strong> Program</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/program/700.html" class="active"><strong aria-hidden="true">19.12.</strong> The Next 700 Programming Languages</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/index.html"><strong aria-hidden="true">20.</strong> Shijing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/index.html"><strong aria-hidden="true">20.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/风.html"><strong aria-hidden="true">20.2.</strong> 国风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/zhounan.html"><strong aria-hidden="true">20.3.</strong> 周南</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/zhaonan.html"><strong aria-hidden="true">20.4.</strong> 召南</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/beifeng.html"><strong aria-hidden="true">20.5.</strong> 邶风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/yongfeng.html"><strong aria-hidden="true">20.6.</strong> 鄘风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/weifeng.html"><strong aria-hidden="true">20.7.</strong> 卫风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/wangfeng.html"><strong aria-hidden="true">20.8.</strong> 王风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/zhengfeng.html"><strong aria-hidden="true">20.9.</strong> 郑风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/qifeng.html"><strong aria-hidden="true">20.10.</strong> 齐风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/wei2feng.html"><strong aria-hidden="true">20.11.</strong> 魏风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/tangfeng.html"><strong aria-hidden="true">20.12.</strong> 唐风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/qinfeng.html"><strong aria-hidden="true">20.13.</strong> 秦风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/chenfeng.html"><strong aria-hidden="true">20.14.</strong> 陈风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/kuaifeng.html"><strong aria-hidden="true">20.15.</strong> 桧风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/caofeng.html"><strong aria-hidden="true">20.16.</strong> 曹风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/binfeng.html"><strong aria-hidden="true">20.17.</strong> 豳风</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/index.html"><strong aria-hidden="true">21.</strong> Sanguozhi</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/魏.html"><strong aria-hidden="true">21.1.</strong> 魏書</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀.html"><strong aria-hidden="true">21.2.</strong> 蜀書</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传.html"><strong aria-hidden="true">21.3.</strong> 諸葛亮傳</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/出师表.html"><strong aria-hidden="true">21.4.</strong> 出師表</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/后出师表.html"><strong aria-hidden="true">21.5.</strong> 後出師表</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/諸葛氏集目錄.html"><strong aria-hidden="true">21.6.</strong> 諸葛氏集目錄</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/臣壽等言.html"><strong aria-hidden="true">21.7.</strong> 臣壽等言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/吴.html"><strong aria-hidden="true">21.8.</strong> 吳書</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/附录.html"><strong aria-hidden="true">21.9.</strong> 附錄</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/index.html"><strong aria-hidden="true">22.</strong> Maoxuan</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/1.html"><strong aria-hidden="true">22.1.</strong> 第一卷 国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/11.html"><strong aria-hidden="true">22.2.</strong> 第一次国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a1.html"><strong aria-hidden="true">22.3.</strong> 中国社会各阶级的分析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a2.html"><strong aria-hidden="true">22.4.</strong> 湖南农民运动考察报告</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/12.html"><strong aria-hidden="true">22.5.</strong> 第二次国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a3.html"><strong aria-hidden="true">22.6.</strong> 中国的红色政权为什么能够存在？</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a4.html"><strong aria-hidden="true">22.7.</strong> 井冈山的斗争</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a5.html"><strong aria-hidden="true">22.8.</strong> 关于纠正党内的错误思想</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a6.html"><strong aria-hidden="true">22.9.</strong> 星星之火，可以燎原</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a7.html"><strong aria-hidden="true">22.10.</strong> 反对本本主义</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a8.html"><strong aria-hidden="true">22.11.</strong> 必须注意经济工作</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a9.html"><strong aria-hidden="true">22.12.</strong> 我们的经济政策</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a10.html"><strong aria-hidden="true">22.13.</strong> 关心群众生活，注意工作方法</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a11.html"><strong aria-hidden="true">22.14.</strong> 论反对日本帝国主义的策略</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a12.html"><strong aria-hidden="true">22.15.</strong> 中国革命战争的战略问题</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a13.html"><strong aria-hidden="true">22.16.</strong> 关于蒋介石声明的声明</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a14.html"><strong aria-hidden="true">22.17.</strong> 中国共产党在抗日时期的任务</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a15.html"><strong aria-hidden="true">22.18.</strong> 为争取千百万群众进入抗日民族统一战线而斗争</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a16.html"><strong aria-hidden="true">22.19.</strong> 实践论</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a17.html"><strong aria-hidden="true">22.20.</strong> 矛盾论</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/2.html"><strong aria-hidden="true">22.21.</strong> 第二卷 抗日战争时期（上）</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/21.html"><strong aria-hidden="true">22.22.</strong> 反对日本进攻的方针、办法和前途</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/3.html"><strong aria-hidden="true">22.23.</strong> 第三卷 抗日战争时期（下）</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/4.html"><strong aria-hidden="true">22.24.</strong> 第四卷 第三次国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/5.html"><strong aria-hidden="true">22.25.</strong> 第五卷 中国人民站起来了</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Poetic Life</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-next-700-programming-languages"><a class="header" href="#the-next-700-programming-languages">The Next 700 Programming Languages</a></h1>
+<p align="center"> The Next 700 Programming Languages </p>
+<p align="center"> P. J. Landin  </p>
+<p align="center"> Univac Division of Sperry Rand Corp., New York, New York </p>
+<blockquote>
+<p>"... today... 1,700 special programming languages used to 'com- municate' in over 700 application areas."</p>
+<p align="center"> --Computer Software Issues, </p>
+<p align="center"> an American Mathematical Association Prospectus, July 1965.</p>
+</blockquote>
+<p>A family of unimplemented computing languages is described that is intended to span differences of application area by a unified framework. This framework dictates the rules about the uses of user-coined names, and the conventions about characterizing functional relationships. Within this framework the design of a specific language splits into two independent parts. One is the choice of written appearances of programs (or more generally, their physical representation). The other is the choice of the abstract entities (such as numbers, character-strings, lists of them, functional relations among them) that can be referred to in the language.</p>
+<p>The system is biased towards "expressions" rather than "statements." It includes a nonprocedural (purely functional) subsystem that aims to expand the class of users' needs that can be met by a single print-instruction, without sacrificing the important properties that make conventional right-hand-side expressions easy to construct and understand.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>该文档描述了一个未实现的计算语言家族，旨在通过一个统一框架跨越不同应用领域的差异。该框架规定了关于用户创造的名称的使用规则，以及关于描述功能关系的惯例。在这个框架内，特定语言的设计分为两个独立部分。一个是程序的书面表现形式（或更广泛地说，它们的物理表示）的选择。另一个是可以在语言中引用的抽象实体（如数字、字符字符串、它们的列表、它们之间的功能关系）的选择。</p>
+<p>该系统偏向于"表达式"而不是"语句"。它包括一个非程序化（纯函数式）的子系统，旨在扩展用户的需求类别，这些需求可以通过单个打印指令来满足，而不会牺牲使传统右侧表达式易于构建和理解的重要属性</p>
+</details>
+<h2 id="1-introduction"><a class="header" href="#1-introduction">1. Introduction</a></h2>
+<p>Most programming languages are partly a way of expressing things in terms of other things and partly a basic set of given things. The IsWIM (If you See What I Mean) system is a byproduct of an attempt to disentangle these two aspects in some current languages.</p>
+<p>This attempt has led the author to think that many linguistic idiosyneracies are concerned with the former rather than the latter, whereas aptitude for a particular class of tasks is essentially determined by the latter rather than the former. The conclusion follows that many language characteristics are irrelevant to the alleged problem orientation.</p>
+<p>IsWIM is an attempt at a general purpose system for describing things in terms of other things, that can be problem-oriented by appropriate choice of "primitives." So it is not a language so much as a family of languages, of which each member is the result of choosing a set of primitives. The possibilities concerning this set and what is needed to specify such a set are discussed below.</p>
+<p>IsWIM is not alone in being a family, even after mere syntactic variations have been discounted (see Section 4). In practice, this is true of most languages that achieve more than one implementation, and if the dialects are well disciplined, they might with luck be characterized as differences in the set of things provided by the library or operating system. Perhaps had ALGOL 60 been launched as a family instead of proclaimed as a language, it would have fielded some of the less relevant criticisms of its deficiencies</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>大多数编程语言在某种程度上是一种以其他事物的形式来表述事物的方式，同时也是一套基础的给定事物。ISWIM（如果你明白我在说什么）系统是尝试在一些当前语言中解开这两个方面的副产品。</p>
+<p>这种尝试让作者认为，许多语言特性更多地与前者相关，而非后者，而对特定类别任务的适应性基本上由后者决定而非前者。所以得出的结论是，很多语言特性与所谓的问题导向无关。</p>
+<p>ISWIM 是一种尝试，旨在通过选择适当的“原语”来描述事物与其他事物的关联性，从而实现面向问题的描述系统。因此，与其说它是一种语言，不如说是一种语言家族，其中每个成员都是选择一组原语的结果。下面讨论了与该集合有关的可能性以及指定此类集合所需的内容。</p>
+<p>ISWIM 并不是唯一一个家族，即使在剔除了纯粹的语法变体之后（见第4节）。实际上，这对于实现了不止一种实现的大多数语言来说都是真实的，如果方言有很好的规范，那么它们可能被描述为由库或操作系统提供的一组事物的差异。也许如果 ALGOL 60 被作为一个家族推出，而不是被宣布为一种语言，它可能会避免一些不太相关的批评。</p>
+</details>
+<p>At first sight the facilities provided in IsWIM will appear comparatively meager. This appearance will be especially misleading to someone who has not appreciated how much of current manuals are devoted to the explanation of common (i.e., problem-orientation independent) logical structure rather than problem-oriented specialties. For example, in almost every language a user can coin names, obeying certain rules about the contexts in which the name is used and their relation to the textual segments that introduce, define, declare, or otherwise constrain its use. These rules vary considerably from one language to another, and frequently even within a single language there may be different conventions for different classes of names, with near-analogies that come irritatingly close to being exact. (Note that restrictions on what names can be coined also vary, but these are trivial differences. When they have any logical significance it is likely to be pernicious, by leading to puns such as ALGOL'S integer labels.)</p>
+<p>So rules about user-coined names is an area in which we might expect to see the history of computer applications give ground to their logic. Another such area is in specifying functional relations. In fact these two areas are closely related since any use of a user-coined name implicitly involves a functional relation; e.g., compare</p>
+<p>$ x(x+a) $</p>
+<p>where $x = b -4- 2c$</p>
+<p>$ f(b+2c) $</p>
+<p>where $f(x) = x(x+a) $</p>
+<p>ISWIM is thus part. programming language and part program for research. A possible first step in the research program is 1700 doctoral theses called "A Correspondence between x and Church's X-notation.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>乍一看，ISWIM 提供的功能会显得相对较少。这种观点将尤其误导那些还没有意识到当前手册中有多少是专门用来解释常见（即，与问题导向无关）的逻辑结构，而非问题导向的特殊性的人。例如，在几乎每一种语言中，用户都可以创造名称，在名称使用的上下文以及它们和介绍、定义、声明或者以其他方式限制其使用的文本段落的关系方面遵循某些规则。这些规则从一种语言到另一种语言会有很大的差异，甚至在一种语言内也可能存在不同类别的名称的不同惯例，近似的类比会让人烦躁不安，因为它们接近于完全一致。（请注意，可以创造的名称的限制也会有所不同，但这些都是微不足道的差异。当它们具有任何逻辑意义的时候，可能会引起恶劣的效果，比如导致像 ALGOL 的整数标签那样的双关语。）</p>
+<p>因此，关于用户创造的名称的规则是我们可以预期看到计算机应用程序的历史让位于其逻辑的领域之一。另一个这样的领域是在指定功能关系方面。事实上，这两个领域是密切相关的，因为任何使用用户创造的名称都隐含了一个功能关系。例如，比较一下。</p>
+<p>$ x(x+a) $</p>
+<p>where $ x=b-4-2c $</p>
+<p>和</p>
+<p>$ f(b+2c) $</p>
+<p>where $ f(x)=x(x+a) $</p>
+<p>因此，ISWIM 是编程语言的一部分，也是研究项目的一部分。研究项目的可能的第一步是 1700 篇名为“ x 与 Church's X-记法之间的对应关系”的博士论文。</p>
+</details>
+<h2 id="2the-where-notation"><a class="header" href="#2the-where-notation">2、The where-Notation</a></h2>
+<p>In ordinary mathematical communication, these uses of 'where' require no explanation. Nor do the following:</p>
+<p>$ f(b+2c) + f(2b-c) $</p>
+<p>where $ f(x) = x(x+a) $</p>
+<p>$ f(b+2c) + f(2b-c) $</p>
+<p>where $ f(x) = x(x+a) $</p>
+<p>and $b=\mu/(\mu+1)$</p>
+<p>and $c=\nu/(\nu+1)$</p>
+<p>$g(f$ where $f(x)=ax^{2}+bx+c$,</p>
+<p>$\mu/(\mu+1)$</p>
+<p>$\nu/(\nu+1))$</p>
+<p>where $g(f,p,q) = f(p+2q, 2p-q)$</p>
+<p>A phrase of the form 'where definition' will be called a "where-clause." An expression of the form 'expression where-clause' is a "where-expression." Its two principal components are called, respectively, its "main clause" and its "supporting definition." To put 'where' into a programming language the following questions need answers</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>在普通的数学交流中，这些“where”的使用不需要解释。以下情况也不需要解释：</p>
+<p>$ f(b+2c) + f(2b-c) $</p>
+<p>where $ f(x) = x(x+a) $</p>
+<p>$ f(b+2c) + f(2b-c) $</p>
+<p>where $ f(x) = x(x+a) $</p>
+<p>and $b=\mu/(\mu+1)$</p>
+<p>and $c=\nu/(\nu+1)$</p>
+<p>$g(f$ where $f(x)=ax^{2}+bx+c$,</p>
+<p>$\mu/(\mu+1)$</p>
+<p>$\nu/(\nu+1))$</p>
+<p>where $g(f,p,q) = f(p+2q, 2p-q)$</p>
+<p>一个形式为 “where definition” 的短语将被称为 “where子句”。一个形式为 “expression where-clause” 的表达式是一个 “where表达式”。它的两个主要组成部分分别被称为其“主句”和其“支持定义”。要将 “where” 放入编程语言中，需要回答以下问题：</p>
+</details>
+<p>Linguistic Structure. What structures of expression can appropriately be qualified by a where-clause, e.g., conditional expressions, operand-listings, statements, declarations, where-expressions?</p>
+<p>Likewise, what structures of expression can appropriately be written as the right-hand side (rhs) of a supporting definition? What contexts are appropriate for a where-expression, e.g., as an arm of a conditional expression, an operator, the main-clause of a where-expression, the left-hand side (lhs) of a supporting definition, the rhs of a supporting definition?</p>
+<p>Syntax. Having answered the above questions, what are the rules for writing the acceptable configurations unambiguously? E.g., where are brackets optional or obligatory? or other punctuation? or line breaks? or indentation? Note the separation of decisions about structure from decisions about syntax. (This is not a denial that language designers might iterate, like hardware designers who distinguish levels of hardware design.)</p>
+<p>Semantic Constraints on Linguistic Structure. In the above examples each main clause was a numerical expression; i.e., given appropriate meanings for the various identifiers in it, it denoted a number. What other kinds of meaning are appropriate for a mainclause, e.g., arrays, functions, structure descriptions, print-formats?</p>
+<p>Likewise what kinds of meaning are appropriate for rhs's of supporting definitions? Notice there is not a third question analogous to the third question above under linguistic structure. This is because a where-expression must mean the same kind of thing as its main clause and hence raises no new question concerning what contexts are meaningful. Notice also that the questions about meaning are almost entirely independent of those about structure. They depend on classifying expressions in two ways that run across each other.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>语言结构。哪些表达式结构可以恰当地被一个 where 子句所修饰，例如，条件表达式，操作数列表，语句，声明，where 表达式？</p>
+<p>同样，哪些表达式的结构可以适当地作为支持定义的右侧（rhs）编写？哪些上下文适合用where表达式，例如，作为条件表达式的分支，操作符，where 表达式的主从句，支持定义的左侧（lhs），支持定义的 rhs ？</p>
+<p>语法。回答了上述问题后，如何写出可接受的配置的明确规则是什么？例如，括号是可选还是必需的？或者其他标点符号？或者换行符？或者缩进？请注意将关于结构的决定与关于语法的决定分开。（这并不是否认语言设计者可能会像区分不同级别的硬件设计的硬件设计者一样进行迭代。）</p>
+<p>对语言结构的语义约束。在上述例子中，每个主从句都是一个数值表达式；也就是说，给定其中各种标识符的适当含义，它表示一个数字。主从句适合什么其他类型的含义，例如，数组，函数，结构描述，打印格式？</p>
+<p>同样，支持定义的 rhs 适合哪种类型的含义？注意，没有与上述语言结构下的第三个问题类似的第三个问题。这是因为 where 表达式必须表示与其主从句相同类型的东西，因此不会引起关于哪些上下文是有意义的新问题。还要注意，关于意义的问题几乎完全独立于关于结构的问题。它们依赖于以彼此交叉的两种方式对表达式进行分类</p>
+</details>
+<p>Outcome. What is the outcome of the more recondite structural configurations among those deemed admissible, e.g. mixed nests of where-expressions, function definitions, conditional expressions, etc.?</p>
+<p>Experimental programming has led the author to think that there is no configuration, however unpromising it might seem when judged cold, that will not turn up quite naturally. Furthermore, some configurations of 'where' that might first appear to reflect somewhat pedantic distinctions, in fact provide close matches for current language features such as name/value and own (see [2, 3]).</p>
+<p>All these questions are not answered in this paper. The techniques for answering them are outlined in Section 4</p>
+<p>One other issue arises when 'where' is added to a programming language-types and specifications. A method of expressing these functionally is explained in [2]. It amounts to using named transfer-functions instead of class names like integer, i.e., writing</p>
+<p>where $ n = round(n) $</p>
+<p>instead of the specification</p>
+<p>integer $ n $</p>
+<p>Thus the use of functional notation does not jeopardize the determination of type from textual evidence</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>结果。在那些被认为可接受的结构配置中，更难以理解的结构配置的结果是什么？例如混合的where表达式、函数定义、条件表达式等的嵌套结构。</p>
+<p>实验编程使作者认为，无论某种配置看起来多么不具前景，只要进行实际尝试，它都会自然地出现。此外，一些初看起来可能显得有些学究气的'where'配置，实际上与当前的语言特性（如名称/值和own）非常匹配（参见[2, 3]）。</p>
+<p>所有这些问题在本文中都没有得到解答。回答它们的技术在第4节中有所概述。</p>
+<p>当'where'添加到编程语言中时，还会出现其他问题——类型和规范。在[2]中解释了这些功能性表达的方法。这就像使用命名转移函数而不是像整数一样的类名，即，编写</p>
+<p>where $ n = round(n) $</p>
+<p>而不是类型</p>
+<p>integer $ n $</p>
+<p>因此，使用函数符号并不会危及从文本证据中确定类型。</p>
+</details>
+<h2 id="3-physical-iswim-and-logical-iswim"><a class="header" href="#3-physical-iswim-and-logical-iswim">3. Physical ISWIM and :Logical ISWIM</a></h2>
+<p>Like ALGOL 60, ISWIM has no prescribed physical appearance. ALGOL 60'S designers sought to avoid commitment to any particular sets of characters or type faces. Accordingly they distinguish between "publication language," "reference language" and "hardware languages." Of these the reference language was the standard and was used in the report itself whenever pieces of ALGOL 60 occurred. Publication and hardware languages are transliterations of the reference language, varying according to the individual taste, needs and physical constraints on available type faces and characters.</p>
+<p>Such variations are different physical representations of a single abstraction, whose most faithful physical representation is the reference language. In describing ISWIM we distinguish an abstract language called "logical ISWIM," whose texts are made up of "textual elements," characterized without commitment to a particular physical representation. There is a physical representation suitable for the medium of this report, and used for presenting each piece of ISWIM that occurs in this report. So this physical representation corresponds to "reference ALGOL 60," and is called "reference ISWIM," or the "ISWIM reference representation," or the "ISWIM reference language."</p>
+<p>To avoid imprecision one should never speak just of "ISWIM," but always of "logical IswxM" or of "such-and-such physical ISWlM." However, in loose speech, where the precise intention is clear or unimportant, we refer to "ISWlM" without qualification. We aim at a more formal relation between physical and logical languages than was the case in the ALGOL 60. This is necessary since we wish to systematize and mechanize the use of different physical representations.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>就像 ALGOL 60 一样，ISWIM 没有规定的物理表现形式。ALGOL 60 的设计者们力图避免对任何特定的字符集或字体类型的承诺。因此，他们区分了“出版语言”，“参考语言”和“硬件语言”。其中，参考语言是标准，且在报告本身中，每当出现 ALGOL 60 的部分时，都会使用该语言。出版和硬件语言是参考语言的转写，它们根据个人品味、需求以及可用字体和字符的物理限制而变化。</p>
+<p>这些变化是单个抽象的不同物理表示形式，其最忠实的物理表示形式是参考语言。在描述 ISWIM 时，我们区分了一个称为“逻辑 ISWIM ”的抽象语言，其文本由“文本元素”组成，不依赖于特定的物理表示形式。对于本报告的媒介来说，存在一种适合的物理表示形式，用于呈现本报告中出现的每个 ISWIM 片段。因此，这种物理表示形式对应于“参考 ALGOL 60 ”，并被称为“参考 ISWIM ”或“ ISWIM 参考表示形式”或“ ISWIM 参考语言”。</p>
+<p>为了避免不准确，我们永远不应该只谈论“ ISWIM ”，而应该总是谈论“逻辑 ISWXM ”或“某种物理 ISWIM ”。然而，在松散的口语中，如果精确的意图明确或不重要，我们可以不加限定地提到“ ISWIM”。我们的目标是在物理语言和逻辑语言之间建立比 ALGOL 60 更正式的关系。我们需要这样做，因为我们希望系统化和机械化地使用不同的物理表示。</p>
+</details>
+<h2 id="4-four-levels-of-abstraction"><a class="header" href="#4-four-levels-of-abstraction">4. Four Levels of Abstraction</a></h2>
+<p>The "physical/logical" terminology is often used to distinguish features that are a fortuitous consequence of physical conditions from features that are in some sense more essential. This idea is carried further by making a similar distinction among the "more essential" features. In fact ISWIM is presented here as a four-level concept comprising the following:</p>
+<p>(1) physical ISWIM'S, of which one is the reference language and others are various publication and hardware languages (not described here)</p>
+<p>(2) logical ISWIM, which is uncommitted as to character sets and type faces, but committed as to the sequence of textual elements, and the grammatical rules for grouping them, e.g., by parentheses, indentation and precedence relations.</p>
+<p>(3) abstract ISWIM, which is uncommitted as to the grammatical rules of sequence and grouping, but committed as to the grammatical categories and their nesting structure. Thus abstract Iswim is a “tree language’ of which logical ISWIM is one linearization</p>
+<p>(4) applicative expressions (AEs), which constitute another tree language, structurally more austere than abstract ISWIM,and providing certain basic grammatical categories in terms of which all of Iswim's more numerous categories can be expressed.</p>
+<p>The set of acceptable texts of a physical Iswim is specified by the relations between 1 and 2, and between 2 and 3. The outcome of each text is specified by these relations, together with a "frame of reference", i.e., a rule that associates a meaning with each of a chosen set of identifiers</p>
+<p>These are the things that vary from one member of our language family to the next. The specification of the family is completed by the relation between abstract ISWIM and AEs, together with an abstract machine that interpret AEs. These elements are the same for all members of the family and are not discussed in this paper (see [1, 2, 4]).</p>
+<p>The relationship between physical ISWIM and logical ISWIM is fixed by saying what physical texts represent each logical element, and also what layout is permitted in stringing them together. The relationship between logical ISWIM and abstract ISWIM is fixed by a formal grammar not unlike the one in the ALGOL 60 report, together with astatement connecting the phrase categories with the abstract grammatical categories</p>
+<p>These two relations cover what is usually called the “syntax’ or “grammar’ of a language. In this paper syntax is not discussed beyond a few general remarks anda few examples whose meaning should be obvious</p>
+<p>The relationship between abstract ISWIM and AEs is fixed by giving the form of AE equivalent to each abstract ISWIM grammatical category. It happens that these latter include a subset that exactly matches AEs. Hence this link in our chain of relations is roughly a mapping of ISWIM into an essential  kernel’ of ISWIM, of which all the rest is mere decoration.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>“物理/逻辑”术语经常用来区分那些偶然由物理条件产生的特性和在某种意义上更本质的特性。这个理念在区分“更本质”特性中得到了进一步体现。事实上，ISWIM在这里被作为一个四级概念展现，包括以下几点：</p>
+<ol>
+<li>
+<p>物理ISWIM，其中一个是参考语言，其他的是各种出版和硬件语言（这里没有描述）</p>
+</li>
+<li>
+<p>逻辑ISWIM，它不依赖于字符集和字体，但依赖于文本元素的顺序和将它们分组的语法规则，例如使用括号、缩进和优先关系</p>
+</li>
+<li>
+<p>抽象ISWIM，它不依赖于顺序和分组的语法规则，但依赖于语法类别及其嵌套结构。因此，抽象ISWIM是一种“树形语言”，逻辑ISWIM是其一种线性表示形式</p>
+</li>
+<li>
+<p>应用表达式（AEs），它们构成了另一种树形语言，结构上比抽象ISWIM更为简洁，并提供了一些基本的语法类别，可以根据这些类别表达ISWIM中更多的类别。</p>
+</li>
+</ol>
+<p>一个物理 ISWIM 的接受文本集是由 1 和 2 之间的关系，以及 2 和 3 之间的关系来规定的。每个文本的结果由这些关系及一个“参照系”规定，参照系指的是一个规则，它将每个选定的标识符集合的意义关联起来</p>
+<p>这些是从我们的语言家族的一个成员到另一个成员之间变化的事物。通过抽象 ISWIM 和 AEs 之间的关系以及解释 AEs 的抽象机器来完成对家族的规范。这些元素对于家族的所有成员都是相同的，并且本文中没有讨论（请参见[1, 2, 4]）</p>
+<p>物理 ISWIM 和逻辑 ISWIM 之间的关系是通过说明哪些物理文本表示每个逻辑元素以及在将它们连接在一起时允许的布局来固定的。逻辑 ISWIM 和抽象 ISWIM 之间的关系是通过类似于 ALGOL 60 报告中使用的正式语法以及将短语类别与抽象语法类别联系起来的语句来固定的</p>
+<p>这两个关系涵盖了通常被称为语言的“语法”或“句法”。在本文中，除了一些一般性的评论和几个应该很明显的例子之外，不会讨论语法</p>
+<p>抽象 ISWIM 和 AEs 之间的关系是通过给出与每个抽象 ISWIM 语法类别等价的 AE 的形式来固定的。后者包括了一个与 AEs 完全匹配的子集。因此，在我们的关系链中，这个链接大致是将 ISWIM 映射到一个核心的“内核”，其余的都是装饰品</p>
+</details>
+<h2 id="5-abstract-iswim"><a class="header" href="#5-abstract-iswim">5. Abstract ISWIM</a></h2>
+<p>The texts of abstract ISWIM are composite information structures called amessage's. The following structure definition defines the class amessage in terms of a class called identifier. It also defines several functions for manipulating amessage's. These comprise the predicates demand, simple, infixed, etc; also the selectors body, rator,leflarm, nee, etc; also (taking for granted certain unformalized conventions concerning structure definitions) the constructors, consdemand, conscombination (elsewhere abbreviated to combine), consstandardadef, etc. Examples of reference ISWIM are given alongside, against the right margin.</p>
+<p>An amessage is either a demand, and has a body which is an aexpression,or else a definition,</p>
+<p>$ [Print \qquad a+2b $</p>
+<p>$ [Def \qquad x=a+2b $</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>抽象ISWIM的文本是由称为amessage的信息结构组成的。以下的结构定义将类amessage定义为一个称为标识符的类。它也定义了几个用于处理amessage的函数。这些包括需求、简单、中缀等谓词；还有选择器body、rator、leflarm、nee等；还有（假设接受某些未正式化的结构定义约定）构造函数，如consdemand、conscombination（在其他地方缩写为combine）、consstandardadef等。参照ISWIM的示例针对右边边界给出。</p>
+<p>一个消息可能是一个需求，它的主体是一个表达式，或者是一个定义.</p>
+</details>
+<h3 id="51--where-rec"><a class="header" href="#51--where-rec">5.1  where rec</a></h3>
+<p>an aexpression (aexp) is</p>
+<h4 id="511-either-simple-and-has-a-body-which-is-an-identifier"><a class="header" href="#511-either-simple-and-has-a-body-which-is-an-identifier">5.1.1 either simple, and has a body which is an identifier</a></h4>
+<p>$ [C Ath231'' $</p>
+<h4 id="512--or-a-combination"><a class="header" href="#512--or-a-combination">5.1.2  or a combination,</a></h4>
+<p>in which case</p>
+<ul>
+<li>
+<p>it has a rator,</p>
+<p>which is an aexp,</p>
+<p>$ [sin(a+2b) $</p>
+</li>
+<li>
+<p>and a rand,</p>
+<p>which is an aexp,</p>
+<p>$  a+2b $</p>
+</li>
+</ul>
+<h4 id="513--or-conditional-in-which-case-it-is"><a class="header" href="#513--or-conditional-in-which-case-it-is">5.1.3  or conditional, in which case it is</a></h4>
+<ul>
+<li>
+<p>either two-armed,</p>
+<p>and has a condition, which is an aexp, and a leftarm, which is an aexp, and a rightarm, which is an aexp,</p>
+<p>$ [p\to a+2b ; \quad 2a-b$</p>
+</li>
+<li>
+<p>or one-armed,</p>
+<p>and has a condition, which is an aexp, and an arm, which is an aexp</p>
+<p>$ [p\to 2a-b$</p>
+</li>
+</ul>
+<h3 id="514-or-a-listing-and-has-a-body-which-is-an-aexp-list"><a class="header" href="#514-or-a-listing-and-has-a-body-which-is-an-aexp-list">5.1.4 or a listing, and has a body which is an aexp-list,</a></h3>
+<p>$ [a+b,c+d,e+f $</p>
+<h4 id="515-or-beet-and-has"><a class="header" href="#515-or-beet-and-has">5.1.5 or beet, and has</a></h4>
+<ul>
+<li>
+<p>a mainclause,</p>
+<p>which is an aexp,</p>
+<p>$ [x(x+1) \quad where  \quad x=a+2b $</p>
+</li>
+<li>
+<p>and a support</p>
+<p>which is an adef</p>
+<p>$ let \quad x=a+2b; \quad x(x+1) $</p>
+</li>
+</ul>
+<h3 id="52-and-an-a-definition-adef"><a class="header" href="#52-and-an-a-definition-adef">5.2 and an a definition (adef)</a></h3>
+<h4 id="521--is-either-standard"><a class="header" href="#521--is-either-standard">5.2.1  is either standard,</a></h4>
+<p>and has</p>
+<p>a definee (nee), which is an abv,</p>
+<p>and a defniens (niens), which is an aexp</p>
+<p>$ [x=a+2b $</p>
+<h4 id="522-or-functionform"><a class="header" href="#522-or-functionform">5.2.2 or functionform,</a></h4>
+<p>and has</p>
+<ul>
+<li>
+<p>a lefthandside (lhs) which is an abv-list of length $\ge 2$</p>
+</li>
+<li>
+<p>and a righthandside (rhs), which is an aexp</p>
+</li>
+</ul>
+<p>$[f(x)=x(x+1)$</p>
+<h4 id="523-or-programpoint"><a class="header" href="#523-or-programpoint">5.2.3 or programpoint,</a></h4>
+<p>and has a body which is an adef.</p>
+<p>$[pp \quad f(x)=x(x+1)$</p>
+<h4 id="524-or-circular"><a class="header" href="#524-or-circular">5.2.4 or circular,</a></h4>
+<p>and has a body which is an adef.</p>
+<p>$ [rcc \quad f(n)=(n=0) \to 1; nf(n-1)$</p>
+<h4 id="525-or-simultaneous"><a class="header" href="#525-or-simultaneous">5.2.5 or simultaneous,</a></h4>
+<p>and has a body, which is an adef-list.</p>
+<p>$ [x=a+2b \quad and \quad y=2a-b$</p>
+<h4 id="526-or-beet-and-has"><a class="header" href="#526-or-beet-and-has">5.2.6 or beet, and has</a></h4>
+<p>a mainclause which is an adef and a support, which is an adef</p>
+<p>$ f(y)=x(x+y) \quad where \quad x=a+2b$</p>
+<h3 id="53-where-an-abv-is"><a class="header" href="#53-where-an-abv-is">5.3 where an abv is</a></h3>
+<h4 id="531-either-simple"><a class="header" href="#531-either-simple">5.3.1 either simple,</a></h4>
+<p>and has a body, which is an identifier.</p>
+<h4 id="532-or-else-is-an-abv-list"><a class="header" href="#532-or-else-is-an-abv-list">5.3.2 or else, is an abv-list.</a></h4>
+<p>$ [k, (y, z), w$</p>
+<p>A program-point definition introduces a deviant kind of function. Applying such a function precipitates premature termination of the where-expression containing it, and causes its result to be delivered as the value of theentire where expression.</p>
+<p>Program-points are ISWIM's, nearest thing to jumping. Assignment is covered as a particular case of an operator. For both of these the precise specification is in terms of the underlying abstract machine.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<h3 id="51-其中关于rec可能是"><a class="header" href="#51-其中关于rec可能是">5.1 其中关于rec，可能是</a></h3>
+<h4 id="511-简单的其主体是一个标识符"><a class="header" href="#511-简单的其主体是一个标识符">5.1.1 简单的，其主体是一个标识符</a></h4>
+<p>$ [C Ath231'' $</p>
+<h4 id="512-或者是一个组合"><a class="header" href="#512-或者是一个组合">5.1.2 或者是一个组合，</a></h4>
+<p>(1) 它有一个运算符，是一个表达式</p>
+<p>$ [sin(a+2b) $</p>
+<p>(2) 和一个操作数, 也是一个表达式</p>
+<p>$  a+2b $</p>
+<h4 id="513-或者是条件的这种情况下它是"><a class="header" href="#513-或者是条件的这种情况下它是">5.1.3 或者是条件的，这种情况下，它是</a></h4>
+<p>(1) 两个分支的, 并且具有一个条件，这是一个表达式，左值是一个表达式，右值是一个表达式，</p>
+<p>$ [p\to a+2b ; \quad 2a-b$</p>
+<p>(2) 或者是单分支，并且具有一个条件，这是一个表达式，一个分支，也是表达式。</p>
+<p>$ [p\to 2a-b$</p>
+<h4 id="514-或者是列表拥有一个主体这是一个表达式列表"><a class="header" href="#514-或者是列表拥有一个主体这是一个表达式列表">5.1.4 或者是列表，拥有一个主体，这是一个表达式列表</a></h4>
+<p>$ [a+b,c+d,e+f $</p>
+<h4 id="515-或者"><a class="header" href="#515-或者">5.1.5 或者，</a></h4>
+<p>(1) 具有一个主句，这是一个表达式</p>
+<p>$ [x(x+1) \quad where  \quad x=a+2b $</p>
+<p>(2) 或者有一个定义</p>
+<p>$ let \quad x=a+2b; \quad x(x+1) $</p>
+<h3 id="52-一个定义可能是"><a class="header" href="#52-一个定义可能是">5.2 一个定义，可能是</a></h3>
+<h4 id="521-它可以是标准的"><a class="header" href="#521-它可以是标准的">5.2.1 它可以是标准的</a></h4>
+<p>有个定义者和被定义者</p>
+<p>$ [x=a+2b $</p>
+<h4 id="522-或者是函数形式"><a class="header" href="#522-或者是函数形式">5.2.2 或者是函数形式，</a></h4>
+<p>它有一个左值是长度 $\ge 2$ 的缩略词列表，还有一个右值，是一个表达式</p>
+<p>$[f(x)=x(x+1)$</p>
+<h4 id="523-或者是程序"><a class="header" href="#523-或者是程序">5.2.3 或者是程序，</a></h4>
+<p>并且有一个主体，这是一个定义。</p>
+<p>$[pp \quad f(x)=x(x+1)$</p>
+<h4 id="524-或者是环形的"><a class="header" href="#524-或者是环形的">5.2.4 或者是环形的，</a></h4>
+<p>并且有一个是定义的主体。</p>
+<p>$ [rcc \quad f(n)=(n=0) \to 1; nf(n-1)$</p>
+<h4 id="525-或者是同时的"><a class="header" href="#525-或者是同时的">5.2.5 或者是同时的，</a></h4>
+<p>并且有一个主体，这是一个定义列表</p>
+<p>$ [x=a+2b \quad and \quad y=2a-b$</p>
+<h4 id="526-或者"><a class="header" href="#526-或者">5.2.6 或者</a></h4>
+<p>一个主句是一个定义，而一个从句是一个定义</p>
+<p>$ f(y)=x(x+y) \quad where \quad x=a+2b$</p>
+<h3 id="53-其中简称"><a class="header" href="#53-其中简称">5.3 其中，简称</a></h3>
+<h4 id="531-要么是简单的并且具有一个标识符"><a class="header" href="#531-要么是简单的并且具有一个标识符">5.3.1 要么是简单的，并且具有一个标识符。</a></h4>
+<h4 id="532-或者是一个简称列表"><a class="header" href="#532-或者是一个简称列表">5.3.2 或者是一个简称列表。</a></h4>
+<p>$ [k, (y, z), w$</p>
+<p>程序点定义引入了一种异常的函数。 应用此类函数会导致包含该函数的 where 表达式提前终止，并导致其结果作为整个 where 表达式的值进行传递。</p>
+<p>程序点是 ISWIM 的，最接近跳跃的东西。 赋值被视为运算符的特殊情况。 对于这两者，精确的规范是根据底层抽象机来进行的。</p>
+</details>
+<h2 id="6-relationship-to-lisp"><a class="header" href="#6-relationship-to-lisp">6. Relationship to LISP</a></h2>
+<p>ISWIM can be looked on as an attempt to deliver LISP from its eponymous commitment to lists, its reputation for hand-to-mouth storage allocation, the hardware dependent flavor of its pedagogy, its heavy bracketing, and its compromises with tradition. These five points are now dealt with in turn:</p>
+<p>(1) ISWIM has no particular problem orientation. Experiments so far have been mainly in numerical work and language processing with brief excursions into "commercial" programming and elsewhere. No bias towards or away from a particular field of application has emerged</p>
+<p>(2) Outside a certain subset (corresponding closely to ALGOL 0 without dynamic own arrays), ISWIM needs garbage collection. An experimental prototype implementation followed common ALGOL 60 practice. It used dynamic storage allocation with two sources, one LIFO and the other garbage collected, with the intention that the LIFO source should take as big a share as possible.</p>
+<p>However, as with ALGOL 60, there is a latent potential for prealloeating storage in certain favorable and commonly useful situations. Compared with LISP the chief amelioration of storage allocation comes out of a mere syntactic difference, namely, the use of where ( 'let' which is exactly equal in power and program structure). This provides a block-structure not dissimilar in textual appearance from ALGOL 60'S, though it slips off the pen more easily, and is in many respects more general.</p>
+<p>(3) Lisp has some dark corners, especially outside "pure LISP," in which both teachers and programmers resort to talking about addresses and to drawing storage diagrams. The abstract machine underlying ISWIM is aimed at illuminating these corners with a mininmm of hardware dependence.</p>
+<p>(4) The textual appearance of ISWIM is not like Lisp's S-expressions. It is nearer to LISP'S M-expressions (which constitute an informal language used as an intermediate result in hand-preparing LISP programs). ISWIM has the following additional features:</p>
+<p>(a) "Auxiliary" definitions, indicated by 'let' or 'where', with two decorations: 'and' for simultaneous definitions, and 'rec' for self-referential definitions (not to be mistaken for a warning about recursive activation, which can of course also arise from self-application, and without self-reference).</p>
+<p>(b) Infixed operators, incorporated systematically. A logical ISWIM can be defined in terms of four unspecified parameters: three subsets of the class of identifiers, for use as prefixed, infixed and postfixed operators; and a precedence relation defined over the union of these subsets.</p>
+<p>(c) Indentation, used to indicate program structure. A physical ISWIM can be defined in terms of an unspecified parameter: a subset of phrase categories, instances of which are restricted in layout by the following rule called "the offside rule." The southeast quadrant that just contains the phrase's first symbol must contain the entire phrase, except possibly for bracketed subsegments. This rule has three important features. It is based on vertical alignment, not character width, and hence is equally appropriate in handwritten, typeset or typed texts. Its use is not obligatory, and use of it can be mixed freely with more conventional alternatives like punctuation. Also, it is incorporated in ISWIM in a systematic way that admits of alternatives without changing other features of ISWIM and that can be applied to other languages</p>
+<p>(5) The most important contribution of Lisp was not in listprocessing or storage allocation or in notation, but in the logical properties lying behind the notation, Here ISWIM makes little improvement because, except for a few minor details, Lisp left none to make. There are two equivalent ways of stating these properties.</p>
+<p>(a) Lisp simplified the equivalence relations that determine the extent to which pieces of program can be interchanged without affecting the outcome.</p>
+<p>(b) Lisp brought the class of entities that are denoted by expressions a programmer can write nearer to those that arise in models of physical systems and in mathematical and logical systems.</p>
+<p>These remarks are expanded in Sections 7 and 8.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>ISWIM 可以说是 LISP 的一次尝试，它使 LISP 摆脱了对列表的承诺、对存储分配的手忙脚乱、教学法对硬件的依赖、大量的括号以及对传统的妥协。下面将依次讨论这五点：</p>
+<p>(1) ISWIM 没有特定的问题导向。迄今为止，主要在数值工作和语言处理方面进行了实验，并在 "商业 "编程和其他方面进行了短暂的尝试。没有出现偏向或偏离某一特定应用领域的情况</p>
+<p>(2) 除了某个子集（与没有动态数组的 ALGOL 0 非常接近）外，ISWIM 需要垃圾收集。实验原型的实现遵循 ALGOL 60 的通用做法。它使用动态存储分配，有两个源，一个是后进先出源，另一个是垃圾收集源，目的是让后进先出源占据尽可能大的份额。</p>
+<p>然而，与 ALGOL 60 一样，在某些有利且常用的情境下，ISWIM 也具有预先分配存储的潜在可能性。与 LISP 相比，存储分配的主要改进仅源于语法上的差异，即使用 where（在功能和程序结构上与 'let' 完全等价）。这提供了一种块结构，其文本外观与 ALGOL 60 的类似，尽管它更容易书写，并且在许多方面更为通用</p>
+<p>(3) Lisp 有一些阴暗的角落，尤其是在 "纯 LISP "之外，在这些角落里，教师和程序员都在谈论地址和绘制存储图。ISWIM 的抽象机器旨在以最小的硬件依赖性照亮这些角落。</p>
+<p>(4) ISWIM 的文本外观与 Lisp 的 S 表达式不同。它更接近于 LISP 的 M 表达式（构成一种非正式语言，用作手工编制 LISP 程序的中间结果）。ISWIM 还具有以下特点：</p>
+<p>(a) "辅助 "定义，用 "let "或 "where "表示，有两种装饰： 'and'表示同时定义，'rec'表示自引用定义（不要误认为是对递归激活的警告，当然递归激活也可能来自自应用，而且没有自引用）。</p>
+<p>(b) 内置运算符，系统整合。逻辑 ISWIM 可以用四个未指定的参数来定义：标识符类的三个子集，分别用作前缀、后缀和后缀运算符；以及定义在这些子集的联合之上的优先关系。</p>
+<p>(c) 缩进，用于表示程序结构。一个物理ISWIM可以根据未指定的参数来定义：词组类别的一个子集，其实例的布局通过以下名为“偏移规则”的规则进行限制。刚好包含词组第一个符号的东南象限必须包含整个词组，除非可能的带括号的子段。此规则有三个重要特点。它基于垂直对齐，而不是字符宽度，因此在手写，排版或键入的文本中同样适用。其使用不是强制性的，且其使用可以自由地与更传统的替代方案如标点混合使用。此外，它以一种系统化的方式纳入ISWIM，可以在不更改ISWIM的其他特征的情况下提供替代方案，并且可以应用于其他语言。</p>
+<p>(5) Lisp 最重要的贡献不在于列表处理或存储分配，也不在于符号，而在于符号背后的逻辑属性。ISWIM 在这方面几乎没有改进，因为除了一些小细节外，Lisp 没有留下任何改进的余地。有两种等效的方法来说明这些属性。</p>
+<p>(a) Lisp 简化了等价关系，这些等价关系决定了程序片段可以在不影响结果的情况下互换的程度。</p>
+<p>(b) Lisp 使程序员可以编写的表达式所表示的实体类别更接近物理系统模型以及数学和逻辑系统中出现的实体类别。</p>
+<p>第 7 节和第 8 节将进一步阐述这些观点。</p>
+</details>
+<h2 id="7-the-characteristic-equivalences-of-iswim"><a class="header" href="#7-the-characteristic-equivalences-of-iswim">7. The Characteristic Equivalences of ISWIM</a></h2>
+<p>For most programming languages there are certain statements of the kind, "There is a systematic equivalence between pieces of program like this, and pieces like that," that nearly hold but not quite. For instance in ALGOL 60 there is a nearly true such statement concerning procedure calls and blocks.</p>
+<p>At first sight it might appear pedantic to quibble about such untidiness--"What's the point of having two different ways of doing the same thing anyway? Isn't it better to have two facilities than just one?" The author believes that expressive power should be by design rather than accident, and that there is great point in equivalences that hold without exception. It is a platitude that any given outcome can be achieved by a wide variety of programs. The practicability of all kinds of program-processing (optimizing, checking satisfaction of given conditions, constructing a program satisfying given conditions) depends on there being elegant equivalence rules. For ISWIM there are four groups, concerning:</p>
+<p>(1) the extent to which a subexpression can be replaced by an equivalent subexpression without disturbing the equivalence class of the whole expression. Without this group the other rules would be applicable only to complete expressions, not to subexpressions.</p>
+<p>(2) user-coined names, i.e., in definitions and, in particu- lar, function definitions.</p>
+<p>(3) built-in entities implicit in special forms of expression. The only iiistanees of this in ISWIM are conditional expressions, listings and self-referential definitions.</p>
+<p>(4) named entities added in any specific problem orientation of ISWIM.</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+<p>对于大多数程序设计语言来说，"这样的程序片段和那样的程序片段之间存在着系统的等价关系 "这种说法几乎成立，但又不完全成立。例如，在 ALGOL 60 中，关于过程调用和程序块就有这样一种近乎正确的说法。</p>
+<p>乍一看，对这种不整洁进行争论可能显得有些吹毛求疵——“毕竟，用两种不同的方式做同一件事有什么意义呢？拥有两种设施不是比只有一种更好吗？”作者认为，表达能力应该是经过设计的而不是偶然的，而且毫无例外地成立的等价性具有很大的重要性。众所周知，任何给定的结果都可以通过多种程序来实现。各种程序处理（优化、检查满足给定条件、构造满足给定条件的程序）的可行性取决于存在优雅的等价规则。对于 ISWIM 来说，有四组相关的特征等价性：</p>
+<p>(1) 子表达式可以在不干扰整个表达式的等价类的情况下被等价的子表达式替换的程度。没有这个组，其他规则只适用于完整的表达式，而不适用于子表达式。
+(2) 用户创造的名称，即在定义和特别是函数定义中。</p>
+<p>(3) 内置实体隐含在表达式的特殊形式中。在ISWIM中，只有条件表达式、列表和自我参照定义是这个例子。</p>
+<p>(4) 在ISWIM的任何特定问题定向中添加的命名实体。</p>
+</details>
+<h3 id="71-group-1"><a class="header" href="#71-group-1">7.1 Group 1</a></h3>
+<p>$(\mu) \quad If \quad L \equiv L' \quad then \quad L(M) \equiv L'(M)$</p>
+<p>$(\nu) \quad If \quad M \equiv M' \quad then \quad L(M) \equiv L(M')$</p>
+<p>$(\nu') \quad If \quad M \equiv M' \quad then \quad (L,...,M,...,N) \equiv (L,...,M',...N)$</p>
+<p>$(\nu'') \quad If \quad L \equiv L' \quad then \quad (L \to M; N) \equiv (L' \to M; N)$</p>
+<p>$(\nu''') \quad If \quad M \equiv M' \quad then \quad (L \to M; N) \equiv (L \to M'; N) $</p>
+<p>$(\nu^{iv}) \quad If \quad N \equiv N' \quad then \quad (L \to M; N) \equiv (L \to M; N')$</p>
+<p>$(\nu^{v}) \quad If \quad M \equiv M' \quad then \quad (L : where : x = M) \equiv (L : where : x = M')$</p>
+<p>The significant omissions here are the main-clause in the last case above, the rhs of a function definition $"f(x) = M" $ and of a circular definition $ "rec x = M" $.</p>
+<h3 id="72-group-2"><a class="header" href="#72-group-2">7.2 Group 2</a></h3>
+<p>$(let) \quad let : x = M; L \quad \equiv \quad L : where : x = M$</p>
+<p>$(I')\quad f(x) = L \quad \equiv \quad f=(g : where : g(x)=L)$</p>
+<p>$\quad \quad f(a, b, c)(x, y) = L \quad \equiv \quad f(a,b,c) = (g : where : g(x,y) = L)$</p>
+<p>and so on for each shape of left-hand side</p>
+<p>$(I) \quad (f : where : f(x)=L) M \quad \equiv \quad L : where : x=M $</p>
+<p>$(\beta') \quad (x=L) : where : y=M \quad \equiv x=(L : where : y=M)$</p>
+<p>$(D') \quad x = L : and : y=M : and \quad \equiv ... : and : z=N \quad \equiv (x,y,...,z) = (L,M,...,N)$</p>
+<details> <summary> 🪶 🦉🦊🐿 🪶</summary>
+</details>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../reading-notes/technical-reading/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../reading-notes/shijing/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../reading-notes/technical-reading/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../reading-notes/shijing/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../../giscus.js"></script>
+
+
+    </div>
+    </body>
+</html>

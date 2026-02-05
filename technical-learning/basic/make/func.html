@@ -1,0 +1,799 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>使用函数 - Poetic Life</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> About Me</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/index.html"><strong aria-hidden="true">2.</strong> 山海塔防</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/山海塔防.html"><strong aria-hidden="true">2.1.</strong> 山海塔防</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/山海经原文.html"><strong aria-hidden="true">2.2.</strong> 山海经原文</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经.html"><strong aria-hidden="true">2.3.</strong> 南山经</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经/䧿山.html"><strong aria-hidden="true">2.4.</strong> 䧿山</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经/柜山.html"><strong aria-hidden="true">2.5.</strong> 柜山</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/南山经/天虞山.html"><strong aria-hidden="true">2.6.</strong> 天虞山</a></li><li class="chapter-item expanded "><a href="../../../work/shanhai-tower-defense/西山经.html"><strong aria-hidden="true">2.7.</strong> 西山经</a></li></ol></li><li class="chapter-item expanded "><a href="../../../work-reading/index.html"><strong aria-hidden="true">3.</strong> Work Reading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../work-reading/index.html"><strong aria-hidden="true">3.1.</strong> Introducing</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/introduce/introduce.html"><strong aria-hidden="true">3.2.</strong> Official Docs</a></li><li class="chapter-item expanded "><a href="../../../work-reading/article/introduce/datadog.html"><strong aria-hidden="true">3.3.</strong> datadog</a></li><li class="chapter-item expanded "><a href="../../../work-reading/index.html"><strong aria-hidden="true">3.4.</strong> Read Blogs</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2024/2024.html"><strong aria-hidden="true">3.5.</strong> Reading in 2024</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2024/1.html"><strong aria-hidden="true">3.6.</strong> January</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2024/2_7.html"><strong aria-hidden="true">3.7.</strong> February ~ July</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/2023.html"><strong aria-hidden="true">3.8.</strong> Reading in 2023</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/1_3.html"><strong aria-hidden="true">3.9.</strong> January ～ March</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/4_6.html"><strong aria-hidden="true">3.10.</strong> April ~ June</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/7_8.html"><strong aria-hidden="true">3.11.</strong> July ~ August</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/9_10.html"><strong aria-hidden="true">3.12.</strong> September ~ October</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2023/11_12.html"><strong aria-hidden="true">3.13.</strong> November ~ December</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/2022.html"><strong aria-hidden="true">3.14.</strong> Reading in 2022</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/1_3.html"><strong aria-hidden="true">3.15.</strong> January ～ March</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/4_7.html"><strong aria-hidden="true">3.16.</strong> April ~ July</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2022/8_10.html"><strong aria-hidden="true">3.17.</strong> August ~ October</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/2021.html"><strong aria-hidden="true">3.18.</strong> Reading in 2021</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/1.html"><strong aria-hidden="true">3.19.</strong> January</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/2.html"><strong aria-hidden="true">3.20.</strong> February</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/3_4.html"><strong aria-hidden="true">3.21.</strong> March ~ April</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/5.html"><strong aria-hidden="true">3.22.</strong> May</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/6_7.html"><strong aria-hidden="true">3.23.</strong> June ~ July</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2021/8_11.html"><strong aria-hidden="true">3.24.</strong> August ~ December</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/2020.html"><strong aria-hidden="true">3.25.</strong> Reading in 2020</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/5_6.html"><strong aria-hidden="true">3.26.</strong> May ~ June</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/7_8.html"><strong aria-hidden="true">3.27.</strong> July ~ August</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/9_10.html"><strong aria-hidden="true">3.28.</strong> September ~ October</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/11.html"><strong aria-hidden="true">3.29.</strong> November</a></li><li class="chapter-item expanded "><a href="../../../work-reading/work_reading/2020/12.html"><strong aria-hidden="true">3.30.</strong> December</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/algorithm/index.html"><strong aria-hidden="true">4.</strong> Algorithm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/algorithm/chapter_1.html"><strong aria-hidden="true">4.1.</strong> Chapter 1</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/index.html"><strong aria-hidden="true">5.</strong> Basic</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/basic/index.html"><strong aria-hidden="true">5.1.</strong> Introducation</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/vim/vim.html"><strong aria-hidden="true">5.2.</strong> Vim</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/emacs/emacs.html"><strong aria-hidden="true">5.3.</strong> Emacs</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/emacs/remote_file.html"><strong aria-hidden="true">5.4.</strong> remote files</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/emacs/project.html"><strong aria-hidden="true">5.5.</strong> project</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/vs/vs.html"><strong aria-hidden="true">5.6.</strong> vscode</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/vs/debug_c.html"><strong aria-hidden="true">5.7.</strong> MacOS vscode debug C/C++ with makefile</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/git/git.html"><strong aria-hidden="true">5.8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/git/git_proxy.html"><strong aria-hidden="true">5.9.</strong> set proxy for github</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/git/git_del.html"><strong aria-hidden="true">5.10.</strong> delete remote branch</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/regular_expression/regular_expression.html"><strong aria-hidden="true">5.11.</strong> RegularExpression</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/tmux/tmux.html"><strong aria-hidden="true">5.12.</strong> tmux</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/markdown/markdown.html"><strong aria-hidden="true">5.13.</strong> markdown</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/mdbook.html"><strong aria-hidden="true">5.14.</strong> mdbook</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/giscus.html"><strong aria-hidden="true">5.15.</strong> comment system: giscus</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/flag_counter.html"><strong aria-hidden="true">5.16.</strong> visitor analytics: flag counter</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/blog_license.html"><strong aria-hidden="true">5.17.</strong> blog license: creativecommons</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/insomnia/insomnia.html"><strong aria-hidden="true">5.18.</strong> insomnia</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/macos/macos.html"><strong aria-hidden="true">5.19.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/os/open_file.html"><strong aria-hidden="true">5.20.</strong> 使用绝对路径，打开文件</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/mdbook/install_xcode.html"><strong aria-hidden="true">5.21.</strong> after MacOS upgrade, can not use git</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/os/inertial_scroll.html"><strong aria-hidden="true">5.22.</strong> 多个窗口滑动，会出现漂移</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/chrome/chrome.html"><strong aria-hidden="true">5.23.</strong> Chrome</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/macos/macos.html"><strong aria-hidden="true">5.24.</strong> Macos</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/macos/delete_360.html"><strong aria-hidden="true">5.25.</strong> 彻底删除企业版360</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/docker.html"><strong aria-hidden="true">5.26.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/basic.html"><strong aria-hidden="true">5.27.</strong> basic</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/basic/image_ls.html"><strong aria-hidden="true">5.28.</strong> 列出镜像</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/docker/rancher.html"><strong aria-hidden="true">5.29.</strong> rancher</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/make.html"><strong aria-hidden="true">5.30.</strong> make</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/overview.html"><strong aria-hidden="true">5.31.</strong> 概述</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/introducation.html"><strong aria-hidden="true">5.32.</strong> makefile介绍</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/rules.html"><strong aria-hidden="true">5.33.</strong> 书写规则</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/recipes.html"><strong aria-hidden="true">5.34.</strong> 书写命令</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/var.html"><strong aria-hidden="true">5.35.</strong> 使用变量</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/condition.html"><strong aria-hidden="true">5.36.</strong> 使用条件判断</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/func.html" class="active"><strong aria-hidden="true">5.37.</strong> 使用函数</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/invoke.html"><strong aria-hidden="true">5.38.</strong> make的运行</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/implicit_rule.html"><strong aria-hidden="true">5.39.</strong> 隐含规则</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/basic/make/archives.html"><strong aria-hidden="true">5.40.</strong> 使用make更新函数库文件</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/compile/index.html"><strong aria-hidden="true">6.</strong> Compilation Principle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/compile/index.html"><strong aria-hidden="true">6.1.</strong> 基础概念</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/compile/basic/term.html"><strong aria-hidden="true">6.2.</strong> 名词</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/compile/basic/term/pc.html"><strong aria-hidden="true">6.3.</strong> program counter</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/index.html"><strong aria-hidden="true">7.</strong> Middleware</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/index.html"><strong aria-hidden="true">7.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/redis.html"><strong aria-hidden="true">7.2.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/basic.html"><strong aria-hidden="true">7.3.</strong> Basic</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/101.html"><strong aria-hidden="true">7.4.</strong> 101</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/memory_analyze.html"><strong aria-hidden="true">7.5.</strong> Memory Analyze</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/bloom_filter.html"><strong aria-hidden="true">7.6.</strong> Bloom Filter</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/redis/hyperloglog.html"><strong aria-hidden="true">7.7.</strong> HyperLogLog</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/kafka.html"><strong aria-hidden="true">7.8.</strong> kafka</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/basic.html"><strong aria-hidden="true">7.9.</strong> basic</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/ui.html"><strong aria-hidden="true">7.10.</strong> kafka ui</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/config.html"><strong aria-hidden="true">7.11.</strong> config info</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/101.html"><strong aria-hidden="true">7.12.</strong> kafka101</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/sasl_plain.html"><strong aria-hidden="true">7.13.</strong> SASL/PLAIN</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/sasl_scram_sha_256.html"><strong aria-hidden="true">7.14.</strong> SASL/SCRAM-SHA-256</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/ssl.html"><strong aria-hidden="true">7.15.</strong> SSL</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/security.html"><strong aria-hidden="true">7.16.</strong> security</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/security/intro.html"><strong aria-hidden="true">7.17.</strong> introduction</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/middleware/kafka/security/hands_on.html"><strong aria-hidden="true">7.18.</strong> hands on</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/network/index.html"><strong aria-hidden="true">8.</strong> Network</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/network/chapter_1.html"><strong aria-hidden="true">8.1.</strong> Chapter 1</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/os/index.html"><strong aria-hidden="true">9.</strong> Operating System</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/os/basic.html"><strong aria-hidden="true">9.1.</strong> 入门篇</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/os/start_to_know_container.html"><strong aria-hidden="true">9.2.</strong> 初识容器</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.</strong> Programing Language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/language/introduction.html"><strong aria-hidden="true">10.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.2.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/go.html"><strong aria-hidden="true">10.3.</strong> Go</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/101.html"><strong aria-hidden="true">10.4.</strong> go101</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/cover.html"><strong aria-hidden="true">10.5.</strong> The cover story</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/gc.html"><strong aria-hidden="true">10.6.</strong> A Guide to the Go Garbage Collector</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/go/mock.html"><strong aria-hidden="true">10.7.</strong> go mock</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.8.</strong> Java</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/java/java.html"><strong aria-hidden="true">10.9.</strong> Java</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/index.html"><strong aria-hidden="true">10.10.</strong> Python</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/language/language/python/python.html"><strong aria-hidden="true">10.11.</strong> Python</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/index.html"><strong aria-hidden="true">11.</strong> Calculus</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/preface.html"><strong aria-hidden="true">11.1.</strong> 前言</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/functions_and_models.html"><strong aria-hidden="true">11.2.</strong> 函数和模型</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/functions/four_way.html"><strong aria-hidden="true">11.3.</strong> 函数的四种表达方式</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/calculus/fuctions/four_way/examples.html"><strong aria-hidden="true">11.4.</strong> examples</a></li></ol></li><li class="chapter-item expanded "><a href="../../../technical-learning/observe/index.html"><strong aria-hidden="true">12.</strong> Observe</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../technical-learning/observe/apm.html"><strong aria-hidden="true">12.1.</strong> apm</a></li><li class="chapter-item expanded "><a href="../../../technical-learning/observe/apm/elastic_apm.html"><strong aria-hidden="true">12.2.</strong> elasticsearch apm 实践</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.</strong> Elastic Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.2.</strong> 概览</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface.html"><strong aria-hidden="true">13.3.</strong> 前言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/who-should-read.html"><strong aria-hidden="true">13.4.</strong> 谁应该读这本书</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/why-we-write-this-book.html"><strong aria-hidden="true">13.5.</strong> 为什么我们要写这本书</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/how-to-read-this-book.html"><strong aria-hidden="true">13.6.</strong> 如何读这本书</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/perface/acknowledgment.html"><strong aria-hidden="true">13.7.</strong> 鸣谢</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.8.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/basic.html"><strong aria-hidden="true">13.9.</strong> 基础入门</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/intro.html"><strong aria-hidden="true">13.10.</strong> 你知道的, 为了搜索…​</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/running-elastic.html"><strong aria-hidden="true">13.11.</strong> 安装使用</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/document-oriented.html"><strong aria-hidden="true">13.12.</strong> 面向文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/find-your-feet.html"><strong aria-hidden="true">13.13.</strong> 适应新环境</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/index-employee-document.html"><strong aria-hidden="true">13.14.</strong> 索引员工文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/retrieving-a-document.html"><strong aria-hidden="true">13.15.</strong> 检索文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search-lite.html"><strong aria-hidden="true">13.16.</strong> 轻量搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search-with-query-dsl.html"><strong aria-hidden="true">13.17.</strong> 使用查询表达式搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/more-complicated-search.html"><strong aria-hidden="true">13.18.</strong> 更复杂的搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/full-text-search.html"><strong aria-hidden="true">13.19.</strong> 全文搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/phrase-search.html"><strong aria-hidden="true">13.20.</strong> 短语搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/highlighting-intro.html"><strong aria-hidden="true">13.21.</strong> 高亮搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/analytics.html"><strong aria-hidden="true">13.22.</strong> 分析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/conclusion.html"><strong aria-hidden="true">13.23.</strong> 小结</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed_nature.html"><strong aria-hidden="true">13.24.</strong> 分布式特性</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/next-step.html"><strong aria-hidden="true">13.25.</strong> 后续步骤</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed-cluster.html"><strong aria-hidden="true">13.26.</strong> 集群内的原理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/empty-cluster.html"><strong aria-hidden="true">13.27.</strong> 空集群</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/cluster-health.html"><strong aria-hidden="true">13.28.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/add-an-index.html"><strong aria-hidden="true">13.29.</strong> 添加索引</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/add-failover.html"><strong aria-hidden="true">13.30.</strong> 添加故障转移</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/scale-horizontally.html"><strong aria-hidden="true">13.31.</strong> 水平扩容</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/coping-with-failure.html"><strong aria-hidden="true">13.32.</strong> 应对故障</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/data-in-data-out.html"><strong aria-hidden="true">13.33.</strong> 数据输入和输出</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/document.html"><strong aria-hidden="true">13.34.</strong> 什么是文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/document-metadata.html"><strong aria-hidden="true">13.35.</strong> 文档元数据</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/index-doc.html"><strong aria-hidden="true">13.36.</strong> 索引文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/get-doc.html"><strong aria-hidden="true">13.37.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/doc-exists.html"><strong aria-hidden="true">13.38.</strong> 检查文档是否存在</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/update-doc.html"><strong aria-hidden="true">13.39.</strong> 更新整个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/create-doc.html"><strong aria-hidden="true">13.40.</strong> 创建新文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/delete-doc.html"><strong aria-hidden="true">13.41.</strong> 删除文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/version-control.html"><strong aria-hidden="true">13.42.</strong> 处理冲突</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/optimistic-concurrency-control.html"><strong aria-hidden="true">13.43.</strong> 乐观并发控制</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/partial-update.html"><strong aria-hidden="true">13.44.</strong> 文档的部分更新</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/retrieving-multiple-docs.html"><strong aria-hidden="true">13.45.</strong> 取回多个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/bulk.html"><strong aria-hidden="true">13.46.</strong> 代价较小的批量操作</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed-docs.html"><strong aria-hidden="true">13.47.</strong> 分布式文档存储</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/routing-value.html"><strong aria-hidden="true">13.48.</strong> 路由一个文档到一个分片中</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/how-primary-and-replica-shard-interact.html"><strong aria-hidden="true">13.49.</strong> 主分片和副本分片如何交互</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distrib-write.html"><strong aria-hidden="true">13.50.</strong> 新建、索引和删除文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distrib-read.html"><strong aria-hidden="true">13.51.</strong> 取回一个文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/partial-update-to-a-doc.html"><strong aria-hidden="true">13.52.</strong> 局部更新文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distrib-multi-doc.html"><strong aria-hidden="true">13.53.</strong> 多文档模式</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search.html"><strong aria-hidden="true">13.54.</strong> 搜索-最基本的工具</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/mapping-analysis.html"><strong aria-hidden="true">13.55.</strong> 映射和分析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/full-search-body.html"><strong aria-hidden="true">13.56.</strong> 请求体查询</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/sorting.html"><strong aria-hidden="true">13.57.</strong> 排序与相关性</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/distributed-search.html"><strong aria-hidden="true">13.58.</strong> 执行分布式检索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/query-phase.html"><strong aria-hidden="true">13.59.</strong> 查询阶段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/fetch-phase.html"><strong aria-hidden="true">13.60.</strong> 取回阶段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/search-options.html"><strong aria-hidden="true">13.61.</strong> 搜索选项</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/scroll.html"><strong aria-hidden="true">13.62.</strong> 查询游标</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/index-management.html"><strong aria-hidden="true">13.63.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/inside-a-shard.html"><strong aria-hidden="true">13.64.</strong> 分片内部原理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/making-text-searchable.html"><strong aria-hidden="true">13.65.</strong> 使文本可被搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/dynamic-indices.html"><strong aria-hidden="true">13.66.</strong> 动态更新索引</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/near-real-time.html"><strong aria-hidden="true">13.67.</strong> 近实时搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/translog.html"><strong aria-hidden="true">13.68.</strong> 持久化变更</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/basic/merge-process.html"><strong aria-hidden="true">13.69.</strong> 段合并</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.70.</strong> 深入搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.71.</strong> 处理人类语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/index.html"><strong aria-hidden="true">13.72.</strong> 概览</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/language-intro.html"><strong aria-hidden="true">13.73.</strong> 开始处理各种语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/using-language-analyzers.html"><strong aria-hidden="true">13.74.</strong> 使用语言分析器</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/config-language-analyzers.html"><strong aria-hidden="true">13.75.</strong> 配置语言分析器</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/language-pitfalls.html"><strong aria-hidden="true">13.76.</strong> 混合语言的陷阱</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/one-language-docs.html"><strong aria-hidden="true">13.77.</strong> 每份文档一种语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/lanaugages/one-language-field.html"><strong aria-hidden="true">13.78.</strong> 每个域一种语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/languages/mixed-language-fields.html"><strong aria-hidden="true">13.79.</strong> 混合语言域</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.80.</strong> 聚合</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.81.</strong> 地理位置</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.82.</strong> 数据建模</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.83.</strong> 管理、监控和部署</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/administration.html"><strong aria-hidden="true">13.84.</strong> 管理、监控入门</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/cluster-admin.html"><strong aria-hidden="true">13.85.</strong> 监控</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/marval.html"><strong aria-hidden="true">13.86.</strong> Marval监控</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/cluster-health.html"><strong aria-hidden="true">13.87.</strong> 集群健康</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes.html"><strong aria-hidden="true">13.88.</strong> 监控单个节点</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-index.html"><strong aria-hidden="true">13.89.</strong> 索引部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-os.html"><strong aria-hidden="true">13.90.</strong> 操作系统和进程</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-jvm.html"><strong aria-hidden="true">13.91.</strong> jvm部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-thread-pool.html"><strong aria-hidden="true">13.92.</strong> 线程池部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-fs.html"><strong aria-hidden="true">13.93.</strong> 文件系统和网络部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/monitor-individual-nodes-breaker.html"><strong aria-hidden="true">13.94.</strong> 断路器部分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/cluster-stats.html"><strong aria-hidden="true">13.95.</strong> 集群统计</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/index-stats.html"><strong aria-hidden="true">13.96.</strong> 索引统计</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/manage/pending-task.html"><strong aria-hidden="true">13.97.</strong> 等待中的任务</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.98.</strong> 考试认证</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/deploy.html"><strong aria-hidden="true">13.99.</strong> 集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/deploy-single-node.html"><strong aria-hidden="true">13.100.</strong> 单节点集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/mac-deploy-single-node.html"><strong aria-hidden="true">13.101.</strong> mac 单节点集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/deploy-cluster.html"><strong aria-hidden="true">13.102.</strong> 多节点集群搭建</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/management.html"><strong aria-hidden="true">13.103.</strong> 集群管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/hot-warm-cold.html"><strong aria-hidden="true">13.104.</strong> 热温冷架构</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/searchable.html"><strong aria-hidden="true">13.105.</strong> 可搜索快照</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/search-remote.html"><strong aria-hidden="true">13.106.</strong> 跨集群查询、复制</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index.html"><strong aria-hidden="true">13.107.</strong> 索引管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/data-stream.html"><strong aria-hidden="true">13.108.</strong> 数据流</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/runtime-field.html"><strong aria-hidden="true">13.109.</strong> runtime字段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/custom-analyzer.html"><strong aria-hidden="true">13.110.</strong> 自定义分词器</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/data-type.html"><strong aria-hidden="true">13.111.</strong> 内部结构</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/painless.html"><strong aria-hidden="true">13.112.</strong> painless脚本</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/index/custom-score.html"><strong aria-hidden="true">13.113.</strong> 自定义评分</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise.html"><strong aria-hidden="true">13.114.</strong> 真题解析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise1.html"><strong aria-hidden="true">13.115.</strong> 真题1</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise2.html"><strong aria-hidden="true">13.116.</strong> 真题2</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise3.html"><strong aria-hidden="true">13.117.</strong> 真题3</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise4.html"><strong aria-hidden="true">13.118.</strong> 真题4</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/cert/exercise5.html"><strong aria-hidden="true">13.119.</strong> 7.13真题</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/index.html"><strong aria-hidden="true">13.120.</strong> 日志易</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/index.html"><strong aria-hidden="true">13.121.</strong> 基础</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/intro.html"><strong aria-hidden="true">13.122.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/resume.html"><strong aria-hidden="true">13.123.</strong> 命令简述</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/search.html"><strong aria-hidden="true">13.124.</strong> 搜索</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/search_command.html"><strong aria-hidden="true">13.125.</strong> 搜索命令函数</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-guide/rizhiyi/stats.html"><strong aria-hidden="true">13.126.</strong> stats相关函数</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.</strong> Elastic 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.2.</strong> 技术文章</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/blog.html"><strong aria-hidden="true">14.3.</strong> elasticsearch 官方博客</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/blog/bulk-reject.html"><strong aria-hidden="true">14.4.</strong> bulk 被拒绝</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/api.html"><strong aria-hidden="true">14.5.</strong> elasticsearch 接口文档</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/article/office/ism.html"><strong aria-hidden="true">14.6.</strong> 华为云CSS生命周期管理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.7.</strong> 实际使用</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/backup/backup.html"><strong aria-hidden="true">14.8.</strong> elasticsearch集群备份</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/backup/snapshot.html"><strong aria-hidden="true">14.9.</strong> 使用快照备份</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/backup/meta.html"><strong aria-hidden="true">14.10.</strong> 只备份集群中的策略、模版等信息</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/reindex/reindex.html"><strong aria-hidden="true">14.11.</strong> reindex 过程</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/use/reindex/add-field.html"><strong aria-hidden="true">14.12.</strong> reindex添加新字段</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.13.</strong> 业务报错处理</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/index.html"><strong aria-hidden="true">14.14.</strong> 原理源码</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/elastic-101/lucene/intro.html"><strong aria-hidden="true">14.15.</strong> lucene介绍</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/index.html"><strong aria-hidden="true">15.</strong> Poetry</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/mulberry/mulberry.html"><strong aria-hidden="true">15.1.</strong> mulberry</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/mulberry/meili.html"><strong aria-hidden="true">15.2.</strong> meilisearch</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/animation/animation.html"><strong aria-hidden="true">15.3.</strong> Animation</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/animation/ghibli.html"><strong aria-hidden="true">15.4.</strong> ghibli</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/health/health.html"><strong aria-hidden="true">15.5.</strong> Health</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/health/live_longer.html"><strong aria-hidden="true">15.6.</strong> How to live longer</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/life.html"><strong aria-hidden="true">15.7.</strong> Life Advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/103_advice.html"><strong aria-hidden="true">15.8.</strong> Kevin Kelly's 103 advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/investment_advice.html"><strong aria-hidden="true">15.9.</strong> Investment advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/life/software_engineer_advice.html"><strong aria-hidden="true">15.10.</strong> software engineer advice</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/music/music.html"><strong aria-hidden="true">15.11.</strong> Music</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry/music/xiao_kan_feng_yun.html"><strong aria-hidden="true">15.12.</strong> 笑看风云</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/poetry-engine/index.html"><strong aria-hidden="true">16.</strong> Poetry Engine</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/poetry-engine/chapter_1.html"><strong aria-hidden="true">16.1.</strong> Chapter 1</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.</strong> Crafting Interpreters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.1.</strong> 欢迎</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/welcome.html"><strong aria-hidden="true">17.2.</strong> 欢迎</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/introduction.html"><strong aria-hidden="true">17.3.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/a-map-of-the-territory.html"><strong aria-hidden="true">17.4.</strong> 总览图</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/welcome/the-lox-language.html"><strong aria-hidden="true">17.5.</strong> Lox语言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.6.</strong> 解析树</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/tree.html"><strong aria-hidden="true">17.7.</strong> 解析树</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/scanning.html"><strong aria-hidden="true">17.8.</strong> 扫描</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/representing-code.html"><strong aria-hidden="true">17.9.</strong> 代码表示</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/parsing-expression.html"><strong aria-hidden="true">17.10.</strong> 解析表达式</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/evaluating-expression.html"><strong aria-hidden="true">17.11.</strong> 计算表达式</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/statements-and-state.html"><strong aria-hidden="true">17.12.</strong> 语句和状态</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/control-flow.html"><strong aria-hidden="true">17.13.</strong> 控制流程</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/functions.html"><strong aria-hidden="true">17.14.</strong> 函数</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/resolving-and-binding.html"><strong aria-hidden="true">17.15.</strong> 解析与绑定</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/classes.html"><strong aria-hidden="true">17.16.</strong> 类</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/tree/inheritance.html"><strong aria-hidden="true">17.17.</strong> 继承</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/index.html"><strong aria-hidden="true">17.18.</strong> 虚拟机</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/vm/bytecode-vm.html"><strong aria-hidden="true">17.19.</strong> 虚拟机</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/vm/bytecode-chunk.html"><strong aria-hidden="true">17.20.</strong> 字节码块</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/crafting-interpreters/vm/a-virtual-machine.html"><strong aria-hidden="true">17.21.</strong> 一个虚拟机</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/index.html"><strong aria-hidden="true">18.</strong> Literature</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/literature/index.html"><strong aria-hidden="true">18.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/the_book_of_songs/the_book_of_songs.html"><strong aria-hidden="true">18.2.</strong> 诗经</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/san_guo/san_guo.html"><strong aria-hidden="true">18.3.</strong> 三国文学</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/san_guo/chu_shi_biao.html"><strong aria-hidden="true">18.4.</strong> 出师表</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/san_guo/cao_cao.html"><strong aria-hidden="true">18.5.</strong> 曹操诗集</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/five_poet.html"><strong aria-hidden="true">18.6.</strong> 诗意人生五典型</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/tao/tao.html"><strong aria-hidden="true">18.7.</strong> 陶渊明</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/li/li.html"><strong aria-hidden="true">18.8.</strong> 李白</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/du/du.html"><strong aria-hidden="true">18.9.</strong> 杜甫</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/bai/bai.html"><strong aria-hidden="true">18.10.</strong> 白居易</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/five_poet/su/su.html"><strong aria-hidden="true">18.11.</strong> 苏轼</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_poetry/ming_qing_poetry.html"><strong aria-hidden="true">18.12.</strong> 明清诗词</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_poetry/nian_er_shi_si_shi_tan_ci.html"><strong aria-hidden="true">18.13.</strong> 廿二十四史弹词</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_prose/ming_qing_prose.html"><strong aria-hidden="true">18.14.</strong> 明清散文</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_prose/song_dong_yang_ma_sheng_xv.html"><strong aria-hidden="true">18.15.</strong> 送东阳马生序</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/ming_qing_prose/xiang_ji_xuan_zhi.html"><strong aria-hidden="true">18.16.</strong> 项脊轩志</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/literature/people.html"><strong aria-hidden="true">18.17.</strong> 人物词典</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.</strong> Technical Reading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.2.</strong> Alogrithm</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/hyperloglog.html"><strong aria-hidden="true">19.3.</strong> hyperloglog</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/logmine.html"><strong aria-hidden="true">19.4.</strong> LogMine: Fast Pattern Recognition for Log Analytics</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/percentile.html"><strong aria-hidden="true">19.5.</strong> percentile pre-calculation</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.6.</strong> Elasticsearch</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/elasticsearch.html"><strong aria-hidden="true">19.7.</strong> Elasticsearch 101</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.8.</strong> Task Framework</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/asynq.html"><strong aria-hidden="true">19.9.</strong> asynq</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/asynq/dropbox_atf.html"><strong aria-hidden="true">19.10.</strong> Dropbox ATF</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/index.html"><strong aria-hidden="true">19.11.</strong> Program</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/technical-reading/program/700.html"><strong aria-hidden="true">19.12.</strong> The Next 700 Programming Languages</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/index.html"><strong aria-hidden="true">20.</strong> Shijing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/index.html"><strong aria-hidden="true">20.1.</strong> 简介</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/风.html"><strong aria-hidden="true">20.2.</strong> 国风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/zhounan.html"><strong aria-hidden="true">20.3.</strong> 周南</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/zhaonan.html"><strong aria-hidden="true">20.4.</strong> 召南</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/beifeng.html"><strong aria-hidden="true">20.5.</strong> 邶风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/yongfeng.html"><strong aria-hidden="true">20.6.</strong> 鄘风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/weifeng.html"><strong aria-hidden="true">20.7.</strong> 卫风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/wangfeng.html"><strong aria-hidden="true">20.8.</strong> 王风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/zhengfeng.html"><strong aria-hidden="true">20.9.</strong> 郑风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/qifeng.html"><strong aria-hidden="true">20.10.</strong> 齐风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/wei2feng.html"><strong aria-hidden="true">20.11.</strong> 魏风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/tangfeng.html"><strong aria-hidden="true">20.12.</strong> 唐风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/qinfeng.html"><strong aria-hidden="true">20.13.</strong> 秦风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/chenfeng.html"><strong aria-hidden="true">20.14.</strong> 陈风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/kuaifeng.html"><strong aria-hidden="true">20.15.</strong> 桧风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/caofeng.html"><strong aria-hidden="true">20.16.</strong> 曹风</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/shijing/风/binfeng.html"><strong aria-hidden="true">20.17.</strong> 豳风</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/index.html"><strong aria-hidden="true">21.</strong> Sanguozhi</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/魏.html"><strong aria-hidden="true">21.1.</strong> 魏書</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀.html"><strong aria-hidden="true">21.2.</strong> 蜀書</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传.html"><strong aria-hidden="true">21.3.</strong> 諸葛亮傳</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/出师表.html"><strong aria-hidden="true">21.4.</strong> 出師表</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/后出师表.html"><strong aria-hidden="true">21.5.</strong> 後出師表</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/諸葛氏集目錄.html"><strong aria-hidden="true">21.6.</strong> 諸葛氏集目錄</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/蜀/诸葛亮传/臣壽等言.html"><strong aria-hidden="true">21.7.</strong> 臣壽等言</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/吴.html"><strong aria-hidden="true">21.8.</strong> 吳書</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/sanguozhi/附录.html"><strong aria-hidden="true">21.9.</strong> 附錄</a></li></ol></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/index.html"><strong aria-hidden="true">22.</strong> Maoxuan</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/1.html"><strong aria-hidden="true">22.1.</strong> 第一卷 国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/11.html"><strong aria-hidden="true">22.2.</strong> 第一次国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a1.html"><strong aria-hidden="true">22.3.</strong> 中国社会各阶级的分析</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a2.html"><strong aria-hidden="true">22.4.</strong> 湖南农民运动考察报告</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/12.html"><strong aria-hidden="true">22.5.</strong> 第二次国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a3.html"><strong aria-hidden="true">22.6.</strong> 中国的红色政权为什么能够存在？</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a4.html"><strong aria-hidden="true">22.7.</strong> 井冈山的斗争</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a5.html"><strong aria-hidden="true">22.8.</strong> 关于纠正党内的错误思想</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a6.html"><strong aria-hidden="true">22.9.</strong> 星星之火，可以燎原</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a7.html"><strong aria-hidden="true">22.10.</strong> 反对本本主义</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a8.html"><strong aria-hidden="true">22.11.</strong> 必须注意经济工作</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a9.html"><strong aria-hidden="true">22.12.</strong> 我们的经济政策</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a10.html"><strong aria-hidden="true">22.13.</strong> 关心群众生活，注意工作方法</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a11.html"><strong aria-hidden="true">22.14.</strong> 论反对日本帝国主义的策略</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a12.html"><strong aria-hidden="true">22.15.</strong> 中国革命战争的战略问题</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a13.html"><strong aria-hidden="true">22.16.</strong> 关于蒋介石声明的声明</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a14.html"><strong aria-hidden="true">22.17.</strong> 中国共产党在抗日时期的任务</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a15.html"><strong aria-hidden="true">22.18.</strong> 为争取千百万群众进入抗日民族统一战线而斗争</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a16.html"><strong aria-hidden="true">22.19.</strong> 实践论</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/a17.html"><strong aria-hidden="true">22.20.</strong> 矛盾论</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/2.html"><strong aria-hidden="true">22.21.</strong> 第二卷 抗日战争时期（上）</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/21.html"><strong aria-hidden="true">22.22.</strong> 反对日本进攻的方针、办法和前途</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/3.html"><strong aria-hidden="true">22.23.</strong> 第三卷 抗日战争时期（下）</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/4.html"><strong aria-hidden="true">22.24.</strong> 第四卷 第三次国内革命战争时期</a></li><li class="chapter-item expanded "><a href="../../../reading-notes/maoxuan/5.html"><strong aria-hidden="true">22.25.</strong> 第五卷 中国人民站起来了</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Poetic Life</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="使用函数"><a class="header" href="#使用函数">使用函数</a></h1>
+<p>在Makefile中可以使用函数来处理变量，从而让我们的命令或是规则更为的灵活和具有智能。make 所支持的函数也不算很多，不过已经足够我们的操作了。函数调用后，函数的返回值可以当做变量来使用。</p>
+<h2 id="函数的调用语法"><a class="header" href="#函数的调用语法">函数的调用语法</a></h2>
+<p>函数调用，很像变量的使用，也是以 $ 来标识的，其语法如下：</p>
+<pre><code class="language-makefile">
+$(&lt;function&gt; &lt;arguments&gt;)
+
+</code></pre>
+<p>或是:</p>
+<pre><code class="language-makefile">
+${&lt;function&gt; &lt;arguments&gt;}
+
+</code></pre>
+<p>这里， <code>&lt;function&gt;</code> 就是函数名，make支持的函数不多。 <code>&lt;arguments&gt;</code> 为函数的参数，参数间以逗号 , 分隔，而函数名和参数之间以“空格”分隔。函数调用以 $ 开头，以圆括号或花括号把函数名和参数括起。感觉很像一个变量，是不是？函数中的参数可以使用变量，为了风格的统一，函数和变量的括号最好一样，如使用 $(subst a,b,$(x)) 这样的形式，而不是 $(subst a,b, ${x}) 的形式。因为统一会更清楚，也会减少一些不必要的麻烦。</p>
+<p>还是来看一个示例：</p>
+<pre><code class="language-makefile">
+comma:= ,
+empty:=
+space:= $(empty) $(empty)
+foo:= a b c
+bar:= $(subst $(space),$(comma),$(foo))
+
+</code></pre>
+<p>在这个示例中， $(comma) 的值是一个逗号。 $(space) 使用了 $(empty) 定义了一个空格， $(foo) 的值是 a b c ， $(bar) 的定义用，调用了函数 subst ，这是一个替换函数，这个函数有三个参数，第一个参数是被替换字串，第二个参数是替换字串，第三个参数是替换操作作用的字串。这个函数也就是把 $(foo) 中的空格替换成逗号，所以 $(bar) 的值是 a,b,c 。</p>
+<h2 id="字符串处理函数"><a class="header" href="#字符串处理函数">字符串处理函数</a></h2>
+<h3 id="subst"><a class="header" href="#subst">subst</a></h3>
+<pre><code class="language-makefile">
+$(subst &lt;from&gt;,&lt;to&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：字符串替换函数</p>
+</li>
+<li>
+<p>功能：把字串 <code>&lt;text&gt;</code> 中的<code>&lt;from&gt;</code> 字符串替换成 <code>&lt;to&gt;</code> 。</p>
+</li>
+<li>
+<p>返回：函数返回被替换过后的字符串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(subst ee,EE,feet on the street)
+
+</code></pre>
+<p>把 feet on the street 中的 ee 替换成 EE ，返回结果是 fEEt on the strEEt 。</p>
+</li>
+</ul>
+<h3 id="patsubst"><a class="header" href="#patsubst">patsubst</a></h3>
+<pre><code class="language-makefile">
+$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：模式字符串替换函数。</p>
+</li>
+<li>
+<p>功能：查找 <code>&lt;text&gt;</code> 中的单词（单词以“空格”、“Tab”或“回车”“换行”分隔）是否符合模式 <code>&lt;pattern&gt;</code> ，如果匹配的话，则以 <code>&lt;replacement&gt;</code> 替换。这里， <code>&lt;pattern&gt;</code> 可以包括通配符 % ，表示任意长度的字串。如果 <code>&lt;replacement&gt;</code> 中也包含 % ，那么， <code>&lt;replacement&gt;</code> 中的这个 % 将是 <code>&lt;pattern&gt;</code> 中的那个 % 所代表的字串。（可以用 \ 来转义，以 % 来表示真实含义的 % 字符）</p>
+</li>
+<li>
+<p>返回：函数返回被替换过后的字符串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(patsubst %.c,%.o,x.c.c bar.c)
+
+</code></pre>
+<p>把字串 x.c.c bar.c 符合模式 %.c 的单词替换成 %.o ，返回结果是 x.c.o bar.o</p>
+</li>
+<li>
+<p>备注：这和我们前面“变量章节”说过的相关知识有点相似。如 <code>$(var:&lt;pattern&gt;=&lt;replacement&gt;;)</code> 相当于 <code>$(patsubst &lt;pattern&gt;,&lt;replacement&gt;,$(var))</code> ，而 <code>$(var: &lt;suffix&gt;=&lt;replacement&gt;)</code> 则相当于 <code>$(patsubst %&lt;suffix&gt;,%&lt;replacement&gt;,$(var))</code> 。</p>
+<p>例如有:</p>
+<pre><code class="language-makefile">
+objects = foo.o bar.o baz.o，
+
+
+</code></pre>
+<p>那么， $(objects:.o=.c) 和 $(patsubst %.o,%.c,$(objects)) 是一样的。</p>
+</li>
+</ul>
+<h3 id="strip"><a class="header" href="#strip">strip</a></h3>
+<pre><code class="language-makefile">
+$(strip &lt;string&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：去空格函数。</p>
+</li>
+<li>
+<p>功能：去掉 <code>&lt;string&gt;</code> 字串中开头和结尾的空字符。</p>
+</li>
+<li>
+<p>返回：返回被去掉空格的字符串值。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(strip a b c )
+
+</code></pre>
+<p>把字串 a b c  去掉开头和结尾的空格，结果是 a b c。</p>
+</li>
+</ul>
+<h3 id="findstring"><a class="header" href="#findstring">findstring</a></h3>
+<pre><code class="language-makefile">
+$(findstring &lt;find&gt;,&lt;in&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：查找字符串函数</p>
+</li>
+<li>
+<p>功能：在字串 <code>&lt;in&gt;</code> 中查找 <code>&lt;find&gt;</code> 字串。</p>
+</li>
+<li>
+<p>返回：如果找到，那么返回 <code>&lt;find&gt;</code> ，否则返回空字符串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+$(findstring a,a b c)
+$(findstring a,b c)
+
+</code></pre>
+<p>第一个函数返回 a 字符串，第二个返回空字符串</p>
+</li>
+</ul>
+<h3 id="filter"><a class="header" href="#filter">filter</a></h3>
+<pre><code class="language-makefile">
+$(filter &lt;pattern...&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：过滤函数</p>
+</li>
+<li>
+<p>功能：以 <code>&lt;pattern&gt;</code> 模式过滤 <code>&lt;text&gt;</code> 字符串中的单词，保留符合模式<code>&lt;pattern&gt;</code> 的单词。可以有多个模式。</p>
+</li>
+<li>
+<p>返回：返回符合模式 <code>&lt;pattern&gt;</code> 的字串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+sources := foo.c bar.c baz.s ugh.h
+foo: $(sources)
+	cc $(filter %.c %.s,$(sources)) -o foo
+
+</code></pre>
+<p>$(filter %.c %.s,$(sources)) 返回的值是 foo.c bar.c baz.s 。</p>
+</li>
+</ul>
+<h3 id="filter-out"><a class="header" href="#filter-out">filter-out</a></h3>
+<pre><code class="language-makefile">
+
+$(filter-out &lt;pattern...&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：反过滤函数</p>
+</li>
+<li>
+<p>功能：以 <code>&lt;pattern&gt;</code> 模式过滤 <code>&lt;text&gt;</code> 字符串中的单词，去除符合模式 <code>&lt;pattern&gt;</code> 的单词。可以有多个模式。</p>
+</li>
+<li>
+<p>返回：返回不符合模式 <pattern> 的字串。</p>
+</li>
+<li>
+<p>示例：</p>
+<pre><code class="language-makefile">
+objects=main1.o foo.o main2.o bar.o
+mains=main1.o main2.o
+
+</code></pre>
+<p>$(filter-out $(mains),$(objects)) 返回值是 foo.o bar.o 。</p>
+</li>
+</ul>
+<h3 id="sort"><a class="header" href="#sort">sort</a></h3>
+<pre><code class="language-makefile">
+$(sort &lt;list&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：排序函数</p>
+</li>
+<li>
+<p>功能：给字符串 <code>&lt;list&gt;</code> 中的单词排序（升序）。</p>
+</li>
+<li>
+<p>返回：返回排序后的字符串。</p>
+</li>
+<li>
+<p>示例： $(sort foo bar lose) 返回 bar foo lose 。</p>
+</li>
+<li>
+<p>备注： sort 函数会去掉 <code>&lt;list&gt;</code> 中相同的单词。</p>
+</li>
+</ul>
+<h3 id="word"><a class="header" href="#word">word</a></h3>
+<pre><code class="language-makefile">
+$(word &lt;n&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取单词函数</p>
+</li>
+<li>
+<p>功能：取字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。（从一开始）</p>
+</li>
+<li>
+<p>返回：返回字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。如果 <code>&lt;n&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数要大，那么返回空字符串。</p>
+</li>
+<li>
+<p>示例： $(word 2, foo bar baz) 返回值是 bar</p>
+</li>
+</ul>
+<h3 id="wordlist"><a class="header" href="#wordlist">wordlist</a></h3>
+<pre><code class="language-makefile">
+$(wordlist &lt;ss&gt;,&lt;e&gt;,&lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取单词串函数</p>
+</li>
+<li>
+<p>功能：从字符串 <code>&lt;text&gt;</code> 中取从 <code>&lt;ss&gt;</code> 开始到 <code>&lt;e&gt;</code> 的单词串。 <code>&lt;ss&gt;</code> 和 <code>&lt;e&gt;</code> 是一个数字。</p>
+</li>
+<li>
+<p>返回：返回字符串 <code>&lt;text&gt;</code> 中从 <code>&lt;ss&gt;</code> 到 <code>&lt;e&gt;</code> 的单词字串。如果 <code>&lt;ss&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数要大，那么返回空字符串。如果 <code>&lt;e&gt;</code> 大于 <code>&lt;text&gt;</code> 的单词数，那么返回从 <code>&lt;ss&gt;</code> 开始，到 <code>&lt;text&gt;</code> 结束的单词串。</p>
+</li>
+<li>
+<p>示例： $(wordlist 2, 3, foo bar baz) 返回值是 bar baz 。</p>
+</li>
+</ul>
+<h3 id="words"><a class="header" href="#words">words</a></h3>
+<pre><code class="language-makefile">
+$(words &lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：单词个数统计函数</p>
+</li>
+<li>
+<p>功能：统计 <code>&lt;text&gt;</code> 中字符串中的单词个数。</p>
+</li>
+<li>
+<p>返回：返回 <code>&lt;text&gt;</code> 中的单词数。</p>
+</li>
+<li>
+<p>示例： $(words, foo bar baz) 返回值是 3 。</p>
+</li>
+<li>
+<p>备注：如果我们要取 <code>&lt;text&gt;</code> 中最后的一个单词，我们可以这样： <code>$(word $(words &lt;text&gt;),&lt;text&gt;)</code> 。</p>
+</li>
+</ul>
+<h3 id="firstword"><a class="header" href="#firstword">firstword</a></h3>
+<pre><code class="language-makefile">
+$(firstword &lt;text&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：首单词函数——firstword。</p>
+</li>
+<li>
+<p>功能：取字符串 <code>&lt;text&gt;</code> 中的第一个单词。</p>
+</li>
+<li>
+<p>返回：返回字符串 <code>&lt;text&gt;</code> 的第一个单词</p>
+</li>
+<li>
+<p>示例： $(firstword foo bar) 返回值是 foo。</p>
+</li>
+<li>
+<p>备注：这个函数可以用 word 函数来实现： <code>$(word 1,&lt;text&gt;)</code> 。</p>
+</li>
+</ul>
+<p>以上，是所有的字符串操作函数，如果搭配混合使用，可以完成比较复杂的功能。这里，举一个现实中应用的例子。我们知道，make使用 VPATH 变量来指定“依赖文件”的搜索路径。于是，我们可以利用这个搜索路径来指定编译器对头文件的搜索路径参数 CFLAGS ，如：</p>
+<pre><code class="language-makefile">override CFLAGS += $(patsubst %,-I%,$(subst :, ,$(VPATH)))
+
+</code></pre>
+<p>如果我们的 $(VPATH) 值是 <code>src:../headers</code> ，那么 <code>$(patsubst %,-I%,$(subst :, ,$(VPATH)))</code> 将返回 <code>-Isrc -I../headers</code> ，这正是cc或gcc搜索头文件路径的参数。</p>
+<h2 id="文件名操作函数"><a class="header" href="#文件名操作函数">文件名操作函数</a></h2>
+<p>下面我们要介绍的函数主要是处理文件名的。每个函数的参数字符串都会被当做一个或是一系列的文件名来对待。</p>
+<h3 id="dir"><a class="header" href="#dir">dir</a></h3>
+<pre><code class="language-makefile">
+$(dir &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取目录函数——dir。</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出目录部分。目录部分是指最后一个反斜杠（ / ）之前的部分。如果没有反斜杠，那么返回 ./ 。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的目录部分。</p>
+</li>
+<li>
+<p>示例： <code>$(dir src/foo.c hacks)</code> 返回值是 <code>src/ ./</code></p>
+</li>
+</ul>
+<h3 id="notdir"><a class="header" href="#notdir">notdir</a></h3>
+<pre><code class="language-makefile">
+$(notdir &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取文件函数——notdir。</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出非目录部分。非目录部分是指最後一个反斜杠（ / ）之后的部分。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的非目录部分。</p>
+</li>
+<li>
+<p>示例: <code>$(notdir src/foo.c hacks)</code> 返回值是 <code>foo.c hacks</code> 。</p>
+</li>
+</ul>
+<h3 id="suffix"><a class="header" href="#suffix">suffix</a></h3>
+<pre><code class="language-makefile">
+$(suffix &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取后缀函数——suffix</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的后缀。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的后缀序列，如果文件没有后缀，则返回空字串。</p>
+</li>
+<li>
+<p>示例： <code>$(suffix src/foo.c src-1.0/bar.c hacks)</code> 返回值是 <code>.c .c</code>。</p>
+</li>
+</ul>
+<h3 id="basename"><a class="header" href="#basename">basename</a></h3>
+<pre><code class="language-makefile">
+$(basename &lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：取前缀函数——basename。</p>
+</li>
+<li>
+<p>功能：从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的前缀部分。</p>
+</li>
+<li>
+<p>返回：返回文件名序列 <code>&lt;names&gt;</code> 的前缀序列，如果文件没有前缀，则返回空字串。</p>
+</li>
+<li>
+<p>示例： <code>$(basename src/foo.c src-1.0/bar.c hacks)</code> 返回值是 <code>src/foo src-1.0/bar hacks</code> 。</p>
+</li>
+</ul>
+<h3 id="addsuffix"><a class="header" href="#addsuffix">addsuffix</a></h3>
+<pre><code class="language-makefile">
+$(addsuffix &lt;suffix&gt;,&lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：加后缀函数——addsuffix。</p>
+</li>
+<li>
+<p>功能：把后缀 <code>&lt;suffix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词后面。</p>
+</li>
+<li>
+<p>返回：返回加过后缀的文件名序列。</p>
+</li>
+<li>
+<p>示例： <code>$(addsuffix .c,foo bar)</code> 返回值是 <code>foo.c bar.c</code> 。</p>
+</li>
+</ul>
+<h3 id="addprefix"><a class="header" href="#addprefix">addprefix</a></h3>
+<pre><code class="language-makefile">
+$(addprefix &lt;prefix&gt;,&lt;names...&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：加前缀函数——addprefix。</p>
+</li>
+<li>
+<p>功能：把前缀 <code>&lt;prefix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词前面。</p>
+</li>
+<li>
+<p>返回：返回加过前缀的文件名序列。</p>
+</li>
+<li>
+<p>示例： <code>$(addprefix src/,foo bar)</code> 返回值是 <code>src/foo src/bar</code> 。</p>
+</li>
+</ul>
+<h3 id="join"><a class="header" href="#join">join</a></h3>
+<pre><code class="language-makefile">
+$(join &lt;list1&gt;,&lt;list2&gt;)
+
+</code></pre>
+<ul>
+<li>
+<p>名称：连接函数——join。</p>
+</li>
+<li>
+<p>功能：把 <code>&lt;list2&gt;</code> 中的单词对应地加到 <code>&lt;list1&gt;</code> 的单词后面。如果 <code>&lt;list1&gt;</code> 的单词个数要比 <code>&lt;list2&gt;</code> 的多，那么，<code>&lt;list1&gt;</code> 中的多出来的单词将保持原样。如果 <code>&lt;list2&gt;</code> 的单词个数要比 <code>&lt;list1&gt;</code> 多，那么， <code>&lt;list2&gt;</code> 多出来的单词将被复制到 <code>&lt;list1&gt;</code> 中。</p>
+</li>
+<li>
+<p>返回：返回连接过后的字符串。</p>
+</li>
+<li>
+<p>示例：<code> $(join aaa bbb , 111 222 333)</code> 返回值是 <code>aaa111 bbb222 333</code></p>
+</li>
+</ul>
+<h2 id="foreach-函数"><a class="header" href="#foreach-函数">foreach 函数</a></h2>
+<p>foreach函数和别的函数非常的不一样。因为这个函数是用来做循环用的，Makefile中的foreach函数几乎是仿照于Unix标准Shell（/bin/sh）中的for语句，或是C-Shell（/bin/csh）中的foreach语句而构建的。它的语法是：</p>
+<pre><code class="language-makefile">
+$(foreach &lt;var&gt;,&lt;list&gt;,&lt;text&gt;)
+
+</code></pre>
+<p>这个函数的意思是，把参数 <code>&lt;list&gt;</code> 中的单词逐一取出放到参数 <code>&lt;var&gt;</code> 所指定的变量中，然后再执行 <code>&lt;text&gt;</code> 所包含的表达式。每一次 <code>&lt;text&gt;</code> 会返回一个字符串，循环过程中， <code>&lt;text&gt;</code> 的所返回的每个字符串会以空格分隔，最后当整个循环结束时， <code>&lt;text&gt;</code> 所返回的每个字符串所组成的整个字符串（以空格分隔）将会是foreach函数的返回值。</p>
+<p>所以， <code>&lt;var&gt;</code> 最好是一个变量名， <code>&lt;list&gt;</code> 可以是一个表达式，而 <code>&lt;text&gt;</code> 中一般会使用 <code>&lt;var&gt;</code> 这个参数来依次枚举 <code>&lt;list&gt;</code> 中的单词。举个例子：</p>
+<pre><code class="language-makefile">
+names := a b c d
+
+files := $(foreach n,$(names),$(n).o)
+
+
+</code></pre>
+<p>上面的例子中， $(name) 中的单词会被挨个取出，并存到变量 n 中， $(n).o 每次根据 $(n) 计算出一个值，这些值以空格分隔，最后作为foreach函数的返回，所以， $(files) 的值是 a.o b.o c.o d.o 。</p>
+<p>注意，foreach中的 <code>&lt;var&gt;</code> 参数是一个临时的局部变量，foreach函数执行完后，参数 <code>&lt;var&gt;</code> 的变量将不在作用，其作用域只在foreach函数当中。</p>
+<h2 id="if-函数"><a class="header" href="#if-函数">if 函数</a></h2>
+<p>if函数很像GNU的make所支持的条件语句——ifeq（参见前面所述的章节），if函数的语法是：</p>
+<pre><code class="language-makefile">
+
+$(if &lt;condition&gt;,&lt;then-part&gt;)
+
+</code></pre>
+<p>或是</p>
+<pre><code class="language-makefile">
+$(if &lt;condition&gt;,&lt;then-part&gt;,&lt;else-part&gt;)
+
+</code></pre>
+<p>可见，if函数可以包含“else”部分，或是不含。即if函数的参数可以是两个，也可以是三个。 <code>&lt;condition&gt;</code> 参数是if的表达式，如果其返回的为非空字符串，那么这个表达式就相当于返回真，于是， <code>&lt;then-part&gt;</code> 会被计算，否则 <code>&lt;else-part&gt;</code> 会被计算。</p>
+<p>而if函数的返回值是，如果 <code>&lt;condition&gt;</code> 为真（非空字符串），那个 <code>&lt;then-part&gt;</code> 会是整个函数的返回值，如果 <code>&lt;condition&gt;</code> 为假（空字符串），那么 <code>&lt;else-part&gt;</code> 会是整个函数的返回值，此时如果 <code>&lt;else-part&gt;</code> 没有被定义，那么，整个函数返回空字串。</p>
+<p>所以， <code>&lt;then-part&gt;</code> 和 <code>&lt;else-part&gt;</code> 只会有一个被计算。</p>
+<h2 id="call函数"><a class="header" href="#call函数">call函数</a></h2>
+<p>call函数是唯一一个可以用来创建新的参数化的函数。你可以写一个非常复杂的表达式，这个表达式中，你可以定义许多参数，然后你可以call函数来向这个表达式传递参数。其语法是：</p>
+<pre><code class="language-makefile">
+$(call &lt;expression&gt;,&lt;parm1&gt;,&lt;parm2&gt;,...,&lt;parmn&gt;)
+
+</code></pre>
+<p>当make执行这个函数时， <code>&lt;expression&gt;</code> 参数中的变量，如 $(1) 、 $(2) 等，会被参数 <code>&lt;parm1&gt; 、 &lt;parm2&gt; 、 &lt;parm3&gt;</code> 依次取代。而 <code>&lt;expression&gt;</code> 的返回值就是 call 函数的返回值。例如：</p>
+<pre><code class="language-makefile">
+reverse =  $(1) $(2)
+
+foo = $(call reverse,a,b)
+
+</code></pre>
+<p>那么， foo 的值就是 a b 。当然，参数的次序是可以自定义的，不一定是顺序的，如：</p>
+<pre><code class="language-makefile">
+reverse =  $(2) $(1)
+
+foo = $(call reverse,a,b)
+
+</code></pre>
+<p>此时的 foo 的值就是 b a 。</p>
+<p>需要注意：在向 call 函数传递参数时要尤其注意空格的使用。call 函数在处理参数时，第2个及其之后的参数中的空格会被保留，因而可能造成一些奇怪的效果。因而在向call函数提供参数时，最安全的做法是去除所有多余的空格。</p>
+<h2 id="origin函数"><a class="header" href="#origin函数">origin函数</a></h2>
+<p>origin函数不像其它的函数，他并不操作变量的值，他只是告诉你你的这个变量是哪里来的？其语法是：</p>
+<pre><code class="language-makefile">
+
+$(origin &lt;variable&gt;)
+
+</code></pre>
+<p>注意， <code>&lt;variable&gt;</code> 是变量的名字，不应该是引用。所以你最好不要在 <code>&lt;variable&gt;</code> 中使用
+$ 字符。Origin函数会以其返回值来告诉你这个变量的“出生情况”，下面，是origin函数的返回值:</p>
+<ul>
+<li>
+<p>undefined</p>
+<p>如果 <code>&lt;variable&gt;</code> 从来没有定义过，origin函数返回这个值 undefined</p>
+</li>
+<li>
+<p>default</p>
+<p>如果 <code>&lt;variable&gt;</code> 是一个默认的定义，比如“CC”这个变量，这种变量我们将在后面讲述。</p>
+</li>
+<li>
+<p>environment</p>
+<p>如果 <code>&lt;variable&gt;</code> 是一个环境变量，并且当Makefile被执行时， -e 参数没有被打开</p>
+</li>
+<li>
+<p>file</p>
+<p>如果 <code>&lt;variable&gt;</code> 这个变量被定义在Makefile中</p>
+</li>
+<li>
+<p>command line</p>
+<p>如果 <code>&lt;variable&gt;</code> 这个变量是被命令行定义的</p>
+</li>
+<li>
+<p>override</p>
+<p>如果 <code>&lt;variable&gt;</code> 是被override指示符重新定义的</p>
+</li>
+<li>
+<p>automatic</p>
+<p>如果 <code>&lt;variable&gt;</code> 是一个命令运行中的自动化变量。关于自动化变量将在后面讲述</p>
+</li>
+</ul>
+<p>这些信息对于我们编写Makefile是非常有用的，例如，假设我们有一个Makefile其包了一个定义文件 Make.def，在 Make.def中定义了一个变量“bletch”，而我们的环境中也有一个环境变量“bletch”，此时，我们想判断一下，如果变量来源于环境，那么我们就把之重定义了，如果来源于Make.def或是命令行等非环境的，那么我们就不重新定义它。于是，在我们的Makefile中，我们可以这样写：</p>
+<pre><code class="language-makefile">
+ifdef bletch
+    ifeq "$(origin bletch)" "environment"
+        bletch = barf, gag, etc.
+    endif
+endif
+
+</code></pre>
+<p>当然，你也许会说，使用 override 关键字不就可以重新定义环境中的变量了吗？为什么需要使用这样的步骤？是的，我们用 override 是可以达到这样的效果，可是 override 过于粗暴，它同时会把从命令行定义的变量也覆盖了，而我们只想重新定义环境传来的，而不想重新定义命令行传来的。</p>
+<h2 id="shell函数"><a class="header" href="#shell函数">shell函数</a></h2>
+<p>shell函数也不像其它的函数。顾名思义，它的参数应该就是操作系统Shell的命令。它和反引号“`”是相同的功能。这就是说，shell函数把执行操作系统命令后的输出作为函数返回。于是，我们可以用操作系统命令以及字符串处理命令awk，sed等等命令来生成一个变量，如：</p>
+<pre><code class="language-makefile">
+contents := $(shell cat foo)
+files := $(shell echo *.c)
+
+</code></pre>
+<p>注意，这个函数会新生成一个Shell程序来执行命令，所以你要注意其运行性能，如果你的Makefile中有一些比较复杂的规则，并大量使用了这个函数，那么对于你的系统性能是有害的。特别是Makefile的隐式规则可能会让你的shell函数执行的次数比你想像的多得多。</p>
+<h2 id="控制make的函数"><a class="header" href="#控制make的函数">控制make的函数</a></h2>
+<p>make提供了一些函数来控制make的运行。通常，你需要检测一些运行Makefile时的运行时信息，并且根据这些信息来决定，你是让make继续执行，还是停止。</p>
+<pre><code class="language-makefile">
+
+$(error &lt;text ...&gt;)
+
+</code></pre>
+<p>产生一个致命的错误， &lt;text ...&gt; 是错误信息。注意，error函数不会在一被使用就会产生错误信息，所以如果你把其定义在某个变量中，并在后续的脚本中使用这个变量，那么也是可以的。例如：</p>
+<p>示例一：</p>
+<pre><code class="language-makefile">
+ifdef ERROR_001
+    $(error error is $(ERROR_001))
+endif
+
+</code></pre>
+<p>示例二：</p>
+<pre><code class="language-makefile">
+ERR = $(error found an error!)
+
+.PHONY: err
+
+err: $(ERR)
+
+</code></pre>
+<p>示例一会在变量ERROR_001定义了后执行时产生error调用，而示例二则在目录err被执行时才发生error调用。</p>
+<pre><code class="language-makefile">
+$(warning &lt;text ...&gt;)
+
+</code></pre>
+<p>这个函数很像error函数，只是它并不会让make退出，只是输出一段警告信息，而make继续执行。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../technical-learning/basic/make/condition.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../../technical-learning/basic/make/invoke.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../technical-learning/basic/make/condition.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../../technical-learning/basic/make/invoke.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../../elasticlunr.min.js"></script>
+        <script src="../../../mark.min.js"></script>
+        <script src="../../../searcher.js"></script>
+
+        <script src="../../../clipboard.min.js"></script>
+        <script src="../../../highlight.js"></script>
+        <script src="../../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../../giscus.js"></script>
+
+
+    </div>
+    </body>
+</html>
