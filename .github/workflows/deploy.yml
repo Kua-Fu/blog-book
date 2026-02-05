@@ -1,0 +1,46 @@
+name: Deploy Multi-Book to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 或者是您的默认分支名
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mdBook
+        run: |
+          mkdir bin
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C bin
+          echo "$(pwd)/bin" >> $GITHUB_PATH
+
+      - name: Build all books
+        run: |
+          mkdir public
+          cp index.html public/
+          
+          # 定义需要构建的目录列表
+          directories=("calculus" "poetry" "learning-basic" "learning-language" "learning-algorithm" "learning-compile" "learning-os" "learning-network" "learning-middleware" "learning-observe" "elastic" "elastic-101" "literature" "shijing" "sanguozhi" "毛选" "crafting-interpreters-zh" "reading-technical" "work-reading" "山海塔防")
+          
+          for dir in "${directories[@]}"; do
+            if [ -d "$dir" ] && [ -f "$dir/book.toml" ]; then
+              echo "Building $dir..."
+              cd "$dir"
+              mdbook build
+              cd ..
+              mkdir -p "public/$dir"
+              cp -r "$dir/book/"* "public/$dir/"
+            fi
+          done
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
+          branch: gh-pages

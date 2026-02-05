@@ -13,3 +13,7 @@ Cargo.lock
 *.md~
 .*~
 *.toml~
+
+# mdBook build output
+**/book/
+/public/
