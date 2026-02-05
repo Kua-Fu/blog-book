@@ -1,0 +1,20 @@
+[book]
+authors = ["yz"]
+language = "zh-CN"
+multilingual = false
+src = "src"
+title = "Poetic Life"
+
+[output.html]
+mathjax-support = true
+# 所有的书籍都放在同一个站点下，共享这个配置
+additional-js = ["giscus.js"]
+
+[output.html.search]
+limit-results = 30
+use-boolean-and = true
+expand = true
+
+[preprocessor.links]
+# 确保链接在合并后依然正确
+render-external-links = true

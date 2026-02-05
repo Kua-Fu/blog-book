@@ -1,4 +1,4 @@
-name: Deploy Multi-Book to GitHub Pages
+name: Deploy Unified Knowledge Base to GitHub Pages
 
 on:
   push:
@@ -21,27 +21,12 @@ jobs:
           curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C bin
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
-      - name: Build all books
+      - name: Build Knowledge Base
         run: |
-          mkdir public
-          cp index.html public/
-          
-          # 定义需要构建的目录列表
-          directories=("calculus" "poetry" "learning-basic" "learning-language" "learning-algorithm" "learning-compile" "learning-os" "learning-network" "learning-middleware" "learning-observe" "elastic" "elastic-101" "literature" "shijing" "sanguozhi" "毛选" "crafting-interpreters-zh" "reading-technical" "work-reading" "山海塔防")
-          
-          for dir in "${directories[@]}"; do
-            if [ -d "$dir" ] && [ -f "$dir/book.toml" ]; then
-              echo "Building $dir..."
-              cd "$dir"
-              mdbook build
-              cd ..
-              mkdir -p "public/$dir"
-              cp -r "$dir/book/"* "public/$dir/"
-            fi
-          done
+          mdbook build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: public
+          folder: book
           branch: gh-pages
